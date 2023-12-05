@@ -1,0 +1,8 @@
+﻿.header__logo_text {
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+header {
+  box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
+}
