@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-    NavItem,
-    NavLink
-} from 'reactstrap';
-
-import '../assets/css/Footer.css';
+import { Container, NavItem, NavLink } from 'reactstrap';
 
 export class Footer extends Component {
     render() {
         return (
             <footer>
-                <div class="container">
-                    <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
-                        <span class="col-md-5">&copy; {new Date().getFullYear()} Stichting Accessibility</span>
+                <Container>
+                    <div className="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+                        <span className="col-md-5">&copy; {new Date().getFullYear()} Stichting Accessibility</span>
                         <div className="col-md-2 d-flex justify-content-center">
                             <Link to="/">
                                 <img src={require("../assets/img/brand/logo.png")} width="50" height="60" alt="Logo" title="Project Accessibility" />
@@ -31,7 +26,7 @@ export class Footer extends Component {
                             </NavItem>
                         </ul>
                     </div>
-                </div>
+                </Container>
             </footer>
         );
     }

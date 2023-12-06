@@ -1,13 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {
-    Container,
-    Button,
-    NavItem,
-    NavLink
-} from 'reactstrap';
-
-import '../assets/css/Hero.css';
+import { Container, Button } from 'reactstrap';
 
 export class Hero extends Component {
     render() {
@@ -28,7 +21,6 @@ export class Hero extends Component {
                     </div>
                 </Container>
             </section>
-            
         );
     }
 }

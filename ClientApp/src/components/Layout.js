@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import '../assets/scss/main.scss';
 
 export class Layout extends Component {
   static displayName = Layout.name;
