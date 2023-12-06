@@ -18,7 +18,7 @@
         .site__header_nav {
             display: none;
 
-            @include lg {
+            @include mixins.lg {
                 justify-content: flex-end;
                 display: flex;
                 flex: 2 auto;
