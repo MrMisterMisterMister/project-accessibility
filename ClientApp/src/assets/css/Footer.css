@@ -1,7 +1,3 @@
 footer {
     display: block;
 }
-
-.t::after {
-    content: "-";
-}

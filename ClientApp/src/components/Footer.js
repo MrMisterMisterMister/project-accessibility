@@ -21,13 +21,13 @@ export class Footer extends Component {
                         </div>
                         <ul className="nav col-md-5 justify-content-end">
                             <NavItem>
-                                <NavLink tag={Link} className="nav-link px-2 t" to="/sitemap">Sitemap</NavLink>
+                                <NavLink tag={Link} className="nav-link px-2" to="/sitemap">Sitemap</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} className="nav-link px-2 t" to="/privacy-policy">Privacy Policy</NavLink>
+                                <NavLink tag={Link} className="nav-link px-2" to="/privacy-policy">Privacy Policy</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink tag={Link} className="nav-link px-2 t" to="/cookies">Cookies</NavLink>
+                                <NavLink tag={Link} className="nav-link px-2" to="/cookies">Cookies</NavLink>
                             </NavItem>
                         </ul>
                     </div>
