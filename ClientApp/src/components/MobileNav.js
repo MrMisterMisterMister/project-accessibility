@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Nav, NavItem, NavLink } from 'reactstrap';
 
 export class MobileNav extends Component {
-
     render() {
         return (
             <div className="site__header_nav">
