@@ -15,7 +15,7 @@ export class Footer extends Component {
                     <div class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
                         <span class="col-md-5">&copy; {new Date().getFullYear()} Stichting Accessibility</span>
                         <div className="col-md-2 d-flex justify-content-center">
-                            <Link tag={Link} to="/">
+                            <Link to="/">
                                 <img src={require("../assets/img/brand/logo.png")} width="50" height="60" alt="Logo" title="Project Accessibility" />
                             </Link>
                         </div>

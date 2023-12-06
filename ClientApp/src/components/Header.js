@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {
-    Collapse,
-    Navbar,
+    Container,
     NavbarBrand,
-    NavbarToggler,
     NavItem,
     NavLink
 } from 'reactstrap';
@@ -13,41 +11,79 @@ import '../assets/css/Header.css';
 export class Header extends Component {
     constructor(props) {
         super(props);
-
-        this.toggleNavbar = this.toggleNavbar.bind(this);
         this.state = {
-            collapsed: true
+            isOpen: false,
         };
+        this.handleClick = this.handleClick.bind(this);
     }
 
-    toggleNavbar() {
-        this.setState({
-            collapsed: !this.state.collapsed
-        });
+    handleClick() {
+        this.setState((prevState) => ({
+            isOpen: !prevState.isOpen,
+        }));
+        document.body.classList.toggle("site__menu_is__open");
     }
 
     render() {
         return (
-            <header>
-                <Navbar className="navbar-expand-md navbar-toggleable-md" container>
+            <header className="site__header">
+                <div className="site__header_container">
                     <NavbarBrand tag={Link} to="/">
-                        <img src={require("../assets/img/brand/logo_black_text.png")} width="278" height="60" alt="Logo" title="Project Accessibility" />
+                        <img src={require("../assets/img/brand/logo_white_text.png")} width="278" height="60" alt="Logo" title="Project Accessibility" />
                     </NavbarBrand>
-                    <NavbarToggler onClick={this.toggleNavbar} />
-                    <Collapse className="d-md-inline-flex flex-md-row-reverse" isOpen={!this.state.collapsed} navbar>
-                        <ul className="nav flex-grow">
-                            <NavItem>
-                                <NavLink tag={Link} className="nav-link px-4" to="/">Home</NavLink>
+                    <div className="site__header_menu">
+                        <input type="checkbox" className="site__header_menu_checkbox" id="site__header_menu_toggle" />
+                        <label className="site__header_menu_button" for="site__header_menu_toggle" onClick={this.handleClick}>
+                            <span className="site__header_menu_icon">
+                                <span className="site__header_menu_span" />
+                                <span className="site__header_menu_span" />
+                                <span className="site__header_menu_span" />
+                                <span className="site__header_menu_span" />
+                                <span className="site__header_menu_span" />
+                                <span className="site__header_menu_span" />
+                            </span>
+                        </label>
+                        <div className="site__header_menu_background" />
+                        <nav className="site__header_menu_nav">
+                            <ul className="site__header_menu_list">
+                                <NavItem className="site__header_menu_item">
+                                    <NavLink tag={Link} className="site__header_menu_link" to="/">Home</NavLink>
+                                </NavItem>
+                                <NavItem className="site__header_menu_item">
+                                    <NavLink tag={Link} className="site__header_menu_link" to="/over-ons">Over ons</NavLink>
+                                </NavItem>
+                                <NavItem className="site__header_menu_item">
+                                    <NavLink tag={Link} className="site__header_menu_link" to="/expertise">Expertise</NavLink>
+                                </NavItem>
+                                <NavItem className="site__header_menu_item">
+                                    <NavLink tag={Link} className="site__header_menu_link" to="/blog">Actueel</NavLink>
+                                </NavItem>
+                                <NavItem className="site__header_menu_item">
+                                    <NavLink tag={Link} className="site__header_menu_link" to="/contact">Contact</NavLink>
+                                </NavItem>
+                            </ul>
+                        </nav>
+                    </div>
+                    <nav className="site__header_nav">
+                        <ul className="site__header_nav_list">
+                            <NavItem className="site__header_nav_item">
+                                <NavLink tag={Link} className="site__header_nav_link" to="/">Home</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="nav-link px-4" to="/over-ons">Over ons</NavLink>
+                            <NavItem className="site__header_nav_item">
+                                <NavLink tag={Link} className="site__header_nav_link" to="/over-ons">Over ons</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="nav-link px-4" to="/contact">Contact</NavLink>
+                            <NavItem className="site__header_nav_item">
+                                <NavLink tag={Link} className="site__header_nav_link" to="/expertise">Expertise</NavLink>
+                            </NavItem>
+                            <NavItem className="site__header_nav_item">
+                                <NavLink tag={Link} className="site__header_nav_link" to="/blog">Actueel</NavLink>
+                            </NavItem>
+                            <NavItem className="site__header_nav_item">
+                                <NavLink tag={Link} className="site__header_nav_link" to="/contact">Contact</NavLink>
                             </NavItem>
                         </ul>
-                    </Collapse>
-                </Navbar>
+                    </nav>
+                </div>
             </header>
         );
     }
