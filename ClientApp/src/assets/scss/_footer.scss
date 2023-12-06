@@ -1,3 +1,35 @@
-footer {
-    display: block;
+@use 'variables';
+
+.site__footer {
+    padding: 20px 0;
+    width: 100%;
+    background-color: variables.$white;
+
+    .site__footer_container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .site__footer_copyright {
+            color: variables.$sapphire;
+            font-size: 0.825rem;
+        }
+
+
+        .site__footer_logo {
+        }
+
+        .site__footer_nav {
+
+            .site__footer_nav_list {
+
+                .site__footer_nav_item {
+
+                    .site__footer_nav_link {
+
+                    }
+                }
+            }
+        }
+    }
 }
