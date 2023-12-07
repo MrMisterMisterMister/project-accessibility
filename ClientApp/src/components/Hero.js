@@ -4,7 +4,7 @@ import { Container, Button } from 'reactstrap';
 export class Hero extends Component {
     render() {
         return (
-            <section className="site__hero" id="hero">
+            <section className="site__hero">
                 <Container className="site__hero_container">
                     <div className="site__hero_wrapper">
                         <h1 className="site__hero_title">Toegankelijkheidsportaal voor iedereen.</h1>

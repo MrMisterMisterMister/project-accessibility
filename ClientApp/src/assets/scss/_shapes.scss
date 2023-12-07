@@ -12,3 +12,11 @@
 .hero__shape_cube {
     @include mixins.shape(variables.$tenne, 10rem, 10rem, -15%, null, null, 20%, 55deg, null);
 }
+
+.member__shape_cube {
+    @include mixins.shape(variables.$tenne, 10rem, 10rem, null, null, -4%, -3%, 115deg, null);
+}
+
+.member__shape_circle {
+    @include mixins.shape(variables.$elfgreen, 10rem, 10rem, -3%, -5%, null, null, null, 50%);
+}

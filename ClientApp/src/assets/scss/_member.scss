@@ -5,6 +5,9 @@
     padding: 4em 0;
     width: 100%;
     background-color: variables.$sapphire;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
 
     .site__member_container {
         position: relative;
@@ -13,6 +16,8 @@
             font-size: 2.5em;
             color: variables.$white;
             padding-bottom: 1em;
+            z-index: 2;
+            position: relative;
         }
 
         .site__member_group {

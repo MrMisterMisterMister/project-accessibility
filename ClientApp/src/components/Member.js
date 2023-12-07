@@ -45,6 +45,8 @@ export class Member extends Component {
                         </div>
                     </div>
                 </Container>
+                <span className="member__shape_cube" aria-hidden="true" />
+                <span className="member__shape_circle" aria-hidden="true" />
             </section>
         );
     }
