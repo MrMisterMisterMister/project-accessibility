@@ -9,7 +9,7 @@ export class Footer extends Component {
                 <Container className="site__footer_wrapper">
                     <div className="site__footer_menu">
                         <div className="site__footer_logo">
-                            <img src={require("../assets/img/brand/logo.png")} width="50" height="60" alt="Logo" title="Project Accessibility" />
+                            <img src={require("../assets/img/brand/logo.png")} width="124.5" height="150" alt="Logo" title="Project Accessibility" />
                         </div>
                         <div className="site_footer_col">
                             <h2 className="site__footer_heading">Snel naar</h2>

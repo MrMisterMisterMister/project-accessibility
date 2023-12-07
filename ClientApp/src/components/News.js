@@ -23,7 +23,7 @@ export class News extends Component {
                                 <img src={require("../assets/img/placeholder.jpg")} className="site__news_image" alt="Clodsire" />
                             </div>
                             <div className="site__news_content">
-                                <span className="site__news_date">Movember 11, 2023</span>
+                                <span className="site__news_date">November 11, 2023</span>
                                 <h3 className="site__news_head">Another Clodsire outbreak</h3>
                                 <p className="site__news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu.</p>
                             </div>

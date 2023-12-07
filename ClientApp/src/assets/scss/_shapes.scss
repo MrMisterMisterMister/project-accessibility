@@ -20,3 +20,9 @@
 .member__shape_circle {
     @include mixins.shape(variables.$elfgreen, 10rem, 10rem, -3%, -5%, null, null, null, 50%);
 }
+
+.case__shape_top {
+    @include mixins.shape(variables.$royalblue, 150vw, 20%, -5%, -50vw, null, null, 2.5deg, null);
+    display: block;
+    z-index: 1;
+}
