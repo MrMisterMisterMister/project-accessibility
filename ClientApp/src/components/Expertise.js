@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import {
-    Container,
-} from 'reactstrap';
+import { Container } from 'reactstrap';
 
 export class Expertise extends Component {
     render() {
