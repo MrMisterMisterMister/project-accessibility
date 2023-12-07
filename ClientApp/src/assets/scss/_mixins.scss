@@ -35,3 +35,16 @@
         @content;
     }
 }
+
+@mixin shape($bgColor, $width, $height, $top, $left, $bottom, $right, $rotate, $radius) {
+    position: absolute;
+    background-color: $bgColor;
+    width: $width;
+    height: $height;
+    top: $top;
+    left: $left;
+    bottom: $bottom;
+    right: $right;
+    transform: rotate($rotate);
+    border-radius: $radius;
+}

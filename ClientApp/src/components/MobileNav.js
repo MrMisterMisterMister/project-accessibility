@@ -46,7 +46,7 @@ export class MobileNav extends Component {
                             <NavLink tag={Link} className="site__header_menu_link" to="/expertise">Expertise</NavLink>
                         </NavItem>
                         <NavItem className="site__header_menu_item">
-                            <NavLink tag={Link} className="site__header_menu_link" to="/blog">Actueel</NavLink>
+                            <NavLink tag={Link} className="site__header_menu_link" to="/actueel">Actueel</NavLink>
                         </NavItem>
                         <NavItem className="site__header_menu_item">
                             <NavLink tag={Link} className="site__header_menu_link" to="/contact">Contact</NavLink>

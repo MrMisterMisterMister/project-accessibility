@@ -17,7 +17,7 @@ export class DesktopNav extends Component {
                         <NavLink tag={Link} className="site__header_nav_link" to="/expertise">Expertise</NavLink>
                     </NavItem>
                     <NavItem className="site__header_nav_item">
-                        <NavLink tag={Link} className="site__header_nav_link" to="/blog">Actueel</NavLink>
+                        <NavLink tag={Link} className="site__header_nav_link" to="/actueel">Actueel</NavLink>
                     </NavItem>
                     <NavItem className="site__header_nav_item">
                         <NavLink tag={Link} className="site__header_nav_link" to="/contact">Contact</NavLink>

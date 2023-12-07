@@ -5,7 +5,7 @@
     background-color: variables.$blackrussian;
     background-size: cover;
     color: variables.$sapphire;
-    min-height: 500px;
+    min-height: 550px;
     display: flex;
     text-align: left;
     padding-top: 100px;
@@ -106,7 +106,9 @@
                     text-align: center;
                 }
 
-                &:hover {
+                &:hover,
+                &:focus,
+                &:active {
                     .circle {
                         width: 100%;
 
@@ -124,25 +126,5 @@
                 }
             }
         }
-    }
-
-    .shape__rectangle {
-        position: absolute;
-        background-color: variables.$elfgreen;
-        height: 100%;
-        width: 20vw;
-        top: 40%;
-        right: -5%;
-        transform: rotate(35deg);
-    }
-
-    .shape__circle {
-        position: absolute;
-        top: 80%;
-        left: 55%;
-        background-color: variables.$sapphire;
-        width: 15rem;
-        height: 15rem;
-        border-radius: 50%;
     }
 }

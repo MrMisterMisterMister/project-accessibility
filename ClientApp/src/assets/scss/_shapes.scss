@@ -1,0 +1,14 @@
+@use 'variables';
+@use 'mixins';
+
+.hero__shape_rectangle {
+    @include mixins.shape(variables.$elfgreen, 20vw, 100%, 40%, null, null, -5%, 35deg, null);
+}
+
+.hero__shape_circle {
+    @include mixins.shape(variables.$sapphire, 15rem, 15rem, 80%, 55%, null, null, null, 50%);
+}
+
+.hero__shape_cube {
+    @include mixins.shape(variables.$tenne, 10rem, 10rem, -15%, null, null, 20%, 55deg, null);
+}
