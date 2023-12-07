@@ -29,6 +29,8 @@
             .site__news_article {
                 background-color: variables.$white;
                 width: 100%;
+                transition: all 0.3s ease;
+                position: relative;
                 box-shadow: 2px 3px 6px 1px rgba(0, 0, 0, .3);
 
                 .site__news_banner {
@@ -62,6 +64,12 @@
                         color: variables.$black;
                         font-size: 1em;
                     }
+                }
+
+                &:hover {
+                    cursor: pointer;
+                    transform: scale(1.02);
+                    transition: all 0.3s ease;
                 }
             }
         }
