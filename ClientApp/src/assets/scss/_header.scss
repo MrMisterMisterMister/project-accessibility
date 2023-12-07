@@ -6,9 +6,10 @@
 }
 
 .site__header {
-    background-color: variables.$sapphire;
+    background-color: variables.$white;
     width: 100%;
     padding: 20px 0;
+    box-shadow: 0 2px 16px hsla(230, 75%, 32%, .15);
 
     .site__header_container {
         display: flex;
@@ -35,15 +36,16 @@
 
                     .site__header_nav_link {
                         padding: 0;
-                        color: variables.$white;
+                        font-weight: 600;
+                        color: variables.$sapphire;
                         text-decoration: none;
                         display: inline-block;
-                        border-bottom: solid 1px transparent;
+                        border-bottom: solid 2px transparent;
 
                         &:hover,
                         &:focus {
                             cursor: pointer;
-                            border-bottom: solid 1px;
+                            border-bottom: solid 2px;
                         }
                     }
                 }

@@ -7,7 +7,7 @@ import {
 export class Contact extends Component {
     render() {
         return (
-            <section>
+            <section style={{backgroundColor: "#000", padding: "80"}}>
                 <Container>
                     <p>Hello!!</p>
                 </Container>
