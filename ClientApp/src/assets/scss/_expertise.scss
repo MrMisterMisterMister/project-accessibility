@@ -2,11 +2,10 @@
 @use 'mixins';
 
 .site__expertise {
-    padding: 5em 0;
+    padding: 4em 0;
     width: 100%;
     background-color: variables.$white;
     position: relative;
-    overflow: hidden;
 
     .site__expertise_container {
         position: relative;
