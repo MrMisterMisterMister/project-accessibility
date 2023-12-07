@@ -20,6 +20,8 @@ export class Hero extends Component {
                         </Link>
                     </div>
                 </Container>
+                <span aria-hidden="true" class="shape__rectangle" />
+                <span aria-hidden="true" class="shape__circle" />
             </section>
         );
     }

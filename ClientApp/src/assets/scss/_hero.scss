@@ -11,6 +11,7 @@
     padding-top: 100px;
     position: relative;
     z-index: 0;
+    overflow: hidden;
 
     .site__hero_container {
         position: relative;
@@ -123,5 +124,25 @@
                 }
             }
         }
+    }
+
+    .shape__rectangle {
+        position: absolute;
+        background-color: variables.$elfgreen;
+        height: 100%;
+        width: 20vw;
+        top: 40%;
+        right: -5%;
+        transform: rotate(35deg);
+    }
+
+    .shape__circle {
+        position: absolute;
+        top: 80%;
+        left: 55%;
+        background-color: variables.$sapphire;
+        width: 15rem;
+        height: 15rem;
+        border-radius: 50%;
     }
 }
