@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
-import { MobileNav, DesktopNav } from './Nav';
+import { NavDesktop, NavMobile } from './Nav';
 
 
 const websiteLinks = [
@@ -20,8 +20,8 @@ const Header = () => {
                 <NavbarBrand tag={Link} to="/">
                     <img src={require("../assets/img/brand/logo_black_text_light.png")} width="278" height="60" alt="Logo" title="Project Accessibility" />
                 </NavbarBrand>
-                <DesktopNav links={websiteLinks} />
-                <MobileNav links={websiteLinks} />
+                <NavDesktop links={websiteLinks} />
+                <NavMobile links={websiteLinks} />
             </Container>
         </header>
     );

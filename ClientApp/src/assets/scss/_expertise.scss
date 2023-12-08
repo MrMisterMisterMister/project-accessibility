@@ -1,22 +1,23 @@
 @use 'variables';
 @use 'mixins';
 
-.site__expertise {
-    padding: 4em 0;
+.expertise__section {
+    padding-top: 4em;
+    padding-bottom: 4em;
     width: 100%;
     background-color: variables.$white;
     position: relative;
 
-    .site__expertise_container {
+    .expertise__section_container {
         position: relative;
 
-        .site__expertise_heading {
+        .expertise__section_title {
             font-size: 2.5em;
             color: variables.$sapphire;
             padding-bottom: 0.75em;
         }
 
-        .site__expertise_highlight {
+        .expertise__section_group__card {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
             gap: 30px;
@@ -29,57 +30,6 @@
 
             @include mixins.xl {
                 grid-template-columns: repeat(4, 1fr);
-            }
-            
-            .site__expertise_item {
-                padding: 30px 25px;
-                width: 100%;
-                border-radius: 1em;
-                position: relative;
-                box-shadow: 2px 2px 5px 2px rgba(0, 0, 0, .3);
-
-                .site__expertise_icon {
-                    color: variables.$sapphire;
-                    width: 2.5rem;
-                    height: 2.5rem;
-                    border-radius: .75rem;
-                    margin-bottom: 0.5em;
-                }
-
-                .site__expertise_title {
-                    font-weight: 600;
-                    color: variables.$sapphire;
-                    margin-bottom: 1em;
-                    font-size: 1.25em;
-                    position: relative;
-                }
-
-                .site__expertise_text {
-                    color: variables.$black;
-                    margin-bottom: 15px;
-                }
-
-                &:hover,
-                &:focus {
-                    transition: all 0.3s ease;
-                    cursor: pointer;
-
-                    .site__expertise_icon,
-                    .site__expertise_title,
-                    .site__expertise_text {
-                        color: variables.$white !important;
-                    }
-                }
-
-                &:nth-child(even):hover,
-                &:nth-child(even):focus {
-                    background-color: variables.$elfgreen;
-                }
-
-                &:nth-child(odd):hover,
-                &:nth-child(odd):focus {
-                    background-color: variables.$tenne;
-                }
             }
         }
     }

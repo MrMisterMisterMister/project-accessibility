@@ -1,46 +1,38 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'reactstrap';
+import { CardNews } from './Card';
 
-export class News extends Component {
-    render() {
-        return (
-            <section className="site__news">
-                <Container className="site__news_container">
-                    <h2 className="site__news_title">Actueel</h2>
-                    <div className="site__news_group">
-                        <div className="site__news_article">
-                            <div className="site__news_banner">
-                                <img src={require("../assets/img/placeholder.jpg")} className="site__news_image" alt="Clodsire" />
-                            </div>
-                            <div className="site__news_content">
-                                <span className="site__news_date">December 27, 2023</span>
-                                <h3 className="site__news_head">Clodsire outbreak in Hearthome City and Floaroma Town</h3>
-                                <p className="site__news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu.</p>
-                            </div>
-                        </div>
-                        <div className="site__news_article">
-                            <div className="site__news_banner">
-                                <img src={require("../assets/img/placeholder.jpg")} className="site__news_image" alt="Clodsire" />
-                            </div>
-                            <div className="site__news_content">
-                                <span className="site__news_date">November 11, 2023</span>
-                                <h3 className="site__news_head">Another Clodsire outbreak</h3>
-                                <p className="site__news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu.</p>
-                            </div>
-                        </div>
-                        <div className="site__news_article">
-                            <div className="site__news_banner">
-                                <img src={require("../assets/img/placeholder.jpg")} className="site__news_image" alt="Clodsire" />
-                            </div>
-                            <div className="site__news_content">
-                                <span className="site__news_date">December 9, 2023</span>
-                                <h3 className="site__news_head">Quagsire outbreak</h3>
-                                <p className="site__news_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu.</p>
-                            </div>
-                        </div>
-                    </div>
-                </Container>
-            </section>
-        );
-    }
+const News = () => {
+    return (
+        <section className="news__section">
+            <Container className="news__section_container">
+                <h2 className="news__section_title">Actueel</h2>
+                <div className="news__section_group__card">
+                    <CardNews
+                        img={require('../assets/img/placeholder.jpg')}
+                        altText="Clodsire"
+                        date="December 27, 2023"
+                        title="Clodsire outbreak in Hearthome City and Floaroma Town"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+                    />
+                    <CardNews
+                        img={require('../assets/img/placeholder.jpg')}
+                        altText="Clodsire"
+                        date="December 29, 2023"
+                        title="Another Clodsire outbreak"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+                    />
+                    <CardNews
+                        img={require('../assets/img/placeholder.jpg')}
+                        altText="Clodsire"
+                        date="December 9, 2023"
+                        title="Clodsire is the cutest"
+                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+                    />
+                </div>
+            </Container>
+        </section>
+    );
 }
+
+export default News;

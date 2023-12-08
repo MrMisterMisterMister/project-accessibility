@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Container } from 'reactstrap';
+import Shape from './Shape';
 
-export class Case extends Component {
-    render() {
-        return (
-            <section className="site__case">
-                <Container className="site__case_container">
-                    <h2 className="site__case_title">Case</h2>
-                </Container>
-                <div className="">
-                    
-                </div>
-                <span className="case__shape_top" aria-hidden="true" />
-            </section>
-        );
-    }
+const Case = () => {
+    return (
+        <section className="case__section">
+            <Container className="case__section_container">
+                <h2 className="case__section_title">Case</h2>
+            </Container>
+            {/* TODO */}
+            <Shape section="case" position={['top']} />
+        </section>
+    );
 }
+
+export default Case;

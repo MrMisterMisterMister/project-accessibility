@@ -14,7 +14,7 @@ const renderMenuSpans = () => {
 
 // Nav for desktop
 // Links as parameter with path and name
-const DesktopNav = ({ links }) => {
+const NavDesktop = ({ links }) => {
     return (
         <div className="nav__header_desktop">
             <Nav className="nav__header_desktop__navlist">
@@ -30,7 +30,7 @@ const DesktopNav = ({ links }) => {
 
 // Nav for mobile
 // Uses react hooks to toggle the menu state and assign proper class to body to prevent scrollable menu
-const MobileNav = ({ links }) => {
+const NavMobile = ({ links }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleMenuState = () => {
@@ -62,7 +62,7 @@ const MobileNav = ({ links }) => {
 
 // Nav for footer menu
 // Parameters are title and array of links with their path and name
-const FooterMenuNav = ({ title, links }) => {
+const NavFooterMenu = ({ title, links }) => {
     return (
         <>
             <h2 className="nav__footer_menu__title">{title}</h2>
@@ -79,7 +79,7 @@ const FooterMenuNav = ({ title, links }) => {
 
 // Nav for footer bottombar
 // Inputable array of links with path and name
-const FooterBottombarNav = ({ links }) => {
+const NavFooterBottombar = ({ links }) => {
     return (
         <div className="nav__footer_bottombar">
             <Nav className="nav__footer_bottombar__navlist">
@@ -93,4 +93,4 @@ const FooterBottombarNav = ({ links }) => {
     );
 }
 
-export { DesktopNav, MobileNav, FooterMenuNav, FooterBottombarNav };
+export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar };

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Hero } from './Hero';
-import { Expertise } from './Expertise';
-import { Member } from './Member';
-import { News } from './News';
-import { Case } from './Case';
+import Hero from '../components/Hero';
+import Expertise from '../components/Expertise';
+import Member from '../components/Member';
+import News from '../components/News';
+import Case from '../components/Case';
 
-export class Home extends Component {   
+export class Home extends Component {
     render() {
         return (
             <>

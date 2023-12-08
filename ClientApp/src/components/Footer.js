@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import { FooterMenuNav, FooterBottombarNav } from './Nav';
+import { NavFooterMenu, NavFooterBottombar } from './Nav';
 
 
 const snelNaarLinks = [
@@ -49,21 +49,20 @@ const Footer = () => {
                         <img src={require("../assets/img/brand/logo.png")} width="124.5" height="150" alt="Logo" title="Project Accessibility" />
                     </div>
                     <div className="site__footer_menu__column">
-                        <FooterMenuNav title="Snel naar" links={snelNaarLinks} />
+                        <NavFooterMenu title="Snel naar" links={snelNaarLinks} />
                     </div>
                     <div className="site__footer_menu__column">
-                        <FooterMenuNav title="Expertise" links={expertiseLinks} />
+                        <NavFooterMenu title="Expertise" links={expertiseLinks} />
                     </div>
                     <div className="site__footer_menu__column">
-                        <FooterMenuNav title="Tools" links={toolsLinks} />
+                        <NavFooterMenu title="Tools" links={toolsLinks} />
                     </div>
                 </div>
             </Container>
-
             <Container className="site__footer_container">
                 <div className="site__footer_bottombar border-top">
                     <FooterCopy title="Stichting Accessibility" />
-                    <FooterBottombarNav links={generalLinks} />
+                    <NavFooterBottombar links={generalLinks} />
                 </div>
             </Container>
         </footer>

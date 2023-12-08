@@ -1,28 +1,26 @@
 @use 'variables';
 @use 'mixins';
 
-.hero__shape_rectangle {
+.shape__hero_right {
     @include mixins.shape(variables.$elfgreen, 20vw, 100%, 40%, null, null, -5%, 35deg, null);
 }
 
-.hero__shape_circle {
+.shape__hero_bottom {
     @include mixins.shape(variables.$sapphire, 15rem, 15rem, 80%, 55%, null, null, null, 50%);
 }
 
-.hero__shape_cube {
+.shape__hero_top {
     @include mixins.shape(variables.$tenne, 10rem, 10rem, -15%, null, null, 20%, 55deg, null);
 }
 
-.member__shape_cube {
+.shape__member_right {
     @include mixins.shape(variables.$tenne, 10rem, 10rem, null, null, -4%, -3%, 115deg, null);
 }
 
-.member__shape_circle {
+.shape__member_left {
     @include mixins.shape(variables.$elfgreen, 10rem, 10rem, -3%, -5%, null, null, null, 50%);
 }
 
-.case__shape_top {
+.shape__case_top {
     @include mixins.shape(variables.$royalblue, 150vw, 20%, -5%, -50vw, null, null, 2.5deg, null);
-    display: block;
-    z-index: 1;
 }

@@ -1,5 +1,5 @@
-import { Home } from "./components/Home";
-import { PrivacyPolicy } from "./components/PrivacyPolicy";
+import { Home } from "./pages/Home";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 
 const AppRoutes = [
   {

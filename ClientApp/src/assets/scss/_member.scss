@@ -1,7 +1,7 @@
 @use 'variables';
 @use 'mixins';
 
-.site__member {
+.member__section {
     padding: 4em 0;
     width: 100%;
     background-color: variables.$sapphire;
@@ -9,10 +9,10 @@
     overflow: hidden;
     z-index: 1;
 
-    .site__member_container {
+    .member__section_container {
         position: relative;
 
-        .site__member_title {
+        .member__section_title {
             font-size: 2.5em;
             color: variables.$white;
             padding-bottom: 1em;
@@ -20,53 +20,13 @@
             position: relative;
         }
 
-        .site__member_group {
+        .member__section_group__group {
             display: flex;
             width: 100%;
             flex-wrap: wrap;
 
             @include mixins.xl {
                 flex-direction: row;
-            }
-
-            .site__member_item {
-                align-items: center;
-                display: flex;
-                flex-direction: column;
-                position: relative;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 30px;
-
-                @include mixins.md {
-                    width: 50%;
-                }
-
-                @include mixins.xl {
-                    width: 33.33333%;
-                }
-
-                .site__member_picture {
-                    border-radius: 50%;
-                    display: block;
-                    height: auto;
-                    max-width: 40%; 
-                }
-
-                .site__member_name {
-                    padding-top: 1em;
-                    font-weight: 600;
-                    color: variables.$white;
-                    font-size: 1.5em;
-                }
-
-                .site__member_meta_data {
-
-                    .site__member_role {
-                        color: variables.$white;
-                        font-size: 1.25em;
-                    }
-                }
             }
         }
     }
