@@ -2,64 +2,12 @@
 @use 'mixins';
 
 .site__footer {
-    padding: 2rem 0;
+    padding-top: 3rem;
+    padding-bottom: 1rem;
     width: 100%;
     background-color: variables.$white;
 
     .site__footer_container {
-        padding-top: 1em;
-        padding-bottom: 1em;
-
-        @include mixins.sm {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .site__footer_copyright {
-            color: variables.$sapphire;
-            font-size: 0.875rem;
-            font-weight: 500;
-            display: block;
-            width: 100%;
-            text-align: center;
-            padding-bottom: 0.5em;
-
-            @include mixins.sm {
-                width: auto;
-                text-align: left;
-                padding: 0;
-            }
-        }
-
-        .site__footer_nav {
-            display: flex;
-            justify-content: center;
-
-            @include mixins.sm {
-                justify-content: flex-end;
-                flex: 1 auto;
-            }
-
-            .site__footer_nav_list {
-                flex-direction: row;
-
-                .site__footer_nav_item {
-                    padding: 0 0.5em;
-
-                    .site__footer_nav_link {
-                        font-size: 0.875rem;
-                        color: variables.$sapphire;
-                        text-decoration: underline;
-                        display: inline-block;
-                        font-weight: 500;
-                    }
-                }
-            }
-        }
-    }
-
-    .site__footer_wrapper {
         padding-top: 2rem;
         padding-bottom: 2rem;
 
@@ -72,7 +20,7 @@
                 flex-direction: row;
             }
 
-            .site__footer_logo {
+            .site__footer_menu__logo {
                 margin-right: auto;
                 display: none;
 
@@ -81,7 +29,7 @@
                 }
             }
 
-            .site_footer_col {
+            .site__footer_menu__column {
                 width: 100%;
                 position: relative;
                 display: block;
@@ -97,37 +45,31 @@
                 @include mixins.md {
                     width: 20%;
                 }
+            }
+        }
 
-                .site__footer_heading {
-                    color: variables.$blackrussian;
-                    font-weight: 700;
-                    font-size: 16px;
-                    padding: 0 0 20px;
-                }
+        .site__footer_bottombar {
+            padding: 1rem 0;
 
-                .site__footer_menunav {
-                    display: flex;
-                    flex-direction: column;
-                    padding-bottom: 1.5em;
+            @include mixins.sm {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
 
-                    .site__footer_menunav_item {
-                        padding: 0 0 15px 0;
-
-                        .site__footer_menunav_link {
-                            padding: 0;
-                            font-size: 0.875rem;
-                            color: variables.$sapphire;
-                            display: inline-block;
-                            font-weight: 500;
-                            border-bottom: solid 2px transparent;
-
-                            &:hover,
-                            &:active {
-                                color: variables.$tenne;
-                                border-bottom: solid 2px;
-                            }
-                        }
-                    }
+            .site__footer_copyright {
+                color: variables.$sapphire;
+                font-size: 0.875rem;
+                font-weight: 500;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding-bottom: 0.5em;
+    
+                @include mixins.sm {
+                    width: auto;
+                    text-align: left;
+                    padding: 0;
                 }
             }
         }

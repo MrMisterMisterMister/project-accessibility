@@ -1,10 +1,16 @@
+// default
 @use 'reset';
 @use 'general';
-@use 'shapes';
 
+// layout
 @use 'header';
 @use 'footer';
 
+// components
+@use 'nav';
+@use 'shapes';
+
+// section
 @use 'hero';
 @use 'expertise';
 @use 'member';

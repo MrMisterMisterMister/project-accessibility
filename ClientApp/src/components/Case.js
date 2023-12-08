@@ -8,6 +8,9 @@ export class Case extends Component {
                 <Container className="site__case_container">
                     <h2 className="site__case_title">Case</h2>
                 </Container>
+                <div className="">
+                    
+                </div>
                 <span className="case__shape_top" aria-hidden="true" />
             </section>
         );
