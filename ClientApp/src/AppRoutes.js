@@ -1,6 +1,5 @@
 import { Home } from "./pages/Home";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
-import { Account } from "./pages/Account";
 import { Cookies } from "./pages/Cookies";
 import { Login } from "./pages/Login";
 
@@ -14,10 +13,7 @@ const AppRoutes = [
     path: '/privacy-policy',    
     element: <PrivacyPolicy />
   },
-  {
-    path: '/account',
-    element: <Account />
-  },
+  
   {
     path: '/cookies',
     element: <Cookies />
