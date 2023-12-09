@@ -4,6 +4,7 @@ import { Account } from "./pages/Account";
 import { Cookies } from "./pages/Cookies";
 import { Login } from "./pages/Login";
 
+
 const AppRoutes = [
   {
     index: true,

@@ -9,7 +9,6 @@ const snelNaarLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
-    {name: 'Account', path: '/Account'},
 ];
 
 const expertiseLinks = [
