@@ -1,5 +1,6 @@
 import { Home } from "./pages/Home";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { Account } from "./pages/Account";
 
 const AppRoutes = [
   {
@@ -9,6 +10,10 @@ const AppRoutes = [
   {
     path: '/privacy-policy',    
     element: <PrivacyPolicy />
+  },
+  {
+    path: '/account',
+    element: <Account />
   }
 ];
 
