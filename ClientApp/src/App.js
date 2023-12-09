@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
+import ScrollTop from './ScrollTop';
 import { Layout } from './components/Layout';
 
 export default class App extends Component {
@@ -9,13 +10,14 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
-        <Routes>
-          {AppRoutes.map((route, index) => {
-            const { element, ...rest } = route;
-            return <Route key={index} {...rest} element={element} />;
-          })}
-        </Routes>
-      </Layout>
+      <ScrollTop /> {/* Include the ScrollTop component */}
+      <Routes>
+        {AppRoutes.map((route, index) => {
+          const { element, ...rest } = route;
+          return <Route key={index} {...rest} element={element} />;
+        })}
+      </Routes>
+    </Layout>
     );
   }
 }
