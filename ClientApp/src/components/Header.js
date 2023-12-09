@@ -10,7 +10,8 @@ const websiteLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
-    {name: 'Account', path: './Account'},
+    { name: 'Account', path: './Account' },
+    { name: "Inloggen", path: './login' }
 ];
 
 // Header component

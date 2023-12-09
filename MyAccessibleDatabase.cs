@@ -1,9 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace project_accessibility
 {
     public class MyAccessibleDatabase : DbContext
     {
+        public DbSet<User> Users { get; set; } // DbSet for User entity
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -15,6 +17,21 @@ namespace project_accessibility
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
+
+        public bool IsValidUser(string username, string password)
+        {
+            var user = Users.FirstOrDefault(u => u.Username == username && u.Password == password);
+            return user != null;
+        }
+
+        public class User
+        {
+            public int Id { get; set; }
+            public string Username { get; set; }
+            public string Password { get; set; }
+        }
+
+
 
     }
 }
