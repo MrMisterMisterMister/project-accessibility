@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
 import { NavDesktop, NavMobile } from './Nav';
+import MeerTab from "./MeerTab";
 
 
 const websiteLinks = [
@@ -10,11 +10,8 @@ const websiteLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Account', path: './Account' },
-    { name: "Inloggen", path: './login' }
-
+    
 ];
-
 // Header component
 const Header = () => {
     return (
@@ -25,6 +22,7 @@ const Header = () => {
                 </NavbarBrand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
+                <MeerTab/>
             </Container>
         </header>
     );

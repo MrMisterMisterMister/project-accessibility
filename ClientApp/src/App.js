@@ -11,7 +11,7 @@ export default class App extends Component {
   render() {
     return (
       <Layout>
-        <ScrollTop /> {/* Include the ScrollTop component */}
+        <ScrollTop />
       <Routes>
         {AppRoutes.map((route, index) => {
           const { element, ...rest } = route;
