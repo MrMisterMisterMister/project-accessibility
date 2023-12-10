@@ -1,3 +1,5 @@
+@use 'variables';
+
 .dropdown {
     position: relative;
     display: inline-block;
@@ -23,7 +25,7 @@
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #fff;
+   color: #ffffffa8;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     list-style: none;
     padding: 10px;
@@ -40,5 +42,5 @@
 }
 
 .dropdown-menu li {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }

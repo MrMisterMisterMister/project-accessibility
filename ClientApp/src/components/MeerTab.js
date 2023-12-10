@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import "../pages/Styling/MeerTab.css";
+import '../assets/scss/DropdownMenu.scss';
 
 const DropDownMenu = () => {
     const [isDropdownOpen, setDropdownOpen] = useState(false);
@@ -11,12 +11,14 @@ const DropDownMenu = () => {
     const websiteLinks = [
         { name: 'Account', path: './Account' },
         { name: 'Inloggen', path: './login' },
-        { name: 'Uitloggen', path: '/' }  //Tijdelijk path
+        { name: 'Uitloggen', path: '/' } // Tijdelijk path
     ];
 
     return (
         <div className="dropdown">
-            <button id="MeerKnop" onClick={toggleDropdown}>Meer</button>
+            <button id="MeerKnop" onClick={toggleDropdown}>
+                Meer
+            </button>
             <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                 {websiteLinks.map(link => (
                     <li key={link.name}>

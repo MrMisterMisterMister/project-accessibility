@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Styling/Account.css"; 
+import '../assets/scss/Account.scss';
 
 export class Account extends Component {
     render() {

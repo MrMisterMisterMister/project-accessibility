@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import "./Styling/Cookies.css"; 
+import '../assets/scss/_Cookies.scss';
 
 
 export class Cookies extends Component {
     render() {
         return (
-            <div>
+            <div className="cookies">
                 <h2>Artikel 5 Cookies</h2>
             <p>Wij zullen session cookies gebruiken om inlogsessies van gebruikers bij te houden. 
                 Deze cookies stellen ons in staat om de inlog status van gebruikers te behouden, waardoor zij na het inloggen soepel door de website kunnen navigeren zonder herhaaldelijk hun inloggegevens in te voeren. 
