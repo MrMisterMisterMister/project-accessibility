@@ -97,3 +97,37 @@
         }
     }
 }
+
+
+// contact button
+.button__contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 3rem;
+    transition: all 0.3s ease;
+    padding: 1.125rem 1rem;
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 1.625rem;
+    color: variables.$white!important;
+
+    &.signup {
+        background-color: variables.$blackrussian;
+    }
+
+    &.login {
+        background-color: variables.$sapphire;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+        transition: all 0.3s ease;
+    }
+
+    &:not(:last-child) {
+        margin-right: 1.25rem;
+    }
+}
