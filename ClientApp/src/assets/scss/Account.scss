@@ -1,22 +1,25 @@
-@use 'variables';
+.account_settings {
+    h1 {
+        color: black;
+        font-weight: bold;
+    }
 
-.account_settings h1{
-    color:black;
-    font-weight: bold;
-}
-.account_settings p{
-    color:blue;
-}
-.account_settings button{
-    background-color: #12947c;
-    color: #fff;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-.account_settings button:hover{
-    background-color: #12947cbb;
+    p {
+        color: blue;
+    }
+
+    button {
+        background-color: #12947c;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #12947cbb;
+        }
+    }
 }
