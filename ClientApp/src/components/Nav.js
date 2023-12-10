@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Nav, NavItem, NavLink } from 'reactstrap';
-import '../assets/scss/DropdownMenu.scss';
 
 
 // Render hamburger menu for mobile menu
@@ -125,4 +124,4 @@ const DropDownMenu = () => {
 
 
 
-export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar, DropDownMenu };
+export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar, DropDownMenu};

@@ -1,8 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
-import { NavDesktop, NavMobile } from './Nav';
-import MeerTab from "./MeerTab";
-
+import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
 
 const websiteLinks = [
     { name: 'Home', path: '/' },
@@ -10,6 +8,7 @@ const websiteLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
+    
     
 ];
 // Header component
@@ -22,7 +21,7 @@ const Header = () => {
                 </NavbarBrand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
-                <MeerTab/>
+                <DropDownMenu/>
             </Container>
         </header>
     );
