@@ -31,6 +31,11 @@
 
 .shape__contact_bottom_left,
 .shape__contact_top_right {
+    @include mixins.md {
+        width: 7.5em;
+        height: 7.5em;
+    }
+
     @include mixins.lg {
         width: 10em;
         height: 10em;
