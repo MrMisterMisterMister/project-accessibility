@@ -20,24 +20,3 @@
 .shape__member_left {
     @include mixins.shape(variables.$elfgreen, 10rem, 10rem, -3%, -5%, null, null, null, 50%);
 }
-
-.shape__contact_bottom_left {
-    @include mixins.shape(variables.$sapphire, 5em, 5em, null, -5%, -5%, null, null, 50%);
-}
-
-.shape__contact_top_right {
-    @include mixins.shape(variables.$sapphire, 5em, 5em, -6%, null, null, -6%, null, 50%);
-}
-
-.shape__contact_bottom_left,
-.shape__contact_top_right {
-    @include mixins.md {
-        width: 7.5em;
-        height: 7.5em;
-    }
-
-    @include mixins.lg {
-        width: 10em;
-        height: 10em;
-    }
-}
