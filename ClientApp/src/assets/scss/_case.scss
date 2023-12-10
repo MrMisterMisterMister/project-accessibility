@@ -17,5 +17,16 @@
             color: variables.$white;
             padding-bottom: 1em;
         }
+
+        .case__section_group__card {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            gap: 2.5rem;
+
+            @include mixins.md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     }
 }
