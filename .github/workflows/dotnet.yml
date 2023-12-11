@@ -20,10 +20,10 @@ jobs:
         dotnet-version: 7.0.x
         
     - name: Restore dependencies 
-      run: dotnet restore 
-      working-directory: .
+      run: dotnet restore ./path/to/project-accessibility.csproj
+
     - name: Build
-      run: dotnet build --no-restore
+      run: dotnet build --no-restore 
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
