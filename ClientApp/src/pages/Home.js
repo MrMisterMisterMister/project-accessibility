@@ -4,6 +4,7 @@ import Expertise from '../components/Expertise';
 import Member from '../components/Member';
 import News from '../components/News';
 import Case from '../components/Case';
+import Contact from '../components/Contact';
 
 export class Home extends Component {
     render() {
@@ -14,6 +15,7 @@ export class Home extends Component {
                 <Member />
                 <News />
                 <Case />
+                <Contact />
             </>
         );
     }

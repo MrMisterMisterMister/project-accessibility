@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 
 
@@ -19,7 +20,7 @@ const ButtonSecondary = () => {
 // Custom hero button on hero section
 const ButtonHero = ({ text }) => {
     return (
-        <Button role="button" className="button__hero">
+        <Button className="button__hero" role="button" >
             <span className="circle" aria-hidden="true">
                 <span className="icon arrow" />
             </span>
@@ -28,4 +29,14 @@ const ButtonHero = ({ text }) => {
     );
 }
 
-export { ButtonPrimary, ButtonSecondary, ButtonHero };
+// Button for contact section on home
+// Style can be signup or login
+const ButtonContact = ({ style, path, text }) => {
+    return (
+        <Link className={`button__contact ${style}`} role="button" to={path}>
+            {text}
+        </Link>
+    );
+}
+
+export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact };
