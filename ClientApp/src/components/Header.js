@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
-import { NavDesktop, NavMobile } from './Nav';
+import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
 
 
 const websiteLinks = [
@@ -10,8 +9,9 @@ const websiteLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
+    
+    
 ];
-
 // Header component
 const Header = () => {
     return (
@@ -22,6 +22,7 @@ const Header = () => {
                 </NavbarBrand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
+                <DropDownMenu/>
             </Container>
         </header>
     );
