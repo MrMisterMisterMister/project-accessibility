@@ -1,6 +1,9 @@
-import { Counter } from "./components/Counter";
-import { FetchData } from "./components/FetchData";
-import { Home } from "./components/Home";
+import { Home } from "./pages/Home";
+import { PrivacyPolicy } from "./pages/PrivacyPolicy";
+import { Account } from "./pages/Account";
+import { Cookies } from "./pages/Cookies";
+import { Login } from "./pages/Login";
+
 
 const AppRoutes = [
   {
@@ -8,12 +11,20 @@ const AppRoutes = [
     element: <Home />
   },
   {
-    path: '/counter',
-    element: <Counter />
+    path: '/privacy-policy',    
+    element: <PrivacyPolicy />
   },
   {
-    path: '/fetch-data',
-    element: <FetchData />
+    path: '/account',
+    element: <Account />
+  },
+  {
+    path: '/cookies',
+    element: <Cookies />
+  },
+  {
+    path: '/login',
+    element: <Login />
   }
 ];
 

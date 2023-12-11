@@ -1,0 +1,77 @@
+@use 'variables';
+@use 'mixins';
+
+.site__footer {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background-color: variables.$white;
+
+    .site__footer_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .site__footer_menu {
+            display: flex;
+            position: relative;
+            flex-wrap: wrap;
+        
+            @include mixins.md {
+                flex-direction: row;
+            }
+
+            .site__footer_menu__logo {
+                margin-right: auto;
+                display: none;
+
+                @include mixins.md {
+                    display: block;
+                }
+            }
+
+            .site__footer_menu__column {
+                width: 100%;
+                position: relative;
+                display: block;
+
+                @include mixins.xs {
+                    width: 50%;
+                }
+
+                @include mixins.sm {
+                    width: 33%;
+                }
+
+                @include mixins.md {
+                    width: 20%;
+                }
+            }
+        }
+
+        .site__footer_bottombar {
+            padding: 1rem 0;
+
+            @include mixins.sm {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .site__footer_copyright {
+                color: variables.$sapphire;
+                font-size: 0.875rem;
+                font-weight: 500;
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding-bottom: 0.5em;
+    
+                @include mixins.sm {
+                    width: auto;
+                    text-align: left;
+                    padding: 0;
+                }
+            }
+        }
+    }
+}

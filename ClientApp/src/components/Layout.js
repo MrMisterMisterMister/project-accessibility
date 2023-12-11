@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
-import { Container } from 'reactstrap';
-import { NavMenu } from './NavMenu';
+import Header from './Header';
+import Footer from './Footer';
+import '../assets/scss/main.scss';
 
 export class Layout extends Component {
-  static displayName = Layout.name;
-
-  render() {
-    return (
-      <div>
-        <NavMenu />
-        <Container tag="main">
-          {this.props.children}
-        </Container>
-      </div>
-    );
-  }
+    render() {
+        return (
+            <>
+                <Header />
+                <main id="main-content">
+                    {this.props.children}
+                </main>
+                <Footer />
+            </>
+        );
+    }
 }

@@ -1,8 +1,13 @@
+using project_accessibility;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MyAccessibleDatabase>();
 
 var app = builder.Build();
 
@@ -20,7 +25,8 @@ app.UseRouting();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller}/{action=Index}/{id?}");
+    pattern: "{controller}/{action=Index}/{id?}"
+);
 
 app.MapFallbackToFile("index.html");
 

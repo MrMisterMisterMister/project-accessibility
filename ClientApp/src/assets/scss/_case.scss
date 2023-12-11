@@ -1,0 +1,31 @@
+@use 'variables';
+@use 'mixins';
+
+.case__section {
+    padding-top: 5em;
+    padding-bottom: 5em;
+    width: 100%;
+    background-color: variables.$sapphire;
+    position: relative;
+
+    .case__section_container {
+        position: relative;
+
+        .case__section_title {
+            font-size: 2.5em;
+            color: variables.$white;
+            padding-bottom: 1em;
+        }
+
+        .case__section_group__card {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            width: 100%;
+            gap: 2.5rem;
+
+            @include mixins.md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    }
+}
