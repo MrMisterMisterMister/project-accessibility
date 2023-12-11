@@ -1,5 +1,7 @@
 using project_accessibility;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using project_accessibility.Entities;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,7 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+//Database
 builder.Services.AddDbContext<MyAccessibleDatabase>();
+
+//Password hasher
+builder.Services.AddScoped<PasswordHashingService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 var app = builder.Build();
 

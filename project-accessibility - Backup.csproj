@@ -12,7 +12,6 @@
     <SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
     <RootNamespace>project_accessibility</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
-    <UserSecretsId>b1e02bb5-136c-4ea2-aa8a-00633c485126</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +26,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.0.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +34,14 @@
     <Content Remove="$(SpaRoot)**" />
     <None Remove="$(SpaRoot)**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\User.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Entities\User.cs" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
