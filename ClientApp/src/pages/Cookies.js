@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import '../assets/scss/_Cookies.scss';
-
 
 export class Cookies extends Component {
     render() {

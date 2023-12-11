@@ -13,7 +13,6 @@
 @use 'card';
 @use 'group';
 @use 'form';
-@use 'DropdownMenu';
 
 // section
 @use 'hero';
@@ -21,3 +20,7 @@
 @use 'member';
 @use 'news';
 @use 'case';
+
+// pages
+@use 'account';
+@use 'cookies';
