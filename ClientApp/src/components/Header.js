@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
 import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
 
+
 const websiteLinks = [
     { name: 'Home', path: '/' },
     { name: 'Over ons', path: '/over-ons' },

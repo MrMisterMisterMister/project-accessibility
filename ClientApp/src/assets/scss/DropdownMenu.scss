@@ -1,31 +1,11 @@
+body {
+    overflow-x: hidden;
+}
+
 .dropdown {
     position: relative;
+    overflow-x: hidden;
     display: inline-block;
-
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        color: #ffffffa8;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        list-style: none;
-        padding: 10px;
-        margin: 0;
-
-        &.show {
-            display: block;
-        }
-
-        a {
-            text-decoration: none;
-            color: #333;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-    }
 }
 
 #MeerKnop {
@@ -41,4 +21,32 @@
 
 #MeerKnop:hover {
     background-color: #12947cbb;
+}
+
+.dropdown-menu {
+    overflow: hidden;
+    position: absolute;
+    top: 100%;
+    left: -10px; /* Adjust this value to move it to the left */
+    color: #ffffffa8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+}
+
+.dropdown-menu.show {
+    position: absolute;
+    display: block;
+}
+
+.dropdown-menu a {
+    position: relative;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-menu li {
+    max-width: 100%;
+    margin-bottom: 10px;
 }
