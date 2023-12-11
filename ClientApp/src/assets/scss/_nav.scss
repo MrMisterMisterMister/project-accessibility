@@ -297,7 +297,6 @@
 // dropdown
 .dropdown {
     position: relative;
-    overflow-x: hidden;
     display: inline-block;
 }
 
@@ -317,7 +316,6 @@
 }
 
 .dropdown-menu {
-    overflow: hidden;
     position: absolute;
     top: 100%;
     left: -10px; /* Adjust this value to move it to the left */
