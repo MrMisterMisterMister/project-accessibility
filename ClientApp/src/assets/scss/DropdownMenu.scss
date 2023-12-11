@@ -19,6 +19,7 @@
 }
 
 .dropdown-menu {
+    display: none;
     position: absolute;
     top: 100%;
     left: 0;
@@ -30,20 +31,14 @@
 }
 
 .dropdown-menu.show {
-    position: absolute;
     display: block;
 }
 
 .dropdown-menu a {
-    position: relative;
     text-decoration: none;
     color: #333;
 }
 
 .dropdown-menu li {
-    max-width: 100%;
     margin-bottom: 10px;
-}
-body{
-    overflow-x: hidden;
 }
