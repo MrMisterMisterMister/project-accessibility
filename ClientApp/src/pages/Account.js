@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import '../assets/scss/Account.scss';
 
 export class Account extends Component {
     render() {
