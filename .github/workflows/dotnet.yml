@@ -19,8 +19,9 @@ jobs:
       with:
         dotnet-version: 7.0.x
         
-    - name: Restore dependencies
+    - name: Restore dependencies 
       run: dotnet restore
+      working-directory: project-accessibility.sln
       
     - name: Build
       run: dotnet build --no-restore
