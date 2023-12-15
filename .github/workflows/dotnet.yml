@@ -23,7 +23,7 @@ jobs:
       run: dotnet restore 
 
     - name: Build
-      run: dotnet build --no-restore --project ./project-accessibility.csproj
+      run: dotnet build --no-restore
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
@@ -32,6 +32,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
 
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
     - name: Create Release
       uses: actions/create-release@v1

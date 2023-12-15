@@ -33,7 +33,9 @@ jobs:
   release:
     needs: build
     runs-on: ubuntu-latest
+    permissions: write-all
 
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     steps:
     - name: Create GitHub Release
       uses: actions/create-release@v1
