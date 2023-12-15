@@ -1,7 +1,7 @@
 # Check if the username is provided
 if [ -z "$1" ]; then
   echo "Error: No username provided."
-  echo "Usage: ./deploymeny.sh [username]"
+  echo "Usage: ./deployment.sh [username]"
   exit 1
 fi
 
