@@ -25,7 +25,8 @@ namespace project_accessibility.Controllers
             {
                 _logger.LogInformation("User {Username} logged in successfully", model.Username);
 
-                // Authentication successful, you can generate a token or set session information here
+                // success, generate token/session here
+
                 return Ok();
             }
 

@@ -6,7 +6,7 @@ export class Register extends Component {
         this.state = {
             username: '',
             password: '',
-            registrationMessage: '', // State for registration message
+            registrationMessage: '',
         };
     }
 
@@ -14,7 +14,7 @@ export class Register extends Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value,
-            registrationMessage: '', // Reset registration message when input changes
+            registrationMessage: '',
         });
     }
 

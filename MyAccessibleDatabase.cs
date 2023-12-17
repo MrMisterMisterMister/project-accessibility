@@ -50,7 +50,6 @@ namespace project_accessibility
             }
 
             return false;
-
         }
 
         public bool IsUsernameTaken(string username)

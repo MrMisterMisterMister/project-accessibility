@@ -30,7 +30,6 @@ namespace project_accessibility.Controllers
             _db.AddUser(model.Username, model.Password);
             _logger.LogInformation("User {Username} registered successfully", model.Username);
 
-            // Optionally, you can return a token or a success message upon registration
             return Ok("Registration successful");
         }
     }
@@ -39,6 +38,5 @@ namespace project_accessibility.Controllers
     {
         public string Username { get; set; }
         public string Password { get; set; }
-        // You can include additional fields for registration if needed
     }
 }

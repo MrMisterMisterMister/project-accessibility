@@ -6,7 +6,7 @@ export class Login extends Component {
         this.state = {
             username: '',
             password: '',
-            loginMessage: '', // Add a state for login message
+            loginMessage: '',
         };
     }
 
@@ -14,7 +14,7 @@ export class Login extends Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value,
-            loginMessage: '', // Reset login message when input changes
+            loginMessage: '',
         });
     }
 
