@@ -2,7 +2,8 @@ import { Home } from "./pages/Home";
 import { PrivacyPolicy } from "./pages/PrivacyPolicy";
 import { Account } from "./pages/Account";
 import { Cookies } from "./pages/Cookies";
-import { Login } from "./pages/Login";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 
 const AppRoutes = [
@@ -23,8 +24,12 @@ const AppRoutes = [
     element: <Cookies />
   },
   {
-    path: '/login',
+    path: '/Login',
     element: <Login />
+  },
+  {
+    path: '/Register',
+    element: <Register />
   }
 ];
 

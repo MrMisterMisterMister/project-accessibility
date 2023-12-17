@@ -11,7 +11,7 @@ namespace project_accessibility
     {
 
         private readonly PasswordHashingService _passwordHashingService;
-        public DbSet<User> Users { get; set; } // Remove nullable annotation
+        public DbSet<User> Users { get; set; } 
 
         public MyAccessibleDatabase(DbContextOptions<MyAccessibleDatabase> options, PasswordHashingService passwordHashingService)
             : base(options)
@@ -50,8 +50,32 @@ namespace project_accessibility
             }
 
             return false;
+
         }
 
+        public bool IsUsernameTaken(string username)
+        {
+            if (Users != null)
+            {
+                return Users.Any(u => u.Username == username);
+            }
+
+            return false;
+        }
+
+        public void AddUser(string username, string password)
+        {
+            var hashedPassword = _passwordHashingService.HashPassword(password);
+
+            var newUser = new User
+            {
+                Username = username,
+                Password = hashedPassword
+            };
+
+            Users.Add(newUser);
+            SaveChanges();
+        }
 
     }
 }

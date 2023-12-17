@@ -4,7 +4,7 @@ using project_accessibility;
 namespace project_accessibility.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class LoginController : ControllerBase
     {
         private readonly MyAccessibleDatabase _db;
@@ -26,11 +26,11 @@ namespace project_accessibility.Controllers
                 _logger.LogInformation("User {Username} logged in successfully", model.Username);
 
                 // Authentication successful, you can generate a token or set session information here
-                return Ok(new { message = "Login successful" });
+                return Ok();
             }
 
             _logger.LogWarning("Failed login attempt for user: {Username}", model.Username);
-            return Unauthorized(new { message = "Invalid credentials" });
+            return Unauthorized();
         }
     }
 

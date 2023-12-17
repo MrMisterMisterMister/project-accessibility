@@ -12,7 +12,7 @@ namespace project_accessibility
             _passwordHasher = passwordHasher;
         }
 
-        public string hashPassword(string password)
+        public string HashPassword(string password)
         {
             string hashedPassword = _passwordHasher.HashPassword(null, password);
             return hashedPassword;

@@ -103,6 +103,7 @@ const DropDownMenu = () => {
     const websiteLinks = [
         { name: 'Account', path: './Account' },
         { name: 'Inloggen', path: './login' },
+        { name: 'Registreren', path: './register' },
         { name: 'Uitloggen', path: '/' } // Tijdelijk path
     ];
 

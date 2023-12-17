@@ -1,12 +1,12 @@
-﻿import React, { Component } from 'react';
+import React, { Component } from 'react';
 
-export class Login extends Component {
+export class Register extends Component {
     constructor(props) {
         super(props);
         this.state = {
             username: '',
             password: '',
-            loginMessage: '', // Add a state for login message
+            registrationMessage: '', // State for registration message
         };
     }
 
@@ -14,14 +14,14 @@ export class Login extends Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value,
-            loginMessage: '', // Reset login message when input changes
+            registrationMessage: '', // Reset registration message when input changes
         });
     }
 
-    handleLogin = async () => {
+    handleRegistration = async () => {
         const { username, password } = this.state;
         try {
-            const response = await fetch('/Login', {
+            const response = await fetch('/Register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -30,34 +30,34 @@ export class Login extends Component {
             });
 
             if (response.ok) {
-                // Successful login
-                this.setState({ loginMessage: 'Login successful' });
+                // Successful registration
+                this.setState({ registrationMessage: 'Registration successful' });
             } else {
-                // Failed login
-                this.setState({ loginMessage: 'Invalid credentials' });
+                // Failed registration
+                this.setState({ registrationMessage: 'Registration failed' });
             }
         } catch (error) {
-            console.error('Login error:', error);
+            console.error('Registration error:', error);
         }
     };
 
     render() {
         return (
             <div>
-                <h1>Inloggen</h1>
+                <h1>Register</h1>
                 <div>
-                    <label>Gebruikersnaam:</label>
+                    <label>Username:</label>
                     <input type="text" name="username" value={this.state.username} onChange={this.handleInputChange} />
                 </div>
                 <div>
-                    <label>Wachtwoord:</label>
+                    <label>Password:</label>
                     <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                 </div>
-                <button onClick={this.handleLogin}>Login</button>
-                {this.state.loginMessage && <p>{this.state.loginMessage}</p>} {/* Display login message */}
+                <button onClick={this.handleRegistration}>Register</button>
+                {this.state.registrationMessage && <p>{this.state.registrationMessage}</p>} {/* Display registration message */}
             </div>
         );
     }
 }
 
-export default Login;
+export default Register;
