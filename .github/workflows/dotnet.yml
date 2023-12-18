@@ -27,22 +27,3 @@ jobs:
 
     - name: Test
       run: dotnet test --no-build --verbosity normal
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions: write-all
-
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-    steps:
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: dotnet ${{ github.sha }}
-        release_name: Release ${{ github.ref }}
-        body: |
-          Clodsire is the cutest
-        draft: false
-        prerelease: false
