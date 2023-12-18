@@ -25,7 +25,7 @@ namespace project_accessibility.Controllers
             {
                 _logger.LogInformation("User {Username} logged in successfully", model.Username);
 
-                // success, generate token/session here
+                // success, generate cookie/session-token here
 
                 return Ok();
             }

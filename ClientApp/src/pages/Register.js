@@ -20,6 +20,12 @@ export class Register extends Component {
 
     handleRegistration = async () => {
         const { username, password } = this.state;
+
+        if (!username || !password) {
+            this.setState({ registrationMessage: 'Gebruikersnaam en wachtwoord nodig.' });
+            return;
+        }
+
         try {
             const response = await fetch('/Register', {
                 method: 'POST',
