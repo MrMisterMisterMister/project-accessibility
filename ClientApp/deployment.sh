@@ -15,7 +15,7 @@ echo "Building app.."
 npm run build
 
 echo "Deploying app.."
-scp -r build/* "$deployUser"@142.93.135.187:/var/www/clodsire.nl/html
+scp -r ./build/* "$deployUser"@142.93.135.187:/var/www/clodsire.nl/html
 
 # requires ssh key
 echo "Restarting Nginx on the server.."
