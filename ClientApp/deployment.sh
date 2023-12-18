@@ -9,15 +9,16 @@ fi
 echo "Switching to main branch..."
 git checkout main
 
-deployUser=$1
-
 echo "Building app..."
 npm run build
 
+deployUser=$1
+
 echo "Deploying app..."
+# Copy the built files to the remote server using SSH
 scp -r ./build/* "$deployUser"@142.93.135.187:/var/www/clodsire.nl/html
 
-# requires ssh key
+# Restart Nginx on the server using SSH
 echo "Restarting Nginx on the server..."
 ssh "$deployUser"@142.93.135.187 'sudo systemctl restart nginx'
 
