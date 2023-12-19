@@ -216,12 +216,9 @@
         visibility: hidden;
         opacity: 0;
         transition: opacity 0.8s ease-in, transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        overflow-y: scroll;
 
         .nav__header_mobile__navlist {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
             text-align: center;
             list-style: none;
 
