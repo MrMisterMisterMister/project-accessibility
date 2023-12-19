@@ -9,7 +9,7 @@ const websiteLinks = [
     { name: 'Expertise', path: '/expertise' },
     { name: 'Actueel', path: '/actueel' },
     { name: 'Contact', path: '/contact' },
-    { name: 'Sign in', path: '/signup' },
+    { name: 'Sign up', path: '/signup' },
     { name: 'Login', path: '/login' },
 ];
 
