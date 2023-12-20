@@ -52,24 +52,38 @@ namespace project_accessibility
             return false;
         }
 
-        public bool IsUsernameTaken(string username)
+        //public bool IsUsernameTaken(string username)
+        //{
+        //    if (Users != null)
+        //    {
+        //        return Users.Any(u => u.Username == username);
+        //    }
+
+        //    return false;
+        //}
+
+        public bool EmailAlreadyExist(string email)
         {
             if (Users != null)
             {
-                return Users.Any(u => u.Username == username);
+                return Users.Any(u => u.Email == email);
             }
-
             return false;
         }
 
-        public void AddUser(string username, string password)
+        public void AddUser(string firstaName, string middleName, string lastName, string email, string password, string telephoneNumber, string secondTelephoneNumber)
         {
             var hashedPassword = _passwordHashingService.HashPassword(password);
 
             var newUser = new User
             {
-                Username = username,
-                Password = hashedPassword
+                FirstName = firstaName,
+                MiddleName = middleName,
+                LastName = lastName,
+                Email = email,
+                Password = hashedPassword,
+                TelephoneNumber = telephoneNumber,
+                SecondTelephoneNumber = secondTelephoneNumber
             };
 
             Users.Add(newUser);

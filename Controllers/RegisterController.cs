@@ -21,14 +21,22 @@ namespace project_accessibility.Controllers
         {
             _logger.LogInformation("Attempting registration for user: {FirstName} {LastName}", model.FirstName, model.LastName);
 
-            if (_db.IsUsernameTaken(model.Username))
+            if (_db.EmailAlreadyExist(model.Email))
             {
-                _logger.LogWarning("Username {Username} is already taken", model.Username);
-                return Conflict("Username is already taken");
+                _logger.LogWarning("(Deze email is al in gebruik in een account");
+                return Conflict("There is an existing account with email");
             }
 
-            _db.AddUser(model.Username, model.Password);
-            _logger.LogInformation("User {Username} registered successfully", model.Username);
+            _db.AddUser(
+                model.FirstName, 
+                model.MiddleName,
+                model.LastName,
+                model.Email,
+                model.Password,
+                model.TelephoneNumber,
+                model.SecondTelephoneNumber
+                );
+            _logger.LogInformation("Account registered successfully for {FirstName} {LastName}", model.FirstName, model.LastName);
 
             return Ok("Registration successful");
         }
@@ -36,13 +44,13 @@ namespace project_accessibility.Controllers
 
     public class RegisterModel
     {
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
-        public string TelephoneNumber { get; set; }
-        public string SecondTelephoneNumber { get; set; }
+        public string? FirstName { get; set; }
+        public string? MiddleName { get; set; }
+        public string? LastName { get; set; }
+        public string? Email { get; set; }
+        public string? Password { get; set; }
+        public string? ConfirmPassword { get; set; }
+        public string? TelephoneNumber { get; set; }
+        public string? SecondTelephoneNumber { get; set; }
     }
 }
