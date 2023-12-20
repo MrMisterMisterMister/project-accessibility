@@ -105,6 +105,7 @@ const DropDownMenu = () => {
         { name: 'Inloggen', path: './login' },
         { name: 'Registreren', path: './register' },
         { name: 'Uitloggen', path: '/' } // Tijdelijk path
+
     ];
 
     return (

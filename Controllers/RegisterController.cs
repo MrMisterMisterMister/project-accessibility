@@ -19,7 +19,7 @@ namespace project_accessibility.Controllers
         [HttpPost]
         public IActionResult Register([FromBody] RegisterModel model)
         {
-            _logger.LogInformation("Attempting registration for user: {Username}", model.Username);
+            _logger.LogInformation("Attempting registration for user: {FirstName} {LastName}", model.FirstName, model.LastName);
 
             if (_db.IsUsernameTaken(model.Username))
             {
@@ -36,7 +36,13 @@ namespace project_accessibility.Controllers
 
     public class RegisterModel
     {
-        public string Username { get; set; }
+        public string FirstName { get; set; }
+        public string MiddleName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+        public string TelephoneNumber { get; set; }
+        public string SecondTelephoneNumber { get; set; }
     }
 }

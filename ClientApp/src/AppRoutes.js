@@ -4,6 +4,7 @@ import { Account } from "./pages/Account";
 import { Cookies } from "./pages/Cookies";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import AccessDenied from "./pages/AccessDenied";
 
 
 const AppRoutes = [
@@ -30,7 +31,11 @@ const AppRoutes = [
   {
     path: '/Register',
     element: <Register />
-  }
+  },
+  {
+    path: '/AccessDenied',
+    element: <AccessDenied/>
+  },
 ];
 
 export default AppRoutes;
