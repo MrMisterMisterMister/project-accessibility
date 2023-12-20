@@ -20,3 +20,11 @@
 .shape__member_left {
     @include mixins.shape(variables.$elfgreen, 10rem, 10rem, -3%, -5%, null, null, null, 50%);
 }
+
+.shape__privacypolicy_left {
+    @include mixins.shape(variables.$tenne, 6rem, 6rem, -45%, -2%, null, null, 130deg, null);
+}
+
+.shape__privacypolicy_right {
+    @include mixins.shape(variables.$elfgreen, 12rem, 12rem, 35%, null, null, -4%, null, 50%);
+}
