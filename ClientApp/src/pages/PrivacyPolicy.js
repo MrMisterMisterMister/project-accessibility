@@ -11,7 +11,7 @@ export class PrivacyPolicy extends Component {
                 </div>
                 <Container className="privacypolicy__page_container">
                     <h1>Privacybeleid</h1>
-                    <p className="text-muted">Laatst gewijzigd: 10 december 2023.</p>
+                    <p className="text-muted">Laatst gewijzigd: 10 november 2023.</p>
                     <p>Project Accessibility geeft veel om uw privacy. Wij verwerken daarom uitsluitend gegevens die wij nodig hebben voor (het verbeteren van) onze dienstverlening en gaan zorgvuldig om met de informatie die wij over u en uw gebruik van onze diensten hebben verzameld. Wij stellen uw gegevens nooit voor commerciële doelstellingen ter beschikking aan derden.</p>
                     <p>Dit privacybeleid is van toepassing op het gebruik van de website en de daarop ontsloten dienstverlening van Project Accessibility. De ingangsdatum voor de geldigheid van deze voorwaarden is <span className="fw-bold fst-italic">10 november 2023</span>. Met het publiceren van een nieuwe versie vervalt de geldigheid van alle voorgaande versies. Dit privacybeleid beschrijft welke gegevens over u door ons worden verzameld, waar deze gegevens voor worden gebruikt en met wie en onder welke voorwaarden deze gegevens eventueel met derden kunnen worden gedeeld. Ook leggen wij aan u uit op welke wijze wij uw gegevens opslaan en hoe wij uw gegevens tegen misbruik beschermen en welke rechten u heeft met betrekking tot de door u aan ons verstrekte persoonsgegevens.</p>
                     <p>Als u vragen heeft over ons privacybeleid kunt u contact opnemen met onze contactpersoon voor privacy gerelateerde zaken. Contactgegevens vindt u aan het einde van het privacybeleid.</p>
