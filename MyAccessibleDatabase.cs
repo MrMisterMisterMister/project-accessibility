@@ -35,11 +35,11 @@ namespace project_accessibility
             return connectionString;
         }
 
-        public bool IsValidUser(string username, string password)
+        public bool IsValidUser(string email, string password)
         {
             if (Users != null)
             {
-                var user = Users.FirstOrDefault(u => u.Username == username);
+                var user = Users.FirstOrDefault(u => u.Email == email);
 
                 if (user != null)
                 {

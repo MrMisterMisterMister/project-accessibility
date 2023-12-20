@@ -1,5 +1,13 @@
 import React, { Component } from 'react';
 
+const isDutchPhoneNumberComplete = (phoneNumber) => {
+    // Removing all non-numeric characters
+    const cleanNumber = phoneNumber.replace(/\D/g, '');
+
+    // Check if the number starts with '0' or '31' and has the correct length
+    return /^0[1-9]\d{8}$|^31[1-9]\d{7,8}$/.test(cleanNumber);
+};
+
 export class Register extends Component {
     constructor(props) {
         super(props);
@@ -13,15 +21,76 @@ export class Register extends Component {
             telephoneNumber: '',
             secondTelephoneNumber: '',
             registrationMessage: '',
+            countryCode: '',
+            formValid: false,
         };
     }
 
+    updateFormValidity = () => {
+        const {
+            firstName,
+            lastName,
+            email,
+            password,
+            confirmPassword,
+            telephoneNumber,
+            countryCode,
+        } = this.state;
+
+        const isTelephoneValid = countryCode === '+31'
+            ? isDutchPhoneNumberComplete(telephoneNumber)
+            : true;
+
+        const isValid = !!firstName && !!lastName && !!email && !!password && !!confirmPassword && isTelephoneValid;
+
+        this.setState({ formValid: isValid });
+    };
+
     handleInputChange = (event) => {
         const { name, value } = event.target;
-        this.setState({
-            [name]: value,
-            registrationMessage: '',
-        });
+        let errorMessage = '';
+
+        if (name === 'telephoneNumber' || name === 'secondTelephoneNumber') {
+            if (!/^\d*$/.test(value)) {
+                errorMessage = 'Input a phone number';
+            }
+        }
+
+        this.setState(
+            {
+                [name]: value,
+                registrationMessage: errorMessage,
+            },
+            () => {
+                if (name === 'telephoneNumber' && this.state.countryCode === '+31') {
+                    const isComplete = isDutchPhoneNumberComplete(value);
+                    if (!isComplete) {
+                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
+                    }
+                }
+
+                if (name === 'secondTelephoneNumber' && this.state.secondCountryCode === '+31') {
+                    const isComplete = isDutchPhoneNumberComplete(value);
+                    if (!isComplete) {
+                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
+                    }
+                }
+            }
+        );
+
+        this.updateFormValidity();
+
+    };
+
+
+    handleCountryCodeChange = (event) => {
+        const { value } = event.target;
+        this.setState({ countryCode: value });
+    }
+
+    handleSecondCountryCodeChange = (event) => {
+        const { value } = event.target;
+        this.setState({ secondCountryCode: value });
     }
 
     handleRegistration = async () => {
@@ -34,7 +103,11 @@ export class Register extends Component {
             confirmPassword,
             telephoneNumber,
             secondTelephoneNumber,
+            countryCode,
+            secondCountryCode,
         } = this.state;
+
+        const emailPattern = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,})+$/;
 
         if (!firstName ||
             !lastName ||
@@ -42,14 +115,23 @@ export class Register extends Component {
             !password ||
             !confirmPassword ||
             !telephoneNumber
-            ) {
-            this.setState({ registrationMessage: 'Niet alle velden zijn correct ingevuld' });
+        ) {
+            this.setState({ registrationMessage: 'Niet alle velden zijn ingevuld' });
+            return;
+        }
+
+        if (!email || !emailPattern.test(email)) {
+            this.setState({ registrationMessage: 'Voer een geldig e-mailadres in' });
             return;
         }
 
         if (password !== confirmPassword) {
             this.setState({ registrationMessage: 'Wachtwoord komt niet overeen' });
+            return;
         }
+
+        const completeTelephoneNumber = countryCode + telephoneNumber;
+        const completeSecondTelephoneNumber = secondTelephoneNumber ? secondCountryCode + secondTelephoneNumber : null;
 
         try {
             const response = await fetch('/Register', {
@@ -64,8 +146,8 @@ export class Register extends Component {
                     email,
                     password,
                     confirmPassword,
-                    telephoneNumber,
-                    secondTelephoneNumber: secondTelephoneNumber || null,
+                    telephoneNumber: completeTelephoneNumber,
+                    secondTelephoneNumber: completeSecondTelephoneNumber || null,
                 }),
             });
 
@@ -118,16 +200,30 @@ export class Register extends Component {
                         <label>
                             Telephone Number<span style={{ color: 'red' }}>*</span>:
                         </label>
+                            <select name="countryCode" onChange={this.handleCountryCodeChange}>
+                                <option value="">Select Country Code</option>
+                                <option value="+1">United States (+1)</option>
+                                <option value="+44">United Kingdom (+44)</option>
+                                <option value="+31">Netherlands (+31)</option>
+                            </select>
                         <input type="tel" name="telephoneNumber" value={this.state.telephoneNumber} onChange={this.handleInputChange} />
                     </div>
                     <div>
                         <label>
                             Second Telephone Number (optional):
                         </label>
+                            <select name="secondCountryCode" onChange={this.handleSecondCountryCodeChange}>
+                                <option value="">Select Country Code</option>
+                                <option value="+1">United States (+1)</option>
+                                <option value="+44">United Kingdom (+44)</option>
+                                <option value="+31">Netherlands (+31)</option>
+                            </select>
                         <input type="tel" name="secondTelephoneNumber" value={this.state.secondTelephoneNumber} onChange={this.handleInputChange} />
                     </div>
-                    <button onClick={this.handleRegistration}>Register</button>
-                    {this.state.registrationMessage && <p>{this.state.registrationMessage}</p>}
+                    <button onClick={this.handleRegistration} disabled={!this.state.formValid}>
+                        Register
+                    </button>
+                    {this.state.registrationMessage && <p style={{ color: 'red' }}>{this.state.registrationMessage}</p>}
                 </div>
                 <div>
                     <p>Fields with an "<span style={{ color: 'red' }}>*</span>" need to be filled.</p>

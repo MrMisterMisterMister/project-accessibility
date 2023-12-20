@@ -21,8 +21,8 @@ builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login";
-        options.AccessDeniedPath = "/AccessDenied"; // have to make......
+        options.LoginPath = "/Login"; //hhmmmmmmmmmmmmmmmm
+        options.AccessDeniedPath = "/AccessDenied";
     });
 
 builder.Services.AddAuthorization();

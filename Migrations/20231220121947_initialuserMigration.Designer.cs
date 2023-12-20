@@ -11,8 +11,8 @@ using project_accessibility;
 namespace project_accessibility.Migrations
 {
     [DbContext(typeof(MyAccessibleDatabase))]
-    [Migration("20231209141242_AddUserEntity")]
-    partial class AddUserEntity
+    [Migration("20231220121947_initialuserMigration")]
+    partial class initialuserMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace project_accessibility.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("project_accessibility.MyAccessibleDatabase+User", b =>
+            modelBuilder.Entity("project_accessibility.Entities.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,11 +32,29 @@ namespace project_accessibility.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Username")
+                    b.Property<string>("SecondTelephoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TelephoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
