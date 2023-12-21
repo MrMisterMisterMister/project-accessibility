@@ -166,39 +166,40 @@ export class Register extends Component {
     render() {
         return (
             <div>
+            <div>
                 <div>
-                    <h1>Register</h1>
+                    <h1>Registreren</h1>
                     <div>
                         <label>
-                            First Name<span style={{ color: 'red' }}>*</span>:
+                            Roepnaam<span style={{ color: 'red' }}>*</span>:
                         </label>
                         <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleInputChange} />
                     </div>
                     <div>
-                        <label>Middle Name (optional):</label>
+                        <label>Tweede naam (optioneel):</label>
                         <input type="text" name="middleName" value={this.state.middleName} onChange={this.handleInputChange} />
                     </div>
                     <div>
                         <label>
-                            Last Name<span style={{ color: 'red' }}>*</span>:
+                            Achternaam<span style={{ color: 'red' }}>*</span>:
                         </label>
                         <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleInputChange} />
                     </div>
                     <div>
-                        <label>Email<span style={{ color: 'red' }}>*</span>:</label>
+                        <label>E-mail<span style={{ color: 'red' }}>*</span>:</label>
                         <input type="email" name="email" value={this.state.email} onChange={this.handleInputChange} />
                     </div>
                     <div>
-                        <label>Password<span style={{ color: 'red' }}>*</span>:</label>
+                        <label>Wachtwoord<span style={{ color: 'red' }}>*</span>:</label>
                         <input type="password" name="password" value={this.state.password} onChange={this.handleInputChange} />
                     </div>
                     <div>
-                        <label>Confirm Password<span style={{ color: 'red' }}>*</span>:</label>
+                        <label>Bevestig wachtwoord<span style={{ color: 'red' }}>*</span>:</label>
                         <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleInputChange} />
                     </div>
                     <div>
                         <label>
-                            Telephone Number<span style={{ color: 'red' }}>*</span>:
+                            Telefoon nummer<span style={{ color: 'red' }}>*</span>:
                         </label>
                             <select name="countryCode" onChange={this.handleCountryCodeChange}>
                                 <option value="">Select Country Code</option>
@@ -210,7 +211,7 @@ export class Register extends Component {
                     </div>
                     <div>
                         <label>
-                            Second Telephone Number (optional):
+                            Tweede telefoon nummer (optioneel):
                         </label>
                             <select name="secondCountryCode" onChange={this.handleSecondCountryCodeChange}>
                                 <option value="">Select Country Code</option>
@@ -221,14 +222,17 @@ export class Register extends Component {
                         <input type="tel" name="secondTelephoneNumber" value={this.state.secondTelephoneNumber} onChange={this.handleInputChange} />
                     </div>
                     <button onClick={this.handleRegistration} disabled={!this.state.formValid}>
-                        Register
+                        Registreer
                     </button>
                     {this.state.registrationMessage && <p style={{ color: 'red' }}>{this.state.registrationMessage}</p>}
                 </div>
                 <div>
-                    <p>Fields with an "<span style={{ color: 'red' }}>*</span>" need to be filled.</p>
+                    <p>Velden met een "<span style={{ color: 'red' }}>*</span>" moeten ingevuld worden.</p>
                 </div>
-            </div >
+                </div >
+                <div id="signInDiv">
+                </div>
+            </div>
         );
     }
 }
