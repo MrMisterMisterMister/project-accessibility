@@ -19,25 +19,25 @@ namespace project_accessibility.Controllers
         [HttpPost]
         public IActionResult Login([FromBody] LoginModel model)
         {
-            _logger.LogInformation("Attempting login for user: {Username}", model.Username);
+            _logger.LogInformation("Attempting login for user: {Email}", model.Email);
 
-            if (_db.IsValidUser(model.Username, model.Password))
+            if (_db.IsValidUser(model.Email, model.Password))
             {
-                _logger.LogInformation("User {Username} logged in successfully", model.Username);
+                _logger.LogInformation("User {Email} logged in successfully", model.Email);
 
                 // success, generate cookie/session-token here
 
                 return Ok();
             }
 
-            _logger.LogWarning("Failed login attempt for user: {Username}", model.Username);
+            _logger.LogWarning("Failed login attempt for user: {Email}", model.Email);
             return Unauthorized();
         }
     }
 
     public class LoginModel
     {
-        public string Username { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
     }
 }

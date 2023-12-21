@@ -26,6 +26,42 @@ export class Register extends Component {
         };
     }
 
+    handleInputChange = (event) => {
+        const { name, value } = event.target;
+        let errorMessage = '';
+
+        if (name === 'telephoneNumber' || name === 'secondTelephoneNumber') {
+            if (!/^\d*$/.test(value)) {
+                errorMessage = 'Input a phone number';
+            }
+        }
+
+        this.setState(
+            {
+                [name]: value,
+                registrationMessage: errorMessage,
+            },
+            () => {
+
+                this.updateFormValidity();
+
+                if (name === 'telephoneNumber' && this.state.countryCode === '+31') {
+                    const isComplete = isDutchPhoneNumberComplete(value);
+                    if (!isComplete) {
+                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
+                    }
+                }
+
+                if (name === 'secondTelephoneNumber' && this.state.secondCountryCode === '+31') {
+                    const isComplete = isDutchPhoneNumberComplete(value);
+                    if (!isComplete) {
+                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
+                    }
+                }
+            }
+        );
+    };
+
     updateFormValidity = () => {
         const {
             firstName,
@@ -44,42 +80,6 @@ export class Register extends Component {
         const isValid = !!firstName && !!lastName && !!email && !!password && !!confirmPassword && isTelephoneValid;
 
         this.setState({ formValid: isValid });
-    };
-
-    handleInputChange = (event) => {
-        const { name, value } = event.target;
-        let errorMessage = '';
-
-        if (name === 'telephoneNumber' || name === 'secondTelephoneNumber') {
-            if (!/^\d*$/.test(value)) {
-                errorMessage = 'Input a phone number';
-            }
-        }
-
-        this.setState(
-            {
-                [name]: value,
-                registrationMessage: errorMessage,
-            },
-            () => {
-                if (name === 'telephoneNumber' && this.state.countryCode === '+31') {
-                    const isComplete = isDutchPhoneNumberComplete(value);
-                    if (!isComplete) {
-                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
-                    }
-                }
-
-                if (name === 'secondTelephoneNumber' && this.state.secondCountryCode === '+31') {
-                    const isComplete = isDutchPhoneNumberComplete(value);
-                    if (!isComplete) {
-                        this.setState({ registrationMessage: 'Please enter a complete Dutch phone number' });
-                    }
-                }
-            }
-        );
-
-        this.updateFormValidity();
-
     };
 
 
@@ -126,7 +126,7 @@ export class Register extends Component {
         }
 
         if (password !== confirmPassword) {
-            this.setState({ registrationMessage: 'Wachtwoord komt niet overeen' });
+            this.setState({ registrationMessage: 'Wachtwoorden komen niet overeen' });
             return;
         }
 
