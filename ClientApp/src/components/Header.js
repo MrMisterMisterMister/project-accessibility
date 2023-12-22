@@ -28,6 +28,8 @@ const Header = () => {
         { name: translate("header.menu.expertise"), path: '/expertise' },
         { name: translate("header.menu.news"), path: '/actueel' },
         { name: translate("header.menu.contact"), path: '/contact' },
+        { name: translate("header.menu.signup"), path: '/signup' },
+        { name: translate("header.menu.signin"), path: '/login' },
     ];
 
     return (
@@ -36,8 +38,6 @@ const Header = () => {
                 <NavbarBrand tag={Link} to="/">
                     <img src={require("../assets/img/brand/logo_black_text_light.png")} width="278" height="60" alt="Logo" title="Project Accessibility" />
                 </NavbarBrand>
-                {/* TODO FIX BETTER POSITION */}
-                <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} />
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
             </Container>

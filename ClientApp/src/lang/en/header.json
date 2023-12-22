@@ -4,6 +4,8 @@
         "about": "About us",
         "expertise": "Expertise",
         "news": "News",
-        "contact": "Contact"
+        "contact": "Contact",
+        "signup": "Sign up",
+        "signin": "Login"
     }
 }

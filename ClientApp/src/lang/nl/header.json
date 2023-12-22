@@ -4,6 +4,8 @@
         "about": "Over ons",
         "expertise": "Expertise",
         "news": "Actueel",
-        "contact": "Contact"
+        "contact": "Contact",
+        "signup": "Aanmelden",
+        "signin": "Inloggen"
     }
 }

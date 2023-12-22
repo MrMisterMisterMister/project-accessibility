@@ -2,7 +2,7 @@
     "title": "Meld je aan en doe mee aan onderzoeken in het toegankelijkheidsportaal.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "buttons": {
-        "signup": "Registreer",
-        "signin": "Login"
+        "signup": "Aanmelden",
+        "signin": "Inloggen"
     }
 }
