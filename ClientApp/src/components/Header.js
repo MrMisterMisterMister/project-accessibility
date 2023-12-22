@@ -17,10 +17,8 @@ const Header = () => {
     // Language change
     const handleChangeLanguage = (event) => {
         setLanguage(event.target.value);
-        i18n.changeLanguage(language);
-        localStorage.setItem("language", language);
-        // test
-        console.log(language);
+        i18n.changeLanguage(event.target.value);
+        localStorage.setItem("language", event.target.value);
     };
 
     // Header nav links
