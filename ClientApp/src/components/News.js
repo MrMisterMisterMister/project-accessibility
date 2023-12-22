@@ -18,7 +18,7 @@ const News = () => {
                             key={index}
                             img={require('../assets/img/placeholder.jpg')}
                             altText={translate(`news.articles.${index}.altText`)}
-                            date={translate(`news.articles.${index}.date`)} //TODO FIX DATE LOCALIZATION
+                            date={translate(`news.articles.${index}.date`)}
                             title={translate(`news.articles.${index}.title`)}
                             text={translate(`news.articles.${index}.description`)}
                         />
