@@ -6,26 +6,26 @@ import { Login } from "./pages/Login";
 
 
 const AppRoutes = [
-  {
-    index: true,
-    element: <Home />
-  },
-  {
-    path: '/privacy-policy',    
-    element: <PrivacyPolicy />
-  },
-  {
-    path: '/account',
-    element: <Account />
-  },
-  {
-    path: '/cookies',
-    element: <Cookies />
-  },
-  {
-    path: '/login',
-    element: <Login />
-  }
+    {
+        index: true,
+        element: <Home />
+    },
+    {
+        path: '/privacy-policy',
+        element: <PrivacyPolicy />
+    },
+    {
+        path: '/account',
+        element: <Account />
+    },
+    {
+        path: '/cookies',
+        element: <Cookies />
+    },
+    {
+        path: '/login',
+        element: <Login />
+    }
 ];
 
 export default AppRoutes;
