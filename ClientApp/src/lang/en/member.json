@@ -1,0 +1,35 @@
+{
+    "title": "Meet the experts",
+    "members": [
+        {
+            "name": "Clodsire",
+            "role": "Boss",
+            "altText": "Boss Clodsire"
+        },
+        {
+            "name": "Clodsire",
+            "role": "Grunt #1",
+            "altText": "Grunt Clodsire"
+        },
+        {
+            "name": "Clodsire",
+            "role": "Grunt #2",
+            "altText": "Grunt Clodsire"
+        },
+        {
+            "name": "Clodsire",
+            "role": "Grunt #3",
+            "altText": "Grunt Clodsire"
+        },
+        {
+            "name": "Clodsire",
+            "role": "Grunt #4",
+            "altText": "Grunt Clodsire"
+        },
+        {
+            "name": "Clodsire",
+            "role": "Grunt #5",
+            "altText": "Grunt Clodsire"
+        }
+    ]
+}

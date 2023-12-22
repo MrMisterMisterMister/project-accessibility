@@ -36,6 +36,11 @@
         height: 2.5rem;
         border-radius: .75rem;
         margin-bottom: 0.5em;
+
+        svg {
+            width: 100%!important;
+            height: 100%!important;
+        }
     }
 
     .card__expertise_title {

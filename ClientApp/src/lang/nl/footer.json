@@ -1,0 +1,21 @@
+{
+    "menu": {
+        "goto": {
+            "title": "Snel naar",
+            "links": {
+                "home": "Home",
+                "about": "Over ons",
+                "expertise": "Expertise",
+                "news": "Actueel",
+                "contact": "Contact"
+            }
+        },
+        "bottombar": {
+            "links": {
+                "sitemap": "Sitemap",
+                "privacypolicy": "Privacy Policy",
+                "cookies": "Cookies"
+            }
+        }
+    }
+}

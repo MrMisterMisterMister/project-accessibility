@@ -1,29 +1,29 @@
 import React from 'react';
 import { Container } from 'reactstrap';
+import { useTranslation } from 'react-i18next';
 import { CardCase } from './Card';
 
+// Case component
 const Case = () => {
+    // Translation
+    const { t: translate } = useTranslation();
+
     return (
         <section className="case__section">
             <Container className="case__section_container">
-                <h2 className="case__section_title">Case</h2>
+                <h2 className="case__section_title">{translate("case.title")}</h2>
                 <div className="case__section_group__card">
-                    <CardCase
-                        img={require("../assets/img/placeholder.jpg")}
-                        altText="Clodsire"
-                        title="Clodsire is more popular than Pikachu!"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Auctor augue mauris augue neque gravida in fermentum."
-                        path="/"
-                        linkText="Lees meer"
-                    />
-                    <CardCase
-                        img={require("../assets/img/placeholder.jpg")}
-                        altText="Clodsire"
-                        title="Clodsire is the cutest"
-                        text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Elit ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue. Auctor augue mauris augue neque gravida in fermentum."
-                        path="/"
-                        linkText="Lees meer"
-                    />
+                {translate("case.cases", { returnObjects: true }).map((item, index) => (
+                        <CardCase
+                            key={index}
+                            img={require('../assets/img/placeholder.jpg')}
+                            altText={translate(`case.cases.${index}.altText`)}
+                            title={translate(`case.cases.${index}.title`)}
+                            text={translate(`case.cases.${index}.description`)}
+                            path="/"
+                            linkText={translate(`case.cases.${index}.linkText`)}
+                        />
+                    ))}
                 </div>
             </Container>
         </section>

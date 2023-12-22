@@ -1,19 +1,22 @@
 import { Link } from 'react-router-dom';
 import { Container, NavbarBrand } from 'reactstrap';
 import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
+import { useTranslation } from 'react-i18next';
 
-
-const websiteLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Over ons', path: '/over-ons' },
-    { name: 'Expertise', path: '/expertise' },
-    { name: 'Actueel', path: '/actueel' },
-    { name: 'Contact', path: '/contact' },
-    
-    
-];
 // Header component
-const Header = () => {
+const Header = () => { 
+    // Translation   
+    const { t: translate } = useTranslation();
+
+    // Header nav links
+    const websiteLinks = [
+        { name: translate("header.menu.home"), path: '/' },
+        { name: translate("header.menu.about"), path: '/over-ons' },
+        { name: translate("header.menu.expertise"), path: '/expertise' },
+        { name: translate("header.menu.news"), path: '/actueel' },
+        { name: translate("header.menu.contact"), path: '/contact' },  
+    ];
+
     return (
         <header className="site__header">
             <Container className="site__header_container" fluid>

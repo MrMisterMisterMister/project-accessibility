@@ -1,0 +1,23 @@
+{
+    "title": "Actueel",
+    "articles": [
+        {
+            "altText": "Clodsire",
+            "date": "2023-12-27",
+            "title": "Clodsire uitbraak in Hearthome City and Floaroma Town",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "2023-12-29",
+            "title": "Opnieuw een Clodsire uitbraak",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "2023-12-09",
+            "title": "Clodsire is de schattigste",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+        }
+    ]
+}

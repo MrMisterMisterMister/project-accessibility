@@ -1,0 +1,9 @@
+{
+    "menu": {
+        "home": "Home",
+        "about": "About us",
+        "expertise": "Expertise",
+        "news": "News",
+        "contact": "Contact"
+    }
+}
