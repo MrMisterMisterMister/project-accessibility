@@ -1,18 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import { Container, NavbarBrand } from 'reactstrap';
-import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
+import { useTranslation } from 'react-i18next';
+import { NavDesktop, NavMobile } from './Nav';
+import LanguageSwitcher from './LanguageSwitcher';
 
-
-const websiteLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Over ons', path: '/over-ons' },
-    { name: 'Expertise', path: '/expertise' },
-    { name: 'Actueel', path: '/actueel' },
-    { name: 'Contact', path: '/contact' },
-    
-    
-];
 // Header component
 const Header = () => {
     // Translation   
@@ -48,7 +40,6 @@ const Header = () => {
                 <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} />
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
-                <DropDownMenu/>
             </Container>
         </header>
     );
