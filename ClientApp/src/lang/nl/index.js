@@ -3,7 +3,7 @@ import header from './header.json';
 import footer from './footer.json';
 
 // Pages
-//TODO
+import privacypolicy from './privacypolicy.json';
 
 // Components
 import hero from './hero.json';
@@ -23,6 +23,7 @@ const nl = {
     news: news,
     case: cases,
     contact: contact,
+    privacypolicy: privacypolicy,
 };
 
 export default nl;

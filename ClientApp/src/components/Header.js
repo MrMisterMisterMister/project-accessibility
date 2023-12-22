@@ -40,6 +40,7 @@ const Header = () => {
                 </NavbarBrand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
+                <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} /> {/* TODO FIX STYLING AND POSITION */}
             </Container>
         </header>
     );

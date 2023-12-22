@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container } from 'reactstrap';
-import { NavFooterMenu, NavFooterBottombar } from './Nav';
 import { useTranslation } from 'react-i18next';
+import { NavFooterMenu, NavFooterBottombar } from './Nav';
 
 // Footer copyright
 function FooterCopyright({ title }) {
