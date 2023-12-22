@@ -3,6 +3,7 @@ import { Container } from 'reactstrap';
 import { useTranslation } from 'react-i18next';
 import Shape from '../components/Shape';
 
+// Privacy policy page
 const PrivacyPolicy = () => {
     // Translation   
     const { t: translate } = useTranslation();

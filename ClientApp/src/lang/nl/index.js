@@ -4,6 +4,7 @@ import footer from './footer.json';
 
 // Pages
 import privacypolicy from './privacypolicy.json';
+import cookies from './cookies.json';
 
 // Components
 import hero from './hero.json';
@@ -24,6 +25,7 @@ const nl = {
     case: cases,
     contact: contact,
     privacypolicy: privacypolicy,
+    cookies: cookies,
 };
 
 export default nl;
