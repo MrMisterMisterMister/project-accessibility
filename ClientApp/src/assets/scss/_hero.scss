@@ -16,7 +16,7 @@
         position: relative;
 
         .hero__section_wrapper {
-            @include mixins.sm {
+            @include mixins.lg {
                 width: 45%;
             }
 
