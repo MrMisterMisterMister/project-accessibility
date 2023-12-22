@@ -28,3 +28,11 @@
 .shape__privacypolicy_right {
     @include mixins.shape(variables.$elfgreen, 12rem, 12rem, 35%, null, null, -4%, null, 50%);
 }
+
+.shape__cookies_right {
+    @include mixins.shape(variables.$royalblue, 7rem, 7rem, -40%, null, null, -3%, 20deg, null);
+}
+
+.shape__cookies_left {
+    @include mixins.shape(variables.$tenne, 12rem, 12rem, 53%, -5%, null, null, null, 50%);
+}
