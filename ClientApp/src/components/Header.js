@@ -1,12 +1,27 @@
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 import { Container, NavbarBrand } from 'reactstrap';
-import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
 import { useTranslation } from 'react-i18next';
+import { NavDesktop, NavMobile, DropDownMenu } from './Nav';
+import LanguageSwitcher from './LanguageSwitcher';
 
 // Header component
-const Header = () => { 
+const Header = () => {
     // Translation   
-    const { t: translate } = useTranslation();
+    const { t: translate, i18n } = useTranslation();
+
+    // Initialize state
+    // Default NL
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "nl");
+
+    // Language change
+    const handleChangeLanguage = (event) => {
+        setLanguage(event.target.value);
+        i18n.changeLanguage(language);
+        localStorage.setItem("language", language);
+        // test
+        console.log(language);
+    };
 
     // Header nav links
     const websiteLinks = [
@@ -14,7 +29,7 @@ const Header = () => {
         { name: translate("header.menu.about"), path: '/over-ons' },
         { name: translate("header.menu.expertise"), path: '/expertise' },
         { name: translate("header.menu.news"), path: '/actueel' },
-        { name: translate("header.menu.contact"), path: '/contact' },  
+        { name: translate("header.menu.contact"), path: '/contact' },
     ];
 
     return (
@@ -23,9 +38,11 @@ const Header = () => {
                 <NavbarBrand tag={Link} to="/">
                     <img src={require("../assets/img/brand/logo_black_text_light.png")} width="278" height="60" alt="Logo" title="Project Accessibility" />
                 </NavbarBrand>
+                {/* TODO FIX BETTER POSITION */}
+                <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} />
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
-                <DropDownMenu/>
+                <DropDownMenu />
             </Container>
         </header>
     );

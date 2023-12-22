@@ -13,8 +13,12 @@ i18n.use(initReactI18next).use(LanguageDetector).init({
             translation: nl,
         },
     },
-    lng: "nl",
+    lng: localStorage.getItem("language") || "nl",
     fallbackLng: "nl",
+    detection: {
+        order: ["localStorage"],
+        caches: ["localStorage", "cookie"],
+    },
     interpolation: {
         escapeValue: false,
     }
