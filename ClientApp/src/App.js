@@ -4,7 +4,7 @@ import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import ScrollTop from "./components/ScrollTop";
 import { useEffect } from 'react';
-import jwt_decode from "jwt-decode";
+//import jwtDecode from "jwt-decode";
 import { jwtDecode } from '../../node_modules/jwt-decode/build/cjs/index';
 
 function App() {
