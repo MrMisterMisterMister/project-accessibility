@@ -1,5 +1,5 @@
-import { useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 const ScrollTop = () => {
     const { pathname } = useLocation();
@@ -9,6 +9,6 @@ const ScrollTop = () => {
     }, [pathname]);
 
     return null;
-}
+};
 
 export default ScrollTop;

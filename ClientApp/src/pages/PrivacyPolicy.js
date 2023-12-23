@@ -1,17 +1,17 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
-import Shape from '../components/Shape';
+import React from "react";
+import { Container } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import Shape from "../components/Shape";
 
 // Privacy policy page
 const PrivacyPolicy = () => {
-    // Translation   
+    // Translation
     const { t: translate } = useTranslation();
 
     return (
         <div className="privacypolicy__page">
             <div className="privacypolicy__page_banner">
-                <Shape section="privacypolicy" position={['left', 'right']} />
+                <Shape section="privacypolicy" position={["left", "right"]} />
             </div>
             <Container className="privacypolicy__page_container">
                 <h1>{translate("privacypolicy.pageTitle")}</h1>
@@ -122,6 +122,6 @@ const PrivacyPolicy = () => {
             </Container>
         </div>
     );
-}
+};
 
 export default PrivacyPolicy;

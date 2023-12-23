@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
-import { ButtonHero } from './Button';
-import Shape from './Shape';
+import React from "react";
+import { Container } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import { ButtonHero } from "./Button";
+import Shape from "./Shape";
 
 // Hero component
 const Hero = () => {
@@ -18,9 +18,9 @@ const Hero = () => {
                     <ButtonHero text={translate("hero.buttonText")} />
                 </div>
             </Container>
-            <Shape section="hero" position={['right', 'bottom', 'top']} />
+            <Shape section="hero" position={["right", "bottom", "top"]} />
         </section>
     );
-}
+};
 
 export default Hero;

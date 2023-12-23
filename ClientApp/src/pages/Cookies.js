@@ -1,17 +1,17 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
-import Shape from '../components/Shape';
+import React from "react";
+import { Container } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import Shape from "../components/Shape";
 
 // Cookies page
 const Cookies = () => {
-    // Translation   
+    // Translation
     const { t: translate } = useTranslation();
 
     return (
         <div className="cookies__page">
             <div className="cookies__page_banner">
-                <Shape section="cookies" position={['right', 'left']} />
+                <Shape section="cookies" position={["right", "left"]} />
             </div>
             <Container className="cookies__page_container">
                 <h1>{translate("cookies.pageTitle")}</h1>
@@ -23,7 +23,7 @@ const Cookies = () => {
 
                 <h4>{translate("cookies.cookieTypes.performanceCookies.title")}</h4>
                 <p>{translate("cookies.cookieTypes.performanceCookies.content")}</p>
-                
+
                 <h4>{translate("cookies.cookieTypes.trackingCookies.title")}</h4>
                 <p>{translate("cookies.cookieTypes.trackingCookies.content")}</p>
 
@@ -42,6 +42,6 @@ const Cookies = () => {
             </Container>
         </div>
     );
-}
+};
 
 export default Cookies;

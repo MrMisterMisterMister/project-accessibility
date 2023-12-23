@@ -1,13 +1,13 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
-import { NavFooterMenu, NavFooterBottombar } from './Nav';
+import React from "react";
+import { Container } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import { NavFooterMenu, NavFooterBottombar } from "./Nav";
 
 // Footer copyright
-function FooterCopyright({ title }) {
+function FooterCopyright ({ title }) {
     return (
         <span className="site__footer_copyright">
-            &copy; {new Date().getFullYear()} {title}
+      &copy; {new Date().getFullYear()} {title}
         </span>
     );
 }
@@ -22,39 +22,51 @@ const Footer = () => {
         goto: {
             title: translate("footer.menu.goto.title"),
             links: [
-                { name: translate("footer.menu.goto.links.home"), path: '/' },
-                { name: translate("footer.menu.goto.links.about"), path: '/over-ons' },
-                { name: translate("footer.menu.goto.links.expertise"), path: '/expertise' },
-                { name: translate("footer.menu.goto.links.news"), path: '/actueel' },
-                { name: translate("footer.menu.goto.links.contact"), path: '/contact' },
-            ],
+                { name: translate("footer.menu.goto.links.home"), path: "/" },
+                { name: translate("footer.menu.goto.links.about"), path: "/over-ons" },
+                {
+                    name: translate("footer.menu.goto.links.expertise"),
+                    path: "/expertise"
+                },
+                { name: translate("footer.menu.goto.links.news"), path: "/actueel" },
+                { name: translate("footer.menu.goto.links.contact"), path: "/contact" }
+            ]
         },
-        //TODO put in translation.json
+        // TODO put in translation.json
         expertise: {
-            title: 'Expertise',
+            title: "Expertise",
             links: [
-                { name: 'Lorem ipsum', path: '/' },
-                { name: 'Lorem ipsum', path: '/' },
-                { name: 'Lorem ipsum', path: '/' },
-            ],
+                { name: "Lorem ipsum", path: "/" },
+                { name: "Lorem ipsum", path: "/" },
+                { name: "Lorem ipsum", path: "/" }
+            ]
         },
-        //TODO put in translation.json
+        // TODO put in translation.json
         tools: {
-            title: 'Tools',
+            title: "Tools",
             links: [
-                { name: 'Lorem ipsum', path: '/' },
-                { name: 'Lorem ipsum', path: '/' },
-                { name: 'Lorem ipsum', path: '/' },
-                { name: 'Lorem ipsum', path: '/' },
-            ],
-        },
+                { name: "Lorem ipsum", path: "/" },
+                { name: "Lorem ipsum", path: "/" },
+                { name: "Lorem ipsum", path: "/" },
+                { name: "Lorem ipsum", path: "/" }
+            ]
+        }
     };
 
     // FooterBottombar links
     const generalLinks = [
-        { name: translate("footer.menu.bottombar.links.sitemap"), path: '/sitemap' },
-        { name: translate("footer.menu.bottombar.links.privacypolicy"), path: '/privacy-policy' },
-        { name: translate("footer.menu.bottombar.links.cookies"), path: '/cookies' },
+        {
+            name: translate("footer.menu.bottombar.links.sitemap"),
+            path: "/sitemap"
+        },
+        {
+            name: translate("footer.menu.bottombar.links.privacypolicy"),
+            path: "/privacy-policy"
+        },
+        {
+            name: translate("footer.menu.bottombar.links.cookies"),
+            path: "/cookies"
+        }
     ];
 
     return (
@@ -62,11 +74,20 @@ const Footer = () => {
             <Container className="site__footer_container">
                 <div className="site__footer_menu">
                     <div className="site__footer_menu__logo">
-                        <img src={require("../assets/img/brand/logo.png")} width="124.5" height="150" alt="Logo" title="Project Accessibility" />
+                        <img
+                            src={require("../assets/img/brand/logo.png")}
+                            width="124.5"
+                            height="150"
+                            alt="Logo"
+                            title="Project Accessibility"
+                        />
                     </div>
                     {Object.keys(footerLinks).map((category, index) => (
                         <div key={index} className="site__footer_menu__column">
-                            <NavFooterMenu title={footerLinks[category].title} links={footerLinks[category].links} />
+                            <NavFooterMenu
+                                title={footerLinks[category].title}
+                                links={footerLinks[category].links}
+                            />
                         </div>
                     ))}
                 </div>
@@ -79,6 +100,6 @@ const Footer = () => {
             </Container>
         </footer>
     );
-}
+};
 
 export default Footer;

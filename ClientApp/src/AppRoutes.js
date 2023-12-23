@@ -4,26 +4,25 @@ import Cookies from "./pages/Cookies";
 import { Account } from "./pages/Account";
 import { Login } from "./pages/Login";
 
-
 const AppRoutes = [
     {
         index: true,
         element: <Home />
     },
     {
-        path: '/privacy-policy',
+        path: "/privacy-policy",
         element: <PrivacyPolicy />
     },
     {
-        path: '/cookies',
+        path: "/cookies",
         element: <Cookies />
     },
     {
-        path: '/account',
+        path: "/account",
         element: <Account />
     },
     {
-        path: '/login',
+        path: "/login",
         element: <Login />
     }
 ];

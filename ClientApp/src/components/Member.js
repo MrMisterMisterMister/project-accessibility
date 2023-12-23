@@ -1,8 +1,8 @@
-import React from 'react';
-import { Container } from 'reactstrap';
-import { useTranslation } from 'react-i18next';
-import Shape from './Shape';
-import { GroupMember } from './Group';
+import React from "react";
+import { Container } from "reactstrap";
+import { useTranslation } from "react-i18next";
+import Shape from "./Shape";
+import { GroupMember } from "./Group";
 
 // Member component
 const Member = () => {
@@ -14,20 +14,22 @@ const Member = () => {
             <Container className="member__section_container">
                 <h2 className="member__section_title">{translate("member.title")}</h2>
                 <div className="member__section_group__group">
-                    {translate("member.members", { returnObjects: true }).map((member, index) => (
-                        <GroupMember
-                            key={index}
-                            img={require('../assets/img/placeholder.jpg')}
-                            altText={translate(`member.members.${index}.altText`)}
-                            name={translate(`member.members.${index}.name`)}
-                            role={translate(`member.members.${index}.role`)}
-                        />
-                    ))}
+                    {translate("member.members", { returnObjects: true }).map(
+                        (member, index) => (
+                            <GroupMember
+                                key={index}
+                                img={require("../assets/img/placeholder.jpg")}
+                                altText={translate(`member.members.${index}.altText`)}
+                                name={translate(`member.members.${index}.name`)}
+                                role={translate(`member.members.${index}.role`)}
+                            />
+                        )
+                    )}
                 </div>
             </Container>
-            <Shape section="member" position={['left', 'right']} />
+            <Shape section="member" position={["left", "right"]} />
         </section>
     );
-}
+};
 
 export default Member;

@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import Header from './Header';
-import Footer from './Footer';
-import '../assets/scss/main.scss';
+/* eslint-disable react/prop-types */
+import React, { Component } from "react";
+import Header from "./Header";
+import Footer from "./Footer";
 
 export class Layout extends Component {
-    render() {
+    render () {
         return (
             <>
                 <Header />
-                <main id="main-content">
-                    {this.props.children}
-                </main>
+                <main id="main-content">{this.props.children}</main>
                 <Footer />
             </>
         );
