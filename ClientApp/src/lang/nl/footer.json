@@ -13,8 +13,8 @@
         "bottombar": {
             "links": {
                 "sitemap": "Sitemap",
-                "privacypolicy": "Privacy Policy",
-                "cookies": "Cookies"
+                "privacypolicy": "Privacybeleid",
+                "cookies": "Cookieverklaring"
             }
         }
     }
