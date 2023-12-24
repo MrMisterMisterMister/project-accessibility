@@ -1,0 +1,11 @@
+{
+    "menu": {
+        "home": "Home",
+        "about": "About us",
+        "expertise": "Expertise",
+        "news": "News",
+        "contact": "Contact",
+        "signup": "Sign up",
+        "signin": "Login"
+    }
+}

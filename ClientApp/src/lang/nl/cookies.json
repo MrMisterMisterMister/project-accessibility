@@ -1,0 +1,38 @@
+{
+    "pageTitle": "Cookieverklaring",
+    "lastModified": "Laatst gewijzigd: 10 November 2023.",
+    "intro": "Deze website maakt gebruik van cookies. Door gebruik te maken van deze website gaat u akkoord met het gebruik van cookies overeenkomstig met deze verklaring. Cookies zijn kleine tekstbestanden die op uw apparaat worden geplaatst om de website-ervaring te verbeteren. Hieronder vindt u meer informatie over het gebruik van cookies op deze website.",
+    "cookieTypes": {
+        "functionalCookies": {
+            "title": "Technische of functionele cookies",
+            "content": "Functionele cookies zorgen ervoor dat bepaalde onderdelen van de website goed werken en dat uw gebruikersvoorkeuren bekend blijven. Door het plaatsen van functionele cookies zorgen wij ervoor dat u onze website makkelijker kunt bezoeken. Deze cookies mogen wij plaatsen zonder dat u hier toestemming voor geeft."
+        },
+        "performanceCookies": {
+            "title": "Prestatiecookies",
+            "content": "Prestatiecookies verzamelen informatie over hoe bezoekers de website gebruiken, zoals welke pagina's het meest worden bezocht en of er foutmeldingen optreden. Deze gegevens worden gebruikt om de prestaties van de website te verbeteren."
+        },
+        "trackingCookies": {
+            "title": "Tracking cookies",
+            "content": "Tracking cookies zijn cookies of enige andere vorm van local storage, die worden gebruikt om gebruikersprofielen te maken met het doel om advertenties te tonen of om de gebruiker te volgen op deze of verschillende websites voor soortgelijke marketingdoeleinden."
+        }
+    },
+    "retentionPeriod": {
+        "title": "Bewaartermijn",
+        "content": [
+            "Cookies hebben verschillende bewaartermijnen, wat betekent dat ze voor verschillende perioden op uw apparaat kunnen blijven staan. Sommige cookies zijn tijdelijk en worden automatisch verwijderd wanneer u uw browser sluit. Andere cookies blijven langer aanwezig, zelfs nadat u de browser heeft gesloten, en hebben een specifieke bewaartermijn.",
+            "De bewaartermijn van cookies die Project Accessibility gebruikt, kan variëren afhankelijk van het specifieke doel. Over het algemeen streven we ernaar om cookies alleen te bewaren zolang dat nodig is om het beoogde doel te bereiken. Na het verstrijken van de bewaartermijn worden de cookies automatisch verwijderd."
+        ]
+    },
+    "cookieManagement": {
+        "title": "Cookiebeheer",
+        "content": "Via uw internetbrowser kunt u cookies automatisch of handmatig verwijderen. U kunt ook aangeven dat bepaalde cookies niet geplaatst mogen worden. Een andere mogelijkheid is dat u uw internetbrowser zodanig instelt dat u een bericht ontvangt als er een cookie wordt geplaatst. Meer informatie over deze mogelijkheden kunt u vinden in de instructies van de Help-functie van uw browser. Houd er rekening mee dat het uitschakelen van bepaalde cookies de functionaliteit van de website kan beïnvloeden."
+    },
+    "changesInCookie": {
+        "title": "Wijziging cookieverklaring",
+        "content": "Deze cookieverklaring kan in verband met nieuwe ontwikkelingen van de website of wettelijke verplichtingen gewijzigd worden. Het is daarom aan te raden om dit cookiebeleid geregeld te raadplegen."
+    },
+    "contactDetails": {
+        "title": "Contactgegevens",
+        "content": "Als u vragen of zorgen heeft over cookies bij het gebruik van onze website, stuur ons dan een gedetailleerd bericht naar info@clodsire.nl, en Project Accessibility zal zijn uiterste best doen om uw zorgen te verhelpen."
+    }
+}

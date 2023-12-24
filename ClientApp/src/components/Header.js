@@ -1,20 +1,37 @@
 import { Link } from 'react-router-dom';
+import { useState } from "react";
 import { Container, NavbarBrand } from 'reactstrap';
+import { useTranslation } from 'react-i18next';
 import { NavDesktop, NavMobile } from './Nav';
-
-
-const websiteLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'Over ons', path: '/over-ons' },
-    { name: 'Expertise', path: '/expertise' },
-    { name: 'Actueel', path: '/actueel' },
-    { name: 'Contact', path: '/contact' },
-    { name: 'Sign up', path: '/signup' },
-    { name: 'Login', path: '/login' },
-];
+import LanguageSwitcher from './LanguageSwitcher';
 
 // Header component
 const Header = () => {
+    // Translation   
+    const { t: translate, i18n } = useTranslation();
+
+    // Initialize state
+    // Default NL
+    const [language, setLanguage] = useState(localStorage.getItem("language") || "nl");
+
+    // Language change
+    const handleChangeLanguage = (event) => {
+        setLanguage(event.target.value);
+        i18n.changeLanguage(event.target.value);
+        localStorage.setItem("language", event.target.value);
+    };
+
+    // Header nav links
+    const websiteLinks = [
+        { name: translate("header.menu.home"), path: '/' },
+        { name: translate("header.menu.about"), path: '/over-ons' },
+        { name: translate("header.menu.expertise"), path: '/expertise' },
+        { name: translate("header.menu.news"), path: '/actueel' },
+        { name: translate("header.menu.contact"), path: '/contact' },
+        { name: translate("header.menu.signup"), path: '/signup' },
+        { name: translate("header.menu.signin"), path: '/login' },
+    ];
+
     return (
         <header className="site__header">
             <Container className="site__header_container" fluid>
@@ -23,6 +40,7 @@ const Header = () => {
                 </NavbarBrand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
+                <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} /> {/* TODO FIX STYLING AND POSITION */}
             </Container>
         </header>
     );

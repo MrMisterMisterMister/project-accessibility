@@ -1,24 +1,47 @@
-import React, { Component } from "react";
+import React from 'react';
+import { Container } from 'reactstrap';
+import { useTranslation } from 'react-i18next';
+import Shape from '../components/Shape';
 
-export class Cookies extends Component {
-    render() {
-        return (
-            <div className="cookies">
-                <h2>Artikel 5 Cookies</h2>
-            <p>Wij zullen session cookies gebruiken om inlogsessies van gebruikers bij te houden. 
-                Deze cookies stellen ons in staat om de inlog status van gebruikers te behouden, waardoor zij na het inloggen soepel door de website kunnen navigeren zonder herhaaldelijk hun inloggegevens in te voeren. 
-                Deze functionaliteit verbetert de gebruikerservaring door het proces efficiënter te maken en hun gemak te bieden tijdens hun interactie met onze diensten. 
-                Voor de verduidelijking is het waar dat 'onthoud mijn wachtwoord'-functie optioneel is, maar dat sommige cookies, zoals sessie cookies, ongeacht deze keuze worden gebruikt.</p>
-                <br></br>
-                <p>Deze cookies worden ook toegepast wanneer gebruikers zich aanmelden via derden accounts, zoals Google of LinkedIn. 
-                    Wij verzekeren onze gebruikers dat deze cookies alleen worden gebruikt voor het aangegeven doel en dat we hun privacy en veiligheid te allen tijde hoog waarborgen. 
-                    Gebruikers hebben echter altijd de mogelijkheid om cookies uit te schakelen in hun browserinstellingen als zij dit verkiezen. 
-                    Daarentegen is het belangrijk te benadrukken dat het uitschakelen van de cookies de functionaliteit van bepaalde delen van de website kan beïnvloeden. 
-                    Wij moedigen gebruikers aan deze instellingen zorgvuldig af te wegen met betrekking tot hun persoonlijke voorkeuren en behoeftes.</p> <br></br>
-                    <p>Wij gebruiken tracking cookies om uw navigatie door ons systeem te monitoren. Binnen deze tracking cookies wordt uw ip-adres en de door u bezochte webpagina’s opgeslagen.
-Deze tracking cookies zullen niet met derde partijen worden gedeeld zonder uw toestemming en worden voor een maand in ons systeem opgeslagen. 
-Met behulp van deze tracking cookies kunnen wij beter kijken hoe u door ons systeem navigeert en zo u een betere ervaring in de toekomst geven.</p>
+// Cookies page
+const Cookies = () => {
+    // Translation   
+    const { t: translate } = useTranslation();
+
+    return (
+        <div className="cookies__page">
+            <div className="cookies__page_banner">
+                <Shape section="cookies" position={['right', 'left']} />
             </div>
-        );
-    }
+            <Container className="cookies__page_container">
+                <h1>{translate("cookies.pageTitle")}</h1>
+                <p className="text-muted">{translate("cookies.lastModified")}</p>
+                <p>{translate("cookies.intro")}</p>
+
+                <h4>{translate("cookies.cookieTypes.functionalCookies.title")}</h4>
+                <p>{translate("cookies.cookieTypes.functionalCookies.content")}</p>
+
+                <h4>{translate("cookies.cookieTypes.performanceCookies.title")}</h4>
+                <p>{translate("cookies.cookieTypes.performanceCookies.content")}</p>
+                
+                <h4>{translate("cookies.cookieTypes.trackingCookies.title")}</h4>
+                <p>{translate("cookies.cookieTypes.trackingCookies.content")}</p>
+
+                <h4>{translate("cookies.retentionPeriod.title")}</h4>
+                <p>{translate("cookies.retentionPeriod.content.0")}</p>
+                <p>{translate("cookies.retentionPeriod.content.1")}</p>
+
+                <h4>{translate("cookies.cookieManagement.title")}</h4>
+                <p>{translate("cookies.cookieManagement.content")}</p>
+
+                <h4>{translate("cookies.changesInCookie.title")}</h4>
+                <p>{translate("cookies.changesInCookie.content")}</p>
+
+                <h4>{translate("cookies.contactDetails.title")}</h4>
+                <p>{translate("cookies.contactDetails.content")}</p>
+            </Container>
+        </div>
+    );
 }
+
+export default Cookies;

@@ -13,6 +13,7 @@
 @use 'card';
 @use 'group';
 @use 'form';
+@use 'language';
 
 // section
 @use 'hero';
@@ -21,7 +22,6 @@
 @use 'news';
 @use 'case';
 @use 'contact';
-
 
 // pages
 @use 'privacypolicy';

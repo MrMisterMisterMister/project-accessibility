@@ -1,0 +1,38 @@
+{
+    "pageTitle": "Cookies",
+    "lastModified": "Last Modified: November 10, 2023.",
+    "intro": "This website uses cookies. By using this website, you agree to the use of cookies in accordance with this statement. Cookies are small text files placed on your device to enhance the website experience. Below, you will find more information about the use of cookies on this website.",
+    "cookieTypes": {
+        "functionalCookies": {
+            "title": "Technical or Functional Cookies",
+            "content": "Functional cookies ensure that certain parts of the website function properly and that your user preferences are remembered. By placing functional cookies, we ensure that you can visit our website more easily. These cookies may be placed without your explicit consent."
+        },
+        "performanceCookies": {
+            "title": "Performance Cookies",
+            "content": "Performance cookies collect information about how visitors use the website, such as which pages are most visited and if there are any error messages. This data is used to enhance the performance of the website."
+        },
+        "trackingCookies": {
+            "title": "Tracking Cookies",
+            "content": "Tracking cookies are cookies or any other form of local storage used to create user profiles with the purpose of displaying advertisements or tracking the user across this or various websites for similar marketing purposes."
+        }
+    },
+    "retentionPeriod": {
+        "title": "Retention Period",
+        "content": [
+            "Cookies have various retention periods, meaning they can remain on your device for different periods. Some cookies are temporary and are automatically deleted when you close your browser. Others persist longer, even after you have closed the browser, and have a specific retention period.",
+            "The retention period of cookies used by Project Accessibility may vary depending on the specific purpose. Generally, we aim to keep cookies only for the duration necessary to achieve the intended purpose. After the retention period expires, the cookies are automatically deleted."
+        ]
+    },
+    "cookieManagement": {
+        "title": "Cookie Management",
+        "content": "Via your web browser, you can automatically or manually delete cookies. You can also specify that certain cookies should not be placed. Another option is to set your web browser to notify you when a cookie is placed. More information about these options can be found in the instructions of your browser's Help function. Please note that disabling certain cookies may affect the functionality of the website."
+    },
+    "changesInCookie": {
+        "title": "Changes to Cookie Statement",
+        "content": "This cookie statement may be amended due to new developments on the website or legal obligations. It is advisable to regularly consult this cookie policy."
+    },
+    "contactDetails": {
+        "title": "Contact Details",
+        "content": "If you have any questions or concerns about cookies when using our website, please send us a detailed message at info@clodsire.nl, and Project Accessibility will do its utmost to address your concerns."
+    }
+}
