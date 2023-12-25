@@ -19,7 +19,7 @@ const News = () => {
                         (article, index) => (
                             <CardNews
                                 key={index}
-                                img="src/assets/img/placeholder.jpg"
+                                img="img/placeholder.jpg"
                                 altText={translate(
                                     `news.articles.${index}.altText`
                                 )}

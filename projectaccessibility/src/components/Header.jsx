@@ -39,7 +39,7 @@ const Header = () => {
             <Container className="site__header_container" fluid>
                 <Navbar.Brand tag={Link} href="/">
                     <img
-                        src="src/assets/img/brand/logo_black_text_light.png"
+                        src="img/brand/logo_black_text_light.png"
                         width="278"
                         height="60"
                         alt="Logo"
