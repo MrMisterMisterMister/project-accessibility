@@ -18,11 +18,11 @@ i18n.use(initReactI18next)
         fallbackLng: "nl",
         detection: {
             order: [
-                "localStorage", 
+                "localStorage",
                 "navigator"
             ],
             caches: [
-                "localStorage", 
+                "localStorage",
                 "cookie"
             ],
             lookupLocalStorage: "i18nextLng"
