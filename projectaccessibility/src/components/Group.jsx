@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 // Create a group of members to be used on the homepage
 // Image path needs to be the base to work
@@ -13,6 +13,6 @@ const GroupMember = ({ img, altText, name, role }) => {
             </div>
         </div>
     );
-}
+};
 
 export { GroupMember };

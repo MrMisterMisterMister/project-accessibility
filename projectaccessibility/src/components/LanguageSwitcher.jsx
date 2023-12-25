@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 // Language switcher component
 const LanguageSwitcher = ({ language, handleChangeLanguage }) => {
     // Languages
     const languages = [
-        { name: 'Nederlands', code: 'nl' },
-        { name: 'English', code: 'en' },
+        { name: "Nederlands", code: "nl" },
+        { name: "English", code: "en" },
         // CAN BE EXPANDED
     ];
 

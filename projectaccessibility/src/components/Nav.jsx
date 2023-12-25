@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Nav, NavItem, NavLink } from 'react-bootstrap';
-
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { Nav, NavItem, NavLink } from "react-bootstrap";
 
 // Render hamburger menu for mobile menu
 const renderMenuSpans = () => {
@@ -10,7 +9,7 @@ const renderMenuSpans = () => {
         spans.push(<span key={i} className="nav__header_mobile__span" />);
     }
     return spans;
-}
+};
 
 // Nav for desktop
 // Links as parameter with path and name
@@ -19,14 +18,23 @@ const NavDesktop = ({ links }) => {
         <div className="nav__header_desktop">
             <Nav className="nav__header_desktop__navlist">
                 {links.map((link, index) => (
-                    <Nav.Item key={index} className="nav__header_desktop__navitem">
-                        <Nav.Link tag={Link} className="nav__header_desktop__navlink" href={link.path}>{link.name}</Nav.Link>
+                    <Nav.Item
+                        key={index}
+                        className="nav__header_desktop__navitem"
+                    >
+                        <Nav.Link
+                            tag={Link}
+                            className="nav__header_desktop__navlink"
+                            href={link.path}
+                        >
+                            {link.name}
+                        </Nav.Link>
                     </Nav.Item>
                 ))}
             </Nav>
         </div>
     );
-}
+};
 
 // Nav for mobile
 // Uses react hooks to toggle the menu state and assign proper class to body to prevent scrollable menu
@@ -36,12 +44,20 @@ const NavMobile = ({ links }) => {
     const toggleMenuState = () => {
         setIsOpen(!isOpen);
         document.body.classList.toggle("site__header_nav_is__open");
-    }
+    };
 
     return (
         <div className="nav__header_mobile">
-            <input type="checkbox" className="nav__header_mobile__checkbox" id="site__header_nav__toggle" />
-            <label className="nav__header_mobile__label" htmlFor="site__header_nav__toggle" onClick={toggleMenuState}>
+            <input
+                type="checkbox"
+                className="nav__header_mobile__checkbox"
+                id="site__header_nav__toggle"
+            />
+            <label
+                className="nav__header_mobile__label"
+                htmlFor="site__header_nav__toggle"
+                onClick={toggleMenuState}
+            >
                 <span className="nav__header_mobile__icon">
                     {renderMenuSpans()}
                 </span>
@@ -50,15 +66,24 @@ const NavMobile = ({ links }) => {
             <div className="nav__header_mobile__menu">
                 <Nav className="nav__header_mobile__navlist">
                     {links.map((link, index) => (
-                        <Nav.Item key={index} className="nav__header_mobile__navitem">
-                            <Nav.Link tag={Link} className="nav__header_mobile__navlink" href={link.path}>{link.name}</Nav.Link>
+                        <Nav.Item
+                            key={index}
+                            className="nav__header_mobile__navitem"
+                        >
+                            <Nav.Link
+                                tag={Link}
+                                className="nav__header_mobile__navlink"
+                                href={link.path}
+                            >
+                                {link.name}
+                            </Nav.Link>
                         </Nav.Item>
                     ))}
                 </Nav>
             </div>
         </div>
     );
-}
+};
 
 // Nav for footer menu
 // Parameters are title and array of links with their path and name
@@ -69,13 +94,19 @@ const NavFooterMenu = ({ title, links }) => {
             <Nav className="nav__footer_menu__navlist">
                 {links.map((link, index) => (
                     <Nav.Item key={index} className="nav__footer_menu__navitem">
-                        <Nav.Link tag={Link} className="nav__footer_menu__navlink" href={link.path}>{link.name}</Nav.Link>
+                        <Nav.Link
+                            tag={Link}
+                            className="nav__footer_menu__navlink"
+                            href={link.path}
+                        >
+                            {link.name}
+                        </Nav.Link>
                     </Nav.Item>
                 ))}
             </Nav>
         </>
     );
-}
+};
 
 // Nav for footer bottombar
 // Inputable array of links with path and name
@@ -84,13 +115,22 @@ const NavFooterBottombar = ({ links }) => {
         <div className="nav__footer_bottombar">
             <Nav className="nav__footer_bottombar__navlist">
                 {links.map((link, index) => (
-                    <Nav.Item key={index} className="nav__footer_bottombar__navitem">
-                        <Nav.Link tag={Link} className="nav__footer_bottombar__navlink" href={link.path}>{link.name}</Nav.Link>
+                    <Nav.Item
+                        key={index}
+                        className="nav__footer_bottombar__navitem"
+                    >
+                        <Nav.Link
+                            tag={Link}
+                            className="nav__footer_bottombar__navlink"
+                            href={link.path}
+                        >
+                            {link.name}
+                        </Nav.Link>
                     </Nav.Item>
                 ))}
             </Nav>
         </div>
     );
-}
+};
 
 export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar };
