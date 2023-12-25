@@ -5,7 +5,7 @@
     </picture>
 </a></p>
 
-This project is a React application scaffolded with Vite, providing a fast and efficient development environment. Below are the npm scripts available for managing various aspects of the project.
+[Project Accessibility][1] is a React application scaffolded with Vite, providing a fast and efficient development environment. Below are the npm scripts available for managing various aspects of the project.
 
 ## Available Scripts
 
@@ -20,7 +20,7 @@ or
 npm run dev
 ```
 
-Starts the development server using Vite. The application will be available at http://localhost:5000/, and it supports Hot Module Replacement (HMR) for real-time updates.
+Starts the development server using Vite. The application will be available at http://localhost:5000/, and it supports Hot Module Replacement (HMR) for real-time updates. For more details on Vite, refer to the [official Vite documentation][2].
 
 ### 2. Build for Production
 
@@ -44,7 +44,7 @@ Previews the production build locally. This is useful for testing the generated 
 npm run lint
 ```
 
-Uses ESLint to lint JavaScript and JSX files in the project. It automatically fixes fixable issues, reports unused directives, and allows a customizable number of warnings before failing the linting process.
+Uses ESLint to lint JavaScript and JSX files in the project. It automatically fixes fixable issues, reports unused directives, and allows a customizable number of warnings before failing the linting process. For ESLint configuration and rules, refer to the [official ESLint documentation][3].
 
 ### 5. Format Code
 
@@ -52,7 +52,7 @@ Uses ESLint to lint JavaScript and JSX files in the project. It automatically fi
 npm run format
 ```
 
-Formats JavaScript and JSX files in the `src` directory using Prettier. It automatically applies formatting changes.
+Formats JavaScript and JSX files in the `src` directory using Prettier. It automatically applies formatting changes. For Prettier configuration and options, refer to the [official Prettier documentation][4].
 
 ### 6. Check Code Formatting
 
@@ -61,3 +61,8 @@ npm run check
 ```
 
 Checks if there are any formatting issues in JavaScript and JSX files using Prettier. It reports issues but does not apply changes.
+
+[1]: https://clodsire.nl/
+[2]: https://vitejs.dev/
+[3]: https://eslint.org/docs/
+[4]: https://prettier.io/docs/en/
