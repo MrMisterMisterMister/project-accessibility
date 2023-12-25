@@ -14,7 +14,6 @@ import news from "./news.json";
 import cases from "./case.json";
 import contact from "./contact.json";
 
-// TODO components, pages, helper, etc
 const en = {
     header,
     footer,
