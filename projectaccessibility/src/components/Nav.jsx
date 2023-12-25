@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
 // Render hamburger menu for mobile menu
