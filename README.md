@@ -25,6 +25,6 @@ npm install
 
 Once the dependencies are installed, you can start the project using `npm start` or `npm run dev`. For more details about available scripts and customization options, refer to the [projectaccessibility README][3].
 
-[1]: https://clodsire.nl
-[2]: https://nodejs.org
+[1]: https://clodsire.nl/
+[2]: https://nodejs.org/en/
 [3]: https://github.com/MrMisterMisterMister/project-accessibility/blob/main/projectaccessibility/README.md
