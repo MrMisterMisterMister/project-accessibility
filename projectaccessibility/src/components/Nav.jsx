@@ -23,7 +23,6 @@ const NavDesktop = ({ links }) => {
                         key={index}
                         className="nav__header_desktop__navitem">
                         <Nav.Link
-                            tag={Link}
                             className="nav__header_desktop__navlink"
                             href={link.path}>
                             {link.name}
@@ -78,7 +77,6 @@ const NavMobile = ({ links }) => {
                             key={index}
                             className="nav__header_mobile__navitem">
                             <Nav.Link
-                                tag={Link}
                                 className="nav__header_mobile__navlink"
                                 href={link.path}>
                                 {link.name}
@@ -111,7 +109,6 @@ const NavFooterMenu = ({ title, links }) => {
                 {links.map((link, index) => (
                     <Nav.Item key={index} className="nav__footer_menu__navitem">
                         <Nav.Link
-                            tag={Link}
                             className="nav__footer_menu__navlink"
                             href={link.path}>
                             {link.name}
@@ -145,7 +142,6 @@ const NavFooterBottombar = ({ links }) => {
                         key={index}
                         className="nav__footer_bottombar__navitem">
                         <Nav.Link
-                            tag={Link}
                             className="nav__footer_bottombar__navlink"
                             href={link.path}>
                             {link.name}

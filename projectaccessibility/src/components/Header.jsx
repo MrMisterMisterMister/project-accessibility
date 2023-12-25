@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -37,7 +36,7 @@ const Header = () => {
     return (
         <header className="site__header">
             <Container className="site__header_container" fluid>
-                <Navbar.Brand tag={Link} href="/">
+                <Navbar.Brand href="/">
                     <img
                         src="img/brand/logo_black_text_light.png"
                         width="278"
