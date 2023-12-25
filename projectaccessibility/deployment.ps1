@@ -7,7 +7,7 @@ Write-Host "building app ..."
 npm run build
 
 Write-Host "deploying app ..."
-scp -r .\build\* ${deployUser}@142.93.135.187:/var/www/clodsire.nl/html
+scp -r .\dist\* ${deployUser}@142.93.135.187:/var/www/clodsire.nl/html
 
 Write-Host "Restarting Nginx on the server, requires SSSH key ..."
 ssh ${deployUser}@142.93.135.187 'sudo systemctl restart nginx'
