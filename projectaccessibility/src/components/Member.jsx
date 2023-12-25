@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import Shape from './Shape';
 import { GroupMember } from './Group';
@@ -17,7 +17,7 @@ const Member = () => {
                     {translate("member.members", { returnObjects: true }).map((member, index) => (
                         <GroupMember
                             key={index}
-                            img={require('../assets/img/placeholder.jpg')}
+                            img="src/assets/img/placeholder.jpg"
                             altText={translate(`member.members.${index}.altText`)}
                             name={translate(`member.members.${index}.name`)}
                             role={translate(`member.members.${index}.role`)}

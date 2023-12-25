@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { CardCase } from './Card';
 
@@ -16,7 +16,7 @@ const Case = () => {
                 {translate("case.cases", { returnObjects: true }).map((item, index) => (
                         <CardCase
                             key={index}
-                            img={require('../assets/img/placeholder.jpg')}
+                            img="src/assets/img/placeholder.jpg"
                             altText={translate(`case.cases.${index}.altText`)}
                             title={translate(`case.cases.${index}.title`)}
                             text={translate(`case.cases.${index}.description`)}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { NavFooterMenu, NavFooterBottombar } from './Nav';
 
@@ -62,7 +62,7 @@ const Footer = () => {
             <Container className="site__footer_container">
                 <div className="site__footer_menu">
                     <div className="site__footer_menu__logo">
-                        <img src={require("../assets/img/brand/logo.png")} width="124.5" height="150" alt="Logo" title="Project Accessibility" />
+                        <img src="src/assets/img/brand/logo.png" width="124.5" height="150" alt="Logo" title="Project Accessibility" />
                     </div>
                     {Object.keys(footerLinks).map((category, index) => (
                         <div key={index} className="site__footer_menu__column">

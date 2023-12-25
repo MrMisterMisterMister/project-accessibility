@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container } from 'reactstrap';
+import { Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { CardExpertise } from './Card';
 import { CodeSlash, ChatLeftDotsFill, BroadcastPin, Bookmark } from 'react-bootstrap-icons';
