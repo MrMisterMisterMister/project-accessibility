@@ -6,3 +6,12 @@
 </a></p>
 
 [1]: https://clodsire.nl
+
+### Installing dependencies
+
+1. Navigate to the 'projectaccessibility' directory.
+2. Run `npm install`to install the required dependencies:
+
+### Running the Project
+
+Once the dependencies are installed, start the project using 'npm start'.
