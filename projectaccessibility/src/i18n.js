@@ -15,11 +15,17 @@ i18n.use(initReactI18next)
                 translation: nl
             }
         },
-        lng: localStorage.getItem("language") || "nl",
         fallbackLng: "nl",
         detection: {
-            order: ["localStorage"],
-            caches: ["localStorage", "cookie"]
+            order: [
+                "localStorage", 
+                "navigator"
+            ],
+            caches: [
+                "localStorage", 
+                "cookie"
+            ],
+            lookupLocalStorage: "i18nextLng"
         },
         interpolation: {
             escapeValue: false
