@@ -20,7 +20,7 @@ const Case = () => {
                             altText={translate(`case.cases.${index}.altText`)}
                             title={translate(`case.cases.${index}.title`)}
                             text={translate(`case.cases.${index}.description`)}
-                            path="/"
+                            path="#"
                             linkText={translate(`case.cases.${index}.linkText`)}
                         />
                     ))}

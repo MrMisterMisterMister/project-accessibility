@@ -19,9 +19,9 @@ const NavDesktop = ({ links }) => {
         <div className="nav__header_desktop">
             <Nav className="nav__header_desktop__navlist">
                 {links.map((link, index) => (
-                    <NavItem key={index} className="nav__header_desktop__navitem">
-                        <NavLink tag={Link} className="nav__header_desktop__navlink" to={link.path}>{link.name}</NavLink>
-                    </NavItem>
+                    <Nav.Item key={index} className="nav__header_desktop__navitem">
+                        <Nav.Link tag={Link} className="nav__header_desktop__navlink" href={link.path}>{link.name}</Nav.Link>
+                    </Nav.Item>
                 ))}
             </Nav>
         </div>
@@ -50,9 +50,9 @@ const NavMobile = ({ links }) => {
             <div className="nav__header_mobile__menu">
                 <Nav className="nav__header_mobile__navlist">
                     {links.map((link, index) => (
-                        <NavItem key={index} className="nav__header_mobile__navitem">
-                            <NavLink tag={Link} className="nav__header_mobile__navlink" to={link.path}>{link.name}</NavLink>
-                        </NavItem>
+                        <Nav.Item key={index} className="nav__header_mobile__navitem">
+                            <Nav.Link tag={Link} className="nav__header_mobile__navlink" href={link.path}>{link.name}</Nav.Link>
+                        </Nav.Item>
                     ))}
                 </Nav>
             </div>
@@ -68,9 +68,9 @@ const NavFooterMenu = ({ title, links }) => {
             <h2 className="nav__footer_menu__title">{title}</h2>
             <Nav className="nav__footer_menu__navlist">
                 {links.map((link, index) => (
-                    <NavItem key={index} className="nav__footer_menu__navitem">
-                        <NavLink tag={Link} className="nav__footer_menu__navlink" to={link.path}>{link.name}</NavLink>
-                    </NavItem>
+                    <Nav.Item key={index} className="nav__footer_menu__navitem">
+                        <Nav.Link tag={Link} className="nav__footer_menu__navlink" href={link.path}>{link.name}</Nav.Link>
+                    </Nav.Item>
                 ))}
             </Nav>
         </>
@@ -84,9 +84,9 @@ const NavFooterBottombar = ({ links }) => {
         <div className="nav__footer_bottombar">
             <Nav className="nav__footer_bottombar__navlist">
                 {links.map((link, index) => (
-                    <NavItem key={index} className="nav__footer_bottombar__navitem">
-                        <NavLink tag={Link} className="nav__footer_bottombar__navlink" to={link.path}>{link.name}</NavLink>
-                    </NavItem>
+                    <Nav.Item key={index} className="nav__footer_bottombar__navitem">
+                        <Nav.Link tag={Link} className="nav__footer_bottombar__navlink" href={link.path}>{link.name}</Nav.Link>
+                    </Nav.Item>
                 ))}
             </Nav>
         </div>

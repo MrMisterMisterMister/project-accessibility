@@ -16,8 +16,8 @@ const Contact = () => {
                         <h2 className="contact__section_content__title">{translate("contact.title")}</h2>
                         <p className="contact__section_content__text">{translate("contact.description")}</p>
                         <div className="contact__section_content_button">
-                            <ButtonContact style="signup" path="/" text={translate("contact.buttons.signup")} />
-                            <ButtonContact style="login" path="/" text={translate("contact.buttons.signin")} />
+                            <ButtonContact style="signup" path="#" text={translate("contact.buttons.signup")} />
+                            <ButtonContact style="login" path="#" text={translate("contact.buttons.signin")} />
                         </div>
                     </div>
                 </div>

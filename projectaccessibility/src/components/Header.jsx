@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from "react";
-import { Container, NavbarBrand } from 'react-bootstrap';
+import { Container, Navbar } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { NavDesktop, NavMobile } from './Nav';
 import LanguageSwitcher from './LanguageSwitcher';
@@ -35,9 +35,9 @@ const Header = () => {
     return (
         <header className="site__header">
             <Container className="site__header_container" fluid>
-                <NavbarBrand tag={Link} to="/">
+                <Navbar.Brand tag={Link} href="/">
                     <img src="src/assets/img/brand/logo_black_text_light.png" width="278" height="60" alt="Logo" title="Project Accessibility" />
-                </NavbarBrand>
+                </Navbar.Brand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
                 <LanguageSwitcher language={language} handleChangeLanguage={handleChangeLanguage} /> {/* TODO FIX STYLING AND POSITION */}

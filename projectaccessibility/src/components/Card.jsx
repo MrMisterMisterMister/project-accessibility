@@ -39,7 +39,7 @@ const CardCase = ({ img, altText, title, text, path, linkText }) => (
         <div className="card__case_content">
             <h3 className="card__case_content__title">{title}</h3>
             <p className="card__case_content__text">{text}</p>
-            <Link className="card__case_content__link" to={path}>{linkText}</Link>
+            <Link className="card__case_content__link" href={path}>{linkText}</Link>
         </div>
 
     </div>

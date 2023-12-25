@@ -32,7 +32,7 @@ const ButtonHero = ({ text }) => {
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Link className={`button__contact ${style}`} role="button" to={path}>
+        <Link className={`button__contact ${style}`} role="button" href={path}>
             {text}
         </Link>
     );
