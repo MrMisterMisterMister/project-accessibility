@@ -13,7 +13,7 @@ const Header = () => {
     // Initialize state
     // Default NL
     const [language, setLanguage] = useState(
-        localStorage.getItem("language") || "nl",
+        localStorage.getItem("language") || "nl"
     );
 
     // Language change
@@ -31,7 +31,7 @@ const Header = () => {
         { name: translate("header.menu.news"), path: "/actueel" },
         { name: translate("header.menu.contact"), path: "/contact" },
         { name: translate("header.menu.signup"), path: "/signup" },
-        { name: translate("header.menu.signin"), path: "/login" },
+        { name: translate("header.menu.signin"), path: "/login" }
     ];
 
     return (

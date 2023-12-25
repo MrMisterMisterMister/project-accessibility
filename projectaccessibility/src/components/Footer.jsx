@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { NavFooterMenu, NavFooterBottombar } from "./Nav";
 
 // Footer copyright
-function FooterCopyright({ title }) {
+function FooterCopyright ({ title }) {
     return (
         <span className="site__footer_copyright">
             &copy; {new Date().getFullYear()} {title}
@@ -25,57 +25,57 @@ const Footer = () => {
                 { name: translate("footer.menu.goto.links.home"), path: "/" },
                 {
                     name: translate("footer.menu.goto.links.about"),
-                    path: "/over-ons",
+                    path: "/over-ons"
                 },
                 {
                     name: translate("footer.menu.goto.links.expertise"),
-                    path: "/expertise",
+                    path: "/expertise"
                 },
                 {
                     name: translate("footer.menu.goto.links.news"),
-                    path: "/actueel",
+                    path: "/actueel"
                 },
                 {
                     name: translate("footer.menu.goto.links.contact"),
-                    path: "/contact",
-                },
-            ],
+                    path: "/contact"
+                }
+            ]
         },
-        //TODO put in translation.json
+        // TODO put in translation.json
         expertise: {
             title: "Expertise",
             links: [
                 { name: "Lorem ipsum", path: "/" },
                 { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" },
-            ],
+                { name: "Lorem ipsum", path: "/" }
+            ]
         },
-        //TODO put in translation.json
+        // TODO put in translation.json
         tools: {
             title: "Tools",
             links: [
                 { name: "Lorem ipsum", path: "/" },
                 { name: "Lorem ipsum", path: "/" },
                 { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" },
-            ],
-        },
+                { name: "Lorem ipsum", path: "/" }
+            ]
+        }
     };
 
     // FooterBottombar links
     const generalLinks = [
         {
             name: translate("footer.menu.bottombar.links.sitemap"),
-            path: "/sitemap",
+            path: "/sitemap"
         },
         {
             name: translate("footer.menu.bottombar.links.privacypolicy"),
-            path: "/privacy-policy",
+            path: "/privacy-policy"
         },
         {
             name: translate("footer.menu.bottombar.links.cookies"),
-            path: "/cookies",
-        },
+            path: "/cookies"
+        }
     ];
 
     return (

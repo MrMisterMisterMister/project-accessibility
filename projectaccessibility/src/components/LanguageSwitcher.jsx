@@ -5,7 +5,7 @@ const LanguageSwitcher = ({ language, handleChangeLanguage }) => {
     // Languages
     const languages = [
         { name: "Nederlands", code: "nl" },
-        { name: "English", code: "en" },
+        { name: "English", code: "en" }
         // CAN BE EXPANDED
     ];
 

@@ -4,24 +4,26 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import en from "./lang/en";
 import nl from "./lang/nl";
 
-i18n.use(initReactI18next).use(LanguageDetector).init({
-    resources: {
-        en: {
-            translation: en,
+i18n.use(initReactI18next)
+    .use(LanguageDetector)
+    .init({
+        resources: {
+            en: {
+                translation: en
+            },
+            nl: {
+                translation: nl
+            }
         },
-        nl: {
-            translation: nl,
+        lng: localStorage.getItem("language") || "nl",
+        fallbackLng: "nl",
+        detection: {
+            order: ["localStorage"],
+            caches: ["localStorage", "cookie"]
         },
-    },
-    lng: localStorage.getItem("language") || "nl",
-    fallbackLng: "nl",
-    detection: {
-        order: ["localStorage"],
-        caches: ["localStorage", "cookie"],
-    },
-    interpolation: {
-        escapeValue: false,
-    },
-});
+        interpolation: {
+            escapeValue: false
+        }
+    });
 
 export default i18n;

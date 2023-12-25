@@ -21,18 +21,18 @@ const Case = () => {
                                 key={index}
                                 img="src/assets/img/placeholder.jpg"
                                 altText={translate(
-                                    `case.cases.${index}.altText`,
+                                    `case.cases.${index}.altText`
                                 )}
                                 title={translate(`case.cases.${index}.title`)}
                                 text={translate(
-                                    `case.cases.${index}.description`,
+                                    `case.cases.${index}.description`
                                 )}
                                 path="#"
                                 linkText={translate(
-                                    `case.cases.${index}.linkText`,
+                                    `case.cases.${index}.linkText`
                                 )}
                             />
-                        ),
+                        )
                     )}
                 </div>
             </Container>

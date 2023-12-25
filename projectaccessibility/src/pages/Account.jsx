@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 
 export class Account extends Component {
-    render() {
+    render () {
         return (
-            <div class="account_settings">
+            <div className="account_settings">
                 <h1>Account instellingen</h1> <br></br>
                 <p>Voornaam</p>
                 <input type="text"></input>

@@ -5,8 +5,8 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-//TODO FIX ROUTING
-function App() {
+// TODO FIX ROUTING
+function App () {
     return (
         <Router>
             <Header />

@@ -14,18 +14,18 @@ import news from "./news.json";
 import cases from "./case.json";
 import contact from "./contact.json";
 
-//TODO components, pages, helper, etc
+// TODO components, pages, helper, etc
 const en = {
-    header: header,
-    footer: footer,
-    hero: hero,
-    expertise: expertise,
-    member: member,
-    news: news,
+    header,
+    footer,
+    hero,
+    expertise,
+    member,
+    news,
     case: cases,
-    contact: contact,
-    privacypolicy: privacypolicy,
-    cookies: cookies,
+    contact,
+    privacypolicy,
+    cookies
 };
 
 export default en;

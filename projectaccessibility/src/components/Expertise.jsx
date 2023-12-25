@@ -6,7 +6,7 @@ import {
     CodeSlash,
     ChatLeftDotsFill,
     BroadcastPin,
-    Bookmark,
+    Bookmark
 } from "react-bootstrap-icons";
 
 // Expertise componenent
@@ -16,10 +16,10 @@ const Expertise = () => {
 
     // Icons
     const iconMap = [
-        <CodeSlash />,
-        <ChatLeftDotsFill />,
-        <BroadcastPin />,
-        <Bookmark />,
+        <CodeSlash key="code-slash" />,
+        <ChatLeftDotsFill key="chat-left-dots" />,
+        <BroadcastPin key="broadcast-pin" />,
+        <Bookmark key="bookmark" />
     ];
 
     return (
@@ -35,13 +35,13 @@ const Expertise = () => {
                                 key={index}
                                 icon={iconMap[index]}
                                 title={translate(
-                                    `expertise.cards.${index}.title`,
+                                    `expertise.cards.${index}.title`
                                 )}
                                 text={translate(
-                                    `expertise.cards.${index}.text`,
+                                    `expertise.cards.${index}.text`
                                 )}
                             />
-                        ),
+                        )
                     )}
                 </div>
             </Container>

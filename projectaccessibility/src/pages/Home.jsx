@@ -7,7 +7,7 @@ import Case from "../components/Case";
 import Contact from "../components/Contact";
 
 export class Home extends Component {
-    render() {
+    render () {
         return (
             <>
                 <Hero />

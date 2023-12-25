@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Nav, NavItem, NavLink } from "react-bootstrap";
+import { Nav } from "react-bootstrap";
 
 // Render hamburger menu for mobile menu
 const renderMenuSpans = () => {
-    let spans = [];
+    const spans = [];
     for (let i = 0; i < 6; i++) {
         spans.push(<span key={i} className="nav__header_mobile__span" />);
     }
@@ -20,13 +20,11 @@ const NavDesktop = ({ links }) => {
                 {links.map((link, index) => (
                     <Nav.Item
                         key={index}
-                        className="nav__header_desktop__navitem"
-                    >
+                        className="nav__header_desktop__navitem">
                         <Nav.Link
                             tag={Link}
                             className="nav__header_desktop__navlink"
-                            href={link.path}
-                        >
+                            href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -56,8 +54,7 @@ const NavMobile = ({ links }) => {
             <label
                 className="nav__header_mobile__label"
                 htmlFor="site__header_nav__toggle"
-                onClick={toggleMenuState}
-            >
+                onClick={toggleMenuState}>
                 <span className="nav__header_mobile__icon">
                     {renderMenuSpans()}
                 </span>
@@ -68,13 +65,11 @@ const NavMobile = ({ links }) => {
                     {links.map((link, index) => (
                         <Nav.Item
                             key={index}
-                            className="nav__header_mobile__navitem"
-                        >
+                            className="nav__header_mobile__navitem">
                             <Nav.Link
                                 tag={Link}
                                 className="nav__header_mobile__navlink"
-                                href={link.path}
-                            >
+                                href={link.path}>
                                 {link.name}
                             </Nav.Link>
                         </Nav.Item>
@@ -97,8 +92,7 @@ const NavFooterMenu = ({ title, links }) => {
                         <Nav.Link
                             tag={Link}
                             className="nav__footer_menu__navlink"
-                            href={link.path}
-                        >
+                            href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -117,13 +111,11 @@ const NavFooterBottombar = ({ links }) => {
                 {links.map((link, index) => (
                     <Nav.Item
                         key={index}
-                        className="nav__footer_bottombar__navitem"
-                    >
+                        className="nav__footer_bottombar__navitem">
                         <Nav.Link
                             tag={Link}
                             className="nav__footer_bottombar__navlink"
-                            href={link.path}
-                        >
+                            href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>

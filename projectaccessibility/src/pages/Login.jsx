@@ -1,12 +1,12 @@
-﻿import React, { Component } from "react";
+import React, { Component } from "react";
 
 export class Login extends Component {
-    constructor(props) {
+    constructor (props) {
         super(props);
         this.state = {
             username: "",
             password: "",
-            loginMessage: "", // Add a state for login message
+            loginMessage: "" // Add a state for login message
         };
     }
 
@@ -14,7 +14,7 @@ export class Login extends Component {
         const { name, value } = event.target;
         this.setState({
             [name]: value,
-            loginMessage: "", // Reset login message when input changes
+            loginMessage: "" // Reset login message when input changes
         });
     };
 
@@ -24,9 +24,9 @@ export class Login extends Component {
             const response = await fetch("/login", {
                 method: "POST",
                 headers: {
-                    "Content-Type": "application/json",
+                    "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username, password })
             });
 
             if (response.ok) {
@@ -41,7 +41,7 @@ export class Login extends Component {
         }
     };
 
-    render() {
+    render () {
         return (
             <div>
                 <h1>Inloggen</h1>

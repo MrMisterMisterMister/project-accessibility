@@ -21,17 +21,17 @@ const News = () => {
                                 key={index}
                                 img="src/assets/img/placeholder.jpg"
                                 altText={translate(
-                                    `news.articles.${index}.altText`,
+                                    `news.articles.${index}.altText`
                                 )}
                                 date={translate(`news.articles.${index}.date`)}
                                 title={translate(
-                                    `news.articles.${index}.title`,
+                                    `news.articles.${index}.title`
                                 )}
                                 text={translate(
-                                    `news.articles.${index}.description`,
+                                    `news.articles.${index}.description`
                                 )}
                             />
-                        ),
+                        )
                     )}
                 </div>
             </Container>

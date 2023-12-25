@@ -22,12 +22,12 @@ const Member = () => {
                                 key={index}
                                 img="src/assets/img/placeholder.jpg"
                                 altText={translate(
-                                    `member.members.${index}.altText`,
+                                    `member.members.${index}.altText`
                                 )}
                                 name={translate(`member.members.${index}.name`)}
                                 role={translate(`member.members.${index}.role`)}
                             />
-                        ),
+                        )
                     )}
                 </div>
             </Container>
