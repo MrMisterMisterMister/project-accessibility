@@ -71,6 +71,7 @@
     display: flex;
     flex: 2 auto;
     align-items: center;
+    position: relative;
 
     @include mixins.xl {
         display: none;
@@ -195,9 +196,6 @@
 
     .nav__header_mobile__background {
         position: absolute;
-        width: 45px;
-        height: 45px;
-        border-radius: 50%;
         background-image: linear-gradient(to right bottom, variables.$blackrussian, variables.$sapphire);
         z-index: 10;
         transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -205,6 +203,7 @@
     }
 
     .nav__header_mobile__menu {
+        background-image: linear-gradient(to right bottom, variables.$blackrussian, variables.$sapphire);
         position: fixed;
         top: 0;
         left: 0;
@@ -216,10 +215,12 @@
         opacity: 0;
         transition: opacity 0.8s ease-in, transform 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
         overflow-y: scroll;
+        overflow-x: hidden;
 
         .nav__header_mobile__navlist {
             text-align: center;
             list-style: none;
+            max-width: 100vw;
 
             .nav__header_mobile__navitem {
                 width: 100%;
