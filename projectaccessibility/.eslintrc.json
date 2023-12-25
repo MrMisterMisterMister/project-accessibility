@@ -26,7 +26,6 @@
     },
     "rules": {
         "react/react-in-jsx-scope": "off",
-        "react/prop-types": "off", //TODO Temporary, too lazy to fix problems for now, line will be removed later
         "semi": [
             "error",
             "always"

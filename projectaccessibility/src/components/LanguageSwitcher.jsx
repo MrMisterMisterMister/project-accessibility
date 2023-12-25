@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Language switcher component
 const LanguageSwitcher = ({ language, handleChangeLanguage }) => {
@@ -21,6 +22,12 @@ const LanguageSwitcher = ({ language, handleChangeLanguage }) => {
             </select>
         </div>
     );
+};
+
+// Prop type for languageswitcher
+LanguageSwitcher.propTypes = {
+    language: PropTypes.string.isRequired,
+    handleChangeLanguage: PropTypes.func.isRequired
 };
 
 export default LanguageSwitcher;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 // Create a group of members to be used on the homepage
 // Image path needs to be the base to work
@@ -13,6 +14,14 @@ const GroupMember = ({ img, altText, name, role }) => {
             </div>
         </div>
     );
+};
+
+// Prop type for groupmember
+GroupMember.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired
 };
 
 export { GroupMember };

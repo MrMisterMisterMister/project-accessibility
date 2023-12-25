@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { NavFooterMenu, NavFooterBottombar } from "./Nav";
@@ -11,6 +12,11 @@ function FooterCopyright ({ title }) {
         </span>
     );
 }
+
+// Prop type for footercopyright
+FooterCopyright.propTypes = {
+    title: PropTypes.string.isRequired
+};
 
 // Footer component
 const Footer = () => {
@@ -45,19 +51,19 @@ const Footer = () => {
         expertise: {
             title: "Expertise",
             links: [
-                { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" }
+                { name: "Lorem ipsum", path: "#" },
+                { name: "Lorem ipsum", path: "#" },
+                { name: "Lorem ipsum", path: "#" }
             ]
         },
         // TODO put in translation.json
         tools: {
             title: "Tools",
             links: [
-                { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" },
-                { name: "Lorem ipsum", path: "/" }
+                { name: "Lorem ipsum", path: "#" },
+                { name: "Lorem ipsum", path: "#" },
+                { name: "Lorem ipsum", path: "#" },
+                { name: "Lorem ipsum", path: "#" }
             ]
         }
     };

@@ -51,8 +51,7 @@ const Header = () => {
                 <LanguageSwitcher
                     language={language}
                     handleChangeLanguage={handleChangeLanguage}
-                />{" "}
-                {/* TODO FIX STYLING AND POSITION */}
+                />
             </Container>
         </header>
     );

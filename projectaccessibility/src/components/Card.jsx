@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 // Expertise cards for the homepage
@@ -12,6 +13,13 @@ const CardExpertise = ({ icon, title, text }) => {
             <p className="card__expertise_text">{text}</p>
         </div>
     );
+};
+
+// Prop type for cardexpertise
+CardExpertise.propTypes = {
+    icon: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
 };
 
 // News article
@@ -28,6 +36,15 @@ const CardNews = ({ img, altText, date, title, text }) => (
         </div>
     </div>
 );
+
+// Prop type for cardnews
+CardNews.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
 
 // Case in card components homepage
 // Path for case
@@ -48,5 +65,15 @@ const CardCase = ({ img, altText, title, text, path, linkText }) => (
         </div>
     </div>
 );
+
+// Prop type for cardcase
+CardCase.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    linkText: PropTypes.string.isRequired
+};
 
 export { CardExpertise, CardNews, CardCase };

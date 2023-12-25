@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Nav } from "react-bootstrap";
 
@@ -32,6 +33,16 @@ const NavDesktop = ({ links }) => {
             </Nav>
         </div>
     );
+};
+
+// Prop types for navdesktop
+NavDesktop.propTypes = {
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        })
+    ).isRequired
 };
 
 // Nav for mobile
@@ -80,6 +91,16 @@ const NavMobile = ({ links }) => {
     );
 };
 
+// Prop types for navmobile
+NavMobile.propTypes = {
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
+
 // Nav for footer menu
 // Parameters are title and array of links with their path and name
 const NavFooterMenu = ({ title, links }) => {
@@ -100,6 +121,17 @@ const NavFooterMenu = ({ title, links }) => {
             </Nav>
         </>
     );
+};
+
+// Prop types for navfootermenu
+NavFooterMenu.propTypes = {
+    title: PropTypes.string.isRequired,
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        })
+    ).isRequired
 };
 
 // Nav for footer bottombar
@@ -123,6 +155,16 @@ const NavFooterBottombar = ({ links }) => {
             </Nav>
         </div>
     );
+};
+
+// Prop types for navfooterbottombar
+NavFooterBottombar.propTypes = {
+    links: PropTypes.arrayOf(
+        PropTypes.shape({
+            path: PropTypes.string.isRequired,
+            name: PropTypes.string.isRequired
+        })
+    ).isRequired
 };
 
 export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar };

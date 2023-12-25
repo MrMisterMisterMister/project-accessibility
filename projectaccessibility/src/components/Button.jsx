@@ -1,3 +1,5 @@
+import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
@@ -23,6 +25,11 @@ const ButtonHero = ({ text }) => {
     );
 };
 
+// Prop type for ButtonHero
+ButtonHero.propTypes = {
+    text: PropTypes.string.isRequired
+};
+
 // Button for contact section on home
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
@@ -31,6 +38,13 @@ const ButtonContact = ({ style, path, text }) => {
             {text}
         </Link>
     );
+};
+
+// Prop type for ButtonContact
+ButtonContact.propTypes = {
+    style: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
 };
 
 export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact };
