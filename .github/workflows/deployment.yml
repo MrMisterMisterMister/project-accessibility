@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: ./ClientApp
+        working-directory: ./projectaccessibility
 
     steps:
     - name: Checkout repository
@@ -20,7 +20,7 @@ jobs:
       with:
         node-version: '20.x'
         cache: 'npm'
-        cache-dependency-path: ClientApp/package-lock.json
+        cache-dependency-path: projectaccessibility/package-lock.json
 
     - name: Install dependencies
       run: npm install
@@ -28,8 +28,7 @@ jobs:
     - name: Start SSH agent
       uses: webfactory/ssh-agent@v0.8.0
       with:
-          ssh-private-key: |
-                ${{ secrets.SSH_PRIVATE_KEY_CLODSIRE }}
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY_CLODSIRE }}
 
     - name: Run deployment script
       run: bash ./deployment.sh ${{ secrets.DEPLOY_USER }}

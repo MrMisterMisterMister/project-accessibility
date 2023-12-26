@@ -1,0 +1,21 @@
+{
+    "menu": {
+        "goto": {
+            "title": "Go to",
+            "links": {
+                "home": "Home",
+                "about": "About us",
+                "expertise": "Expertise",
+                "news": "News",
+                "contact": "Contact"
+            }
+        },
+        "bottombar": {
+            "links": {
+                "sitemap": "Sitemap",
+                "privacypolicy": "Privacy Policy",
+                "cookies": "Cookies"
+            }
+        }
+    }
+}

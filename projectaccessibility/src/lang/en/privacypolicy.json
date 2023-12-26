@@ -1,0 +1,110 @@
+{
+    "pageTitle": "Privacy Policy",
+    "lastModified": "Last modified: November 10, 2023.",
+    "intro": [
+        "Project Accessibility cares deeply about your privacy. Therefore, we only process data that is necessary for (improving) our services and handle carefully the information we have collected about you and your use of our services. We never make your data available to third parties for commercial purposes.",
+        "This privacy policy applies to the use of the website and the services provided by Project Accessibility. The effective date of these terms is November 10, 2023. The validity of all previous versions expires with the publication of a new version. This privacy policy describes the data we collect about you, how we use this data, and under what conditions we may share this data with third parties. We also explain how we store your data, how we protect it against misuse, and what rights you have regarding the personal data you provide to us.",
+        "If you have any questions about our privacy policy, you can contact our privacy-related contact person. Contact details can be found at the end of the privacy policy."
+    ],
+    "collectedData": {
+        "title": "Collected Data",
+        "description": "For our purposes, we only collect strictly necessary data from you. This data is essential for us to provide you with the best possible service. However, we always keep your rights and privacy in mind and, therefore, never collect more data from you than is necessary.",
+        "personalData": {
+            "title": "Personal Data",
+            "content": "This includes data such as your name, date of birth, gender, and nationality. For example, when you register for an account on our website, we usually ask for your name and date of birth. Additionally, we collect contact information: your email address and phone number. This is used, for instance, to provide information about your account or for important notifications via email or phone number. We take the security of your data very seriously, ensuring that your data is always securely protected. To achieve this, we use authentication and authorization, allowing you access to your data while preventing unauthorized access. Finally, your data is encrypted in our system, making it more difficult for unauthorized individuals to retrieve your data."
+        },
+        "medicalData": {
+            "title": "Medical Data",
+            "content": "We only collect information about the limitations experienced by experts in the field of medical data. This information helps in assigning the most suitable experts for a study. We only store the limitation(s) of an expert. We do this to limit the amount of sensitive medical data, as we value respecting the privacy of individuals. The collected limitations can be grouped as follows:",
+            "list": [
+                "Physical limitation - This can range from mobility issues such as difficulty walking or using a wheelchair to physical challenges like missing a limb.",
+                "Intellectual limitation - This may relate to conditions such as Down syndrome or other conditions that affect or limit cognitive development.",
+                "Cognitive limitation - This can range from learning disabilities such as dyslexia to neurological conditions such as ADHD or autism.",
+                "Sensory limitation - This may relate to problems with any of the senses, such as visual impairment or deafness."
+            ]
+        },
+        "companyData": {
+            "title": "Company Data",
+            "content": "Company data pertains to information related to business information. This includes data such as the location of the company, general information about the company, and clickstream data from the company. These are valuable and essential data of a company and, therefore, must be well-secured. To ensure the proper protection of this data, we use authentication and authorization, restricting access only to those authorized to access this data."
+        },
+        "researchData": {
+            "title": "Research Data",
+            "content": "This section pertains to research data collected by Stichting Accessibility. These data contain the results of studies conducted by experts. To ensure the integrity and confidentiality of this data, we have implemented strict security measures. One of the key measures is the use of encryption. By encrypting sensitive research data, we significantly reduce the risk of unauthorized access to the content of the data, even in the event of a data breach."
+        }
+    },
+    "purposeOfDataProcessing": {
+        "title": "Purpose of Data Processing",
+        "intro": [
+            "To enhance user experience, we process data from you. We require this data to provide a comfortable and seamless experience for users. For example, to offer the best experience for users with disabilities, we need the necessary medical data to enhance their experience.",
+            "We emphasize that the extent to which data is processed always occurs with the utmost care and accuracy in accordance with applicable privacy laws. We strive for a user-friendly website coupled with the protection of your privacy and the security of your user information."
+        ],
+        "generalPurposeOfProcessing": {
+            "title": "General Purpose of Processing",
+            "content": "We use your data exclusively for the purpose of our services. This means that the processing always directly relates to the assignment you provide. We do not use your data for (targeted) marketing. If you share data with us and we use this data to contact you at a later time, other than at your request, we explicitly request your consent. Your data is not shared with third parties, except to comply with accounting and other administrative obligations. These third parties are all bound by confidentiality based on the agreement between them and us or an oath or legal obligation."
+        },
+        "automaticallyCollectedData": {
+            "title": "Automatically Collected Data",
+            "content": "Data automatically collected by our website is processed to further improve our services. This data (such as your IP address, web browser, and operating system) is not personal data."
+        },
+        "retentionPeriod": {
+            "title": "Retention Period",
+            "content": "We retain your data as long as you are a client of ours. This means that we keep your client profile until you indicate that you no longer wish to use our services. If you inform us of this, we will also consider it a request for forgetting. Based on applicable administrative obligations, we need to retain invoices with your (personal) data. We will store this data for as long as the applicable term runs. However, employees no longer have access to your client profile and documents created in response to your assignment."
+        }
+    },
+    "rights": {
+        "title": "Your Rights",
+        "description": "Under the applicable Dutch and European legislation, you, as the data subject, have certain rights regarding the personal data processed by or on behalf of us. We explain below what these rights are and how you can invoke them. In principle, to prevent abuse, we only send copies of your data to your email address already known to us. In case you wish to receive the data at a different email address or, for example, by mail, we will ask you to authenticate. We keep a record of handled requests, in the case of a forgetting request, we record anonymized data. All copies and excerpts of data will be provided in the machine-readable data format that we use within our systems. You always have the right to file a complaint with the Dutch Data Protection Authority if you suspect that we are using your personal data in the wrong way.",
+        "rightsList": {
+            "access": {
+                "title": "Right to Access",
+                "content": "You always have the right to access your data that we process and that relates to you or can be traced back to you. You can make a request to this effect to our contact person for privacy matters. You will receive a response to your request within 30 days. If your request is granted, we will send you a copy of all data to your email address known to us, with an overview of the processors who have these data, specifying the category under which we have stored this data."
+            },
+            "rectification": {
+                "title": "Right to Rectification",
+                "content": [
+                    "You always have the right to have the data we (let) process and that relates to your person or can be traced back to you adjusted. This can be, for example, in the case of incorrect or incomplete personal data about you. You can make a request to this effect to our contact person for privacy matters. You will receive a response to your request within 30 days.",
+                    "If there are multiple requests from the user, we may have a maximum of three months to process this. However, we must make it clear that the processing of requests will take longer. If your request is granted, we will send you a confirmation to the email address known to us that the data has been adjusted."
+                ]
+            },
+            "restriction": {
+                "title": "Right to Restriction of Processing",
+                "content": "You always have the right to limit the data we (let) process that relates to your person or can be traced back to you. You can make a request to this effect to our contact person for privacy matters. You will receive a response to your request within 30 days. If your request is approved, we will send you a confirmation to the email address known to us that the processing of your data has been stopped until you lift the restriction."
+            },
+            "portability": {
+                "title": "Right to Data Portability",
+                "content": "You always have the right to have the data we (let) process and that relates to your person or can be traced back to you carried out by another party. You can make a request to this effect to our contact person for privacy matters. You will receive a response to your request within 30 days. If your request is granted, we will send you copies or excerpts of all data about you that we have processed or that have been processed by other processors or third parties on our behalf. In all likelihood, we cannot continue the service in such a case, as the secure linking of data files can no longer be guaranteed."
+            },
+            "forgetfulness": {
+                "title": "Right to Erasure",
+                "content": "You always have the right to have the data we (let) process and that relates to your person or can be traced back to you forgotten or deleted. When you make such a request, we ensure that all personal information we have collected about you is immediately anonymized or deleted, in accordance with our conditions. To process your request, we must be able to identify you. This is to ensure that the request is made by the right person and not by a third party without permission. You can make a request to this effect to our contact person for privacy matters. You will receive a response to your request within 30 days. If your request is granted, we will send you a confirmation to the email address known to us that the data has been completely anonymized or deleted in our system."
+            },
+            "objection": {
+                "title": "Right to Object and Other Rights",
+                "content": "In certain cases, you have the right to object to the processing of your personal data by or on behalf of Project Accessibility. If you object, we will immediately cease processing the data pending the resolution of your objection. If your objection is justified, we will provide you with copies and/or excerpts of data that we (let) process, and then permanently cease processing. You also have the right not to be subject to automated individual decision-making or profiling. We do not process your data in such a way that this right applies. If you believe that it does, please contact our contact person for privacy matters."
+            }
+        }
+    },
+    "cookies": {
+        "title": "Cookies",
+        "intro": [
+            "Cookies are defined as small text files placed on your computer's hard drive by your web browser when you visit a website. They enable data collected on one web page to be stored until needed later, allowing a website to provide you with a personalized experience and the website owner to gather statistics on how you use the website for improvement. Some cookies may last for a specific time, such as one day or until you close your browser, while others remain indefinitely. Your web browser should allow you to delete any cookies you choose. It should also allow you to prevent or limit their use.",
+            "Project Accessibility may use cookies from time to time. They may be placed by third-party software whose services Project Accessibility uses to enhance your experience on the website.",
+            "When you first visit the website, you may need to confirm whether you want Project Accessibility to use cookies. If you choose not to accept them, Project Accessibility will not use them during your visit, except to record that you have not consented to their use for any other purpose. However, please note that if you choose not to use cookies or prevent their use through your browser settings, you may not be able to use all the functionalities on the website.",
+            "Project Accessibility may use cookies for the following purposes:"
+        ],
+        "purpose": {
+            "authenticationStatus": "Authentication and status - Project Accessibility uses cookies to identify you when you visit the website and while you navigate through the pages of the website;",
+            "personalization": "Personalization - Project Accessibility uses cookies to store information about your preferences while you navigate the website;",
+            "security": "Security - Project Accessibility uses cookies as part of the security measures employed to protect the website and services; and",
+            "analysis": "Analysis - Project Accessibility uses cookies to analyze the usage and performance of the website and services."
+        }
+    },
+    "privacyPolicyChanges": {
+        "title": "Changes to the Privacy Policy",
+        "content": "We reserve the right to change our privacy policy at any time. However, you will always find the most recent version on this page. If the new privacy policy affects how we process data already collected about you, we will notify you by email."
+    },
+    "contactDetails": {
+        "title": "Contact Details",
+        "content": "If you have any questions or concerns about privacy when using our website, please send us a detailed message to info@clodsire.nl, and Project Accessibility will do its utmost to address your concerns."
+    }
+}

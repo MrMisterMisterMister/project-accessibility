@@ -1,0 +1,38 @@
+@use 'variables';
+@use 'mixins';
+
+.hero__section {
+    background-color: variables.$blackrussian;
+    color: variables.$sapphire;
+    min-height: 550px;
+    display: flex;
+    text-align: left;
+    padding-top: 100px;
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+
+    .hero__section_container {
+        position: relative;
+
+        .hero__section_wrapper {
+            @include mixins.lg {
+                width: 45%;
+            }
+
+            .hero__section_title {
+                color: variables.$white;
+                font-size: 3em;
+                padding-bottom: 10px;
+                line-height: 1.2;
+            }
+
+            .hero__section_text {
+                font-size: 1.125em;
+                font-weight: 300;
+                color: variables.$white;
+                padding-bottom: 15px;
+            }
+        }
+    }
+}
