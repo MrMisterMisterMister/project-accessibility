@@ -60,7 +60,9 @@
 }
 
 // login form
-.form__login {}
+.form__login {
+    position: relative;
+}
 
 // register form
 .form__signup {

@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 // Primary button. To be made
@@ -14,9 +13,9 @@ const ButtonSecondary = () => {
 };
 
 // Custom hero button on hero section
-const ButtonHero = ({ text }) => {
+const ButtonHero = ({ text, path }) => {
     return (
-        <Button className="button__hero" role="button">
+        <Button className="button__hero" type="button" href={path}>
             <span className="circle" aria-hidden="true">
                 <span className="icon arrow" />
             </span>
@@ -27,14 +26,15 @@ const ButtonHero = ({ text }) => {
 
 // Prop type for ButtonHero
 ButtonHero.propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired
 };
 
 // Button for contact section on home
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Button className={`button__contact ${style}`} role="button" href={path}>
+        <Button className={`button__contact ${style}`} type="button" href={path}>
             {text}
         </Button>
     );
