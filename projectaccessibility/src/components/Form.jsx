@@ -24,7 +24,10 @@ const FormLogin = () => {
             <Form.Control className="form__text_field" type="email" name="" placeholder={translate("login.form.emailPlaceholder")} required />
             <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
             <Form.Control className="form__text_field" type="password" name="" placeholder={translate("login.form.passwordPlaceholder")} required />
-            <Form.Check className="" type="checkbox" name="" label={translate("login.form.checkbox")} />
+            <div className="form__login_option">
+                <Form.Check.Input className="form__login_option__checkbox" type="checkbox" name="" />
+                <Form.Check.Label className="form__login_option__label">{translate("login.form.checkbox")}</Form.Check.Label>
+            </div>
             <ButtonLogin text={translate("login.form.button")} />
         </Form>
     );
