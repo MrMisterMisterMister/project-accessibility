@@ -18,7 +18,7 @@
 
         .signup__page_side_banner {
             display: none;
-            background: url("img/placeholder.jpg") center/cover, variables.$royalblue;
+            background: url("/img/placeholder.jpg") center/cover, variables.$royalblue;
 
             @include mixins.lg {
                 display: block;
