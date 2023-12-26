@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import axios from "axios";
 import { ButtonSignup, ButtonLogin } from "../components/Button";
 
 // Login form component used for login page
@@ -12,6 +13,37 @@ const FormLogin = () => {
     // Translation
     const { t: translate } = useTranslation();
 
+    // Create a state to save the form data
+    // that will be used later for the post
+    // const [formLoginData, setFormLoginData] = useState({
+    //     email: "",
+    //     password: "",
+    //     remember: false // default value
+    // });
+
+    // function that triggers after submit button is pressed
+    // for now it's just to see what's the data inside
+    // the actual post method with axios will be done in a seperate component
+    // so it's more organized
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        // see what's inside e
+        console.log(e);
+
+        // create new FormData object for the target
+        const dd = new FormData(e.target);
+
+        // loop object and save data
+        const data = {};
+        dd.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // print
+        console.log("Data:", data);
+    };
+
     // TODO make it working
     // this will need to post to api.clodsire.nl
     // then needs to get something to return
@@ -19,13 +51,13 @@ const FormLogin = () => {
     // redirect to correct page if Ok()
     // also somehow assign the proper User type between Panelmember and company
     return (
-        <Form className="form__login" acceptCharset="UTF-8" method="post">
+        <Form className="form__login" acceptCharset="UTF-8" method="post" onSubmit={handleSubmit}>
             <Form.Label className="form__label">{translate("login.form.email")}</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="" placeholder={translate("login.form.emailPlaceholder")} required />
+            <Form.Control className="form__text_field" type="email" name="email" placeholder={translate("login.form.emailPlaceholder")} required />
             <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("login.form.passwordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" name="password" placeholder={translate("login.form.passwordPlaceholder")} required />
             <div className="form__login_option">
-                <Form.Check.Input className="form__login_option__checkbox" type="checkbox" name="" />
+                <Form.Check.Input className="form__login_option__checkbox" type="checkbox" name="remember" />
                 <Form.Check.Label className="form__login_option__label">{translate("login.form.checkbox")}</Form.Check.Label>
             </div>
             <ButtonLogin text={translate("login.form.button")} />
