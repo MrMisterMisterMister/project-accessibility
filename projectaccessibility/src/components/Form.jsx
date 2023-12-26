@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { ButtonSignup } from "../components/Button";
+import { ButtonSignup, ButtonLogin } from "../components/Button";
 
 // Login form component used for login page
 // This form will make a post method to the api server
@@ -9,10 +9,24 @@ import { ButtonSignup } from "../components/Button";
 // Afterwards need to determine if login is succesful
 // Cookies and/or sessions will also need to be made
 const FormLogin = () => {
-    // TODO fix
+    // Translation
+    const { t: translate } = useTranslation();
+
+    // TODO make it working
+    // this will need to post to api.clodsire.nl
+    // then needs to get something to return
+    // display error if needed
+    // redirect to correct page if Ok()
+    // also somehow assign the proper User type between Panelmember and company
     return (
-        <div className="form__login">
-        </div>
+        <Form className="form__login" acceptCharset="UTF-8" method="post">
+            <Form.Label className="form__label">{translate("login.form.email")}</Form.Label>
+            <Form.Control className="form__text_field" type="email" name="" placeholder={translate("login.form.emailPlaceholder")} required />
+            <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("login.form.passwordPlaceholder")} required />
+            <Form.Check className="" type="checkbox" name="" label={translate("login.form.checkbox")} />
+            <ButtonLogin text={translate("login.form.button")} />
+        </Form>
     );
 };
 

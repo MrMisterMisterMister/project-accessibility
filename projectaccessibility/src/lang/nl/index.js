@@ -4,6 +4,7 @@ import footer from "./footer.json";
 
 // Pages
 import signup from "./signup.json";
+import login from "./login.json";
 import privacypolicy from "./privacypolicy.json";
 import cookies from "./cookies.json";
 
@@ -25,6 +26,7 @@ const nl = {
     case: cases,
     contact,
     signup,
+    login,
     privacypolicy,
     cookies
 };

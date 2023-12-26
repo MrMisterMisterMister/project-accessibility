@@ -50,7 +50,7 @@ ButtonContact.propTypes = {
 // Button for signup
 const ButtonSignup = ({ text }) => {
     return (
-        <Button className="button button__signup" as="input" type="submit" value={text} />
+        <Button className="button__signup" as="input" type="submit" value={text} />
     );
 };
 
@@ -59,4 +59,36 @@ ButtonSignup.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact, ButtonSignup };
+// Button for login
+const ButtonLogin = ({ text }) => {
+    return (
+        <Button className="button__login" as="input" type="submit" value={text} />
+    );
+};
+
+// Prop type for ButtonSignup
+ButtonLogin.propTypes = {
+    text: PropTypes.string.isRequired
+};
+
+// Button for auth
+// Like facebook or google
+// Also for create account
+// The icon can be svg
+const ButtonAuth = ({ path, icon, text }) => {
+    return (
+        <Button className="button__auth" type="button" href={path}>
+            <div className="button__auth_icon">{icon}</div>
+            <span className="button__auth_text">{text}</span>
+        </Button>
+    );
+};
+
+// Prop type for button auth
+ButtonAuth.propTypes = {
+    path: PropTypes.string.isRequired,
+    icon: PropTypes.object.isRequired,
+    text: PropTypes.string.isRequired
+};
+
+export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact, ButtonSignup, ButtonLogin, ButtonAuth };
