@@ -22,12 +22,12 @@ const Contact = () => {
                         <div className="contact__section_content_button">
                             <ButtonContact
                                 style="signup"
-                                path="#"
+                                path="/signup"
                                 text={translate("contact.buttons.signup")}
                             />
                             <ButtonContact
                                 style="login"
-                                path="#"
+                                path="/login"
                                 text={translate("contact.buttons.signin")}
                             />
                         </div>

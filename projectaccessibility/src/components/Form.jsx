@@ -29,26 +29,33 @@ const FormSignup = () => {
 
     // TODO fill in name for post method
     // need to test the data send
+    // also need to make way to display a error message too
+    // will need to add a select menu, for Panelmember and Company
+    // Based on what is selected, need to show the right fields
+    // can achieve it with usestates
+    // only need to hide the Row section, since both company and panelmember
+    // have to fill in their password and email
+    // panelmember needs full name
+    // company needs companyName and kvk
     return (
-        <div className="form__signup">
-            <Form>
-                <Form.Label className="form__label">{translate("Full Name")}</Form.Label>
-                <Row>
-                    <Col lg={6}>
-                        <Form.Control className="form__text_field" type="text" name="" placeholder="John" required />
-                    </Col>
-                    <Col lg={6}>
-                        <Form.Control className="form__text_field" type="text" name="" placeholder="Doe" required />
-                    </Col>
-                </Row>
-                <Form.Label className="form__label">Email</Form.Label>
-                <Form.Control className="form__text_field" type="email" name="" placeholder="you@example.com" required />
-                <Form.Label className="form__label">Password (must be longer than 8 characters)</Form.Label>
-                <Form.Control className="form__text_field" type="password" name="" placeholder="Password" required />
-                <Form.Control className="form__text_field" type="password" name="" placeholder="Confirm Password" required />
-                <ButtonSignup />
-            </Form>
-        </div>
+        // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
+        <Form className="form__signup" acceptCharset="UTF-8" method="post">
+            <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
+            <Row>
+                <Col lg={6}>
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="John" required />
+                </Col>
+                <Col lg={6}>
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Doe" required />
+                </Col>
+            </Row>
+            <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
+            <Form.Control className="form__text_field" type="email" name="" placeholder="you@example.com" required />
+            <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("signup.form.passwordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
+            <ButtonSignup text={translate("signup.form.buttonText")} />
+        </Form>
     );
 };
 

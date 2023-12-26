@@ -1,5 +1,13 @@
 {
     "pageTitle": "Signup",
     "alreadyHaveAccount": "Already have an account?",
-    "logIn": "Log In"
+    "logIn": "Log In",
+    "form": {
+        "fullName": "Full Name",
+        "email": "Email",
+        "password": "Password (must be longer than 8 characters)",
+        "passwordPlaceholder": "Password",
+        "confirmPasswordPlaceholder": "Confirm Password",
+        "buttonText": "Signup"
+    }
 }

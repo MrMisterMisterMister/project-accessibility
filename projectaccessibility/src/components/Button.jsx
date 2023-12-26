@@ -34,9 +34,9 @@ ButtonHero.propTypes = {
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Link className={`button__contact ${style}`} role="button" to={path}>
+        <Button className={`button__contact ${style}`} role="button" href={path}>
             {text}
-        </Link>
+        </Button>
     );
 };
 
@@ -48,10 +48,15 @@ ButtonContact.propTypes = {
 };
 
 // Button for signup
-const ButtonSignup = () => {
+const ButtonSignup = ({ text }) => {
     return (
-        <input className="button button__auth_login" type="submit" value="Sign Up" id="auth_signup" />
+        <Button className="button button__signup" as="input" type="submit" value={text} />
     );
+};
+
+// Prop type for ButtonSignup
+ButtonSignup.propTypes = {
+    text: PropTypes.string.isRequired
 };
 
 export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact, ButtonSignup };

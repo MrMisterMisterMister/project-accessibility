@@ -1,5 +1,13 @@
 {
     "pageTitle": "Aanmelden",
     "alreadyHaveAccount": "Heb je al een account?",
-    "logIn": "Inloggen"
+    "logIn": "Inloggen",
+    "form": {
+        "fullName": "Volledige Naam",
+        "email": "E-mailadres",
+        "password": "Wachtwoord (moet langer zijn dan 8 tekens)",
+        "passwordPlaceholder": "Wachtwoord",
+        "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
+        "buttonText": "Aanmelden"
+    }
 }
