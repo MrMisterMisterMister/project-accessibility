@@ -132,7 +132,7 @@ NavFooterMenu.propTypes = {
 
 // Nav for footer bottombar
 // Inputable array of links with path and name
-const NavFooterBottombar = ({ links }) => {
+const NavFooterBottombar = ({ links, language, changeLanguage }) => {
     return (
         <div className="nav__footer_bottombar">
             <Nav className="nav__footer_bottombar__navlist">
@@ -147,6 +147,11 @@ const NavFooterBottombar = ({ links }) => {
                         </Nav.Link>
                     </Nav.Item>
                 ))}
+                <Nav.Item className="nav__footer_bottombar__navitem">
+                    <Nav.Link className="nav__footer_bottombar__navlink" onClick={() => changeLanguage(language === "nl" ? "en" : "nl")}>
+                        {language === "nl" ? "English" : "Nederlands"}
+                    </Nav.Link>
+                </Nav.Item>
             </Nav>
         </div>
     );
@@ -159,7 +164,9 @@ NavFooterBottombar.propTypes = {
             path: PropTypes.string.isRequired,
             name: PropTypes.string.isRequired
         })
-    ).isRequired
+    ).isRequired,
+    changeLanguage: PropTypes.func.isRequired,
+    language: PropTypes.string.isRequired
 };
 
 export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar };

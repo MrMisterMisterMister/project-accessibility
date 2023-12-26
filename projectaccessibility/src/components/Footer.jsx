@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -21,7 +21,20 @@ FooterCopyright.propTypes = {
 // Footer component
 const Footer = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate, i18n } = useTranslation();
+
+    // Initialize state
+    // Default NL
+    const [language, setLanguage] = useState(
+        i18n.language || "nl"
+    );
+
+    // Language change
+    const changeLanguage = (language) => {
+        setLanguage(language);
+        i18n.changeLanguage(language);
+        localStorage.setItem("i18nextLng", language);
+    };
 
     // FooterMenu links
     const footerLinks = {
@@ -110,7 +123,13 @@ const Footer = () => {
             <Container className="site__footer_container">
                 <div className="site__footer_bottombar border-top">
                     <FooterCopyright title="Stichting Accessibility" />
-                    <NavFooterBottombar links={generalLinks} />
+                    <div>
+                        <NavFooterBottombar
+                            links={generalLinks}
+                            language={language}
+                            changeLanguage={changeLanguage}
+                        />
+                    </div>
                 </div>
             </Container>
         </footer>

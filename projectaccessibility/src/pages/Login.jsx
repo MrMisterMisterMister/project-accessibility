@@ -5,6 +5,7 @@ import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 // Login page
 const Login = () => {
@@ -55,6 +56,7 @@ const Login = () => {
                     </div>
                 </Container>
             </div>
+            <Footer />
         </>
     );
 };
