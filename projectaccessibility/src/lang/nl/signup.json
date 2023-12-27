@@ -3,6 +3,17 @@
     "alreadyHaveAccount": "Heb je al een account?",
     "logIn": "Inloggen",
     "form": {
+        "select": {
+            "user": "Gebruikerstype",
+            "option": {
+                "placeholder": "Selecteer het type account",
+                "panelmember": "Ervaringsdeskundige",
+                "company": "Bedrijf"
+            }
+        },
+        "company": "Bedrijfsinformatie",
+        "companyKvk": "KvK nr.",
+        "companyName": "Bedrijfsnaam",
         "fullName": "Volledige Naam",
         "email": "E-mailadres",
         "password": "Wachtwoord (moet langer zijn dan 8 tekens)",

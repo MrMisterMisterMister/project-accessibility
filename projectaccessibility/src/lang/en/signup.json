@@ -3,6 +3,17 @@
     "alreadyHaveAccount": "Already have an account?",
     "logIn": "Log In",
     "form": {
+        "select": {
+            "user": "User Type",
+            "option": {
+                "placeholder": "Select the account type",
+                "panelmember": "Panel Member",
+                "company": "Company"
+            }
+        },
+        "company": "Company Information",
+        "companyKvk": "Chamber of Commerce Number",
+        "companyName": "Company Name",        
         "fullName": "Full Name",
         "email": "Email",
         "password": "Password (must be longer than 8 characters)",

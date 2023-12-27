@@ -120,6 +120,19 @@ const FormSignup = () => {
             });
     };
 
+    // Hook to determine which select option
+    // has been selected in the form
+    // stores them here
+    const [selectedUserType, setSelectedUserType] = useState("");
+
+    // event handler
+    // assigned it to the select
+    // so it can detect the change everytime and properly
+    // set the right option
+    const handleSelectChange = (event) => {
+        setSelectedUserType(event.target.value);
+    };
+
     // TODO fill in name for post method
     // need to test the data send
     // also need to make way to display a error message too
@@ -133,15 +146,38 @@ const FormSignup = () => {
     return (
         // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
         <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
-            <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
-            <Row>
-                <Col lg={6}>
-                    <Form.Control className="form__text_field" type="text" name="first_name" placeholder="John" required />
-                </Col>
-                <Col lg={6}>
-                    <Form.Control className="form__text_field" type="text" name="last_name" placeholder="Doe" required />
-                </Col>
-            </Row>
+            <Form.Label className="form__label">{translate("signup.form.select.user")}</Form.Label>
+            <Form.Select className="form__select_menu" onChange={handleSelectChange} defaultValue="default">
+                <option value="default" disabled hidden>{translate("signup.form.select.option.placeholder")}</option>
+                <option value="1">{translate("signup.form.select.option.panelmember")}</option>
+                <option value="2">{translate("signup.form.select.option.company")}</option>
+            </Form.Select>
+            {selectedUserType === "1" && (
+                <>
+                    <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
+                    <Row>
+                        <Col lg={6}>
+                            <Form.Control className="form__text_field" type="text" name="[panelmember[first_name]" placeholder="John" required />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Control className="form__text_field" type="text" name="[panelmember][last_name]" placeholder="Doe" required />
+                        </Col>
+                    </Row>
+                </>
+            )}
+            {selectedUserType === "2" && (
+                <>
+                    <Form.Label className="form__label">{translate("signup.form.company")}</Form.Label>
+                    <Row>
+                        <Col lg={6}>
+                            <Form.Control className="form__text_field" type="text" name="[company[kvk]" placeholder={translate("signup.form.companyKvk")} required />
+                        </Col>
+                        <Col lg={6}>
+                            <Form.Control className="form__text_field" type="text" name="[company][name]" placeholder={translate("signup.form.companyName")} required />
+                        </Col>
+                    </Row>
+                </>
+            )}
             <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
             <Form.Control className="form__text_field" type="email" name="email" placeholder="you@example.com" required />
             <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
