@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import axios from "axios";
-import { v4 as uuidv4 } from "uuid";
+import { postRequest } from "../api/axiosClient";
 import { ButtonSignup, ButtonLogin } from "../components/Button";
 
 // Login form component used for login page
@@ -26,24 +25,24 @@ const FormLogin = () => {
     // for now it's just to see what's the data inside
     // the actual post method with axios will be done in a seperate component
     // so it's more organized
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
+    // const handleLoginSubmit = (e) => {
+    //     e.preventDefault();
 
-        // see what's inside e
-        console.log(e);
+    //     // see what's inside e
+    //     console.log(e);
 
-        // create new FormData object for the target
-        const dd = new FormData(e.target);
+    //     // create new FormData object for the target
+    //     const dd = new FormData(e.target);
 
-        // loop object and save data
-        const data = {};
-        dd.forEach((value, key) => {
-            data[key] = value;
-        });
+    //     // loop object and save data
+    //     const data = {};
+    //     dd.forEach((value, key) => {
+    //         data[key] = value;
+    //     });
 
-        // print
-        console.log("Data:", data);
-    };
+    //     // print
+    //     console.log("Data:", data);
+    // };
 
     // TODO make it working
     // this will need to post to api.clodsire.nl
@@ -77,49 +76,6 @@ const FormSignup = () => {
     // Translation
     const { t: translate } = useTranslation();
 
-    const handleSignupSubmit = (e) => {
-        e.preventDefault();
-
-        console.log("making post to create acc");
-
-        // uuid
-        const uuid = uuidv4();
-
-        // make post
-        axios.post(
-            import.meta.env.VITE_API_URL_TEST + "users/",
-            {
-                Id: uuid, // needs to be generated from backend maybe
-                Email: "yourmom@email.com",
-                Password: "yourmom"
-            },
-            {
-                // add header to make the form data json
-                // otherwise it keeps giving error
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            }
-        )
-            // see response
-            .then(
-                response => console.log(response)
-            )
-            // log error
-            .catch(
-                error => console.error(error.response)
-            );
-
-        // get your mom
-        axios.get(import.meta.env.VITE_API_URL_TEST + "users/" + uuid)
-            .then(response => {
-                console.log("found your mom: ", response.data);
-            })
-            .catch(error => {
-                console.error("Error making GET request:", error);
-            });
-    };
-
     // Hook to determine which select option
     // has been selected in the form
     // stores them here
@@ -131,6 +87,47 @@ const FormSignup = () => {
     // set the right option
     const handleSelectChange = (event) => {
         setSelectedUserType(event.target.value);
+    };
+
+    // TODO SOMETHING TO HANDLE ERRORS STILL NEED TO BE MADE
+    // AND NEED TO VERIFY PASSWORD LENGTH AND WHAT IT CONTAINS
+    // EMAIL AS WELL AND NEED TO CHECK FOR DUPLICATES GUID (VERY SMALL CHANCE)
+
+    // function that triggers if the
+    // submit button is pressed
+    // preventDefault makes the form not submit
+    // inside there will be some logic to make the post call
+    const handleSignupSubmit = async (e) => {
+        e.preventDefault();
+
+        // create variable to save the post form data
+        // that the user is sending
+        const formData = new FormData(e.target);
+        // formData.append("id", uuidv4()); // for testing, this will be removed later, maybe generate it from backend
+
+        // determine where to send the endpoint to, based on the user type that has been selected
+        // will most likely change this, maybe
+        const endPoint = selectedUserType === "1" ? "panelmembers/" : "companies/";
+
+        // make the post call
+        const res = postRequest(endPoint, formData);
+
+        // get the response back and see what's up
+        res.then(response => {
+            console.log(response);
+
+            if (response.status === 200) {
+                console.log("your mom");
+            }
+        }).catch(error => {
+            console.error(error.response);
+        });
+
+        // TODO for now only panelmember works, that's because of those required fields
+        // in companies, which cannot fit in our signup form
+        // so that needs to be changed in backend first
+        // Panelmember: guid (automatic), email, password, first_name, last_name
+        // Company: guid (automatic), email, password, kvk, name
     };
 
     // TODO fill in name for post method
@@ -157,10 +154,10 @@ const FormSignup = () => {
                     <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
                     <Row>
                         <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="[panelmember[first_name]" placeholder="John" required />
+                            <Form.Control className="form__text_field" type="text" name="FirstName" placeholder="John" required />
                         </Col>
                         <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="[panelmember][last_name]" placeholder="Doe" required />
+                            <Form.Control className="form__text_field" type="text" name="LastName" placeholder="Doe" required />
                         </Col>
                     </Row>
                 </>
@@ -170,19 +167,19 @@ const FormSignup = () => {
                     <Form.Label className="form__label">{translate("signup.form.company")}</Form.Label>
                     <Row>
                         <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="[company[kvk]" placeholder={translate("signup.form.companyKvk")} required />
+                            <Form.Control className="form__text_field" type="text" name="Kvk" placeholder={translate("signup.form.companyKvk")} required />
                         </Col>
                         <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="[company][name]" placeholder={translate("signup.form.companyName")} required />
+                            <Form.Control className="form__text_field" type="text" name="Name" placeholder={translate("signup.form.companyName")} required />
                         </Col>
                     </Row>
                 </>
             )}
             <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="email" placeholder="you@example.com" required />
+            <Form.Control className="form__text_field" type="email" name="Email" placeholder="you@example.com" required />
             <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="password" placeholder={translate("signup.form.passwordPlaceholder")} required />
-            <Form.Control className="form__text_field" type="password" name="password_confirm" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" name="Password" placeholder={translate("signup.form.passwordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
             <ButtonSignup text={translate("signup.form.buttonText")} />
         </Form>
     );
