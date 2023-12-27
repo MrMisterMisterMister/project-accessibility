@@ -4,7 +4,7 @@ import AppRoutes from './AppRoutes';
 import { Layout } from './components/Layout';
 import ScrollTop from "./components/ScrollTop";
 import { useEffect } from 'react';
-//import jwtDecode from "jwt-decode";
+import axios from 'axios';
 import { jwtDecode } from '../../node_modules/jwt-decode/build/cjs/index';
 
 function App() {
@@ -12,22 +12,32 @@ function App() {
     function handleCallbackResponse(response) {
         console.log("Encoded JWT ID token: " + response.credential);
         var userObject = jwtDecode(response.credential);
-        console.log(userObject); 
+        console.log(userObject);
     }
 
     useEffect(() => {
         /* global google */
-        google.accounts.id.initialize({
-            client_id: "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleusercontent.com",
-            callback: handleCallbackResponse
-        });
 
-        google.accounts.id.renderButton(
-            document.getElementById("signInDiv"),
-            { theme: "outline", size: "large" }
-        );
+        axios.get('/config') // Replace with your API endpoint
+            .then((response) => {
+                const { client_id: clientId } = response.data.GoogleAuth;
+
+                // Use the clientId retrieved from the backend
+                google.accounts.id.initialize({
+                    client_id: clientId,
+                    callback: handleCallbackResponse
+                });
+
+                google.accounts.id.renderButton(
+                    document.getElementById("signInDiv"),
+                    { theme: "outline", size: "large" }
+                );
+            })
+            .catch((error) => {
+                // Handle error while fetching the client ID
+                console.error('Error fetching client ID:', error);
+            });
     }, []);
-
 
     return (
         <Layout>

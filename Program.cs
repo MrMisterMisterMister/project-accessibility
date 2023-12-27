@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using project_accessibility.Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Google;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -18,12 +19,26 @@ builder.Services.AddScoped<PasswordHashingService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 // Authentication and Authorization
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie(options =>
+builder.Services.AddAuthentication(options =>
+{
     {
-        options.LoginPath = "/Login"; //hhmmmmmmmmmmmmmmmm
-        options.AccessDeniedPath = "/AccessDenied";
+        options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    }
+})
+    .AddCookie()
+    .AddGoogle(GoogleDefaults.AuthenticationScheme, options =>
+    {
+        options.ClientId = builder.Configuration.GetSection("GoogleAuth:ClientId").Value;
+        options.ClientSecret = builder.Configuration.GetSection("GoogleAuth:ClientSecret").Value;
     });
+
+
+    //.AddCookie(options =>
+    //{
+    //    options.LoginPath = "/Login"; //hhmmmmmmmmmmmmmmmm
+    //    options.AccessDeniedPath = "/AccessDenied";
+    //});
 
 builder.Services.AddAuthorization();
 
