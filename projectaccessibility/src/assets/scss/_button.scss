@@ -164,13 +164,12 @@
     height: 40px;
     border-radius: 2px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
 
     .button__auth_icon {
         width: 25px;
         height: 100%;
-        margin-left: 6.25rem;
 
         svg {
             width: 100%!important;
