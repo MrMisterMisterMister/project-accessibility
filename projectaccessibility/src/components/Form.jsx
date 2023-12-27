@@ -25,24 +25,25 @@ const FormLogin = () => {
     // for now it's just to see what's the data inside
     // the actual post method with axios will be done in a seperate component
     // so it's more organized
-    // const handleLoginSubmit = (e) => {
-    //     e.preventDefault();
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
 
-    //     // see what's inside e
-    //     console.log(e);
+        // see what's inside e
+        console.log(e);
 
-    //     // create new FormData object for the target
-    //     const dd = new FormData(e.target);
+        // create new FormData object for the target
+        const dd = new FormData(e.target);
 
-    //     // loop object and save data
-    //     const data = {};
-    //     dd.forEach((value, key) => {
-    //         data[key] = value;
-    //     });
+        // loop object and save data
+        const data = {};
+        dd.forEach((value, key) => {
+            data[key] = value;
+        });
 
-    //     // print
-    //     console.log("Data:", data);
-    // };
+        // print
+        console.log("Data:", data);
+        console.log("your mom");
+    };
 
     // TODO make it working
     // this will need to post to api.clodsire.nl
