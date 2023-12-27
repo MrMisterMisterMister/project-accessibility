@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { v4 as uuidv4 } from "uuid";
 import { ButtonSignup, ButtonLogin } from "../components/Button";
 
 // Login form component used for login page
@@ -25,7 +26,7 @@ const FormLogin = () => {
     // for now it's just to see what's the data inside
     // the actual post method with axios will be done in a seperate component
     // so it's more organized
-    const handleSubmit = (e) => {
+    const handleLoginSubmit = (e) => {
         e.preventDefault();
 
         // see what's inside e
@@ -51,7 +52,7 @@ const FormLogin = () => {
     // redirect to correct page if Ok()
     // also somehow assign the proper User type between Panelmember and company
     return (
-        <Form className="form__login" acceptCharset="UTF-8" method="post" onSubmit={handleSubmit}>
+        <Form className="form__login" acceptCharset="UTF-8" method="post" onSubmit={handleLoginSubmit}>
             <Form.Label className="form__label">{translate("login.form.email")}</Form.Label>
             <Form.Control className="form__text_field" type="email" name="email" placeholder={translate("login.form.emailPlaceholder")} required />
             <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
@@ -76,6 +77,49 @@ const FormSignup = () => {
     // Translation
     const { t: translate } = useTranslation();
 
+    const handleSignupSubmit = (e) => {
+        e.preventDefault();
+
+        console.log("making post to create acc");
+
+        // uuid
+        const uuid = uuidv4();
+
+        // make post
+        axios.post(
+            import.meta.env.VITE_API_URL_TEST + "users/",
+            {
+                Id: uuid, // needs to be generated from backend maybe
+                Email: "yourmom@email.com",
+                Password: "yourmom"
+            },
+            {
+                // add header to make the form data json
+                // otherwise it keeps giving error
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            }
+        )
+            // see response
+            .then(
+                response => console.log(response)
+            )
+            // log error
+            .catch(
+                error => console.error(error.response)
+            );
+
+        // get your mom
+        axios.get(import.meta.env.VITE_API_URL_TEST + "users/" + uuid)
+            .then(response => {
+                console.log("found your mom: ", response.data);
+            })
+            .catch(error => {
+                console.error("Error making GET request:", error);
+            });
+    };
+
     // TODO fill in name for post method
     // need to test the data send
     // also need to make way to display a error message too
@@ -88,21 +132,21 @@ const FormSignup = () => {
     // company needs companyName and kvk
     return (
         // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
-        <Form className="form__signup" acceptCharset="UTF-8" method="post">
+        <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
             <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
             <Row>
                 <Col lg={6}>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="John" required />
+                    <Form.Control className="form__text_field" type="text" name="first_name" placeholder="John" required />
                 </Col>
                 <Col lg={6}>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Doe" required />
+                    <Form.Control className="form__text_field" type="text" name="last_name" placeholder="Doe" required />
                 </Col>
             </Row>
             <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="" placeholder="you@example.com" required />
+            <Form.Control className="form__text_field" type="email" name="email" placeholder="you@example.com" required />
             <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("signup.form.passwordPlaceholder")} required />
-            <Form.Control className="form__text_field" type="password" name="" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" name="password" placeholder={translate("signup.form.passwordPlaceholder")} required />
+            <Form.Control className="form__text_field" type="password" name="password_confirm" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
             <ButtonSignup text={translate("signup.form.buttonText")} />
         </Form>
     );
