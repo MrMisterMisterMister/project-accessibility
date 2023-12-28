@@ -15,6 +15,7 @@ import member from "./member.json";
 import news from "./news.json";
 import cases from "./case.json";
 import contact from "./contact.json";
+import alert from "./alert.json";
 
 const en = {
     header,
@@ -28,7 +29,8 @@ const en = {
     signup,
     login,
     privacypolicy,
-    cookies
+    cookies,
+    alert
 };
 
 export default en;

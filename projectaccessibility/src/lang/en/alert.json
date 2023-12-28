@@ -1,0 +1,8 @@
+{
+    "error": {
+        "emailTaken": "This email address is already registered.",
+        "kvkTaken": "This registration number is already in use.",
+        "accountNotExist": "This account does not exist.",
+        "incorrectPassword": "Incorrect password."
+    }
+}

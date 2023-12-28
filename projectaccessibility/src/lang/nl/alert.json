@@ -1,0 +1,8 @@
+{
+    "error": {
+        "emailTaken": "Dit e-mailadres is al geregistreerd.",
+        "kvkTaken": "Dit KVK-nummer is al in gebruik.",
+        "accountNotExist": "Dit account bestaat niet.",
+        "incorrectPassword": "Onjuist wachtwoord."
+    }
+}
