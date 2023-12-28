@@ -75,6 +75,10 @@ const FormSignup = () => {
     // stores them here
     const [selectedUserType, setSelectedUserType] = useState("");
 
+    // create a hook to catch the errors
+    // this will be used later to display the correct error message
+    const [errors, setErrors] = useState({});
+
     // event handler
     // assigned it to the select
     // so it can detect the change everytime and properly
@@ -117,9 +121,22 @@ const FormSignup = () => {
 
                 // reset form values
                 e.target.reset();
+
+                // Reset error state
+                setErrors({});
             }
         }).catch(error => {
             console.error(error.response);
+
+            // here it handles the errors
+            // and sets what type of error it's suppose to be
+            if (error.response?.data?.message) {
+                // set the error message in the hook
+                setErrors({ message: error.response.data.message });
+            } else {
+                // in case somehow it doesn't return an error
+                setErrors({ message: "An error occurred." });
+            }
         });
 
         // TODO for now only panelmember works, that's because of those required fields
@@ -141,46 +158,53 @@ const FormSignup = () => {
     // company needs companyName and kvk
     return (
         // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
-        <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
-            <Form.Label className="form__label">{translate("signup.form.select.user")}</Form.Label>
-            <Form.Select className="form__select_menu" onChange={handleSelectChange} required>
-                <option value="" disabled selected hidden>{translate("signup.form.select.option.placeholder")}</option>
-                <option value="1">{translate("signup.form.select.option.panelmember")}</option>
-                <option value="2">{translate("signup.form.select.option.company")}</option>
-            </Form.Select>
-            {selectedUserType === "1" && (
-                <>
-                    <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
-                    <Row>
-                        <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="FirstName" placeholder="John" required />
-                        </Col>
-                        <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="LastName" placeholder="Doe" required />
-                        </Col>
-                    </Row>
-                </>
+        <>
+            {Object.keys(errors).length > 0 && (
+                <div className="alert alert__error">
+                    {Object.entries(errors).map(([field, message]) => (message))}
+                </div>
             )}
-            {selectedUserType === "2" && (
-                <>
-                    <Form.Label className="form__label">{translate("signup.form.company")}</Form.Label>
-                    <Row>
-                        <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="Kvk" placeholder={translate("signup.form.companyKvk")} required />
-                        </Col>
-                        <Col lg={6}>
-                            <Form.Control className="form__text_field" type="text" name="Name" placeholder={translate("signup.form.companyName")} required />
-                        </Col>
-                    </Row>
-                </>
-            )}
-            <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="Email" placeholder="you@example.com" required />
-            <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="Password" placeholder={translate("signup.form.passwordPlaceholder")} required />
-            <Form.Control className="form__text_field" type="password" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
-            <ButtonSignup text={translate("signup.form.buttonText")} />
-        </Form>
+            <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
+                <Form.Label className="form__label">{translate("signup.form.select.user")}</Form.Label>
+                <Form.Select className="form__select_menu" onChange={handleSelectChange} defaultValue="" required>
+                    <option value="" hidden>{translate("signup.form.select.option.placeholder")}</option>
+                    <option value="1">{translate("signup.form.select.option.panelmember")}</option>
+                    <option value="2">{translate("signup.form.select.option.company")}</option>
+                </Form.Select>
+                {selectedUserType === "1" && (
+                    <>
+                        <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
+                        <Row>
+                            <Col lg={6}>
+                                <Form.Control className="form__text_field" type="text" name="FirstName" placeholder="John" required />
+                            </Col>
+                            <Col lg={6}>
+                                <Form.Control className="form__text_field" type="text" name="LastName" placeholder="Doe" required />
+                            </Col>
+                        </Row>
+                    </>
+                )}
+                {selectedUserType === "2" && (
+                    <>
+                        <Form.Label className="form__label">{translate("signup.form.company")}</Form.Label>
+                        <Row>
+                            <Col lg={6}>
+                                <Form.Control className="form__text_field" type="text" name="Kvk" placeholder={translate("signup.form.companyKvk")} required />
+                            </Col>
+                            <Col lg={6}>
+                                <Form.Control className="form__text_field" type="text" name="Name" placeholder={translate("signup.form.companyName")} required />
+                            </Col>
+                        </Row>
+                    </>
+                )}
+                <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
+                <Form.Control className="form__text_field" type="email" name="Email" placeholder="you@example.com" required />
+                <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
+                <Form.Control className="form__text_field" type="password" name="Password" placeholder={translate("signup.form.passwordPlaceholder")} required />
+                <Form.Control className="form__text_field" type="password" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
+                <ButtonSignup text={translate("signup.form.buttonText")} />
+            </Form>
+        </>
     );
 };
 
