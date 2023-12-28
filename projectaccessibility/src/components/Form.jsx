@@ -131,10 +131,10 @@ const FormSignup = () => {
                         <Form.Label className="form__label">{translate("signup.form.fullName")}</Form.Label>
                         <Row>
                             <Col lg={6}>
-                                <Form.Control className="form__text_field" type="text" name="FirstName" placeholder="John" required />
+                                <Form.Control className="form__text_field" type="text" name="FirstName" placeholder={translate("signup.form.firstNamePlaceholder")} required />
                             </Col>
                             <Col lg={6}>
-                                <Form.Control className="form__text_field" type="text" name="LastName" placeholder="Doe" required />
+                                <Form.Control className="form__text_field" type="text" name="LastName" placeholder={translate("signup.form.lastNamePlaceholder")} required />
                             </Col>
                         </Row>
                     </>
@@ -153,7 +153,7 @@ const FormSignup = () => {
                     </>
                 )}
                 <Form.Label className="form__label">{translate("signup.form.email")}</Form.Label>
-                <Form.Control className="form__text_field" type="email" name="Email" placeholder="you@example.com" required />
+                <Form.Control className="form__text_field" type="email" name="Email" placeholder={translate("signup.form.emailPlaceholder")} required />
                 <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
                 <Form.Control className="form__text_field" type="password" name="Password" placeholder={translate("signup.form.passwordPlaceholder")} required />
                 <Form.Control className="form__text_field" type="password" name="PasswordConfirm" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
