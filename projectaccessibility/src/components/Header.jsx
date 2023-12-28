@@ -1,26 +1,12 @@
-import { useState } from "react";
+import React from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { NavDesktop, NavMobile } from "./Nav";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 // Header component
 const Header = () => {
     // Translation
-    const { t: translate, i18n } = useTranslation();
-
-    // Initialize state
-    // Default NL
-    const [language, setLanguage] = useState(
-        localStorage.getItem("language") || "nl"
-    );
-
-    // Language change
-    const handleChangeLanguage = (event) => {
-        setLanguage(event.target.value);
-        i18n.changeLanguage(event.target.value);
-        localStorage.setItem("language", event.target.value);
-    };
+    const { t: translate } = useTranslation();
 
     // Header nav links
     const websiteLinks = [
@@ -47,10 +33,6 @@ const Header = () => {
                 </Navbar.Brand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
-                <LanguageSwitcher
-                    language={language}
-                    handleChangeLanguage={handleChangeLanguage}
-                />
             </Container>
         </header>
     );

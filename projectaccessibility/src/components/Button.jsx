@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 // Primary button. To be made
@@ -14,9 +13,9 @@ const ButtonSecondary = () => {
 };
 
 // Custom hero button on hero section
-const ButtonHero = ({ text }) => {
+const ButtonHero = ({ text, path }) => {
     return (
-        <Button className="button__hero" role="button">
+        <Button className="button__hero" type="button" href={path}>
             <span className="circle" aria-hidden="true">
                 <span className="icon arrow" />
             </span>
@@ -27,16 +26,17 @@ const ButtonHero = ({ text }) => {
 
 // Prop type for ButtonHero
 ButtonHero.propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    path: PropTypes.string.isRequired
 };
 
 // Button for contact section on home
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Link className={`button__contact ${style}`} role="button" href={path}>
+        <Button className={`button__contact ${style}`} type="button" href={path}>
             {text}
-        </Link>
+        </Button>
     );
 };
 
@@ -47,4 +47,48 @@ ButtonContact.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact };
+// Button for signup
+const ButtonSignup = ({ text }) => {
+    return (
+        <Button className="button__signup" as="input" type="submit" value={text} />
+    );
+};
+
+// Prop type for ButtonSignup
+ButtonSignup.propTypes = {
+    text: PropTypes.string.isRequired
+};
+
+// Button for login
+const ButtonLogin = ({ text }) => {
+    return (
+        <Button className="button__login" as="input" type="submit" value={text} />
+    );
+};
+
+// Prop type for ButtonSignup
+ButtonLogin.propTypes = {
+    text: PropTypes.string.isRequired
+};
+
+// Button for auth
+// Like facebook or google
+// Also for create account
+// The icon can be svg
+const ButtonAuth = ({ path, icon, text }) => {
+    return (
+        <Button className="button__auth" type="button" href={path}>
+            <div className="button__auth_icon">{icon}</div>
+            <span className="button__auth_text">{text}</span>
+        </Button>
+    );
+};
+
+// Prop type for button auth
+ButtonAuth.propTypes = {
+    path: PropTypes.string.isRequired,
+    icon: PropTypes.object.isRequired,
+    text: PropTypes.string.isRequired
+};
+
+export { ButtonPrimary, ButtonSecondary, ButtonHero, ButtonContact, ButtonSignup, ButtonLogin, ButtonAuth };

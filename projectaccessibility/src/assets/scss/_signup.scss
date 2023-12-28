@@ -1,0 +1,66 @@
+@use 'variables';
+@use 'mixins';
+
+// signup page
+.signup__page {
+    height: 100vh;
+    display: flex;
+
+    .signup__page_container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        .signup__page_column {
+            flex: 0 0 auto;
+            width: 100%;
+
+            @include mixins.lg {
+                width: 50%;
+            }
+        }
+
+        .signup__page_side_banner {
+            display: none;
+            background: url("/img/placeholder.jpg") center/cover, variables.$royalblue;
+
+            @include mixins.lg {
+                display: block;
+            }
+        }
+
+        .signup__page_registration {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 0 4rem 0;
+
+            @include mixins.lg {
+                align-items: flex-start;
+                justify-content: center;
+                padding: 0 3rem;
+                height: 100%;
+            }
+
+            &__content {
+                width: 100%;
+                max-width: 30rem;
+            }
+
+            &__title {
+                text-align: left;
+                font-size: 2.5rem;
+                margin-bottom: 1rem;
+            }
+
+            &__login {
+                width: 100%;
+                color: variables.$blackrussian;
+                font-size: 0.75rem;
+                margin: 1em 0 0;
+                text-align: center;
+                letter-spacing: 0.05em;
+            }
+        }
+    }
+}

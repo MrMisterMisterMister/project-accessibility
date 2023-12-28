@@ -13,7 +13,6 @@
 @use 'card';
 @use 'group';
 @use 'form';
-@use 'language';
 
 // section
 @use 'hero';
@@ -27,3 +26,5 @@
 @use 'privacypolicy';
 @use 'account';
 @use 'cookies';
+@use 'login';
+@use 'signup';

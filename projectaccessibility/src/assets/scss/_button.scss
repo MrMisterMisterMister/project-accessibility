@@ -106,6 +106,7 @@
     width: 150px;
     height: 3rem;
     transition: all 0.3s ease;
+    border: none;
     padding: 1.125rem 1rem;
     text-decoration: none;
     font-size: 0.875rem;
@@ -128,5 +129,62 @@
 
     &:not(:last-child) {
         margin-right: 1.25rem;
+    }
+}
+
+// signup button and login
+.button__signup,
+.button__login {
+    width: 100%;
+    font-weight: normal;
+    background-color: variables.$sapphire;
+    color: variables.$white;
+    height: 45px;
+    appearance: none;
+    border: none !important;
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+
+    &:hover,
+    &:focus {
+        background-color: variables.$blackrussian;
+        cursor: pointer;
+        box-shadow: none;
+    }
+}
+
+// auth buttons
+.button__auth {
+    background-color: variables.$white!important;
+    width: 100%;
+    border: 1px solid rgb(216, 218, 224);
+    color: variables.$black!important;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button__auth_icon {
+        width: 25px;
+        height: 100%;
+
+        svg {
+            width: 100%!important;
+            height: 100%!important;
+        }
+    }
+
+    .button__auth_text {
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-left: 1rem;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: variables.$sapphire;
     }
 }

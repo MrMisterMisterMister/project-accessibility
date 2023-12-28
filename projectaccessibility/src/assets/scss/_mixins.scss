@@ -30,9 +30,17 @@
     }
 }
 
-@mixin custom($screen) {
-    @media (min-width: #{variables.$screen}px) {
-        @content;
+@mixin custom($type, $screenWidth) {
+    @if $type =='min' {
+        @media (min-width: #{$screenWidth}px) {
+            @content;
+        }
+    }
+
+    @else if $type =='max' {
+        @media (max-width: #{$screenWidth - 1}px) {
+            @content;
+        }
     }
 }
 
