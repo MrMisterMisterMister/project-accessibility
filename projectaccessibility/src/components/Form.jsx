@@ -5,58 +5,59 @@ import { postRequest } from "../api/axiosClient";
 import { ButtonSignup, ButtonLogin } from "../components/Button";
 import { AlertError } from "../components/Alert";
 
-// Login form component used for login page
-// This form will make a post method to the api server
-// The server will then validate the data send and return a response code
-// Afterwards need to determine if login is succesful
-// Cookies and/or sessions will also need to be made
+// Form for login page
 const FormLogin = () => {
     // Translation
     const { t: translate } = useTranslation();
 
-    // function that triggers after submit button is pressed
-    // for now it's just to see what's the data inside
-    // the actual post method with axios will be done in a seperate component
-    // so it's more organized
-    const handleLoginSubmit = (e) => {
-        e.preventDefault();
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [errors, setErrors] = useState({});
 
-        //
+    // Function triggered when the submit button is pressed in the login form
+    const handleLoginSubmit = (e) => {
+        e.preventDefault(); // Prevents the default form submission behavior
+
+        // Extract form data from the submitted form
         const formData = new FormData(e.target);
 
-        // make the post call
-        const res = postRequest("login/", formData);
+        // Make the POST call to the login endpoint
+        const loginResponse = postRequest("login/", formData);
 
-        //
-        res.then(response => {
-            console.log(response);
-            console.log(response.status);
-
-            // reset form values
-            e.target.reset();
+        // Handle the response from the POST call
+        loginResponse.then(response => {
+            // Some simple validation to check if the response has status 200
+            // If it does, display some kind of message
+            // This still needs to be updated, so that afterwards the user gets send to their dashboard
+            // Also need to get what kind of user they are, for example, panelmember or company
+            // For now it resets the form values and errors
+            // Will also have to add something for success
+            if (response.status === 200) {
+                console.log("your mom");
+                e.target.reset();
+                setErrors({});
+            }
         }).catch(error => {
-            console.error(error.response);
+            // Handle errors by updating the error state with the response data from the api server
+            setErrors(error.response?.data);
         });
     };
 
-    // TODO make it working
-    // this will need to post to api.clodsire.nl
-    // then needs to get something to return
-    // display error if needed
-    // redirect to correct page if Ok()
-    // also somehow assign the proper User type between Panelmember and company
     return (
-        <Form className="form__login" acceptCharset="UTF-8" method="post" onSubmit={handleLoginSubmit}>
-            <Form.Label className="form__label">{translate("login.form.email")}</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="email" placeholder={translate("login.form.emailPlaceholder")} required />
-            <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="password" placeholder={translate("login.form.passwordPlaceholder")} required />
-            <div className="form__login_option">
-                <Form.Check.Input className="form__login_option__checkbox" type="checkbox" name="remember" />
-                <Form.Check.Label className="form__login_option__label">{translate("login.form.checkbox")}</Form.Check.Label>
-            </div>
-            <ButtonLogin text={translate("login.form.button")} />
-        </Form>
+        <>
+            <AlertError data={errors} />
+            <Form className="form__login" acceptCharset="UTF-8" method="post" onSubmit={handleLoginSubmit}>
+                <Form.Label className="form__label">{translate("login.form.email")}</Form.Label>
+                <Form.Control className="form__text_field" type="email" name="email" placeholder={translate("login.form.emailPlaceholder")} required />
+                <Form.Label className="form__label">{translate("login.form.password")}</Form.Label>
+                <Form.Control className="form__text_field" type="password" name="password" placeholder={translate("login.form.passwordPlaceholder")} required />
+                <div className="form__login_option">
+                    <Form.Check.Input className="form__login_option__checkbox" type="checkbox" name="remember" />
+                    <Form.Check.Label className="form__login_option__label">{translate("login.form.checkbox")}</Form.Check.Label>
+                </div>
+                <ButtonLogin text={translate("login.form.button")} />
+            </Form>
+        </>
     );
 };
 
@@ -78,7 +79,7 @@ const FormSignup = () => {
         setSelectedUserType(event.target.value);
     };
 
-    // Function triggered when the submit button is pressed in the form
+    // Function triggered when the submit button is pressed in the signup form
     // Prevents the default form submission behavior to handle it manually
     const handleSignupSubmit = async (e) => {
         e.preventDefault();
@@ -93,10 +94,10 @@ const FormSignup = () => {
         };
 
         // Make the POST call using axios post
-        const res = postRequest(`signup/${endPoint[selectedUserType]}`, formData);
+        const signupResponse = postRequest(`signup/${endPoint[selectedUserType]}`, formData);
 
         // Handle the response from the POST call
-        res.then(response => {
+        signupResponse.then(response => {
             console.log(response);
 
             // I still need to display a success to inform their signup was successfull
@@ -107,6 +108,7 @@ const FormSignup = () => {
                 console.log("your mom");
                 e.target.reset();
                 setErrors({});
+                setSelectedUserType("");
             }
         }).catch(error => {
             // Handle errors by updating the error state with the response data from the api server
@@ -154,7 +156,7 @@ const FormSignup = () => {
                 <Form.Control className="form__text_field" type="email" name="Email" placeholder="you@example.com" required />
                 <Form.Label className="form__label">{translate("signup.form.password")}</Form.Label>
                 <Form.Control className="form__text_field" type="password" name="Password" placeholder={translate("signup.form.passwordPlaceholder")} required />
-                <Form.Control className="form__text_field" type="password" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
+                <Form.Control className="form__text_field" type="password" name="PasswordConfirm" placeholder={translate("signup.form.confirmPasswordPlaceholder")} required />
                 <ButtonSignup text={translate("signup.form.buttonText")} />
             </Form>
         </>
