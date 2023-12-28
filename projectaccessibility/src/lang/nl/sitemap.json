@@ -1,0 +1,26 @@
+{
+    "pageTitle": "Sitemap",
+    "lastModified": "Laatst gewijzigd: 10 November 2023.",
+    "intro": "Deze pagina biedt een gestructureerd overzicht van alle belangrijke secties en pagina's op onze site. De sitemap is ontworpen om je door onze inhoud te navigeren op een efficiënte manier en je te laten kennismaken met het diverse scala aan informatie dat wij bieden.",
+    "links": {
+        "frontpage": {
+            "title": "Hoofdpagina",
+            "home": "Home"
+        },
+        "components": {
+            "title": "Onderdelen",
+            "about": "Over ons",
+            "expertise": "Expertise",
+            "news": "Actueel",
+            "contact": "Contact",
+            "signup": "Aanmelden",
+            "signin": "Inloggen"
+        },
+        "other": {
+            "title": "Overig",
+            "sitemap": "Sitemap",
+            "privacy": "Privacybeleid",
+            "cookies": "Cookieverklaring"
+        }
+    }
+}

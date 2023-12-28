@@ -1,0 +1,26 @@
+{
+    "pageTitle": "Sitemap",
+    "lastModified": "Last Modified: November 10, 2023.",
+    "intro": "This page provides a structured overview of all the important sections and pages on our site. The sitemap is designed to help you navigate through our content more efficiently and discover the diverse range of information we offer.",
+    "links": {
+        "frontpage": {
+            "title": "Homepage",
+            "home": "Home"
+        },
+        "components": {
+            "title": "Components",
+            "about": "About us",
+            "expertise": "Expertise",
+            "news": "News",
+            "contact": "Contact",
+            "signup": "Sign up",
+            "signin": "Login"
+        },
+        "other": {
+            "title": "Others",
+            "sitemap": "Sitemap",
+            "privacy": "Privacy Policy",
+            "cookies": "Cookies"
+        }
+    }
+}
