@@ -30,6 +30,9 @@ const FormLogin = () => {
         res.then(response => {
             console.log(response);
             console.log(response.status);
+
+            // reset form values
+            e.target.reset();
         }).catch(error => {
             console.error(error.response);
         });
@@ -111,6 +114,9 @@ const FormSignup = () => {
 
             if (response.status === 200) {
                 console.log("your mom");
+
+                // reset form values
+                e.target.reset();
             }
         }).catch(error => {
             console.error(error.response);
