@@ -13,14 +13,6 @@ const FormLogin = () => {
     // Translation
     const { t: translate } = useTranslation();
 
-    // Create a state to save the form data
-    // that will be used later for the post
-    // const [formLoginData, setFormLoginData] = useState({
-    //     email: "",
-    //     password: "",
-    //     remember: false // default value
-    // });
-
     // function that triggers after submit button is pressed
     // for now it's just to see what's the data inside
     // the actual post method with axios will be done in a seperate component
@@ -28,21 +20,19 @@ const FormLogin = () => {
     const handleLoginSubmit = (e) => {
         e.preventDefault();
 
-        // see what's inside e
-        console.log(e);
+        //
+        const formData = new FormData(e.target);
 
-        // create new FormData object for the target
-        const dd = new FormData(e.target);
+        // make the post call
+        const res = postRequest("login/", formData);
 
-        // loop object and save data
-        const data = {};
-        dd.forEach((value, key) => {
-            data[key] = value;
+        //
+        res.then(response => {
+            console.log(response);
+            console.log(response.status);
+        }).catch(error => {
+            console.error(error.response);
         });
-
-        // print
-        console.log("Data:", data);
-        console.log("your mom");
     };
 
     // TODO make it working
@@ -106,12 +96,8 @@ const FormSignup = () => {
         const formData = new FormData(e.target);
         // formData.append("id", uuidv4()); // for testing, this will be removed later, maybe generate it from backend
 
-        // determine where to send the endpoint to, based on the user type that has been selected
-        // will most likely change this, maybe
-        const endPoint = selectedUserType === "1" ? "panelmembers/" : "companies/";
-
         // make the post call
-        const res = postRequest(endPoint, formData);
+        const res = postRequest("signup/", formData);
 
         // get the response back and see what's up
         res.then(response => {
