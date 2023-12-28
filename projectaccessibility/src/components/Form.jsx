@@ -96,8 +96,14 @@ const FormSignup = () => {
         const formData = new FormData(e.target);
         // formData.append("id", uuidv4()); // for testing, this will be removed later, maybe generate it from backend
 
+        // endpoint where the signup is headed to
+        const endPoint = {
+            1: "panelmember/",
+            2: "company/"
+        };
+
         // make the post call
-        const res = postRequest("signup/", formData);
+        const res = postRequest(`signup/${endPoint[selectedUserType]}`, formData);
 
         // get the response back and see what's up
         res.then(response => {
@@ -131,8 +137,8 @@ const FormSignup = () => {
         // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
         <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
             <Form.Label className="form__label">{translate("signup.form.select.user")}</Form.Label>
-            <Form.Select className="form__select_menu" onChange={handleSelectChange} defaultValue="default">
-                <option value="default" disabled hidden>{translate("signup.form.select.option.placeholder")}</option>
+            <Form.Select className="form__select_menu" onChange={handleSelectChange} required>
+                <option value="" disabled selected hidden>{translate("signup.form.select.option.placeholder")}</option>
                 <option value="1">{translate("signup.form.select.option.panelmember")}</option>
                 <option value="2">{translate("signup.form.select.option.company")}</option>
             </Form.Select>
