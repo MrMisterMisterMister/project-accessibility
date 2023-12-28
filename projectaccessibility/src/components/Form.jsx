@@ -3,6 +3,7 @@ import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
 import { ButtonSignup, ButtonLogin } from "../components/Button";
+import { AlertError } from "../components/Alert";
 
 // Login form component used for login page
 // This form will make a post method to the api server
@@ -122,21 +123,15 @@ const FormSignup = () => {
                 // reset form values
                 e.target.reset();
 
-                // Reset error state
+                // reset error state
                 setErrors({});
             }
         }).catch(error => {
             console.error(error.response);
 
-            // here it handles the errors
-            // and sets what type of error it's suppose to be
-            if (error.response?.data?.message) {
-                // set the error message in the hook
-                setErrors({ message: error.response.data.message });
-            } else {
-                // in case somehow it doesn't return an error
-                setErrors({ message: "An error occurred." });
-            }
+            // here it handles the errors, basically taking the entire data from response
+            // the backend gives then the appropriate error and afterwards it will be saved
+            setErrors(error.response?.data);
         });
 
         // TODO for now only panelmember works, that's because of those required fields
@@ -158,12 +153,9 @@ const FormSignup = () => {
     // company needs companyName and kvk
     return (
         // TODO ADD LOGO SOMEWHERE AND GO BACK TO HOME BREADCRUMB
+        // error handling translation
         <>
-            {Object.keys(errors).length > 0 && (
-                <div className="alert alert__error">
-                    {Object.entries(errors).map(([field, message]) => (message))}
-                </div>
-            )}
+            <AlertError data={errors} />
             <Form className="form__signup" acceptCharset="UTF-8" method="post" onSubmit={handleSignupSubmit}>
                 <Form.Label className="form__label">{translate("signup.form.select.user")}</Form.Label>
                 <Form.Select className="form__select_menu" onChange={handleSelectChange} defaultValue="" required>
