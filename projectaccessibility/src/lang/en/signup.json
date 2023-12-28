@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Signup",
+    "pageTitle": "Sign up",
     "alreadyHaveAccount": "Already have an account?",
     "logIn": "Log In",
     "form": {
@@ -19,6 +19,6 @@
         "password": "Password (must be longer than 8 characters)",
         "passwordPlaceholder": "Password",
         "confirmPasswordPlaceholder": "Confirm Password",
-        "buttonText": "Signup"
+        "buttonText": "Sign up"
     }
 }
