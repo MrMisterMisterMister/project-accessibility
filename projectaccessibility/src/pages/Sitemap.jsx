@@ -61,7 +61,9 @@ const Sitemap = () => {
                         <div key={index}>
                             <h4>{section.title}</h4>
                             {section.subPages.map((subPage, subIndex) => (
-                                <a href={subPage.path} key={subIndex}>{subPage.name}</a>
+                                <p key={subIndex}>
+                                    <a href={subPage.path}>{subPage.name}</a>
+                                </p>
                             ))}
                         </div>
                     ))}
