@@ -339,36 +339,36 @@ const FormPanelmember = () => {
             <Row>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">First Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="John" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="John" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Last Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Doe" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Doe" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Phone Number</Form.Label>
-                    <Form.Control className="form__text_field" type="phone" name="" value="" placeholder="Your Phone" />
+                    <Form.Control className="form__text_field" type="phone" name="" placeholder="Your Phone" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Address" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Address" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">City</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your City" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your City" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Province</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Province" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Province" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Postal code" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Postal code" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Country</Form.Label>
                     <Form.Select className="form__select_menu" name="">
-                        <option selected value="The Netherlands">The Netherlands</option>
+                        <option value="The Netherlands">The Netherlands</option>
                     </Form.Select>
                 </Col>
             </Row>
@@ -392,35 +392,35 @@ const FormCompany = () => {
             <Row>
                 <Col xs={12}>
                     <Form.Label className="form__label">Chamber of Commerce Number</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="KvK" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="KvK" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Company Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Company Name" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Company Name" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Phone Number</Form.Label>
-                    <Form.Control className="form__text_field" type="phone" name="" value="" placeholder="Your Phone" />
+                    <Form.Control className="form__text_field" type="phone" name="" placeholder="Your Phone" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Address" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Address" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">City</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your City" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your City" />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Province</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Province" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Province" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Postal code" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Postal code" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Website URL</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Website URL" />
+                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Website URL" />
                 </Col>
             </Row>
             <ButtonSubmit text="Update Info" />
