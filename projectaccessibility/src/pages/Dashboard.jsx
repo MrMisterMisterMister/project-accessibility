@@ -36,8 +36,9 @@ const Dashboard = () => {
                 <NavDashboardBottomNav items={items} />
             </div>
             {/* content */}
-            <div>
+            <div className="dashboard__page_content">
                 <Container>
+                    <h1>Welcome, Your mom</h1>
                     <br />
                     <br />
                     <br />
@@ -62,7 +63,6 @@ const Dashboard = () => {
                     <br />
                     <br />
                     <br />
-                    <h1>Your mom</h1>
                 </Container>
             </div>
         </div>

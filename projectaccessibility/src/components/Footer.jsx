@@ -25,9 +25,7 @@ const Footer = () => {
 
     // Initialize state
     // Default NL
-    const [language, setLanguage] = useState(
-        i18n.language || "nl"
-    );
+    const [language, setLanguage] = useState(i18n.language || "nl");
 
     // Language change
     const changeLanguage = (language) => {

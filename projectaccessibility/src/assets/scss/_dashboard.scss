@@ -4,6 +4,11 @@
     background-color: variables.$cultured;
 
     .dashboard__page_menu {
-        // something random
+        position: relative;
+    }
+
+    .dashboard__page_content {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
     }
 }

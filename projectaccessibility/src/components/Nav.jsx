@@ -20,10 +20,12 @@ const NavDesktop = ({ links }) => {
                 {links.map((link, index) => (
                     <Nav.Item
                         key={index}
-                        className="nav__header_desktop__navitem">
+                        className="nav__header_desktop__navitem"
+                    >
                         <Nav.Link
                             className="nav__header_desktop__navlink"
-                            href={link.path}>
+                            href={link.path}
+                        >
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -63,7 +65,8 @@ const NavMobile = ({ links }) => {
             <label
                 className="nav__header_mobile__label"
                 htmlFor="site__header_nav__toggle"
-                onClick={toggleMenuState}>
+                onClick={toggleMenuState}
+            >
                 <span className="nav__header_mobile__icon">
                     {renderMenuSpans()}
                 </span>
@@ -74,10 +77,12 @@ const NavMobile = ({ links }) => {
                     {links.map((link, index) => (
                         <Nav.Item
                             key={index}
-                            className="nav__header_mobile__navitem">
+                            className="nav__header_mobile__navitem"
+                        >
                             <Nav.Link
                                 className="nav__header_mobile__navlink"
-                                href={link.path}>
+                                href={link.path}
+                            >
                                 {link.name}
                             </Nav.Link>
                         </Nav.Item>
@@ -109,7 +114,8 @@ const NavFooterMenu = ({ title, links }) => {
                     <Nav.Item key={index} className="nav__footer_menu__navitem">
                         <Nav.Link
                             className="nav__footer_menu__navlink"
-                            href={link.path}>
+                            href={link.path}
+                        >
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -139,16 +145,23 @@ const NavFooterBottombar = ({ links, language, changeLanguage }) => {
                 {links.map((link, index) => (
                     <Nav.Item
                         key={index}
-                        className="nav__footer_bottombar__navitem">
+                        className="nav__footer_bottombar__navitem"
+                    >
                         <Nav.Link
                             className="nav__footer_bottombar__navlink"
-                            href={link.path}>
+                            href={link.path}
+                        >
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
                 ))}
                 <Nav.Item className="nav__footer_bottombar__navitem">
-                    <Nav.Link className="nav__footer_bottombar__navlink" onClick={() => changeLanguage(language === "nl" ? "en" : "nl")}>
+                    <Nav.Link
+                        className="nav__footer_bottombar__navlink"
+                        onClick={() =>
+                            changeLanguage(language === "nl" ? "en" : "nl")
+                        }
+                    >
                         {language === "nl" ? "English" : "Nederlands"}
                     </Nav.Link>
                 </Nav.Item>
@@ -171,18 +184,34 @@ NavFooterBottombar.propTypes = {
 
 // The nav for dashboard page
 // For now the username and profile picture are props
-const NavDashboardTopNav = ({ profilePicturePath, profilePictureAlt, userName }) => {
+const NavDashboardTopNav = ({
+    profilePicturePath,
+    profilePictureAlt,
+    userName
+}) => {
     return (
         <div className="nav__dashboard_topnav">
             <Container className="nav__dashboard_topnav__container">
                 <div className="nav__dashboard_topnav__brand">
                     <Navbar.Brand href="/">
-                        <img src="/img/brand/logo_white_text_dark.png" width="278" height="60" alt="Logo" title="Project Accessibility" />
+                        <img
+                            src="/img/brand/logo_white_text_dark.png"
+                            width="278"
+                            height="60"
+                            alt="Logo"
+                            title="Project Accessibility"
+                        />
                     </Navbar.Brand>
                 </div>
                 <div className="nav__dashboard_topnav__user">
-                    <img className="nav__dashboard_topnav__user_picture" src={profilePicturePath} alt={profilePictureAlt} />
-                    <span className="nav__dashboard_topnav__user_name">{userName}</span>
+                    <img
+                        className="nav__dashboard_topnav__user_picture"
+                        src={profilePicturePath}
+                        alt={profilePictureAlt}
+                    />
+                    <span className="nav__dashboard_topnav__user_name">
+                        {userName}
+                    </span>
                 </div>
             </Container>
         </div>
@@ -204,10 +233,20 @@ const NavDashboardBottomNav = ({ items }) => {
             <Container>
                 <Nav className="nav__dashboard_bottomnav__menu_nav ">
                     {items.map((item, index) => (
-                        <Nav.Item key={index} className="nav__dashboard_bottomnav__menu_item">
-                            <Nav.Link className="nav__dashboard_bottomnav__menu_link " href={item.path}>
-                                <span className="nav__dashboard_bottomnav__menu_icon">{item.icon}</span>
-                                <span className="nav__dashboard_bottomnav__menu_title">{item.title}</span>
+                        <Nav.Item
+                            key={index}
+                            className="nav__dashboard_bottomnav__menu_item"
+                        >
+                            <Nav.Link
+                                className="nav__dashboard_bottomnav__menu_link "
+                                href={item.path}
+                            >
+                                <span className="nav__dashboard_bottomnav__menu_icon">
+                                    {item.icon}
+                                </span>
+                                <span className="nav__dashboard_bottomnav__menu_title">
+                                    {item.title}
+                                </span>
                             </Nav.Link>
                         </Nav.Item>
                     ))}
@@ -228,4 +267,11 @@ NavDashboardBottomNav.propTypes = {
     ).isRequired
 };
 
-export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar, NavDashboardTopNav, NavDashboardBottomNav };
+export {
+    NavDesktop,
+    NavMobile,
+    NavFooterMenu,
+    NavFooterBottombar,
+    NavDashboardTopNav,
+    NavDashboardBottomNav
+};

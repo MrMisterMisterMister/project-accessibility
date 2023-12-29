@@ -17,14 +17,8 @@ i18n.use(initReactI18next)
         },
         fallbackLng: "nl",
         detection: {
-            order: [
-                "localStorage",
-                "navigator"
-            ],
-            caches: [
-                "localStorage",
-                "cookie"
-            ],
+            order: ["localStorage", "navigator"],
+            caches: ["localStorage", "cookie"],
             lookupLocalStorage: "i18nextLng"
         },
         interpolation: {

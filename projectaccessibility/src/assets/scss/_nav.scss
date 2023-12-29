@@ -372,7 +372,6 @@
     .nav__dashboard_bottomnav__menu_nav {
         display: flex;
         flex-wrap: wrap;
-        list-style: none;
         width: 100%;
         position: relative;
 
@@ -419,7 +418,7 @@
                 }
 
                 .nav__dashboard_bottomnav__menu_title {
-                    font-size: 1rem;
+                    font-size: 0.875rem;
                 }
             }
         }
