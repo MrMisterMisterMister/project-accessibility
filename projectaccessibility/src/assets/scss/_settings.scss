@@ -1,42 +1,24 @@
 @use 'variables';
 
 // still need to fix this
-.dashboard_section__wrapper {
+.settings__section {
+    background-color: variables.$white;
     margin-bottom: 2.5rem;
+    position: relative;
 
-    .dashboard_section__header {
-        position: relative;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-        background-color: variables.$white;
-        border: 1px solid #e9e8ef;
+    .settings__section_title {
+        border: solid 1px variables.$lightlavender;
         border-bottom: 0;
-
-        .dashboard_section__heading {
-            padding: 1.1rem 1.667rem;
-            margin: 0;
-            font-weight: 600;
-            font-style: normal;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 25px;
-            letter-spacing: 0.05em;
-            color: variables.$black;
-        }
+        padding: 1.1rem 1.667rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: variables.$black;
+        letter-spacing: 0.05em;
     }
 
-    .dashboard_section__content {
-        position: relative;
-        border-bottom-left-radius: 2px;
-        border-bottom-right-radius: 2px;
+    .settings__section_content {
         padding: 1.35rem 1.667rem;
-        background-color: variables.$white;
-        border: 1px solid #e9e8ef;
+        border: solid 1px variables.$lightlavender;
         box-shadow: 0 2px 3px -2px #d8dae0;
-
-        .dashboard_section__inner {
-            max-width: 25rem;
-            margin-right: 6.25rem;
-        }
     }
 }

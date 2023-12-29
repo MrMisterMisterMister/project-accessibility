@@ -324,4 +324,108 @@ const FormPassword = () => {
     );
 };
 
-export { FormLogin, FormSignup, FormEmail, FormPassword };
+// Form for panel members to update their information
+const FormPanelmember = () => {
+    // Ditto like I said above
+    const handlePanelmemberProfileUpdateSubmit = async (e) => {
+        e.preventDefault();
+        // Ditto like I said above
+        console.log("You clicked your mom: member");
+    };
+
+    // Ditto like I said above
+    return (
+        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handlePanelmemberProfileUpdateSubmit}>
+            <Row>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">First Name</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="John" />
+                </Col>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">Last Name</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Doe" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Phone Number</Form.Label>
+                    <Form.Control className="form__text_field" type="phone" name="" value="" placeholder="Your Phone" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Address</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Address" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">City</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your City" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Province</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Province" />
+                </Col>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">Postal Code</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Postal code" />
+                </Col>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">Country</Form.Label>
+                    <Form.Select className="form__select_menu" name="">
+                        <option selected value="The Netherlands">The Netherlands</option>
+                    </Form.Select>
+                </Col>
+            </Row>
+            <ButtonSubmit text="Update Info" />
+        </Form>
+    );
+};
+
+// Form for company to update their page info
+const FormCompany = () => {
+    // Ditto like I said above
+    const handleCompanyProfileUpdateSubmit = async (e) => {
+        e.preventDefault();
+        // Ditto like I said above
+        console.log("You clicked your mom: co");
+    };
+
+    // Ditto like I said above
+    return (
+        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handleCompanyProfileUpdateSubmit}>
+            <Row>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Chamber of Commerce Number</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="KvK" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Company Name</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Company Name" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Phone Number</Form.Label>
+                    <Form.Control className="form__text_field" type="phone" name="" value="" placeholder="Your Phone" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Address</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Address" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">City</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your City" />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">Province</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Province" />
+                </Col>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">Postal Code</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Postal code" />
+                </Col>
+                <Col xs={12} md={6}>
+                    <Form.Label className="form__label">Website URL</Form.Label>
+                    <Form.Control className="form__text_field" type="text" name="" value="" placeholder="Your Website URL" />
+                </Col>
+            </Row>
+            <ButtonSubmit text="Update Info" />
+        </Form>
+    );
+};
+
+export { FormLogin, FormSignup, FormEmail, FormPassword, FormPanelmember, FormCompany };

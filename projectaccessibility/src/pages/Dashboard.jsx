@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import { BarChart, PersonCircle, Gear, BoxArrowRight } from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 // Test
-import { SettingsPanelmember, SettingsEmail, SettingsPassword } from "../components/Settings";
+import { SettingsPanelmember, SettingsEmail, SettingsPassword, SettingsCompany } from "../components/Settings";
 
 // Dashboard page
 // For now it's just the nav
@@ -71,6 +71,7 @@ const Dashboard = () => {
                 <Container>
                     <div className="dashboard__page_content">
                         <SettingsPanelmember />
+                        <SettingsCompany />
                         <SettingsEmail />
                         <SettingsPassword />
                         <h1>Welcome, Your mom</h1>
