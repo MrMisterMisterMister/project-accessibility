@@ -296,7 +296,7 @@ const FormEmail = () => {
             <Form.Control className="form__text_field" type="email" name="" placeholder="Confirm Email" />
             <Form.Label className="form__label">Current Password</Form.Label>
             <Form.Control className="form__text_field" type="password" name="" placeholder="Enter Password" />
-            <ButtonSubmit text="Update Email" />
+            <ButtonSubmit style="button__settings" text="Update Email" />
         </Form>
     );
 };
@@ -319,7 +319,7 @@ const FormPassword = () => {
             <Form.Control className="form__text_field" type="password" name="" placeholder="Must be longer than 6 characters" />
             <Form.Label className="form__label">Confirm New Password</Form.Label>
             <Form.Control className="form__text_field" type="password" name="" placeholder="Confirm Password" />
-            <ButtonSubmit text="Update Password" />
+            <ButtonSubmit style="button__settings" text="Update Password" />
         </Form>
     );
 };
@@ -372,7 +372,7 @@ const FormPanelmember = () => {
                     </Form.Select>
                 </Col>
             </Row>
-            <ButtonSubmit text="Update Info" />
+            <ButtonSubmit style="button__settings" text="Update Info" />
         </Form>
     );
 };
@@ -423,7 +423,7 @@ const FormCompany = () => {
                     <Form.Control className="form__text_field" type="text" name="" placeholder="Your Website URL" />
                 </Col>
             </Row>
-            <ButtonSubmit text="Update Info" />
+            <ButtonSubmit style="button__settings" text="Update Info" />
         </Form>
     );
 };

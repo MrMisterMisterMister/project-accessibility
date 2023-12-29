@@ -70,17 +70,16 @@ const Dashboard = () => {
             <main className="dashboard__page_main">
                 <Container>
                     <div className="dashboard__page_content">
-                        <SettingsPanelmember />
-                        <SettingsCompany />
-                        <SettingsEmail />
-                        <SettingsPassword />
                         <h1>Welcome, Your mom</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
                         <br />
                         <br />
                         <br />
-                        <br />
+                        <SettingsPanelmember />
+                        <SettingsCompany />
+                        <SettingsEmail />
+                        <SettingsPassword />
                         <br />
                         <br />
                         <br />
