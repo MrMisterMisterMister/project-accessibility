@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { Nav } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 
 // Render hamburger menu for mobile menu
 const renderMenuSpans = () => {
@@ -169,4 +169,63 @@ NavFooterBottombar.propTypes = {
     language: PropTypes.string.isRequired
 };
 
-export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar };
+// The nav for dashboard page
+// For now the username and profile picture are props
+const NavDashboardTopNav = ({ profilePicturePath, profilePictureAlt, userName }) => {
+    return (
+        <div className="nav__dashboard_topnav">
+            <Container className="nav__dashboard_topnav__container">
+                <div className="nav__dashboard_topnav__brand">
+                    <Navbar.Brand href="/">
+                        <img src="/img/brand/logo_white_text_dark.png" width="278" height="60" alt="Logo" title="Project Accessibility" />
+                    </Navbar.Brand>
+                </div>
+                <div className="nav__dashboard_topnav__user">
+                    <img className="nav__dashboard_topnav__user_picture" src={profilePicturePath} alt={profilePictureAlt} />
+                    <span className="nav__dashboard_topnav__user_name">{userName}</span>
+                </div>
+            </Container>
+        </div>
+    );
+};
+
+// Prop types for navdashboardtopnav
+NavDashboardTopNav.propTypes = {
+    profilePicturePath: PropTypes.string.isRequired,
+    profilePictureAlt: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired
+};
+
+// The bottom part of the nav for dashboard page
+// Can load in components to get the right one for each portal
+const NavDashboardBottomNav = ({ items }) => {
+    return (
+        <div className="nav__dashboard_bottomnav">
+            <Container>
+                <Nav className="nav__dashboard_bottomnav__menu_nav ">
+                    {items.map((item, index) => (
+                        <Nav.Item key={index} className="nav__dashboard_bottomnav__menu_item">
+                            <Nav.Link className="nav__dashboard_bottomnav__menu_link " href={item.path}>
+                                <span className="nav__dashboard_bottomnav__menu_icon">{item.icon}</span>
+                                <span className="nav__dashboard_bottomnav__menu_title">{item.title}</span>
+                            </Nav.Link>
+                        </Nav.Item>
+                    ))}
+                </Nav>
+            </Container>
+        </div>
+    );
+};
+
+// prop types for nav dashboard bottom nav
+NavDashboardBottomNav.propTypes = {
+    items: PropTypes.arrayOf(
+        PropTypes.shape({
+            icon: PropTypes.object.isRequired,
+            title: PropTypes.string.isRequired,
+            path: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
+
+export { NavDesktop, NavMobile, NavFooterMenu, NavFooterBottombar, NavDashboardTopNav, NavDashboardBottomNav };

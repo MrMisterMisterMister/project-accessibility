@@ -1,61 +1,9 @@
 @use 'variables';
-@use 'mixins';
 
 .dashboard__page {
-    background-color: #f1f2f7;
+    background-color: variables.$cultured;
 
     .dashboard__page_menu {
-
-        .dashboard__page_menu__topnav {
-            background-color: variables.$sapphire;
-            font-weight: 500;
-            display: flex;
-            position: relative;
-            flex-wrap: wrap;
-            align-items: center;
-
-            .dashboard__page_menu__container {
-                width: 100%;
-                height: 90px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                .dashboard__page_menu__brand {
-                    display: flex;
-                    padding: 0.25rem 0;
-                }
-
-                .dashboard__page_menu__user {
-                    display: flex;
-                    align-items: center;
-
-                    .dashboard__page_menu__user_picture {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 100%;
-                    }
-
-                    .dashboard__page_menu__user_name {
-                        margin-left: 0.5rem;
-                        color: variables.$white;
-                    }
-                }
-            }
-        }
-
-        .dashboard__page_menu__bottomnav {
-
-            .nav__dashboard_menu__nav {
-
-                .nav__dashboard_menu__nav_item {
-
-                    .nav__dashboard_menu__nav_link {
-
-                        .nav__dashboard_menu__nav_title {}
-                    }
-                }
-            }
-        }
+        // something random
     }
 }

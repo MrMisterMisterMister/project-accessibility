@@ -317,3 +317,111 @@
         }
     }
 }
+
+// dashboard top nav component
+.nav__dashboard_topnav {
+    background-color: variables.$sapphire;
+    font-weight: 500;
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .nav__dashboard_topnav__container {
+        width: 100%;
+        height: 90px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .nav__dashboard_topnav__brand {
+            display: flex;
+            padding: 0.25rem 0;
+        }
+
+        .nav__dashboard_topnav__user {
+            display: flex;
+            align-items: center;
+
+            .nav__dashboard_topnav__user_picture {
+                width: 40px;
+                height: 40px;
+                border-radius: 100%;
+            }
+
+            .nav__dashboard_topnav__user_name {
+                margin-left: 0.5rem;
+                color: variables.$white;
+            }
+        }
+    }
+}
+
+// dashboard bottom nav component
+.nav__dashboard_bottomnav {
+    background-color: variables.$white;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    box-shadow: 0 19px 34px -15px #d2d2f2;
+
+    .nav__dashboard_bottomnav__menu_nav {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        width: 100%;
+        position: relative;
+
+        .nav__dashboard_bottomnav__menu_item {
+            position: relative;
+            line-height: 1;
+            text-align: left;
+            margin-left: 1rem;
+
+            &:hover {
+                &:before {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    bottom: 0px;
+                    width: 100%;
+                    height: 3px;
+                    background-color: variables.$sapphire;
+                }
+            }
+
+            &:first-child {
+                margin-left: 0;
+
+                .nav__dashboard_bottomnav__menu_link {
+                    padding-left: 0;
+                }
+            }
+
+            .nav__dashboard_bottomnav__menu_link {
+                color: variables.$sapphire;
+                padding: 22px 10px;
+                padding-left: 10px;
+                line-height: 1;
+                font-weight: 400;
+                display: flex;
+                align-items: center;
+                text-decoration: none;
+
+                .nav__dashboard_bottomnav__menu_icon {
+                    margin-right: 0.5rem;
+                    width: 100%;
+                    height: 100%;
+                }
+
+                .nav__dashboard_bottomnav__menu_title {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
