@@ -374,7 +374,8 @@
         flex-wrap: nowrap;
         width: 100%;
         position: relative;
-        overflow: auto;
+        overflow-x: auto;
+        scrollbar-width: none; // firefox
 
         .nav__dashboard_bottomnav__menu_item {
             position: relative;

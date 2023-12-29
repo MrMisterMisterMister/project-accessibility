@@ -27,11 +27,6 @@ const Dashboard = () => {
             path: "#",
             icon: <BoxArrowRight />,
             title: "Sign out"
-        },
-        {
-            path: "#",
-            icon: <BoxArrowRight />,
-            title: "Sign out"
         }
     ];
 
