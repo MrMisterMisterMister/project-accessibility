@@ -76,6 +76,13 @@ const Dashboard = () => {
                         <br />
                         <br />
                         <br />
+                        {
+                        /*
+                        These are just for display
+                        They will be removed later on, since they are suppose to be loaded in dynamically
+                        For now, I just keep them here to see how they look
+                         */
+                        }
                         <SettingsPanelmember />
                         <SettingsCompany />
                         <SettingsEmail />
