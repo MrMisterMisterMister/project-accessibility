@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
-import { ButtonSignup, ButtonLogin } from "../components/Button";
+import { ButtonSubmit } from "../components/Button";
 import { AlertError } from "../components/Alert";
 
 // Form for login page
@@ -84,7 +84,7 @@ const FormLogin = () => {
                         {translate("login.form.checkbox")}
                     </Form.Check.Label>
                 </div>
-                <ButtonLogin text={translate("login.form.button")} />
+                <ButtonSubmit style="button__login" text={translate("login.form.button")} />
             </Form>
         </>
     );
@@ -269,10 +269,59 @@ const FormSignup = () => {
                     )}
                     required
                 />
-                <ButtonSignup text={translate("signup.form.buttonText")} />
+                <ButtonSubmit style="button__signup" text={translate("signup.form.buttonText")} />
             </Form>
         </>
     );
 };
 
-export { FormLogin, FormSignup };
+// Form to update email
+const FormEmail = () => {
+    // Disable the submit from working since I don't want to see blank page everytime I submit
+    const handleEmailUpdateSubmit = async (e) => {
+        e.preventDefault();
+        // Some logic will be added here to make a post request to backend
+        // So it will handle the updating passwords
+        console.log("You clicked your mom: em");
+    };
+
+    // Still need to fix this
+    // Like proper error handling and required fields
+    // Also localization
+    return (
+        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handleEmailUpdateSubmit}>
+            <Form.Label className="form__label">New Email Address</Form.Label>
+            <Form.Control className="form__text_field" type="email" name="" placeholder="Enter Email" />
+            <Form.Label className="form__label">Confirm Email Address</Form.Label>
+            <Form.Control className="form__text_field" type="email" name="" placeholder="Confirm Email" />
+            <Form.Label className="form__label">Current Password</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder="Enter Password" />
+            <ButtonSubmit text="Update Email" />
+        </Form>
+    );
+};
+
+// Form to update password
+const FormPassword = () => {
+    // Ditto like I said above
+    const handlePasswordUpdateSubmit = async (e) => {
+        e.preventDefault();
+        // Ditto like I said above
+        console.log("You clicked your mom: pa");
+    };
+
+    // Ditto like I said above
+    return (
+        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handlePasswordUpdateSubmit}>
+            <Form.Label className="form__label">Current Password</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder="Enter Password" />
+            <Form.Label className="form__label">New Password</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder="Must be longer than 6 characters" />
+            <Form.Label className="form__label">Confirm New Password</Form.Label>
+            <Form.Control className="form__text_field" type="password" name="" placeholder="Confirm Password" />
+            <ButtonSubmit text="Update Password" />
+        </Form>
+    );
+};
+
+export { FormLogin, FormSignup, FormEmail, FormPassword };

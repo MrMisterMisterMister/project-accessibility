@@ -12,6 +12,19 @@ const ButtonSecondary = () => {
     return <></>;
 };
 
+// General button for submits in forms
+const ButtonSubmit = ({ style, text }) => {
+    return (
+        <Button className={style} as="input" type="submit" value={text} />
+    );
+};
+
+// prop type for button submit
+ButtonSubmit.propTypes = {
+    style: PropTypes.string,
+    text: PropTypes.string.isRequired
+};
+
 // Custom hero button on hero section
 const ButtonHero = ({ text, path }) => {
     return (
@@ -51,40 +64,6 @@ ButtonContact.propTypes = {
     text: PropTypes.string.isRequired
 };
 
-// Button for signup
-const ButtonSignup = ({ text }) => {
-    return (
-        <Button
-            className="button__signup"
-            as="input"
-            type="submit"
-            value={text}
-        />
-    );
-};
-
-// Prop type for ButtonSignup
-ButtonSignup.propTypes = {
-    text: PropTypes.string.isRequired
-};
-
-// Button for login
-const ButtonLogin = ({ text }) => {
-    return (
-        <Button
-            className="button__login"
-            as="input"
-            type="submit"
-            value={text}
-        />
-    );
-};
-
-// Prop type for ButtonSignup
-ButtonLogin.propTypes = {
-    text: PropTypes.string.isRequired
-};
-
 // Button for auth
 // Like facebook or google
 // Also for create account
@@ -108,9 +87,8 @@ ButtonAuth.propTypes = {
 export {
     ButtonPrimary,
     ButtonSecondary,
+    ButtonSubmit,
     ButtonHero,
     ButtonContact,
-    ButtonSignup,
-    ButtonLogin,
     ButtonAuth
 };

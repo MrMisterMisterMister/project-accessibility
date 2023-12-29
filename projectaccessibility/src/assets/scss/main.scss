@@ -14,7 +14,7 @@
 @use 'group';
 @use 'form';
 @use 'alert';
-@use 'account';
+@use 'settings';
 
 // section
 @use 'hero';
@@ -27,7 +27,6 @@
 // pages
 @use 'sitemap';
 @use 'privacypolicy';
-@use 'account';
 @use 'cookies';
 @use 'login';
 @use 'signup';

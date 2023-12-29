@@ -1,0 +1,42 @@
+@use 'variables';
+
+// still need to fix this
+.dashboard_section__wrapper {
+    margin-bottom: 2.5rem;
+
+    .dashboard_section__header {
+        position: relative;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        background-color: variables.$white;
+        border: 1px solid #e9e8ef;
+        border-bottom: 0;
+
+        .dashboard_section__heading {
+            padding: 1.1rem 1.667rem;
+            margin: 0;
+            font-weight: 600;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 25px;
+            letter-spacing: 0.05em;
+            color: variables.$black;
+        }
+    }
+
+    .dashboard_section__content {
+        position: relative;
+        border-bottom-left-radius: 2px;
+        border-bottom-right-radius: 2px;
+        padding: 1.35rem 1.667rem;
+        background-color: variables.$white;
+        border: 1px solid #e9e8ef;
+        box-shadow: 0 2px 3px -2px #d8dae0;
+
+        .dashboard_section__inner {
+            max-width: 25rem;
+            margin-right: 6.25rem;
+        }
+    }
+}

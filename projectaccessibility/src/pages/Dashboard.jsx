@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { BarChart, PersonCircle, Gear, BoxArrowRight } from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
+// Test
+import { SettingsPanelmember, SettingsEmail, SettingsPassword } from "../components/Settings";
 
 // Dashboard page
 // For now it's just the nav
@@ -68,6 +70,9 @@ const Dashboard = () => {
             <main className="dashboard__page_main">
                 <Container>
                     <div className="dashboard__page_content">
+                        <SettingsPanelmember />
+                        <SettingsEmail />
+                        <SettingsPassword />
                         <h1>Welcome, Your mom</h1>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
