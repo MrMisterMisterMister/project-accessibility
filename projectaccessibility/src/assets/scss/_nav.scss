@@ -371,15 +371,17 @@
 
     .nav__dashboard_bottomnav__menu_nav {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         width: 100%;
         position: relative;
+        overflow: auto;
 
         .nav__dashboard_bottomnav__menu_item {
             position: relative;
             line-height: 1;
             text-align: left;
             margin-left: 1rem;
+            flex-shrink: 0;
 
             &:hover {
                 &:before {

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { BarChart, PersonCircle, Gear } from "react-bootstrap-icons";
+import { BarChart, PersonCircle, Gear, BoxArrowRight } from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 
 // Dashboard page
@@ -22,6 +22,16 @@ const Dashboard = () => {
             path: "#",
             icon: <Gear />,
             title: "Settings"
+        },
+        {
+            path: "#",
+            icon: <BoxArrowRight />,
+            title: "Sign out"
+        },
+        {
+            path: "#",
+            icon: <BoxArrowRight />,
+            title: "Sign out"
         }
     ];
 

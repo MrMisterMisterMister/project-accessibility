@@ -11,6 +11,6 @@
     "auth": {
         "signup": "Account aanmaken",
         "google": "Doorgaan met Google",
-        "facebook": "Doorgaan met Facebook"
+        "microsoft": "Doorgaan met Microsoft"
     }
 }
