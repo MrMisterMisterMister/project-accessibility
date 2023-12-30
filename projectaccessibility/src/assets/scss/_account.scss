@@ -44,5 +44,32 @@
         border: solid 1px variables.$lightlavender;
         padding: 1.1rem 1.667rem;
         box-shadow: 0 2px 3px -2px rgb(216, 218, 224);
+
+        .account__dashboard_additional__title {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+            margin: 1rem 0 0.675rem 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .account__dashboard_additional__info {
+            display: flex;
+            color: variables.$blackrussian;
+            
+            &_label {
+                width: 150px;
+                font-size: 0.875rem;
+            }
+
+            &_value {
+                font-size: 0.875rem;
+                font-weight: normal;
+            }
+        }
     }
 }
