@@ -4,6 +4,7 @@ import { BarChart, PersonCircle, Gear, BoxArrowRight } from "react-bootstrap-ico
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 // Test
 import { SettingsPanelmember, SettingsEmail, SettingsPassword, SettingsCompany } from "../components/Settings";
+import { AccountCompany, AccountPanelmember } from "../components/Account";
 
 // Dashboard page
 // For now it's just the nav
@@ -18,7 +19,7 @@ const Dashboard = () => {
         {
             path: "#",
             icon: <PersonCircle />,
-            title: "Account"
+            title: "Profile"
         },
         {
             path: "#",
@@ -87,6 +88,8 @@ const Dashboard = () => {
                         <SettingsCompany />
                         <SettingsEmail />
                         <SettingsPassword />
+                        <AccountPanelmember />
+                        <AccountCompany />
                         <br />
                         <br />
                         <br />

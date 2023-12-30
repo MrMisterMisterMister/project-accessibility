@@ -1,12 +1,12 @@
 @use 'variables';
 
-// still need to fix this
-.settings__section {
+// for the settings page section
+.settings__dashboard {
     background-color: variables.$white;
     margin-bottom: 2.5rem;
     position: relative;
 
-    .settings__section_title {
+    .settings__dashboard_title {
         border: solid 1px variables.$lightlavender;
         border-bottom: 0;
         padding: 1.1rem 1.667rem;
@@ -16,9 +16,9 @@
         letter-spacing: 0.05em;
     }
 
-    .settings__section_content {
+    .settings__dashboard_content {
         padding: 1.35rem 1.667rem;
         border: solid 1px variables.$lightlavender;
-        box-shadow: 0 2px 3px -2px #d8dae0;
+        box-shadow: 0 2px 3px -2px rgb(216, 218, 224);
     }
 }

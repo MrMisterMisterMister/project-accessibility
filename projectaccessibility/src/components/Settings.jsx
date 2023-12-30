@@ -4,48 +4,48 @@ import { FormEmail, FormPassword, FormPanelmember, FormCompany } from "./Form";
 //
 const SettingsPanelmember = () => {
     return (
-        <section className="settings__section">
-            <h4 className="settings__section_title">Panelmember</h4>
-            <div className="settings__section_content">
+        <div className="settings__dashboard">
+            <h4 className="settings__dashboard_title">Panelmember</h4>
+            <div className="settings__dashboard_content">
                 <FormPanelmember />
             </div>
-        </section>
+        </div>
     );
 };
 
 //
 const SettingsCompany = () => {
     return (
-        <section className="settings__section">
-            <h4 className="settings__section_title">Company</h4>
-            <div className="settings__section_content">
+        <div className="settings__dashboard">
+            <h4 className="settings__dashboard_title">Company</h4>
+            <div className="settings__dashboard_content">
                 <FormCompany />
             </div>
-        </section>
+        </div>
     );
 };
 
 //
 const SettingsEmail = () => {
     return (
-        <section className="settings__section">
-            <h4 className="settings__section_title">Change Your Email</h4>
-            <div className="settings__section_content">
+        <div className="settings__dashboard">
+            <h4 className="settings__dashboard_title">Change Your Email</h4>
+            <div className="settings__dashboard_content">
                 <FormEmail />
             </div>
-        </section>
+        </div>
     );
 };
 
 //
 const SettingsPassword = () => {
     return (
-        <section className="settings__section">
-            <h4 className="settings__section_title">Change Your Password</h4>
-            <div className="settings__section_content">
+        <div className="settings__dashboard">
+            <h4 className="settings__dashboard_title">Change Your Password</h4>
+            <div className="settings__dashboard_content">
                 <FormPassword />
             </div>
-        </section>
+        </div>
     );
 };
 
