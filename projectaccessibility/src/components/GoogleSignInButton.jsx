@@ -26,7 +26,7 @@ const GoogleOAuthButton = () => {
     if (clientId) {
       const params = {
         client_id: clientId,
-        redirect_uri: 'https://localhost:5001',
+        redirect_uri: 'http://localhost:5001',
         response_type: 'token',
         scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
         include_granted_scopes: 'true',
