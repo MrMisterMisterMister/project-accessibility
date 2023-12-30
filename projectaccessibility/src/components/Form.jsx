@@ -277,12 +277,36 @@ const FormSignup = () => {
 
 // Form to update email
 const FormEmail = () => {
+    // Need to catch the user type somewhere
+    // Also need to get their guid
+
     // Disable the submit from working since I don't want to see blank page everytime I submit
     const handleEmailUpdateSubmit = async (e) => {
         e.preventDefault();
+
+        // Create a variable to store the form data submitted by the user
+        const formData = new FormData(e.target);
+
         // Some logic will be added here to make a post request to backend
         // So it will handle the updating passwords
-        console.log("You clicked your mom: em");
+
+        // Make the POST call using axios post
+        const updateEmailResponse = postRequest("users/{their guid}", formData); // Still need to be worked on
+
+        // Handle the response from the POST call
+        updateEmailResponse
+            .then((response) => {
+                console.log(response);
+
+                // Need to configurate a success to user later
+                console.log("your mom");
+                e.target.reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+                console.log("your mom");
+            });
     };
 
     // Still need to fix this
@@ -307,7 +331,27 @@ const FormPassword = () => {
     const handlePasswordUpdateSubmit = async (e) => {
         e.preventDefault();
         // Ditto like I said above
-        console.log("You clicked your mom: pa");
+
+        // Create a variable to store the form data submitted by the user
+        const formData = new FormData(e.target);
+
+        // Make the POST call using axios post
+        const updatePasswordResponse = postRequest("users/{their guid}", formData); // Still need to be worked on
+
+        // Handle the response from the POST call
+        updatePasswordResponse
+            .then((response) => {
+                console.log(response);
+
+                // Need to configurate a success to user later
+                console.log("your mom");
+                e.target.reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+                console.log("your mom");
+            });
     };
 
     // Ditto like I said above
@@ -330,7 +374,27 @@ const FormPanelmember = () => {
     const handlePanelmemberProfileUpdateSubmit = async (e) => {
         e.preventDefault();
         // Ditto like I said above
-        console.log("You clicked your mom: member");
+
+        // Create a variable to store the form data submitted by the user
+        const formData = new FormData(e.target);
+
+        // Make the POST call using axios post
+        const updatePanelmemberProfileResponse = postRequest("panelmembers/{their guid}", formData); // Still need to be worked on
+
+        // Handle the response from the POST call
+        updatePanelmemberProfileResponse
+            .then((response) => {
+                console.log(response);
+
+                // Need to configurate a success to user later
+                console.log("your mom");
+                e.target.reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+                console.log("your mom");
+            });
     };
 
     // Ditto like I said above
@@ -350,16 +414,12 @@ const FormPanelmember = () => {
                     <Form.Control className="form__text_field" type="phone" name="" placeholder="Your Phone" />
                 </Col>
                 <Col xs={12}>
+                    <Form.Label className="form__label">Date of Birth</Form.Label>
+                    <Form.Control className="form__text_field" type="date" name="" placeholder="Your Date of Birth" />
+                </Col>
+                <Col xs={12}>
                     <Form.Label className="form__label">Address</Form.Label>
                     <Form.Control className="form__text_field" type="text" name="" placeholder="Your Address" />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">City</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your City" />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">Province</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Province" />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Postal Code</Form.Label>
@@ -383,7 +443,27 @@ const FormCompany = () => {
     const handleCompanyProfileUpdateSubmit = async (e) => {
         e.preventDefault();
         // Ditto like I said above
-        console.log("You clicked your mom: co");
+
+        // Create a variable to store the form data submitted by the user
+        const formData = new FormData(e.target);
+
+        // Make the POST call using axios post
+        const updateCompanyProfileResponse = postRequest("companies/{their guid}", formData); // Still need to be worked on
+
+        // Handle the response from the POST call
+        updateCompanyProfileResponse
+            .then((response) => {
+                console.log(response);
+
+                // Need to configurate a success to user later
+                console.log("your mom");
+                e.target.reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+                console.log("your mom");
+            });
     };
 
     // Ditto like I said above
