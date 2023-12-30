@@ -500,7 +500,7 @@ const FormCompany = () => {
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Website URL</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Website URL" />
+                    <Form.Control className="form__text_field" type="url" name="" placeholder="Your Website URL" />
                 </Col>
             </Row>
             <ButtonSubmit style="button__settings" text="Update Info" />

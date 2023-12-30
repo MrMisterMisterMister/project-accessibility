@@ -3,6 +3,18 @@
 // account section in 
 .account__dashboard {
     position: relative;
+    margin-bottom: 2.5rem;
+
+    .account__dashboard_title {
+        background-color: variables.$white;
+        color: variables.$black;
+        padding: 1.1rem 1.667rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        border: solid 1px variables.$lightlavender;
+        border-bottom: 0;
+        letter-spacing: 0.05em;
+    }
 
     .account__dashboard_user {
         display: flex;
@@ -17,6 +29,7 @@
             width: 125px;
             height: 125px;
             border-radius: 100%;
+            object-fit: cover;
         }
 
         .account__dashboard_user__info {
@@ -27,7 +40,7 @@
             text-align: left;
 
             .account__dashboard_user__name {
-                font-size: 1.25rem;
+                font-size: 1.125rem;
                 font-weight: 600;
                 margin-bottom: 1rem;
             }
