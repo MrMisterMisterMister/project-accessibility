@@ -364,6 +364,8 @@
     width: 100%;
     display: flex;
     align-items: center;
+    // Need to optimize this for mobile, like make this go to the bottom or something
+    // Also need to update how the active states look like
     top: 0;
     right: 0;
     left: 0;

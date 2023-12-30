@@ -59,7 +59,7 @@ const AccountCompany = () => {
         <div className="account__dashboard">
             <h4 className="account__dashboard_title">Your Profile</h4>
             <div className="account__dashboard_user">
-                <img className="account__dashboard_user__picture" src="/img/brand/logo.png" alt="Clodsire" />
+                <img className="account__dashboard_user__picture" src="/img/placeholder.jpg" alt="Clodsire" />
                 <div className="account__dashboard_user__info">
                     <span className="account__dashboard_user__name">Accessibility</span>
                     <p className="account__dashboard_user__biography">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusamus veritatis pariatur tenetur delectus veniam ducimus officiis suscipit dolore nisi!</p>
@@ -76,19 +76,19 @@ const AccountCompany = () => {
                     <span className="account__dashboard_additional__info_value">8417214</span>
                 </div>
                 <div className="account__dashboard_additional__info">
-                    <span className="account__dashboard_additional__info_label">Streetname</span>
+                    <span className="account__dashboard_additional__info_label">Streetname:</span>
                     <span className="account__dashboard_additional__info_value">Teststraat 123</span>
                 </div>
                 <div className="account__dashboard_additional__info">
-                    <span className="account__dashboard_additional__info_label">Zipcode</span>
+                    <span className="account__dashboard_additional__info_label">Zipcode:</span>
                     <span className="account__dashboard_additional__info_value">1234 AB</span>
                 </div>
                 <div className="account__dashboard_additional__info">
-                    <span className="account__dashboard_additional__info_label">Place</span>
+                    <span className="account__dashboard_additional__info_label">Place:</span>
                     <span className="account__dashboard_additional__info_value">Utrecht</span>
                 </div>
                 <div className="account__dashboard_additional__info">
-                    <span className="account__dashboard_additional__info_label">Country</span>
+                    <span className="account__dashboard_additional__info_label">Country:</span>
                     <span className="account__dashboard_additional__info_value">The Netherlands</span>
                 </div>
                 <h5 className="account__dashboard_additional__title">Contacts</h5>
@@ -113,4 +113,11 @@ const AccountCompany = () => {
     );
 };
 
-export { AccountPanelmember, AccountCompany };
+// The key and values are suppose to be automatically done
+const AccountProfile = () => {
+    return (
+        <></>
+    );
+};
+
+export { AccountProfile, AccountPanelmember, AccountCompany };
