@@ -2,25 +2,47 @@
 
 // account section in 
 .account__dashboard {
+    position: relative;
 
     .account__dashboard_user {
-        
-        .account__dashboard_user__picture {
+        display: flex;
+        justify-content: flex-start;
+        background-color: variables.$white;
+        border: solid 1px variables.$lightlavender;
+        padding: 1.1rem 1.667rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 3px -2px rgb(216, 218, 224);
 
+        .account__dashboard_user__picture {
+            width: 125px;
+            height: 125px;
+            border-radius: 100%;
         }
 
         .account__dashboard_user__info {
-            .account__dashboard_user__name {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 0 1.5em;
+            color: variables.$black;
+            text-align: left;
 
+            .account__dashboard_user__name {
+                font-size: 1.25rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
             }
 
-            .account__dashboard_user__biograph {
-
+            .account__dashboard_user__biography {
+                font-size: 0.875rem;
+                font-weight: normal;
             }
         }
     }
 
-    .account__dashboard_additional__info {
-
+    .account__dashboard_additional {
+        background-color: variables.$white;
+        border: solid 1px variables.$lightlavender;
+        padding: 1.1rem 1.667rem;
+        box-shadow: 0 2px 3px -2px rgb(216, 218, 224);
     }
 }
