@@ -14,15 +14,23 @@ const AlertError = ({ data }) => {
     // Translation
     const { t: translate } = useTranslation();
 
+    // Check if the data is an array or not, otherwise convert it to an array, so no weird white screen
+    const dataArray = Array.isArray(data) ? data : [data];
+
     return (
         <>
-            {(Array.isArray(data) ? data : [data]).map((item, index) => (
-                <div key={index} className="alert alert__error">
-                    {Object.entries(item).map(([key, value]) => (
-                        <span key={key}>{value}</span>
-                    ))}
-                </div>
-            ))}
+            {
+                // This one checks if there are items in the array which have a non-empty object
+                // Also checks if the array itself isn't empty by looking at the length
+                dataArray.some(item => Object.keys(item).length > 0) &&
+                dataArray.map((item, index) => (
+                    <div key={index} className="alert alert__error">
+                        {Object.entries(item).map(([key, value]) => (
+                            <span key={key}>{value}</span>
+                        ))}
+                    </div>
+                ))
+            }
         </>
     );
 };
