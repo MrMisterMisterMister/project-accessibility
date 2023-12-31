@@ -3,7 +3,7 @@
 
 // signup page
 .signup__page {
-    height: 100vh;
+    height: 100%;
     display: flex;
 
     .signup__page_container {
@@ -33,12 +33,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 0 0 4rem 0;
+            padding: 1rem 0 4rem 0;
+            overflow-y: auto;
 
             @include mixins.lg {
                 align-items: flex-start;
-                justify-content: center;
-                padding: 0 3rem;
+                padding: 2rem 3rem;
                 height: 100%;
             }
 
