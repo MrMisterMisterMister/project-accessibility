@@ -1,40 +1,45 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { BarChart, PersonCircle, Gear, BoxArrowRight } from "react-bootstrap-icons";
+import {
+    BarChart,
+    PersonCircle,
+    Gear,
+    BoxArrowRight
+} from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
-// Test
-import { SettingsPanelmember, SettingsEmail, SettingsPassword, SettingsCompany } from "../components/Settings";
-import { AccountCompany, AccountPanelmember } from "../components/Account";
+import Account from "./Account";
+import Settings from "./Settings";
 
 // Dashboard page
-// For now it's just the nav
 const Dashboard = () => {
-    // Some test items
-    const items = [
+    // State to manage the navItems in the menu
+    const [navItems, setNavItems] = useState([
         {
-            path: "#",
             icon: <BarChart />,
-            title: "Dashboard"
+            title: "Dashboard",
+            active: true
         },
         {
-            path: "#",
+            page: <Account />,
             icon: <PersonCircle />,
-            title: "Profile"
+            title: "Account"
         },
         {
-            path: "#",
+            page: <Settings />,
             icon: <Gear />,
             title: "Settings"
         },
         {
-            path: "#",
             icon: <BoxArrowRight />,
             title: "Sign out"
         }
-    ];
+    ]);
 
     // State to keep track whether of scrolling behaviour done by user
     const [isScrolling, setIsScrolling] = useState(false);
+
+    // State to keep track of the page that needs to be rendered based on what navItem is clicked
+    const [pageToRender, setPageToRender] = useState(null);
 
     // This effect checks if the nav should be fixed to stay visible while the user is scrolling
     useEffect(() => {
@@ -50,6 +55,22 @@ const Dashboard = () => {
         };
     }, []);
 
+    // This function handles button clicks in the Nav
+    // It will then render the correct page
+    const handleNavItemClick = (page) => {
+        // Set the page that needs to be rendered
+        setPageToRender(page);
+
+        // If a NavItem is being clicked on, update the original array with a new active state
+        // This way the user will know what page they are on
+        setNavItems((prevItems) =>
+            prevItems.map((item) => ({
+                ...item,
+                active: item.page === page
+            }))
+        );
+    };
+
     // All the different components need to be loaded in the main
     // The page will not refresh, but instead just replace the current content on screen
     // This way the user can perform tasks like, changing their settings, their account information or joining a research
@@ -60,36 +81,43 @@ const Dashboard = () => {
     // First need to determine what kind of user is logged in from backend or something
     return (
         <div className="dashboard__page">
-            <div className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}>
+            <div
+                className={`dashboard__page_menu ${
+                    isScrolling ? "fixed__scroll" : ""
+                }`}
+            >
                 <NavDashboardTopNav
                     profilePicturePath="/img/placeholder.jpg"
                     profilePictureAlt="Clodsire"
-                    userName="Your Mom"
+                    userName="Clodsire"
                 />
-                <NavDashboardBottomNav items={items} />
+                <NavDashboardBottomNav
+                    navItems={navItems}
+                    onNavItemClick={handleNavItemClick}
+                />
             </div>
             <main className="dashboard__page_main">
                 <Container>
                     <div className="dashboard__page_content">
-                        <h1>Welcome, Your mom</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum modi sit debitis a corrupti atque excepturi pariatur ea, veritatis est aut alias neque blanditiis esse recusandae autem beatae placeat dolorum!</p>
+                        <h1>Welcome, Clodsire!</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Harum modi sit debitis a corrupti atque
+                            excepturi pariatur ea, veritatis est aut alias neque
+                            blanditiis esse recusandae autem beatae placeat
+                            dolorum!
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing
+                            elit. Harum modi sit debitis a corrupti atque
+                            excepturi pariatur ea, veritatis est aut alias neque
+                            blanditiis esse recusandae autem beatae placeat
+                            dolorum!
+                        </p>
                         <br />
                         <br />
-                        <br />
-                        {
-                        /*
-                        These are just for display
-                        They will be removed later on, since they are suppose to be loaded in dynamically
-                        For now, I just keep them here to see how they look
-                         */
-                        }
-                        <SettingsPanelmember />
-                        <SettingsCompany />
-                        <SettingsEmail />
-                        <SettingsPassword />
-                        <AccountPanelmember />
-                        <AccountCompany />
+                        {/* here it will render stuff */}
+                        {pageToRender && pageToRender}
                         <br />
                         <br />
                         <br />

@@ -84,7 +84,10 @@ const FormLogin = () => {
                         {translate("login.form.checkbox")}
                     </Form.Check.Label>
                 </div>
-                <ButtonSubmit style="button__login" text={translate("login.form.button")} />
+                <ButtonSubmit
+                    style="button__login"
+                    text={translate("login.form.button")}
+                />
             </Form>
         </>
     );
@@ -269,7 +272,10 @@ const FormSignup = () => {
                     )}
                     required
                 />
-                <ButtonSubmit style="button__signup" text={translate("signup.form.buttonText")} />
+                <ButtonSubmit
+                    style="button__signup"
+                    text={translate("signup.form.buttonText")}
+                />
             </Form>
         </>
     );
@@ -313,13 +319,35 @@ const FormEmail = () => {
     // Like proper error handling and required fields
     // Also localization
     return (
-        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handleEmailUpdateSubmit}>
+        <Form
+            className="form__settings"
+            acceptCharset="UTF-8"
+            method="post"
+            onSubmit={handleEmailUpdateSubmit}
+        >
             <Form.Label className="form__label">New Email Address</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="" placeholder="Enter Email" />
-            <Form.Label className="form__label">Confirm Email Address</Form.Label>
-            <Form.Control className="form__text_field" type="email" name="" placeholder="Confirm Email" />
+            <Form.Control
+                className="form__text_field"
+                type="email"
+                name=""
+                placeholder="Enter Email"
+            />
+            <Form.Label className="form__label">
+                Confirm Email Address
+            </Form.Label>
+            <Form.Control
+                className="form__text_field"
+                type="email"
+                name=""
+                placeholder="Confirm Email"
+            />
             <Form.Label className="form__label">Current Password</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder="Enter Password" />
+            <Form.Control
+                className="form__text_field"
+                type="password"
+                name=""
+                placeholder="Enter Password"
+            />
             <ButtonSubmit style="button__settings" text="Update Email" />
         </Form>
     );
@@ -336,7 +364,10 @@ const FormPassword = () => {
         const formData = new FormData(e.target);
 
         // Make the POST call using axios post
-        const updatePasswordResponse = postRequest("users/{their guid}", formData); // Still need to be worked on
+        const updatePasswordResponse = postRequest(
+            "users/{their guid}",
+            formData
+        ); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -356,13 +387,35 @@ const FormPassword = () => {
 
     // Ditto like I said above
     return (
-        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handlePasswordUpdateSubmit}>
+        <Form
+            className="form__settings"
+            acceptCharset="UTF-8"
+            method="post"
+            onSubmit={handlePasswordUpdateSubmit}
+        >
             <Form.Label className="form__label">Current Password</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder="Enter Password" />
+            <Form.Control
+                className="form__text_field"
+                type="password"
+                name=""
+                placeholder="Enter Password"
+            />
             <Form.Label className="form__label">New Password</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder="Must be longer than 6 characters" />
-            <Form.Label className="form__label">Confirm New Password</Form.Label>
-            <Form.Control className="form__text_field" type="password" name="" placeholder="Confirm Password" />
+            <Form.Control
+                className="form__text_field"
+                type="password"
+                name=""
+                placeholder="Must be longer than 6 characters"
+            />
+            <Form.Label className="form__label">
+                Confirm New Password
+            </Form.Label>
+            <Form.Control
+                className="form__text_field"
+                type="password"
+                name=""
+                placeholder="Confirm Password"
+            />
             <ButtonSubmit style="button__settings" text="Update Password" />
         </Form>
     );
@@ -379,7 +432,10 @@ const FormPanelmember = () => {
         const formData = new FormData(e.target);
 
         // Make the POST call using axios post
-        const updatePanelmemberProfileResponse = postRequest("panelmembers/{their guid}", formData); // Still need to be worked on
+        const updatePanelmemberProfileResponse = postRequest(
+            "panelmembers/{their guid}",
+            formData
+        ); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePanelmemberProfileResponse
@@ -399,31 +455,70 @@ const FormPanelmember = () => {
 
     // Ditto like I said above
     return (
-        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handlePanelmemberProfileUpdateSubmit}>
+        <Form
+            className="form__settings"
+            acceptCharset="UTF-8"
+            method="post"
+            onSubmit={handlePanelmemberProfileUpdateSubmit}
+        >
             <Row>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">First Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="John" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="John"
+                    />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Last Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Doe" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Doe"
+                    />
                 </Col>
                 <Col xs={12}>
-                    <Form.Label className="form__label">Phone Number</Form.Label>
-                    <Form.Control className="form__text_field" type="phone" name="" placeholder="Your Phone" />
+                    <Form.Label className="form__label">
+                        Phone Number
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="phone"
+                        name=""
+                        placeholder="Your Phone"
+                    />
                 </Col>
                 <Col xs={12}>
-                    <Form.Label className="form__label">Date of Birth</Form.Label>
-                    <Form.Control className="form__text_field" type="date" name="" placeholder="Your Date of Birth" />
+                    <Form.Label className="form__label">
+                        Date of Birth
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="date"
+                        name=""
+                        placeholder="Your Date of Birth"
+                    />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Address" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your Address"
+                    />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Postal code" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your Postal code"
+                    />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Country</Form.Label>
@@ -448,7 +543,10 @@ const FormCompany = () => {
         const formData = new FormData(e.target);
 
         // Make the POST call using axios post
-        const updateCompanyProfileResponse = postRequest("companies/{their guid}", formData); // Still need to be worked on
+        const updateCompanyProfileResponse = postRequest(
+            "companies/{their guid}",
+            formData
+        ); // Still need to be worked on
 
         // Handle the response from the POST call
         updateCompanyProfileResponse
@@ -468,39 +566,90 @@ const FormCompany = () => {
 
     // Ditto like I said above
     return (
-        <Form className="form__settings" acceptCharset="UTF-8" method="post" onSubmit={handleCompanyProfileUpdateSubmit}>
+        <Form
+            className="form__settings"
+            acceptCharset="UTF-8"
+            method="post"
+            onSubmit={handleCompanyProfileUpdateSubmit}
+        >
             <Row>
                 <Col xs={12}>
-                    <Form.Label className="form__label">Chamber of Commerce Number</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="KvK" />
+                    <Form.Label className="form__label">
+                        Chamber of Commerce Number
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="KvK"
+                    />
                 </Col>
                 <Col xs={12}>
-                    <Form.Label className="form__label">Company Name</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Company Name" />
+                    <Form.Label className="form__label">
+                        Company Name
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Company Name"
+                    />
                 </Col>
                 <Col xs={12}>
-                    <Form.Label className="form__label">Phone Number</Form.Label>
-                    <Form.Control className="form__text_field" type="phone" name="" placeholder="Your Phone" />
+                    <Form.Label className="form__label">
+                        Phone Number
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="phone"
+                        name=""
+                        placeholder="Your Phone"
+                    />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Address" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your Address"
+                    />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">City</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your City" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your City"
+                    />
                 </Col>
                 <Col xs={12}>
                     <Form.Label className="form__label">Province</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Province" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your Province"
+                    />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control className="form__text_field" type="text" name="" placeholder="Your Postal code" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        name=""
+                        placeholder="Your Postal code"
+                    />
                 </Col>
                 <Col xs={12} md={6}>
                     <Form.Label className="form__label">Website URL</Form.Label>
-                    <Form.Control className="form__text_field" type="url" name="" placeholder="Your Website URL" />
+                    <Form.Control
+                        className="form__text_field"
+                        type="url"
+                        name=""
+                        placeholder="Your Website URL"
+                    />
                 </Col>
             </Row>
             <ButtonSubmit style="button__settings" text="Update Info" />
@@ -508,4 +657,11 @@ const FormCompany = () => {
     );
 };
 
-export { FormLogin, FormSignup, FormEmail, FormPassword, FormPanelmember, FormCompany };
+export {
+    FormLogin,
+    FormSignup,
+    FormEmail,
+    FormPassword,
+    FormPanelmember,
+    FormCompany
+};

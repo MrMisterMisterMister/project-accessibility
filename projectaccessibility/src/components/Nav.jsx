@@ -227,19 +227,24 @@ NavDashboardTopNav.propTypes = {
 
 // The bottom part of the nav for dashboard page
 // Can load in components to get the right one for each portal
-const NavDashboardBottomNav = ({ items }) => {
+const NavDashboardBottomNav = ({ navItems, onNavItemClick }) => {
     return (
         <div className="nav__dashboard_bottomnav">
             <Container>
                 <Nav className="nav__dashboard_bottomnav__menu_nav ">
-                    {items.map((item, index) => (
+                    {navItems.map((item, index) => (
                         <Nav.Item
                             key={index}
-                            className="nav__dashboard_bottomnav__menu_item"
+                            className={`nav__dashboard_bottomnav__menu_item ${
+                                item.active ? "active" : ""
+                            }`}
                         >
                             <Nav.Link
                                 className="nav__dashboard_bottomnav__menu_link "
-                                href={item.path}
+                                onClick={(e) => {
+                                    e.preventDefault(); // so it doesn't trigger the default behavior of a tag
+                                    onNavItemClick(item.page);
+                                }}
                             >
                                 <span className="nav__dashboard_bottomnav__menu_icon">
                                     {item.icon}
@@ -258,13 +263,15 @@ const NavDashboardBottomNav = ({ items }) => {
 
 // prop types for nav dashboard bottom nav
 NavDashboardBottomNav.propTypes = {
-    items: PropTypes.arrayOf(
+    navItems: PropTypes.arrayOf(
         PropTypes.shape({
+            page: PropTypes.node,
             icon: PropTypes.object.isRequired,
             title: PropTypes.string.isRequired,
-            path: PropTypes.string.isRequired
+            active: PropTypes.bool
         })
-    ).isRequired
+    ).isRequired,
+    onNavItemClick: PropTypes.func.isRequired
 };
 
 export {

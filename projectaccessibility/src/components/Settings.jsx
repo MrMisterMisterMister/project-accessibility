@@ -51,4 +51,9 @@ const SettingsPassword = () => {
     );
 };
 
-export { SettingsPanelmember, SettingsCompany, SettingsEmail, SettingsPassword };
+export {
+    SettingsPanelmember,
+    SettingsCompany,
+    SettingsEmail,
+    SettingsPassword
+};

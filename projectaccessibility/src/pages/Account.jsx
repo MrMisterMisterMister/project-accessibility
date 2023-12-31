@@ -1,21 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
+import { AccountCompany, AccountPanelmember } from "../components/Account";
 
-export class Account extends Component {
-    render () {
-        return (
-            <div className="account_settings">
-                <h1>Account instellingen</h1> <br></br>
-                <p>Voornaam</p>
-                <input type="text"></input>
-                <br></br> <br></br>
-                <p>Email</p>
-                <input type="email"></input>
-                <br></br> <br></br>
-                <p>Wachtwoord</p>
-                <input type="password"></input>
-                <br></br> <br></br>
-                <button id="save">Opslaan</button>
-            </div>
-        );
-    }
-}
+// Profile page in portal
+// This is just placeholder, it will be updated later on
+const Account = () => {
+    return (
+        <>
+            <AccountCompany />
+            <AccountPanelmember />
+        </>
+    );
+};
+
+export default Account;
