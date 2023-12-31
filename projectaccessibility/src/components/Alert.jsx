@@ -16,20 +16,23 @@ const AlertError = ({ data }) => {
 
     return (
         <>
-            {Object.keys(data).length > 0 && (
-                <div className="alert alert__error">
-                    {Object.entries(data).map(([key, value]) => (
-                        <span key={key}>{translate(`alert.error.${key}`)}</span>
+            {(Array.isArray(data) ? data : [data]).map((item, index) => (
+                <div key={index} className="alert alert__error">
+                    {Object.entries(item).map(([key, value]) => (
+                        <span key={key}>{value}</span>
                     ))}
                 </div>
-            )}
+            ))}
         </>
     );
 };
 
 // prop type for alertError
+// It can be an array or object, because there can be multiple errors in one alert for example
 AlertError.propTypes = {
-    data: PropTypes.object.isRequired
+    data: PropTypes.oneOfType([
+        PropTypes.object, PropTypes.array
+    ]).isRequired
 };
 
 export { AlertError, AlertSuccess };

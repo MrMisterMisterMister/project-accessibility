@@ -19,7 +19,7 @@
         "lastNamePlaceholder": "Achternaam",
         "email": "E-mailadres",
         "emailPlaceholder": "E-mailadres",
-        "password": "Wachtwoord (moet langer zijn dan 8 tekens)",
+        "password": "Wachtwoord (moet langer zijn dan 6 tekens)",
         "passwordPlaceholder": "Wachtwoord",
         "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
         "buttonText": "Aanmelden"

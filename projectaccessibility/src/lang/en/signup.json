@@ -19,7 +19,7 @@
         "lastNamePlaceholder": "Last name",
         "email": "Email",
         "emailPlaceholder": "Email address",
-        "password": "Password (must be longer than 8 characters)",
+        "password": "Password (must be longer than 6 characters)",
         "passwordPlaceholder": "Password",
         "confirmPasswordPlaceholder": "Confirm Password",
         "buttonText": "Sign up"
