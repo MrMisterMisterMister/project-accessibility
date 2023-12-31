@@ -22,13 +22,12 @@ const GoogleOAuthButton = ({ path, icon, text }) => {
 
   const oauthSignIn = () => {
     const oauth2Endpoint = 'https://accounts.google.com/o/oauth2/v2/auth';
-    let authWindow;
 
     // Proceed only if clientId is available
     if (clientId) {
       const params = {
         client_id: clientId,
-        redirect_uri: 'http://localhost:5001',
+        redirect_uri: 'http://localhost:5001', // path to dashboard for eexample
         response_type: 'token',
         scope: 'https://www.googleapis.com/auth/drive.metadata.readonly',
         include_granted_scopes: 'true',
@@ -39,25 +38,12 @@ const GoogleOAuthButton = ({ path, icon, text }) => {
         .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`)
         .join('&');
 
-      
+
       // Open Google OAuth in a new window and capture its reference
-      authWindow = window.open(`${oauth2Endpoint}?${queryString}`, '_blank',  'width=500,height=600');
+      // window.open(`${oauth2Endpoint}?${queryString}`, '_blank',  'width=500,height=600');
 
-      // // Check if the window exists and poll for its closure
-      // const checkAuthWindowClosed = setInterval(() => {
-      //   if (authWindow.closed) {
-      //     clearInterval(checkAuthWindowClosed); // Stop checking once closed
-      //     // Perform actions after successful authentication and window closure
-      //     console.log('Authentication window closed');
-      //     // Continue logic on the main window after successful login
-      //     // For example, redirect, update state, or perform other actions
-      //   }
-      // }, 1000);
-
-      // // Detect successful authentication and close the window (Example: After 5 seconds)
-      // setTimeout(() => {
-      //   authWindow.close(); // Close the authentication window after successful login
-      // }, 5000); // Change this delay as needed to match your authentication flow
+      window.location.href = `${oauth2Endpoint}?${queryString}`;
+      
     }
   };
 
