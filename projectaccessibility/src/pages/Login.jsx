@@ -57,8 +57,7 @@ const Login = () => {
                                     <p className="login__page_seperator__text">or</p>
                                 </div>
                                 <ButtonAuth icon={<PersonPlusFill />} path="/signup" text={translate("login.auth.signup")} />
-                                <ButtonAuth icon={GoogleIcon} path="#" text={translate("login.auth.google")} />
-                                <GoogleSignInButton />
+                                <GoogleSignInButton icon={GoogleIcon} path="#" text={translate("login.auth.google")} />
                                 <ButtonAuth icon={MicrosoftIcon} path="#" text={translate("login.auth.microsoft")} />
                                 <ButtonAuth icon={FacebookIcon} path="#" text={translate("login.auth.facebook")} />
                             </div>
