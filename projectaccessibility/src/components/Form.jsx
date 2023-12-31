@@ -27,6 +27,7 @@ const FormLogin = () => {
         // Handle the response from the POST call
         loginResponse
             .then((response) => {
+                console.log(response);
                 // Some simple validation to check if the response has status 200
                 // If it does, display some kind of message
                 // This still needs to be updated, so that afterwards the user gets send to their dashboard
@@ -42,12 +43,13 @@ const FormLogin = () => {
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
                 setErrors(error.response?.data);
+                console.log(error.response);
             });
     };
 
     return (
         <>
-            <AlertError data={errors} />
+            {/* <AlertError data={errors} /> */}
             <Form
                 className="form__login"
                 acceptCharset="UTF-8"
@@ -150,12 +152,13 @@ const FormSignup = () => {
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
                 setErrors(error.response?.data);
+                console.log(error.response);
             });
     };
 
     return (
         <>
-            <AlertError data={errors} />
+            {/* <AlertError data={errors} /> */}
             <Form
                 className="form__signup"
                 acceptCharset="UTF-8"
