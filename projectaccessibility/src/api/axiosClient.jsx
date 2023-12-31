@@ -2,7 +2,7 @@
 import axios from "axios";
 
 const axiosClient = axios.create({
-    baseURL: "http://localhost:5000", // TODO LOAD FROM .ENV URL FOR API CALLS
+    baseURL: import.meta.env.VITE_API_URL,
     timeout: 3000
 });
 
