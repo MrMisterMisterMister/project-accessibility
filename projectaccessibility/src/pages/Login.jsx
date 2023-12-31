@@ -7,7 +7,6 @@ import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import GoogleSignInButton from "../components/GoogleSignInButton";
-import GoogleButton from 'react-google-button'
 
 // Login page
 const Login = () => {
