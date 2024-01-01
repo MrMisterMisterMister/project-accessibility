@@ -326,7 +326,7 @@ const FormSignup = () => {
                                         errors.name ? "true" : "false"
                                     }
                                     placeholder={translate(
-                                        "signup.form.companyName"
+                                        "signup.form.name"
                                     )}
                                 />
                                 {errors.name && (
