@@ -19,9 +19,19 @@
         "lastNamePlaceholder": "Achternaam",
         "email": "E-mailadres",
         "emailPlaceholder": "E-mailadres",
-        "password": "Wachtwoord (moet langer zijn dan 6 tekens)",
+        "password": "Wachtwoord",
         "passwordPlaceholder": "Wachtwoord",
         "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
-        "buttonText": "Aanmelden"
+        "buttonText": "Aanmelden",
+        "error": {
+            "userType": "* Selecteer alsjeblieft een gebruikerstype",
+            "firstName": "* Voer alsjeblieft uw voornaam in",
+            "lastName": "* Voer alsjeblieft uw achternaam in",
+            "kvkNumber": "* Voer alsjeblieft uw KvK-nummer in",
+            "companyName": "* Voer alsjeblieft de naam van uw bedrijf in",
+            "email": "* Voer alsjeblieft een geldig e-mailadres in",
+            "password": "* Voer alsjeblieft een geldig wachtwoord in",
+            "confirmPassword": "* Voer alsjeblieft uw wachtwoord opnieuw in"
+        }        
     }
 }

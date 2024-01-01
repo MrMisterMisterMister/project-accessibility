@@ -13,6 +13,10 @@
     background-clip: padding-box;
     transition: border-color .15s, background-color .15s;
 
+    &.error {
+        border-color: variables.$darkred!important;
+    }
+
     &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -37,6 +41,10 @@
     padding-right: 1.5em;
     appearance: none;
 
+    &.error {
+        border-color: variables.$darkred!important;
+    }
+
     &.disabled {
         opacity: 0.5;
         cursor: not-allowed;
@@ -45,7 +53,7 @@
     &:focus {
         outline: none;
         border-color: variables.$sapphire;
-        box-shadow: 0 0 1px variables.$sapphire;
+        box-shadow: none;
     }
 }
 
@@ -57,6 +65,14 @@
     color: variables.$black;
     font-weight: bold;
     margin-bottom: .5em;
+}
+
+// general error in form
+.form__error {
+    color: variables.$darkred;
+    font-size: 12px;
+    margin: -0.75rem 0 0.875rem;
+    width: 100%;
 }
 
 // login form

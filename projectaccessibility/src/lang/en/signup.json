@@ -19,9 +19,19 @@
         "lastNamePlaceholder": "Last name",
         "email": "Email",
         "emailPlaceholder": "Email address",
-        "password": "Password (must be longer than 6 characters)",
+        "password": "Password",
         "passwordPlaceholder": "Password",
         "confirmPasswordPlaceholder": "Confirm Password",
-        "buttonText": "Sign up"
+        "buttonText": "Sign up",
+        "error": {
+            "userType": "* Please select a user type",
+            "firstName": "* Please enter your First Name",
+            "lastName": "* Please enter your Last Name",
+            "kvkNumber": "* Please enter your Chamber of Commerce (Kvk) number",
+            "companyName": "* Please enter your company name",
+            "email": "* Please enter a valid email address",
+            "password": "* Please enter a valid password",
+            "confirmPassword": "* Please enter your password again"
+        }
     }
 }

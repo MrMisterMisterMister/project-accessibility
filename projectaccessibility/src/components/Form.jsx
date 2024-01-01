@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
@@ -103,19 +104,25 @@ const FormSignup = () => {
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
-    const [errors, setErrors] = useState({});
+    const [formErrors, setFormErrors] = useState({});
+
+    // Hook for form management
+    const {
+        register,
+        handleSubmit,
+        formState: { errors }
+    } = useForm();
 
     // Event handler for handling changes in the select input
     // This function is assigned to the select input, enabling it to detect changes and update the selected user type accordingly
     const handleSelectChange = (event) => {
+        console.log(event);
         setSelectedUserType(event.target.value);
     };
 
     // Function triggered when the submit button is pressed in the signup form
     // Prevents the default form submission behavior to handle it manually
     const handleSignupSubmit = async (e) => {
-        e.preventDefault();
-
         // Create a variable to store the form data submitted by the user
         const formData = new FormData(e.target);
 
@@ -141,33 +148,39 @@ const FormSignup = () => {
                     // Some simple message and reset the errors and form fields
                     console.log("your mom");
                     e.target.reset();
-                    setErrors({});
+                    setFormErrors({});
                     setSelectedUserType("");
                 }
             })
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
-                setErrors(error.response?.data);
+                setFormErrors(error.response?.data);
             });
     };
 
     return (
         <>
-            <AlertError data={errors} />
+            <AlertError data={formErrors} />
             <Form
                 className="form__signup"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSignupSubmit}
+                onSubmit={handleSubmit(handleSignupSubmit)}
             >
                 <Form.Label className="form__label">
                     {translate("signup.form.select.user")}
                 </Form.Label>
                 <Form.Select
-                    className="form__select_menu"
-                    onChange={handleSelectChange}
+                    className={`form__select_menu ${
+                        errors.userType ? "error" : ""
+                    }`}
+                    {...register("userType", {
+                        required: true,
+                        onChange: (event) => {
+                            handleSelectChange(event);
+                        }
+                    })}
                     defaultValue=""
-                    required
                 >
                     <option value="" hidden>
                         {translate("signup.form.select.option.placeholder")}
@@ -179,6 +192,11 @@ const FormSignup = () => {
                         {translate("signup.form.select.option.company")}
                     </option>
                 </Form.Select>
+                {errors.userType && (
+                    <div className="form__error">
+                        {translate("signup.form.error.userType")}
+                    </div>
+                )}
                 {selectedUserType === "1" && (
                     <>
                         <Form.Label className="form__label">
@@ -187,25 +205,47 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className="form__text_field"
+                                    className={`form__text_field ${
+                                        errors.firstName ? "error" : ""
+                                    }`}
                                     type="text"
                                     name="FirstName"
+                                    {...register("firstName", {
+                                        required: true
+                                    })}
                                     placeholder={translate(
                                         "signup.form.firstNamePlaceholder"
                                     )}
-                                    required
                                 />
+                                {errors.firstName && (
+                                    <div className="form__error">
+                                        {translate(
+                                            "signup.form.error.firstName"
+                                        )}
+                                    </div>
+                                )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className="form__text_field"
+                                    className={`form__text_field ${
+                                        errors.lastName ? "error" : ""
+                                    }`}
                                     type="text"
                                     name="LastName"
+                                    {...register("lastName", {
+                                        required: true
+                                    })}
                                     placeholder={translate(
                                         "signup.form.lastNamePlaceholder"
                                     )}
-                                    required
                                 />
+                                {errors.lastName && (
+                                    <div className="form__error">
+                                        {translate(
+                                            "signup.form.error.lastName"
+                                        )}
+                                    </div>
+                                )}
                             </Col>
                         </Row>
                     </>
@@ -218,25 +258,47 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className="form__text_field"
+                                    className={`form__text_field ${
+                                        errors.kvkNumber ? "error" : ""
+                                    }`}
                                     type="text"
                                     name="Kvk"
+                                    {...register("kvkNumber", {
+                                        required: true
+                                    })}
                                     placeholder={translate(
                                         "signup.form.companyKvk"
                                     )}
-                                    required
                                 />
+                                {errors.kvkNumber && (
+                                    <div className="form__error">
+                                        {translate(
+                                            "signup.form.error.kvkNumber"
+                                        )}
+                                    </div>
+                                )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className="form__text_field"
+                                    className={`form__text_field ${
+                                        errors.companyName ? "error" : ""
+                                    }`}
                                     type="text"
                                     name="Name"
+                                    {...register("companyName", {
+                                        required: true
+                                    })}
                                     placeholder={translate(
                                         "signup.form.companyName"
                                     )}
-                                    required
                                 />
+                                {errors.companyName && (
+                                    <div className="form__error">
+                                        {translate(
+                                            "signup.form.error.companyName"
+                                        )}
+                                    </div>
+                                )}
                             </Col>
                         </Row>
                     </>
@@ -245,31 +307,52 @@ const FormSignup = () => {
                     {translate("signup.form.email")}
                 </Form.Label>
                 <Form.Control
-                    className="form__text_field"
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     name="Email"
+                    {...register("email", { required: true })}
                     placeholder={translate("signup.form.emailPlaceholder")}
-                    required
                 />
+                {errors.email && (
+                    <div className="form__error">
+                        {translate("signup.form.error.email")}
+                    </div>
+                )}
                 <Form.Label className="form__label">
                     {translate("signup.form.password")}
                 </Form.Label>
                 <Form.Control
-                    className="form__text_field"
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     name="Password"
+                    {...register("password", { required: true })}
                     placeholder={translate("signup.form.passwordPlaceholder")}
-                    required
                 />
+                {errors.password && (
+                    <div className="form__error">
+                        {translate("signup.form.error.password")}
+                    </div>
+                )}
                 <Form.Control
-                    className="form__text_field"
+                    className={`form__text_field ${
+                        errors.passwordConfirm ? "error" : ""
+                    }`}
                     type="password"
                     name="PasswordConfirm"
+                    {...register("passwordConfirm", { required: true })}
                     placeholder={translate(
                         "signup.form.confirmPasswordPlaceholder"
                     )}
-                    required
                 />
+                {errors.passwordConfirm && (
+                    <div className="form__error">
+                        {translate("signup.form.error.confirmPassword")}
+                    </div>
+                )}
                 <ButtonSubmit
                     style="button__signup"
                     text={translate("signup.form.buttonText")}
