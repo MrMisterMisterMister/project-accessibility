@@ -326,12 +326,12 @@ const FormSignup = () => {
                                         errors.name ? "true" : "false"
                                     }
                                     placeholder={translate(
-                                        "signup.form.name"
+                                        "signup.form.companyName"
                                     )}
                                 />
                                 {errors.name && (
                                     <div className="form__error">
-                                        {errors.companyName.message}
+                                        {errors.name.message}
                                     </div>
                                 )}
                             </Col>
