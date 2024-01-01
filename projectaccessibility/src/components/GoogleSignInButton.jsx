@@ -20,6 +20,26 @@ const GoogleOAuthButton = ({ path, icon, text }) => {
         fetchClientId();
     }, []);
 
+    useEffect(() => {
+        const handleRedirectedToken = () => {
+            const urlParams = new URLSearchParams(window.location.hash.substring(1));
+            const accessToken = urlParams.get("access_token");
+            
+            if (accessToken) {
+                // Store token in localStorage
+                localStorage.setItem("googleAuthToken", accessToken);
+                
+                // Redirect or perform further actions if needed
+                window.location.href = "http://localhost:5001/success"; // Redirect to success route
+            }
+        };
+
+        // Check if redirected from Google and handle the token
+        if (window.location.hash.includes("access_token=")) {
+            handleRedirectedToken();
+        }
+    }, []);
+
     const oauthSignIn = () => {
         const oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
 
