@@ -412,7 +412,7 @@ const FormSignup = () => {
                             )
                         },
                         validate: {
-                            isMatch: (value) => value === watch("password") || translate("signup.form.passwordConfirmIsMatch")
+                            isMatch: (value) => value === watch("password") || translate("signup.form.error.passwordConfirmIsMatch")
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
