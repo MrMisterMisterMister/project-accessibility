@@ -57,6 +57,7 @@ const FormLogin = () => {
                 acceptCharset="UTF-8"
                 method="post"
                 onSubmit={handleSubmit(handleLoginSubmit)}
+                noValidate
             >
                 <Form.Label className="form__label">
                     {translate("login.form.email")}
@@ -190,6 +191,7 @@ const FormSignup = () => {
                 acceptCharset="UTF-8"
                 method="post"
                 onSubmit={handleSubmit(handleSignupSubmit)}
+                noValidate
             >
                 <Form.Label className="form__label">
                     {translate("signup.form.select.user")}
@@ -360,7 +362,7 @@ const FormSignup = () => {
                             )
                         },
                         pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/, // regex to check if email is a valid email
+                            value: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}/, // regex to check if email is a valid email
                             message: translate("signup.form.error.emailPattern")
                         }
                     })}
@@ -385,10 +387,10 @@ const FormSignup = () => {
                             )
                         },
                         validate: {
-                            hasUppercase: (value) => /^(?=.*[A-Z]).+$/.test(value) || translate("signup.form.error.passwordHasUppercase"),
-                            hasLowercase: (value) => /^(?=.*[a-z]).+$/.test(value) || translate("signup.form.error.passwordHasLowercase"),
-                            hasNumber: (value) => /^(?=.*\\d).+$/.test(value) || translate("signup.form.error.passwordHasNumber"),
-                            hasSpecialChar: (value) => /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) || translate("signup.form.error.passwordHasSpecialChar")
+                            hasUppercase: (value) => /^(?=.*[A-Z]).+$/.test(value) || translate("signup.form.error.passwordHasUppercase"), // regex for uppercase
+                            hasLowercase: (value) => /^(?=.*[a-z]).+$/.test(value) || translate("signup.form.error.passwordHasLowercase"), // regex for lowercase
+                            hasDigit: (value) => /^(?=.*\d).+$/.test(value) || translate("signup.form.error.passwordHasDigit"), // regex for digit
+                            hasSpecialChar: (value) => /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) || translate("signup.form.error.passwordHasSpecialChar") // regex for special char
                         },
                         minLength: {
                             value: 6,

@@ -34,7 +34,7 @@
             "passwordRequired": "* Vul alsjeblieft je wachtwoord in",
             "passwordHasUppercase": "* Wachtwoord moet minimaal één hoofdletter bevatten",
             "passwordHasLowercase": "* Wachtwoord moet minimaal één kleine letter bevatten",
-            "passwordHasNumber": "* Wachtwoord moet minimaal één cijfer bevatten",
+            "passwordHasDigit": "* Wachtwoord moet minimaal één cijfer bevatten",
             "passwordHasSpecialChar": "* Wachtwoord moet minimaal één speciaal teken bevatten",
             "passwordMinLength": "* Wachtwoord moet ten minste 6 tekens lang zijn",
             "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in"

@@ -34,7 +34,7 @@
             "passwordRequired": "* Please enter your password",
             "passwordHasUppercase": "* Password must contain at least one uppercase letter",
             "passwordHasLowercase": "* Password must contain at least one lowercase letter",
-            "passwordHasNumber": "* Password must contain at least one digit",
+            "passwordHasDigit": "* Password must contain at least one digit",
             "passwordHasSpecialChar": "* Password must contain at least one special character",
             "passwordMinLength": "* Password must be at least 6 characters long",
             "passwordConfirmRequired": "* Please enter your password again"
