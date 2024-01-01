@@ -1,5 +1,5 @@
 {
-    "pageTitle": "Signup",
+    "pageTitle": "Sign up",
     "alreadyHaveAccount": "Already have an account?",
     "logIn": "Log In",
     "form": {
@@ -15,10 +15,13 @@
         "companyKvk": "Chamber of Commerce Number",
         "companyName": "Company Name",        
         "fullName": "Full Name",
+        "firstNamePlaceholder": "First name",
+        "lastNamePlaceholder": "Last name",
         "email": "Email",
+        "emailPlaceholder": "Email address",
         "password": "Password (must be longer than 8 characters)",
         "passwordPlaceholder": "Password",
         "confirmPasswordPlaceholder": "Confirm Password",
-        "buttonText": "Signup"
+        "buttonText": "Sign up"
     }
 }

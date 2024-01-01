@@ -11,6 +11,6 @@
     "auth": {
         "signup": "Create an Account",
         "google": "Continue with Google",
-        "facebook": "Continue with Facebook"
+        "microsoft": "Continue with Microsoft"
     }
 }

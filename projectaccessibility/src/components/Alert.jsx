@@ -4,9 +4,7 @@ import PropTypes from "prop-types";
 // to display alerts that are ok
 // still need to be worked on
 const AlertSuccess = () => {
-    return (
-        <></>
-    );
+    return <></>;
 };
 
 // alert component for errors

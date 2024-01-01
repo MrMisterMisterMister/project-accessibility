@@ -24,7 +24,7 @@ const Header = () => {
             <Container className="site__header_container" fluid>
                 <Navbar.Brand href="/">
                     <img
-                        src="img/brand/logo_black_text_light.png"
+                        src="/img/brand/logo_black_text_light.png"
                         width="278"
                         height="60"
                         alt="Logo"

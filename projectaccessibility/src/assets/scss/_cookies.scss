@@ -1,6 +1,8 @@
 @use 'variables';
 
 .cookies__page {
+    position: relative;
+    
     .cookies__page_banner {
         height: 140px;
         background-color: variables.$blackrussian;
