@@ -5,7 +5,7 @@ import Sitemap from "./Sitemap";
 import PrivacyPolicy from "./PrivacyPolicy";
 import Cookies from "./Cookies";
 import PageNotFound from "./404";
-import Dashboard from "./Dashboard"; // test
+import Dashboard from "./Dashboard";
 
 // All the pages
 const Pages = [
@@ -15,7 +15,7 @@ const Pages = [
     { path: "/sitemap", element: Sitemap },
     { path: "/privacy-policy", element: PrivacyPolicy },
     { path: "/cookies", element: Cookies },
-    { path: "/test", element: Dashboard }, // this is just for testing
+    { path: "/dashboard", element: Dashboard },
     { path: "*", element: PageNotFound }
 ];
 
