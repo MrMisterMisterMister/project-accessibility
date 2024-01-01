@@ -29,8 +29,9 @@
             "lastName": "* Please enter your Last Name",
             "kvkNumber": "* Please enter your Chamber of Commerce (Kvk) number",
             "companyName": "* Please enter your company name",
-            "email": "* Please enter a valid email address",
-            "password": "* Please enter a valid password",
+            "emailPattern": "* Please enter a valid email address",
+            "emailRequired": "* Please enter your email address",
+            "password": "* Please enter your password",
             "confirmPassword": "* Please enter your password again"
         }
     }

@@ -6,7 +6,12 @@
         "password": "Wachtwoord",
         "passwordPlaceholder": "Wachtwoord",
         "checkbox": "Altijd ingelogd blijven?",
-        "button": "Inloggen"
+        "button": "Inloggen",
+        "error": {
+            "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
+            "emailRequired": "* Voer alsjeblieft je e-mailadres in",
+            "password": "* Voer alsjeblieft een geldig wachtwoord in"
+        }
     },
     "auth": {
         "signup": "Account aanmaken",

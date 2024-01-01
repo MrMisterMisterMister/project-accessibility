@@ -14,17 +14,6 @@ const AlertError = ({ data }) => {
     // Translation
     const { t: translate } = useTranslation();
 
-    // In case something weird happens and data is undefined, catch the error
-    // Afterwards just return a default error message
-    // If you get this error, API server is probably down
-    if (!data) {
-        return (
-            <div className="alert alert__error">
-                <span>{translate("alert.error.defaultMessage")}</span>
-            </div>
-        );
-    }
-
     // Check if the data is an array or not, otherwise convert it to an array, so no weird white screen
     const dataArray = Array.isArray(data) ? data : [data];
 

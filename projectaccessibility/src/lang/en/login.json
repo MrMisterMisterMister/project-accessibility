@@ -6,7 +6,12 @@
         "password": "Password",
         "passwordPlaceholder": "Password",
         "checkbox": "Always stay logged in?",
-        "button": "Log In"
+        "button": "Log In",
+        "error": {
+            "emailPattern": "* Please enter a valid email address",
+            "emailRequired": "* Please enter your email address",
+            "password": "* Please enter your password"
+        }
     },
     "auth": {
         "signup": "Create an Account",

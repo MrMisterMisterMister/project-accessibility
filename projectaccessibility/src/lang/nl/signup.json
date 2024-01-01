@@ -29,7 +29,8 @@
             "lastName": "* Voer alsjeblieft uw achternaam in",
             "kvkNumber": "* Voer alsjeblieft uw KvK-nummer in",
             "companyName": "* Voer alsjeblieft de naam van uw bedrijf in",
-            "email": "* Voer alsjeblieft een geldig e-mailadres in",
+            "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
+            "emailRequired": "* Voer alsjeblieft je e-mailadres in",
             "password": "* Voer alsjeblieft een geldig wachtwoord in",
             "confirmPassword": "* Voer alsjeblieft uw wachtwoord opnieuw in"
         }        
