@@ -65,7 +65,6 @@ const FormLogin = () => {
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
-                    name="email"
                     {...register("email", {
                         required: {
                             value: true,
@@ -84,7 +83,6 @@ const FormLogin = () => {
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
-                    name="password"
                     {...register("password", {
                         required: {
                             value: true,
@@ -232,7 +230,6 @@ const FormSignup = () => {
                                 <Form.Control
                                     className={`form__text_field ${errors.firstName ? "error" : ""}`}
                                     type="text"
-                                    name="FirstName"
                                     {...register("firstName", {
                                         required: {
                                             value: true,
@@ -258,7 +255,6 @@ const FormSignup = () => {
                                 <Form.Control
                                     className={`form__text_field ${errors.lastName ? "error" : ""}`}
                                     type="text"
-                                    name="LastName"
                                     {...register("lastName", {
                                         required: {
                                             value: true,
@@ -291,36 +287,34 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.kvkNumber ? "error" : ""}`}
+                                    className={`form__text_field ${errors.kvk ? "error" : ""}`}
                                     type="text"
-                                    name="Kvk"
-                                    {...register("kvkNumber", {
+                                    {...register("kvk", {
                                         required: {
                                             value: true,
                                             message: translate(
-                                                "signup.form.error.kvkNumberRequired"
+                                                "signup.form.error.kvkRequired"
                                             )
                                         }
                                     })}
                                     aria-invalid={
-                                        errors.kvkNumber ? "true" : "false"
+                                        errors.kvk ? "true" : "false"
                                     }
                                     placeholder={translate(
                                         "signup.form.companyKvk"
                                     )}
                                 />
-                                {errors.kvkNumber && (
+                                {errors.kvk && (
                                     <div className="form__error">
-                                        {errors.kvkNumber.message}
+                                        {errors.kvk.message}
                                     </div>
                                 )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
+                                    className={`form__text_field ${errors.name ? "error" : ""}`}
                                     type="text"
-                                    name="Name"
-                                    {...register("companyName", {
+                                    {...register("name", {
                                         required: {
                                             value: true,
                                             message: translate(
@@ -329,13 +323,13 @@ const FormSignup = () => {
                                         }
                                     })}
                                     aria-invalid={
-                                        errors.companyName ? "true" : "false"
+                                        errors.name ? "true" : "false"
                                     }
                                     placeholder={translate(
                                         "signup.form.companyName"
                                     )}
                                 />
-                                {errors.companyName && (
+                                {errors.name && (
                                     <div className="form__error">
                                         {errors.companyName.message}
                                     </div>
@@ -350,7 +344,6 @@ const FormSignup = () => {
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
-                    name="Email"
                     {...register("email", {
                         required: {
                             value: true,
@@ -375,7 +368,6 @@ const FormSignup = () => {
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
-                    name="Password"
                     {...register("password", {
                         required: {
                             value: true,
@@ -403,7 +395,6 @@ const FormSignup = () => {
                 <Form.Control
                     className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
                     type="password"
-                    name="PasswordConfirm"
                     {...register("passwordConfirm", {
                         required: {
                             value: true,

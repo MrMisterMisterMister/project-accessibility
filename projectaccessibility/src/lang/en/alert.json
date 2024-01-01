@@ -9,7 +9,8 @@
             "EmailTaken": "This email address is already taken.",
             "KvkExists": "This Kvk number is already registered.",
             "IncorrectPassword": "Incorrect password. Please check your password and try again.",
-            "UserNotFound": "No user found with the provided email address."
+            "UserNotFound": "No user found with the provided email address.",
+            "PasswordMismatch": "Password and confirmation password do not match."
         }
     }
 }

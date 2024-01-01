@@ -9,7 +9,8 @@
             "EmailTaken": "Dit e-mailadres is al in gebruik.",
             "KvkExists": "Dit Kvk-nummer is al geregistreerd.",
             "IncorrectPassword": "Onjuist wachtwoord. Controleer uw wachtwoord en probeer het opnieuw.",
-            "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres."
+            "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres.",
+            "PasswordMismatch": "Wachtwoord en bevestigingswachtwoord komen niet overeen."
         }
     }
 }

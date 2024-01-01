@@ -27,7 +27,7 @@
             "userTypeRequired": "* Selecteer alsjeblieft een gebruikerstype",
             "firstNameRequired": "* Vul alsjeblieft je voornaam in",
             "lastNameRequired": "* Vul alsjeblieft je achternaam in",
-            "kvkNumberRequired": "* Vul alsjeblieft je KvK-nummer in",
+            "kvkRequired": "* Vul alsjeblieft je KvK-nummer in",
             "companyNameRequired": "* Vul alsjeblieft de naam van je bedrijf in",
             "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
             "emailRequired": "* Vul alsjeblieft je e-mailadres in",
