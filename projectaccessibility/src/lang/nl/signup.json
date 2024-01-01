@@ -25,14 +25,14 @@
         "buttonText": "Aanmelden",
         "error": {
             "userTypeRequired": "* Selecteer alsjeblieft een gebruikerstype",
-            "firstNameRequired": "* Voer alsjeblieft uw voornaam in",
-            "lastNameRequired": "* Voer alsjeblieft uw achternaam in",
-            "kvkNumberRequired": "* Voer alsjeblieft uw KvK-nummer in",
-            "companyNameRequired": "* Voer alsjeblieft de naam van uw bedrijf in",
+            "firstNameRequired": "* Vul alsjeblieft je voornaam in",
+            "lastNameRequired": "* Vul alsjeblieft je achternaam in",
+            "kvkNumberRequired": "* Vul alsjeblieft je KvK-nummer in",
+            "companyNameRequired": "* Vul alsjeblieft de naam van je bedrijf in",
             "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
-            "emailRequired": "* Voer alsjeblieft je e-mailadres in",
-            "passwordRequired": "* Voer alsjeblieft een geldig wachtwoord in",
-            "passwordConfirmRequired": "* Voer alsjeblieft uw wachtwoord opnieuw in"
-        }        
+            "emailRequired": "* Vul alsjeblieft je e-mailadres in",
+            "passwordRequired": "* Vul alsjeblieft je wachtwoord in",
+            "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in"
+        }
     }
 }

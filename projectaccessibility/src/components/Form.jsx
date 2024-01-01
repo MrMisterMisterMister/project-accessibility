@@ -79,9 +79,7 @@ const FormLogin = () => {
                     placeholder={translate("login.form.emailPlaceholder")}
                 />
                 {errors.email && (
-                    <div className="form__error">
-                        {errors.email.message}
-                    </div>
+                    <div className="form__error">{errors.email.message}</div>
                 )}
                 <Form.Label className="form__label">
                     {translate("login.form.password")}
@@ -93,16 +91,16 @@ const FormLogin = () => {
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate("login.form.error.passwordRequired")
+                            message: translate(
+                                "login.form.error.passwordRequired"
+                            )
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
                     placeholder={translate("login.form.passwordPlaceholder")}
                 />
                 {errors.password && (
-                    <div className="form__error">
-                        {errors.password.message}
-                    </div>
+                    <div className="form__error">{errors.password.message}</div>
                 )}
                 <div className="form__login_option">
                     <Form.Check.Input
@@ -219,7 +217,7 @@ const FormSignup = () => {
                 </Form.Select>
                 {errors.userType && (
                     <div className="form__error">
-                        {translate("signup.form.error.userType")}
+                        {translate("signup.form.error.userTypeRequired")}
                     </div>
                 )}
                 {selectedUserType === "1" && (
@@ -236,11 +234,17 @@ const FormSignup = () => {
                                     {...register("firstName", {
                                         required: {
                                             value: true,
-                                            message: translate("signup.form.error.firstNameRequired")
+                                            message: translate(
+                                                "signup.form.error.firstNameRequired"
+                                            )
                                         }
                                     })}
-                                    aria-invalid={errors.firstName ? "true" : "false"}
-                                    placeholder={translate("signup.form.firstNamePlaceholder")}
+                                    aria-invalid={
+                                        errors.firstName ? "true" : "false"
+                                    }
+                                    placeholder={translate(
+                                        "signup.form.firstNamePlaceholder"
+                                    )}
                                 />
                                 {errors.firstName && (
                                     <div className="form__error">
@@ -256,11 +260,17 @@ const FormSignup = () => {
                                     {...register("lastName", {
                                         required: {
                                             value: true,
-                                            message: translate("signup.form.error.lastNameRequired")
+                                            message: translate(
+                                                "signup.form.error.lastNameRequired"
+                                            )
                                         }
                                     })}
-                                    aria-invalid={errors.lastName ? "true" : "false"}
-                                    placeholder={translate("signup.form.lastNamePlaceholder")}
+                                    aria-invalid={
+                                        errors.lastName ? "true" : "false"
+                                    }
+                                    placeholder={translate(
+                                        "signup.form.lastNamePlaceholder"
+                                    )}
                                 />
                                 {errors.lastName && (
                                     <div className="form__error">
@@ -285,10 +295,14 @@ const FormSignup = () => {
                                     {...register("kvkNumber", {
                                         required: {
                                             value: true,
-                                            message: translate("signup.form.error.kvkNumberRequired")
+                                            message: translate(
+                                                "signup.form.error.kvkNumberRequired"
+                                            )
                                         }
                                     })}
-                                    aria-invalid={errors.kvkNumber ? "true" : "false"}
+                                    aria-invalid={
+                                        errors.kvkNumber ? "true" : "false"
+                                    }
                                     placeholder={translate(
                                         "signup.form.companyKvk"
                                     )}
@@ -307,10 +321,14 @@ const FormSignup = () => {
                                     {...register("companyName", {
                                         required: {
                                             value: true,
-                                            message: translate("signup.form.error.companyNameRequired")
+                                            message: translate(
+                                                "signup.form.error.companyNameRequired"
+                                            )
                                         }
                                     })}
-                                    aria-invalid={errors.companyName ? "true" : "false"}
+                                    aria-invalid={
+                                        errors.companyName ? "true" : "false"
+                                    }
                                     placeholder={translate(
                                         "signup.form.companyName"
                                     )}
@@ -334,7 +352,9 @@ const FormSignup = () => {
                     {...register("email", {
                         required: {
                             value: true,
-                            message: translate("signup.form.error.emailRequired")
+                            message: translate(
+                                "signup.form.error.emailRequired"
+                            )
                         },
                         pattern: {
                             value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, // regex to check if email is a valid email
@@ -345,9 +365,7 @@ const FormSignup = () => {
                     placeholder={translate("signup.form.emailPlaceholder")}
                 />
                 {errors.email && (
-                    <div className="form__error">
-                        {errors.email.message}
-                    </div>
+                    <div className="form__error">{errors.email.message}</div>
                 )}
                 <Form.Label className="form__label">
                     {translate("signup.form.password")}
@@ -359,16 +377,16 @@ const FormSignup = () => {
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate("signup.form.error.passwordRequired")
+                            message: translate(
+                                "signup.form.error.passwordRequired"
+                            )
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
                     placeholder={translate("signup.form.passwordPlaceholder")}
                 />
                 {errors.password && (
-                    <div className="form__error">
-                        {errors.password.message}
-                    </div>
+                    <div className="form__error">{errors.password.message}</div>
                 )}
                 <Form.Control
                     className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
@@ -377,7 +395,9 @@ const FormSignup = () => {
                     {...register("passwordConfirm", {
                         required: {
                             value: true,
-                            message: translate("signup.form.error.passwordConfirmRequired")
+                            message: translate(
+                                "signup.form.error.passwordConfirmRequired"
+                            )
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}

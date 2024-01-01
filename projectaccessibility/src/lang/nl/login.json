@@ -9,8 +9,8 @@
         "button": "Inloggen",
         "error": {
             "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
-            "emailRequired": "* Voer alsjeblieft je e-mailadres in",
-            "passwordRequired": "* Voer alsjeblieft een geldig wachtwoord in"
+            "emailRequired": "* Vul alsjeblieft je e-mailadres in",
+            "passwordRequired": "* Vul alsjeblieft je wachtwoord in"
         }
     },
     "auth": {
