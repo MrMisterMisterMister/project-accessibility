@@ -26,7 +26,11 @@ const AlertError = ({ data }) => {
                 dataArray.map((item, index) => (
                     <div key={index} className="alert alert__error">
                         {Object.entries(item).map(([key, value]) => (
-                            <span key={key}>{value}</span>
+                            // Only need the code, since that way I can generate the localization for the error message
+                            // Could be made better by removing the unneeded parts, but this is my lazy way
+                            key === "code" && (
+                                <span key={key}>{value}</span>
+                            )
                         ))}
                     </div>
                 ))
