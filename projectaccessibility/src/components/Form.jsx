@@ -71,7 +71,7 @@ const FormLogin = () => {
                             message: translate("login.form.error.emailRequired")
                         },
                         pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, // regex to check if email is a valid email
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/, // regex to check if email is a valid email
                             message: translate("login.form.error.emailPattern")
                         }
                     })}
@@ -197,7 +197,10 @@ const FormSignup = () => {
                 <Form.Select
                     className={`form__select_menu ${errors.userType ? "error" : ""}`}
                     {...register("userType", {
-                        required: true,
+                        required: {
+                            value: true,
+                            message: translate("signup.form.error.userTypeRequired")
+                        },
                         onChange: (event) => {
                             handleSelectChange(event);
                         }
@@ -217,7 +220,7 @@ const FormSignup = () => {
                 </Form.Select>
                 {errors.userType && (
                     <div className="form__error">
-                        {translate("signup.form.error.userTypeRequired")}
+                        {errors.userType.message}
                     </div>
                 )}
                 {selectedUserType === "1" && (
@@ -357,7 +360,7 @@ const FormSignup = () => {
                             )
                         },
                         pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, // regex to check if email is a valid email
+                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/, // regex to check if email is a valid email
                             message: translate("signup.form.error.emailPattern")
                         }
                     })}
@@ -380,6 +383,16 @@ const FormSignup = () => {
                             message: translate(
                                 "signup.form.error.passwordRequired"
                             )
+                        },
+                        validate: {
+                            hasUppercase: (value) => /^(?=.*[A-Z]).+$/.test(value) || translate("signup.form.error.passwordHasUppercase"),
+                            hasLowercase: (value) => /^(?=.*[a-z]).+$/.test(value) || translate("signup.form.error.passwordHasLowercase"),
+                            hasNumber: (value) => /^(?=.*\\d).+$/.test(value) || translate("signup.form.error.passwordHasNumber"),
+                            hasSpecialChar: (value) => /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) || translate("signup.form.error.passwordHasSpecialChar")
+                        },
+                        minLength: {
+                            value: 6,
+                            message: translate("signup.form.error.passwordMinLength")
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
