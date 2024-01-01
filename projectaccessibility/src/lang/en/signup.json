@@ -24,15 +24,15 @@
         "confirmPasswordPlaceholder": "Confirm Password",
         "buttonText": "Sign up",
         "error": {
-            "userType": "* Please select a user type",
-            "firstName": "* Please enter your First Name",
-            "lastName": "* Please enter your Last Name",
-            "kvkNumber": "* Please enter your Chamber of Commerce (Kvk) number",
-            "companyName": "* Please enter your company name",
+            "userTypeRequired": "* Please select a user type",
+            "firstNameRequired": "* Please enter your First Name",
+            "lastNameRequired": "* Please enter your Last Name",
+            "kvkNumberRequired": "* Please enter your Chamber of Commerce (Kvk) number",
+            "companyNameRequired": "* Please enter your company name",
             "emailPattern": "* Please enter a valid email address",
             "emailRequired": "* Please enter your email address",
-            "password": "* Please enter your password",
-            "confirmPassword": "* Please enter your password again"
+            "passwordRequired": "* Please enter your password",
+            "passwordConfirmRequired": "* Please enter your password again"
         }
     }
 }

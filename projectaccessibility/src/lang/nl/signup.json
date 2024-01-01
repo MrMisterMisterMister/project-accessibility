@@ -24,15 +24,15 @@
         "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
         "buttonText": "Aanmelden",
         "error": {
-            "userType": "* Selecteer alsjeblieft een gebruikerstype",
-            "firstName": "* Voer alsjeblieft uw voornaam in",
-            "lastName": "* Voer alsjeblieft uw achternaam in",
-            "kvkNumber": "* Voer alsjeblieft uw KvK-nummer in",
-            "companyName": "* Voer alsjeblieft de naam van uw bedrijf in",
+            "userTypeRequired": "* Selecteer alsjeblieft een gebruikerstype",
+            "firstNameRequired": "* Voer alsjeblieft uw voornaam in",
+            "lastNameRequired": "* Voer alsjeblieft uw achternaam in",
+            "kvkNumberRequired": "* Voer alsjeblieft uw KvK-nummer in",
+            "companyNameRequired": "* Voer alsjeblieft de naam van uw bedrijf in",
             "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
             "emailRequired": "* Voer alsjeblieft je e-mailadres in",
-            "password": "* Voer alsjeblieft een geldig wachtwoord in",
-            "confirmPassword": "* Voer alsjeblieft uw wachtwoord opnieuw in"
+            "passwordRequired": "* Voer alsjeblieft een geldig wachtwoord in",
+            "passwordConfirmRequired": "* Voer alsjeblieft uw wachtwoord opnieuw in"
         }        
     }
 }

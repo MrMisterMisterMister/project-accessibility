@@ -10,7 +10,7 @@
         "error": {
             "emailPattern": "* Please enter a valid email address",
             "emailRequired": "* Please enter your email address",
-            "password": "* Please enter your password"
+            "passwordRequired": "* Please enter your password"
         }
     },
     "auth": {
