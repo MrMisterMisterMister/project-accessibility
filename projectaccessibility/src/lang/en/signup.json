@@ -37,7 +37,8 @@
             "passwordHasDigit": "* Password must contain at least one digit",
             "passwordHasSpecialChar": "* Password must contain at least one special character",
             "passwordMinLength": "* Password must be at least 6 characters long",
-            "passwordConfirmRequired": "* Please enter your password again"
+            "passwordConfirmRequired": "* Please enter your password again",
+            "passwordConfirmIsMatch": "* Password confirmation does not match the original password"
         }
     }
 }

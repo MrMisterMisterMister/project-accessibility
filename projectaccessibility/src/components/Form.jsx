@@ -70,10 +70,6 @@ const FormLogin = () => {
                         required: {
                             value: true,
                             message: translate("login.form.error.emailRequired")
-                        },
-                        pattern: {
-                            value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/, // regex to check if email is a valid email
-                            message: translate("login.form.error.emailPattern")
                         }
                     })}
                     aria-invalid={errors.email ? "true" : "false"}
@@ -139,6 +135,7 @@ const FormSignup = () => {
         register,
         handleSubmit,
         reset,
+        watch,
         formState: { errors }
     } = useForm({ mode: "all" });
 
@@ -362,7 +359,7 @@ const FormSignup = () => {
                             )
                         },
                         pattern: {
-                            value: /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}/, // regex to check if email is a valid email
+                            value: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, // regex to check if email is a valid email
                             message: translate("signup.form.error.emailPattern")
                         }
                     })}
@@ -413,6 +410,9 @@ const FormSignup = () => {
                             message: translate(
                                 "signup.form.error.passwordConfirmRequired"
                             )
+                        },
+                        validate: {
+                            isMatch: (value) => value === watch("password") || translate("signup.form.passwordConfirmIsMatch")
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}

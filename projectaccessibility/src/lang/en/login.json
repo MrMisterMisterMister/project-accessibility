@@ -8,7 +8,6 @@
         "checkbox": "Always stay logged in?",
         "button": "Log In",
         "error": {
-            "emailPattern": "* Please enter a valid email address",
             "emailRequired": "* Please enter your email address",
             "passwordRequired": "* Please enter your password"
         }

@@ -8,7 +8,6 @@
         "checkbox": "Altijd ingelogd blijven?",
         "button": "Inloggen",
         "error": {
-            "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
             "emailRequired": "* Vul alsjeblieft je e-mailadres in",
             "passwordRequired": "* Vul alsjeblieft je wachtwoord in"
         }

@@ -37,7 +37,8 @@
             "passwordHasDigit": "* Wachtwoord moet minimaal één cijfer bevatten",
             "passwordHasSpecialChar": "* Wachtwoord moet minimaal één speciaal teken bevatten",
             "passwordMinLength": "* Wachtwoord moet ten minste 6 tekens lang zijn",
-            "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in"
+            "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in",
+            "passwordConfirmIsMatch": "* Wachtwoordbevestiging komt niet overeen met het oorspronkelijke wachtwoord"
         }
     }
 }
