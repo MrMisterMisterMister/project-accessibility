@@ -1,8 +1,12 @@
 {
     "error": {
-        "emailTaken": "This email address is already registered.",
-        "kvkTaken": "This registration number is already in use.",
-        "accountNotExist": "This account does not exist.",
-        "incorrectPassword": "Incorrect password."
+        "PasswordTooShort": "Password must be at least 6 characters.",
+        "PasswordRequiresDigit": "Password must have at least one digit ('0'-'9').",
+        "PasswordRequiresUpper": "Password must have at least one uppercase ('A'-'Z').",
+        "PasswordRequiresLower": "Password must have at least one lowercase ('a'-'z').",
+        "EmailTaken": "This email address is already taken.",
+        "KvkExists": "This Kvk number is already registered.",
+        "IncorrectPassword": "Incorrect password. Please check your password and try again.",
+        "UserNotFound": "No user found with the provided email address."
     }
 }
