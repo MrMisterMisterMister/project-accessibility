@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
+import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { AlertError } from "../components/Alert";
 
@@ -10,6 +12,12 @@ import { AlertError } from "../components/Alert";
 const FormLogin = () => {
     // Translation
     const { t: translate } = useTranslation();
+
+    // Gives access to setToken from the useAuth hook
+    const { setToken } = useAuth();
+
+    // To handle navigation
+    const navigate = useNavigate();
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
@@ -31,14 +39,15 @@ const FormLogin = () => {
         // Handle the response from the POST call
         loginResponse
             .then((response) => {
-                // Some simple validation to check if the response has status 200
-                // If it does, display some kind of message
-                // This still needs to be updated, so that afterwards the user gets send to their dashboard
-                // Also need to get what kind of user they are, for example, panelmember or company
-                // For now it resets the form values and errors
-                // Will also have to add something for success
-                if (response.status === 200) {
-                    console.log("your mom");
+                // Checks if the response has status code 200 and contains the token
+                // If it contains token, useAuth provider and let magic happen
+                // Afterwards redirect to protected route
+                if (response.status === 200 && response.data && response.data.token) {
+                    // Set authentication token
+                    setToken(response.data.token);
+                    // Redirect to correct page
+                    navigate("/dashboard", { replace: true });
+                    // Reset form and clear errors
                     reset();
                     setFormErrors({});
                 }
@@ -196,7 +205,9 @@ const FormSignup = () => {
                     {...register("userType", {
                         required: {
                             value: true,
-                            message: translate("signup.form.error.userTypeRequired")
+                            message: translate(
+                                "signup.form.error.userTypeRequired"
+                            )
                         },
                         onChange: (event) => {
                             handleSelectChange(event);
@@ -216,9 +227,7 @@ const FormSignup = () => {
                     </option>
                 </Form.Select>
                 {errors.userType && (
-                    <div className="form__error">
-                        {errors.userType.message}
-                    </div>
+                    <div className="form__error">{errors.userType.message}</div>
                 )}
                 {selectedUserType === "1" && (
                     <>
@@ -297,9 +306,7 @@ const FormSignup = () => {
                                             )
                                         }
                                     })}
-                                    aria-invalid={
-                                        errors.kvk ? "true" : "false"
-                                    }
+                                    aria-invalid={errors.kvk ? "true" : "false"}
                                     placeholder={translate(
                                         "signup.form.companyKvk"
                                     )}
@@ -376,14 +383,32 @@ const FormSignup = () => {
                             )
                         },
                         validate: {
-                            hasUppercase: (value) => /^(?=.*[A-Z]).+$/.test(value) || translate("signup.form.error.passwordHasUppercase"), // regex for uppercase
-                            hasLowercase: (value) => /^(?=.*[a-z]).+$/.test(value) || translate("signup.form.error.passwordHasLowercase"), // regex for lowercase
-                            hasDigit: (value) => /^(?=.*\d).+$/.test(value) || translate("signup.form.error.passwordHasDigit"), // regex for digit
-                            hasSpecialChar: (value) => /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) || translate("signup.form.error.passwordHasSpecialChar") // regex for special char
+                            hasUppercase: (value) =>
+                                /^(?=.*[A-Z]).+$/.test(value) ||
+                                translate(
+                                    "signup.form.error.passwordHasUppercase"
+                                ), // regex for uppercase
+                            hasLowercase: (value) =>
+                                /^(?=.*[a-z]).+$/.test(value) ||
+                                translate(
+                                    "signup.form.error.passwordHasLowercase"
+                                ), // regex for lowercase
+                            hasDigit: (value) =>
+                                /^(?=.*\d).+$/.test(value) ||
+                                translate("signup.form.error.passwordHasDigit"), // regex for digit
+                            hasSpecialChar: (value) =>
+                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
+                                    value
+                                ) ||
+                                translate(
+                                    "signup.form.error.passwordHasSpecialChar"
+                                ) // regex for special char
                         },
                         minLength: {
                             value: 6,
-                            message: translate("signup.form.error.passwordMinLength")
+                            message: translate(
+                                "signup.form.error.passwordMinLength"
+                            )
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
@@ -403,7 +428,11 @@ const FormSignup = () => {
                             )
                         },
                         validate: {
-                            isMatch: (value) => value === watch("password") || translate("signup.form.error.passwordConfirmIsMatch")
+                            isMatch: (value) =>
+                                value === watch("password") ||
+                                translate(
+                                    "signup.form.error.passwordConfirmIsMatch"
+                                )
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
