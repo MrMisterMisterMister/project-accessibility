@@ -45,11 +45,11 @@ const Routes = () => {
     // Only authenticated users can view these
     const authenticatedRoutes = [
         {
-            path: "/",
+            path: "/dashboard",
             element: <ProtectedRoute />,
             children: [
                 {
-                    path: "/dashboard",
+                    path: "",
                     element: <Dashboard />
                 }
             ]
