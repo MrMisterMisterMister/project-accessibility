@@ -1,4 +1,5 @@
 import axios from "axios";
+import Cookies from "js-cookie";
 
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
@@ -11,6 +12,20 @@ const axiosClient = axios.create({
             Accept: "application/json"
         }
     }
+});
+
+// Request interceptor to add authorization header with bearer token
+// If there is no bearer token, and there is a get request made, it will return error 401 unauthorized
+// This fixes it that problem
+axiosClient.interceptors.request.use((config) => {
+    // This is temporary, need to figure out a better way to store the token on browser for easy access
+    const userToken = Cookies.get("token");
+
+    if (userToken) {
+        config.headers.Authorization = `Bearer ${userToken}`;
+    }
+
+    return config;
 });
 
 // Get request
