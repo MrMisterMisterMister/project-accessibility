@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pages from "./pages";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { jwtDecode } from "jwt-decode";
 
 function App () {
 
     function handleCallbackResponse(response){
         console.log("Encoded JWT ID token: " + response.credential);
+        var userObject = jwtDecode(response.credential);
+        console.log(userObject);
     }
 
     useEffect(() => {
