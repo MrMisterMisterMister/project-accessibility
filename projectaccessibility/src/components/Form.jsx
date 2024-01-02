@@ -7,6 +7,7 @@ import { postRequest } from "../api/axiosClient";
 import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { AlertError } from "../components/Alert";
+import Cookies from "js-cookie";
 
 // Form for login page
 const FormLogin = () => {
@@ -45,6 +46,7 @@ const FormLogin = () => {
                 if (response.status === 200 && response.data && response.data.token) {
                     // Set authentication token
                     setToken(response.data.token);
+                    Cookies.set("token", response.data.token);
                     // Redirect to correct page
                     navigate("/dashboard", { replace: true });
                     // Reset form and clear errors

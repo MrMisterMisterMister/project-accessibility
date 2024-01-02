@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useMemo, useState } from "react";
+import Cookies from "js-cookie";
 import PropTypes from "prop-types";
 
 // Create a context for authentication
@@ -10,7 +11,7 @@ const AuthProvider = ({ children }) => {
     // State for the token
     // This way other components are able to use it
     // For example, the login needs to somehow set it, so only way is to use a hook
-    const [token, setToken] = useState("");
+    const [token, setToken] = useState(Cookies.get("token"));
 
     // Helps to optimize performance if only the token state is changed
     const contextValue = useMemo(() => ({ token, setToken }), [token]);
