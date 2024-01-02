@@ -6,7 +6,6 @@ import { ButtonAuth } from "../components/Button";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import GoogleSignInButton from "../components/GoogleSignInButton";
 
 // Login page
 const Login = () => {
@@ -57,10 +56,10 @@ const Login = () => {
                                     <p className="login__page_seperator__text">or</p>
                                 </div>
                                 <ButtonAuth icon={<PersonPlusFill />} path="/signup" text={translate("login.auth.signup")} />
-                                <GoogleSignInButton icon={GoogleIcon} path="#" text={translate("login.auth.google")} />
                                 <ButtonAuth icon={MicrosoftIcon} path="#" text={translate("login.auth.microsoft")} />
                                 <ButtonAuth icon={FacebookIcon} path="#" text={translate("login.auth.facebook")} />
                             </div>
+                            <div id="signInDiv"></div>
                         </div>
                     </div>
                 </Container>
