@@ -16,7 +16,11 @@ const AuthProvider = ({ children }) => {
     const contextValue = useMemo(() => ({ token, setToken }), [token]);
 
     // Provides the authentication context to the children
-    return <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>;
+    return (
+        <AuthContext.Provider value={contextValue}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 // Define propTypes for the AuthProvider
