@@ -360,16 +360,21 @@
 // dashboard bottom nav component
 .nav__dashboard_bottomnav {
     background-color: variables.$white;
-    position: relative;
     width: 100%;
     display: flex;
     align-items: center;
-    // Need to optimize this for mobile, like make this go to the bottom or something
-    // Also need to update how the active states look like
-    top: 0;
+    position: fixed;
+    bottom: 0;
     right: 0;
     left: 0;
-    box-shadow: 0 19px 34px -15px rgb(210, 210, 242);
+    z-index: 1001;
+
+    @include mixins.sm {
+        position: relative;
+        top: 0;
+        bottom: auto;
+        box-shadow: 0 19px 34px -15px rgb(210, 210, 242);
+    }
 
     .nav__dashboard_bottomnav__menu_nav {
         display: flex;
@@ -392,7 +397,7 @@
                     position: absolute;
                     content: "";
                     left: 0;
-                    bottom: 0px;
+                    bottom: 0;
                     width: 100%;
                     height: 3px;
                     background-color: variables.$sapphire;

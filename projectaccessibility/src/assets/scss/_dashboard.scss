@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 .dashboard__page {
     background-color: variables.$cultured;
@@ -8,13 +9,16 @@
 
         &.fixed__scroll {
             .nav__dashboard_bottomnav {
-                border-bottom: solid 1px rgb(233, 232, 239);
-                position: fixed;
-                z-index: 1001;
+                @include mixins.sm {
+                    border-bottom: solid 1px rgb(233, 232, 239);
+                    position: fixed;
+                }
             }
 
             +.dashboard__page_main {
-                padding-top: 4rem;
+                @include mixins.sm {
+                    padding-top: 4rem;
+                }
             }
         }
     }

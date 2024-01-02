@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import {
-    BarChart,
-    PersonCircle,
-    Gear,
-    BoxArrowRight
-} from "react-bootstrap-icons";
+import { BarChart, PersonCircle, Gear, Book, BoxArrowRight, Buildings, Person } from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
 import Settings from "./Settings";
+import Research from "./Research";
 
 // Dashboard page
 const Dashboard = () => {
@@ -18,6 +14,19 @@ const Dashboard = () => {
             icon: <BarChart />,
             title: "Dashboard",
             active: true
+        },
+        {
+            icon: <Person />,
+            title: "Panelmember"
+        },
+        {
+            icon: <Buildings />,
+            title: "Company"
+        },
+        {
+            page: <Research />,
+            icon: <Book />,
+            title: "Research"
         },
         {
             page: <Account />,
@@ -82,9 +91,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard__page">
             <div
-                className={`dashboard__page_menu ${
-                    isScrolling ? "fixed__scroll" : ""
-                }`}
+                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
             >
                 <NavDashboardTopNav
                     profilePicturePath="/img/placeholder.jpg"

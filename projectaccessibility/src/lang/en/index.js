@@ -8,6 +8,7 @@ import login from "./login.json";
 import sitemap from "./sitemap.json";
 import privacypolicy from "./privacypolicy.json";
 import cookies from "./cookies.json";
+import dashboard from "./dashboard.json";
 
 // Components
 import hero from "./hero.json";
@@ -32,7 +33,8 @@ const en = {
     sitemap,
     privacypolicy,
     cookies,
-    alert
+    alert,
+    dashboard
 };
 
 export default en;
