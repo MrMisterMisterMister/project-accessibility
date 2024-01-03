@@ -15,9 +15,7 @@ const Sitemap = () => {
     const pageLinks = [
         {
             title: translate("links.frontpage.title"),
-            subPages: [
-                { name: translate("links.frontpage.home"), path: "/" }
-            ]
+            subPages: [{ name: translate("links.frontpage.home"), path: "/" }]
         },
         {
             title: translate("links.components.title"),
@@ -76,9 +74,7 @@ const Sitemap = () => {
                 </div>
                 <Container className="sitemap__page_container">
                     <h1>{translate("pageTitle")}</h1>
-                    <p className="text-muted">
-                        {translate("lastModified")}
-                    </p>
+                    <p className="text-muted">{translate("lastModified")}</p>
                     <p>{translate("intro")}</p>
                     {pageLinks.map((section, index) => (
                         <div key={index}>

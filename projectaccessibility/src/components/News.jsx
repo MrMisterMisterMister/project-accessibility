@@ -11,22 +11,16 @@ const News = () => {
     return (
         <section className="news__section">
             <Container className="news__section_container">
-                <h2 className="news__section_title">
-                    {translate("title")}
-                </h2>
+                <h2 className="news__section_title">{translate("title")}</h2>
                 <div className="news__section_group__card">
                     {translate("articles", { returnObjects: true }).map(
                         (article, index) => (
                             <CardNews
                                 key={index}
                                 img="img/placeholder.jpg"
-                                altText={translate(
-                                    `articles.${index}.altText`
-                                )}
+                                altText={translate(`articles.${index}.altText`)}
                                 date={translate(`articles.${index}.date`)}
-                                title={translate(
-                                    `articles.${index}.title`
-                                )}
+                                title={translate(`articles.${index}.title`)}
                                 text={translate(
                                     `articles.${index}.description`
                                 )}

@@ -19,10 +19,7 @@ const Hero = () => {
                     <p className="hero__section_text">
                         {translate("description")}
                     </p>
-                    <ButtonHero
-                        text={translate("buttonText")}
-                        path="/login"
-                    />
+                    <ButtonHero text={translate("buttonText")} path="/login" />
                 </div>
             </Container>
             <Shape section="hero" position={["right", "bottom", "top"]} />

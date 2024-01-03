@@ -34,12 +34,8 @@ const Expertise = () => {
                             <CardExpertise
                                 key={index}
                                 icon={iconMap[index]}
-                                title={translate(
-                                    `cards.${index}.title`
-                                )}
-                                text={translate(
-                                    `cards.${index}.text`
-                                )}
+                                title={translate(`cards.${index}.title`)}
+                                text={translate(`cards.${index}.text`)}
                             />
                         )
                     )}

@@ -43,7 +43,11 @@ const FormLogin = () => {
                 // Checks if the response has status code 200 and contains the token
                 // If it contains token, useAuth provider and let magic happen
                 // Afterwards redirect to protected route
-                if (response.status === 200 && response.data && response.data.token) {
+                if (
+                    response.status === 200 &&
+                    response.data &&
+                    response.data.token
+                ) {
                     // Set authentication token
                     setToken(response.data.token);
                     Cookies.set("token", response.data.token);
@@ -74,7 +78,9 @@ const FormLogin = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -92,14 +98,14 @@ const FormLogin = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate(
-                                "error.passwordRequired"
-                            )
+                            message: translate("error.passwordRequired")
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
@@ -204,13 +210,13 @@ const FormSignup = () => {
                     {translate("userTypeLabel")}
                 </Form.Label>
                 <Form.Select
-                    className={`form__select_menu ${errors.userType ? "error" : ""}`}
+                    className={`form__select_menu ${
+                        errors.userType ? "error" : ""
+                    }`}
                     {...register("userType", {
                         required: {
                             value: true,
-                            message: translate(
-                                "error.userTypeRequired"
-                            )
+                            message: translate("error.userTypeRequired")
                         },
                         onChange: (event) => {
                             handleSelectChange(event);
@@ -240,7 +246,9 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.firstName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("firstName", {
                                         required: {
@@ -265,7 +273,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.lastName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("lastName", {
                                         required: {
@@ -299,20 +309,19 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.kvk ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("kvk", {
                                         required: {
                                             value: true,
-                                            message: translate(
-                                                "error.kvkRequired"
-                                            )
+                                            message:
+                                                translate("error.kvkRequired")
                                         }
                                     })}
                                     aria-invalid={errors.kvk ? "true" : "false"}
-                                    placeholder={translate(
-                                        "kvkPlaceholder"
-                                    )}
+                                    placeholder={translate("kvkPlaceholder")}
                                 />
                                 {errors.kvk && (
                                     <div className="form__error">
@@ -322,7 +331,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.name ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("name", {
                                         required: {
@@ -352,14 +363,14 @@ const FormSignup = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
                             value: true,
-                            message: translate(
-                                "error.emailRequired"
-                            )
+                            message: translate("error.emailRequired")
                         },
                         pattern: {
                             value: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, // regex to check if email is a valid email
@@ -376,42 +387,33 @@ const FormSignup = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate(
-                                "error.passwordRequired"
-                            )
+                            message: translate("error.passwordRequired")
                         },
                         validate: {
                             hasUppercase: (value) =>
                                 /^(?=.*[A-Z]).+$/.test(value) ||
-                                translate(
-                                    "error.passwordHasUppercase"
-                                ), // regex for uppercase
+                                translate("error.passwordHasUppercase"), // regex for uppercase
                             hasLowercase: (value) =>
                                 /^(?=.*[a-z]).+$/.test(value) ||
-                                translate(
-                                    "error.passwordHasLowercase"
-                                ), // regex for lowercase
+                                translate("error.passwordHasLowercase"), // regex for lowercase
                             hasDigit: (value) =>
                                 /^(?=.*\d).+$/.test(value) ||
                                 translate("error.passwordHasDigit"), // regex for digit
                             hasSpecialChar: (value) =>
                                 /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
                                     value
-                                ) ||
-                                translate(
-                                    "error.passwordHasSpecialChar"
-                                ) // regex for special char
+                                ) || translate("error.passwordHasSpecialChar") // regex for special char
                         },
                         minLength: {
                             value: 6,
-                            message: translate(
-                                "error.passwordMinLength"
-                            )
+                            message: translate("error.passwordMinLength")
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
@@ -421,27 +423,23 @@ const FormSignup = () => {
                     <div className="form__error">{errors.password.message}</div>
                 )}
                 <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordConfirm ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
                             value: true,
-                            message: translate(
-                                "error.passwordConfirmRequired"
-                            )
+                            message: translate("error.passwordConfirmRequired")
                         },
                         validate: {
                             isMatch: (value) =>
                                 value === watch("password") ||
-                                translate(
-                                    "error.passwordConfirmIsMatch"
-                                )
+                                translate("error.passwordConfirmIsMatch")
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
-                    placeholder={translate(
-                        "passwordConfirmPlaceholder"
-                    )}
+                    placeholder={translate("passwordConfirmPlaceholder")}
                 />
                 {errors.passwordConfirm && (
                     <div className="form__error">
@@ -463,10 +461,6 @@ const FormSignup = () => {
 const FormUserEmailUpdate = () => {
     // Translation
     const { t: translate } = useTranslation("form");
-
-    // State hook to capture and manage form validation errors
-    // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
 
     // React hook form
     // Define some const to use in forms
@@ -512,7 +506,9 @@ const FormUserEmailUpdate = () => {
                     New Email Address
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -530,7 +526,9 @@ const FormUserEmailUpdate = () => {
                     Confirm Email Address
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.emailConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.emailConfirm ? "error" : ""
+                    }`}
                     type="email"
                     {...register("emailConfirm", {
                         required: {
@@ -542,7 +540,9 @@ const FormUserEmailUpdate = () => {
                     placeholder="Confirm Email" // localization
                 />
                 {errors.emailConfirm && (
-                    <div className="form__error">{errors.emailConfirm.message}</div>
+                    <div className="form__error">
+                        {errors.emailConfirm.message}
+                    </div>
                 )}
                 <Form.Label className="form__label">
                     Current Password
@@ -562,7 +562,10 @@ const FormUserEmailUpdate = () => {
                 {errors.password && (
                     <div className="form__error">{errors.password.message}</div>
                 )}
-                <ButtonSubmit style="button__settings" text={translate("")} />
+                <ButtonSubmit
+                    style="button__settings"
+                    text={translate("settings.buttonText")}
+                />
             </Form>
         </>
     );
@@ -572,10 +575,6 @@ const FormUserEmailUpdate = () => {
 const FormUserPasswordUpdate = () => {
     // Translation
     const { t: translate } = useTranslation();
-
-    // State hook to capture and manage form validation errors
-    // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
 
     // React hook form
     // Define some const to use in forms
@@ -624,7 +623,9 @@ const FormUserPasswordUpdate = () => {
                     Current Password
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.passwordCurrent ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordCurrent ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordCurrent", {
                         required: {
@@ -636,13 +637,15 @@ const FormUserPasswordUpdate = () => {
                     placeholder="Enter Password" // localization
                 />
                 {errors.passwordCurrent && (
-                    <div className="form__error">{errors.passwordCurrent.message}</div>
+                    <div className="form__error">
+                        {errors.passwordCurrent.message}
+                    </div>
                 )}
-                <Form.Label className="form__label">
-                    New Password
-                </Form.Label>
+                <Form.Label className="form__label">New Password</Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -652,20 +655,18 @@ const FormUserPasswordUpdate = () => {
                         validate: {
                             // regex for uppercase
                             hasUppercase: (value) =>
-                                /^(?=.*[A-Z]).+$/.test(value) ||
-                                translate(""), // localization
+                                /^(?=.*[A-Z]).+$/.test(value) || translate(""), // localization
                             // regex for lowercase
                             hasLowercase: (value) =>
-                                /^(?=.*[a-z]).+$/.test(value) ||
-                                translate(""), // localization
+                                /^(?=.*[a-z]).+$/.test(value) || translate(""), // localization
                             // regex for digit
                             hasDigit: (value) =>
-                                /^(?=.*\d).+$/.test(value) ||
-                                translate(""), // localization
+                                /^(?=.*\d).+$/.test(value) || translate(""), // localization
                             // regex for special char
                             hasSpecialChar: (value) =>
-                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) ||
-                                translate("") // localization
+                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
+                                    value
+                                ) || translate("") // localization
                         },
                         minLength: {
                             value: 6,
@@ -682,7 +683,9 @@ const FormUserPasswordUpdate = () => {
                     Confirm New Password
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordConfirm ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
@@ -691,17 +694,21 @@ const FormUserPasswordUpdate = () => {
                         },
                         validate: {
                             isMatch: (value) =>
-                                value === watch("password") ||
-                                translate("") // localization
+                                value === watch("password") || translate("") // localization
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
                     placeholder="Confirm Password" // localization
                 />
                 {errors.passwordConfirm && (
-                    <div className="form__error">{errors.passwordConfirm.message}</div>
+                    <div className="form__error">
+                        {errors.passwordConfirm.message}
+                    </div>
                 )}
-                <ButtonSubmit style="button__settings" text={translate("")} />
+                <ButtonSubmit
+                    style="button__settings"
+                    text={translate("settings.buttonText")}
+                />
             </Form>
         </>
     );
@@ -711,10 +718,6 @@ const FormUserPasswordUpdate = () => {
 const FormPanelMemberProfileUpdate = () => {
     // Translation
     const { t: translate } = useTranslation("form");
-
-    // State hook to capture and manage form validation errors
-    // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
 
     // React hook form
     // Define some const to use in forms
@@ -764,7 +767,9 @@ const FormPanelMemberProfileUpdate = () => {
                             First Name
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.firstName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("firstName", {
                                 required: {
@@ -776,7 +781,9 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="John" // localization
                         />
                         {errors.firstName && (
-                            <div className="form__error">{errors.firstName.message}</div>
+                            <div className="form__error">
+                                {errors.firstName.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -784,7 +791,9 @@ const FormPanelMemberProfileUpdate = () => {
                             Last Name
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.lastName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("lastName", {
                                 required: {
@@ -796,7 +805,9 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="Doe" // localization
                         />
                         {errors.lastName && (
-                            <div className="form__error">{errors.lastName.message}</div>
+                            <div className="form__error">
+                                {errors.lastName.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -804,7 +815,9 @@ const FormPanelMemberProfileUpdate = () => {
                             Phone Number
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.phone ? "error" : ""
+                            }`}
                             type="phone"
                             {...register("phone", {
                                 required: {
@@ -816,7 +829,9 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="Your Phone" // localization
                         />
                         {errors.phone && (
-                            <div className="form__error">{errors.phone.message}</div>
+                            <div className="form__error">
+                                {errors.phone.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -824,7 +839,9 @@ const FormPanelMemberProfileUpdate = () => {
                             Date of Birth
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.dateOfBirth ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.dateOfBirth ? "error" : ""
+                            }`}
                             type="date"
                             {...register("dateOfBirth", {
                                 required: {
@@ -836,15 +853,17 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="Your Date of Birth" // localization
                         />
                         {errors.dateOfBirth && (
-                            <div className="form__error">{errors.dateOfBirth.message}</div>
+                            <div className="form__error">
+                                {errors.dateOfBirth.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            Address
-                        </Form.Label>
+                        <Form.Label className="form__label">Address</Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.address ? "error" : ""
+                            }`}
                             type="text"
                             {...register("address", {
                                 required: {
@@ -856,7 +875,9 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="Your Address" // localization
                         />
                         {errors.address && (
-                            <div className="form__error">{errors.address.message}</div>
+                            <div className="form__error">
+                                {errors.address.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -864,7 +885,9 @@ const FormPanelMemberProfileUpdate = () => {
                             Postal Code
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.postalcode ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.postalcode ? "error" : ""
+                            }`}
                             type="text"
                             {...register("postalcode", {
                                 required: {
@@ -876,15 +899,17 @@ const FormPanelMemberProfileUpdate = () => {
                             placeholder="Your Postal code" // localization
                         />
                         {errors.postalcode && (
-                            <div className="form__error">{errors.postalcode.message}</div>
+                            <div className="form__error">
+                                {errors.postalcode.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
-                        <Form.Label className="form__label">
-                            Country
-                        </Form.Label>
+                        <Form.Label className="form__label">Country</Form.Label>
                         <Form.Select
-                            className={`form__select_menu ${errors.country ? "error" : ""}`}
+                            className={`form__select_menu ${
+                                errors.country ? "error" : ""
+                            }`}
                             {...register("country", {
                                 required: {
                                     value: true,
@@ -893,14 +918,21 @@ const FormPanelMemberProfileUpdate = () => {
                             })}
                             aria-invalid={errors.country ? "true" : "false"}
                         >
-                            <option value="The Netherlands">The Netherlands</option>
+                            <option value="The Netherlands">
+                                The Netherlands
+                            </option>
                         </Form.Select>
                         {errors.postalcode && (
-                            <div className="form__error">{errors.country.message}</div>
+                            <div className="form__error">
+                                {errors.country.message}
+                            </div>
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit style="button__settings" text={translate("")} />
+                <ButtonSubmit
+                    style="button__settings"
+                    text={translate("settings.buttonText")}
+                />
             </Form>
         </>
     );
@@ -910,10 +942,6 @@ const FormPanelMemberProfileUpdate = () => {
 const FormCompanyProfileUpdate = () => {
     // Translation
     const { t: translate } = useTranslation();
-
-    // State hook to capture and manage form validation errors
-    // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
 
     // React hook form
     // Define some const to use in forms
@@ -963,7 +991,9 @@ const FormCompanyProfileUpdate = () => {
                             Chamber of Commerce Number
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.kvk ? "error" : ""
+                            }`}
                             type="text"
                             {...register("kvk", {
                                 required: {
@@ -975,7 +1005,9 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="KvK" // localization
                         />
                         {errors.kvk && (
-                            <div className="form__error">{errors.kvk.message}</div>
+                            <div className="form__error">
+                                {errors.kvk.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -983,7 +1015,9 @@ const FormCompanyProfileUpdate = () => {
                             Company Name
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.companyName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.companyName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("companyName", {
                                 required: {
@@ -995,7 +1029,9 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Company Name" // localization
                         />
                         {errors.companyName && (
-                            <div className="form__error">{errors.companyName.message}</div>
+                            <div className="form__error">
+                                {errors.companyName.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -1003,7 +1039,9 @@ const FormCompanyProfileUpdate = () => {
                             Phone Number
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.phone ? "error" : ""
+                            }`}
                             type="phone"
                             {...register("phone", {
                                 required: {
@@ -1015,13 +1053,17 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your Phone" // localization
                         />
                         {errors.phone && (
-                            <div className="form__error">{errors.phone.message}</div>
+                            <div className="form__error">
+                                {errors.phone.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">Address</Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.address ? "error" : ""
+                            }`}
                             type="text"
                             {...register("address", {
                                 required: {
@@ -1033,15 +1075,17 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your Address" // localization
                         />
                         {errors.address && (
-                            <div className="form__error">{errors.address.message}</div>
+                            <div className="form__error">
+                                {errors.address.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            City
-                        </Form.Label>
+                        <Form.Label className="form__label">City</Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.city ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.city ? "error" : ""
+                            }`}
                             type="text"
                             {...register("city", {
                                 required: {
@@ -1053,7 +1097,9 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your City" // localization
                         />
                         {errors.city && (
-                            <div className="form__error">{errors.city.message}</div>
+                            <div className="form__error">
+                                {errors.city.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -1061,7 +1107,9 @@ const FormCompanyProfileUpdate = () => {
                             Province
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.province ? "error" : ""
+                            }`}
                             type="text"
                             {...register("province", {
                                 required: {
@@ -1073,7 +1121,9 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your province" // localization
                         />
                         {errors.province && (
-                            <div className="form__error">{errors.province.message}</div>
+                            <div className="form__error">
+                                {errors.province.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -1081,7 +1131,9 @@ const FormCompanyProfileUpdate = () => {
                             Postal Code
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.postalCode ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.postalCode ? "error" : ""
+                            }`}
                             type="text"
                             {...register("postalCode", {
                                 required: {
@@ -1093,7 +1145,9 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your Postal code" // localization
                         />
                         {errors.websiteUrl && (
-                            <div className="form__error">{errors.websiteUrl.message}</div>
+                            <div className="form__error">
+                                {errors.websiteUrl.message}
+                            </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -1101,7 +1155,9 @@ const FormCompanyProfileUpdate = () => {
                             Website URL
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.websiteUrl ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.websiteUrl ? "error" : ""
+                            }`}
                             type="url"
                             {...register("websiteUrl", {
                                 required: {
@@ -1113,11 +1169,16 @@ const FormCompanyProfileUpdate = () => {
                             placeholder="Your Website URL" // localization
                         />
                         {errors.websiteUrl && (
-                            <div className="form__error">{errors.websiteUrl.message}</div>
+                            <div className="form__error">
+                                {errors.websiteUrl.message}
+                            </div>
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit style="button__settings" text={translate("")} />
+                <ButtonSubmit
+                    style="button__settings"
+                    text={translate("settings.buttonText")}
+                />
             </Form>
         </>
     );

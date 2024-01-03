@@ -1,5 +1,10 @@
 import React from "react";
-import { FormUserEmailUpdate, FormUserPasswordUpdate, FormPanelMemberProfileUpdate, FormCompanyProfileUpdate } from "./Form";
+import {
+    FormUserEmailUpdate,
+    FormUserPasswordUpdate,
+    FormPanelMemberProfileUpdate,
+    FormCompanyProfileUpdate
+} from "./Form";
 
 // Settings component for panelmembers to change their profile information
 // This loads in their form with the correct post endpoint to the backend server

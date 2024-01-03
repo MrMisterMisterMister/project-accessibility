@@ -6,6 +6,9 @@
     "signup": {
         "buttonText": "Sign up"
     },
+    "settings": {
+        "buttonText": ""
+    },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
     "passwordLabel": "Password",

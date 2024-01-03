@@ -31,9 +31,7 @@ const AlertError = ({ data }) => {
                                     // Could be made better by removing the unneeded parts, but this is my lazy way
                                     key === "code" && (
                                         <span key={key}>
-                                            {translate(
-                                                `error.form.${value}`
-                                            )}
+                                            {translate(`error.form.${value}`)}
                                         </span>
                                     )
                             )}

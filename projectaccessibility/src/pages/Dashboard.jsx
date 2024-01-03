@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { BarChart, PersonCircle, Gear, Book, BoxArrowRight, Buildings, Person, ChatLeftDots } from "react-bootstrap-icons";
+import {
+    BarChart,
+    PersonCircle,
+    Gear,
+    Book,
+    BoxArrowRight,
+    Buildings,
+    Person,
+    ChatLeftDots
+} from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
@@ -104,7 +113,9 @@ const Dashboard = () => {
     return (
         <div className="dashboard__page">
             <div
-                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
+                className={`dashboard__page_menu ${
+                    isScrolling ? "fixed__scroll" : ""
+                }`}
             >
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"

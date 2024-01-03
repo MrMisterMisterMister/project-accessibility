@@ -19,41 +19,17 @@ const Cookies = () => {
                 </div>
                 <Container className="cookies__page_container">
                     <h1>{translate("pageTitle")}</h1>
-                    <p className="text-muted">
-                        {translate("lastModified")}
-                    </p>
+                    <p className="text-muted">{translate("lastModified")}</p>
                     <p>{translate("intro")}</p>
 
-                    <h4>
-                        {translate(
-                            "cookieTypes.functionalCookies.title"
-                        )}
-                    </h4>
-                    <p>
-                        {translate(
-                            "cookieTypes.functionalCookies.content"
-                        )}
-                    </p>
+                    <h4>{translate("cookieTypes.functionalCookies.title")}</h4>
+                    <p>{translate("cookieTypes.functionalCookies.content")}</p>
 
-                    <h4>
-                        {translate(
-                            "cookieTypes.performanceCookies.title"
-                        )}
-                    </h4>
-                    <p>
-                        {translate(
-                            "cookieTypes.performanceCookies.content"
-                        )}
-                    </p>
+                    <h4>{translate("cookieTypes.performanceCookies.title")}</h4>
+                    <p>{translate("cookieTypes.performanceCookies.content")}</p>
 
-                    <h4>
-                        {translate("cookieTypes.trackingCookies.title")}
-                    </h4>
-                    <p>
-                        {translate(
-                            "cookieTypes.trackingCookies.content"
-                        )}
-                    </p>
+                    <h4>{translate("cookieTypes.trackingCookies.title")}</h4>
+                    <p>{translate("cookieTypes.trackingCookies.content")}</p>
 
                     <h4>{translate("retentionPeriod.title")}</h4>
                     <p>{translate("retentionPeriod.content.0")}</p>
