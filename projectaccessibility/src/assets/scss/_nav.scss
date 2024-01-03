@@ -376,10 +376,10 @@
             .nav__dashboard_topnav__user_dropdown {
                 position: absolute;                
                 right: 0;
-                left: auto;
                 top: 65px;
                 min-width: 10rem;
-                width: 100%;
+                left: auto;
+                width: calc(100vw - 20px);
                 padding: 0;
                 margin: 0;
                 border-radius: 2px;
@@ -389,6 +389,7 @@
 
                 @include mixins.sm {
                     top: 45px;
+                    width: 100%;
                 }
 
                 .nav__dashboard_topnav__user_dropdown__item {
