@@ -12,7 +12,7 @@ const AlertSuccess = () => {
 // expects an object and loops over it
 const AlertError = ({ data }) => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("alert");
 
     // Check if the data is an array or not, otherwise convert it to an array, so no weird white screen
     const dataArray = Array.isArray(data) ? data : [data];
@@ -32,7 +32,7 @@ const AlertError = ({ data }) => {
                                     key === "code" && (
                                         <span key={key}>
                                             {translate(
-                                                `alert.error.form.${value}`
+                                                `error.form.${value}`
                                             )}
                                         </span>
                                     )

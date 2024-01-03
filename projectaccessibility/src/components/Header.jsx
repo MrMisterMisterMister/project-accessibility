@@ -6,17 +6,17 @@ import { NavDesktop, NavMobile } from "./Nav";
 // Header component
 const Header = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("header");
 
     // Header nav links
     const websiteLinks = [
-        { name: translate("header.menu.home"), path: "/" },
-        { name: translate("header.menu.about"), path: "/over-ons" },
-        { name: translate("header.menu.expertise"), path: "/expertise" },
-        { name: translate("header.menu.news"), path: "/actueel" },
-        { name: translate("header.menu.contact"), path: "/contact" },
-        { name: translate("header.menu.signup"), path: "/signup" },
-        { name: translate("header.menu.signin"), path: "/login" }
+        { name: translate("menu.home"), path: "/" },
+        { name: translate("menu.about"), path: "/over-ons" },
+        { name: translate("menu.expertise"), path: "/expertise" },
+        { name: translate("menu.news"), path: "/actueel" },
+        { name: translate("menu.contact"), path: "/contact" },
+        { name: translate("menu.signup"), path: "/signup" },
+        { name: translate("menu.signin"), path: "/login" }
     ];
 
     return (

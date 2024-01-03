@@ -6,30 +6,30 @@ import { CardCase } from "./Card";
 // Case component
 const Case = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("cases");
 
     return (
         <section className="case__section">
             <Container className="case__section_container">
                 <h2 className="case__section_title">
-                    {translate("cases.title")}
+                    {translate("title")}
                 </h2>
                 <div className="case__section_group__card">
-                    {translate("cases.cases", { returnObjects: true }).map(
+                    {translate("cases", { returnObjects: true }).map(
                         (item, index) => (
                             <CardCase
                                 key={index}
                                 img="img/placeholder.jpg"
                                 altText={translate(
-                                    `cases.cases.${index}.altText`
+                                    `cases.${index}.altText`
                                 )}
-                                title={translate(`cases.cases.${index}.title`)}
+                                title={translate(`cases.${index}.title`)}
                                 text={translate(
-                                    `cases.cases.${index}.description`
+                                    `cases.${index}.description`
                                 )}
                                 path="#"
                                 linkText={translate(
-                                    `cases.cases.${index}.linkText`
+                                    `cases.${index}.linkText`
                                 )}
                             />
                         )

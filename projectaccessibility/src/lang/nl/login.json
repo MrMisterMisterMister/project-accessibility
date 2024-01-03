@@ -1,17 +1,5 @@
 {
     "pageTitle": "Inloggen",
-    "form": {
-        "email": "E-mailadres",
-        "emailPlaceholder": "E-mailadres",
-        "password": "Wachtwoord",
-        "passwordPlaceholder": "Wachtwoord",
-        "checkbox": "Altijd ingelogd blijven?",
-        "button": "Inloggen",
-        "error": {
-            "emailRequired": "* Vul alsjeblieft je e-mailadres in",
-            "passwordRequired": "* Vul alsjeblieft je wachtwoord in"
-        }
-    },
     "auth": {
         "signup": "Account aanmaken",
         "google": "Doorgaan met Google",

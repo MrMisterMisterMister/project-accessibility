@@ -7,25 +7,25 @@ import { GroupMember } from "./Group";
 // Member component
 const Member = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("member");
 
     return (
         <section className="member__section">
             <Container className="member__section_container">
                 <h2 className="member__section_title">
-                    {translate("member.title")}
+                    {translate("title")}
                 </h2>
                 <div className="member__section_group__group">
-                    {translate("member.members", { returnObjects: true }).map(
+                    {translate("members", { returnObjects: true }).map(
                         (member, index) => (
                             <GroupMember
                                 key={index}
                                 img="img/placeholder.jpg"
                                 altText={translate(
-                                    `member.members.${index}.altText`
+                                    `members.${index}.altText`
                                 )}
-                                name={translate(`member.members.${index}.name`)}
-                                role={translate(`member.members.${index}.role`)}
+                                name={translate(`members.${index}.name`)}
+                                role={translate(`members.${index}.role`)}
                             />
                         )
                     )}

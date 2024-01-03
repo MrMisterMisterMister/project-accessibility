@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 // Form for login page
 const FormLogin = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("form");
 
     // Gives access to setToken from the useAuth hook
     const { setToken } = useAuth();
@@ -79,7 +79,7 @@ const FormLogin = () => {
                     {...register("email", {
                         required: {
                             value: true,
-                            message: translate("login.form.error.emailRequired")
+                            message: translate("error.emailRequired")
                         }
                     })}
                     aria-invalid={errors.email ? "true" : "false"}
@@ -709,7 +709,7 @@ const FormUserPasswordUpdate = () => {
 // Form for panel members to update their information
 const FormPanelMemberProfileUpdate = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("form");
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object

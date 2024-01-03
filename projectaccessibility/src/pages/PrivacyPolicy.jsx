@@ -8,7 +8,7 @@ import Shape from "../components/Shape";
 // Privacy policy page
 const PrivacyPolicy = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("privacypolicy");
 
     return (
         <>
@@ -21,38 +21,38 @@ const PrivacyPolicy = () => {
                     />
                 </div>
                 <Container className="privacypolicy__page_container">
-                    <h1>{translate("privacypolicy.pageTitle")}</h1>
+                    <h1>{translate("pageTitle")}</h1>
                     <p className="text-muted">
-                        {translate("privacypolicy.lastModified")}
+                        {translate("lastModified")}
                     </p>
-                    <p>{translate("privacypolicy.intro.0")}</p>
-                    <p>{translate("privacypolicy.intro.1")}</p>
-                    <p>{translate("privacypolicy.intro.2")}</p>
+                    <p>{translate("intro.0")}</p>
+                    <p>{translate("intro.1")}</p>
+                    <p>{translate("intro.2")}</p>
 
-                    <h4>{translate("privacypolicy.collectedData.title")}</h4>
+                    <h4>{translate("collectedData.title")}</h4>
                     <p>
-                        {translate("privacypolicy.collectedData.description")}
-                    </p>
-
-                    <h5>
-                        {translate(
-                            "privacypolicy.collectedData.personalData.title"
-                        )}
-                    </h5>
-                    <p>
-                        {translate(
-                            "privacypolicy.collectedData.personalData.content"
-                        )}
+                        {translate("collectedData.description")}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.collectedData.medicalData.title"
+                            "collectedData.personalData.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.collectedData.medicalData.content"
+                            "collectedData.personalData.content"
+                        )}
+                    </p>
+
+                    <h5>
+                        {translate(
+                            "collectedData.medicalData.title"
+                        )}
+                    </h5>
+                    <p>
+                        {translate(
+                            "collectedData.medicalData.content"
                         )}
                     </p>
 
@@ -63,7 +63,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.collectedData.medicalData.list.0"
+                                    "collectedData.medicalData.list.0"
                                 )}
                             </span>
                         </div>
@@ -73,7 +73,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.collectedData.medicalData.list.1"
+                                    "collectedData.medicalData.list.1"
                                 )}
                             </span>
                         </div>
@@ -83,7 +83,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.collectedData.medicalData.list.2"
+                                    "collectedData.medicalData.list.2"
                                 )}
                             </span>
                         </div>
@@ -93,7 +93,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.collectedData.medicalData.list.3"
+                                    "collectedData.medicalData.list.3"
                                 )}
                             </span>
                         </div>
@@ -101,154 +101,154 @@ const PrivacyPolicy = () => {
 
                     <h5>
                         {translate(
-                            "privacypolicy.collectedData.companyData.title"
+                            "collectedData.companyData.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.collectedData.companyData.content"
+                            "collectedData.companyData.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.collectedData.researchData.title"
+                            "collectedData.researchData.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.collectedData.researchData.content"
+                            "collectedData.researchData.content"
                         )}
                     </p>
 
                     <h4>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.title"
+                            "purposeOfDataProcessing.title"
                         )}
                     </h4>
                     <p>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.intro.0"
+                            "purposeOfDataProcessing.intro.0"
                         )}
                     </p>
                     <p>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.intro.1"
+                            "purposeOfDataProcessing.intro.1"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.generalPurposeOfProcessing.title"
+                            "purposeOfDataProcessing.generalPurposeOfProcessing.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.generalPurposeOfProcessing.content"
+                            "purposeOfDataProcessing.generalPurposeOfProcessing.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.automaticallyCollectedData.title"
+                            "purposeOfDataProcessing.automaticallyCollectedData.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.automaticallyCollectedData.content"
+                            "purposeOfDataProcessing.automaticallyCollectedData.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.retentionPeriod.title"
+                            "purposeOfDataProcessing.retentionPeriod.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.purposeOfDataProcessing.retentionPeriod.content"
+                            "purposeOfDataProcessing.retentionPeriod.content"
                         )}
                     </p>
 
-                    <h4>{translate("privacypolicy.rights.title")}</h4>
-                    <p>{translate("privacypolicy.rights.description")}</p>
-
-                    <h5>
-                        {translate(
-                            "privacypolicy.rights.rightsList.access.title"
-                        )}
-                    </h5>
-                    <p>
-                        {translate(
-                            "privacypolicy.rights.rightsList.access.content"
-                        )}
-                    </p>
+                    <h4>{translate("rights.title")}</h4>
+                    <p>{translate("rights.description")}</p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.rights.rightsList.rectification.title"
+                            "rights.rightsList.access.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.rights.rightsList.rectification.content.0"
-                        )}
-                    </p>
-                    <p>
-                        {translate(
-                            "privacypolicy.rights.rightsList.rectification.content.1"
+                            "rights.rightsList.access.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.rights.rightsList.restriction.title"
+                            "rights.rightsList.rectification.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.rights.rightsList.restriction.content"
+                            "rights.rightsList.rectification.content.0"
+                        )}
+                    </p>
+                    <p>
+                        {translate(
+                            "rights.rightsList.rectification.content.1"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.rights.rightsList.portability.title"
+                            "rights.rightsList.restriction.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.rights.rightsList.portability.content"
+                            "rights.rightsList.restriction.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.rights.rightsList.forgetfulness.title"
+                            "rights.rightsList.portability.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.rights.rightsList.forgetfulness.content"
+                            "rights.rightsList.portability.content"
                         )}
                     </p>
 
                     <h5>
                         {translate(
-                            "privacypolicy.rights.rightsList.objection.title"
+                            "rights.rightsList.forgetfulness.title"
                         )}
                     </h5>
                     <p>
                         {translate(
-                            "privacypolicy.rights.rightsList.objection.content"
+                            "rights.rightsList.forgetfulness.content"
                         )}
                     </p>
 
-                    <h4>{translate("privacypolicy.cookies.title")}</h4>
-                    <p>{translate("privacypolicy.cookies.intro.0")}</p>
-                    <p>{translate("privacypolicy.cookies.intro.1")}</p>
-                    <p>{translate("privacypolicy.cookies.intro.2")}</p>
-                    <p>{translate("privacypolicy.cookies.intro.3")}</p>
+                    <h5>
+                        {translate(
+                            "rights.rightsList.objection.title"
+                        )}
+                    </h5>
+                    <p>
+                        {translate(
+                            "rights.rightsList.objection.content"
+                        )}
+                    </p>
+
+                    <h4>{translate("cookies.title")}</h4>
+                    <p>{translate("cookies.intro.0")}</p>
+                    <p>{translate("cookies.intro.1")}</p>
+                    <p>{translate("cookies.intro.2")}</p>
+                    <p>{translate("cookies.intro.3")}</p>
 
                     <div className="privacypolicy__page_list">
                         <div className="privacypolicy__page_list__item">
@@ -257,7 +257,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.cookies.purpose.authenticationStatus"
+                                    "cookies.purpose.authenticationStatus"
                                 )}
                             </span>
                         </div>
@@ -267,7 +267,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.cookies.purpose.personalization"
+                                    "cookies.purpose.personalization"
                                 )}
                             </span>
                         </div>
@@ -277,7 +277,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.cookies.purpose.security"
+                                    "cookies.purpose.security"
                                 )}
                             </span>
                         </div>
@@ -287,23 +287,23 @@ const PrivacyPolicy = () => {
                             </div>
                             <span>
                                 {translate(
-                                    "privacypolicy.cookies.purpose.analysis"
+                                    "cookies.purpose.analysis"
                                 )}
                             </span>
                         </div>
                     </div>
 
                     <h4>
-                        {translate("privacypolicy.privacyPolicyChanges.title")}
+                        {translate("privacyPolicyChanges.title")}
                     </h4>
                     <p>
                         {translate(
-                            "privacypolicy.privacyPolicyChanges.content"
+                            "privacyPolicyChanges.content"
                         )}
                     </p>
 
-                    <h4>{translate("privacypolicy.contactDetails.title")}</h4>
-                    <p>{translate("privacypolicy.contactDetails.content")}</p>
+                    <h4>{translate("contactDetails.title")}</h4>
+                    <p>{translate("contactDetails.content")}</p>
                 </Container>
             </div>
             <Footer />
