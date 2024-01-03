@@ -10,7 +10,7 @@
         &.fixed__scroll {
             .nav__dashboard_bottomnav {
                 @include mixins.sm {
-                    border-bottom: solid 1px rgb(233, 232, 239);
+                    border-bottom: solid 1px variables.$lightlavender;
                     position: fixed;
                 }
             }

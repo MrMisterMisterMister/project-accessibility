@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
-import { BarChart, PersonCircle, Gear, Book, BoxArrowRight, Buildings, Person } from "react-bootstrap-icons";
+import { BarChart, PersonCircle, Gear, Book, BoxArrowRight, Buildings, Person, ChatLeftDots } from "react-bootstrap-icons";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
 import Settings from "./Settings";
@@ -29,20 +29,27 @@ const Dashboard = () => {
             title: "Research"
         },
         {
+            icon: <ChatLeftDots />,
+            title: "Chats"
+        }
+    ]);
+
+    const userMenuItems = [
+        {
             page: <Account />,
             icon: <PersonCircle />,
-            title: "Account"
+            label: "Profile"
         },
         {
             page: <Settings />,
             icon: <Gear />,
-            title: "Settings"
+            label: "Settings"
         },
         {
             icon: <BoxArrowRight />,
-            title: "Sign out"
+            label: "Sign out"
         }
-    ]);
+    ];
 
     // State to keep track whether of scrolling behaviour done by user
     const [isScrolling, setIsScrolling] = useState(false);
@@ -94,9 +101,11 @@ const Dashboard = () => {
                 className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
             >
                 <NavDashboardTopNav
-                    profilePicturePath="/img/placeholder.jpg"
-                    profilePictureAlt="Clodsire"
+                    picturePath="/img/placeholder.jpg"
+                    pictureAlt="Clodsire"
                     userName="Clodsire"
+                    userMenuItems={userMenuItems}
+                    onNavItemClick={handleNavItemClick}
                 />
                 <NavDashboardBottomNav
                     navItems={navItems}

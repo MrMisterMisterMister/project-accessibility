@@ -185,10 +185,20 @@ NavFooterBottombar.propTypes = {
 // The nav for dashboard page
 // For now the username and profile picture are props
 const NavDashboardTopNav = ({
-    profilePicturePath,
-    profilePictureAlt,
-    userName
+    picturePath,
+    pictureAlt,
+    userName,
+    userMenuItems,
+    onNavItemClick
 }) => {
+    // State to check if the dropdown is open or not
+    const [isUserMenuOpen, setUserMenuOpen] = useState(false);
+
+    // Function to toggle the dropdown
+    const toggleDropdown = () => {
+        setUserMenuOpen(!isUserMenuOpen);
+    };
+
     return (
         <div className="nav__dashboard_topnav">
             <Container className="nav__dashboard_topnav__container">
@@ -203,15 +213,31 @@ const NavDashboardTopNav = ({
                         />
                     </Navbar.Brand>
                 </div>
-                <div className="nav__dashboard_topnav__user">
-                    <img
-                        className="nav__dashboard_topnav__user_picture"
-                        src={profilePicturePath}
-                        alt={profilePictureAlt}
-                    />
-                    <span className="nav__dashboard_topnav__user_name">
-                        {userName}
-                    </span>
+                <div className="nav__dashboard_topnav__profile">
+                    <a className="nav__dashboard_topnav__user" aria-expanded={isUserMenuOpen ? "true" : "false"} onClick={toggleDropdown} id="userProfileDropdown">
+                        <img
+                            className="nav__dashboard_topnav__user_picture"
+                            src={picturePath}
+                            alt={pictureAlt}
+                        />
+                        <span className="nav__dashboard_topnav__user_name">
+                            {userName}
+                        </span>
+                    </a>
+                    {isUserMenuOpen && (
+                        <div className="nav__dashboard_topnav__user_dropdown" aria-labelledby="userProfileDropdown">
+                            {userMenuItems.map((item, index) => (
+                                <a key={index} className="nav__dashboard_topnav__user_dropdown__item"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        onNavItemClick(item.page);
+                                    }}>
+                                    <span className="nav__dashboard_topnav__user_dropdown__icon">{item.icon}</span>
+                                    <span className="nav__dashboard_topnav__user_dropdown__label">{item.label}</span>
+                                </a>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </Container>
         </div>
@@ -220,9 +246,17 @@ const NavDashboardTopNav = ({
 
 // Prop types for navdashboardtopnav
 NavDashboardTopNav.propTypes = {
-    profilePicturePath: PropTypes.string.isRequired,
-    profilePictureAlt: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired
+    picturePath: PropTypes.string.isRequired,
+    pictureAlt: PropTypes.string.isRequired,
+    userName: PropTypes.string.isRequired,
+    userMenuItems: PropTypes.arrayOf(
+        PropTypes.shape({
+            page: PropTypes.node,
+            icon: PropTypes.object.isRequired,
+            label: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    onNavItemClick: PropTypes.func.isRequired
 };
 
 // The bottom part of the nav for dashboard page
@@ -235,9 +269,7 @@ const NavDashboardBottomNav = ({ navItems, onNavItemClick }) => {
                     {navItems.map((item, index) => (
                         <Nav.Item
                             key={index}
-                            className={`nav__dashboard_bottomnav__menu_item ${
-                                item.active ? "active" : ""
-                            }`}
+                            className={`nav__dashboard_bottomnav__menu_item ${item.active ? "active" : ""}`}
                         >
                             <Nav.Link
                                 className="nav__dashboard_bottomnav__menu_link "
