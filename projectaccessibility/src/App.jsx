@@ -41,7 +41,10 @@ function App () {
         fetchGoogleClientId();
     }, []);
 
-    var accessToken = gapi.auth.getToken().access_token;
+    var accessToken = null;
+    if (typeof gapi !== 'undefined' && gapi.auth && gapi.auth.getToken()) {
+    accessToken = gapi.auth.getToken().access_token;
+    }
 
     return (
         <Router>
