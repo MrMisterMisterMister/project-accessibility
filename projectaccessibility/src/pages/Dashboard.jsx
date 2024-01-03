@@ -15,6 +15,7 @@ import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
 import Settings from "./Settings";
 import Research from "./Research";
+import Logout from "./Logout";
 
 // Dashboard page
 const Dashboard = () => {
@@ -61,6 +62,7 @@ const Dashboard = () => {
             label: translate("settings")
         },
         {
+            page: <Logout />,
             icon: <BoxArrowRight />,
             label: translate("signout")
         }
