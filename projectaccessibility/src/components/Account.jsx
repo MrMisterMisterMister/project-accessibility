@@ -1,7 +1,7 @@
 import React from "react";
 
 // Account component for panelmember
-const AccountPanelmember = () => {
+const AccountPanelMember = () => {
     // All the fields are hardcoded for now
     // This will be removed and added as property once I figure out how to get the user guid after they logged in
     // I will also most likely merge both panelmember and company into 1 view, and load the data automatically
@@ -216,4 +216,4 @@ const AccountProfile = () => {
     return <></>;
 };
 
-export { AccountProfile, AccountPanelmember, AccountCompany };
+export { AccountProfile, AccountPanelMember, AccountCompany };

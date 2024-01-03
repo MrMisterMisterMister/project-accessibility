@@ -1,14 +1,14 @@
 import React from "react";
-import { FormEmail, FormPassword, FormPanelmember, FormCompany } from "./Form";
+import { FormEmail, FormPassword, FormPanelMember, FormCompany } from "./Form";
 
 // Settings component for panelmembers to change their profile information
 // This loads in their form with the correct post endpoint to the backend server
-const SettingsPanelmember = () => {
+const SettingsPanelMember = () => {
     return (
         <div className="settings__dashboard">
             <h4 className="settings__dashboard_title">Panelmember</h4>
             <div className="settings__dashboard_content">
-                <FormPanelmember />
+                <FormPanelMember />
             </div>
         </div>
     );
@@ -52,7 +52,7 @@ const SettingsPassword = () => {
 };
 
 export {
-    SettingsPanelmember,
+    SettingsPanelMember,
     SettingsCompany,
     SettingsEmail,
     SettingsPassword

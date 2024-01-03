@@ -156,7 +156,7 @@ const FormSignup = () => {
 
     // Function triggered when the submit button is pressed in the signup form
     // Prevents the default form submission behavior to handle it manually
-    const handleSignupSubmit = async (formData) => {
+    const signupSubmit = async (formData) => {
         // Define endpoint paths based on the selected user type
         const endPoint = {
             1: "panelmember/",
@@ -196,7 +196,7 @@ const FormSignup = () => {
                 className="form__signup"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSubmit(handleSignupSubmit)}
+                onSubmit={handleSubmit(signupSubmit)}
                 noValidate
             >
                 <Form.Label className="form__label">
@@ -457,87 +457,139 @@ const FormSignup = () => {
 };
 
 // Form to update email
-const FormEmail = () => {
-    // Need to catch the user type somewhere
-    // Also need to get their guid
+// Need to catch the user type somewhere
+// Also need to get their guid
+const FormUserEmailUpdate = () => {
+    // Translation
+    const { t: translate } = useTranslation();
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formErrors, setFormErrors] = useState({});
+
+    // React hook form
+    // Define some const to use in forms
+    // Set mode to all, so that validation will trigger on all input changes or blur events
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
 
     // Disable the submit from working since I don't want to see blank page everytime I submit
-    const handleEmailUpdateSubmit = async (e) => {
-        e.preventDefault();
-
-        // Create a variable to store the form data submitted by the user
-        const formData = new FormData(e.target);
-
-        // Some logic will be added here to make a post request to backend
-        // So it will handle the updating passwords
-
+    const emailUpdateSubmit = async (formData) => {
         // Make the POST call using axios post
+        // The guid still needs to be gotten, so it's for now not working
+        // Test the post in postman instead with guid
         const updateEmailResponse = postRequest("users/{their guid}", formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updateEmailResponse
             .then((response) => {
-                console.log(response);
-
                 // Need to configurate a success to user later
-                console.log("your mom");
-                e.target.reset();
+                console.log(response);
+                reset();
             })
             .catch((error) => {
                 // Catch the error and display it
                 console.log(error.response);
-                console.log("your mom");
             });
     };
 
-    // Still need to fix this
-    // Like proper error handling and required fields
-    // Also localization
+    // Need to fix localization and error / success message
     return (
-        <Form
-            className="form__settings"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handleEmailUpdateSubmit}
-        >
-            <Form.Label className="form__label">New Email Address</Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="email"
-                name=""
-                placeholder="Enter Email"
-            />
-            <Form.Label className="form__label">
-                Confirm Email Address
-            </Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="email"
-                name=""
-                placeholder="Confirm Email"
-            />
-            <Form.Label className="form__label">Current Password</Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="password"
-                name=""
-                placeholder="Enter Password"
-            />
-            <ButtonSubmit style="button__settings" text="Update Email" />
-        </Form>
+        <>
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(emailUpdateSubmit)}
+                noValidate
+            >
+                <Form.Label className="form__label">
+                    New Email Address
+                </Form.Label>
+                <Form.Control
+                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    type="email"
+                    {...register("email", {
+                        required: {
+                            value: true,
+                            message: translate("") // error message
+                        }
+                    })}
+                    aria-invalid={errors.email ? "true" : "false"}
+                    placeholder="Enter Email" // localization
+                />
+                {errors.email && (
+                    <div className="form__error">{errors.email.message}</div>
+                )}
+                <Form.Label className="form__label">
+                    Confirm Email Address
+                </Form.Label>
+                <Form.Control
+                    className={`form__text_field ${errors.emailConfirm ? "error" : ""}`}
+                    type="email"
+                    {...register("emailConfirm", {
+                        required: {
+                            value: true,
+                            message: translate("") // error message
+                        }
+                    })}
+                    aria-invalid={errors.emailConfirm ? "true" : "false"}
+                    placeholder="Confirm Email" // localization
+                />
+                {errors.emailConfirm && (
+                    <div className="form__error">{errors.emailConfirm.message}</div>
+                )}
+                <Form.Label className="form__label">
+                    Current Password
+                </Form.Label>
+                <Form.Control
+                    className="form__text_field"
+                    type="password"
+                    {...register("password", {
+                        required: {
+                            value: true,
+                            message: translate("") // error message
+                        }
+                    })}
+                    aria-invalid={errors.password ? "true" : "false"}
+                    placeholder="Enter Password" // localization
+                />
+                {errors.password && (
+                    <div className="form__error">{errors.password.message}</div>
+                )}
+                <ButtonSubmit style="button__settings" text={translate("")} />
+            </Form>
+        </>
     );
 };
 
 // Form to update password
-const FormPassword = () => {
+const FormUserPasswordUpdate = () => {
+    // Translation
+    const { t: translate } = useTranslation();
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formErrors, setFormErrors] = useState({});
+
+    // React hook form
+    // Define some const to use in forms
+    // Set mode to all, so that validation will trigger on all input changes or blur events
+    const {
+        register,
+        handleSubmit,
+        reset,
+        watch,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
     // Ditto like I said above
-    const handlePasswordUpdateSubmit = async (e) => {
-        e.preventDefault();
+    const passwordUpdateSubmit = async (formData) => {
         // Ditto like I said above
-
-        // Create a variable to store the form data submitted by the user
-        const formData = new FormData(e.target);
-
         // Make the POST call using axios post
         const updatePasswordResponse = postRequest(
             "users/{their guid}",
@@ -547,176 +599,334 @@ const FormPassword = () => {
         // Handle the response from the POST call
         updatePasswordResponse
             .then((response) => {
-                console.log(response);
-
                 // Need to configurate a success to user later
-                console.log("your mom");
-                e.target.reset();
+                console.log(response);
+                reset();
             })
             .catch((error) => {
                 // Catch the error and display it
                 console.log(error.response);
-                console.log("your mom");
             });
     };
 
     // Ditto like I said above
     return (
-        <Form
-            className="form__settings"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handlePasswordUpdateSubmit}
-        >
-            <Form.Label className="form__label">Current Password</Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="password"
-                name=""
-                placeholder="Enter Password"
-            />
-            <Form.Label className="form__label">New Password</Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="password"
-                name=""
-                placeholder="Must be longer than 6 characters"
-            />
-            <Form.Label className="form__label">
-                Confirm New Password
-            </Form.Label>
-            <Form.Control
-                className="form__text_field"
-                type="password"
-                name=""
-                placeholder="Confirm Password"
-            />
-            <ButtonSubmit style="button__settings" text="Update Password" />
-        </Form>
+        <>
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(passwordUpdateSubmit)}
+                noValidate
+            >
+                <Form.Label className="form__label">
+                    Current Password
+                </Form.Label>
+                <Form.Control
+                    className={`form__text_field ${errors.passwordCurrent ? "error" : ""}`}
+                    type="password"
+                    {...register("passwordCurrent", {
+                        required: {
+                            value: true,
+                            message: translate("") // localization
+                        }
+                    })}
+                    aria-invalid={errors.passwordCurrent ? "true" : "false"}
+                    placeholder="Enter Password" // localization
+                />
+                {errors.passwordCurrent && (
+                    <div className="form__error">{errors.passwordCurrent.message}</div>
+                )}
+                <Form.Label className="form__label">
+                    New Password
+                </Form.Label>
+                <Form.Control
+                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    type="password"
+                    {...register("password", {
+                        required: {
+                            value: true,
+                            message: translate("") // localization
+                        },
+                        validate: {
+                            // regex for uppercase
+                            hasUppercase: (value) =>
+                                /^(?=.*[A-Z]).+$/.test(value) ||
+                                translate(""), // localization
+                            // regex for lowercase
+                            hasLowercase: (value) =>
+                                /^(?=.*[a-z]).+$/.test(value) ||
+                                translate(""), // localization
+                            // regex for digit
+                            hasDigit: (value) =>
+                                /^(?=.*\d).+$/.test(value) ||
+                                translate(""), // localization
+                            // regex for special char
+                            hasSpecialChar: (value) =>
+                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) ||
+                                translate("") // localization
+                        },
+                        minLength: {
+                            value: 6,
+                            message: translate("") // localization
+                        }
+                    })}
+                    aria-invalid={errors.password ? "true" : "false"}
+                    placeholder="Must be longer than 6 characters" // localization
+                />
+                {errors.password && (
+                    <div className="form__error">{errors.password.message}</div>
+                )}
+                <Form.Label className="form__label">
+                    Confirm New Password
+                </Form.Label>
+                <Form.Control
+                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    type="password"
+                    {...register("passwordConfirm", {
+                        required: {
+                            value: true,
+                            message: translate("") // localization
+                        },
+                        validate: {
+                            isMatch: (value) =>
+                                value === watch("password") ||
+                                translate("") // localization
+                        }
+                    })}
+                    aria-invalid={errors.passwordConfirm ? "true" : "false"}
+                    placeholder="Confirm Password" // localization
+                />
+                {errors.passwordConfirm && (
+                    <div className="form__error">{errors.passwordConfirm.message}</div>
+                )}
+                <ButtonSubmit style="button__settings" text={translate("")} />
+            </Form>
+        </>
     );
 };
 
 // Form for panel members to update their information
-const FormPanelmember = () => {
+const FormPanelMemberProfileUpdate = () => {
+    // Translation
+    const { t: translate } = useTranslation();
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formErrors, setFormErrors] = useState({});
+
+    // React hook form
+    // Define some const to use in forms
+    // Set mode to all, so that validation will trigger on all input changes or blur events
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
     // Ditto like I said above
-    const handlePanelmemberProfileUpdateSubmit = async (e) => {
-        e.preventDefault();
+    const panelMemberProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
-
-        // Create a variable to store the form data submitted by the user
-        const formData = new FormData(e.target);
-
         // Make the POST call using axios post
-        const updatePanelmemberProfileResponse = postRequest(
+        const updatePanelMemberProfileResponse = postRequest(
             "panelmembers/{their guid}",
             formData
         ); // Still need to be worked on
 
         // Handle the response from the POST call
-        updatePanelmemberProfileResponse
+        updatePanelMemberProfileResponse
             .then((response) => {
-                console.log(response);
-
                 // Need to configurate a success to user later
-                console.log("your mom");
-                e.target.reset();
+                console.log(response);
+                reset();
             })
             .catch((error) => {
                 // Catch the error and display it
                 console.log(error.response);
-                console.log("your mom");
             });
     };
 
     // Ditto like I said above
     return (
-        <Form
-            className="form__settings"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handlePanelmemberProfileUpdateSubmit}
-        >
-            <Row>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">First Name</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="John"
-                    />
-                </Col>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">Last Name</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Doe"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        Phone Number
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="phone"
-                        name=""
-                        placeholder="Your Phone"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        Date of Birth
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="date"
-                        name=""
-                        placeholder="Your Date of Birth"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your Address"
-                    />
-                </Col>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your Postal code"
-                    />
-                </Col>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">Country</Form.Label>
-                    <Form.Select className="form__select_menu" name="">
-                        <option value="The Netherlands">The Netherlands</option>
-                    </Form.Select>
-                </Col>
-            </Row>
-            <ButtonSubmit style="button__settings" text="Update Info" />
-        </Form>
+        <>
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberProfileUpdateSubmit)}
+                noValidate
+            >
+                <Row>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            First Name
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                            type="text"
+                            {...register("firstName", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.firstName ? "true" : "false"}
+                            placeholder="John" // localization
+                        />
+                        {errors.firstName && (
+                            <div className="form__error">{errors.firstName.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            Last Name
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                            type="text"
+                            {...register("lastName", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.lastName ? "true" : "false"}
+                            placeholder="Doe" // localization
+                        />
+                        {errors.lastName && (
+                            <div className="form__error">{errors.lastName.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Phone Number
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            type="phone"
+                            {...register("phone", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.phone ? "true" : "false"}
+                            placeholder="Your Phone" // localization
+                        />
+                        {errors.phone && (
+                            <div className="form__error">{errors.phone.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Date of Birth
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.dateOfBirth ? "error" : ""}`}
+                            type="date"
+                            {...register("dateOfBirth", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.dateOfBirth ? "true" : "false"}
+                            placeholder="Your Date of Birth" // localization
+                        />
+                        {errors.dateOfBirth && (
+                            <div className="form__error">{errors.dateOfBirth.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Address
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            type="text"
+                            {...register("address", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.address ? "true" : "false"}
+                            placeholder="Your Address" // localization
+                        />
+                        {errors.address && (
+                            <div className="form__error">{errors.address.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            Postal Code
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.postalcode ? "error" : ""}`}
+                            type="text"
+                            {...register("postalcode", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.postalcode ? "true" : "false"}
+                            placeholder="Your Postal code" // localization
+                        />
+                        {errors.postalcode && (
+                            <div className="form__error">{errors.postalcode.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            Country
+                        </Form.Label>
+                        <Form.Select
+                            className={`form__select_menu ${errors.country ? "error" : ""}`}
+                            {...register("country", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.country ? "true" : "false"}
+                        >
+                            <option value="The Netherlands">The Netherlands</option>
+                        </Form.Select>
+                        {errors.postalcode && (
+                            <div className="form__error">{errors.country.message}</div>
+                        )}
+                    </Col>
+                </Row>
+                <ButtonSubmit style="button__settings" text={translate("")} />
+            </Form>
+        </>
     );
 };
 
 // Form for company to update their page info
-const FormCompany = () => {
+const FormCompanyProfileUpdate = () => {
+    // Translation
+    const { t: translate } = useTranslation();
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formErrors, setFormErrors] = useState({});
+
+    // React hook form
+    // Define some const to use in forms
+    // Set mode to all, so that validation will trigger on all input changes or blur events
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
     // Ditto like I said above
-    const handleCompanyProfileUpdateSubmit = async (e) => {
-        e.preventDefault();
+    const companyProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
-
-        // Create a variable to store the form data submitted by the user
-        const formData = new FormData(e.target);
-
         // Make the POST call using axios post
         const updateCompanyProfileResponse = postRequest(
             "companies/{their guid}",
@@ -726,117 +936,197 @@ const FormCompany = () => {
         // Handle the response from the POST call
         updateCompanyProfileResponse
             .then((response) => {
-                console.log(response);
-
                 // Need to configurate a success to user later
-                console.log("your mom");
-                e.target.reset();
+                console.log(response);
+                reset();
             })
             .catch((error) => {
                 // Catch the error and display it
                 console.log(error.response);
-                console.log("your mom");
             });
     };
 
     // Ditto like I said above
     return (
-        <Form
-            className="form__settings"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handleCompanyProfileUpdateSubmit}
-        >
-            <Row>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        Chamber of Commerce Number
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="KvK"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        Company Name
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Company Name"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        Phone Number
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="phone"
-                        name=""
-                        placeholder="Your Phone"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">Address</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your Address"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">City</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your City"
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">Province</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your Province"
-                    />
-                </Col>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">Postal Code</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        name=""
-                        placeholder="Your Postal code"
-                    />
-                </Col>
-                <Col xs={12} md={6}>
-                    <Form.Label className="form__label">Website URL</Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="url"
-                        name=""
-                        placeholder="Your Website URL"
-                    />
-                </Col>
-            </Row>
-            <ButtonSubmit style="button__settings" text="Update Info" />
-        </Form>
+        <>
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(companyProfileUpdateSubmit)}
+                noValidate
+            >
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Chamber of Commerce Number
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                            type="text"
+                            {...register("kvk", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.kvk ? "true" : "false"}
+                            placeholder="KvK" // localization
+                        />
+                        {errors.kvk && (
+                            <div className="form__error">{errors.kvk.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Company Name
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.companyName ? "error" : ""}`}
+                            type="text"
+                            {...register("companyName", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.companyName ? "true" : "false"}
+                            placeholder="Company Name" // localization
+                        />
+                        {errors.companyName && (
+                            <div className="form__error">{errors.companyName.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Phone Number
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            type="phone"
+                            {...register("phone", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.phone ? "true" : "false"}
+                            placeholder="Your Phone" // localization
+                        />
+                        {errors.phone && (
+                            <div className="form__error">{errors.phone.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">Address</Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            type="text"
+                            {...register("address", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.address ? "true" : "false"}
+                            placeholder="Your Address" // localization
+                        />
+                        {errors.address && (
+                            <div className="form__error">{errors.address.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            City
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.city ? "error" : ""}`}
+                            type="text"
+                            {...register("city", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.city ? "true" : "false"}
+                            placeholder="Your City" // localization
+                        />
+                        {errors.city && (
+                            <div className="form__error">{errors.city.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            Province
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            type="text"
+                            {...register("province", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.province ? "true" : "false"}
+                            placeholder="Your province" // localization
+                        />
+                        {errors.province && (
+                            <div className="form__error">{errors.province.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            Postal Code
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.postalCode ? "error" : ""}`}
+                            type="text"
+                            {...register("postalCode", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.websiteUrl ? "true" : "false"}
+                            placeholder="Your Postal code" // localization
+                        />
+                        {errors.websiteUrl && (
+                            <div className="form__error">{errors.websiteUrl.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            Website URL
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.websiteUrl ? "error" : ""}`}
+                            type="url"
+                            {...register("websiteUrl", {
+                                required: {
+                                    value: true,
+                                    message: translate("") // localization
+                                }
+                            })}
+                            aria-invalid={errors.websiteUrl ? "true" : "false"}
+                            placeholder="Your Website URL" // localization
+                        />
+                        {errors.websiteUrl && (
+                            <div className="form__error">{errors.websiteUrl.message}</div>
+                        )}
+                    </Col>
+                </Row>
+                <ButtonSubmit style="button__settings" text={translate("")} />
+            </Form>
+        </>
     );
 };
 
 export {
     FormLogin,
     FormSignup,
-    FormEmail,
-    FormPassword,
-    FormPanelmember,
-    FormCompany
+    FormUserEmailUpdate,
+    FormUserPasswordUpdate,
+    FormPanelMemberProfileUpdate,
+    FormCompanyProfileUpdate
 };
