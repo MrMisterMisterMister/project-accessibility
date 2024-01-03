@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 // Login page
 const Login = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("login");
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
@@ -52,7 +52,7 @@ const Login = () => {
             <div className="login__page">
                 <Container className="login__container">
                     <h2 className="login__page_title">
-                        {translate("login.pageTitle")}
+                        {translate("pageTitle")}
                     </h2>
                     <div className="login__page_panel">
                         <div className="login__page_authentication login__page_column">
@@ -70,17 +70,17 @@ const Login = () => {
                                 <ButtonAuth
                                     icon={<PersonPlusFill />}
                                     path="/signup"
-                                    text={translate("login.auth.signup")}
+                                    text={translate("auth.signup")}
                                 />
                                 <ButtonAuth
                                     icon={GoogleIcon}
                                     path="#"
-                                    text={translate("login.auth.google")}
+                                    text={translate("auth.google")}
                                 />
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
                                     path="#"
-                                    text={translate("login.auth.microsoft")}
+                                    text={translate("auth.microsoft")}
                                 />
                             </div>
                         </div>

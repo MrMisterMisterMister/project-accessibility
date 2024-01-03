@@ -1,5 +1,5 @@
 import React from "react";
-import { FormEmail, FormPassword, FormPanelMember, FormCompany } from "./Form";
+import { FormUserEmailUpdate, FormUserPasswordUpdate, FormPanelMemberProfileUpdate, FormCompanyProfileUpdate } from "./Form";
 
 // Settings component for panelmembers to change their profile information
 // This loads in their form with the correct post endpoint to the backend server
@@ -8,7 +8,7 @@ const SettingsPanelMember = () => {
         <div className="settings__dashboard">
             <h4 className="settings__dashboard_title">Panelmember</h4>
             <div className="settings__dashboard_content">
-                <FormPanelMember />
+                <FormPanelMemberProfileUpdate />
             </div>
         </div>
     );
@@ -20,7 +20,7 @@ const SettingsCompany = () => {
         <div className="settings__dashboard">
             <h4 className="settings__dashboard_title">Company</h4>
             <div className="settings__dashboard_content">
-                <FormCompany />
+                <FormCompanyProfileUpdate />
             </div>
         </div>
     );
@@ -32,7 +32,7 @@ const SettingsEmail = () => {
         <div className="settings__dashboard">
             <h4 className="settings__dashboard_title">Change Your Email</h4>
             <div className="settings__dashboard_content">
-                <FormEmail />
+                <FormUserEmailUpdate />
             </div>
         </div>
     );
@@ -45,7 +45,7 @@ const SettingsPassword = () => {
         <div className="settings__dashboard">
             <h4 className="settings__dashboard_title">Change Your Password</h4>
             <div className="settings__dashboard_content">
-                <FormPassword />
+                <FormUserPasswordUpdate />
             </div>
         </div>
     );

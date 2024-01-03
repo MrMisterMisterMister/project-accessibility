@@ -12,24 +12,24 @@ const Case = () => {
         <section className="case__section">
             <Container className="case__section_container">
                 <h2 className="case__section_title">
-                    {translate("case.title")}
+                    {translate("cases.title")}
                 </h2>
                 <div className="case__section_group__card">
-                    {translate("case.cases", { returnObjects: true }).map(
+                    {translate("cases.cases", { returnObjects: true }).map(
                         (item, index) => (
                             <CardCase
                                 key={index}
                                 img="img/placeholder.jpg"
                                 altText={translate(
-                                    `case.cases.${index}.altText`
+                                    `cases.cases.${index}.altText`
                                 )}
-                                title={translate(`case.cases.${index}.title`)}
+                                title={translate(`cases.cases.${index}.title`)}
                                 text={translate(
-                                    `case.cases.${index}.description`
+                                    `cases.cases.${index}.description`
                                 )}
                                 path="#"
                                 linkText={translate(
-                                    `case.cases.${index}.linkText`
+                                    `cases.cases.${index}.linkText`
                                 )}
                             />
                         )
