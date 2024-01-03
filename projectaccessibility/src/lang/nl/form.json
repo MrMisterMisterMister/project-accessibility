@@ -1,16 +1,44 @@
 {
     "login": {
-        "form": {
-            "email": "E-mailadres",
-            "emailPlaceholder": "E-mailadres",
-            "password": "Wachtwoord",
-            "passwordPlaceholder": "Wachtwoord",
-            "checkbox": "Altijd ingelogd blijven?",
-            "button": "Inloggen",
-            "error": {
-                "emailRequired": "* Vul alsjeblieft je e-mailadres in",
-                "passwordRequired": "* Vul alsjeblieft je wachtwoord in"
-            }
-        }
+        "rememberme": "Altijd ingelogd blijven?",
+        "buttonText": "Inloggen"
+    },
+    "signup": {
+        "buttonText": "Aanmelden"
+    },
+    "emailLabel": "E-mail",
+    "emailPlaceholder": "E-mail",
+    "passwordLabel": "Wachtwoord",
+    "passwordPlaceholder": "Wachtwoord",
+    "passwordConfirmLabel": "Bevestig Wachtwoord",
+    "passwordConfirmPlaceholder": "Bevestig Wachtwoord",
+    "userTypeLabel": "Gebruikerstype",
+    "userTypeOptions": {
+        "placeholder": "Selecteer het type account",
+        "panelMember": "Ervaringsdeskundige",
+        "company": "Bedrijf"
+    },
+    "fullNameLabel": "Volledige Naam",
+    "firstNamePlaceholder": "Voornaam",
+    "lastNamePlaceholder": "Achternaam",
+    "companyLabel": "Bedrijfsinformatie",
+    "kvkPlaceholder": "Kamer van Koophandel Nummer",
+    "companyNamePlaceholder": "Bedrijfsnaam",
+    "error": {
+        "emailRequired": "* Vul alsjeblieft je e-mailadres in",
+        "emailPattern": "* Vul alsjeblieft een geldig e-mailadres in",
+        "passwordRequired": "* Vul alsjeblieft je wachtwoord in",
+        "passwordHasUppercase": "* Wachtwoord moet minstens één hoofdletter bevatten",
+        "passwordHasLowercase": "* Wachtwoord moet minstens één kleine letter bevatten",
+        "passwordHasDigit": "* Wachtwoord moet minstens één cijfer bevatten",
+        "passwordHasSpecialChar": "* Wachtwoord moet minstens één speciaal karakter bevatten",
+        "passwordMinLength": "* Wachtwoord moet minimaal 6 tekens lang zijn",
+        "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in",
+        "passwordConfirmIsMatch": "* Wachtwoordbevestiging komt niet overeen met het oorspronkelijke wachtwoord",
+        "userTypeRequired": "* Selecteer alsjeblieft een gebruikerstype",
+        "firstNameRequired": "* Vul alsjeblieft jw voornaam in",
+        "lastNameRequired": "* Vul alsjeblieft je achternaam in",
+        "kvkRequired": "* Vul alsjeblieft je Kamer van Koophandel (KvK) nummer in",
+        "companyNameRequired": "* Vul alsjeblieft je bedrijfsnaam in"
     }
 }
