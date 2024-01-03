@@ -78,9 +78,7 @@ const FormLogin = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.email ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -98,9 +96,7 @@ const FormLogin = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.password ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -210,9 +206,7 @@ const FormSignup = () => {
                     {translate("userTypeLabel")}
                 </Form.Label>
                 <Form.Select
-                    className={`form__select_menu ${
-                        errors.userType ? "error" : ""
-                    }`}
+                    className={`form__select_menu ${errors.userType ? "error" : ""}`}
                     {...register("userType", {
                         required: {
                             value: true,
@@ -246,9 +240,7 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.firstName ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
                                     type="text"
                                     {...register("firstName", {
                                         required: {
@@ -273,9 +265,7 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.lastName ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.lastName ? "error" : ""}`}
                                     type="text"
                                     {...register("lastName", {
                                         required: {
@@ -309,9 +299,7 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.kvk ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.kvk ? "error" : ""}`}
                                     type="text"
                                     {...register("kvk", {
                                         required: {
@@ -331,9 +319,7 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.name ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.name ? "error" : ""}`}
                                     type="text"
                                     {...register("name", {
                                         required: {
@@ -363,9 +349,7 @@ const FormSignup = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.email ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -387,9 +371,7 @@ const FormSignup = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.password ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -423,9 +405,7 @@ const FormSignup = () => {
                     <div className="form__error">{errors.password.message}</div>
                 )}
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.passwordConfirm ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
@@ -503,41 +483,37 @@ const FormUserEmailUpdate = () => {
                 noValidate
             >
                 <Form.Label className="form__label">
-                    New Email Address
+                    {translate("emailNewLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.email ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
                     {...register("email", {
                         required: {
                             value: true,
-                            message: translate("") // error message
+                            message: translate("error.emailRequired")
                         }
                     })}
                     aria-invalid={errors.email ? "true" : "false"}
-                    placeholder="Enter Email" // localization
+                    placeholder={translate("emailNewPlaceholder")}
                 />
                 {errors.email && (
                     <div className="form__error">{errors.email.message}</div>
                 )}
                 <Form.Label className="form__label">
-                    Confirm Email Address
+                    {translate("emailConfirmLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.emailConfirm ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.emailConfirm ? "error" : ""}`}
                     type="email"
                     {...register("emailConfirm", {
                         required: {
                             value: true,
-                            message: translate("") // error message
+                            message: translate("error.emailConfirmRequired")
                         }
                     })}
                     aria-invalid={errors.emailConfirm ? "true" : "false"}
-                    placeholder="Confirm Email" // localization
+                    placeholder={translate("emailConfirmPlaceholder")}
                 />
                 {errors.emailConfirm && (
                     <div className="form__error">
@@ -545,7 +521,7 @@ const FormUserEmailUpdate = () => {
                     </div>
                 )}
                 <Form.Label className="form__label">
-                    Current Password
+                    {translate("passwordCurrentLabel")}
                 </Form.Label>
                 <Form.Control
                     className="form__text_field"
@@ -553,11 +529,11 @@ const FormUserEmailUpdate = () => {
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate("") // error message
+                            message: translate("error.passwordCurrentRequired")
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
-                    placeholder="Enter Password" // localization
+                    placeholder={translate("passwordCurrentPlaceholder")}
                 />
                 {errors.password && (
                     <div className="form__error">{errors.password.message}</div>
@@ -574,7 +550,7 @@ const FormUserEmailUpdate = () => {
 // Form to update password
 const FormUserPasswordUpdate = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("form");
 
     // React hook form
     // Define some const to use in forms
@@ -620,85 +596,85 @@ const FormUserPasswordUpdate = () => {
                 noValidate
             >
                 <Form.Label className="form__label">
-                    Current Password
+                    {translate("passwordCurrentLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.passwordCurrent ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.passwordCurrent ? "error" : ""}`}
                     type="password"
                     {...register("passwordCurrent", {
                         required: {
                             value: true,
-                            message: translate("") // localization
+                            message: translate("error.passwordCurrentRequired")
                         }
                     })}
                     aria-invalid={errors.passwordCurrent ? "true" : "false"}
-                    placeholder="Enter Password" // localization
+                    placeholder={translate("passwordCurrentPlaceholder")}
                 />
                 {errors.passwordCurrent && (
                     <div className="form__error">
                         {errors.passwordCurrent.message}
                     </div>
                 )}
-                <Form.Label className="form__label">New Password</Form.Label>
+                <Form.Label className="form__label">
+                    {translate("passwordNewLabel")}
+                </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.password ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
                     {...register("password", {
                         required: {
                             value: true,
-                            message: translate("") // localization
+                            message: translate("error.passwordNewRequired")
                         },
                         validate: {
-                            // regex for uppercase
                             hasUppercase: (value) =>
-                                /^(?=.*[A-Z]).+$/.test(value) || translate(""), // localization
-                            // regex for lowercase
+                                // regex for uppercase
+                                /^(?=.*[A-Z]).+$/.test(value) ||
+                                translate("error.passwordHasUppercase"),
                             hasLowercase: (value) =>
-                                /^(?=.*[a-z]).+$/.test(value) || translate(""), // localization
-                            // regex for digit
+                                // regex for lowercase
+                                /^(?=.*[a-z]).+$/.test(value) ||
+                                translate("error.passwordHasLowercase"),
                             hasDigit: (value) =>
-                                /^(?=.*\d).+$/.test(value) || translate(""), // localization
-                            // regex for special char
+                                // regex for digit
+                                /^(?=.*\d).+$/.test(value) ||
+                                translate("error.passwordHasDigit"),
                             hasSpecialChar: (value) =>
+                                // regex for special char
                                 /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
                                     value
-                                ) || translate("") // localization
+                                ) || translate("error.passwordHasSpecialChar")
                         },
                         minLength: {
                             value: 6,
-                            message: translate("") // localization
+                            message: translate("error.passwordMinLength")
                         }
                     })}
                     aria-invalid={errors.password ? "true" : "false"}
-                    placeholder="Must be longer than 6 characters" // localization
+                    placeholder={translate("passwordNewPlaceholder")}
                 />
                 {errors.password && (
                     <div className="form__error">{errors.password.message}</div>
                 )}
                 <Form.Label className="form__label">
-                    Confirm New Password
+                    {translate("passwordConfirmNewLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${
-                        errors.passwordConfirm ? "error" : ""
-                    }`}
+                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
                             value: true,
-                            message: translate("") // localization
+                            message: translate("error.passwordConfirmNewRequired")
                         },
                         validate: {
                             isMatch: (value) =>
-                                value === watch("password") || translate("") // localization
+                                value === watch("password") ||
+                                translate("error.passwordConfirmNewIsMatch")
                         }
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
-                    placeholder="Confirm Password" // localization
+                    placeholder={translate("passwordConfirmNewPlaceholder")}
                 />
                 {errors.passwordConfirm && (
                     <div className="form__error">
@@ -764,21 +740,19 @@ const FormPanelMemberProfileUpdate = () => {
                 <Row>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            First Name
+                            {translate("firstNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.firstName ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.firstName ? "error" : ""}`}
                             type="text"
                             {...register("firstName", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.firstNameRequired")
                                 }
                             })}
                             aria-invalid={errors.firstName ? "true" : "false"}
-                            placeholder="John" // localization
+                            placeholder={translate("firstNamePlaceholder")}
                         />
                         {errors.firstName && (
                             <div className="form__error">
@@ -788,21 +762,19 @@ const FormPanelMemberProfileUpdate = () => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            Last Name
+                            {translate("lastNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.lastName ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.lastName ? "error" : ""}`}
                             type="text"
                             {...register("lastName", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.lastNameRequired")
                                 }
                             })}
                             aria-invalid={errors.lastName ? "true" : "false"}
-                            placeholder="Doe" // localization
+                            placeholder={translate("lastNamePlaceholder")}
                         />
                         {errors.lastName && (
                             <div className="form__error">
@@ -812,21 +784,19 @@ const FormPanelMemberProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Phone Number
+                            {translate("phoneLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.phone ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.phone ? "error" : ""}`}
                             type="phone"
                             {...register("phone", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.phoneRequired")
                                 }
                             })}
                             aria-invalid={errors.phone ? "true" : "false"}
-                            placeholder="Your Phone" // localization
+                            placeholder={translate("phonePlaceholder")}
                         />
                         {errors.phone && (
                             <div className="form__error">
@@ -836,21 +806,19 @@ const FormPanelMemberProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Date of Birth
+                            {translate("dateOfBirthLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.dateOfBirth ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.dateOfBirth ? "error" : ""}`}
                             type="date"
                             {...register("dateOfBirth", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("dateOfBirthRequired")
                                 }
                             })}
                             aria-invalid={errors.dateOfBirth ? "true" : "false"}
-                            placeholder="Your Date of Birth" // localization
+                            placeholder={translate("dateOfBirthPlaceholder")}
                         />
                         {errors.dateOfBirth && (
                             <div className="form__error">
@@ -859,20 +827,20 @@ const FormPanelMemberProfileUpdate = () => {
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">Address</Form.Label>
+                        <Form.Label className="form__label">
+                            {translate("addressLabel")}
+                        </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.address ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.address ? "error" : ""}`}
                             type="text"
                             {...register("address", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.addressRequired")
                                 }
                             })}
                             aria-invalid={errors.address ? "true" : "false"}
-                            placeholder="Your Address" // localization
+                            placeholder={translate("addressPlaceholder")}
                         />
                         {errors.address && (
                             <div className="form__error">
@@ -882,21 +850,19 @@ const FormPanelMemberProfileUpdate = () => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            Postal Code
+                            {translate("postalCodeLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.postalcode ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.postalcode ? "error" : ""}`}
                             type="text"
                             {...register("postalcode", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.postalCodeRequired")
                                 }
                             })}
                             aria-invalid={errors.postalcode ? "true" : "false"}
-                            placeholder="Your Postal code" // localization
+                            placeholder={translate("postalCodePlaceholder")}
                         />
                         {errors.postalcode && (
                             <div className="form__error">
@@ -905,24 +871,28 @@ const FormPanelMemberProfileUpdate = () => {
                         )}
                     </Col>
                     <Col xs={12} md={6}>
-                        <Form.Label className="form__label">Country</Form.Label>
+                        <Form.Label className="form__label">
+                            {translate("countryLabel")}
+                        </Form.Label>
                         <Form.Select
-                            className={`form__select_menu ${
-                                errors.country ? "error" : ""
-                            }`}
+                            className={`form__select_menu ${errors.country ? "error" : ""}`}
                             {...register("country", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.countryRequired")
                                 }
                             })}
                             aria-invalid={errors.country ? "true" : "false"}
+                            defaultValue=""
                         >
+                            <option value="" hidden>
+                                {translate("countryOptions.placeholder")}
+                            </option>
                             <option value="The Netherlands">
-                                The Netherlands
+                                {translate("countryOptions.netherlands")}
                             </option>
                         </Form.Select>
-                        {errors.postalcode && (
+                        {errors.country && (
                             <div className="form__error">
                                 {errors.country.message}
                             </div>
@@ -941,7 +911,7 @@ const FormPanelMemberProfileUpdate = () => {
 // Form for company to update their page info
 const FormCompanyProfileUpdate = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("form");
 
     // React hook form
     // Define some const to use in forms
@@ -988,21 +958,20 @@ const FormCompanyProfileUpdate = () => {
                 <Row>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Chamber of Commerce Number
+                            {translate("kvkLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.kvk ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.kvk ? "error" : ""}`}
                             type="text"
                             {...register("kvk", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.kvkRequired")
                                 }
                             })}
                             aria-invalid={errors.kvk ? "true" : "false"}
-                            placeholder="KvK" // localization
+                            placeholder={translate("kvkPlaceholder")}
+                            disabled
                         />
                         {errors.kvk && (
                             <div className="form__error">
@@ -1012,21 +981,19 @@ const FormCompanyProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Company Name
+                            {translate("companyNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.companyName ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.companyName ? "error" : ""}`}
                             type="text"
                             {...register("companyName", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.companyNameRequired")
                                 }
                             })}
                             aria-invalid={errors.companyName ? "true" : "false"}
-                            placeholder="Company Name" // localization
+                            placeholder={translate("companyNamePlaceholder")}
                         />
                         {errors.companyName && (
                             <div className="form__error">
@@ -1036,21 +1003,19 @@ const FormCompanyProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Phone Number
+                            {translate("phoneLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.phone ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.phone ? "error" : ""}`}
                             type="phone"
                             {...register("phone", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.phoneRequired")
                                 }
                             })}
                             aria-invalid={errors.phone ? "true" : "false"}
-                            placeholder="Your Phone" // localization
+                            placeholder={translate("phonePlaceholder")}
                         />
                         {errors.phone && (
                             <div className="form__error">
@@ -1059,20 +1024,20 @@ const FormCompanyProfileUpdate = () => {
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">Address</Form.Label>
+                        <Form.Label className="form__label">
+                            {translate("addressLabel")}
+                        </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.address ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.address ? "error" : ""}`}
                             type="text"
                             {...register("address", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.addressRequired")
                                 }
                             })}
                             aria-invalid={errors.address ? "true" : "false"}
-                            placeholder="Your Address" // localization
+                            placeholder={translate("addressPlaceholder")}
                         />
                         {errors.address && (
                             <div className="form__error">
@@ -1081,20 +1046,20 @@ const FormCompanyProfileUpdate = () => {
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">City</Form.Label>
+                        <Form.Label className="form__label">
+                            {translate("cityPlaceholder")}
+                        </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.city ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.city ? "error" : ""}`}
                             type="text"
                             {...register("city", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.cityRequired")
                                 }
                             })}
                             aria-invalid={errors.city ? "true" : "false"}
-                            placeholder="Your City" // localization
+                            placeholder={translate("cityPlaceholder")}
                         />
                         {errors.city && (
                             <div className="form__error">
@@ -1104,21 +1069,19 @@ const FormCompanyProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            Province
+                            {translate("provinceLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.province ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.province ? "error" : ""}`}
                             type="text"
                             {...register("province", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.provinceRequired")
                                 }
                             })}
                             aria-invalid={errors.province ? "true" : "false"}
-                            placeholder="Your province" // localization
+                            placeholder={translate("provincePlaceholder")}
                         />
                         {errors.province && (
                             <div className="form__error">
@@ -1128,45 +1091,41 @@ const FormCompanyProfileUpdate = () => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            Postal Code
+                            {translate("postalCodeLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.postalCode ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.postalCode ? "error" : ""}`}
                             type="text"
                             {...register("postalCode", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.postalCodeRequired")
                                 }
                             })}
-                            aria-invalid={errors.websiteUrl ? "true" : "false"}
-                            placeholder="Your Postal code" // localization
+                            aria-invalid={errors.postalCode ? "true" : "false"}
+                            placeholder={translate("postalCodePlaceholder")}
                         />
-                        {errors.websiteUrl && (
+                        {errors.postalCode && (
                             <div className="form__error">
-                                {errors.websiteUrl.message}
+                                {errors.postalCode.message}
                             </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            Website URL
+                            {translate("websiteUrlLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${
-                                errors.websiteUrl ? "error" : ""
-                            }`}
+                            className={`form__text_field ${errors.websiteUrl ? "error" : ""}`}
                             type="url"
                             {...register("websiteUrl", {
                                 required: {
                                     value: true,
-                                    message: translate("") // localization
+                                    message: translate("error.websiteUrlRequired")
                                 }
                             })}
                             aria-invalid={errors.websiteUrl ? "true" : "false"}
-                            placeholder="Your Website URL" // localization
+                            placeholder={translate("websiteUrlPlaceholder")}
                         />
                         {errors.websiteUrl && (
                             <div className="form__error">
