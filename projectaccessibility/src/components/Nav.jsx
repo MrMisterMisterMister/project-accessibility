@@ -214,7 +214,12 @@ const NavDashboardTopNav = ({
                     </Navbar.Brand>
                 </div>
                 <div className="nav__dashboard_topnav__profile">
-                    <a className="nav__dashboard_topnav__user" aria-expanded={isUserMenuOpen ? "true" : "false"} onClick={toggleDropdown} id="userProfileDropdown">
+                    <a
+                        className="nav__dashboard_topnav__user"
+                        aria-expanded={isUserMenuOpen ? "true" : "false"}
+                        onClick={toggleDropdown}
+                        id="userProfileDropdown"
+                    >
                         <img
                             className="nav__dashboard_topnav__user_picture"
                             src={picturePath}
@@ -225,15 +230,25 @@ const NavDashboardTopNav = ({
                         </span>
                     </a>
                     {isUserMenuOpen && (
-                        <div className="nav__dashboard_topnav__user_dropdown" aria-labelledby="userProfileDropdown">
+                        <div
+                            className="nav__dashboard_topnav__user_dropdown"
+                            aria-labelledby="userProfileDropdown"
+                        >
                             {userMenuItems.map((item, index) => (
-                                <a key={index} className="nav__dashboard_topnav__user_dropdown__item"
+                                <a
+                                    key={index}
+                                    className="nav__dashboard_topnav__user_dropdown__item"
                                     onClick={(e) => {
                                         e.preventDefault();
                                         onNavItemClick(item.page);
-                                    }}>
-                                    <span className="nav__dashboard_topnav__user_dropdown__icon">{item.icon}</span>
-                                    <span className="nav__dashboard_topnav__user_dropdown__label">{item.label}</span>
+                                    }}
+                                >
+                                    <span className="nav__dashboard_topnav__user_dropdown__icon">
+                                        {item.icon}
+                                    </span>
+                                    <span className="nav__dashboard_topnav__user_dropdown__label">
+                                        {item.label}
+                                    </span>
                                 </a>
                             ))}
                         </div>
@@ -269,7 +284,9 @@ const NavDashboardBottomNav = ({ navItems, onNavItemClick }) => {
                     {navItems.map((item, index) => (
                         <Nav.Item
                             key={index}
-                            className={`nav__dashboard_bottomnav__menu_item ${item.active ? "active" : ""}`}
+                            className={`nav__dashboard_bottomnav__menu_item ${
+                                item.active ? "active" : ""
+                            }`}
                         >
                             <Nav.Link
                                 className="nav__dashboard_bottomnav__menu_link "
