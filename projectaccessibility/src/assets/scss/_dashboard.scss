@@ -1,0 +1,28 @@
+@use 'variables';
+
+.dashboard__page {
+    background-color: variables.$cultured;
+
+    .dashboard__page_menu {
+        position: relative;
+
+        &.fixed__scroll {
+            .nav__dashboard_bottomnav {
+                border-bottom: solid 1px rgb(233, 232, 239);
+                position: fixed;
+                z-index: 1001;
+            }
+
+            +.dashboard__page_main {
+                padding-top: 4rem;
+            }
+        }
+    }
+
+    .dashboard__page_main {
+
+        .dashboard__page_content {
+            padding: 2rem 0;
+        }
+    }
+}

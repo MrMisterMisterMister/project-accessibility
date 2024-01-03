@@ -13,6 +13,9 @@
 @use 'card';
 @use 'group';
 @use 'form';
+@use 'alert';
+@use 'settings';
+@use 'account';
 
 // section
 @use 'hero';
@@ -23,8 +26,9 @@
 @use 'contact';
 
 // pages
+@use 'sitemap';
 @use 'privacypolicy';
-@use 'account';
 @use 'cookies';
 @use 'login';
 @use 'signup';
+@use 'dashboard';
