@@ -40,5 +40,8 @@
         "lastNameRequired": "* Please enter your Last Name",
         "kvkRequired": "* Please enter your Chamber of Commerce (KvK) number",
         "companyNameRequired": "* Please enter your company name"
+    },
+    "success": {
+        
     }
 }

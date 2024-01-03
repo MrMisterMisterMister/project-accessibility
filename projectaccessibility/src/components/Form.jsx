@@ -112,7 +112,8 @@ const FormLogin = () => {
                     <Form.Check.Input
                         className="form__login_option__checkbox"
                         type="checkbox"
-                        name="remember"
+                        {...register("rememberme")}
+                        defaultChecked
                     />
                     <Form.Check.Label className="form__login_option__label">
                         {translate("login.rememberme")}
@@ -327,7 +328,7 @@ const FormSignup = () => {
                                         required: {
                                             value: true,
                                             message: translate(
-                                                "companyNameRequired"
+                                                "error.companyNameRequired"
                                             )
                                         }
                                     })}
@@ -426,7 +427,7 @@ const FormSignup = () => {
                         required: {
                             value: true,
                             message: translate(
-                                "passwordConfirmRequired"
+                                "error.passwordConfirmRequired"
                             )
                         },
                         validate: {
@@ -439,7 +440,7 @@ const FormSignup = () => {
                     })}
                     aria-invalid={errors.passwordConfirm ? "true" : "false"}
                     placeholder={translate(
-                        "confirmPasswordPlaceholder"
+                        "passwordConfirmPlaceholder"
                     )}
                 />
                 {errors.passwordConfirm && (

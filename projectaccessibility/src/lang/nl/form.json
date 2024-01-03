@@ -40,5 +40,8 @@
         "lastNameRequired": "* Vul alsjeblieft je achternaam in",
         "kvkRequired": "* Vul alsjeblieft je Kamer van Koophandel (KvK) nummer in",
         "companyNameRequired": "* Vul alsjeblieft je bedrijfsnaam in"
+    },
+    "success": {
+        
     }
 }

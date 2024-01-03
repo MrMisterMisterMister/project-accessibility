@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import { BarChart, PersonCircle, Gear, Book, BoxArrowRight, Buildings, Person, ChatLeftDots } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
 import Settings from "./Settings";
@@ -8,29 +9,32 @@ import Research from "./Research";
 
 // Dashboard page
 const Dashboard = () => {
+    // Translation
+    const { t: translate } = useTranslation("dashboard");
+
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
             icon: <BarChart />,
-            title: "Dashboard",
+            title: translate("dashboard"),
             active: true
         },
         {
             icon: <Person />,
-            title: "Panelmember"
+            title: translate("panelmember")
         },
         {
             icon: <Buildings />,
-            title: "Company"
+            title: translate("company")
         },
         {
             page: <Research />,
             icon: <Book />,
-            title: "Research"
+            title: translate("research")
         },
         {
             icon: <ChatLeftDots />,
-            title: "Chats"
+            title: translate("chats")
         }
     ]);
 
@@ -40,16 +44,16 @@ const Dashboard = () => {
         {
             page: <Account />,
             icon: <PersonCircle />,
-            label: "Profile"
+            label: translate("profile")
         },
         {
             page: <Settings />,
             icon: <Gear />,
-            label: "Settings"
+            label: translate("settings")
         },
         {
             icon: <BoxArrowRight />,
-            label: "Sign out"
+            label: translate("signout")
         }
     ];
 

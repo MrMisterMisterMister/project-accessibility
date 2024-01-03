@@ -1,3 +1,10 @@
 {
-    
+    "dashboard": "Dashboard",
+    "panelmember": "Paneellid",
+    "company": "Bedrijf",
+    "research": "Onderzoek",
+    "chats": "Chats",
+    "profile": "Profiel",
+    "settings": "Instellingen",
+    "signout": "Uitloggen"
 }
