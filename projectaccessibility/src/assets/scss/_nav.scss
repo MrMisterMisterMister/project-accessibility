@@ -364,17 +364,26 @@
                     width: 40px;
                     height: 40px;
                     border-radius: 100%;
+                    margin: 0 1rem 0 0;
+
+                    @include mixins.md {
+                        margin: 0;
+                    }
                 }
 
                 .nav__dashboard_topnav__user_name {
                     margin: 0 1rem 0 0.5rem;
-                    margin-left: 0.5rem;
                     color: variables.$white;
+                    display: none;
+
+                    @include mixins.md {
+                        display: block;
+                    }
                 }
             }
 
             .nav__dashboard_topnav__user_dropdown {
-                position: absolute;                
+                position: absolute;
                 right: 0;
                 top: 65px;
                 min-width: 10rem;
@@ -389,7 +398,7 @@
 
                 @include mixins.sm {
                     top: 45px;
-                    width: 100%;
+                    width: auto;
                 }
 
                 .nav__dashboard_topnav__user_dropdown__item {

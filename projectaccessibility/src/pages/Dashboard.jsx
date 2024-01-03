@@ -105,7 +105,7 @@ const Dashboard = () => {
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName="Clodsire"
+                    userName="ClodsireClodsireClodsireClodsireClodsire"
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
