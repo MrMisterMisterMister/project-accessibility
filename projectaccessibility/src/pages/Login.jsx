@@ -23,15 +23,6 @@ const Login = () => {
         </svg>
     );
 
-    // Ditto
-    const MicrosoftIcon = (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
-            <path fill="#f35325" d="M1 1h10v10H1z" />
-            <path fill="#81bc06" d="M12 1h10v10H12z" />
-            <path fill="#05a6f0" d="M1 12h10v10H1z" />
-            <path fill="#ffba08" d="M12 12h10v10H12z" />
-        </svg>
-    );
 
     return (
         <>
@@ -52,7 +43,6 @@ const Login = () => {
                                 </div>
                                 <ButtonAuth icon={<PersonPlusFill />} path="/signup" text={translate("login.auth.signup")} />
                                 <ButtonAuth icon={MicrosoftIcon} path="#" text={translate("login.auth.microsoft")} />
-                                <ButtonAuth icon={FacebookIcon} path="#" text={translate("login.auth.facebook")} />
 
                             </div>
                             <div id="signInDiv"></div>
