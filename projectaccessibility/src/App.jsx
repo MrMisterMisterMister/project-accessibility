@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Pages from "./pages";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -6,8 +6,6 @@ import { jwtDecode } from "jwt-decode";
 import axios from "axios";
 
 function App () {
-    const [clientId, setClientId] = useState(null);
-
     function handleCallbackResponse (response) {
         console.log("Encoded JWT ID token: " + response.credential);
         const userObject = jwtDecode(response.credential);
@@ -18,9 +16,8 @@ function App () {
         async function fetchGoogleClientId () {
             try {
                 const response = await axios.get("http://localhost:5000/GoogleSignIn/googleClientId");
-                setClientId(response.data.clientId);
 
-                /* global goole */
+                /* global google */
                 google.accounts.id.initialize({
                     client_id: response.data.clientId,
                     callback: handleCallbackResponse
@@ -28,11 +25,10 @@ function App () {
 
                 google.accounts.id.renderButton(
                     document.getElementById("signInDiv"),
-                    { theme: "outline", size: "large", locale: "nl"}
+                    { theme: "outline", size: "large", locale: "nl" }
                 );
 
                 google.accounts.id.prompt();
-
             } catch (error) {
                 console.log("Error axiosing cleint ID: " + error);
             }
@@ -40,11 +36,6 @@ function App () {
 
         fetchGoogleClientId();
     }, []);
-
-    var accessToken = null;
-    if (typeof gapi !== 'undefined' && gapi.auth && gapi.auth.getToken()) {
-    accessToken = gapi.auth.getToken().access_token;
-    }
 
     return (
         <Router>
