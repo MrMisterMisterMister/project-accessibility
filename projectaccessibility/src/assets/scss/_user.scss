@@ -25,6 +25,10 @@
             }
 
             @include mixins.lg {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @include mixins.xl {
                 grid-template-columns: repeat(5, 1fr);
             }
         }

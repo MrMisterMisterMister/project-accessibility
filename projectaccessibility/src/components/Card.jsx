@@ -83,7 +83,8 @@ const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode,
         alt={altText}
         />
         <div className="card__user_content">
-            <div className="card__user_name">{firstName} {lastName}</div>
+            <h3 className="card__user_name">{firstName}</h3>
+            <h3 className="card__user_lastname">{lastName}</h3>
             <div className="card__user_props">
                 <strong>Guardian:</strong>  {guardian} <br />
                 <strong>Zipcode:</strong> {zipcode}<br />
