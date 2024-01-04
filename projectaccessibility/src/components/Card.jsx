@@ -76,4 +76,32 @@ CardCase.propTypes = {
     linkText: PropTypes.string.isRequired
 };
 
-export { CardExpertise, CardNews, CardCase };
+const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth}) => (
+    <div className="card__user_item">
+        <img className="card__user_img"
+        src={img}
+        alt={altText}
+        />
+        <div className="card__user_content">
+            <div className="card__user_name">{firstName} {lastName}</div>
+            <div className="card__user_props">
+                <strong>Guardian:</strong>  {guardian} <br />
+                <strong>Zipcode:</strong> {zipcode}<br />
+                <strong>Date of Birth:</strong> {dateofbirth}
+                </div>
+        </div>
+    </div>
+);
+
+// Prop type for panelmember
+CardPanelMember.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    guardian: PropTypes.string.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    zipcode: PropTypes.string.isRequired,
+    dateofbirth: PropTypes.string.isRequired
+};
+
+export { CardExpertise, CardNews, CardCase, CardPanelMember };

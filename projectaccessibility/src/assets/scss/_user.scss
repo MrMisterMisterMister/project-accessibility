@@ -1,0 +1,32 @@
+@use 'variables';
+@use 'mixins';
+
+.user__section {
+    padding-top: 1em;
+    padding-bottom: 5em;
+    width: 100%;
+
+    .user__section_container {
+        position: relative;
+
+        .user__section_title {
+            font-size: 2.5em;
+            color: variables.$blackrussian;
+            padding-bottom: 1em;
+        }
+
+        .user__section_group__card {
+            display: grid;
+            gap: 1.5em;
+            grid-template-columns: repeat(1, 1fr);
+
+            @include mixins.md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include mixins.lg {
+                grid-template-columns: repeat(5, 1fr);
+            }
+        }
+    }
+}

@@ -6,6 +6,7 @@ import Account from "./Account";
 import Settings from "./Settings";
 import Research from "./Research";
 import Logout from "./Logout";
+import PanelMembers from "../components/PanelMembers";
 
 // Dashboard page
 const Dashboard = () => {
@@ -17,6 +18,7 @@ const Dashboard = () => {
             active: true
         },
         {
+            page: <PanelMembers/>,
             icon: <Person />,
             title: "Panelmember"
         },
