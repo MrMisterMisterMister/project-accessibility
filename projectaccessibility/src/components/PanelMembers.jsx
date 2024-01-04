@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { CardPanelMember } from "./Card";
 import { getRequest } from "../api/axiosClient";
+import { CardPanelMember } from "./Card";
 
-function PanelMembers () {
+const PanelMembers = () => {
     const [panelMembers, setPanelMembers] = useState([]);
 
     useEffect(() => {
@@ -35,6 +35,6 @@ function PanelMembers () {
             </Container>
         </section>
     );
-}
+};
 
 export default PanelMembers;
