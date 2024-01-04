@@ -6,15 +6,12 @@ import { ButtonAuth } from "../components/Button";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import GoogleSignIn from "../components/GoogleSignIn";
 
 // Login page
 const Login = () => {
     // Translation
     const { t: translate } = useTranslation();
-
-    // Svg file for google with color
-    // Too lazy to fix this with bootstrap-icons
-    // Wanted the right color
 
     // Microsoft icon
     const MicrosoftIcon = (
@@ -22,7 +19,6 @@ const Login = () => {
             <path fill="#f35325" d="M1 1h10v10H1z"/><path fill="#81bc06" d="M12 1h10v10H12z"/><path fill="#05a6f0" d="M1 12h10v10H1z"/><path fill="#ffba08" d="M12 12h10v10H12z"/>
         </svg>
     );
-
 
     return (
         <>
@@ -43,9 +39,8 @@ const Login = () => {
                                 </div>
                                 <ButtonAuth icon={<PersonPlusFill />} path="/signup" text={translate("login.auth.signup")} />
                                 <ButtonAuth icon={MicrosoftIcon} path="#" text={translate("login.auth.microsoft")} />
-
+                                <GoogleSignIn />
                             </div>
-                            <div id="signInDiv"></div>
                         </div>
                     </div>
                 </Container>
