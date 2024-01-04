@@ -1,113 +1,79 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
-import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { AlertError } from "../components/Alert";
-import Cookies from "js-cookie";
 
 // Form for login page
 const FormLogin = () => {
     // Translation
     const { t: translate } = useTranslation();
 
-    // Gives access to setToken from the useAuth hook
-    const { setToken } = useAuth();
-
-    // To handle navigation
-    const navigate = useNavigate();
-
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
-
-    // Hook for form management
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }
-    } = useForm({ mode: "all" });
+    const [errors, setErrors] = useState({});
 
     // Function triggered when the submit button is pressed in the login form
-    const handleLoginSubmit = (formData) => {
+    const handleLoginSubmit = (e) => {
+        e.preventDefault(); // Prevents the default form submission behavior
+
+        // Extract form data from the submitted form
+        const formData = new FormData(e.target);
+
         // Make the POST call to the login endpoint
         const loginResponse = postRequest("login/", formData);
 
         // Handle the response from the POST call
         loginResponse
             .then((response) => {
-                // Checks if the response has status code 200 and contains the token
-                // If it contains token, useAuth provider and let magic happen
-                // Afterwards redirect to protected route
-                if (response.status === 200 && response.data && response.data.token) {
-                    // Set authentication token
-                    setToken(response.data.token);
-                    Cookies.set("token", response.data.token);
-                    // Redirect to correct page
-                    navigate("/dashboard", { replace: true });
-                    // Reset form and clear errors
-                    reset();
-                    setFormErrors({});
+                // Some simple validation to check if the response has status 200
+                // If it does, display some kind of message
+                // This still needs to be updated, so that afterwards the user gets send to their dashboard
+                // Also need to get what kind of user they are, for example, panelmember or company
+                // For now it resets the form values and errors
+                // Will also have to add something for success
+                if (response.status === 200) {
+                    console.log("your mom");
+                    e.target.reset();
+                    setErrors({});
                 }
             })
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
-                setFormErrors(error.response?.data);
+                setErrors(error.response?.data);
             });
     };
 
     return (
         <>
-            <AlertError data={formErrors} />
+            <AlertError data={errors} />
             <Form
                 className="form__login"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSubmit(handleLoginSubmit)}
-                noValidate
+                onSubmit={handleLoginSubmit}
             >
                 <Form.Label className="form__label">
                     {translate("login.form.email")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className="form__text_field"
                     type="email"
-                    {...register("email", {
-                        required: {
-                            value: true,
-                            message: translate("login.form.error.emailRequired")
-                        }
-                    })}
-                    aria-invalid={errors.email ? "true" : "false"}
+                    name="email"
                     placeholder={translate("login.form.emailPlaceholder")}
+                    required
                 />
-                {errors.email && (
-                    <div className="form__error">{errors.email.message}</div>
-                )}
                 <Form.Label className="form__label">
                     {translate("login.form.password")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className="form__text_field"
                     type="password"
-                    {...register("password", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "login.form.error.passwordRequired"
-                            )
-                        }
-                    })}
-                    aria-invalid={errors.password ? "true" : "false"}
+                    name="password"
                     placeholder={translate("login.form.passwordPlaceholder")}
+                    required
                 />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
                 <div className="form__login_option">
                     <Form.Check.Input
                         className="form__login_option__checkbox"
@@ -137,16 +103,7 @@ const FormSignup = () => {
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
-
-    // Hook for form management
-    const {
-        register,
-        handleSubmit,
-        reset,
-        watch,
-        formState: { errors }
-    } = useForm({ mode: "all" });
+    const [errors, setErrors] = useState({});
 
     // Event handler for handling changes in the select input
     // This function is assigned to the select input, enabling it to detect changes and update the selected user type accordingly
@@ -156,7 +113,12 @@ const FormSignup = () => {
 
     // Function triggered when the submit button is pressed in the signup form
     // Prevents the default form submission behavior to handle it manually
-    const handleSignupSubmit = async (formData) => {
+    const handleSignupSubmit = async (e) => {
+        e.preventDefault();
+
+        // Create a variable to store the form data submitted by the user
+        const formData = new FormData(e.target);
+
         // Define endpoint paths based on the selected user type
         const endPoint = {
             1: "panelmember/",
@@ -172,51 +134,42 @@ const FormSignup = () => {
         // Handle the response from the POST call
         signupResponse
             .then((response) => {
+                console.log(response);
+
                 // I still need to display a success to inform their signup was successfull
                 // Also need to redirect them to the login page afterwards
                 // And informating them they can login with their account that has just been made
                 if (response.status === 200) {
                     // Some simple message and reset the errors and form fields
                     console.log("your mom");
-                    reset();
-                    setFormErrors({});
+                    e.target.reset();
+                    setErrors({});
                     setSelectedUserType("");
                 }
             })
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
-                setFormErrors(error.response?.data);
+                setErrors(error.response?.data);
             });
     };
 
     return (
         <>
-            <AlertError data={formErrors} />
+            <AlertError data={errors} />
             <Form
                 className="form__signup"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSubmit(handleSignupSubmit)}
-                noValidate
+                onSubmit={handleSignupSubmit}
             >
                 <Form.Label className="form__label">
                     {translate("signup.form.select.user")}
                 </Form.Label>
                 <Form.Select
-                    className={`form__select_menu ${errors.userType ? "error" : ""}`}
-                    {...register("userType", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "signup.form.error.userTypeRequired"
-                            )
-                        },
-                        onChange: (event) => {
-                            handleSelectChange(event);
-                        }
-                    })}
-                    aria-invalid={errors.userType ? "true" : "false"}
+                    className="form__select_menu"
+                    onChange={handleSelectChange}
                     defaultValue=""
+                    required
                 >
                     <option value="" hidden>
                         {translate("signup.form.select.option.placeholder")}
@@ -228,9 +181,6 @@ const FormSignup = () => {
                         {translate("signup.form.select.option.company")}
                     </option>
                 </Form.Select>
-                {errors.userType && (
-                    <div className="form__error">{errors.userType.message}</div>
-                )}
                 {selectedUserType === "1" && (
                     <>
                         <Form.Label className="form__label">
@@ -239,53 +189,25 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                                    className="form__text_field"
                                     type="text"
-                                    {...register("firstName", {
-                                        required: {
-                                            value: true,
-                                            message: translate(
-                                                "signup.form.error.firstNameRequired"
-                                            )
-                                        }
-                                    })}
-                                    aria-invalid={
-                                        errors.firstName ? "true" : "false"
-                                    }
+                                    name="FirstName"
                                     placeholder={translate(
                                         "signup.form.firstNamePlaceholder"
                                     )}
+                                    required
                                 />
-                                {errors.firstName && (
-                                    <div className="form__error">
-                                        {errors.firstName.message}
-                                    </div>
-                                )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                                    className="form__text_field"
                                     type="text"
-                                    {...register("lastName", {
-                                        required: {
-                                            value: true,
-                                            message: translate(
-                                                "signup.form.error.lastNameRequired"
-                                            )
-                                        }
-                                    })}
-                                    aria-invalid={
-                                        errors.lastName ? "true" : "false"
-                                    }
+                                    name="LastName"
                                     placeholder={translate(
                                         "signup.form.lastNamePlaceholder"
                                     )}
+                                    required
                                 />
-                                {errors.lastName && (
-                                    <div className="form__error">
-                                        {errors.lastName.message}
-                                    </div>
-                                )}
                             </Col>
                         </Row>
                     </>
@@ -298,51 +220,25 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                                    className="form__text_field"
                                     type="text"
-                                    {...register("kvk", {
-                                        required: {
-                                            value: true,
-                                            message: translate(
-                                                "signup.form.error.kvkRequired"
-                                            )
-                                        }
-                                    })}
-                                    aria-invalid={errors.kvk ? "true" : "false"}
+                                    name="Kvk"
                                     placeholder={translate(
                                         "signup.form.companyKvk"
                                     )}
+                                    required
                                 />
-                                {errors.kvk && (
-                                    <div className="form__error">
-                                        {errors.kvk.message}
-                                    </div>
-                                )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className="form__text_field"
                                     type="text"
-                                    {...register("name", {
-                                        required: {
-                                            value: true,
-                                            message: translate(
-                                                "signup.form.error.companyNameRequired"
-                                            )
-                                        }
-                                    })}
-                                    aria-invalid={
-                                        errors.name ? "true" : "false"
-                                    }
+                                    name="Name"
                                     placeholder={translate(
                                         "signup.form.companyName"
                                     )}
+                                    required
                                 />
-                                {errors.name && (
-                                    <div className="form__error">
-                                        {errors.name.message}
-                                    </div>
-                                )}
                             </Col>
                         </Row>
                     </>
@@ -351,102 +247,31 @@ const FormSignup = () => {
                     {translate("signup.form.email")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className="form__text_field"
                     type="email"
-                    {...register("email", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "signup.form.error.emailRequired"
-                            )
-                        },
-                        pattern: {
-                            value: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, // regex to check if email is a valid email
-                            message: translate("signup.form.error.emailPattern")
-                        }
-                    })}
-                    aria-invalid={errors.email ? "true" : "false"}
+                    name="Email"
                     placeholder={translate("signup.form.emailPlaceholder")}
+                    required
                 />
-                {errors.email && (
-                    <div className="form__error">{errors.email.message}</div>
-                )}
                 <Form.Label className="form__label">
                     {translate("signup.form.password")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className="form__text_field"
                     type="password"
-                    {...register("password", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "signup.form.error.passwordRequired"
-                            )
-                        },
-                        validate: {
-                            hasUppercase: (value) =>
-                                /^(?=.*[A-Z]).+$/.test(value) ||
-                                translate(
-                                    "signup.form.error.passwordHasUppercase"
-                                ), // regex for uppercase
-                            hasLowercase: (value) =>
-                                /^(?=.*[a-z]).+$/.test(value) ||
-                                translate(
-                                    "signup.form.error.passwordHasLowercase"
-                                ), // regex for lowercase
-                            hasDigit: (value) =>
-                                /^(?=.*\d).+$/.test(value) ||
-                                translate("signup.form.error.passwordHasDigit"), // regex for digit
-                            hasSpecialChar: (value) =>
-                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
-                                    value
-                                ) ||
-                                translate(
-                                    "signup.form.error.passwordHasSpecialChar"
-                                ) // regex for special char
-                        },
-                        minLength: {
-                            value: 6,
-                            message: translate(
-                                "signup.form.error.passwordMinLength"
-                            )
-                        }
-                    })}
-                    aria-invalid={errors.password ? "true" : "false"}
+                    name="Password"
                     placeholder={translate("signup.form.passwordPlaceholder")}
+                    required
                 />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
                 <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    className="form__text_field"
                     type="password"
-                    {...register("passwordConfirm", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "signup.form.error.passwordConfirmRequired"
-                            )
-                        },
-                        validate: {
-                            isMatch: (value) =>
-                                value === watch("password") ||
-                                translate(
-                                    "signup.form.error.passwordConfirmIsMatch"
-                                )
-                        }
-                    })}
-                    aria-invalid={errors.passwordConfirm ? "true" : "false"}
+                    name="PasswordConfirm"
                     placeholder={translate(
                         "signup.form.confirmPasswordPlaceholder"
                     )}
+                    required
                 />
-                {errors.passwordConfirm && (
-                    <div className="form__error">
-                        {errors.passwordConfirm.message}
-                    </div>
-                )}
                 <ButtonSubmit
                     style="button__signup"
                     text={translate("signup.form.buttonText")}
