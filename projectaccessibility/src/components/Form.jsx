@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import { postRequest } from "../api/axiosClient";
 import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
-import { AlertError } from "../components/Alert";
+import { Alert } from "../components/Alert";
 import Cookies from "js-cookie";
 
 // Form for login page
@@ -22,7 +22,10 @@ const FormLogin = () => {
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
 
     // Hook for form management
     const {
@@ -48,25 +51,29 @@ const FormLogin = () => {
                     response.data &&
                     response.data.token
                 ) {
+                    // Configurate some shit
+                    setFormAlerts({ success: { code: "UserHasLoggedIn" } });
                     // Set authentication token
                     setToken(response.data.token);
                     Cookies.set("token", response.data.token);
-                    // Redirect to correct page
-                    navigate("/dashboard", { replace: true });
-                    // Reset form and clear errors
+                    // Reset form
                     reset();
-                    setFormErrors({});
+                    // 1s delay
+                    setTimeout(() => {
+                        // Redirect to the correct page
+                        navigate("/dashboard", { replace: true });
+                    }, 1000);
                 }
             })
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
-                setFormErrors(error.response?.data);
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
     return (
         <>
-            <AlertError data={formErrors} />
+            <Alert data={formAlerts} />
             <Form
                 className="form__login"
                 acceptCharset="UTF-8"
@@ -138,9 +145,12 @@ const FormSignup = () => {
     // State hook to track the selected user type in the form
     const [selectedUserType, setSelectedUserType] = useState("");
 
-    // State hook to capture and manage form validation errors
+    // State hook to capture and manage form validation errors and success
     // Each field's error will be stored in this object
-    const [formErrors, setFormErrors] = useState({});
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
 
     // Hook for form management
     const {
@@ -179,22 +189,22 @@ const FormSignup = () => {
                 // Also need to redirect them to the login page afterwards
                 // And informating them they can login with their account that has just been made
                 if (response.status === 200) {
-                    // Some simple message and reset the errors and form fields
-                    console.log("your mom");
+                    // Set success message
+                    setFormAlerts({ success: { code: "UserHasBeenCreated" } });
+                    // Afterwards just reset everything
                     reset();
-                    setFormErrors({});
                     setSelectedUserType("");
                 }
             })
             .catch((error) => {
                 // Handle errors by updating the error state with the response data from the api server
-                setFormErrors(error.response?.data);
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
     return (
         <>
-            <AlertError data={formErrors} />
+            <Alert data={formAlerts} />
             <Form
                 className="form__signup"
                 acceptCharset="UTF-8"

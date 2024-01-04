@@ -203,7 +203,7 @@ const NavDashboardTopNav = ({
         <div className="nav__dashboard_topnav">
             <Container className="nav__dashboard_topnav__container">
                 <div className="nav__dashboard_topnav__brand">
-                    <Navbar.Brand href="/">
+                    <Navbar.Brand href="/dashboard">
                         <img
                             src="/img/brand/logo_white_text_dark.png"
                             width="278"
