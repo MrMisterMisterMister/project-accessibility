@@ -9,6 +9,7 @@ import {
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import Account from "./Account";
 import Settings from "./Settings";
+import Logout from "./Logout";
 
 // Dashboard page
 const Dashboard = () => {
@@ -30,6 +31,7 @@ const Dashboard = () => {
             title: "Settings"
         },
         {
+            page: <Logout />,
             icon: <BoxArrowRight />,
             title: "Sign out"
         }

@@ -12,10 +12,10 @@
     width: 100%;
 
     &__sucess {
-        background-color: rgb(50, 178, 89);
+        background-color: variables.$limegreen;
     }
 
     &__error {
-        background-color: rgb(175, 30, 72);
+        background-color: variables.$darkred;
     }
 }

@@ -19,9 +19,26 @@
         "lastNamePlaceholder": "Achternaam",
         "email": "E-mailadres",
         "emailPlaceholder": "E-mailadres",
-        "password": "Wachtwoord (moet langer zijn dan 8 tekens)",
+        "password": "Wachtwoord",
         "passwordPlaceholder": "Wachtwoord",
         "confirmPasswordPlaceholder": "Bevestig Wachtwoord",
-        "buttonText": "Aanmelden"
+        "buttonText": "Aanmelden",
+        "error": {
+            "userTypeRequired": "* Selecteer alsjeblieft een gebruikerstype",
+            "firstNameRequired": "* Vul alsjeblieft je voornaam in",
+            "lastNameRequired": "* Vul alsjeblieft je achternaam in",
+            "kvkRequired": "* Vul alsjeblieft je KvK-nummer in",
+            "companyNameRequired": "* Vul alsjeblieft de naam van je bedrijf in",
+            "emailPattern": "* Voer alsjeblieft een geldig e-mailadres in",
+            "emailRequired": "* Vul alsjeblieft je e-mailadres in",
+            "passwordRequired": "* Vul alsjeblieft je wachtwoord in",
+            "passwordHasUppercase": "* Wachtwoord moet minimaal één hoofdletter bevatten",
+            "passwordHasLowercase": "* Wachtwoord moet minimaal één kleine letter bevatten",
+            "passwordHasDigit": "* Wachtwoord moet minimaal één cijfer bevatten",
+            "passwordHasSpecialChar": "* Wachtwoord moet minimaal één speciaal teken bevatten",
+            "passwordMinLength": "* Wachtwoord moet ten minste 6 tekens lang zijn",
+            "passwordConfirmRequired": "* Vul alsjeblieft je wachtwoord opnieuw in",
+            "passwordConfirmIsMatch": "* Wachtwoordbevestiging komt niet overeen met het oorspronkelijke wachtwoord"
+        }
     }
 }

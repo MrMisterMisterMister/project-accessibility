@@ -1,0 +1,16 @@
+{
+    "error": {
+        "defaultMessage": "Error! Er is iets misgegaan. Probeer het later opnieuw.",
+        "form": {
+            "PasswordTooShort": "Wachtwoord moet minimaal 6 tekens bevatten.",
+            "PasswordRequiresDigit": "Wachtwoord moet minimaal één cijfer bevatten ('0'-'9').",
+            "PasswordRequiresUpper": "Wachtwoord moet minimaal één hoofdletter bevatten ('A'-'Z').",
+            "PasswordRequiresLower": "Wachtwoord moet minimaal één kleine letter bevatten ('a'-'z').",
+            "EmailTaken": "Dit e-mailadres is al in gebruik.",
+            "KvkExists": "Dit Kvk-nummer is al geregistreerd.",
+            "IncorrectPassword": "Onjuist wachtwoord. Controleer uw wachtwoord en probeer het opnieuw.",
+            "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres.",
+            "PasswordMismatch": "Wachtwoord en bevestigingswachtwoord komen niet overeen."
+        }
+    }
+}
