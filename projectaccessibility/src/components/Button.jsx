@@ -66,9 +66,9 @@ ButtonContact.propTypes = {
 // Like facebook or google
 // Also for create account
 // The icon can be svg
-const ButtonAuth = ({ path, icon, text }) => {
+const ButtonAuth = ({ path, icon, text, onClick }) => {
     return (
-        <Button className="button__auth" type="button" href={path}>
+        <Button className="button__auth" type="button" href={path} onClick={onClick}>
             <div className="button__auth_icon">{icon}</div>
             <span className="button__auth_text">{text}</span>
         </Button>
@@ -79,7 +79,8 @@ const ButtonAuth = ({ path, icon, text }) => {
 ButtonAuth.propTypes = {
     path: PropTypes.string.isRequired,
     icon: PropTypes.object.isRequired,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    onClick: PropTypes.func
 };
 
 export {
