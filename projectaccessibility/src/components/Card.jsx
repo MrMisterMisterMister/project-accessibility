@@ -76,11 +76,12 @@ CardCase.propTypes = {
     linkText: PropTypes.string.isRequired
 };
 
-const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth = "N/A"}) => (
+// Panelmembers in a card component
+const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth = "N/A" }) => (
     <div className="card__user_item">
         <img className="card__user_img"
-        src={img}
-        alt={altText}
+            src={img}
+            alt={altText}
         />
         <div className="card__user_content">
             <h3 className="card__user_name">{firstName}</h3>
@@ -89,7 +90,7 @@ const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode,
                 <strong>Guardian:</strong>  {guardian} <br />
                 <strong>Zipcode:</strong> {zipcode}<br />
                 <strong>Date of Birth:</strong> {dateofbirth}
-                </div>
+            </div>
         </div>
     </div>
 );
