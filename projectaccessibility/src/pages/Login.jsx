@@ -53,12 +53,12 @@ const Login = () => {
                                     path="/signup"
                                     text={translate("login.auth.signup")}
                                 />
-                                <GoogleSignInButton />
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
                                     path="#"
                                     text={translate("login.auth.microsoft")}
                                 />
+                                <GoogleSignInButton />
                             </div>
                         </div>
                     </div>
