@@ -7,6 +7,7 @@ import Settings from "./Settings";
 import Research from "./Research";
 import Logout from "./Logout";
 import PanelMembers from "../components/PanelMembers";
+import Companies from "../components/Companies";
 
 // Dashboard page
 const Dashboard = () => {
@@ -18,11 +19,12 @@ const Dashboard = () => {
             active: true
         },
         {
-            page: <PanelMembers/>,
+            page: <PanelMembers />,
             icon: <Person />,
             title: "Panelmember"
         },
         {
+            page: <Companies />,
             icon: <Buildings />,
             title: "Company"
         },

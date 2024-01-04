@@ -23,7 +23,7 @@ const PanelMembers = () => {
                     {panelMembers.map((panelMember) => (
                         <CardPanelMember key={panelMember.id}
                             img="img/placeholder.jpg"
-                            altText={"panel member"}
+                            altText={"panelmember"}
                             guardian={panelMember.guardian}
                             firstName={panelMember.firstName}
                             lastName={panelMember.lastName}
