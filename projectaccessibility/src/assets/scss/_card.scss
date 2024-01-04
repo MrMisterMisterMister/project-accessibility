@@ -201,7 +201,7 @@
     .card__user_content {
         padding: 1em;
 
-        .card__user_heading, .card__user_heading_end {
+        .card__user_heading, .card__user_heading_second {
             text-align: left;
             font-size: 1.2em;
             font-weight: 600;
@@ -213,11 +213,15 @@
             padding-bottom: 0.5em;
         }
 
-        .card__user_heading_end {
+        .card__user_heading_second {
             font-size: 1.1em;
-            border-bottom: 1px solid variables.$blackrussian;
-            padding-bottom: 0.5em;
-            margin-bottom: 0.5em;
+            padding-bottom: 0.1em;
+        }
+
+        .card__user_separator {
+            height: 0.1em;
+            background-color: variables.$blackrussian;
+
         }
 
         .card__user_props {
@@ -235,9 +239,11 @@
             text-decoration: underline;
             color: variables.$royalblue;
             transition: color 0.05s ease;
+            display: inline-block;
     
             &:hover {
                 color: variables.$sapphire;
+                text-decoration: none;
             }
         }
     }

@@ -85,7 +85,7 @@ const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode,
         />
         <div className="card__user_content">
             <h3 className="card__user_heading">{firstName}</h3>
-            <h3 className="card__user_heading_end">{lastName}</h3>
+            <h3 className="card__user_heading_second">{lastName}</h3>
             <div className="card__user_props">
                 <strong className="card__user_prop_item">Guardian:</strong>  {guardian} <br />
                 <strong className="card__user_prop_item">Zipcode:</strong> {zipcode}<br />
@@ -119,7 +119,8 @@ const CardCompany = ({
         />
         <div className="card__user_content">
             <h3 className="card__user_heading">{name}</h3>
-            <h3 className="card__user_heading_end card__user_url">{url}</h3>
+            <h3 className="card__user_heading_second card__user_url">{url}</h3>
+            <hr className="card__user_separator"/>
             <div className="card__user_props">
                 <strong className="card__user_prop_item">Kvk:</strong>  {kvk} <br />
                 <strong className="card__user_prop_item">Adres:</strong>  {adres} <br />
