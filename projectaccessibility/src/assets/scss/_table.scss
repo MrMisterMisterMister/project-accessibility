@@ -15,8 +15,8 @@
 // hover effect for a table
 // just add this class to the table itself
 .table__hover {
-    .table__panelmember_body {
-        .table__panelmember_item {
+    &>tbody {
+        &>tr {
             &:hover {
                 color: variables.$charcoal !important;
                 background-color: variables.$lightlavender !important;
