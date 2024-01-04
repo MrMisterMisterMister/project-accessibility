@@ -76,7 +76,7 @@ CardCase.propTypes = {
     linkText: PropTypes.string.isRequired
 };
 
-const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth}) => (
+const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth = "N/A"}) => (
     <div className="card__user_item">
         <img className="card__user_img"
         src={img}
@@ -98,11 +98,11 @@ const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode,
 CardPanelMember.propTypes = {
     img: PropTypes.string.isRequired,
     altText: PropTypes.string.isRequired,
-    guardian: PropTypes.string.isRequired,
+    guardian: PropTypes.number.isRequired,
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    zipcode: PropTypes.string.isRequired,
-    dateofbirth: PropTypes.string.isRequired
+    zipcode: PropTypes.string,
+    dateofbirth: PropTypes.string
 };
 
 export { CardExpertise, CardNews, CardCase, CardPanelMember };
