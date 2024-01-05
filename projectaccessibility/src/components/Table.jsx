@@ -1,10 +1,11 @@
 import React from "react";
+import { NumberFormatter } from "./Formatter";
 import { ButtonMuted } from "./Button";
 
 // Table view for panelmembers
 // For now it's hard coded, only thing that needs to be changed is adding the props
 // Afterwards it's just looping over it and done
-const TablePanelMember = () => {
+const TablePanelMemberView = () => {
     // These items need to be looped over
     return (
         <div className="table__responsive">
@@ -55,14 +56,7 @@ const TablePanelMember = () => {
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableResearchView = () => {
-    // Some formatter function
-    const formatter = new Intl.NumberFormat("nl-NL", {
-        style: "currency",
-        currency: "EUR",
-        minimumFractionDigits: null
-    });
-
+const TableCompanyResearchView = () => {
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
@@ -84,7 +78,7 @@ const TableResearchView = () => {
                         <td className="table__general_item__cell">Research for my kid</td>
                         <td className="table__general_item__cell">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
                         <td className="table__general_item__cell">07-01-2024</td>
-                        <td className="table__general_item__cell">{formatter.format(50)}</td>
+                        <td className="table__general_item__cell">{NumberFormatter.format(50)}</td>
                         <td className="table__general_item__cell">Some, Random, Text</td>
                         <td className="table__general_item__cell">Active</td>
                         <td className="table__general_item__cell" colSpan={2}>
@@ -97,7 +91,7 @@ const TableResearchView = () => {
                         <td className="table__general_item__cell">My disabled kid can&apos;t be this cute</td>
                         <td className="table__general_item__cell">My description</td>
                         <td className="table__general_item__cell">28-02-2024</td>
-                        <td className="table__general_item__cell">{formatter.format(90)}</td>
+                        <td className="table__general_item__cell">{NumberFormatter.format(90)}</td>
                         <td className="table__general_item__cell">カラミンゴ</td>
                         <td className="table__general_item__cell">Active</td>
                         <td className="table__general_item__cell" colSpan={2}>
@@ -111,4 +105,16 @@ const TableResearchView = () => {
     );
 };
 
-export { TablePanelMember, TableResearchView };
+// view of researches that the panelmember has joined
+// will also create a seperate one where the panelmember can see the available researches to join
+const TablePanelMemberResearchView = () => {
+    return (
+        <></>
+    );
+};
+
+export {
+    TablePanelMemberView,
+    TableCompanyResearchView,
+    TablePanelMemberResearchView
+};
