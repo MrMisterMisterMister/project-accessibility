@@ -1,41 +1,35 @@
 @use 'variables';
 
 // Primary button
-.button__primary {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    background-color: variables.$sapphire;
-    border: solid 1px variables.$sapphire;
-    box-shadow: none!important;
-    border-radius: 2px;
-    color: variables.$white;
-
-    &:hover,
-    &:active {
-        background-color: variables.$blackrussian;
-        cursor: pointer;
-        border-color: variables.$sapphire;
-    }
-}
-
 // Secondary button
 // Just copy pasted it with different background color
 // I am lazy
+.button__primary,
 .button__secondary {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
     background-color: transparent;
     border: solid 1px variables.$sapphire;
-    box-shadow: none!important;
+    box-shadow: none !important;
     border-radius: 2px;
     color: variables.$sapphire;
 
-    &:hover,
-    &:active {
+    &:hover {
         background-color: variables.$sapphire;
         cursor: pointer;
         color: variables.$white;
         border-color: variables.$sapphire;
+    }
+
+    // Active state of button
+    &.active {
+        background-color: variables.$sapphire;
+        border-color: variables.$sapphire;
+        color: variables.$white;
+
+        &:hover{
+            background-color: variables.$blackrussian;
+        }
     }
 }
 
