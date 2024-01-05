@@ -15,7 +15,9 @@ const SettingsPanelMember = () => {
 
     return (
         <div className="settings__dashboard">
-            <h4 className="settings__dashboard_title">{translate("panelMemberProfileUpdateTitle")}</h4>
+            <h4 className="settings__dashboard_title">
+                {translate("panelMemberProfileUpdateTitle")}
+            </h4>
             <div className="settings__dashboard_content">
                 <FormPanelMemberProfileUpdate />
             </div>
@@ -30,7 +32,9 @@ const SettingsCompany = () => {
 
     return (
         <div className="settings__dashboard">
-            <h4 className="settings__dashboard_title">{translate("companyProfileUpdateTitle")}</h4>
+            <h4 className="settings__dashboard_title">
+                {translate("companyProfileUpdateTitle")}
+            </h4>
             <div className="settings__dashboard_content">
                 <FormCompanyProfileUpdate />
             </div>
@@ -45,7 +49,9 @@ const SettingsEmail = () => {
 
     return (
         <div className="settings__dashboard">
-            <h4 className="settings__dashboard_title">{translate("emailUpdateTitle")}</h4>
+            <h4 className="settings__dashboard_title">
+                {translate("emailUpdateTitle")}
+            </h4>
             <div className="settings__dashboard_content">
                 <FormUserEmailUpdate />
             </div>
@@ -61,7 +67,9 @@ const SettingsPassword = () => {
 
     return (
         <div className="settings__dashboard">
-            <h4 className="settings__dashboard_title">{translate("passwordUpdateTitle")}</h4>
+            <h4 className="settings__dashboard_title">
+                {translate("passwordUpdateTitle")}
+            </h4>
             <div className="settings__dashboard_content">
                 <FormUserPasswordUpdate />
             </div>

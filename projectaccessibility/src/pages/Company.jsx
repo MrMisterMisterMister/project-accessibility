@@ -34,10 +34,10 @@ const Company = () => {
     // Use axios get to retrieve all the company data
     useEffect(() => {
         getRequest("companies")
-            .then(response => {
+            .then((response) => {
                 setCompanies(response.data);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error.response);
             });
     }, []); // Once
@@ -57,8 +57,14 @@ const Company = () => {
                 {translate("pageTitle")}
             </h1>
             <div className="company__dashboard_options">
-                <ButtonPrimary text={translate("tableView")} action={() => switchView("table")} />
-                <ButtonSecondary text={translate("cardView")} action={() => switchView("card")} />
+                <ButtonPrimary
+                    text={translate("tableView")}
+                    action={() => switchView("table")}
+                />
+                <ButtonSecondary
+                    text={translate("cardView")}
+                    action={() => switchView("card")}
+                />
             </div>
             <div className="company__dashboard_content">
                 {companyViewComponents[view]}

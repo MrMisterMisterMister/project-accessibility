@@ -14,25 +14,24 @@ const Alert = ({ data }) => {
     // Afterwards just create the alert itself
     return (
         <>
-            {data.error && (
-                (Array.isArray(data.error) ? data.error : [data.error]).map((key, index) => (
-                    <div className="alert alert__error" key={index}>
-                        <span>
-                            {translate(`error.${key.code}`)}
-                        </span>
-                    </div>
-                ))
-            )}
+            {data.error &&
+                (Array.isArray(data.error) ? data.error : [data.error]).map(
+                    (key, index) => (
+                        <div className="alert alert__error" key={index}>
+                            <span>{translate(`error.${key.code}`)}</span>
+                        </div>
+                    )
+                )}
 
-            {data.success && (
-                (Array.isArray(data.success) ? data.success : [data.success]).map((key, index) => (
+            {data.success &&
+                (Array.isArray(data.success)
+                    ? data.success
+                    : [data.success]
+                ).map((key, index) => (
                     <div className="alert alert__success" key={index}>
-                        <span >
-                            {translate(`success.${key.code}`)}
-                        </span>
+                        <span>{translate(`success.${key.code}`)}</span>
                     </div>
-                ))
-            )}
+                ))}
         </>
     );
 };

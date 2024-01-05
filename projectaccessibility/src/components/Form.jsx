@@ -85,7 +85,9 @@ const FormLogin = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -103,7 +105,9 @@ const FormLogin = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -216,7 +220,9 @@ const FormSignup = () => {
                     {translate("userTypeLabel")}
                 </Form.Label>
                 <Form.Select
-                    className={`form__select_menu ${errors.userType ? "error" : ""}`}
+                    className={`form__select_menu ${
+                        errors.userType ? "error" : ""
+                    }`}
                     {...register("userType", {
                         required: {
                             value: true,
@@ -250,7 +256,9 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.firstName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("firstName", {
                                         required: {
@@ -275,7 +283,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.lastName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("lastName", {
                                         required: {
@@ -309,7 +319,9 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.kvk ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("kvk", {
                                         required: {
@@ -329,7 +341,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.name ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("name", {
                                         required: {
@@ -359,7 +373,9 @@ const FormSignup = () => {
                     {translate("emailLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -381,7 +397,9 @@ const FormSignup = () => {
                     {translate("passwordLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -415,7 +433,9 @@ const FormSignup = () => {
                     <div className="form__error">{errors.password.message}</div>
                 )}
                 <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordConfirm ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
@@ -496,7 +516,9 @@ const FormUserEmailUpdate = () => {
                     {translate("emailNewLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.email ? "error" : ""
+                    }`}
                     type="email"
                     {...register("email", {
                         required: {
@@ -514,7 +536,9 @@ const FormUserEmailUpdate = () => {
                     {translate("emailConfirmLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.emailConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.emailConfirm ? "error" : ""
+                    }`}
                     type="email"
                     {...register("emailConfirm", {
                         required: {
@@ -609,7 +633,9 @@ const FormUserPasswordUpdate = () => {
                     {translate("passwordCurrentLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.passwordCurrent ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordCurrent ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordCurrent", {
                         required: {
@@ -629,7 +655,9 @@ const FormUserPasswordUpdate = () => {
                     {translate("passwordNewLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.password ? "error" : ""
+                    }`}
                     type="password"
                     {...register("password", {
                         required: {
@@ -670,12 +698,16 @@ const FormUserPasswordUpdate = () => {
                     {translate("passwordConfirmNewLabel")}
                 </Form.Label>
                 <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
+                    className={`form__text_field ${
+                        errors.passwordConfirm ? "error" : ""
+                    }`}
                     type="password"
                     {...register("passwordConfirm", {
                         required: {
                             value: true,
-                            message: translate("error.passwordConfirmNewRequired")
+                            message: translate(
+                                "error.passwordConfirmNewRequired"
+                            )
                         },
                         validate: {
                             isMatch: (value) =>
@@ -753,12 +785,16 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("firstNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.firstName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("firstName", {
                                 required: {
                                     value: true,
-                                    message: translate("error.firstNameRequired")
+                                    message: translate(
+                                        "error.firstNameRequired"
+                                    )
                                 }
                             })}
                             aria-invalid={errors.firstName ? "true" : "false"}
@@ -775,7 +811,9 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("lastNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.lastName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("lastName", {
                                 required: {
@@ -797,7 +835,9 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("phoneLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.phone ? "error" : ""
+                            }`}
                             type="phone"
                             {...register("phone", {
                                 required: {
@@ -819,7 +859,9 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("dateOfBirthLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.dateOfBirth ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.dateOfBirth ? "error" : ""
+                            }`}
                             type="date"
                             {...register("dateOfBirth", {
                                 required: {
@@ -841,7 +883,9 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("addressLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.address ? "error" : ""
+                            }`}
                             type="text"
                             {...register("address", {
                                 required: {
@@ -863,12 +907,16 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("postalCodeLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.postalcode ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.postalcode ? "error" : ""
+                            }`}
                             type="text"
                             {...register("postalcode", {
                                 required: {
                                     value: true,
-                                    message: translate("error.postalCodeRequired")
+                                    message: translate(
+                                        "error.postalCodeRequired"
+                                    )
                                 }
                             })}
                             aria-invalid={errors.postalcode ? "true" : "false"}
@@ -885,7 +933,9 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("countryLabel")}
                         </Form.Label>
                         <Form.Select
-                            className={`form__select_menu ${errors.country ? "error" : ""}`}
+                            className={`form__select_menu ${
+                                errors.country ? "error" : ""
+                            }`}
                             {...register("country", {
                                 required: {
                                     value: true,
@@ -971,7 +1021,9 @@ const FormCompanyProfileUpdate = () => {
                             {translate("kvkLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.kvk ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.kvk ? "error" : ""
+                            }`}
                             type="text"
                             {...register("kvk", {
                                 required: {
@@ -994,12 +1046,16 @@ const FormCompanyProfileUpdate = () => {
                             {translate("companyNameLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.companyName ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.companyName ? "error" : ""
+                            }`}
                             type="text"
                             {...register("companyName", {
                                 required: {
                                     value: true,
-                                    message: translate("error.companyNameRequired")
+                                    message: translate(
+                                        "error.companyNameRequired"
+                                    )
                                 }
                             })}
                             aria-invalid={errors.companyName ? "true" : "false"}
@@ -1016,7 +1072,9 @@ const FormCompanyProfileUpdate = () => {
                             {translate("phoneLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.phone ? "error" : ""
+                            }`}
                             type="phone"
                             {...register("phone", {
                                 required: {
@@ -1038,7 +1096,9 @@ const FormCompanyProfileUpdate = () => {
                             {translate("addressLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.address ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.address ? "error" : ""
+                            }`}
                             type="text"
                             {...register("address", {
                                 required: {
@@ -1060,7 +1120,9 @@ const FormCompanyProfileUpdate = () => {
                             {translate("cityPlaceholder")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.city ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.city ? "error" : ""
+                            }`}
                             type="text"
                             {...register("city", {
                                 required: {
@@ -1082,7 +1144,9 @@ const FormCompanyProfileUpdate = () => {
                             {translate("provinceLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.province ? "error" : ""
+                            }`}
                             type="text"
                             {...register("province", {
                                 required: {
@@ -1104,12 +1168,16 @@ const FormCompanyProfileUpdate = () => {
                             {translate("postalCodeLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.postalCode ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.postalCode ? "error" : ""
+                            }`}
                             type="text"
                             {...register("postalCode", {
                                 required: {
                                     value: true,
-                                    message: translate("error.postalCodeRequired")
+                                    message: translate(
+                                        "error.postalCodeRequired"
+                                    )
                                 }
                             })}
                             aria-invalid={errors.postalCode ? "true" : "false"}
@@ -1126,12 +1194,16 @@ const FormCompanyProfileUpdate = () => {
                             {translate("websiteUrlLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.websiteUrl ? "error" : ""}`}
+                            className={`form__text_field ${
+                                errors.websiteUrl ? "error" : ""
+                            }`}
                             type="url"
                             {...register("websiteUrl", {
                                 required: {
                                     value: true,
-                                    message: translate("error.websiteUrlRequired")
+                                    message: translate(
+                                        "error.websiteUrlRequired"
+                                    )
                                 }
                             })}
                             aria-invalid={errors.websiteUrl ? "true" : "false"}

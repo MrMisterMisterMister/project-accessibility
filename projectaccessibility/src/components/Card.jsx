@@ -87,15 +87,37 @@ const CardPanelMemberView = ({ data }) => {
             <div className="user__card_group">
                 {data.map((panelmember) => (
                     <div className="card__user_item" key={panelmember.id}>
-                        <img className="card__user_img" src="/img/placeholder.jpg" alt="Picture of Clodsire" />
+                        <img
+                            className="card__user_img"
+                            src="/img/placeholder.jpg"
+                            alt="Picture of Clodsire"
+                        />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">{panelmember.firstName} {panelmember.lastName}</h4>
+                                <h4 className="card__user_title">
+                                    {panelmember.firstName}{" "}
+                                    {panelmember.lastName}
+                                </h4>
                             </div>
                             <div className="card__user_props">
-                                <p><span className="card__user_prop_item">Guardian:</span>{panelmember.guardian}</p>
-                                <p><span className="card__user_prop_item">Postal Code:</span>{panelmember.zipcode}</p>
-                                <p><span className="card__user_prop_item">Date of Birth:</span>{panelmember.dateofbirth}</p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Guardian:
+                                    </span>
+                                    {panelmember.guardian}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Postal Code:
+                                    </span>
+                                    {panelmember.zipcode}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Date of Birth:
+                                    </span>
+                                    {panelmember.dateofbirth}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -117,21 +139,51 @@ const CardCompanyView = ({ data }) => {
             <div className="user__card_group">
                 {data.map((company) => (
                     <div className="card__user_item" key={company.id}>
-                        <img className="card__user_img"
+                        <img
+                            className="card__user_img"
                             src="/img/clodsire.gif"
                             alt="Gif of Clodsire bouncing up and down"
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">{company.name}</h4>
-                                <span className="card__user_website">{company.url}</span>
+                                <h4 className="card__user_title">
+                                    {company.name}
+                                </h4>
+                                <span className="card__user_website">
+                                    {company.url}
+                                </span>
                             </div>
                             <div className="card__user_props">
-                                <p><span className="card__user_prop_item">KvK:</span>{company.kvk}</p>
-                                <p><span className="card__user_prop_item">Adres:</span>{company.adres}</p>
-                                <p><span className="card__user_prop_item">Location:</span>{company.location}</p>
-                                <p><span className="card__user_prop_item">Country:</span>{company.country}</p>
-                                <p><span className="card__user_prop_item">Contact:</span>{company.contact}</p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        KvK:
+                                    </span>
+                                    {company.kvk}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Adres:
+                                    </span>
+                                    {company.adres}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Location:
+                                    </span>
+                                    {company.location}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Country:
+                                    </span>
+                                    {company.country}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Contact:
+                                    </span>
+                                    {company.contact}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -146,4 +198,10 @@ CardCompanyView.propTypes = {
     data: PropTypes.array
 };
 
-export { CardExpertise, CardNews, CardCase, CardPanelMemberView, CardCompanyView };
+export {
+    CardExpertise,
+    CardNews,
+    CardCase,
+    CardPanelMemberView,
+    CardCompanyView
+};

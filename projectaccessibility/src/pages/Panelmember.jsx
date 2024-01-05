@@ -36,10 +36,10 @@ const PanelMember = () => {
     // Load them inside the hook afterwards
     useEffect(() => {
         getRequest("panelmembers")
-            .then(response => {
+            .then((response) => {
                 setPanelMembers(response.data);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error.response);
             });
     }, []); // Run once
@@ -59,8 +59,14 @@ const PanelMember = () => {
                 {translate("pageTitle")}
             </h1>
             <div className="panelmember__dashboard_options">
-                <ButtonPrimary text={translate("tableView")} action={() => switchView("table")} />
-                <ButtonSecondary text={translate("cardView")} action={() => switchView("card")} />
+                <ButtonPrimary
+                    text={translate("tableView")}
+                    action={() => switchView("table")}
+                />
+                <ButtonSecondary
+                    text={translate("cardView")}
+                    action={() => switchView("card")}
+                />
             </div>
             <div className="panelmember__dashboard_content">
                 {panelMemberViewComponents[view]}
