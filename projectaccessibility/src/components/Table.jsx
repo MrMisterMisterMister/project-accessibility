@@ -68,7 +68,10 @@ TableBody.propTypes = {
     tableData: PropTypes.array.isRequired,
     columns: PropTypes.arrayOf(
         PropTypes.shape({
-            accessor: PropTypes.string.isRequired,
+            accessor: PropTypes.oneOfType([
+                PropTypes.string.isRequired,
+                PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
+            ]),
             format: PropTypes.func
         })
     ).isRequired
