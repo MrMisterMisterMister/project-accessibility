@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import Companies from "../components/Companies";
 import { TableCompanyView } from "../components/Table";
+import { CardCompanyView } from "../components/Card";
 import { ButtonPrimary, ButtonSecondary } from "../components/Button";
+import { getRequest } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
 // This is the company view for admin
@@ -14,6 +15,9 @@ const Company = () => {
     // State to know which view to load in
     // Standard it's set to table
     const [view, setView] = useState(Cookies.get("companyView") || "table");
+
+    // Hook to store all the company data
+    const [companies, setCompanies] = useState([]);
 
     // A function that switches the view and also sames as a cookie
     const switchView = (view) => {
@@ -27,14 +31,24 @@ const Company = () => {
         });
     };
 
+    // Use axios get to retrieve all the company data
+    useEffect(() => {
+        getRequest("companies")
+            .then(response => {
+                setCompanies(response.data);
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
+    }, []); // Once
+
     // Something something
     // Define the different views that need the right component
     const companyViewComponents = {
-        table: <TableCompanyView />,
-        card: <Companies />
+        table: <TableCompanyView data={companies} />,
+        card: <CardCompanyView data={companies} />
     };
 
-    // The same can be said here
     // The table view still has hard coded data
     // needs to be updated with a simple get, but too lazy to do it now
     return (

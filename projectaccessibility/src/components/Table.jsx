@@ -1,11 +1,12 @@
 import React from "react";
-import { NumberFormatter } from "./Formatter";
+import { NumberFormatter, DateFormatter } from "./Formatter";
 import { ButtonMuted } from "./Button";
+import PropTypes from "prop-types";
 
 // Table view for panelmembers
 // For now it's hard coded, only thing that needs to be changed is adding the props
 // Afterwards it's just looping over it and done
-const TablePanelMemberView = () => {
+const TablePanelMemberView = ({ data }) => {
     // These items need to be looped over
     return (
         <div className="table__responsive">
@@ -16,45 +17,50 @@ const TablePanelMemberView = () => {
                         <th className="table__general_item__cell">Name</th>
                         <th className="table__general_item__cell">Email</th>
                         <th className="table__general_item__cell">Phone</th>
+                        <th className="table__general_item__cell">Date of Birth</th>
                         <th className="table__general_item__cell">Address</th>
                         <th className="table__general_item__cell">Postal Code</th>
-                        <th className="table__general_item__cell">City</th>
                         <th className="table__general_item__cell">Province</th>
                         <th className="table__general_item__cell">Country</th>
                     </tr>
                 </thead>
                 <tbody className="table__general_body">
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">980</td>
-                        <td className="table__general_item__cell">Clodsire</td>
-                        <td className="table__general_item__cell">clodsire@pokemon.com</td>
-                        <td className="table__general_item__cell">123 45 678</td>
-                        <td className="table__general_item__cell">Glaseado Mountain</td>
-                        <td className="table__general_item__cell">1234 AB</td>
-                        <td className="table__general_item__cell">I am the city</td>
-                        <td className="table__general_item__cell">Paldea</td>
-                        <td className="table__general_item__cell">Clodsire nation</td>
-                    </tr>
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">973</td>
-                        <td className="table__general_item__cell">Flamigo</td>
-                        <td className="table__general_item__cell">flamigo@pokemon.com</td>
-                        <td className="table__general_item__cell">987 65 433</td>
-                        <td className="table__general_item__cell">My Basement</td>
-                        <td className="table__general_item__cell">5432 AB</td>
-                        <td className="table__general_item__cell">I am カラミンゴ</td>
-                        <td className="table__general_item__cell">Paldea</td>
-                        <td className="table__general_item__cell">Water</td>
-                    </tr>
+                    {data.length > 0
+                        ? data.map((panelmember) => (
+                            <tr className="table__general_item" key={panelmember.id}>
+                                <td className="table__general_item__cell">{panelmember.id}</td>
+                                <td className="table__general_item__cell">{panelmember.firstName} {panelmember.lastName}</td>
+                                <td className="table__general_item__cell">{panelmember.email}</td>
+                                <td className="table__general_item__cell">{panelmember.phone}</td>
+                                <td className="table__general_item__cell">{DateFormatter.format(new Date(panelmember.dateOfBirth))}</td>
+                                <td className="table__general_item__cell">{panelmember.adres}</td>
+                                <td className="table__general_item__cell">{panelmember.zipcode}</td>
+                                <td className="table__general_item__cell">{panelmember.province}</td>
+                                <td className="table__general_item__cell">{panelmember.country}</td>
+                            </tr>
+                        ))
+                        : (
+                            <tr className="table__general_item">
+                                <td className="table__general_item__cell" colSpan="9">
+                                    No data available.
+                                </td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
         </div>
     );
 };
 
+// Prop type for the panelmember table view
+TablePanelMemberView.propTypes = {
+    data: PropTypes.array.isRequired
+};
+
 // Needs to be looped over with the data from get to companies
 // I am very lazy to do it, so someone else do it
-const TableCompanyView = () => {
+const TableCompanyView = ({ data }) => {
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
@@ -62,42 +68,51 @@ const TableCompanyView = () => {
                     <tr className="table__general_item">
                         <th className="table__general_item__cell">#</th>
                         <th className="table__general_item__cell">KvK</th>
-                        <th className="table__general_item__cell">Name</th>
+                        <th className="table__general_item__cell">Company Name</th>
+                        <th className="table__general_item__cell">Email</th>
+                        <th className="table__general_item__cell">Phone</th>
                         <th className="table__general_item__cell">Address</th>
                         <th className="table__general_item__cell">Postal Code</th>
-                        <th className="table__general_item__cell">Location</th>
+                        <th className="table__general_item__cell">Province</th>
                         <th className="table__general_item__cell">Country</th>
                         <th className="table__general_item__cell">Contact Person</th>
                         <th className="table__general_item__cell">Website</th>
                     </tr>
                 </thead>
                 <tbody className="table__general_body">
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">1</td>
-                        <td className="table__general_item__cell">30171355</td>
-                        <td className="table__general_item__cell">Stichting Accessibility</td>
-                        <td className="table__general_item__cell">Christiaan Krammlaan 2</td>
-                        <td className="table__general_item__cell">3571AX</td>
-                        <td className="table__general_item__cell">Utrecht</td>
-                        <td className="table__general_item__cell">The Netherlands</td>
-                        <td className="table__general_item__cell">Cynthia</td>
-                        <td className="table__general_item__cell">https://accessibility.nl</td>
-                    </tr>
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">2</td>
-                        <td className="table__general_item__cell">87584124</td>
-                        <td className="table__general_item__cell">Devon Corporation</td>
-                        <td className="table__general_item__cell">Somewhere</td>
-                        <td className="table__general_item__cell">None</td>
-                        <td className="table__general_item__cell">Mosdeep City</td>
-                        <td className="table__general_item__cell">Hoenn</td>
-                        <td className="table__general_item__cell">Steven Stone</td>
-                        <td className="table__general_item__cell">https://idontknow.org</td>
-                    </tr>
+                    {data.length > 0
+                        ? data.map((company) => (
+                            <tr className="table__general_item" key={company.id}>
+                                <td className="table__general_item__cell">{company.id}</td>
+                                <td className="table__general_item__cell">{company.kvk}</td>
+                                <td className="table__general_item__cell">{company.name}</td>
+                                <td className="table__general_item__cell">{company.email}</td>
+                                <td className="table__general_item__cell">{company.phone}</td>
+                                <td className="table__general_item__cell">{company.adres}</td>
+                                <td className="table__general_item__cell">{company.postalcode}</td>
+                                <td className="table__general_item__cell">{company.province}</td>
+                                <td className="table__general_item__cell">{company.country}</td>
+                                <td className="table__general_item__cell">{company.contact}</td>
+                                <td className="table__general_item__cell">{company.url}</td>
+                            </tr>
+                        ))
+                        : (
+                            <tr className="table__general_item">
+                                <td className="table__general_item__cell" colSpan="11">
+                                    No data available.
+                                </td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
         </div>
     );
+};
+
+// Prop type for the company table view
+TableCompanyView.propTypes = {
+    data: PropTypes.array.isRequired
 };
 
 // Same here, needs to be changed to load in all the data

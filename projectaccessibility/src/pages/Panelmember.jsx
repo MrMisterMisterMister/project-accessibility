@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import PanelMembers from "../components/PanelMembers";
 import { TablePanelMemberView } from "../components/Table";
+import { CardPanelMemberView } from "../components/Card";
 import { ButtonPrimary, ButtonSecondary } from "../components/Button";
+import { getRequest } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
 // Panelmember view for admin
@@ -13,6 +14,9 @@ const PanelMember = () => {
     // Some hook to keep track of the current view
     // Also checks if there has been a cookie for this view, otherwise just assume table
     const [view, setView] = useState(Cookies.get("panelMemberView") || "table");
+
+    // Hook to store all the panelmembers in
+    const [panelMembers, setPanelMembers] = useState([]);
 
     // This function just switches the view and stores the value inside a cookie
     const switchView = (view) => {
@@ -28,11 +32,23 @@ const PanelMember = () => {
         });
     };
 
+    // Sends get request to api to get all the panelmembers
+    // Load them inside the hook afterwards
+    useEffect(() => {
+        getRequest("panelmembers")
+            .then(response => {
+                setPanelMembers(response.data);
+            })
+            .catch(error => {
+                console.log(error.response);
+            });
+    }, []); // Run once
+
     // All the available views
     // Later on it can be expanded I guess
     const panelMemberViewComponents = {
-        table: <TablePanelMemberView />,
-        card: <PanelMembers />
+        table: <TablePanelMemberView data={panelMembers} />,
+        card: <CardPanelMemberView data={panelMembers} />
     };
 
     // The data for Table view of panelmember is still hard coded, so it needs to be changed

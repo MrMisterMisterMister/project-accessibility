@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 
 // Expertise cards for the homepage
 // Has props for icon, title and text
@@ -81,72 +81,69 @@ CardCase.propTypes = {
 };
 
 // Panelmembers in a card component
-const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth = "N/A" }) => {
+const CardPanelMemberView = ({ data }) => {
     return (
-        <div className="card__user_item">
-            <img className="card__user_img" src={img} alt={altText} />
-            <div className="card__user_content">
-                <div className="card__user_heading">
-                    <h4 className="card__user_title">{firstName} {lastName}</h4>
-                </div>
-                <div className="card__user_props">
-                    <p><span className="card__user_prop_item">Guardian:</span>{guardian}</p>
-                    <p><span className="card__user_prop_item">Postal Code:</span>{zipcode}</p>
-                    <p><span className="card__user_prop_item">Date of Birth:</span>{dateofbirth}</p>
-                </div>
+        <div className="user__card">
+            <div className="user__card_group">
+                {data.map((panelmember) => (
+                    <div className="card__user_item" key={panelmember.id}>
+                        <img className="card__user_img" src="/img/placeholder.jpg" alt="Picture of Clodsire" />
+                        <div className="card__user_content">
+                            <div className="card__user_heading">
+                                <h4 className="card__user_title">{panelmember.firstName} {panelmember.lastName}</h4>
+                            </div>
+                            <div className="card__user_props">
+                                <p><span className="card__user_prop_item">Guardian:</span>{panelmember.guardian}</p>
+                                <p><span className="card__user_prop_item">Postal Code:</span>{panelmember.zipcode}</p>
+                                <p><span className="card__user_prop_item">Date of Birth:</span>{panelmember.dateofbirth}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
 };
 
 // Prop type for panelmember
-CardPanelMember.propTypes = {
-    img: PropTypes.string.isRequired,
-    altText: PropTypes.string.isRequired,
-    guardian: PropTypes.number.isRequired,
-    firstName: PropTypes.string.isRequired,
-    lastName: PropTypes.string.isRequired,
-    zipcode: PropTypes.string,
-    dateofbirth: PropTypes.string
+CardPanelMemberView.propTypes = {
+    data: PropTypes.array
 };
 
 // Panelmembers in a card component
-const CardCompany = ({
-    img, altText, kvk, name, adres = "Route 16",
-    location = "Lake Verity", country = "Sinnoh",
-    url = "https://herta.eu.org", contact = "Prof. Rowan"
-}) => {
+const CardCompanyView = ({ data }) => {
     return (
-        <div className="card__user_item">
-            <img className="card__user_img" src={img} alt={altText} />
-            <div className="card__user_content">
-                <div className="card__user_heading">
-                    <h4 className="card__user_title">{name}</h4>
-                    <span className="card__user_website">{url}</span>
-                </div>
-                <div className="card__user_props">
-                    <p><span className="card__user_prop_item">KvK:</span>{kvk}</p>
-                    <p><span className="card__user_prop_item">Adres:</span>{adres}</p>
-                    <p><span className="card__user_prop_item">Location:</span>{location}</p>
-                    <p><span className="card__user_prop_item">Country:</span>{country}</p>
-                    <p><span className="card__user_prop_item">Contact:</span>{contact}</p>
-                </div>
+        <div className="user__card">
+            <div className="user__card_group">
+                {data.map((company) => (
+                    <div className="card__user_item" key={company.id}>
+                        <img className="card__user_img"
+                            src="/img/clodsire.gif"
+                            alt="Gif of Clodsire bouncing up and down"
+                        />
+                        <div className="card__user_content">
+                            <div className="card__user_heading">
+                                <h4 className="card__user_title">{company.name}</h4>
+                                <span className="card__user_website">{company.url}</span>
+                            </div>
+                            <div className="card__user_props">
+                                <p><span className="card__user_prop_item">KvK:</span>{company.kvk}</p>
+                                <p><span className="card__user_prop_item">Adres:</span>{company.adres}</p>
+                                <p><span className="card__user_prop_item">Location:</span>{company.location}</p>
+                                <p><span className="card__user_prop_item">Country:</span>{company.country}</p>
+                                <p><span className="card__user_prop_item">Contact:</span>{company.contact}</p>
+                            </div>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
 };
 
 // Prop type for panelmember
-CardCompany.propTypes = {
-    img: PropTypes.string.isRequired,
-    altText: PropTypes.string.isRequired,
-    kvk: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    adres: PropTypes.string,
-    location: PropTypes.string,
-    country: PropTypes.string,
-    url: PropTypes.string,
-    contact: PropTypes.string
+CardCompanyView.propTypes = {
+    data: PropTypes.array
 };
 
-export { CardExpertise, CardNews, CardCase, CardPanelMember, CardCompany };
+export { CardExpertise, CardNews, CardCase, CardPanelMemberView, CardCompanyView };
