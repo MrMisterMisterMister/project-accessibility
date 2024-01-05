@@ -61,38 +61,38 @@ const TableCompanyView = () => {
                 <thead className="table__general_head">
                     <tr className="table__general_item">
                         <th className="table__general_item__cell">#</th>
+                        <th className="table__general_item__cell">KvK</th>
                         <th className="table__general_item__cell">Name</th>
-                        <th className="table__general_item__cell">Email</th>
-                        <th className="table__general_item__cell">Phone</th>
                         <th className="table__general_item__cell">Address</th>
                         <th className="table__general_item__cell">Postal Code</th>
-                        <th className="table__general_item__cell">City</th>
-                        <th className="table__general_item__cell">Province</th>
+                        <th className="table__general_item__cell">Location</th>
                         <th className="table__general_item__cell">Country</th>
+                        <th className="table__general_item__cell">Contact Person</th>
+                        <th className="table__general_item__cell">Website</th>
                     </tr>
                 </thead>
                 <tbody className="table__general_body">
                     <tr className="table__general_item">
-                        <td className="table__general_item__cell">980</td>
-                        <td className="table__general_item__cell">Clodsire</td>
-                        <td className="table__general_item__cell">clodsire@pokemon.com</td>
-                        <td className="table__general_item__cell">123 45 678</td>
-                        <td className="table__general_item__cell">Glaseado Mountain</td>
-                        <td className="table__general_item__cell">1234 AB</td>
-                        <td className="table__general_item__cell">I am the city</td>
-                        <td className="table__general_item__cell">Paldea</td>
-                        <td className="table__general_item__cell">Clodsire nation</td>
+                        <td className="table__general_item__cell">1</td>
+                        <td className="table__general_item__cell">30171355</td>
+                        <td className="table__general_item__cell">Stichting Accessibility</td>
+                        <td className="table__general_item__cell">Christiaan Krammlaan 2</td>
+                        <td className="table__general_item__cell">3571AX</td>
+                        <td className="table__general_item__cell">Utrecht</td>
+                        <td className="table__general_item__cell">The Netherlands</td>
+                        <td className="table__general_item__cell">Cynthia</td>
+                        <td className="table__general_item__cell">https://accessibility.nl</td>
                     </tr>
                     <tr className="table__general_item">
-                        <td className="table__general_item__cell">973</td>
-                        <td className="table__general_item__cell">Flamigo</td>
-                        <td className="table__general_item__cell">flamigo@pokemon.com</td>
-                        <td className="table__general_item__cell">987 65 433</td>
-                        <td className="table__general_item__cell">My Basement</td>
-                        <td className="table__general_item__cell">5432 AB</td>
-                        <td className="table__general_item__cell">I am カラミンゴ</td>
-                        <td className="table__general_item__cell">Paldea</td>
-                        <td className="table__general_item__cell">Water</td>
+                        <td className="table__general_item__cell">2</td>
+                        <td className="table__general_item__cell">87584124</td>
+                        <td className="table__general_item__cell">Devon Corporation</td>
+                        <td className="table__general_item__cell">Somewhere</td>
+                        <td className="table__general_item__cell">None</td>
+                        <td className="table__general_item__cell">Mosdeep City</td>
+                        <td className="table__general_item__cell">Hoenn</td>
+                        <td className="table__general_item__cell">Steven Stone</td>
+                        <td className="table__general_item__cell">https://idontknow.org</td>
                     </tr>
                 </tbody>
             </table>
