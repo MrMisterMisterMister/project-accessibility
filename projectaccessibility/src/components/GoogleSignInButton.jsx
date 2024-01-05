@@ -1,11 +1,12 @@
 import React, { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../provider/authProvider";
+import Cookies from "js-cookie";
 
 const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleusercontent.com";
 
 function GoogleSignInButton () {
-    const { setToken } = useAuth();
+    const { token, setToken } = useAuth();
 
     // userobject is the decoded JWT token.
     function handleCallbackResponse (response) {
@@ -15,6 +16,10 @@ function GoogleSignInButton () {
 
         // Set the token in the authProvider
         setToken(response.credential);
+
+        // Store token in a cookie named "token"
+        Cookies.set("token", response.credential);
+
     }
 
     useEffect(() => {
@@ -34,6 +39,13 @@ function GoogleSignInButton () {
         // Prompt the user to select a Google account to sign in with
         google.accounts.id.prompt();
     }, [setToken]);
+
+    // Checking if the token is set
+    useEffect(() => {
+        if (token) {
+            console.log("Token set in authProvider: " + token);
+        }
+    }, []);
 
     return (
         <div id="signInDiv"></div>
