@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
-import { getRequest } from "../api/axiosClient";
 import { CardCompany } from "./Card";
+import { getRequest } from "../api/axiosClient";
 
 const Companies = () => {
     const [companies, setCompanies] = useState([]);
@@ -17,24 +16,23 @@ const Companies = () => {
     }, []);
 
     return (
-        <section className="user__section">
-            <Container className="user__section_container">
-                <div className="user__section_group__card">
-                    {companies.map((company) => (
-                        <CardCompany key={company.id}
-                            img="/img/clodsire.gif"
-                            altText={"company"}
-                            kvk={company.kvk}
-                            name={company.name}
-                            adres={company.adres}
-                            location={company.location}
-                            url={company.url}
-                            contact={company.contact}
-                        />
-                    ))}
-                </div>
-            </Container>
-        </section>
+        <div className="user__card">
+            <div className="user__card_group">
+                {companies.map((company) => (
+                    <CardCompany
+                        key={company.id}
+                        img="/img/clodsire.gif"
+                        altText={"Gif of Clodsire bouncing up and down"}
+                        kvk={company.kvk}
+                        name={company.name}
+                        adres={company.adres}
+                        location={company.location}
+                        url={company.url}
+                        contact={company.contact}
+                    />
+                ))}
+            </div>
+        </div>
     );
 };
 
