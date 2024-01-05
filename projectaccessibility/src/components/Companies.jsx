@@ -22,7 +22,7 @@ const Companies = () => {
                 <div className="user__section_group__card">
                     {companies.map((company) => (
                         <CardCompany key={company.id}
-                            img="img/placeholder2.gif"
+                            img="/img/clodsire.gif"
                             altText={"company"}
                             kvk={company.kvk}
                             name={company.name}

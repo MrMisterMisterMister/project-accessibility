@@ -52,6 +52,54 @@ const TablePanelMemberView = () => {
     );
 };
 
+// Needs to be looped over with the data from get to companies
+// I am very lazy to do it, so someone else do it
+const TableCompanyView = () => {
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <thead className="table__general_head">
+                    <tr className="table__general_item">
+                        <th className="table__general_item__cell">#</th>
+                        <th className="table__general_item__cell">Name</th>
+                        <th className="table__general_item__cell">Email</th>
+                        <th className="table__general_item__cell">Phone</th>
+                        <th className="table__general_item__cell">Address</th>
+                        <th className="table__general_item__cell">Postal Code</th>
+                        <th className="table__general_item__cell">City</th>
+                        <th className="table__general_item__cell">Province</th>
+                        <th className="table__general_item__cell">Country</th>
+                    </tr>
+                </thead>
+                <tbody className="table__general_body">
+                    <tr className="table__general_item">
+                        <td className="table__general_item__cell">980</td>
+                        <td className="table__general_item__cell">Clodsire</td>
+                        <td className="table__general_item__cell">clodsire@pokemon.com</td>
+                        <td className="table__general_item__cell">123 45 678</td>
+                        <td className="table__general_item__cell">Glaseado Mountain</td>
+                        <td className="table__general_item__cell">1234 AB</td>
+                        <td className="table__general_item__cell">I am the city</td>
+                        <td className="table__general_item__cell">Paldea</td>
+                        <td className="table__general_item__cell">Clodsire nation</td>
+                    </tr>
+                    <tr className="table__general_item">
+                        <td className="table__general_item__cell">973</td>
+                        <td className="table__general_item__cell">Flamigo</td>
+                        <td className="table__general_item__cell">flamigo@pokemon.com</td>
+                        <td className="table__general_item__cell">987 65 433</td>
+                        <td className="table__general_item__cell">My Basement</td>
+                        <td className="table__general_item__cell">5432 AB</td>
+                        <td className="table__general_item__cell">I am カラミンゴ</td>
+                        <td className="table__general_item__cell">Paldea</td>
+                        <td className="table__general_item__cell">Water</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    );
+};
+
 // Same here, needs to be changed to load in all the data
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
@@ -115,6 +163,7 @@ const TablePanelMemberResearchView = () => {
 
 export {
     TablePanelMemberView,
+    TableCompanyView,
     TableCompanyResearchView,
     TablePanelMemberResearchView
 };

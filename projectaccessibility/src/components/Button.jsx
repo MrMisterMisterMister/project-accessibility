@@ -2,14 +2,36 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
-// Primary button. To be made
-const ButtonPrimary = () => {
-    return <></>;
+// Primary button
+// Just something
+const ButtonPrimary = ({ text, action }) => {
+    return (
+        <Button className="button__primary" onClick={action}>
+            {text}
+        </Button>
+    );
 };
 
-// Secondary button. To be made
-const ButtonSecondary = () => {
-    return <></>;
+// something something
+ButtonPrimary.propTypes = {
+    text: PropTypes.string.isRequired,
+    action: PropTypes.func
+};
+
+// Secondary button
+// Yes, just copy pasted
+const ButtonSecondary = ({ text, action }) => {
+    return (
+        <Button className="button__secondary" onClick={action}>
+            {text}
+        </Button>
+    );
+};
+
+// something something
+ButtonSecondary.propTypes = {
+    text: PropTypes.string.isRequired,
+    action: PropTypes.func
 };
 
 // General button for submits in forms
