@@ -30,7 +30,8 @@
     border-radius: 2px;
     color: variables.$sapphire;
 
-    &:hover {
+    &:hover,
+    &:focus {
         background-color: variables.$sapphire;
         cursor: pointer;
         color: variables.$white;
@@ -44,6 +45,7 @@
         color: variables.$white;
 
         &:hover {
+            border-color: variables.$blackrussian;
             background-color: variables.$blackrussian;
         }
     }
