@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { TablePanelMemberView } from "../components/Table";
 import { CardPanelMemberView } from "../components/Card";
-import { ButtonPrimary, ButtonSecondary } from "../components/Button";
+import { ButtonSecondary } from "../components/Button";
 import { getRequest } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
