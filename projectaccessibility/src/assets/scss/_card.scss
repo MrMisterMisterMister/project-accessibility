@@ -204,6 +204,7 @@
     .card__user_content {
         color: variables.$blackrussian;
         padding: 1.125rem;
+        word-break: break-all;
 
         .card__user_heading {
             padding-bottom: 1rem;
