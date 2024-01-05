@@ -57,7 +57,7 @@ const Company = () => {
                 {translate("pageTitle")}
             </h1>
             <div className="company__dashboard_options">
-                <ButtonPrimary
+                <ButtonSecondary
                     text={translate("tableView")}
                     isActive={view === "table"}
                     action={() => switchView("table")}

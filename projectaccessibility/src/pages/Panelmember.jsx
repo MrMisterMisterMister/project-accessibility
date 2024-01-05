@@ -59,7 +59,7 @@ const PanelMember = () => {
                 {translate("pageTitle")}
             </h1>
             <div className="panelmember__dashboard_options">
-                <ButtonPrimary
+                <ButtonSecondary
                     text={translate("tableView")}
                     isActive={view === "table"}
                     action={() => switchView("table")}
