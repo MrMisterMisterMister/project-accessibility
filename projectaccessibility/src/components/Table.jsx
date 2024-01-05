@@ -172,7 +172,7 @@ const TableCompanyResearchView = () => {
 // will also create a seperate one where the panelmember can see the available researches to join
 const TablePanelMemberResearchView = () => {
     return (
-        <></>
+        <p>Your mom</p>
     );
 };
 
