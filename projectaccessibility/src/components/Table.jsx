@@ -8,9 +8,9 @@ const TableHead = ({ columns }) => {
     return (
         <thead className="table__general_head">
             <tr className="table__general_item">
-                {columns.map((column, index) => (
-                    <th key={index} className="table__general_item__cell">
-                        {column.label}
+                {columns.map(({ label, colSpan }, index) => (
+                    <th key={index} className="table__general_item__cell" colSpan={colSpan || 1}>
+                        {label}
                     </th>
                 ))}
             </tr>
@@ -37,7 +37,15 @@ const TableBody = ({ tableData, columns }) => {
                         <tr key={rowIndex} className="table__general_item">
                             {columns.map(({ accessor, format }, colIndex) => (
                                 <td key={colIndex} className="table__general_item__cell">
-                                    {format ? format(row[accessor]) : row[accessor]}
+                                    {
+                                        // This is to make some keys join together as one td
+                                        // Just got this from github
+                                        Array.isArray(accessor)
+                                            ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
+                                            : format
+                                                ? format(row[accessor])
+                                                : row[accessor]
+                                    }
                                 </td>
                             ))}
                         </tr>
@@ -78,12 +86,8 @@ const TablePanelMemberView = ({ data }) => {
             accessor: "id"
         },
         {
-            label: "First name",
-            accessor: "firstName"
-        },
-        {
-            label: "Last name",
-            accessor: "lastName"
+            label: "Name",
+            accessor: ["firstName", "lastName"]
         },
         {
             label: "Email",
@@ -91,16 +95,16 @@ const TablePanelMemberView = ({ data }) => {
         },
         {
             label: "Phone",
-            accessor: ""
+            accessor: "phone"
         },
         {
             label: "Date of Birth",
             accessor: "dateOfBirth",
-            format: (date) => DateFormatter.format(new Date(date)) // display doy nicely
+            format: (date) => DateFormatter.format(new Date(date)) // display DoY nicely
         },
         {
             label: "Address",
-            accessor: ""
+            accessor: "address"
         },
         {
             label: "Postal Code",
@@ -108,11 +112,11 @@ const TablePanelMemberView = ({ data }) => {
         },
         {
             label: "Province",
-            accessor: ""
+            accessor: "province"
         },
         {
             label: "Country",
-            accessor: ""
+            accessor: "country"
         }
     ];
 
@@ -135,79 +139,26 @@ TablePanelMemberView.propTypes = {
 // Needs to be looped over with the data from get to companies
 // I am very lazy to do it, so someone else do it
 const TableCompanyView = ({ data }) => {
+    // The columns for table company
+    const columns = [
+        { label: "#", accessor: "id" },
+        { label: "KvK", accessor: "kvk" },
+        { label: "Company Name", accessor: "name" },
+        { label: "Email", accessor: "email" },
+        { label: "Phone", accessor: "phone" },
+        { label: "Address", accessor: "address" },
+        { label: "Postal Code", accessor: "postalCode" },
+        { label: "Province", accessor: "province" },
+        { label: "Country", accessor: "country" },
+        { label: "Contact Person", accessor: "contact" },
+        { label: "Website", accessor: "url" }
+    ];
+
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
-                <thead className="table__general_head">
-                    <tr className="table__general_item">
-                        <th className="table__general_item__cell">#</th>
-                        <th className="table__general_item__cell">KvK</th>
-                        <th className="table__general_item__cell">Company Name</th>
-                        <th className="table__general_item__cell">Email</th>
-                        <th className="table__general_item__cell">Phone</th>
-                        <th className="table__general_item__cell">Address</th>
-                        <th className="table__general_item__cell">Postal Code</th>
-                        <th className="table__general_item__cell">Province</th>
-                        <th className="table__general_item__cell">Country</th>
-                        <th className="table__general_item__cell">Contact Person</th>
-                        <th className="table__general_item__cell">Website</th>
-                    </tr>
-                </thead>
-                <tbody className="table__general_body">
-                    {data.length > 0
-                        ? (
-                            data.map((company) => (
-                                <tr
-                                    className="table__general_item"
-                                    key={company.id}
-                                >
-                                    <td className="table__general_item__cell">
-                                        {company.id}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.kvk}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.name}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.email}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.phone}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.adres}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.postalcode}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.province}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.country}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.contact}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {company.url}
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                        : (
-                            <tr className="table__general_item">
-                                <td
-                                    className="table__general_item__cell"
-                                    colSpan={11}
-                                >
-                                    No data available.
-                                </td>
-                            </tr>
-                        )}
-                </tbody>
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
@@ -223,74 +174,80 @@ TableCompanyView.propTypes = {
 // Also the buttons for need onAction
 // Will update it later
 const TableCompanyResearchView = () => {
+    const columns = [
+        { label: "#" },
+        { label: "Title" },
+        { label: "Description" },
+        { label: "Date" },
+        { label: "Reward" },
+        { label: "Category" },
+        { label: "Status" },
+        { label: "Actions", colSpan: 2 }
+    ];
+
+    // some test data
+    // will be removed later
+    const testData = [
+        {
+            id: 1,
+            title: "Research for my kid",
+            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+            date: "2024-02-06",
+            reward: 50,
+            category: "Some, Random, Text",
+            status: "Active"
+        },
+        {
+            id: 2,
+            title: "My disabled kid can't be this cute",
+            description: "My description",
+            date: "2024-02-29",
+            reward: 90,
+            category: "カラミンゴ",
+            status: "Active"
+        }
+    ];
+
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
-                <thead className="table__general_head">
-                    <tr className="table__general_item">
-                        <th className="table__general_item__cell">#</th>
-                        <th className="table__general_item__cell">Title</th>
-                        <th className="table__general_item__cell">
-                            Description
-                        </th>
-                        <th className="table__general_item__cell">Date</th>
-                        <th className="table__general_item__cell">Reward</th>
-                        <th className="table__general_item__cell">Category</th>
-                        <th className="table__general_item__cell">Status</th>
-                        <th
-                            className="table__general_item__cell"
-                            colSpan={2}
-                        ></th>
-                    </tr>
-                </thead>
+                <TableHead columns={columns} />
+                {
+                    /*
+                        The body can't be used in the tablebody component
+                        because it has the custom ButtonMuted component and it's not optimized to handle it
+                        and if I somehow make it work, it's too complicated
+                        so I am keeping it this way
+                        also still need to loop over the data, for now hard coded data to test
+                    */
+                }
                 <tbody className="table__general_body">
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">1</td>
-                        <td className="table__general_item__cell">
-                            Research for my kid
-                        </td>
-                        <td className="table__general_item__cell">
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit.
-                        </td>
-                        <td className="table__general_item__cell">
-                            07-01-2024
-                        </td>
-                        <td className="table__general_item__cell">
-                            {NumberFormatter.format(50)}
-                        </td>
-                        <td className="table__general_item__cell">
-                            Some, Random, Text
-                        </td>
-                        <td className="table__general_item__cell">Active</td>
-                        <td className="table__general_item__cell" colSpan={2}>
-                            <ButtonMuted text="Edit" />
-                            <ButtonMuted text="Delete" />
-                        </td>
-                    </tr>
-                    <tr className="table__general_item">
-                        <td className="table__general_item__cell">2</td>
-                        <td className="table__general_item__cell">
-                            My disabled kid can&apos;t be this cute
-                        </td>
-                        <td className="table__general_item__cell">
-                            My description
-                        </td>
-                        <td className="table__general_item__cell">
-                            28-02-2024
-                        </td>
-                        <td className="table__general_item__cell">
-                            {NumberFormatter.format(90)}
-                        </td>
-                        <td className="table__general_item__cell">
-                            カラミンゴ
-                        </td>
-                        <td className="table__general_item__cell">Active</td>
-                        <td className="table__general_item__cell" colSpan={2}>
-                            <ButtonMuted text="Edit" />
-                            <ButtonMuted text="Delete" />
-                        </td>
-                    </tr>
+                    {testData.length > 0
+                        ? (
+                            testData.map((item) => (
+                                <tr key={item.id} className="table__general_item">
+                                    <td className="table__general_item__cell">{item.id}</td>
+                                    <td className="table__general_item__cell">{item.title}</td>
+                                    <td className="table__general_item__cell">{item.description}</td>
+                                    <td className="table__general_item__cell">{item.date}</td>
+                                    <td className="table__general_item__cell">{NumberFormatter.format(item.reward)}</td>
+                                    <td className="table__general_item__cell">{item.category}</td>
+                                    <td className="table__general_item__cell">{item.status}</td>
+                                    <td className="table__general_item__cell" colSpan={2}>
+                                        <ButtonMuted text="Edit" />
+                                        <ButtonMuted text="Delete" />
+                                    </td>
+                                </tr>
+                            ))
+                        )
+                        : (
+                            <tr className="table__general_item">
+                                <td className="table__general_item__cell" colSpan={9}>
+                                    No data available.
+                                </td>
+                            </tr>
+                        )
+                    }
                 </tbody>
             </table>
         </div>
