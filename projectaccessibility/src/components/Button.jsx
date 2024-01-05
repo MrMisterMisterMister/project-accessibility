@@ -4,9 +4,9 @@ import { Button } from "react-bootstrap";
 
 // Primary button
 // Just something
-const ButtonPrimary = ({ text, active, action }) => {
+const ButtonPrimary = ({ text, isActive, action }) => {
     return (
-        <Button className={`button__primary ${active ? "active" : ""}`} onClick={action}>
+        <Button className={`button__primary ${isActive ? "active" : ""}`} onClick={action}>
             {text}
         </Button>
     );
@@ -15,15 +15,15 @@ const ButtonPrimary = ({ text, active, action }) => {
 // something something
 ButtonPrimary.propTypes = {
     text: PropTypes.string.isRequired,
-    active: PropTypes.bool,
+    isActive: PropTypes.bool,
     action: PropTypes.func
 };
 
 // Secondary button
 // Yes, just copy pasted
-const ButtonSecondary = ({ text, active, action }) => {
+const ButtonSecondary = ({ text, isActive, action }) => {
     return (
-        <Button className={`button__secondary ${active ? "active" : ""}`} onClick={action}>
+        <Button className={`button__secondary ${isActive ? "active" : ""}`} onClick={action}>
             {text}
         </Button>
     );
@@ -32,7 +32,7 @@ const ButtonSecondary = ({ text, active, action }) => {
 // something something
 ButtonSecondary.propTypes = {
     text: PropTypes.string.isRequired,
-    active: PropTypes.bool,
+    isActive: PropTypes.bool,
     action: PropTypes.func
 };
 
