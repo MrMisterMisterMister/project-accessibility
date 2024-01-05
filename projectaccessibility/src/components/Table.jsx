@@ -3,83 +3,125 @@ import { NumberFormatter, DateFormatter } from "./Formatter";
 import { ButtonMuted } from "./Button";
 import PropTypes from "prop-types";
 
+// General table head
+const TableHead = ({ columns }) => {
+    return (
+        <thead className="table__general_head">
+            <tr className="table__general_item">
+                {columns.map((column, index) => (
+                    <th key={index} className="table__general_item__cell">
+                        {column.label}
+                    </th>
+                ))}
+            </tr>
+        </thead>
+    );
+};
+
+// prop type for tableHead
+TableHead.propTypes = {
+    columns: PropTypes.arrayOf(
+        PropTypes.shape({
+            label: PropTypes.string.isRequired
+        })
+    ).isRequired
+};
+
+// Some general body view
+const TableBody = ({ tableData, columns }) => {
+    return (
+        <tbody className="table__general_body">
+            {tableData.length > 0
+                ? (
+                    tableData.map((row, rowIndex) => (
+                        <tr key={rowIndex} className="table__general_item">
+                            {columns.map(({ accessor, format }, colIndex) => (
+                                <td key={colIndex} className="table__general_item__cell">
+                                    {format ? format(row[accessor]) : row[accessor]}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                )
+                : (
+                    <tr className="table__general_item">
+                        <td className="table__general_item__cell" colSpan={columns.length}>
+                            No data available.
+                        </td>
+                    </tr>
+                )
+            }
+        </tbody>
+    );
+};
+
+// table body prop type
+TableBody.propTypes = {
+    tableData: PropTypes.array.isRequired,
+    columns: PropTypes.arrayOf(
+        PropTypes.shape({
+            accessor: PropTypes.string.isRequired,
+            format: PropTypes.func
+        })
+    ).isRequired
+};
+
 // Table view for panelmembers
 // For now it's hard coded, only thing that needs to be changed is adding the props
 // Afterwards it's just looping over it and done
 const TablePanelMemberView = ({ data }) => {
+    // Make array to define the heading and also the accessor for the data
+    // Some of these fields are empty, our database needs to be updated to add these columns
+    const columns = [
+        {
+            label: "#",
+            accessor: "id"
+        },
+        {
+            label: "First name",
+            accessor: "firstName"
+        },
+        {
+            label: "Last name",
+            accessor: "lastName"
+        },
+        {
+            label: "Email",
+            accessor: "email"
+        },
+        {
+            label: "Phone",
+            accessor: ""
+        },
+        {
+            label: "Date of Birth",
+            accessor: "dateOfBirth",
+            format: (date) => DateFormatter.format(new Date(date)) // display doy nicely
+        },
+        {
+            label: "Address",
+            accessor: ""
+        },
+        {
+            label: "Postal Code",
+            accessor: "postalCode"
+        },
+        {
+            label: "Province",
+            accessor: ""
+        },
+        {
+            label: "Country",
+            accessor: ""
+        }
+    ];
+
     // These items need to be looped over
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
-                <thead className="table__general_head">
-                    <tr className="table__general_item">
-                        <th className="table__general_item__cell">#</th>
-                        <th className="table__general_item__cell">Name</th>
-                        <th className="table__general_item__cell">Email</th>
-                        <th className="table__general_item__cell">Phone</th>
-                        <th className="table__general_item__cell">
-                            Date of Birth
-                        </th>
-                        <th className="table__general_item__cell">Address</th>
-                        <th className="table__general_item__cell">
-                            Postal Code
-                        </th>
-                        <th className="table__general_item__cell">Province</th>
-                        <th className="table__general_item__cell">Country</th>
-                    </tr>
-                </thead>
-                <tbody className="table__general_body">
-                    {data.length > 0
-                        ? (
-                            data.map((panelmember) => (
-                                <tr
-                                    className="table__general_item"
-                                    key={panelmember.id}
-                                >
-                                    <td className="table__general_item__cell">
-                                        {panelmember.id}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.firstName}{" "}
-                                        {panelmember.lastName}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.email}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.phone}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {DateFormatter.format(
-                                            new Date(panelmember.dateOfBirth)
-                                        )}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.adres}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.zipcode}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.province}
-                                    </td>
-                                    <td className="table__general_item__cell">
-                                        {panelmember.country}
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                        : (
-                            <tr className="table__general_item">
-                                <td
-                                    className="table__general_item__cell"
-                                    colSpan="9"
-                                >
-                                No data available.
-                                </td>
-                            </tr>
-                        )}
-                </tbody>
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
@@ -100,20 +142,14 @@ const TableCompanyView = ({ data }) => {
                     <tr className="table__general_item">
                         <th className="table__general_item__cell">#</th>
                         <th className="table__general_item__cell">KvK</th>
-                        <th className="table__general_item__cell">
-                            Company Name
-                        </th>
+                        <th className="table__general_item__cell">Company Name</th>
                         <th className="table__general_item__cell">Email</th>
                         <th className="table__general_item__cell">Phone</th>
                         <th className="table__general_item__cell">Address</th>
-                        <th className="table__general_item__cell">
-                            Postal Code
-                        </th>
+                        <th className="table__general_item__cell">Postal Code</th>
                         <th className="table__general_item__cell">Province</th>
                         <th className="table__general_item__cell">Country</th>
-                        <th className="table__general_item__cell">
-                            Contact Person
-                        </th>
+                        <th className="table__general_item__cell">Contact Person</th>
                         <th className="table__general_item__cell">Website</th>
                     </tr>
                 </thead>
@@ -165,9 +201,9 @@ const TableCompanyView = ({ data }) => {
                             <tr className="table__general_item">
                                 <td
                                     className="table__general_item__cell"
-                                    colSpan="11"
+                                    colSpan={11}
                                 >
-                                No data available.
+                                    No data available.
                                 </td>
                             </tr>
                         )}
