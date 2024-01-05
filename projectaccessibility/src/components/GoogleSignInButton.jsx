@@ -19,7 +19,6 @@ function GoogleSignInButton () {
 
         // Store token in a cookie named "token"
         Cookies.set("token", response.credential);
-
     }
 
     useEffect(() => {
