@@ -14,6 +14,7 @@
 @use 'group';
 @use 'form';
 @use 'alert';
+@use 'table';
 @use 'settings';
 @use 'account';
 
@@ -24,6 +25,7 @@
 @use 'news';
 @use 'case';
 @use 'contact';
+@use 'user';
 
 // pages
 @use 'sitemap';

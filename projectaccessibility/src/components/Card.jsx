@@ -76,4 +76,74 @@ CardCase.propTypes = {
     linkText: PropTypes.string.isRequired
 };
 
-export { CardExpertise, CardNews, CardCase };
+// Panelmembers in a card component
+const CardPanelMember = ({ img, altText, guardian, firstName, lastName, zipcode, dateofbirth = "N/A" }) => (
+    <div className="card__user_item">
+        <img className="card__user_img"
+            src={img}
+            alt={altText}
+        />
+        <div className="card__user_content">
+            <h3 className="card__user_heading">{firstName}</h3>
+            <h3 className="card__user_heading_second">{lastName}</h3>
+            <hr className="card__user_separator"/>
+            <div className="card__user_props">
+                <strong className="card__user_prop_item">Guardian:</strong>  {guardian} <br />
+                <strong className="card__user_prop_item">Zipcode:</strong> {zipcode}<br />
+                <strong className="card__user_prop_item">Date of Birth:</strong> {dateofbirth}
+            </div>
+        </div>
+    </div>
+);
+
+// Prop type for panelmember
+CardPanelMember.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    guardian: PropTypes.number.isRequired,
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    zipcode: PropTypes.string,
+    dateofbirth: PropTypes.string
+};
+
+// Panelmembers in a card component
+const CardCompany = ({
+    img, altText, kvk, name, adres = "Route 16",
+    location = "Lake Verity", country = "Sinnoh",
+    url = "https://herta.eu.org", contact = "Prof. Rowan"
+}) => (
+    <div className="card__user_item">
+        <img className="card__user_img"
+            src={img}
+            alt={altText}
+        />
+        <div className="card__user_content">
+            <h3 className="card__user_heading">{name}</h3>
+            <h3 className="card__user_heading_second card__user_url">{url}</h3>
+            <hr className="card__user_separator"/>
+            <div className="card__user_props">
+                <strong className="card__user_prop_item">Kvk:</strong>  {kvk} <br />
+                <strong className="card__user_prop_item">Adres:</strong>  {adres} <br />
+                <strong className="card__user_prop_item">Location:</strong> {location}<br />
+                <strong className="card__user_prop_item">Country:</strong> {country} <br />
+                <strong className="card__user_prop_item">Contact:</strong> {contact} <br />
+            </div>
+        </div>
+    </div>
+);
+
+// Prop type for panelmember
+CardCompany.propTypes = {
+    img: PropTypes.string.isRequired,
+    altText: PropTypes.string.isRequired,
+    kvk: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    adres: PropTypes.string,
+    location: PropTypes.string,
+    country: PropTypes.string,
+    url: PropTypes.string,
+    contact: PropTypes.string
+};
+
+export { CardExpertise, CardNews, CardCase, CardPanelMember, CardCompany };

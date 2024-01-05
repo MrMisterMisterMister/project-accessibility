@@ -30,22 +30,22 @@ axiosClient.interceptors.request.use((config) => {
 
 // Get request
 async function getRequest (URL) {
-    return axiosClient.get(`/${URL}`);
+    return await axiosClient.get(`/${URL}`);
 }
 
 // Post request
 async function postRequest (URL, payload) {
-    return axiosClient.post(`/${URL}`, payload);
+    return await axiosClient.post(`/${URL}`, payload);
 }
 
 // Put request
 async function putRequest (URL, payload) {
-    return axiosClient.put(`/${URL}`, payload);
+    return await axiosClient.put(`/${URL}`, payload);
 }
 
 // Delete request
 async function deleteRequest (URL) {
-    return axiosClient.delete(`/${URL}`);
+    return await axiosClient.delete(`/${URL}`);
 }
 
 export { getRequest, postRequest, putRequest, deleteRequest };

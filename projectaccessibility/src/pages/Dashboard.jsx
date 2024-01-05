@@ -16,6 +16,8 @@ import Account from "./Account";
 import Settings from "./Settings";
 import Research from "./Research";
 import Logout from "./Logout";
+import PanelMember from "./Panelmember";
+import Company from "./Company";
 
 // Dashboard page
 const Dashboard = () => {
@@ -30,10 +32,12 @@ const Dashboard = () => {
             active: true
         },
         {
+            page: <PanelMember />,
             icon: <Person />,
             title: translate("panelmember")
         },
         {
+            page: <Company />,
             icon: <Buildings />,
             title: translate("company")
         },
