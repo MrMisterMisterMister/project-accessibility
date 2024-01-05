@@ -7,7 +7,7 @@
         "PasswordRequiresLower": "Wachtwoord moet minimaal één kleine letter bevatten ('a'-'z').",
         "EmailTaken": "Dit e-mailadres is al in gebruik.",
         "KvkExists": "Dit Kvk-nummer is al geregistreerd.",
-        "IncorrectPassword": "Onjuist wachtwoord. Controleer uw wachtwoord en probeer het opnieuw.",
+        "IncorrectPassword": "Onjuist wachtwoord. Controleer je wachtwoord en probeer het opnieuw.",
         "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres.",
         "PasswordMismatch": "Wachtwoord en bevestigingswachtwoord komen niet overeen."
     },

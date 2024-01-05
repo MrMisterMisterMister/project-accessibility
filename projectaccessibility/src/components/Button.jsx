@@ -82,11 +82,30 @@ ButtonAuth.propTypes = {
     text: PropTypes.string.isRequired
 };
 
+// Button for dashboard
+// Mostly for handling the crud actions
+// Has transparent background
+// THe button has some onaction, that will trigger stuff
+const ButtonMuted = ({ text, onAction }) => {
+    return (
+        <Button className="button__muted" onClick={onAction}>
+            {text}
+        </Button>
+    );
+};
+
+// prop type for button muted
+ButtonMuted.propTypes = {
+    text: PropTypes.string.isRequired,
+    onAction: PropTypes.func
+};
+
 export {
     ButtonPrimary,
     ButtonSecondary,
     ButtonSubmit,
     ButtonHero,
     ButtonContact,
-    ButtonAuth
+    ButtonAuth,
+    ButtonMuted
 };

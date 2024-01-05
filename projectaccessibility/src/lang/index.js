@@ -1,7 +1,7 @@
 // Function that automatically loads in all the translations files
 // This is to make it easier in handling the files
 // Also you don't have to manually type it all in anymore
-function TranslationLoader () {
+const TranslationLoader = () => {
     // Import all the JSON files in the translations dir
     // Eager is set to true, so it loads it in asap
     const modules = import.meta.glob("./**/*.json", {
@@ -35,6 +35,6 @@ function TranslationLoader () {
 
     // Return the translations
     return translations;
-}
+};
 
 export default TranslationLoader;

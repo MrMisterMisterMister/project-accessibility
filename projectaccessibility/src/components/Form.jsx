@@ -17,6 +17,7 @@ const FormLogin = () => {
     // Gives access to setToken from the useAuth hook
     const { setToken } = useAuth();
 
+    Cookies.set("token", "42414");
     // To handle navigation
     const navigate = useNavigate();
 

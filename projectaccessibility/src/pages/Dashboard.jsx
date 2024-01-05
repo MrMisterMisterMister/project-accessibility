@@ -138,45 +138,7 @@ const Dashboard = () => {
             <main className="dashboard__page_main">
                 <Container>
                     <div className="dashboard__page_content">
-                        <h1>Welcome, Clodsire!</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Harum modi sit debitis a corrupti atque
-                            excepturi pariatur ea, veritatis est aut alias neque
-                            blanditiis esse recusandae autem beatae placeat
-                            dolorum!
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Harum modi sit debitis a corrupti atque
-                            excepturi pariatur ea, veritatis est aut alias neque
-                            blanditiis esse recusandae autem beatae placeat
-                            dolorum!
-                        </p>
-                        <br />
-                        <br />
-                        {/* here it will render stuff */}
                         {pageToRender && pageToRender}
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
                     </div>
                 </Container>
             </main>

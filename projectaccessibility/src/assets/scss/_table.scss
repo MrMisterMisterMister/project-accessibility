@@ -25,25 +25,25 @@
     }
 }
 
-// table view for panelmembers
-.table__panelmember {
+// general table view
+.table__general {
     background-color: variables.$white;
     box-shadow: 0 2px 5px -2px variables.$lightlavender;
     position: relative;
     color: variables.$blackrussian;
 
-    .table__panelmember_head {
+    .table__general_head {
         border-bottom: 1px solid variables.$cultured;
         font-size: 1rem;
         font-weight: bold;
         user-select: none;
     }
 
-    .table__panelmember_body {
+    .table__general_body {
         position: relative;
     }
 
-    .table__panelmember_item {
+    .table__general_item {
         border-bottom: 1px solid variables.$cultured;
         display: table-row;
 
@@ -51,8 +51,8 @@
             border-bottom: none;
         }
 
-        .table__panelmember_item__cell {
-            font-size: 0.825rem;
+        .table__general_item__cell {
+            font-size: 0.875rem;
             padding: 1rem;
             white-space: nowrap;
             font-style: normal;
