@@ -1165,11 +1165,27 @@ const FormCompanyProfileUpdate = () => {
     );
 };
 
+// form for company when they create a new reearch
+const FormCompanyResearchCreate = () => {
+    return (
+        <p>your mom 2</p>
+    );
+};
+
+// form when company wnats to updat their research
+const FormCompanyResearchUpdate = () => {
+    return (
+        <p>Your mom</p>
+    );
+};
+
 export {
     FormLogin,
     FormSignup,
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
     FormPanelMemberProfileUpdate,
-    FormCompanyProfileUpdate
+    FormCompanyProfileUpdate,
+    FormCompanyResearchCreate,
+    FormCompanyResearchUpdate
 };
