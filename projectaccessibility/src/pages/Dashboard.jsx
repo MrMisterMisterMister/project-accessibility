@@ -4,38 +4,74 @@ import {
     BarChart,
     PersonCircle,
     Gear,
-    BoxArrowRight
+    Book,
+    BoxArrowRight,
+    Buildings,
+    Person,
+    ChatLeftDots
 } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
+// All the different pages that are available in the dashboard
+import PanelMember from "./Panelmember";
+import Company from "./Company";
+import Research from "./Research";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
 
 // Dashboard page
 const Dashboard = () => {
+    // Translation
+    const { t: translate } = useTranslation("dashboard");
+
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
             icon: <BarChart />,
-            title: "Dashboard",
+            title: translate("dashboard"),
             active: true
         },
         {
+            page: <PanelMember />,
+            icon: <Person />,
+            title: translate("panelmember")
+        },
+        {
+            page: <Company />,
+            icon: <Buildings />,
+            title: translate("company")
+        },
+        {
+            page: <Research />,
+            icon: <Book />,
+            title: translate("research")
+        },
+        {
+            icon: <ChatLeftDots />,
+            title: translate("chats")
+        }
+    ]);
+
+    // These are the items that are displayed in the userMenu dropdown
+    // Had to make a seperate one, so they wouldn't be in the way of the main nav menu in dashboard
+    const userMenuItems = [
+        {
             page: <Account />,
             icon: <PersonCircle />,
-            title: "Account"
+            label: translate("profile")
         },
         {
             page: <Settings />,
             icon: <Gear />,
-            title: "Settings"
+            label: translate("settings")
         },
         {
             page: <Logout />,
             icon: <BoxArrowRight />,
-            title: "Sign out"
+            label: translate("signout")
         }
-    ]);
+    ];
 
     // State to keep track whether of scrolling behaviour done by user
     const [isScrolling, setIsScrolling] = useState(false);
@@ -89,9 +125,11 @@ const Dashboard = () => {
                 }`}
             >
                 <NavDashboardTopNav
-                    profilePicturePath="/img/placeholder.jpg"
-                    profilePictureAlt="Clodsire"
-                    userName="Clodsire"
+                    picturePath="/img/placeholder.jpg"
+                    pictureAlt="Clodsire"
+                    userName="ClodsireClodsireClodsireClodsireClodsire"
+                    userMenuItems={userMenuItems}
+                    onNavItemClick={handleNavItemClick}
                 />
                 <NavDashboardBottomNav
                     navItems={navItems}
@@ -101,45 +139,7 @@ const Dashboard = () => {
             <main className="dashboard__page_main">
                 <Container>
                     <div className="dashboard__page_content">
-                        <h1>Welcome, Clodsire!</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Harum modi sit debitis a corrupti atque
-                            excepturi pariatur ea, veritatis est aut alias neque
-                            blanditiis esse recusandae autem beatae placeat
-                            dolorum!
-                        </p>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Harum modi sit debitis a corrupti atque
-                            excepturi pariatur ea, veritatis est aut alias neque
-                            blanditiis esse recusandae autem beatae placeat
-                            dolorum!
-                        </p>
-                        <br />
-                        <br />
-                        {/* here it will render stuff */}
                         {pageToRender && pageToRender}
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
-                        <br />
                     </div>
                 </Container>
             </main>

@@ -15,8 +15,7 @@ const Logout = () => {
             }
         };
         aa();
-    }, [navigate]
-    );
+    }, [navigate]);
 };
 
 export default Logout;

@@ -10,7 +10,7 @@ import Footer from "../components/Footer";
 // Login page
 const Login = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("login");
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
@@ -38,11 +38,11 @@ const Login = () => {
 
     // Ditto
     const MicrosoftIcon = (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 23">
-            <path fill="#f35325" d="M1 1h10v10H1z" />
-            <path fill="#81bc06" d="M12 1h10v10H12z" />
-            <path fill="#05a6f0" d="M1 12h10v10H1z" />
-            <path fill="#ffba08" d="M12 12h10v10H12z" />
+        <svg viewBox="0 0 23 23">
+            <path d="M1 1h10v10H1z" fill="#f35325" />
+            <path d="M12 1h10v10H12z" fill="#81bc06" />
+            <path d="M1 12h10v10H1z" fill="#05a6f0" />
+            <path d="M12 12h10v10H12z" fill="#ffba08" />
         </svg>
     );
 
@@ -52,7 +52,7 @@ const Login = () => {
             <div className="login__page">
                 <Container className="login__container">
                     <h2 className="login__page_title">
-                        {translate("login.pageTitle")}
+                        {translate("pageTitle")}
                     </h2>
                     <div className="login__page_panel">
                         <div className="login__page_authentication login__page_column">
@@ -70,17 +70,17 @@ const Login = () => {
                                 <ButtonAuth
                                     icon={<PersonPlusFill />}
                                     path="/signup"
-                                    text={translate("login.auth.signup")}
+                                    text={translate("auth.signup")}
                                 />
                                 <ButtonAuth
                                     icon={GoogleIcon}
                                     path="#"
-                                    text={translate("login.auth.google")}
+                                    text={translate("auth.google")}
                                 />
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
                                     path="#"
-                                    text={translate("login.auth.microsoft")}
+                                    text={translate("auth.microsoft")}
                                 />
                             </div>
                         </div>

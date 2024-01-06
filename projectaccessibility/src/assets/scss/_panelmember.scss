@@ -1,0 +1,26 @@
+@use 'variables';
+
+// panelmember in dashboard
+.panelmember__dashboard {
+    position: relative;
+
+    .panelmember__dashboard_title {
+        font-size: 1.75rem;
+        color: variables.$blackrussian;
+        line-height: normal;
+        font-weight: 900;
+        padding-bottom: 1rem;
+    }
+
+    .panelmember__dashboard_options {
+        padding-bottom: 2rem;
+
+        & > button:not(:last-child) {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .panelmember__dashboard_content {
+        height: auto;
+    }
+}

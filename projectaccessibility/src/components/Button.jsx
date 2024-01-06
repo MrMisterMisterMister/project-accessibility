@@ -2,14 +2,38 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
 
-// Primary button. To be made
-const ButtonPrimary = () => {
-    return <></>;
+// Primary button
+// Just something
+const ButtonPrimary = ({ text, isActive, action }) => {
+    return (
+        <Button className={`button__primary ${isActive ? "active" : ""}`} onClick={action}>
+            {text}
+        </Button>
+    );
 };
 
-// Secondary button. To be made
-const ButtonSecondary = () => {
-    return <></>;
+// something something
+ButtonPrimary.propTypes = {
+    text: PropTypes.string.isRequired,
+    isActive: PropTypes.bool,
+    action: PropTypes.func
+};
+
+// Secondary button
+// Yes, just copy pasted
+const ButtonSecondary = ({ text, isActive, action }) => {
+    return (
+        <Button className={`button__secondary ${isActive ? "active" : ""}`} onClick={action}>
+            {text}
+        </Button>
+    );
+};
+
+// something something
+ButtonSecondary.propTypes = {
+    text: PropTypes.string.isRequired,
+    isActive: PropTypes.bool,
+    action: PropTypes.func
 };
 
 // General button for submits in forms
@@ -82,11 +106,30 @@ ButtonAuth.propTypes = {
     text: PropTypes.string.isRequired
 };
 
+// Button for dashboard
+// Mostly for handling the crud actions
+// Has transparent background
+// THe button has some onaction, that will trigger stuff
+const ButtonMuted = ({ text, onAction }) => {
+    return (
+        <Button className="button__muted" onClick={onAction}>
+            {text}
+        </Button>
+    );
+};
+
+// prop type for button muted
+ButtonMuted.propTypes = {
+    text: PropTypes.string.isRequired,
+    onAction: PropTypes.func
+};
+
 export {
     ButtonPrimary,
     ButtonSecondary,
     ButtonSubmit,
     ButtonHero,
     ButtonContact,
-    ButtonAuth
+    ButtonAuth,
+    ButtonMuted
 };

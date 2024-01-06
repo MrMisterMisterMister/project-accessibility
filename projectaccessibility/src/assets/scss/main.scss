@@ -14,8 +14,12 @@
 @use 'group';
 @use 'form';
 @use 'alert';
+@use 'table';
 @use 'settings';
 @use 'account';
+@use 'research';
+@use 'panelmember';
+@use 'company';
 
 // section
 @use 'hero';
@@ -24,6 +28,7 @@
 @use 'news';
 @use 'case';
 @use 'contact';
+@use 'user';
 
 // pages
 @use 'sitemap';
