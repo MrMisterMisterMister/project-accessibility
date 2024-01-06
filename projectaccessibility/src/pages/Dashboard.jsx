@@ -12,10 +12,10 @@ import {
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
-// All the different pages that are available in the dashboard
 import PanelMember from "./PanelMember";
 import Company from "./Company";
 import Research from "./Research";
+import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
@@ -48,6 +48,7 @@ const Dashboard = () => {
             title: translate("research")
         },
         {
+            page: <Chats />,
             icon: <ChatLeftDots />,
             title: translate("chats")
         }

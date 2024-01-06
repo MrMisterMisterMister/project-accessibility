@@ -15,6 +15,14 @@ const Research = () => {
         <div className="research__dashboard">
             <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
+                {
+                    /*
+                    Also need to figure something out to display the buttons to certain roles only
+                    Like 'Show All' is only for panelmember and 'New Research' is only for company
+                    Something like conditional function should solve it maybe, but for now, I am just
+                    letting it stay like this
+                    */
+                }
                 <ButtonSecondary text="My Research" />
                 <ButtonSecondary text="Show All" />
                 <ButtonSecondary text="New Research" />
@@ -32,8 +40,8 @@ const Research = () => {
 
                 <h2>for panelmember, joined researches</h2>
                 <TablePanelMemberResearchView />
-                <br/>
-                <br/>
+                <br />
+                <br />
 
                 <div className="research__content">
                     <h4 className="research__content_title">
