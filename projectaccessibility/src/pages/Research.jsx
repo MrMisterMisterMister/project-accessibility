@@ -1,7 +1,7 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
-import { TableCompanyResearchView, TablePanelMemberResearchView } from "../components/Table";
+import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate } from "../components/Form";
 
 // Research page
@@ -16,6 +16,7 @@ const Research = () => {
             <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary text="My Research" />
+                <ButtonSecondary text="Show All" />
                 <ButtonSecondary text="New Research" />
             </div>
             <div className="research__dashboard_content">
@@ -25,9 +26,14 @@ const Research = () => {
                 <br />
 
                 <h2>for panelmember, available researches</h2>
+                <TableAvailableResearchView />
+                <br />
+                <br />
+
+                <h2>for panelmember, joined researches</h2>
                 <TablePanelMemberResearchView />
-                <br />
-                <br />
+                <br/>
+                <br/>
 
                 <div className="research__content">
                     <h4 className="research__content_title">
