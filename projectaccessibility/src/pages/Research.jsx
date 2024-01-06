@@ -1,14 +1,19 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
 import { TableCompanyResearchView, TablePanelMemberResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate } from "../components/Form";
 
-// The research screen a company sees
-// Here they just create researches for panelmembers
+// Research page
+// In here the components will be role dependend loaded
+// Still need to figure it out, so just putting all components open for now
 const Research = () => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     return (
         <div className="research__dashboard">
-            <h1 className="research__dashboard_title">Researches</h1>
+            <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary text="My Research" />
                 <ButtonSecondary text="New Research" />
@@ -18,19 +23,29 @@ const Research = () => {
                 <TableCompanyResearchView />
                 <br />
                 <br />
+
                 <h2>for panelmember, available researches</h2>
                 <TablePanelMemberResearchView />
                 <br />
                 <br />
-                <h2>for company when they create a research</h2>
-                <FormCompanyResearchCreate />
-                <br />
-                <br />
-                <h2>for company, when they edit a research, this shows up</h2>
-                <FormCompanyResearchUpdate />
-                <br />
-                <br />
-                <h2>for panelmember, when they view a research</h2>
+
+                <div className="research__content">
+                    <h4 className="research__content_title">
+                        Create Research
+                    </h4>
+                    <div className="research__content_container">
+                        <FormCompanyResearchCreate />
+                    </div>
+                </div>
+
+                <div className="research__content">
+                    <h4 className="research__content_title">
+                        Edit Research
+                    </h4>
+                    <div className="research__content_container">
+                        <FormCompanyResearchUpdate />
+                    </div>
+                </div>
             </div>
         </div>
     );

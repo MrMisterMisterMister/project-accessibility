@@ -13,7 +13,7 @@ import {
 import { useTranslation } from "react-i18next";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 // All the different pages that are available in the dashboard
-import PanelMember from "./Panelmember";
+import PanelMember from "./PanelMember";
 import Company from "./Company";
 import Research from "./Research";
 import Account from "./Account";

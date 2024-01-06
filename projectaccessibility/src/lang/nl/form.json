@@ -9,6 +9,9 @@
     "settings": {
         "buttonText": "Verzenden"
     },
+    "research": {
+        "buttonText": "Verzenden"
+    },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",
     "emailConfirmLabel": "Bevestig e-mail",
@@ -62,6 +65,18 @@
     "provincePlaceholder": "Provincie",
     "websiteUrlLabel": "Website URL",
     "websiteUrlPlaceholder": "Website URL",
+    "titleLabel": "Titel",
+    "titlePlaceholder": "Titel",
+    "descriptionLabel": "Omschrijving",
+    "descriptionPlaceholder": "Omschrijving",
+    "dateLabel": "Datum",
+    "datePlaceholder": "Datum",
+    "rewardLabel": "Beloning",
+    "rewardPlaceholder": "Beloning",
+    "typeLabel": "Type",
+    "typePlaceholder": "Type",
+    "categoryLabel": "Categorie",
+    "categoryPlaceholder": "Categorie",
     "error": {
         "emailRequired": "* Voer je e-mailadres in",
         "emailPattern": "* Voer een geldig e-mailadres in",
@@ -91,7 +106,13 @@
         "countryRequired": "* Selecteer een land",
         "cityRequired": "* Voer je stad in",
         "provinceRequired": "* Voer je provincie in",
-        "websiteUrlRequired": "* Voer je website URL in"
+        "websiteUrlRequired": "* Voer je website URL in",
+        "titleRequired": "* Voer je titel in",
+        "descriptionRequired": "* Voer je omschrijving in",
+        "dateRequired": "* Voer je datum in",
+        "rewardRequired": "* Voer je beloning in",
+        "typeRequired": "* Voer je type in",
+        "categoryRequired": "* Voer je categorie in"
     },
     "success": {}
 }

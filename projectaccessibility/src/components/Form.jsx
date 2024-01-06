@@ -1167,8 +1167,187 @@ const FormCompanyProfileUpdate = () => {
 
 // form for company when they create a new reearch
 const FormCompanyResearchCreate = () => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
+    const companyResearchCreateSubmit = async (formData) => {
+        // Axios
+        const createCompanyResearchResponse = postRequest(
+            "idontknowtheendpoint", // i dont know the endpoint
+            formData
+        );
+
+        // Handle the response from the POST call
+        createCompanyResearchResponse
+            .then((response) => {
+                // Some inspiring comment
+                console.log(response);
+                reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+            });
+    };
+
+    // Need to configurate the translations
     return (
-        <p>your mom 2</p>
+        <>
+            <Form
+                className="form__research"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(companyResearchCreateSubmit)}
+                noValidate
+            >
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("titleLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.title ? "error" : ""}`}
+                            type="text"
+                            {...register("title", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.titleRequired")
+                                }
+                            })}
+                            aria-invalid={errors.title ? "true" : "false"}
+                            placeholder={translate("titlePlaceholder")}
+                        />
+                        {errors.title && (
+                            <div className="form__error">
+                                {errors.title.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("descriptionLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.description ? "error" : ""}`}
+                            as="textarea"
+                            {...register("description", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.descriptionRequired")
+                                }
+                            })}
+                            aria-invalid={errors.description ? "true" : "false"}
+                            placeholder={translate("descriptionPlaceholder")}
+                            rows={5}
+                        />
+                        {errors.description && (
+                            <div className="form__error">
+                                {errors.description.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("dateLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.date ? "error" : ""}`}
+                            type="date"
+                            {...register("date", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.dateRequired")
+                                }
+                            })}
+                            aria-invalid={errors.date ? "true" : "false"}
+                            placeholder={translate("datePlaceholder")}
+                        />
+                        {errors.date && (
+                            <div className="form__error">
+                                {errors.date.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("rewardLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.reward ? "error" : ""}`}
+                            type="text"
+                            {...register("reward", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.rewardRequired")
+                                }
+                            })}
+                            aria-invalid={errors.reward ? "true" : "false"}
+                            placeholder={translate("rewardPlaceholder")}
+                        />
+                        {errors.reward && (
+                            <div className="form__error">
+                                {errors.reward.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("typeLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.type ? "error" : ""}`}
+                            type="text"
+                            {...register("type", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.typeRequired")
+                                }
+                            })}
+                            aria-invalid={errors.type ? "true" : "false"}
+                            placeholder={translate("typePlaceholder")}
+                        />
+                        {errors.type && (
+                            <div className="form__error">
+                                {errors.type.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("categoryLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.category ? "error" : ""}`}
+                            type="text"
+                            {...register("category", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.categoryRequired")
+                                }
+                            })}
+                            aria-invalid={errors.category ? "true" : "false"}
+                            placeholder={translate("categoryPlaceholder")}
+                        />
+                        {errors.category && (
+                            <div className="form__error">
+                                {errors.category.message}
+                            </div>
+                        )}
+                    </Col>
+                </Row>
+                <ButtonSubmit
+                    style="button__submit"
+                    text={translate("research.buttonText")}
+                />
+            </Form>
+        </>
     );
 };
 

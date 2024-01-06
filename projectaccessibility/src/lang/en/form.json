@@ -9,6 +9,9 @@
     "settings": {
         "buttonText": "Submit"
     },
+    "research": {
+        "buttonText": "Submit"
+    },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
     "emailConfirmLabel": "Confirm email",
@@ -62,6 +65,18 @@
     "provincePlaceholder": "Your province",
     "websiteUrlLabel": "Website URL",
     "websiteUrlPlaceholder": "Your website URL",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Title",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Description",
+    "dateLabel": "Date",
+    "datePlaceholder": "Date",
+    "rewardLabel": "Reward",
+    "rewardPlaceholder": "Reward",
+    "typeLabel": "Type",
+    "typePlaceholder": "Type",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Category",
     "error": {
         "emailRequired": "* Please enter your email address",
         "emailPattern": "* Please enter a valid email address",
@@ -91,7 +106,13 @@
         "countryRequired": "* Please select a country",
         "cityRequired": "* Please enter your city",
         "provinceRequired": "* Please enter your province",
-        "websiteUrlRequired": "* Please enter your website URL"
+        "websiteUrlRequired": "* Please enter your website URL",
+        "titleRequired": "* Please enter your title",
+        "descriptionRequired": "* Please enter your description",
+        "dateRequired": "* Please enter your date",
+        "rewardRequired": "* Please enter your reward",
+        "typeRequired": "* Please enter your type",
+        "categoryRequired": "* Please enter your category"
     },
     "success": {}
 }
