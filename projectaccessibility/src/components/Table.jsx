@@ -177,6 +177,7 @@ TableCompanyView.propTypes = {
 // Also the buttons for need onAction
 // Will update it later
 const TableCompanyResearchView = () => {
+    // columns for the company research view
     const columns = [
         { label: "#" },
         { label: "Title" },
@@ -260,7 +261,73 @@ const TableCompanyResearchView = () => {
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TablePanelMemberResearchView = () => {
-    return <p>Your mom</p>;
+    const columns = [
+        { label: "#" },
+        { label: "Title" },
+        { label: "Date" },
+        { label: "Type" },
+        { label: "Reward" },
+        { label: "Category" },
+        { label: "Organizer" },
+        { label: "Actions", colSpan: 2 }
+    ];
+
+    const test = [
+        {
+            id: 1,
+            title: "Very special research",
+            type: "Online",
+            date: "2024-02-06",
+            reward: 50,
+            category: "Blind, No Legs, No Arms, No Mouth",
+            organizer: "Cornhub"
+        },
+        {
+            id: 2,
+            title: "Omae Wa Mou",
+            date: "2024-09-09",
+            type: "Online",
+            reward: 5555,
+            category: "大",
+            organizer: "Stichting Accessibility"
+        }
+    ];
+
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <TableHead columns={columns} />
+                <tbody className="table__general_body">
+                    {test.length > 0
+                        ? (
+                            test.map((item) => (
+                                <tr key={item.id} className="table__general_item">
+                                    <td className="table__general_item__cell">{item.id}</td>
+                                    <td className="table__general_item__cell">{item.title}</td>
+                                    <td className="table__general_item__cell">{item.date}</td>
+                                    <td className="table__general_item__cell">{item.type}</td>
+                                    <td className="table__general_item__cell">{NumberFormatter.format(item.reward)}</td>
+                                    <td className="table__general_item__cell">{item.category}</td>
+                                    <td className="table__general_item__cell">{item.organizer}</td>
+                                    <td className="table__general_item__cell" colSpan={2}>
+                                        <ButtonMuted text="View" />
+                                        <ButtonMuted text="Join" />
+                                    </td>
+                                </tr>
+                            ))
+                        )
+                        : (
+                            <tr className="table__general_item">
+                                <td className="table__general_item__cell" colSpan={9}>
+                                    No data available.
+                                </td>
+                            </tr>
+                        )
+                    }
+                </tbody>
+            </table>
+        </div>
+    );
 };
 
 export {
