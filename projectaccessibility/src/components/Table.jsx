@@ -35,7 +35,7 @@ const TableBody = ({ tableData, columns }) => {
                 ? (
                     tableData.map((row, rowIndex) => (
                         <tr key={rowIndex} className="table__general_item">
-                            {columns.map(({ accessor, colSpan, format, actions }, colIndex) => (
+                            {columns.map(({ accessor, format, actions, colSpan }, colIndex) => (
                                 <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
                                     {
                                         actions
