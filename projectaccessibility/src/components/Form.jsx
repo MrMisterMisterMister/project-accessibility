@@ -828,7 +828,7 @@ const FormPanelMemberProfileUpdate = () => {
                             {...register("dateOfBirth", {
                                 required: {
                                     value: true,
-                                    message: translate("dateOfBirthRequired")
+                                    message: translate("error.dateOfBirthRequired")
                                 }
                             })}
                             aria-invalid={errors.dateOfBirth ? "true" : "false"}
@@ -867,26 +867,46 @@ const FormPanelMemberProfileUpdate = () => {
                             {translate("postalCodeLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.postalcode ? "error" : ""}`}
+                            className={`form__text_field ${errors.postalCode ? "error" : ""}`}
                             type="text"
-                            {...register("postalcode", {
+                            {...register("postalCode", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.postalCodeRequired"
-                                    )
+                                    message: translate("error.postalCodeRequired")
                                 }
                             })}
                             aria-invalid={errors.postalcode ? "true" : "false"}
                             placeholder={translate("postalCodePlaceholder")}
                         />
-                        {errors.postalcode && (
+                        {errors.postalCode && (
                             <div className="form__error">
-                                {errors.postalcode.message}
+                                {errors.postalCode.message}
                             </div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
+                        <Form.Label className="form__label">
+                            {translate("provinceLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            type="text"
+                            {...register("province", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.provinceRequired")
+                                }
+                            })}
+                            aria-invalid={errors.province ? "true" : "false"}
+                            placeholder={translate("provincePlaceholder")}
+                        />
+                        {errors.province && (
+                            <div className="form__error">
+                                {errors.province.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
                         <Form.Label className="form__label">
                             {translate("countryLabel")}
                         </Form.Label>
@@ -1043,6 +1063,28 @@ const FormCompanyProfileUpdate = () => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
+                            {translate("contactPersonPlaceholder")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.contactPerson ? "error" : ""}`}
+                            type="text"
+                            {...register("contactPerson", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.contactPersonRequired")
+                                }
+                            })}
+                            aria-invalid={errors.contactPerson ? "true" : "false"}
+                            placeholder={translate("contactPersonPlaceholder")}
+                        />
+                        {errors.contactPerson && (
+                            <div className="form__error">
+                                {errors.contactPerson.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
                             {translate("addressLabel")}
                         </Form.Label>
                         <Form.Control
@@ -1060,28 +1102,6 @@ const FormCompanyProfileUpdate = () => {
                         {errors.address && (
                             <div className="form__error">
                                 {errors.address.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("cityPlaceholder")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.city ? "error" : ""}`}
-                            type="text"
-                            {...register("city", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.cityRequired")
-                                }
-                            })}
-                            aria-invalid={errors.city ? "true" : "false"}
-                            placeholder={translate("cityPlaceholder")}
-                        />
-                        {errors.city && (
-                            <div className="form__error">
-                                {errors.city.message}
                             </div>
                         )}
                     </Col>
@@ -1152,6 +1172,34 @@ const FormCompanyProfileUpdate = () => {
                         {errors.websiteUrl && (
                             <div className="form__error">
                                 {errors.websiteUrl.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("countryLabel")}
+                        </Form.Label>
+                        <Form.Select
+                            className={`form__select_menu ${errors.country ? "error" : ""}`}
+                            {...register("country", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.countryRequired")
+                                }
+                            })}
+                            aria-invalid={errors.country ? "true" : "false"}
+                            defaultValue=""
+                        >
+                            <option value="" hidden>
+                                {translate("countryOptions.placeholder")}
+                            </option>
+                            <option value="The Netherlands">
+                                {translate("countryOptions.netherlands")}
+                            </option>
+                        </Form.Select>
+                        {errors.country && (
+                            <div className="form__error">
+                                {errors.country.message}
                             </div>
                         )}
                     </Col>
