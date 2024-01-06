@@ -26,6 +26,25 @@ axiosClient.interceptors.request.use((config) => {
     }
 
     return config;
+}, (error) => {
+
+    return Promise.reject(error); 
+});
+
+const responseBody = (response) => response.data;
+
+const requests = {
+    get: (url) => axiosClient.get(url).then(responseBody),
+    post: (url, body) => axiosClient.post(url, body).then(responseBody),
+    put: (url, body) => axiosClient.put(url, body).then(responseBody),
+    del: (url) => axiosClient.delete(url).then(responseBody)
+};
+
+const createEndpoint = (endpoint) => ({
+    post: (data) => axiosClient.post(`/${endpoint}`, data),
+    get: () => requests.get(`/${endpoint}`),
+    put: (id, data) => axiosClient.put(`/${endpoint}/${id}`, data),
+    delete: (id) => axiosClient.del(`/${endpoint}/${id}`)
 });
 
 // Get request
@@ -48,4 +67,4 @@ async function deleteRequest (URL) {
     return await axiosClient.delete(`/${URL}`);
 }
 
-export { getRequest, postRequest, putRequest, deleteRequest };
+export { getRequest, postRequest, putRequest, deleteRequest, createEndpoint };

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { postRequest } from "../api/axiosClient";
+import { createEndpoint } from "../api/axiosClient";
 import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
@@ -38,7 +38,7 @@ const FormLogin = () => {
     // Function triggered when the submit button is pressed in the login form
     const handleLoginSubmit = (formData) => {
         // Make the POST call to the login endpoint
-        const loginResponse = postRequest("login/", formData);
+        const loginResponse = createEndpoint("login").post(formData);
 
         // Handle the response from the POST call
         loginResponse

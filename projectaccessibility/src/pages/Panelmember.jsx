@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { TablePanelMemberView } from "../components/Table";
 import { CardPanelMemberView } from "../components/Card";
 import { ButtonSecondary } from "../components/Button";
-import { getRequest } from "../api/axiosClient";
+import { createEndpoint } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
 // Panelmember view for admin
@@ -32,16 +32,18 @@ const PanelMember = () => {
         });
     };
 
+    // planning to do this in a global file
+    const fetchPanelMembers = async () => {
+        const data = await createEndpoint("panelmembers").get();
+        setPanelMembers(data);
+    }
+
     // Sends get request to api to get all the panelmembers
     // Load them inside the hook afterwards
     useEffect(() => {
-        getRequest("panelmembers")
-            .then((response) => {
-                setPanelMembers(response.data);
-            })
-            .catch((error) => {
-                console.log(error.response);
-            });
+        if (panelMembers.length === 0) {
+            fetchPanelMembers();
+        }
     }, []); // Run once
 
     // All the available views
