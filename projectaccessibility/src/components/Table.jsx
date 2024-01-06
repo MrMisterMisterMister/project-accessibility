@@ -35,16 +35,16 @@ const TableBody = ({ tableData, columns }) => {
                 ? (
                     tableData.map((row, rowIndex) => (
                         <tr key={rowIndex} className="table__general_item">
-                            {columns.map(({ accessor, format }, colIndex) => (
-                                <td key={colIndex} className="table__general_item__cell">
+                            {columns.map(({ accessor, colSpan, format, actions }, colIndex) => (
+                                <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
                                     {
-                                        // This is to make some keys join together as one td
-                                        // Just got this from github
-                                        Array.isArray(accessor)
-                                            ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
-                                            : format
-                                                ? format(row[accessor])
-                                                : row[accessor]
+                                        actions
+                                            ? actions(/* need to put in the id here, most likely row */)
+                                            : Array.isArray(accessor)
+                                                ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
+                                                : format
+                                                    ? format(row[accessor])
+                                                    : row[accessor]
                                     }
                                 </td>
                             ))}
@@ -72,7 +72,8 @@ TableBody.propTypes = {
                 PropTypes.string.isRequired,
                 PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
             ]),
-            format: PropTypes.func
+            format: PropTypes.func,
+            actions: PropTypes.func
         })
     ).isRequired
 };
@@ -180,7 +181,7 @@ const TablePanelMemberResearchView = () => {
         { label: "Title", accessor: "title" },
         { label: "Description", accessor: "description" },
         { label: "Date", accessor: "date" },
-        { label: "Reward", accessor: "reward" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: "Category", accessor: "category" },
         { label: "Status", accessor: "status" }
     ];
@@ -233,14 +234,45 @@ const TablePanelMemberResearchView = () => {
 const TableCompanyResearchView = () => {
     // columns for the company research view
     const columns = [
-        { label: "#" },
-        { label: "Title" },
-        { label: "Description" },
-        { label: "Date" },
-        { label: "Reward" },
-        { label: "Category" },
-        { label: "Status" },
-        { label: "Actions", colSpan: 2 }
+        {
+            label: "#",
+            accessor: "id"
+        },
+        {
+            label: "Title",
+            accessor: "title"
+        },
+        {
+            label: "Description",
+            accessor: "description"
+        },
+        {
+            label: "Date",
+            accessor: "date"
+        },
+        {
+            label: "Reward",
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
+        {
+            label: "Category",
+            accessor: "category"
+        },
+        {
+            label: "Status",
+            accessor: "status"
+        },
+        {
+            label: "Actions",
+            colSpan: 2,
+            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
+                <>
+                    <ButtonMuted text="Edit" />
+                    <ButtonMuted text="Delete" />
+                </>
+            )
+        }
     ];
 
     // some test data
@@ -270,43 +302,7 @@ const TableCompanyResearchView = () => {
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                {
-                    /*
-                        The body can't be used in the tablebody component
-                        because it has the custom ButtonMuted component and it's not optimized to handle it
-                        and if I somehow make it work, it's too complicated
-                        so I am keeping it this way
-                        also still need to loop over the data, for now hard coded data to test
-                    */
-                }
-                <tbody className="table__general_body">
-                    {testData.length > 0
-                        ? (
-                            testData.map((item) => (
-                                <tr key={item.id} className="table__general_item">
-                                    <td className="table__general_item__cell">{item.id}</td>
-                                    <td className="table__general_item__cell">{item.title}</td>
-                                    <td className="table__general_item__cell">{item.description}</td>
-                                    <td className="table__general_item__cell">{item.date}</td>
-                                    <td className="table__general_item__cell">{NumberFormatter.format(item.reward)}</td>
-                                    <td className="table__general_item__cell">{item.category}</td>
-                                    <td className="table__general_item__cell">{item.status}</td>
-                                    <td className="table__general_item__cell" colSpan={2}>
-                                        <ButtonMuted text="Edit" />
-                                        <ButtonMuted text="Delete" />
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                        : (
-                            <tr className="table__general_item">
-                                <td className="table__general_item__cell" colSpan={9}>
-                                    No data available.
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
+                <TableBody columns={columns} tableData={testData} />
             </table>
         </div>
     );
@@ -316,14 +312,45 @@ const TableCompanyResearchView = () => {
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = () => {
     const columns = [
-        { label: "#" },
-        { label: "Title" },
-        { label: "Date" },
-        { label: "Type" },
-        { label: "Reward" },
-        { label: "Category" },
-        { label: "Organizer" },
-        { label: "Actions", colSpan: 2 }
+        {
+            label: "#",
+            accessor: "id"
+        },
+        {
+            label: "Title",
+            accessor: "title"
+        },
+        {
+            label: "Type",
+            accessor: "type"
+        },
+        {
+            label: "Date",
+            accessor: "date"
+        },
+        {
+            label: "Reward",
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
+        {
+            label: "Category",
+            accessor: "category"
+        },
+        {
+            label: "Organizer",
+            accessor: "organizer"
+        },
+        {
+            label: "Actions",
+            colSpan: 2,
+            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
+                <>
+                    <ButtonMuted text="View" />
+                    <ButtonMuted text="Join" />
+                </>
+            )
+        }
     ];
 
     const test = [
@@ -332,7 +359,7 @@ const TableAvailableResearchView = () => {
             title: "Very special research",
             type: "Online",
             date: "2024-02-06",
-            reward: 50,
+            reward: 142440.42,
             category: "Blind, No Legs, No Arms, No Mouth",
             organizer: "Cornhub"
         },
@@ -351,34 +378,7 @@ const TableAvailableResearchView = () => {
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <tbody className="table__general_body">
-                    {test.length > 0
-                        ? (
-                            test.map((item) => (
-                                <tr key={item.id} className="table__general_item">
-                                    <td className="table__general_item__cell">{item.id}</td>
-                                    <td className="table__general_item__cell">{item.title}</td>
-                                    <td className="table__general_item__cell">{item.date}</td>
-                                    <td className="table__general_item__cell">{item.type}</td>
-                                    <td className="table__general_item__cell">{NumberFormatter.format(item.reward)}</td>
-                                    <td className="table__general_item__cell">{item.category}</td>
-                                    <td className="table__general_item__cell">{item.organizer}</td>
-                                    <td className="table__general_item__cell" colSpan={2}>
-                                        <ButtonMuted text="View" />
-                                        <ButtonMuted text="Join" />
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                        : (
-                            <tr className="table__general_item">
-                                <td className="table__general_item__cell" colSpan={9}>
-                                    No data available.
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
+                <TableBody columns={columns} tableData={test} />
             </table>
         </div>
     );
