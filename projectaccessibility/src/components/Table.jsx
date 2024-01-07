@@ -85,43 +85,15 @@ const TablePanelMemberView = ({ data }) => {
     // Make array to define the heading and also the accessor for the data
     // Some of these fields are empty, our database needs to be updated to add these columns
     const columns = [
-        {
-            label: "#",
-            accessor: "id"
-        },
-        {
-            label: "Name",
-            accessor: ["firstName", "lastName"]
-        },
-        {
-            label: "Email",
-            accessor: "email"
-        },
-        {
-            label: "Phone",
-            accessor: "phone"
-        },
-        {
-            label: "Date of Birth",
-            accessor: "dateOfBirth",
-            format: (date) => DateFormatter.format(new Date(date)) // display DoY nicely
-        },
-        {
-            label: "Address",
-            accessor: "address"
-        },
-        {
-            label: "Postal Code",
-            accessor: "postalCode"
-        },
-        {
-            label: "Province",
-            accessor: "province"
-        },
-        {
-            label: "Country",
-            accessor: "country"
-        }
+        { label: "#", accessor: "id" },
+        { label: "Name", accessor: ["firstName", "lastName"] },
+        { label: "Email", accessor: "email" },
+        { label: "Phone", accessor: "phone" },
+        { label: "Date of Birth", accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: "Address", accessor: "address" },
+        { label: "Postal Code", accessor: "postalCode" },
+        { label: "Province", accessor: "province" },
+        { label: "Country", accessor: "country" }
     ];
 
     // These items need to be looped over
@@ -231,46 +203,23 @@ const TablePanelMemberResearchView = () => {
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableCompanyResearchView = () => {
+const TableCompanyResearchView = ({ handleView }) => {
     // columns for the company research view
     const columns = [
-        {
-            label: "#",
-            accessor: "id"
-        },
-        {
-            label: "Title",
-            accessor: "title"
-        },
-        {
-            label: "Description",
-            accessor: "description"
-        },
-        {
-            label: "Date",
-            accessor: "date"
-        },
-        {
-            label: "Reward",
-            accessor: "reward",
-            format: (number) => NumberFormatter.format(number)
-        },
-        {
-            label: "Category",
-            accessor: "category"
-        },
-        {
-            label: "Status",
-            accessor: "status"
-        },
+        { label: "#", accessor: "id" },
+        { label: "Title", accessor: "title" },
+        { label: "Description", accessor: "description" },
+        { label: "Date", accessor: "date" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Category", accessor: "category" },
+        { label: "Status", accessor: "status" },
         {
             label: "Actions",
             colSpan: 2,
-            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
-                <>
-                    <ButtonMuted text="Edit" />
-                    <ButtonMuted text="Delete" />
-                </>
+            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (<>
+                <ButtonMuted text="Edit" onAction={() => handleView("editResearch")} />
+                <ButtonMuted text="Delete" />
+            </>
             )
         }
     ];
@@ -308,39 +257,22 @@ const TableCompanyResearchView = () => {
     );
 };
 
+// Prop type for the company table view
+TableCompanyResearchView.propTypes = {
+    handleView: PropTypes.func
+};
+
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = () => {
     const columns = [
-        {
-            label: "#",
-            accessor: "id"
-        },
-        {
-            label: "Title",
-            accessor: "title"
-        },
-        {
-            label: "Type",
-            accessor: "type"
-        },
-        {
-            label: "Date",
-            accessor: "date"
-        },
-        {
-            label: "Reward",
-            accessor: "reward",
-            format: (number) => NumberFormatter.format(number)
-        },
-        {
-            label: "Category",
-            accessor: "category"
-        },
-        {
-            label: "Organizer",
-            accessor: "organizer"
-        },
+        { label: "#", accessor: "id" },
+        { label: "Title", accessor: "title" },
+        { label: "Type", accessor: "type" },
+        { label: "Date", accessor: "date" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Category", accessor: "category" },
+        { label: "Organizer", accessor: "organizer" },
         {
             label: "Actions",
             colSpan: 2,
