@@ -548,10 +548,7 @@ const FormUserEmailUpdate = () => {
                 {errors.password && (
                     <div className="form__error">{errors.password.message}</div>
                 )}
-                <ButtonSubmit
-                    style="button__settings"
-                    text={translate("settings.buttonText")}
-                />
+                <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
@@ -693,10 +690,7 @@ const FormUserPasswordUpdate = () => {
                         {errors.passwordConfirm.message}
                     </div>
                 )}
-                <ButtonSubmit
-                    style="button__settings"
-                    text={translate("settings.buttonText")}
-                />
+                <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
@@ -935,10 +929,7 @@ const FormPanelMemberProfileUpdate = () => {
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit
-                    style="button__settings"
-                    text={translate("settings.buttonText")}
-                />
+                <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
@@ -1204,10 +1195,7 @@ const FormCompanyProfileUpdate = () => {
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit
-                    style="button__settings"
-                    text={translate("settings.buttonText")}
-                />
+                <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
@@ -1390,10 +1378,7 @@ const FormCompanyResearchCreate = () => {
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit
-                    style="button__submit"
-                    text={translate("research.buttonText")}
-                />
+                <ButtonSubmit text={translate("research.buttonText")} />
             </Form>
         </>
     );
@@ -1580,10 +1565,7 @@ const FormCompanyResearchUpdate = () => {
                         )}
                     </Col>
                 </Row>
-                <ButtonSubmit
-                    style="button__submit"
-                    text={translate("research.buttonText")}
-                />
+                <ButtonSubmit text={translate("research.buttonText")} />
             </Form>
         </>
     );

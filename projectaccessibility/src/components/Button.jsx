@@ -38,7 +38,7 @@ ButtonSecondary.propTypes = {
 
 // General button for submits in forms
 const ButtonSubmit = ({ style, text }) => {
-    return <Button className={style} as="input" type="submit" value={text} />;
+    return <Button className={style || "button__submit" } as="input" type="submit" value={text} />;
 };
 
 // prop type for button submit
