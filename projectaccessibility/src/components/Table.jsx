@@ -145,6 +145,7 @@ TableCompanyView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
+// TODO
 // still need to be updated. wip
 const TablePanelMemberResearchView = () => {
     // columns
@@ -199,6 +200,7 @@ const TablePanelMemberResearchView = () => {
     );
 };
 
+// TODO
 // Same here, needs to be changed to load in all the data
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
@@ -262,6 +264,7 @@ TableCompanyResearchView.propTypes = {
     handleView: PropTypes.func
 };
 
+// TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = () => {

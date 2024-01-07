@@ -1,8 +1,9 @@
 import React from "react";
 import { AccountCompany, AccountPanelMember } from "../components/Account";
 
-// Profile page in portal
-// This is just placeholder, it will be updated later on
+// TODO
+// This is the page for when you click 'Profile'
+// It still needs to be updated to show the correct profile, depending on which user type is logged in
 const Account = () => {
     return (
         <>

@@ -445,6 +445,7 @@ const FormSignup = () => {
     );
 };
 
+// TODO
 // Form to update email
 // Need to catch the user type somewhere
 // Also need to get their guid
@@ -554,6 +555,7 @@ const FormUserEmailUpdate = () => {
     );
 };
 
+// TODO
 // Form to update password
 const FormUserPasswordUpdate = () => {
     // Translation
@@ -696,6 +698,7 @@ const FormUserPasswordUpdate = () => {
     );
 };
 
+// TODO
 // Form for panel members to update their information
 const FormPanelMemberProfileUpdate = () => {
     // Translation
@@ -935,6 +938,7 @@ const FormPanelMemberProfileUpdate = () => {
     );
 };
 
+// TODO
 // Form for company to update their page info
 const FormCompanyProfileUpdate = () => {
     // Translation
@@ -1201,6 +1205,7 @@ const FormCompanyProfileUpdate = () => {
     );
 };
 
+// TODO
 // form for company when they create a new reearch
 const FormCompanyResearchCreate = () => {
     // Translation
@@ -1384,6 +1389,7 @@ const FormCompanyResearchCreate = () => {
     );
 };
 
+// TODO
 // So for this form, it's basically identical to the create research one
 // only thing that is different is that this one has values of the research someone is editing
 // need to make a get request to get the specific research and fill in the values
