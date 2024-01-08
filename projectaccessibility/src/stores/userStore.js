@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
+import { getRequest } from "../api/axiosClient";
 
+// On crack
 export default class UserStore {
     user = null;
 
@@ -11,9 +13,20 @@ export default class UserStore {
         return !!this.user;
     }
 
-    login = async creds => {
-    };
+    setUser (user) {
+        this.user = user;
+    }
 
-    logout = () => {
-    };
+    get userId () {
+        return this.user && this.user.userId ? this.user.userId : null;
+    }
+
+    // User info
+    fetchUserInfo () {
+        const unserInfo = getRequest("login/userinfo/");
+        unserInfo
+            .then((response) => {
+                this.setUser(response.data);
+            });
+    }
 }

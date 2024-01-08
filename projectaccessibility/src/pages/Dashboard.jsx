@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Container } from "react-bootstrap";
 import {
     BarChart,
@@ -19,11 +19,32 @@ import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
+import { StoreContext } from "../stores/store";
+import { getRequest } from "../api/axiosClient";
 
 // Dashboard page
 const Dashboard = () => {
     // Translation
     const { t: translate } = useTranslation("dashboard");
+
+    // I dont know..
+    // cracky...
+    const store = useContext(StoreContext);
+
+    const [t, tt] = useState({});
+
+    useEffect(() => {
+        store.userStore.fetchUserInfo();
+
+        const a = getRequest(`users/${store.userStore.userId}`);
+
+        a.then((response) => {
+            tt(response.data);
+            // console.log(response.data);
+        }).catch((error) => {
+            console.log(error.response);
+        });
+    }, [store.userStore]);
 
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
@@ -121,14 +142,12 @@ const Dashboard = () => {
     return (
         <div className="dashboard__page">
             <div
-                className={`dashboard__page_menu ${
-                    isScrolling ? "fixed__scroll" : ""
-                }`}
+                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
             >
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName="ClodsireClodsireClodsireClodsireClodsire"
+                    userName={t.firstName + " " + t.lastName} // crack..
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
