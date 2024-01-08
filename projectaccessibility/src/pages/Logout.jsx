@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { postRequest } from "../api/axiosClient";
 
 // TESTING ONLY, will be modified later
 // very simple logout
@@ -16,8 +16,7 @@ const Logout = () => {
                 // Send the cookie name to the server for removal
                 await postRequest("cookies/removecookie", cookieName);
                 console.log("Cookie removed successfully");
-                
-                } catch (error) {
+            } catch (error) {
                 console.error("Error removing cookie:", error);
             }
         };
