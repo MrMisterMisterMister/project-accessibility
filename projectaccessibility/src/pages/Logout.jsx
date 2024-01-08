@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { postRequest } from "../api/axiosClient";
+import { Cookies } from "js-cookie";
 
 // TESTING ONLY, will be modified later
 // very simple logout
@@ -11,22 +12,14 @@ import { postRequest } from "../api/axiosClient";
 const Logout = () => {
     const navigate = useNavigate();
     useEffect(() => {
-        const removeCookie = async (cookieName) => {
-            try {
-                // Send the cookie name to the server for removal
-                await postRequest("cookies/removecookie", cookieName);
-                console.log("Cookie removed successfully");
-            } catch (error) {
-                console.error("Error removing cookie:", error);
-            }
+        const removeCookie = async (cookie) => {
+            // Send the cookie name to the server for removal
+            await postRequest("cookies/removecookie", cookie);
+            Cookies.remove("token");
         };
 
-        const aa = () => {
-            removeCookie("userCookie");
-            navigate("/login", { replace: true });
-        };
-
-        aa();
+        removeCookie("userCookie");
+        navigate("/login", { replace: true });
     }, [navigate]);
 };
 
