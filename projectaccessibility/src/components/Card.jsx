@@ -148,10 +148,10 @@ const CardCompanyView = ({ data }) => {
                         <div className="card__user_content">
                             <div className="card__user_heading">
                                 <h4 className="card__user_title">
-                                    {company.name}
+                                    {company.companyName}
                                 </h4>
                                 <span className="card__user_website">
-                                    {company.url}
+                                    {company.websiteUrl}
                                 </span>
                             </div>
                             <div className="card__user_props">
@@ -165,13 +165,19 @@ const CardCompanyView = ({ data }) => {
                                     <span className="card__user_prop_item">
                                         Adres:
                                     </span>
-                                    {company.adres}
+                                    {company.address}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Location:
+                                        Postal Code:
                                     </span>
-                                    {company.location}
+                                    {company.postalCode}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        Province:
+                                    </span>
+                                    {company.province}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
@@ -183,7 +189,7 @@ const CardCompanyView = ({ data }) => {
                                     <span className="card__user_prop_item">
                                         Contact:
                                     </span>
-                                    {company.contact}
+                                    {company.contactPerson}
                                 </p>
                             </div>
                         </div>
