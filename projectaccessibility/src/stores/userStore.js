@@ -1,16 +1,19 @@
 import { makeAutoObservable } from "mobx";
 
-// User store
-class userStore {
-    name = "John doe";
+export default class UserStore {
+    user = null;
 
     constructor () {
         makeAutoObservable(this);
     }
 
-    setUserName = (firstName, lastName) => {
-        this.name = firstName + " " + lastName;
+    get isLoggedIn () {
+        return !!this.user;
+    }
+
+    login = async creds => {
+    };
+
+    logout = () => {
     };
 }
-
-export default userStore;
