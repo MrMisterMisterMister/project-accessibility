@@ -8,17 +8,23 @@ const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleuser
 function GoogleSignInButton () {
     const { token, setToken } = useAuth();
 
+    function setAuthToken(authToken) {
+        setToken(authToken);
+        Cookies.set("token", authToken);
+        console.log("Token set in authProvider: " + authToken);
+    }
+
     // userobject is the decoded JWT token.
     function handleCallbackResponse (response) {
         console.log("Encoded JWT ID token: " + response.credential);
         const userObject = jwtDecode(response.credential);
         console.log(userObject);
 
-        // Set the token in the authProvider
-        setToken(response.credential);
-
-        // Store token in a cookie named "token"
-        Cookies.set("token", response.credential);
+        if(response.credential) {
+            setAuthToken(response.credential);
+        } else {
+            console.log("Invalid credential received.");
+        }
     }
 
     useEffect(() => {
@@ -37,13 +43,6 @@ function GoogleSignInButton () {
 
         // Prompt the user to select a Google account to sign in with
         google.accounts.id.prompt();
-    }, [setToken]);
-
-    // Checking if the token is set
-    useEffect(() => {
-        if (token) {
-            console.log("Token set in authProvider: " + token);
-        }
     }, []);
 
     return (
