@@ -8,7 +8,7 @@ import Shape from "../components/Shape";
 // Cookies page
 const Cookies = () => {
     // Translation
-    const { t: translate } = useTranslation();
+    const { t: translate } = useTranslation("cookies");
 
     return (
         <>
@@ -18,6 +18,7 @@ const Cookies = () => {
                     <Shape section="cookies" position={["right", "left"]} />
                 </div>
                 <Container className="cookies__page_container">
+
                     <h1 tabIndex="0">{translate("cookies.pageTitle")}</h1>
                     <p tabIndex="0" className="text-muted">
                         {translate("cookies.lastModified")}
@@ -109,6 +110,7 @@ const Cookies = () => {
 
                     <h2 tabIndex="0" id="contact-details    ">{translate("cookies.contactDetails.title")}</h2>
                     <p tabIndex="0">{translate("cookies.contactDetails.content")}</p>
+
                 </Container>
             </main>
             <Footer />
