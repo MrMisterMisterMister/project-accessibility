@@ -13,7 +13,7 @@
         .contact__section_wrapper {
             border-radius: 1em;
             padding: 3rem 2.5rem;
-            background-image: linear-gradient(to top right, rgba(243, 244, 246, 1) 0%, rgba(243, 244, 246, 1) 100%);
+            background-image: linear-gradient(to top right, variables.$vanilla 0%, variables.$vanilla 100%);
             position: relative;
             overflow: hidden;
 

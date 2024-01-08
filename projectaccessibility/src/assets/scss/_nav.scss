@@ -416,6 +416,16 @@
                     &:hover {
                         background-color: variables.$lightlavender;
                         cursor: pointer;
+
+                        &:first-child {
+                            border-top-left-radius: 2px;
+                            border-top-right-radius: 2px;
+                        }
+
+                        &:last-child {
+                            border-bottom-left-radius: 2px;
+                            border-bottom-right-radius: 2px;
+                        }
                     }
 
                     .nav__dashboard_topnav__user_dropdown__icon {

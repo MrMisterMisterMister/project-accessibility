@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { DateFormatter } from "./Formatter";
 import PropTypes from "prop-types";
 
 // Expertise cards for the homepage
@@ -116,7 +117,7 @@ const CardPanelMemberView = ({ data }) => {
                                     <span className="card__user_prop_item">
                                         Date of Birth:
                                     </span>
-                                    {panelmember.dateofbirth}
+                                    {DateFormatter.format(new Date(panelmember.dateOfBirth))}
                                 </p>
                             </div>
                         </div>

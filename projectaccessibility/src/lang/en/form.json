@@ -9,6 +9,9 @@
     "settings": {
         "buttonText": "Submit"
     },
+    "research": {
+        "buttonText": "Submit"
+    },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
     "emailConfirmLabel": "Confirm email",
@@ -56,12 +59,24 @@
         "placeholder": "Select a country",
         "netherlands": "The Netherlands"
     },
-    "cityLabel": "City",
-    "cityPlaceholder": "Your city",
+    "contactPersonLabel": "Contact person",
+    "contactPersonPlaceholder": "Contact person",
     "provinceLabel": "Province",
     "provincePlaceholder": "Your province",
     "websiteUrlLabel": "Website URL",
     "websiteUrlPlaceholder": "Your website URL",
+    "titleLabel": "Title",
+    "titlePlaceholder": "Title",
+    "descriptionLabel": "Description",
+    "descriptionPlaceholder": "Description",
+    "dateLabel": "Date",
+    "datePlaceholder": "Date",
+    "rewardLabel": "Reward",
+    "rewardPlaceholder": "Reward",
+    "typeLabel": "Type",
+    "typePlaceholder": "Type",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Category",
     "error": {
         "emailRequired": "* Please enter your email address",
         "emailPattern": "* Please enter a valid email address",
@@ -89,9 +104,15 @@
         "addressRequired": "* Please enter your address",
         "postalCodeRequired": "* Please enter your postal code",
         "countryRequired": "* Please select a country",
-        "cityRequired": "* Please enter your city",
+        "contactPersonRequired": "* Please enter your contact person",
         "provinceRequired": "* Please enter your province",
-        "websiteUrlRequired": "* Please enter your website URL"
+        "websiteUrlRequired": "* Please enter your website URL",
+        "titleRequired": "* Please enter your title",
+        "descriptionRequired": "* Please enter your description",
+        "dateRequired": "* Please enter your date",
+        "rewardRequired": "* Please enter your reward",
+        "typeRequired": "* Please enter your type",
+        "categoryRequired": "* Please enter your category"
     },
     "success": {}
 }

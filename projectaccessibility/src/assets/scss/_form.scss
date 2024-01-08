@@ -14,7 +14,7 @@
     transition: border-color .15s, background-color .15s;
 
     &.error {
-        border-color: variables.$darkred!important;
+        border-color: variables.$darkred !important;
     }
 
     &.disabled {
@@ -42,7 +42,7 @@
     appearance: none;
 
     &.error {
-        border-color: variables.$darkred!important;
+        border-color: variables.$darkred !important;
     }
 
     &.disabled {
@@ -105,7 +105,8 @@
 }
 
 // form to update password and email in dashboard
-.form__settings {
+.form__settings,
+.form__research {
     position: relative;
     max-width: 25rem;
 }

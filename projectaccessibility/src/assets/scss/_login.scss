@@ -37,7 +37,7 @@
 
                     .login__page_seperator {
                         display: flex;
-                        border-bottom: 1px solid rgb(237, 239, 243);
+                        border-bottom: 1px solid variables.$icecream;
                         color: variables.$black;
                         height: 0;
                         margin: 2.5rem 0;
@@ -60,7 +60,7 @@
 
             .login__page_authentication {
                 @include mixins.lg {
-                    border-right: thin solid rgb(184, 189, 197);
+                    border-right: thin solid variables.$icecream;
                 }
             }
 

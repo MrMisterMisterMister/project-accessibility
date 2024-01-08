@@ -1,21 +1,25 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { postRequest } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
-// TESTING ONLY, will be modified later
-// very simple logout
-// this will not be how we handle it actually, but it's for testing only
+// When a user decides to logout
+// Send a post request to api server, which then deletes/revokes the cookie and the refreshtoken
 const Logout = () => {
+    // Navigate
     const navigate = useNavigate();
+    // Functional component
     useEffect(() => {
-        const aa = () => {
+        const removeCookie = async (cookie) => {
+            // Send the cookie name to the server for removal
+            await postRequest("cookies/removecookie", cookie);
             Cookies.remove("token");
-            if (!Cookies.get("token")) {
-                navigate("/login", { replace: true });
-            }
         };
-        aa();
-    }, [navigate]);
+
+        // Remove cookie and redirect back to login
+        removeCookie("userCookie");
+        navigate("/login", { replace: true });
+    }, [navigate]); // Mount on navigate
 };
 
 export default Logout;
