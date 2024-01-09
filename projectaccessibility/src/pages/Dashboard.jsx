@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Container } from "react-bootstrap";
 import {
     BarChart,
@@ -19,8 +19,8 @@ import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
-import { StoreContext } from "../stores/store";
-import { getRequest } from "../api/axiosClient";
+import { useStore } from "../stores/store";
+import { createEndpoint } from "../api/axiosClient";
 
 // Dashboard page
 const Dashboard = () => {
@@ -29,22 +29,19 @@ const Dashboard = () => {
 
     // I dont know..
     // cracky...
-    const store = useContext(StoreContext);
+    const { userStore: { user } } = useStore();
 
-    const [t, tt] = useState({});
+    const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
-        store.userStore.fetchUserInfo();
+        const getData = async () => {
+            const data = await createEndpoint(`users/${user.userId}`).get();
+            setCurrentUser(data);
+            console.log(data);
+        };
 
-        const a = getRequest(`users/${store.userStore.userId}`);
-
-        a.then((response) => {
-            tt(response.data);
-            // console.log(response.data);
-        }).catch((error) => {
-            console.log(error.response);
-        });
-    }, [store.userStore]);
+        getData();
+    }, [user]);
 
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
@@ -147,7 +144,7 @@ const Dashboard = () => {
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName={t.firstName + " " + t.lastName} // crack..
+                    userName={currentUser.userName} // crack..
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />

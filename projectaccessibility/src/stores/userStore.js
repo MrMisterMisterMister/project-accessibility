@@ -1,5 +1,5 @@
-import { makeAutoObservable } from "mobx";
-import { getRequest } from "../api/axiosClient";
+import { makeAutoObservable, runInAction } from "mobx";
+import { createEndpoint } from "../api/axiosClient";
 
 // On crack
 export default class UserStore {
@@ -13,20 +13,17 @@ export default class UserStore {
         return !!this.user;
     }
 
-    setUser (user) {
+    setUser = user => {
         this.user = user;
-    }
+    };
 
-    get userId () {
-        return this.user && this.user.userId ? this.user.userId : null;
-    }
+    getUser = async () => {
+        const user = await createEndpoint("users/getcurrentuser").get();
+        runInAction(() => { this.user = user; });
+    };
 
-    // User info
-    fetchUserInfo () {
-        const unserInfo = getRequest("login/userinfo/");
-        unserInfo
-            .then((response) => {
-                this.setUser(response.data);
-            });
-    }
+    // should be here but dunno how to do it yet
+    // login
+    // register
+    // logout
 }
