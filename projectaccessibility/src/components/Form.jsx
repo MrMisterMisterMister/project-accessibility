@@ -7,9 +7,10 @@ import { createEndpoint } from "../api/axiosClient";
 import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 
 // Form for login page
-const FormLogin = () => {
+const FormLogin = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -54,7 +55,6 @@ const FormLogin = () => {
                     // Set authentication token
                     authStore.setToken(response.data.token);
                     userStore.getUser();
-                    console.log(userStore.user);
                     // Reset form
                     reset();
                     // 1s delay
@@ -134,7 +134,7 @@ const FormLogin = () => {
             </Form>
         </>
     );
-};
+});
 
 // Form for Signup page
 const FormSignup = () => {

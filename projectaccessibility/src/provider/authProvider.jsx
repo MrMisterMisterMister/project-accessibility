@@ -21,6 +21,7 @@ const AuthProvider = observer(({ children }) => {
     useEffect(() => {
         // Set token when authStore.token changes
         // This way, token state will update in response to changes in authStore.token
+        // isnt actually needed since it's automatically done in authstore but just in case
         setToken(authStore.token);
     }, [authStore.token]);
 
