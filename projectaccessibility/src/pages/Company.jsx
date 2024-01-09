@@ -33,7 +33,7 @@ const Company = () => {
 
     // planning to do this in a global file
     const fetchCompanies = async () => {
-        const data = await createEndpoint("companies").get();
+        const data = await createEndpoint("companies/").get();
         setCompanies(data);
     };
 

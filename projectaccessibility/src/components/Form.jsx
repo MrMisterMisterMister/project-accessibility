@@ -38,7 +38,7 @@ const FormLogin = () => {
     // Function triggered when the submit button is pressed in the login form
     const handleLoginSubmit = (formData) => {
         // Make the POST call to the login endpoint
-        const loginResponse = createEndpoint("login").post(formData);
+        const loginResponse = createEndpoint("login/").post(formData);
 
         // Handle the response from the POST call
         loginResponse
