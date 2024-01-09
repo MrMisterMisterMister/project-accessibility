@@ -12,7 +12,7 @@ import {
 // Expertise componenent
 const Expertise = () => {
     // Translation
-    const { t: translate } = useTranslation("expertise");
+    const { t: translate } = useTranslation();
 
     // Icons
     const iconMap = [
@@ -26,16 +26,20 @@ const Expertise = () => {
         <section className="expertise__section">
             <Container className="expertise__section_container">
                 <h2 className="expertise__section_title">
-                    {translate("title")}
+                    {translate("expertise.title")}
                 </h2>
                 <div className="expertise__section_group__card">
-                    {translate("cards", { returnObjects: true }).map(
+                    {translate("expertise.cards", { returnObjects: true }).map(
                         (expertise, index) => (
                             <CardExpertise
                                 key={index}
                                 icon={iconMap[index]}
-                                title={translate(`cards.${index}.title`)}
-                                text={translate(`cards.${index}.text`)}
+                                title={translate(
+                                    `expertise.cards.${index}.title`
+                                )}
+                                text={translate(
+                                    `expertise.cards.${index}.text`
+                                )}
                             />
                         )
                     )}

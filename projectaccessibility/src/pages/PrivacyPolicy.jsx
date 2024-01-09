@@ -8,7 +8,7 @@ import Shape from "../components/Shape";
 // Privacy policy page
 const PrivacyPolicy = () => {
     // Translation
-    const { t: translate } = useTranslation("privacypolicy");
+    const { t: translate } = useTranslation();
 
     return (
         <>
@@ -65,7 +65,6 @@ const PrivacyPolicy = () => {
                                 {translate(
                                     "privacypolicy.collectedData.medicalData.list.0"
                                 )}
-
                             </span>
                         </div>
                         <div className="privacypolicy__page_list__item">
@@ -137,36 +136,37 @@ const PrivacyPolicy = () => {
                             "privacypolicy.purposeOfDataProcessing.intro.1"
                         )}
                     </p>
+
                     <h2 tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.generalPurposeOfProcessing.title"
+                            "privacypolicy.purposeOfDataProcessing.generalPurposeOfProcessing.title"
                         )}
                     </h2>
                     <p tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.generalPurposeOfProcessing.content"
+                            "privacypolicy.purposeOfDataProcessing.generalPurposeOfProcessing.content"
                         )}
                     </p>
 
                     <h2 tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.automaticallyCollectedData.title"
+                            "privacypolicy.purposeOfDataProcessing.automaticallyCollectedData.title"
                         )}
                     </h2>
                     <p tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.automaticallyCollectedData.content"
+                            "privacypolicy.purposeOfDataProcessing.automaticallyCollectedData.content"
                         )}
                     </p>
 
                     <h2 tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.retentionPeriod.title"
+                            "privacypolicy.purposeOfDataProcessing.retentionPeriod.title"
                         )}
                     </h2>
                     <p tabIndex="0">
                         {translate(
-                            "purposeOfDataProcessing.retentionPeriod.content"
+                            "privacypolicy.purposeOfDataProcessing.retentionPeriod.content"
                         )}
                     </p>
 
@@ -257,7 +257,7 @@ const PrivacyPolicy = () => {
                             </div>
                             <span tabIndex="0">
                                 {translate(
-                                    "cookies.purpose.authenticationStatus"
+                                    "privacypolicy.cookies.purpose.authenticationStatus"
                                 )}
                             </span>
                         </div>
@@ -275,7 +275,6 @@ const PrivacyPolicy = () => {
                             <div className="privacypolicy__page_list__ordinal">
                                 (iii)
                             </div>
-
                             <span tabIndex="0">
                                 {translate(
                                     "privacypolicy.cookies.purpose.security"

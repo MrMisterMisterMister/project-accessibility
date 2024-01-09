@@ -6,7 +6,7 @@ import { ButtonContact } from "./Button";
 // Contact component
 const Contact = () => {
     // Translation
-    const { t: translate } = useTranslation("contact");
+    const { t: translate } = useTranslation();
 
     return (
         <section className="contact__section">
@@ -14,21 +14,21 @@ const Contact = () => {
                 <div className="contact__section_wrapper">
                     <div className="contact__section_content">
                         <h2 className="contact__section_content__title">
-                            {translate("title")}
+                            {translate("contact.title")}
                         </h2>
                         <p className="contact__section_content__text">
-                            {translate("description")}
+                            {translate("contact.description")}
                         </p>
                         <div className="contact__section_content_button">
                             <ButtonContact
                                 style="signup"
                                 path="/signup"
-                                text={translate("buttons.signup")}
+                                text={translate("contact.buttons.signup")}
                             />
                             <ButtonContact
                                 style="login"
                                 path="/login"
-                                text={translate("buttons.signin")}
+                                text={translate("contact.buttons.signin")}
                             />
                         </div>
                     </div>

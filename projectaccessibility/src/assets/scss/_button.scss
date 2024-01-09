@@ -1,55 +1,10 @@
 @use 'variables';
 
 // Primary button
-.button__primary {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    background-color: variables.$sapphire;
-    border: solid 1px variables.$sapphire;
-    box-shadow: none !important;
-    border-radius: 2px;
-    color: variables.$white;
 
-    &:hover,
-    &:active {
-        background-color: variables.$blackrussian;
-        cursor: pointer;
-        border-color: variables.$sapphire;
-    }
-}
 
 // Secondary button
-// Just copy pasted it with different background color
-// I am lazy
-.button__secondary {
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    background-color: transparent;
-    border: solid 1px variables.$sapphire;
-    box-shadow: none !important;
-    border-radius: 2px;
-    color: variables.$sapphire;
 
-    &:hover,
-    &:focus {
-        background-color: variables.$sapphire;
-        cursor: pointer;
-        color: variables.$white;
-        border-color: variables.$sapphire;
-    }
-
-    // Active state of button
-    &.active {
-        background-color: variables.$sapphire;
-        border-color: variables.$sapphire;
-        color: variables.$white;
-
-        &:hover {
-            border-color: variables.$blackrussian;
-            background-color: variables.$blackrussian;
-        }
-    }
-}
 
 // Hero button
 .button__hero {
@@ -203,7 +158,7 @@
 .button__auth {
     background-color: variables.$white !important;
     width: 100%;
-    border: 1px solid variables.$icecream;
+    border: 1px solid rgb(216, 218, 224);
     color: variables.$black !important;
     margin-bottom: 10px;
     height: 40px;
@@ -251,30 +206,5 @@
         box-shadow: none;
         cursor: pointer;
         background-color: variables.$blackrussian;
-    }
-}
-
-// button muted
-.button__muted {
-    background-color: transparent;
-    border-radius: 2px;
-    border: solid 1px variables.$icecream;
-    font-size: 0.875rem;
-    color: variables.$blackrussian;
-    height: 2rem;
-    box-shadow: none !important;
-
-    &:hover,
-    &:focus,
-    &:active {
-        border-color: transparent;
-        background-color: variables.$sapphire;
-        color: variables.$white;
-        cursor: pointer;
-    }
-
-    // so the 2 buttons have some spacing
-    &+.button__muted {
-        margin-left: 0.5rem;
     }
 }

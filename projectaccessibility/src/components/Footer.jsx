@@ -21,7 +21,7 @@ FooterCopyright.propTypes = {
 // Footer component
 const Footer = () => {
     // Translation
-    const { t: translate, i18n } = useTranslation("footer");
+    const { t: translate, i18n } = useTranslation();
 
     // Initialize state
     // Default NL
@@ -37,23 +37,23 @@ const Footer = () => {
     // FooterMenu links
     const footerLinks = {
         goto: {
-            title: translate("menu.goto.title"),
+            title: translate("footer.menu.goto.title"),
             links: [
-                { name: translate("menu.goto.links.home"), path: "/" },
+                { name: translate("footer.menu.goto.links.home"), path: "/" },
                 {
-                    name: translate("menu.goto.links.about"),
+                    name: translate("footer.menu.goto.links.about"),
                     path: "/over-ons"
                 },
                 {
-                    name: translate("menu.goto.links.expertise"),
+                    name: translate("footer.menu.goto.links.expertise"),
                     path: "/expertise"
                 },
                 {
-                    name: translate("menu.goto.links.news"),
+                    name: translate("footer.menu.goto.links.news"),
                     path: "/actueel"
                 },
                 {
-                    name: translate("menu.goto.links.contact"),
+                    name: translate("footer.menu.goto.links.contact"),
                     path: "/contact"
                 }
             ]
@@ -82,15 +82,15 @@ const Footer = () => {
     // FooterBottombar links
     const generalLinks = [
         {
-            name: translate("menu.bottombar.links.sitemap"),
+            name: translate("footer.menu.bottombar.links.sitemap"),
             path: "/sitemap"
         },
         {
-            name: translate("menu.bottombar.links.privacypolicy"),
+            name: translate("footer.menu.bottombar.links.privacypolicy"),
             path: "/privacy-policy"
         },
         {
-            name: translate("menu.bottombar.links.cookies"),
+            name: translate("footer.menu.bottombar.links.cookies"),
             path: "/cookies"
         }
     ];

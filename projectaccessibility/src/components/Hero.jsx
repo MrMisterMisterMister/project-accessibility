@@ -7,19 +7,22 @@ import Shape from "./Shape";
 // Hero component
 const Hero = () => {
     // Translation
-    const { t: translate } = useTranslation("hero");
+    const { t: translate } = useTranslation();
 
     return (
         <section className="hero__section">
             <Container className="hero__section_container">
                 <div className="hero__section_wrapper">
                     <h1 className="hero__section_title">
-                        {translate("title")}
+                        {translate("hero.title")}
                     </h1>
                     <p className="hero__section_text">
-                        {translate("description")}
+                        {translate("hero.description")}
                     </p>
-                    <ButtonHero text={translate("buttonText")} path="/login" />
+                    <ButtonHero
+                        text={translate("hero.buttonText")}
+                        path="/login"
+                    />
                 </div>
             </Container>
             <Shape section="hero" position={["right", "bottom", "top"]} />

@@ -6,7 +6,7 @@ import { FormSignup } from "../components/Form";
 // Signup page
 const Signup = () => {
     // Translation
-    const { t: translate } = useTranslation("signup");
+    const { t: translate } = useTranslation();
 
     return (
         <div className="signup__page">
@@ -16,14 +16,14 @@ const Signup = () => {
                     <div className="signup__page_registration__content">
                         <Container>
                             <h2 className="signup__page_registration__title">
-                                {translate("pageTitle")}
+                                {translate("signup.pageTitle")}
                             </h2>
                             <div className="signup__page_registration__form_signup">
                                 <FormSignup />
                             </div>
                             <p className="signup__page_registration__login">
-                                {translate("alreadyHaveAccount")}{" "}
-                                <a href="/login">{translate("logIn")}</a>
+                                {translate("signup.alreadyHaveAccount")}{" "}
+                                <a href="/login">{translate("signup.logIn")}</a>
                             </p>
                         </Container>
                     </div>

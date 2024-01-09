@@ -1,5 +1,44 @@
 {
     "pageTitle": "Sign up",
     "alreadyHaveAccount": "Already have an account?",
-    "logIn": "Log In"
+    "logIn": "Log In",
+    "form": {
+        "select": {
+            "user": "User Type",
+            "option": {
+                "placeholder": "Select the account type",
+                "panelmember": "Panel Member",
+                "company": "Company"
+            }
+        },
+        "company": "Company Information",
+        "companyKvk": "Chamber of Commerce Number",
+        "companyName": "Company Name",
+        "fullName": "Full Name",
+        "firstNamePlaceholder": "First name",
+        "lastNamePlaceholder": "Last name",
+        "email": "Email",
+        "emailPlaceholder": "Email address",
+        "password": "Password",
+        "passwordPlaceholder": "Password",
+        "confirmPasswordPlaceholder": "Confirm Password",
+        "buttonText": "Sign up",
+        "error": {
+            "userTypeRequired": "* Please select a user type",
+            "firstNameRequired": "* Please enter your First Name",
+            "lastNameRequired": "* Please enter your Last Name",
+            "kvkRequired": "* Please enter your Chamber of Commerce (KvK) number",
+            "companyNameRequired": "* Please enter your company name",
+            "emailPattern": "* Please enter a valid email address",
+            "emailRequired": "* Please enter your email address",
+            "passwordRequired": "* Please enter your password",
+            "passwordHasUppercase": "* Password must contain at least one uppercase letter",
+            "passwordHasLowercase": "* Password must contain at least one lowercase letter",
+            "passwordHasDigit": "* Password must contain at least one digit",
+            "passwordHasSpecialChar": "* Password must contain at least one special character",
+            "passwordMinLength": "* Password must be at least 6 characters long",
+            "passwordConfirmRequired": "* Please enter your password again",
+            "passwordConfirmIsMatch": "* Password confirmation does not match the original password"
+        }
+    }
 }

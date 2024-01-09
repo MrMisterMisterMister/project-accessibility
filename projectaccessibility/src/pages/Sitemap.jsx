@@ -8,57 +8,59 @@ import Shape from "../components/Shape";
 // Sitemap page
 const Sitemap = () => {
     // Translation
-    const { t: translate } = useTranslation("sitemap");
+    const { t: translate } = useTranslation();
 
     // Create a const to save all the pages on this site
     // Afterwards just simply loop over the items and display them accordingly
     const pageLinks = [
         {
-            title: translate("links.frontpage.title"),
-            subPages: [{ name: translate("links.frontpage.home"), path: "/" }]
+            title: translate("sitemap.links.frontpage.title"),
+            subPages: [
+                { name: translate("sitemap.links.frontpage.home"), path: "/" }
+            ]
         },
         {
-            title: translate("links.components.title"),
+            title: translate("sitemap.links.components.title"),
             subPages: [
                 {
-                    name: translate("links.components.about"),
+                    name: translate("sitemap.links.components.about"),
                     path: "/over-ons"
                 },
                 {
-                    name: translate("links.components.expertise"),
+                    name: translate("sitemap.links.components.expertise"),
                     path: "/expertise"
                 },
                 {
-                    name: translate("links.components.news"),
+                    name: translate("sitemap.links.components.news"),
                     path: "/actueel"
                 },
                 {
-                    name: translate("links.components.contact"),
+                    name: translate("sitemap.links.components.contact"),
                     path: "/contact"
                 },
                 {
-                    name: translate("links.components.signup"),
+                    name: translate("sitemap.links.components.signup"),
                     path: "/signup"
                 },
                 {
-                    name: translate("links.components.signin"),
+                    name: translate("sitemap.links.components.signin"),
                     path: "/login"
                 }
             ]
         },
         {
-            title: translate("links.other.title"),
+            title: translate("sitemap.links.other.title"),
             subPages: [
                 {
-                    name: translate("links.other.sitemap"),
+                    name: translate("sitemap.links.other.sitemap"),
                     path: "/sitemap"
                 },
                 {
-                    name: translate("links.other.privacy"),
+                    name: translate("sitemap.links.other.privacy"),
                     path: "/privacy-policy"
                 },
                 {
-                    name: translate("links.other.cookies"),
+                    name: translate("sitemap.links.other.cookies"),
                     path: "/cookies"
                 }
             ]
@@ -73,9 +75,11 @@ const Sitemap = () => {
                     <Shape section="sitemap" position={["right", "left"]} />
                 </div>
                 <Container className="sitemap__page_container">
-                    <h1>{translate("pageTitle")}</h1>
-                    <p className="text-muted">{translate("lastModified")}</p>
-                    <p>{translate("intro")}</p>
+                    <h1>{translate("sitemap.pageTitle")}</h1>
+                    <p className="text-muted">
+                        {translate("sitemap.lastModified")}
+                    </p>
+                    <p>{translate("sitemap.intro")}</p>
                     {pageLinks.map((section, index) => (
                         <div key={index}>
                             <h4>{section.title}</h4>

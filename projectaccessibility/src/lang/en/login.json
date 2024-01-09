@@ -1,5 +1,17 @@
 {
     "pageTitle": "Log In",
+    "form": {
+        "email": "Email",
+        "emailPlaceholder": "Email",
+        "password": "Password",
+        "passwordPlaceholder": "Password",
+        "checkbox": "Always stay logged in?",
+        "button": "Log In",
+        "error": {
+            "emailRequired": "* Please enter your email address",
+            "passwordRequired": "* Please enter your password"
+        }
+    },
     "auth": {
         "signup": "Create an Account",
         "google": "Continue with Google",

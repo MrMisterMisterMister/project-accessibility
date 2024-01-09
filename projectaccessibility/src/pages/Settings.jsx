@@ -1,6 +1,6 @@
 import React from "react";
 import {
-    SettingsPanelMember,
+    SettingsPanelmember,
     SettingsCompany,
     SettingsEmail,
     SettingsPassword
@@ -12,7 +12,7 @@ import {
 const Settings = () => {
     return (
         <>
-            <SettingsPanelMember />
+            <SettingsPanelmember />
             <SettingsCompany />
             <SettingsEmail />
             <SettingsPassword />
