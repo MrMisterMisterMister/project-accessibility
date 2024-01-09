@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Form, Col, Row, Button } from "react-bootstrap";
+import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
 import { useAuth } from "../provider/authProvider";

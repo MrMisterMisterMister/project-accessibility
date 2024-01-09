@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
     if (!token) {
         // Send user back to login if they aren't authenticated
         // Need to also display an error
-        return <Navigate to="/login" />;
+        return <Navigate to="/login" replace />;
     }
 
     // Render the child
