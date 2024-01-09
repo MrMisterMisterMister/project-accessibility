@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../provider/authProvider";
 import Cookies from "js-cookie";
-import { postRequest } from "../api/axiosClient";
 import { useNavigate } from "react-router-dom";
+import { createEndpoint } from "../api/axiosClient";
 
 const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleusercontent.com";
 
@@ -35,7 +35,7 @@ function GoogleSignInButton () {
 
     async function signUpOrSignInWithGoogle (credential) {
         try {
-            const response = await postRequest("GoogleSignInButton/google-signup/", { GoogleJWTToken: credential });
+            const response = await createEndpoint("GoogleSignInButton/google-signup/").post(credential);
 
             // The backend will return a JWT token if the user is signed in or signed up successfully
             if (response.data && response.data.token) {
