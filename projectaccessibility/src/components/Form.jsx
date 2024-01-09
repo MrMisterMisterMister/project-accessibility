@@ -1604,6 +1604,10 @@ const FormPanelMemberResearchJoin = () => {
             });
     };
 
+    // I need to do a get to get the research information
+    // Then need to load in the values inside here
+    // Also need to put the id of the panelmember inside here, so it will be submitted via the form
+    // Then magic..
     return (
         <Form
             className="form__research"
@@ -1706,6 +1710,11 @@ const FormPanelMemberResearchJoin = () => {
                 </Col>
             </Row>
             <ButtonSubmit text="Join" />
+            {
+                /*
+                Another button to go back maybe?
+                */
+            }
         </Form>
     );
 };

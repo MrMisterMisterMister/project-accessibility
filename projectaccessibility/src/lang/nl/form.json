@@ -77,6 +77,8 @@
     "typePlaceholder": "Type",
     "categoryLabel": "Categorie",
     "categoryPlaceholder": "Categorie",
+    "organizerLabel": "Organisator",
+    "organizerPlaceholder": "Organisator",
     "error": {
         "emailRequired": "* Voer je e-mailadres in",
         "emailPattern": "* Voer een geldig e-mailadres in",
