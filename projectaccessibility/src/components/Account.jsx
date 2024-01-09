@@ -1,5 +1,6 @@
 import React from "react";
 
+// TODO
 // Account component for panelmember
 const AccountPanelMember = () => {
     // All the fields are hardcoded for now
@@ -96,6 +97,7 @@ const AccountPanelMember = () => {
     );
 };
 
+// TODO
 // Account component for company
 // It's best to also load in the properties like a data of array for company
 const AccountCompany = () => {

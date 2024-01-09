@@ -35,16 +35,16 @@ const TableBody = ({ tableData, columns }) => {
                 ? (
                     tableData.map((row, rowIndex) => (
                         <tr key={rowIndex} className="table__general_item">
-                            {columns.map(({ accessor, format }, colIndex) => (
-                                <td key={colIndex} className="table__general_item__cell">
+                            {columns.map(({ accessor, format, actions, colSpan }, colIndex) => (
+                                <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
                                     {
-                                        // This is to make some keys join together as one td
-                                        // Just got this from github
-                                        Array.isArray(accessor)
-                                            ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
-                                            : format
-                                                ? format(row[accessor])
-                                                : row[accessor]
+                                        actions
+                                            ? actions(/* need to put in the id here, most likely row */)
+                                            : Array.isArray(accessor)
+                                                ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
+                                                : format
+                                                    ? format(row[accessor])
+                                                    : row[accessor]
                                     }
                                 </td>
                             ))}
@@ -72,7 +72,8 @@ TableBody.propTypes = {
                 PropTypes.string.isRequired,
                 PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
             ]),
-            format: PropTypes.func
+            format: PropTypes.func,
+            actions: PropTypes.func
         })
     ).isRequired
 };
@@ -84,43 +85,15 @@ const TablePanelMemberView = ({ data }) => {
     // Make array to define the heading and also the accessor for the data
     // Some of these fields are empty, our database needs to be updated to add these columns
     const columns = [
-        {
-            label: "#",
-            accessor: "id"
-        },
-        {
-            label: "Name",
-            accessor: ["firstName", "lastName"]
-        },
-        {
-            label: "Email",
-            accessor: "email"
-        },
-        {
-            label: "Phone",
-            accessor: "phone"
-        },
-        {
-            label: "Date of Birth",
-            accessor: "dateOfBirth",
-            format: (date) => DateFormatter.format(new Date(date)) // display DoY nicely
-        },
-        {
-            label: "Address",
-            accessor: "address"
-        },
-        {
-            label: "Postal Code",
-            accessor: "postalCode"
-        },
-        {
-            label: "Province",
-            accessor: "province"
-        },
-        {
-            label: "Country",
-            accessor: "country"
-        }
+        { label: "#", accessor: "id" },
+        { label: "Name", accessor: ["firstName", "lastName"] },
+        { label: "Email", accessor: "email" },
+        { label: "Phone", accessor: "phone" },
+        { label: "Date of Birth", accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: "Address", accessor: "address" },
+        { label: "Postal Code", accessor: "postalCode" },
+        { label: "Province", accessor: "province" },
+        { label: "Country", accessor: "country" }
     ];
 
     // These items need to be looped over
@@ -172,20 +145,85 @@ TableCompanyView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
+// TODO
+// still need to be updated. wip
+const TablePanelMemberResearchView = () => {
+    // columns
+    const columns = [
+        { label: "#", accessor: "id" },
+        { label: "Title", accessor: "title" },
+        { label: "Description", accessor: "description" },
+        { label: "Date", accessor: "date" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Category", accessor: "category" },
+        { label: "Status", accessor: "status" }
+    ];
+
+    // testdata
+    const test = [
+        {
+            id: 42,
+            title: "Exploring new horizons",
+            description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+            date: "2024-03-15",
+            reward: 75,
+            category: "Adventure, Discovery",
+            status: "Inactive"
+        },
+        {
+            id: 2,
+            title: "Coding challenge",
+            description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+            date: "2024-03-01",
+            reward: 120,
+            category: "Programming",
+            status: "Active"
+        },
+        {
+            id: 9,
+            title: "Photography contest",
+            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+            date: "2024-03-22",
+            reward: 60,
+            category: "Photography",
+            status: "Active"
+        }
+    ];
+
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={test} />
+            </table>
+        </div>
+    );
+};
+
+// TODO
 // Same here, needs to be changed to load in all the data
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableCompanyResearchView = () => {
+const TableCompanyResearchView = ({ handleView }) => {
+    // columns for the company research view
     const columns = [
-        { label: "#" },
-        { label: "Title" },
-        { label: "Description" },
-        { label: "Date" },
-        { label: "Reward" },
-        { label: "Category" },
-        { label: "Status" },
-        { label: "Actions", colSpan: 2 }
+        { label: "#", accessor: "id" },
+        { label: "Title", accessor: "title" },
+        { label: "Description", accessor: "description" },
+        { label: "Date", accessor: "date" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Category", accessor: "category" },
+        { label: "Status", accessor: "status" },
+        {
+            label: "Actions",
+            colSpan: 2,
+            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (<>
+                <ButtonMuted text="Edit" onAction={() => handleView("editResearch")} />
+                <ButtonMuted text="Delete" />
+            </>
+            )
+        }
     ];
 
     // some test data
@@ -215,57 +253,76 @@ const TableCompanyResearchView = () => {
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                {
-                    /*
-                        The body can't be used in the tablebody component
-                        because it has the custom ButtonMuted component and it's not optimized to handle it
-                        and if I somehow make it work, it's too complicated
-                        so I am keeping it this way
-                        also still need to loop over the data, for now hard coded data to test
-                    */
-                }
-                <tbody className="table__general_body">
-                    {testData.length > 0
-                        ? (
-                            testData.map((item) => (
-                                <tr key={item.id} className="table__general_item">
-                                    <td className="table__general_item__cell">{item.id}</td>
-                                    <td className="table__general_item__cell">{item.title}</td>
-                                    <td className="table__general_item__cell">{item.description}</td>
-                                    <td className="table__general_item__cell">{item.date}</td>
-                                    <td className="table__general_item__cell">{NumberFormatter.format(item.reward)}</td>
-                                    <td className="table__general_item__cell">{item.category}</td>
-                                    <td className="table__general_item__cell">{item.status}</td>
-                                    <td className="table__general_item__cell" colSpan={2}>
-                                        <ButtonMuted text="Edit" />
-                                        <ButtonMuted text="Delete" />
-                                    </td>
-                                </tr>
-                            ))
-                        )
-                        : (
-                            <tr className="table__general_item">
-                                <td className="table__general_item__cell" colSpan={9}>
-                                    No data available.
-                                </td>
-                            </tr>
-                        )
-                    }
-                </tbody>
+                <TableBody columns={columns} tableData={testData} />
             </table>
         </div>
     );
 };
 
+// Prop type for the company table view
+TableCompanyResearchView.propTypes = {
+    handleView: PropTypes.func
+};
+
+// TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
-const TablePanelMemberResearchView = () => {
-    return <p>Your mom</p>;
+const TableAvailableResearchView = () => {
+    const columns = [
+        { label: "#", accessor: "id" },
+        { label: "Title", accessor: "title" },
+        { label: "Type", accessor: "type" },
+        { label: "Date", accessor: "date" },
+        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Category", accessor: "category" },
+        { label: "Organizer", accessor: "organizer" },
+        {
+            label: "Actions",
+            colSpan: 2,
+            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
+                <>
+                    <ButtonMuted text="View" />
+                    <ButtonMuted text="Join" />
+                </>
+            )
+        }
+    ];
+
+    const test = [
+        {
+            id: 1,
+            title: "Very special research",
+            type: "Online",
+            date: "2024-02-06",
+            reward: 142440.42,
+            category: "Blind, No Legs, No Arms, No Mouth",
+            organizer: "Cornhub"
+        },
+        {
+            id: 2,
+            title: "Omae Wa Mou",
+            date: "2024-09-09",
+            type: "Online",
+            reward: 5555,
+            category: "大",
+            organizer: "Stichting Accessibility"
+        }
+    ];
+
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={test} />
+            </table>
+        </div>
+    );
 };
 
 export {
     TablePanelMemberView,
     TableCompanyView,
+    TablePanelMemberResearchView,
     TableCompanyResearchView,
-    TablePanelMemberResearchView
+    TableAvailableResearchView
 };

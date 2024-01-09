@@ -24,3 +24,25 @@
         height: auto;
     }
 }
+
+.research__content {
+    background-color: variables.$white;
+    margin-bottom: 2.5rem;
+    position: relative;
+
+    .research__content_title {
+        border: solid 1px variables.$lightlavender;
+        border-bottom: 0;
+        padding: 1.1rem 1.667rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        color: variables.$black;
+        letter-spacing: 0.05em;
+    }
+
+    .research__content_container {
+        padding: 1.35rem 1.667rem;
+        border: solid 1px variables.$lightlavender;
+        box-shadow: 0 2px 3px -2px variables.$icecream;
+    }
+}
