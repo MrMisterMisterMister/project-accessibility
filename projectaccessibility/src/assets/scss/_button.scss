@@ -24,7 +24,7 @@
 .button__secondary {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
-    background-color: transparent;
+    background-color: transparent !important;
     border: solid 1px variables.$sapphire;
     box-shadow: none !important;
     border-radius: 2px;
@@ -32,10 +32,10 @@
 
     &:hover,
     &:focus {
-        background-color: variables.$sapphire;
+        background-color: variables.$sapphire !important;
         cursor: pointer;
         color: variables.$white;
-        border-color: variables.$sapphire;
+        border-color: variables.$sapphire !important;
     }
 
     // Active state of button
