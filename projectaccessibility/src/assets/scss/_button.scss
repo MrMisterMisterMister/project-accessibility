@@ -4,7 +4,7 @@
 .button__primary {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
-    background-color: variables.$sapphire;
+    background-color: variables.$sapphire !important;
     border: solid 1px variables.$sapphire;
     box-shadow: none !important;
     border-radius: 2px;
@@ -40,13 +40,13 @@
 
     // Active state of button
     &.active {
-        background-color: variables.$sapphire;
-        border-color: variables.$sapphire;
-        color: variables.$white;
+        background-color: variables.$sapphire !important;
+        border-color: variables.$sapphire !important;
+        color: variables.$white !important;
 
         &:hover {
-            border-color: variables.$blackrussian;
-            background-color: variables.$blackrussian;
+            border-color: variables.$blackrussian !important;
+            background-color: variables.$blackrussian !important;
         }
     }
 }
@@ -202,10 +202,11 @@
 .button__login {
     width: 100%;
     font-weight: normal;
-    background-color: variables.$sapphire;
+    background-color: variables.$sapphire !important;
     color: variables.$white;
     height: 45px;
     appearance: none;
+    box-shadow: none !important;
     border: none !important;
     border-radius: 2px;
     font-size: 1rem;
@@ -213,7 +214,7 @@
 
     &:hover,
     &:focus {
-        background-color: variables.$blackrussian;
+        background-color: variables.$blackrussian !important;
         cursor: pointer;
         box-shadow: none;
     }
