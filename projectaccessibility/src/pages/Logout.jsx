@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { postRequest } from "../api/axiosClient";
+import { createEndpoint } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
 // When a user decides to logout
@@ -12,7 +12,7 @@ const Logout = () => {
     useEffect(() => {
         const removeCookie = async (cookie) => {
             // Send the cookie name to the server for removal
-            await postRequest("cookies/removecookie", cookie);
+            await createEndpoint("cookies/removecookie/").post(cookie);
             Cookies.remove("token");
         };
 
