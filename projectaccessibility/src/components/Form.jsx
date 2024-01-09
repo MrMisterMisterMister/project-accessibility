@@ -448,7 +448,7 @@ const FormSignup = () => {
 // Form to update email
 // Need to catch the user type somewhere
 // Also need to get their guid
-const FormUserEmailUpdate = () => {
+const FormUserEmailUpdate = ({ id }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -467,9 +467,7 @@ const FormUserEmailUpdate = () => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData);// Still need to be worked on
+        const updateEmailResponse = createEndpoint(`users/${id}`).post(formData);
 
         // Handle the response from the POST call
         updateEmailResponse
@@ -558,7 +556,7 @@ const FormUserEmailUpdate = () => {
 
 // TODO
 // Form to update password
-const FormUserPasswordUpdate = () => {
+const FormUserPasswordUpdate = ({ id }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -577,9 +575,8 @@ const FormUserPasswordUpdate = () => {
     const passwordUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePasswordResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData); // Still need to be worked on
+        // PUT request to update password
+        const updatePasswordResponse = createEndpoint(`users/${id}`).put(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -700,7 +697,7 @@ const FormUserPasswordUpdate = () => {
 
 // TODO
 // Form for panel members to update their information
-const FormPanelMemberProfileUpdate = () => {
+const FormPanelMemberProfileUpdate = ({ id }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -718,9 +715,7 @@ const FormPanelMemberProfileUpdate = () => {
     const panelMemberProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePanelMemberProfileResponse =
-            createEndpoint("panelmembers/{their guid}")
-                .post(formData); // Still need to be worked on
+        const updatePanelMemberProfileResponse = createEndpoint(`panelmembers/${id}`).put(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePanelMemberProfileResponse
@@ -939,7 +934,7 @@ const FormPanelMemberProfileUpdate = () => {
 
 // TODO
 // Form for company to update their page info
-const FormCompanyProfileUpdate = () => {
+const FormCompanyProfileUpdate = ({ id }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -957,9 +952,7 @@ const FormCompanyProfileUpdate = () => {
     const companyProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updateCompanyProfileResponse =
-            createEndpoint("companies/{their guid}")
-                .post(formData); // Still need to be worked on
+        const updateCompanyProfileResponse = createEndpoint(`companies/${id}`).put(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updateCompanyProfileResponse

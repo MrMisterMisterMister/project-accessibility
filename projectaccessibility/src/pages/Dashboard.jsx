@@ -28,6 +28,7 @@ const Dashboard = () => {
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
+            page: <p>Insert some inspiring text here, also welcome.</p>,
             icon: <BarChart />,
             title: translate("dashboard"),
             active: true
@@ -78,7 +79,7 @@ const Dashboard = () => {
     const [isScrolling, setIsScrolling] = useState(false);
 
     // State to keep track of the page that needs to be rendered based on what navItem is clicked
-    const [pageToRender, setPageToRender] = useState(null);
+    const [pageToRender, setPageToRender] = useState(navItems[0].page); // temp
 
     // This effect checks if the nav should be fixed to stay visible while the user is scrolling
     useEffect(() => {
