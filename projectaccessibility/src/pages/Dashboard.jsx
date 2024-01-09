@@ -29,7 +29,7 @@ const Dashboard = observer(() => {
     const { t: translate } = useTranslation("dashboard");
     const { userStore: { user, getUser } } = useStore();
 
-    const [currentUser, setCurrentUser] = useState({});
+    // const [currentUser, setCurrentUser] = useState({});
 
     useEffect(() => {
         const getData = async () => {
@@ -42,8 +42,10 @@ const Dashboard = observer(() => {
             }
         };
 
-        getData();
-    }, [user]);
+    //     getData();
+    // }, [user]);
+
+    console.log(user);
 
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
@@ -146,7 +148,7 @@ const Dashboard = observer(() => {
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName={currentUser.userName} // crack..
+                    userName="ClodsireClodsire"
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
