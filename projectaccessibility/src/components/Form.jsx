@@ -15,6 +15,7 @@ const FormLogin = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // user store
     const { userStore, authStore } = useStore();
 
     // To handle navigation
@@ -703,15 +704,23 @@ FormUserPasswordUpdate.propTypes = {
     userId: PropTypes.string.isRequired
 };
 
-// TODO
-// Form for panel members to update their information
+// This form is for Panel Members to update their profile
+// PanelMemberId is the only prop it needs, so it can determine the correct endpoint
+// Also renders the output in the frontend
+// This does not show what the previous values are, users can simply click on their profile instead
 const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // This state manages the form alerts
+    // It handles both the errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Form handling using useForm hook from React Hook Forms
+    // This makes it easier to work with forms
     const {
         register,
         handleSubmit,
@@ -719,28 +728,33 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Panel Member's profile
     const panelMemberProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        const updatePanelMemberProfileResponse = createEndpoint(`panelmembers/${panelMemberId}`).put(formData);
+        // Use the createEndpoint method to initiate a PUT request
+        // This updates the profile of a Panel Member with the specified id
+        const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(panelMemberId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updatePanelMemberProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Check if the response code is 200 (ok)
+                // If so, create a success alert and reset the form
+                if (response.code === 200) {
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    reset();
+                }
+                console.log(response); // TODO will remove later
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and set it inside the form alert state
+                setFormAlerts({ error: error.response?.data });
+                console.log(error.response); // TODO will remove later
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -940,19 +954,26 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     );
 };
 
+// Prop types for FormPanelMemberProfileUpdate
 FormPanelMemberProfileUpdate.propTypes = {
     panelMemberId: PropTypes.string.isRequired
 };
 
-// TODO
-// Form for company to update their page info
+// This form is for updating a company's profile
+// It configurates the correct endpoint based on the companyId
+// Also renders the form for the user to see
 const FormCompanyProfileUpdate = ({ companyId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Handling for forms with React Hook Forms
+    // Makes working with forms so much easier
     const {
         register,
         handleSubmit,
@@ -960,28 +981,35 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Company's profile
     const companyProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
+        // Make a PUT request to the correct endpoint
+        // That way the company who is updating their profile actually sees the changes
         const updateCompanyProfileResponse = createEndpoint("companies").put(companyId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updateCompanyProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Checks if the response code is 200 (Ok)
+                if (response.code === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Reset form
+                    reset();
+                }
+                console.log(response); // TODO will remove later
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
+                console.log(error.response); // TODO will remove later
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
