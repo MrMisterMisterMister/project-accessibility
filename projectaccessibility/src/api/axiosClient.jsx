@@ -48,4 +48,4 @@ async function deleteRequest (URL) {
     return await axiosClient.delete(`/${URL}`);
 }
 
-export { getRequest, postRequest, putRequest, deleteRequest };
+export default { getRequest, postRequest, putRequest, deleteRequest };
