@@ -19,11 +19,31 @@ import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
+import { useStore } from "../stores/store";
+import { createEndpoint } from "../api/axiosClient";
+import { observer } from "mobx-react-lite";
 
 // Dashboard page
-const Dashboard = () => {
+const Dashboard = observer(() => {
     // Translation
     const { t: translate } = useTranslation("dashboard");
+    const { userStore: { user, getUser } } = useStore();
+
+    const [currentUser, setCurrentUser] = useState({});
+
+    useEffect(() => {
+        const getData = async () => {
+            // If user is not available or needs to be updated, fetch it
+            if (!user) await getUser();
+            // Proceed to fetch additional user data or details
+            if (user) {
+                const data = await createEndpoint(`users/${user.userId}`).get();
+                setCurrentUser(data);
+            }
+        };
+
+        getData();
+    }, [user]);
 
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
@@ -127,7 +147,7 @@ const Dashboard = () => {
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName="ClodsireClodsireClodsireClodsireClodsire"
+                    userName={currentUser.userName}
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
@@ -145,6 +165,6 @@ const Dashboard = () => {
             </main>
         </div>
     );
-};
+});
 
 export default Dashboard;

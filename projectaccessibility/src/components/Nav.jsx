@@ -263,7 +263,7 @@ const NavDashboardTopNav = ({
 NavDashboardTopNav.propTypes = {
     picturePath: PropTypes.string.isRequired,
     pictureAlt: PropTypes.string.isRequired,
-    userName: PropTypes.string.isRequired,
+    userName: PropTypes.string,
     userMenuItems: PropTypes.arrayOf(
         PropTypes.shape({
             page: PropTypes.node,
