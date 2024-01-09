@@ -38,6 +38,7 @@
             "error",
             4
         ],
-        "no-unused-vars": "error"
+        "no-unused-vars": "error",
+        "space-before-function-paren": ["error", "always"]
     }
 }

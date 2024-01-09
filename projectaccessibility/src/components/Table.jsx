@@ -119,15 +119,15 @@ const TableCompanyView = ({ data }) => {
     const columns = [
         { label: "#", accessor: "id" },
         { label: "KvK", accessor: "kvk" },
-        { label: "Company Name", accessor: "name" },
+        { label: "Company Name", accessor: "companyName" },
         { label: "Email", accessor: "email" },
         { label: "Phone", accessor: "phone" },
         { label: "Address", accessor: "address" },
         { label: "Postal Code", accessor: "postalCode" },
         { label: "Province", accessor: "province" },
         { label: "Country", accessor: "country" },
-        { label: "Contact Person", accessor: "contact" },
-        { label: "Website", accessor: "url" }
+        { label: "Contact Person", accessor: "contactPerson" },
+        { label: "Website", accessor: "websiteUrl" }
     ];
 
     return (

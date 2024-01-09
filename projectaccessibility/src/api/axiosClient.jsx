@@ -1,5 +1,5 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+import { store } from "../stores/store";
 
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
@@ -19,7 +19,7 @@ const axiosClient = axios.create({
 // This fixes it that problem
 axiosClient.interceptors.request.use((config) => {
     // This is temporary, need to figure out a better way to store the token on browser for easy access
-    const userToken = Cookies.get("token");
+    const userToken = store.authStore.token;
 
     if (userToken) {
         config.headers.Authorization = `Bearer ${userToken}`;
