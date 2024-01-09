@@ -28,24 +28,42 @@ axiosClient.interceptors.request.use((config) => {
     return config;
 });
 
-// Get request
-async function getRequest (URL) {
-    return await axiosClient.get(`/${URL}`);
-}
+axiosClient.interceptors.response.use(response => {
+    return response;
+}, (error) => {
+    // done by axios, anything that's not a 200 response
+    const { status } = error.response;
+    switch (status) {
+    case 400:
+        console.log(error);
+        break;
+    case 401:
+        console.log(error);
+        break;
+    case 403:
+        console.log(error);
+        break;
+    case 500:
+        console.log(error);
+        break;
+    }
+    return Promise.reject(error);
+});
 
-// Post request
-async function postRequest (URL, payload) {
-    return await axiosClient.post(`/${URL}`, payload);
-}
+const responseBody = (response) => response.data;
 
-// Put request
-async function putRequest (URL, payload) {
-    return await axiosClient.put(`/${URL}`, payload);
-}
+const requests = {
+    get: (url) => axiosClient.get(url).then(responseBody),
+    post: (url, body) => axiosClient.post(url, body).then(responseBody),
+    put: (url, body) => axiosClient.put(url, body).then(responseBody),
+    del: (url) => axiosClient.delete(url).then(responseBody)
+};
 
-// Delete request
-async function deleteRequest (URL) {
-    return await axiosClient.delete(`/${URL}`);
-}
+const createEndpoint = (endpoint) => ({
+    get: () => requests.get(`/${endpoint}`),
+    post: (data) => axiosClient.post(`/${endpoint}`, data),
+    put: (id, data) => axiosClient.put(`/${endpoint}/${id}`, data),
+    delete: (id) => axiosClient.del(`/${endpoint}/${id}`)
+});
 
-export { getRequest, postRequest, putRequest, deleteRequest };
+export { createEndpoint };
