@@ -24,13 +24,13 @@ const Cookies = () => {
 
                     <nav aria-label="Jump to content">
                         <ul>
-                            <li><a href="#functional-cookies">{translate("cookieTypes.functionalCookies.title")}</a></li>
-                            <li><a href="#performance-cookies">{translate("cookieTypes.performanceCookies.title")}</a></li>
-                            <li><a href="#tracking-cookies">{translate("cookieTypes.trackingCookies.title")}</a></li>
-                            <li><a href="#retention-period">{translate("retentionPeriod.title")}</a></li>
-                            <li><a href="#cookie-management">{translate("cookieManagement.title")}</a></li>
-                            <li><a href="#changes-to-cookie-management">{translate("changesInCookie.title")}</a></li>
-                            <li><a href="#contact-details">{translate("contactDetails.title")}</a></li>
+                            <li><a href="#functional-cookies">1. {translate("cookieTypes.functionalCookies.title")}</a></li>
+                            <li><a href="#performance-cookies">2. {translate("cookieTypes.performanceCookies.title")}</a></li>
+                            <li><a href="#tracking-cookies">3. {translate("cookieTypes.trackingCookies.title")}</a></li>
+                            <li><a href="#retention-period">4. {translate("retentionPeriod.title")}</a></li>
+                            <li><a href="#cookie-management">5. {translate("cookieManagement.title")}</a></li>
+                            <li><a href="#changes-to-cookie-management">6. {translate("changesInCookie.title")}</a></li>
+                            <li><a href="#contact-details">7. {translate("contactDetails.title")}</a></li>
                         </ul>
                     </nav>
 
