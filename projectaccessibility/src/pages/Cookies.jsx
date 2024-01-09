@@ -13,38 +13,52 @@ const Cookies = () => {
     return (
         <>
             <Header />
-            <div className="cookies__page">
+            <main className="cookies__page">
                 <div className="cookies__page_banner">
                     <Shape section="cookies" position={["right", "left"]} />
                 </div>
                 <Container className="cookies__page_container">
-                    <h1>{translate("pageTitle")}</h1>
-                    <p className="text-muted">{translate("lastModified")}</p>
-                    <p>{translate("intro")}</p>
+                    <h1 tabIndex="0">{translate("pageTitle")}</h1>
+                    <p tabIndex="0" className="text-muted">{translate("lastModified")}</p>
+                    <p tabIndex="0">{translate("intro")}</p>
 
-                    <h4>{translate("cookieTypes.functionalCookies.title")}</h4>
-                    <p>{translate("cookieTypes.functionalCookies.content")}</p>
+                    <nav aria-label="Jump to content">
+                        <ul>
+                            <li><a href="#functional-cookies">1. {translate("cookieTypes.functionalCookies.title")}</a></li>
+                            <li><a href="#performance-cookies">2. {translate("cookieTypes.performanceCookies.title")}</a></li>
+                            <li><a href="#tracking-cookies">3. {translate("cookieTypes.trackingCookies.title")}</a></li>
+                            <li><a href="#retention-period">4. {translate("retentionPeriod.title")}</a></li>
+                            <li><a href="#cookie-management">5. {translate("cookieManagement.title")}</a></li>
+                            <li><a href="#changes-to-cookie-management">6. {translate("changesInCookie.title")}</a></li>
+                            <li><a href="#contact-details">7. {translate("contactDetails.title")}</a></li>
+                        </ul>
+                    </nav>
 
-                    <h4>{translate("cookieTypes.performanceCookies.title")}</h4>
-                    <p>{translate("cookieTypes.performanceCookies.content")}</p>
+                    <br />
 
-                    <h4>{translate("cookieTypes.trackingCookies.title")}</h4>
-                    <p>{translate("cookieTypes.trackingCookies.content")}</p>
+                    <h4 tabIndex="0" id="functional-cookies">{translate("cookieTypes.functionalCookies.title")}</h4>
+                    <p tabIndex="0">{translate("cookieTypes.functionalCookies.content")}</p>
 
-                    <h4>{translate("retentionPeriod.title")}</h4>
-                    <p>{translate("retentionPeriod.content.0")}</p>
-                    <p>{translate("retentionPeriod.content.1")}</p>
+                    <h4 tabIndex="0" id="performance-cookies">{translate("cookieTypes.performanceCookies.title")}</h4>
+                    <p tabIndex="0">{translate("cookieTypes.performanceCookies.content")}</p>
 
-                    <h4>{translate("cookieManagement.title")}</h4>
-                    <p>{translate("cookieManagement.content")}</p>
+                    <h4 tabIndex="0" id="tracking-cookies">{translate("cookieTypes.trackingCookies.title")}</h4>
+                    <p tabIndex="0">{translate("cookieTypes.trackingCookies.content")}</p>
 
-                    <h4>{translate("changesInCookie.title")}</h4>
-                    <p>{translate("changesInCookie.content")}</p>
+                    <h4 tabIndex="0" id="retention-period">{translate("retentionPeriod.title")}</h4>
+                    <p tabIndex="0">{translate("retentionPeriod.content.0")}</p>
+                    <p tabIndex="0">{translate("retentionPeriod.content.1")}</p>
 
-                    <h4>{translate("contactDetails.title")}</h4>
-                    <p>{translate("contactDetails.content")}</p>
+                    <h4 tabIndex="0" id="cookie-management">{translate("cookieManagement.title")}</h4>
+                    <p tabIndex="0">{translate("cookieManagement.content")}</p>
+
+                    <h4 tabIndex="0" id="changes-to-cookie-management">{translate("changesInCookie.title")}</h4>
+                    <p tabIndex="0">{translate("changesInCookie.content")}</p>
+
+                    <h4 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h4>
+                    <p tabIndex="0">{translate("contactDetails.content")}</p>
                 </Container>
-            </div>
+            </main>
             <Footer />
         </>
     );
