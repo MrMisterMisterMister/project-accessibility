@@ -1,5 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
+import { useStore } from "../stores/store";
 import {
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
@@ -16,6 +17,13 @@ const Settings = () => {
     // Translation
     const { t: translate } = useTranslation("settings");
 
+    // Get the stored user info
+    const { userStore: { user } } = useStore();
+
+    console.log(user);
+
+    // still need to determine roles, then switch view
+    // will do it tomorrow
     return (
         <>
             <div className="settings__dashboard">
@@ -23,7 +31,7 @@ const Settings = () => {
                     {translate("panelMemberProfileUpdateTitle")}
                 </h4>
                 <div className="settings__dashboard_content">
-                    <FormPanelMemberProfileUpdate />
+                    <FormPanelMemberProfileUpdate panelMemberId={user.userId} />
                 </div>
             </div>
 
@@ -32,7 +40,7 @@ const Settings = () => {
                     {translate("companyProfileUpdateTitle")}
                 </h4>
                 <div className="settings__dashboard_content">
-                    <FormCompanyProfileUpdate />
+                    <FormCompanyProfileUpdate companyId={user.userId} />
                 </div>
             </div>
 

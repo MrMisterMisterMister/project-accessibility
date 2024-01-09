@@ -8,6 +8,7 @@ import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
+import PropTypes from "prop-types";
 
 // Form for login page
 const FormLogin = observer(() => {
@@ -447,7 +448,7 @@ const FormSignup = () => {
 // Form to update email
 // Need to catch the user type somewhere
 // Also need to get their guid
-const FormUserEmailUpdate = ({ id }) => {
+const FormUserEmailUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -466,7 +467,7 @@ const FormUserEmailUpdate = ({ id }) => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse = createEndpoint(`users/${id}`).post(formData);
+        const updateEmailResponse = createEndpoint(`users/${userId}`).post(formData);
 
         // Handle the response from the POST call
         updateEmailResponse
@@ -553,9 +554,13 @@ const FormUserEmailUpdate = ({ id }) => {
     );
 };
 
+FormUserEmailUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
 // TODO
 // Form to update password
-const FormUserPasswordUpdate = ({ id }) => {
+const FormUserPasswordUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -575,7 +580,7 @@ const FormUserPasswordUpdate = ({ id }) => {
         // Ditto like I said above
         // Make the POST call using axios post
         // PUT request to update password
-        const updatePasswordResponse = createEndpoint(`users/${id}`).put(formData); // Still need to be worked on
+        const updatePasswordResponse = createEndpoint("users").put(userId, formData);
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -694,9 +699,13 @@ const FormUserPasswordUpdate = ({ id }) => {
     );
 };
 
+FormUserPasswordUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
 // TODO
 // Form for panel members to update their information
-const FormPanelMemberProfileUpdate = ({ id }) => {
+const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -714,7 +723,7 @@ const FormPanelMemberProfileUpdate = ({ id }) => {
     const panelMemberProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePanelMemberProfileResponse = createEndpoint(`panelmembers/${id}`).put(formData); // Still need to be worked on
+        const updatePanelMemberProfileResponse = createEndpoint(`panelmembers/${panelMemberId}`).put(formData);
 
         // Handle the response from the POST call
         updatePanelMemberProfileResponse
@@ -931,9 +940,13 @@ const FormPanelMemberProfileUpdate = ({ id }) => {
     );
 };
 
+FormPanelMemberProfileUpdate.propTypes = {
+    panelMemberId: PropTypes.string.isRequired
+};
+
 // TODO
 // Form for company to update their page info
-const FormCompanyProfileUpdate = ({ id }) => {
+const FormCompanyProfileUpdate = ({ companyId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -951,7 +964,7 @@ const FormCompanyProfileUpdate = ({ id }) => {
     const companyProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updateCompanyProfileResponse = createEndpoint(`companies/${id}`).put(formData); // Still need to be worked on
+        const updateCompanyProfileResponse = createEndpoint("companies").put(companyId, formData);
 
         // Handle the response from the POST call
         updateCompanyProfileResponse
@@ -992,7 +1005,6 @@ const FormCompanyProfileUpdate = ({ id }) => {
                             })}
                             aria-invalid={errors.kvk ? "true" : "false"}
                             placeholder={translate("kvkPlaceholder")}
-                            disabled
                         />
                         {errors.kvk && (
                             <div className="form__error">
@@ -1193,6 +1205,12 @@ const FormCompanyProfileUpdate = ({ id }) => {
             </Form>
         </>
     );
+};
+
+// PropTypes for FormCompanyProfileUpdate
+// Requires companyId as mandatory string prop
+FormCompanyProfileUpdate.propTypes = {
+    companyId: PropTypes.string.isRequired
 };
 
 // TODO

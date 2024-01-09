@@ -142,8 +142,8 @@ const CardCompanyView = ({ data }) => {
                     <div className="card__user_item" key={company.id}>
                         <img
                             className="card__user_img"
-                            src="/img/clodsire.gif"
-                            alt="Gif of Clodsire bouncing up and down"
+                            src="/img/placeholder.jpg"
+                            alt="Picture of Clodsire"
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">

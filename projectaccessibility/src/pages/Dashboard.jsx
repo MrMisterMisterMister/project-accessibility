@@ -11,6 +11,9 @@ import {
     ChatLeftDots
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useStore } from "../stores/store";
+import { createEndpoint } from "../api/axiosClient";
+import { observer } from "mobx-react-lite";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import PanelMember from "./PanelMember";
 import Company from "./Company";
@@ -19,9 +22,6 @@ import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
-import { useStore } from "../stores/store";
-import { createEndpoint } from "../api/axiosClient";
-import { observer } from "mobx-react-lite";
 
 // Dashboard page
 const Dashboard = observer(() => {
