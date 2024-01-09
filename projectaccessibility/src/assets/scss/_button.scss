@@ -4,7 +4,7 @@
 .button__primary {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
-    background-color: variables.$sapphire !important;
+    background-color: variables.$sapphire;
     border: solid 1px variables.$sapphire;
     box-shadow: none !important;
     border-radius: 2px;
@@ -24,7 +24,7 @@
 .button__secondary {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
-    background-color: transparent !important;
+    background-color: transparent;
     border: solid 1px variables.$sapphire;
     box-shadow: none !important;
     border-radius: 2px;
@@ -32,21 +32,21 @@
 
     &:hover,
     &:focus {
-        background-color: variables.$sapphire !important;
+        background-color: variables.$sapphire;
         cursor: pointer;
         color: variables.$white;
-        border-color: variables.$sapphire !important;
+        border-color: variables.$sapphire;
     }
 
     // Active state of button
     &.active {
-        background-color: variables.$sapphire !important;
-        border-color: variables.$sapphire !important;
-        color: variables.$white !important;
+        background-color: variables.$sapphire;
+        border-color: variables.$sapphire;
+        color: variables.$white;
 
         &:hover {
-            border-color: variables.$blackrussian !important;
-            background-color: variables.$blackrussian !important;
+            border-color: variables.$blackrussian;
+            background-color: variables.$blackrussian;
         }
     }
 }
@@ -202,11 +202,10 @@
 .button__login {
     width: 100%;
     font-weight: normal;
-    background-color: variables.$sapphire !important;
+    background-color: variables.$sapphire;
     color: variables.$white;
     height: 45px;
     appearance: none;
-    box-shadow: none !important;
     border: none !important;
     border-radius: 2px;
     font-size: 1rem;
@@ -214,7 +213,7 @@
 
     &:hover,
     &:focus {
-        background-color: variables.$blackrussian !important;
+        background-color: variables.$blackrussian;
         cursor: pointer;
         box-shadow: none;
     }
