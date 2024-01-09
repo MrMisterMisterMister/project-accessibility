@@ -8,6 +8,7 @@ import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import Cookies from "js-cookie";
+import GoogleSignInButton from "./GoogleSignInButton";
 
 // Form for login page
 const FormLogin = () => {
@@ -441,6 +442,11 @@ const FormSignup = () => {
                     text={translate("signup.buttonText")}
                 />
             </Form>
+            {selectedUserType === "1" && (
+                <div style={{ marginTop: '10px'}}>
+                    <GoogleSignInButton />
+                </div>
+            )}
         </>
     );
 };
