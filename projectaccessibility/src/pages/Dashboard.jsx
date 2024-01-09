@@ -79,7 +79,7 @@ const Dashboard = () => {
     const [isScrolling, setIsScrolling] = useState(false);
 
     // State to keep track of the page that needs to be rendered based on what navItem is clicked
-    const [pageToRender, setPageToRender] = useState(navItems[0].page); // temp
+    const [pageToRender, setPageToRender] = useState(navItems[0].page || null); // temp
 
     // This effect checks if the nav should be fixed to stay visible while the user is scrolling
     useEffect(() => {
