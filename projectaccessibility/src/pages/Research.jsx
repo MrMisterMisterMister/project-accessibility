@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
 import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
-import { FormCompanyResearchCreate, FormCompanyResearchUpdate } from "../components/Form";
+import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
 
 // Research page
 // In here the components will be role dependend loaded
@@ -37,7 +37,7 @@ const Research = () => {
                 <TablePanelMemberResearchView />
             </>,
         // This view is only available for panelmember
-        allResearches: <TableAvailableResearchView />,
+        allResearches: <TableAvailableResearchView handleView={switchView} />,
         // This view is only available for company
         newResearch:
             <div className="research__content">
@@ -62,7 +62,8 @@ const Research = () => {
                     }
                     <FormCompanyResearchUpdate />
                 </div>
-            </div>
+            </div>,
+        viewResearch: <FormPanelMemberResearchJoin />
     };
 
     return (

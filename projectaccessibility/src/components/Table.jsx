@@ -267,7 +267,7 @@ TableCompanyResearchView.propTypes = {
 // TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
-const TableAvailableResearchView = () => {
+const TableAvailableResearchView = ({ handleView }) => {
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
@@ -281,7 +281,7 @@ const TableAvailableResearchView = () => {
             colSpan: 2,
             actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
                 <>
-                    <ButtonMuted text="View" />
+                    <ButtonMuted text="View" onAction={() => handleView("viewResearch")} />
                     <ButtonMuted text="Join" />
                 </>
             )
@@ -317,6 +317,10 @@ const TableAvailableResearchView = () => {
             </table>
         </div>
     );
+};
+
+TableAvailableResearchView.propTypes = {
+    handleView: PropTypes.func
 };
 
 export {

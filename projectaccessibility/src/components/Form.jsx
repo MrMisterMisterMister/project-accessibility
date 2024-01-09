@@ -1573,6 +1573,16 @@ const FormCompanyResearchUpdate = () => {
     );
 };
 
+// TODO
+// creating a form with just input type hideen and the user id
+// send to backend that adds the id to the research as participant
+// something like that
+const FormPanelMemberResearchJoin = () => {
+    return (
+        <h1>your mom</h1>
+    );
+};
+
 export {
     FormLogin,
     FormSignup,
@@ -1581,5 +1591,6 @@ export {
     FormPanelMemberProfileUpdate,
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
-    FormCompanyResearchUpdate
+    FormCompanyResearchUpdate,
+    FormPanelMemberResearchJoin
 };

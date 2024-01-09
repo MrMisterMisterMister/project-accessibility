@@ -121,9 +121,7 @@ const Dashboard = () => {
     return (
         <div className="dashboard__page">
             <div
-                className={`dashboard__page_menu ${
-                    isScrolling ? "fixed__scroll" : ""
-                }`}
+                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
             >
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
