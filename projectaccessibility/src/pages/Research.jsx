@@ -63,7 +63,20 @@ const Research = () => {
                     <FormCompanyResearchUpdate />
                 </div>
             </div>,
-        viewResearch: <FormPanelMemberResearchJoin />
+        viewResearch:
+            <div className="research__content">
+                <h4 className="research__content_title">
+                    View Research
+                </h4>
+                <div className="research__content_container">
+                    {
+                        /*
+                        Need to pass in the id for the research that is being edited
+                        */
+                    }
+                    <FormPanelMemberResearchJoin />
+                </div>
+            </div>
     };
 
     return (
