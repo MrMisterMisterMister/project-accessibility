@@ -3,10 +3,14 @@ import { jwtDecode } from "jwt-decode";
 import { useAuth } from "../provider/authProvider";
 import Cookies from "js-cookie";
 import { postRequest } from "../api/axiosClient";
+import { useNavigate } from "react-router-dom";
 
 const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleusercontent.com";
 
 function GoogleSignInButton () {
+    // To handle navigation
+    const navigate = useNavigate();
+    
     const { setToken } = useAuth();
 
     function setAuthToken(authToken) {
@@ -21,14 +25,6 @@ function GoogleSignInButton () {
         const userObject = jwtDecode(response.credential);
         console.log(userObject);
 
-        const currentTimeInSeconds = Math.floor(Date.now() / 1000); // Current time in seconds
-
-        if (currentTimeInSeconds > userObject.exp) {
-            console.log("Token has expired");
-        } else {
-            console.log("Token is still valid");
-        }
-
         if(response.credential) {
             // Check if user is signing in or signing up
             signUpOrSignInWithGoogle(response.credential);
@@ -39,17 +35,17 @@ function GoogleSignInButton () {
 
     async function signUpOrSignInWithGoogle(credential) {
         try {
-            const response = await postRequest("GoogleSignInButton/google-signup/", credential);
+            const response = await postRequest("GoogleSignInButton/google-signup/", { GoogleJWTToken: credential });
 
-            // Check if the error code indicates the user already exists
-            if (response.data.code === "EmailTaken") {
-                // If user exists, proceed with signing in
-                setAuthToken(credential);
-            } else {
-                console.error("Error signing in or signing up:", response.data.description);
-            }
+        // The backend will return a JWT token if the user is signed in or signed up successfully
+        if (response.data && response.data.token) {
+            setAuthToken(response.data.token);
+            navigate("/dashboard", { replace: true });
+        } else {
+            console.error("Error signing in or signing up:", response.data?.description);
+        }
         } catch (error) {
-            console.error("Error signing in or signing up:", error);
+            console.error("Error during Google sign-in/sign-up:", error);
         }
     }
 
