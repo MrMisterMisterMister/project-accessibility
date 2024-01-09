@@ -27,10 +27,14 @@ import { observer } from "mobx-react-lite";
 const Dashboard = observer(() => {
     // Translation
     const { t: translate } = useTranslation("dashboard");
+
+    // Get the user and GetUser from userstore
     const { userStore: { user, getUser } } = useStore();
 
+    // Hook to store the current user in
     const [currentUser, setCurrentUser] = useState({});
 
+    // fetches and updates user if the user is changed
     useEffect(() => {
         const getData = async () => {
             // If user is not available or needs to be updated, fetch it
