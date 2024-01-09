@@ -10,10 +10,10 @@ const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleuser
 function GoogleSignInButton () {
     // To handle navigation
     const navigate = useNavigate();
-    
+
     const { setToken } = useAuth();
 
-    function setAuthToken(authToken) {
+    function setAuthToken (authToken) {
         setToken(authToken);
         Cookies.set("token", authToken);
         console.log("Token set in authProvider: " + authToken);
@@ -25,7 +25,7 @@ function GoogleSignInButton () {
         const userObject = jwtDecode(response.credential);
         console.log(userObject);
 
-        if(response.credential) {
+        if (response.credential) {
             // Check if user is signing in or signing up
             signUpOrSignInWithGoogle(response.credential);
         } else {
@@ -33,17 +33,17 @@ function GoogleSignInButton () {
         }
     }
 
-    async function signUpOrSignInWithGoogle(credential) {
+    async function signUpOrSignInWithGoogle (credential) {
         try {
             const response = await postRequest("GoogleSignInButton/google-signup/", { GoogleJWTToken: credential });
 
-        // The backend will return a JWT token if the user is signed in or signed up successfully
-        if (response.data && response.data.token) {
-            setAuthToken(response.data.token);
-            navigate("/dashboard", { replace: true });
-        } else {
-            console.error("Error signing in or signing up:", response.data?.description);
-        }
+            // The backend will return a JWT token if the user is signed in or signed up successfully
+            if (response.data && response.data.token) {
+                setAuthToken(response.data.token);
+                navigate("/dashboard", { replace: true });
+            } else {
+                console.error("Error signing in or signing up:", response.data?.description);
+            }
         } catch (error) {
             console.error("Error during Google sign-in/sign-up:", error);
         }

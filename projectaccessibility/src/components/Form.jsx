@@ -443,7 +443,7 @@ const FormSignup = () => {
                 />
             </Form>
             {selectedUserType === "1" && (
-                <div style={{ marginTop: '10px'}}>
+                <div style={{ marginTop: "10px" }}>
                     <GoogleSignInButton />
                 </div>
             )}
