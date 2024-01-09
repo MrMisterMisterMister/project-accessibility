@@ -51,7 +51,7 @@ const PrivacyPolicy = () => {
                         </ul>
                     </nav>
 
-                    <h5 tabIndex="0" id="collected-data">{translate("collectedData.title")}</h5>
+                    <h4 tabIndex="0" id="collected-data">{translate("collectedData.title")}</h4>
                     <p tabIndex="0">{translate("collectedData.description")}</p>
 
                     <h5 tabIndex="0" id="personal-data">{translate("collectedData.personalData.title")}</h5>
@@ -101,7 +101,7 @@ const PrivacyPolicy = () => {
                     <h5 tabIndex="0" id="research-data">{translate("collectedData.researchData.title")}</h5>
                     <p tabIndex="0">{translate("collectedData.researchData.content")}</p>
 
-                    <h5 tabIndex="0" id="purpose-of-data-processing">{translate("purposeOfDataProcessing.title")}</h5>
+                    <h4 tabIndex="0" id="purpose-of-data-processing">{translate("purposeOfDataProcessing.title")}</h4>
                     <p tabIndex="0">{translate("purposeOfDataProcessing.intro.0")}</p>
                     <p tabIndex="0">{translate("purposeOfDataProcessing.intro.1")}</p>
 
@@ -138,7 +138,7 @@ const PrivacyPolicy = () => {
                         )}
                     </p>
 
-                    <h5 tabIndex="0" id="your-rights">{translate("rights.title")}</h5>
+                    <h4 tabIndex="0" id="your-rights">{translate("rights.title")}</h4>
                     <p tabIndex="0">{translate("rights.description")}</p>
 
                     <h5 tabIndex="0" id="right-to-access">{translate("rights.rightsList.access.title")}</h5>
@@ -170,7 +170,7 @@ const PrivacyPolicy = () => {
                     <h5 tabIndex="0" id="right-to-object-and-other-rights">{translate("rights.rightsList.objection.title")}</h5>
                     <p tabIndex="0">{translate("rights.rightsList.objection.content")}</p>
 
-                    <h5 tabIndex="0" id="cookies">{translate("cookies.title")}</h5>
+                    <h4 tabIndex="0" id="cookies">{translate("cookies.title")}</h4>
                     <p tabIndex="0">{translate("cookies.intro.0")}</p>
                     <p tabIndex="0">{translate("cookies.intro.1")}</p>
                     <p tabIndex="0">{translate("cookies.intro.2")}</p>
@@ -209,10 +209,10 @@ const PrivacyPolicy = () => {
                         </div>
                     </div>
 
-                    <h5 tabIndex="0" id="changes-to-the-privacy-policy">{translate("privacyPolicyChanges.title")}</h5>
+                    <h4 tabIndex="0" id="changes-to-the-privacy-policy">{translate("privacyPolicyChanges.title")}</h4>
                     <p tabIndex="0">{translate("privacyPolicyChanges.content")}</p>
 
-                    <h5 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h5>
+                    <h4 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h4>
                     <p tabIndex="0">{translate("contactDetails.content")}</p>
                 </Container>
             </div>
