@@ -3,8 +3,8 @@ import { useTranslation } from "react-i18next";
 import { TableCompanyView } from "../components/Table";
 import { CardCompanyView } from "../components/Card";
 import { ButtonSecondary } from "../components/Button";
-import { getRequest } from "../api/axiosClient";
 import Cookies from "js-cookie";
+import { createEndpoint } from "../api/axiosClient";
 
 // This is the company view for admin
 // They can just see the available companies
@@ -31,15 +31,17 @@ const Company = () => {
         });
     };
 
+    // planning to do this in a global file
+    const fetchCompanies = async () => {
+        const data = await createEndpoint("companies").get();
+        setCompanies(data);
+    };
+
     // Use axios get to retrieve all the company data
     useEffect(() => {
-        getRequest("companies")
-            .then((response) => {
-                setCompanies(response.data);
-            })
-            .catch((error) => {
-                console.log(error.response);
-            });
+        if (companies.length === 0) {
+            fetchCompanies();
+        }
     }, []); // Once
 
     // Something something

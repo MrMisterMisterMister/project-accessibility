@@ -36,7 +36,7 @@ const PanelMember = () => {
     const fetchPanelMembers = async () => {
         const data = await createEndpoint("panelmembers").get();
         setPanelMembers(data);
-    }
+    };
 
     // Sends get request to api to get all the panelmembers
     // Load them inside the hook afterwards

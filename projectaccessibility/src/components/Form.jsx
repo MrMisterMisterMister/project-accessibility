@@ -177,10 +177,9 @@ const FormSignup = () => {
         };
 
         // Make the POST call using axios post
-        const signupResponse = postRequest(
-            `signup/${endPoint[selectedUserType]}`,
-            formData
-        );
+        const signupResponse =
+            createEndpoint(`signup/${endPoint[selectedUserType]}`)
+                .post(formData);
 
         // Handle the response from the POST call
         signupResponse
@@ -467,7 +466,9 @@ const FormUserEmailUpdate = () => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse = postRequest("users/{their guid}", formData); // Still need to be worked on
+        const updateEmailResponse =
+            createEndpoint("users/{their guid}")
+                .post(formData);// Still need to be worked on
 
         // Handle the response from the POST call
         updateEmailResponse
@@ -577,10 +578,9 @@ const FormUserPasswordUpdate = () => {
     const passwordUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePasswordResponse = postRequest(
-            "users/{their guid}",
-            formData
-        ); // Still need to be worked on
+        const updatePasswordResponse =
+            createEndpoint("users/{their guid}")
+                .post(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -721,10 +721,9 @@ const FormPanelMemberProfileUpdate = () => {
     const panelMemberProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePanelMemberProfileResponse = postRequest(
-            "panelmembers/{their guid}",
-            formData
-        ); // Still need to be worked on
+        const updatePanelMemberProfileResponse =
+            createEndpoint("panelmembers/{their guid}")
+                .post(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updatePanelMemberProfileResponse
@@ -943,10 +942,9 @@ const FormCompanyProfileUpdate = () => {
     const companyProfileUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updateCompanyProfileResponse = postRequest(
-            "companies/{their guid}",
-            formData
-        ); // Still need to be worked on
+        const updateCompanyProfileResponse =
+            createEndpoint("companies/{their guid}")
+                .post(formData); // Still need to be worked on
 
         // Handle the response from the POST call
         updateCompanyProfileResponse
