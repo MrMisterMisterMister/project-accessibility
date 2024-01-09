@@ -31,17 +31,19 @@ const Dashboard = () => {
     // cracky...
     const { userStore: { user } } = useStore();
 
-    const [currentUser, setCurrentUser] = useState({});
+    // const [currentUser, setCurrentUser] = useState({});
 
-    useEffect(() => {
-        const getData = async () => {
-            const data = await createEndpoint(`users/${user.userId}`).get();
-            setCurrentUser(data);
-            console.log(data);
-        };
+    // useEffect(() => {
+    //     const getData = async () => {
+    //         const data = await createEndpoint(`users/${user.userId}`).get();
+    //         setCurrentUser(data);
+    //         console.log(data);
+    //     };
 
-        getData();
-    }, [user]);
+    //     getData();
+    // }, [user]);
+
+    console.log(user);
 
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
@@ -144,7 +146,7 @@ const Dashboard = () => {
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
-                    userName={currentUser.userName} // crack..
+                    userName="ClodsireClodsire"
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />

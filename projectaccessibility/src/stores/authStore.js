@@ -4,7 +4,7 @@ import { autorun, makeAutoObservable } from "mobx";
 export default class AuthStore {
     // This "might" be a problem because the published
     // app doesn't return the usercookie for some reason
-    token = Cookies.get("userCookie");
+    token = Cookies.get("token");
 
     constructor () {
         makeAutoObservable(this);
@@ -13,8 +13,6 @@ export default class AuthStore {
         autorun(() => {
             if (this.token) {
                 Cookies.set("token", this.token);
-            } else {
-                Cookies.remove("token");
             }
         });
     }
