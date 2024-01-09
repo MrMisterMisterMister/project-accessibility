@@ -1218,10 +1218,9 @@ const FormCompanyResearchCreate = () => {
 
     const companyResearchCreateSubmit = async (formData) => {
         // Axios
-        const createCompanyResearchResponse = postRequest(
-            "idontknowtheendpoint", // i dont know the endpoint
-            formData
-        );
+        const createCompanyResearchResponse =
+            createEndpoint("lol")
+                .post(formData);
 
         // Handle the response from the POST call
         createCompanyResearchResponse
@@ -1406,10 +1405,9 @@ const FormCompanyResearchUpdate = () => {
 
     const companyResearchCreateSubmit = async (formData) => {
         // Axios
-        const createCompanyResearchResponse = postRequest(
-            "idontknowtheendpoint", // i dont know the endpoint
-            formData
-        );
+        const createCompanyResearchResponse =
+            createEndpoint("lol")
+                .post(formData);
 
         // Handle the response from the POST call
         createCompanyResearchResponse
