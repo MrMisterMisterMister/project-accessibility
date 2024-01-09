@@ -35,7 +35,7 @@ function GoogleSignInButton () {
 
     async function signUpOrSignInWithGoogle (credential) {
         try {
-            const response = await createEndpoint("GoogleSignInButton/google-signup/").post(credential);
+            const response = await createEndpoint("GoogleSignInButton/google-signup/").post({ GoogleJWTToken: credential });
 
             // The backend will return a JWT token if the user is signed in or signed up successfully
             if (response.data && response.data.token) {
