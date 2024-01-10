@@ -8,41 +8,37 @@ import {
     FormCompanyProfileUpdate
 } from "../components/Form";
 
-// Settings page in portal
-// This needs to be seperated, so company and panelmember don't see the same
-// Will fix it later
-// TODO
-// Need to load the correct components based on user logged in
+// Settings page
 const Settings = () => {
     // Translation
     const { t: translate } = useTranslation("settings");
 
-    // Get the stored user info
+    // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
 
-    console.log(user);
-
-    // still need to determine roles, then switch view
-    // will do it tomorrow
     return (
         <>
-            <div className="settings__dashboard">
-                <h4 className="settings__dashboard_title">
-                    {translate("panelMemberProfileUpdateTitle")}
-                </h4>
-                <div className="settings__dashboard_content">
-                    <FormPanelMemberProfileUpdate panelMemberId={user.userId} />
+            {user.userRoles.includes("PanelMember") && (
+                <div className="settings__dashboard">
+                    <h4 className="settings__dashboard_title">
+                        {translate("panelMemberProfileUpdateTitle")}
+                    </h4>
+                    <div className="settings__dashboard_content">
+                        <FormPanelMemberProfileUpdate panelMemberId={user.userId} />
+                    </div>
                 </div>
-            </div>
+            )}
 
-            <div className="settings__dashboard">
-                <h4 className="settings__dashboard_title">
-                    {translate("companyProfileUpdateTitle")}
-                </h4>
-                <div className="settings__dashboard_content">
-                    <FormCompanyProfileUpdate companyId={user.userId} />
+            {user.userRoles.includes("Company") && (
+                <div className="settings__dashboard">
+                    <h4 className="settings__dashboard_title">
+                        {translate("companyProfileUpdateTitle")}
+                    </h4>
+                    <div className="settings__dashboard_content">
+                        <FormCompanyProfileUpdate companyId={user.userId} />
+                    </div>
                 </div>
-            </div>
+            )}
 
             <div className="settings__dashboard">
                 <h4 className="settings__dashboard_title">
