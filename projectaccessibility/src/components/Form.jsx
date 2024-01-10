@@ -468,7 +468,7 @@ const FormUserEmailUpdate = ({ userId }) => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse = createEndpoint(`users/${userId}`).post(formData);
+        const updateEmailResponse = createEndpoint("users").post(userId, formData);
 
         // Handle the response from the POST call
         updateEmailResponse

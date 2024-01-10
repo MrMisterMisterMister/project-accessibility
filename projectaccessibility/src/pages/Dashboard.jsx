@@ -83,7 +83,7 @@ const Dashboard = observer(() => {
     // Had to make a seperate one, so they wouldn't be in the way of the main nav menu in dashboard
     const userMenuItems = [
         {
-            page: <Account />,
+            page: <Account userData={currentUser} />,
             icon: <PersonCircle />,
             label: translate("profile")
         },

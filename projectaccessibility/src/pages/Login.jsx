@@ -28,7 +28,7 @@ const Login = () => {
         };
 
         fetchUser();
-    }, user);
+    }, [user]);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
