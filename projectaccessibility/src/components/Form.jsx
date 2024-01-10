@@ -4,19 +4,20 @@ import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
-import { useAuth } from "../provider/authProvider";
 import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import Cookies from "js-cookie";
 import GoogleSignInButton from "./GoogleSignInButton";
+import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
+
 
 // Form for login page
-const FormLogin = () => {
+const FormLogin = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // Gives access to setToken from the useAuth hook
-    const { setToken } = useAuth();
+    const { userStore, authStore } = useStore();
 
     // To handle navigation
     const navigate = useNavigate();
@@ -55,8 +56,8 @@ const FormLogin = () => {
                     // Configurate some shit
                     setFormAlerts({ success: { code: "UserHasLoggedIn" } });
                     // Set authentication token
-                    setToken(response.data.token);
-                    Cookies.set("token", response.data.token);
+                    authStore.setToken(response.data.token);
+                    userStore.getUser();
                     // Reset form
                     reset();
                     // 1s delay
@@ -136,7 +137,7 @@ const FormLogin = () => {
             </Form>
         </>
     );
-};
+});
 
 // Form for Signup page
 const FormSignup = () => {
