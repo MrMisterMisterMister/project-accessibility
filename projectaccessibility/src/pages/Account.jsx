@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 // Account page
 const Account = ({ userData }) => {
     // Translation
-    const { t: translate } = useTranslation("account"); // todo
+    const { t: translate } = useTranslation("account");
 
     // Columns to generate the company profile
     const companyColumns = [
@@ -73,7 +73,7 @@ const Account = ({ userData }) => {
     return (
         <div className="account__dashboard">
             <h4 className="account__dashboard_title">
-                Your Profile
+                {translate("pageTitle")}
             </h4>
             <div className="account__dashboard_user">
                 <img
@@ -103,13 +103,13 @@ const Account = ({ userData }) => {
                         <h5 className="account__dashboard_additional__title">
                             {group.title}
                         </h5>
-                        {group.columns.map((column, columnIndex) => (
+                        {group.columns.map(({ label, accessor }, columnIndex) => (
                             <div key={columnIndex} className="account__dashboard_additional__info">
                                 <span className="account__dashboard_additional__info_label">
-                                    {column.label}
+                                    {label}
                                 </span>
                                 <span className="account__dashboard_additional__info_value">
-                                    {userData[column.accessor]}
+                                    {userData[accessor]}
                                 </span>
                             </div>
                         ))}
