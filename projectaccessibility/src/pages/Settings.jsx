@@ -49,7 +49,7 @@ const Settings = () => {
                     {translate("emailUpdateTitle")}
                 </h4>
                 <div className="settings__dashboard_content">
-                    <FormUserEmailUpdate />
+                    <FormUserEmailUpdate userId={user.userId} />
                 </div>
             </div>
 
@@ -58,7 +58,7 @@ const Settings = () => {
                     {translate("passwordUpdateTitle")}
                 </h4>
                 <div className="settings__dashboard_content">
-                    <FormUserPasswordUpdate />
+                    <FormUserPasswordUpdate userId={user.userId} />
                 </div>
             </div>
         </>
