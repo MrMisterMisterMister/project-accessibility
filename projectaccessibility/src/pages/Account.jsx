@@ -8,26 +8,25 @@ const Account = ({ userData }) => {
     const { t: translate } = useTranslation("account"); // todo
 
     // Columns to generate the company profile
-    // These still need to be localized, just the labels
     const companyColumns = [
         {
-            title: "General",
+            title: translate("company.generalLabel"),
             columns: [
-                { label: "Company Name:", accessor: "companyName" },
-                { label: "KvK:", accessor: "kvk" },
-                { label: "Address:", accessor: "address" },
-                { label: "Postal Code:", accessor: "postalCode" },
-                { label: "Province:", accessor: "province" },
-                { label: "Country:", accessor: "country" }
+                { label: translate("company.name"), accessor: "companyName" },
+                { label: translate("company.kvk"), accessor: "kvk" },
+                { label: translate("company.address"), accessor: "address" },
+                { label: translate("company.postalCode"), accessor: "postalCode" },
+                { label: translate("company.province"), accessor: "province" },
+                { label: translate("company.country"), accessor: "country" }
             ]
         },
         {
-            title: "Contacts",
+            title: translate("company.contactLabel"),
             columns: [
-                { label: "Website:", accessor: "websiteUrl" },
-                { label: "Phone Number:", accessor: "phone" },
-                { label: "Email Address:", accessor: "email" },
-                { label: "Contact Person:", accessor: "contactPerson" }
+                { label: translate("company.website"), accessor: "websiteUrl" },
+                { label: translate("company.phone"), accessor: "phone" },
+                { label: translate("company.email"), accessor: "email" },
+                { label: translate("company.contactPerson"), accessor: "contactPerson" }
             ]
         }
     ];
@@ -58,6 +57,13 @@ const Account = ({ userData }) => {
             columns: [
                 { label: "Tool(s):", accessor: "tools" }
             ]
+        }
+    ];
+
+    // Columns for admins
+    const adminColumns = [
+        {
+            // empty like your head
         }
     ];
 
