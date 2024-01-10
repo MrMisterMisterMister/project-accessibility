@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NumberFormatter, DateFormatter } from "./Formatter";
 import { ButtonMuted } from "./Button";
 import PropTypes from "prop-types";
@@ -29,6 +30,9 @@ TableHead.propTypes = {
 
 // Some general body view
 const TableBody = ({ tableData, columns }) => {
+    // Translation
+    const { t: translate } = useTranslation("table");
+
     return (
         <tbody className="table__general_body">
             {tableData.length > 0
@@ -54,7 +58,7 @@ const TableBody = ({ tableData, columns }) => {
                 : (
                     <tr className="table__general_item">
                         <td className="table__general_item__cell" colSpan={columns.length}>
-                            No data available.
+                            {translate("noDataAvailable")}
                         </td>
                     </tr>
                 )
@@ -82,18 +86,20 @@ TableBody.propTypes = {
 // For now it's hard coded, only thing that needs to be changed is adding the props
 // Afterwards it's just looping over it and done
 const TablePanelMemberView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("panelmember");
+
     // Make array to define the heading and also the accessor for the data
     // Some of these fields are empty, our database needs to be updated to add these columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Name", accessor: ["firstName", "lastName"] },
-        { label: "Email", accessor: "email" },
-        { label: "Phone", accessor: "phone" },
-        { label: "Date of Birth", accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: "Address", accessor: "address" },
-        { label: "Postal Code", accessor: "postalCode" },
-        { label: "Province", accessor: "province" },
-        { label: "Country", accessor: "country" }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.name"), accessor: ["firstName", "lastName"] },
+        { label: translate("labels.email"), accessor: "email" },
+        { label: translate("labels.dateOfBirth"), accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.address"), accessor: "address" },
+        { label: translate("labels.postalCode"), accessor: "postalCode" },
+        { label: translate("labels.city"), accessor: "city" },
+        { label: translate("labels.country"), accessor: "country" }
     ];
 
     // These items need to be looped over
@@ -115,19 +121,22 @@ TablePanelMemberView.propTypes = {
 // Needs to be looped over with the data from get to companies
 // I am very lazy to do it, so someone else do it
 const TableCompanyView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("company");
+
     // The columns for table company
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "KvK", accessor: "kvk" },
-        { label: "Company Name", accessor: "companyName" },
-        { label: "Email", accessor: "email" },
-        { label: "Phone", accessor: "phone" },
-        { label: "Address", accessor: "address" },
-        { label: "Postal Code", accessor: "postalCode" },
-        { label: "Province", accessor: "province" },
-        { label: "Country", accessor: "country" },
-        { label: "Contact Person", accessor: "contactPerson" },
-        { label: "Website", accessor: "websiteUrl" }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.kvk"), accessor: "kvk" },
+        { label: translate("labels.companyName"), accessor: "companyName" },
+        { label: translate("labels.email"), accessor: "email" },
+        { label: translate("labels.phone"), accessor: "phone" },
+        { label: translate("labels.address"), accessor: "address" },
+        { label: translate("labels.postalCode"), accessor: "postalCode" },
+        { label: translate("labels.province"), accessor: "province" },
+        { label: translate("labels.country"), accessor: "country" },
+        { label: translate("labels.contactPerson"), accessor: "contactPerson" },
+        { label: translate("labels.websiteUrl"), accessor: "websiteUrl" }
     ];
 
     return (

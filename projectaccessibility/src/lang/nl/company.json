@@ -1,5 +1,18 @@
 {
     "pageTitle": "Bedrijven",
     "tableView": "Tabelweergave",
-    "cardView": "Kaartweergave"
+    "cardView": "Kaartweergave",
+    "labels": {
+        "id": "#",
+        "kvk": "KvK",
+        "companyName": "Bedrijfsnaam",
+        "email": "E-mailadres",
+        "phone": "Telefoonnummer",
+        "address": "Adres",
+        "postalCode": "Postcode",
+        "province": "Provincie",
+        "country": "Land",
+        "contactPerson": "Contactpersoon",
+        "websiteUrl": "Website"
+    }
 }

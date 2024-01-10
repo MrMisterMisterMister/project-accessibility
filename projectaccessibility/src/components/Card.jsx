@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { DateFormatter } from "./Formatter";
 import PropTypes from "prop-types";
 
@@ -83,6 +84,9 @@ CardCase.propTypes = {
 
 // Panelmembers in a card component
 const CardPanelMemberView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("panelmember");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -103,21 +107,39 @@ const CardPanelMemberView = ({ data }) => {
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Guardian:
+                                        {translate("labels.email")}:
                                     </span>
-                                    {panelmember.guardian}
+                                    {panelmember.email}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
-                                    </span>
-                                    {panelmember.zipcode}
-                                </p>
-                                <p>
-                                    <span className="card__user_prop_item">
-                                        Date of Birth:
+                                        {translate("labels.dateOfBirth")}:
                                     </span>
                                     {DateFormatter.format(new Date(panelmember.dateOfBirth))}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
+                                    </span>
+                                    {panelmember.address}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.postalCode")}:
+                                    </span>
+                                    {panelmember.postalCode}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.city")}:
+                                    </span>
+                                    {panelmember.city}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.country")}:
+                                    </span>
+                                    {panelmember.country}
                                 </p>
                             </div>
                         </div>
@@ -135,6 +157,9 @@ CardPanelMemberView.propTypes = {
 
 // Panelmembers in a card component
 const CardCompanyView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("company");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -157,37 +182,49 @@ const CardCompanyView = ({ data }) => {
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        KvK:
+                                        {translate("labels.kvk")}:
                                     </span>
                                     {company.kvk}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Adres:
+                                        {translate("labels.email")}:
+                                    </span>
+                                    {company.email}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.phone")}:
+                                    </span>
+                                    {company.phone}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
                                     </span>
                                     {company.address}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
+                                        {translate("labels.postalCode")}:
                                     </span>
                                     {company.postalCode}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Province:
+                                        {translate("labels.province")}:
                                     </span>
                                     {company.province}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Country:
+                                        {translate("labels.country")}:
                                     </span>
                                     {company.country}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Contact:
+                                        {translate("labels.contactPerson")}:
                                     </span>
                                     {company.contactPerson}
                                 </p>
