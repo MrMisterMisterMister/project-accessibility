@@ -18,17 +18,17 @@ const Login = () => {
     const navigate = useNavigate();
 
     // I am crack..
-    const { userStore: { isLoggedIn, getUser } } = useStore();
+    const { userStore: { isLoggedIn, getUser, user } } = useStore();
 
     // On crack
     useEffect(() => {
-        const iDontKnowWhatToCallThis = async () => {
-            await getUser();
+        const fetchUser = async () => {
+            if (!user) await getUser();
             isLoggedIn || navigate("/dashboard", { replace: true });
         };
 
-        iDontKnowWhatToCallThis();
-    }, []);
+        fetchUser();
+    }, user);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
