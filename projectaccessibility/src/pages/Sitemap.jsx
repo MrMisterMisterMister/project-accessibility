@@ -22,19 +22,19 @@ const Sitemap = () => {
             subPages: [
                 {
                     name: translate("links.components.about"),
-                    path: "/over-ons"
+                    path: "/#about"
                 },
                 {
                     name: translate("links.components.expertise"),
-                    path: "/expertise"
+                    path: "/#expertise"
                 },
                 {
                     name: translate("links.components.news"),
-                    path: "/actueel"
+                    path: "/#news"
                 },
                 {
                     name: translate("links.components.contact"),
-                    path: "/contact"
+                    path: "/#contact"
                 },
                 {
                     name: translate("links.components.signup"),

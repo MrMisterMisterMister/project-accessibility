@@ -16,10 +16,14 @@ const About = () => {
     ];
 
     return (
-        <section className="about__section">
+        <section className="about__section" id="about">
             <Container className="about__section_container">
                 <div className="about__section_banner">
-                    <img className="about__section_image" src="/img/placeholder.jpg" />
+                    <img
+                        className="about__section_image"
+                        src="/img/placeholder.jpg"
+                        alt="Picture of our mascot, saviour, god and father we all love, Clodsire"
+                    />
                 </div>
                 <div className="about__section_content">
                     <h2 className="about__section_title">

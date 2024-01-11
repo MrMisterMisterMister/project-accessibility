@@ -10,7 +10,7 @@ const Member = () => {
     const { t: translate } = useTranslation("member");
 
     return (
-        <section className="member__section">
+        <section className="member__section" id="member">
             <Container className="member__section_container">
                 <h2 className="member__section_title">{translate("title")}</h2>
                 <div className="member__section_group__group">
