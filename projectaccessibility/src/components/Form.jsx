@@ -1444,16 +1444,22 @@ const FormCompanyResearchCreate = () => {
     );
 };
 
-// TODO
-// So for this form, it's basically identical to the create research one
-// only thing that is different is that this one has values of the research someone is editing
-// need to make a get request to get the specific research and fill in the values
-// so this one is not working yet
-// since we dont have the endpoints al all configurated
-const FormCompanyResearchUpdate = () => {
+// To update research
+// Put request with the research id
+// and the new form data
+// for company
+const FormCompanyResearchUpdate = ({ researchId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form
     const {
         register,
         handleSubmit,
@@ -1461,33 +1467,41 @@ const FormCompanyResearchUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
+    // Handle submission for updating research
+    const companyResearchUpdateSubmit = async (formData) => {
+        // Send a PUT request
+        // Afterwards backend handles the rest
+        const createCompanyResearchResponse = createEndpoint("researches").put(researchId, formData);
 
-        // Handle the response from the POST call
+        // Handle the response from the PUT request
         createCompanyResearchResponse
             .then((response) => {
-                // Some inspiring comment
-                console.log(response);
-                reset();
+                // Checks if the response code is 200 (Ok)
+                if (response.code === 200) {
+                    // Set a success message for the user to see
+                    // TODO
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Reset form
+                    reset();
+                }
+                console.log(response); // TODO will remove later
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
+                console.log(error.response); // TODO will remove later
             });
     };
 
-    // Need to configurate the translations
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSubmit(companyResearchCreateSubmit)}
+                onSubmit={handleSubmit(companyResearchUpdateSubmit)}
                 noValidate
             >
                 <Row>
@@ -1631,6 +1645,11 @@ const FormCompanyResearchUpdate = () => {
     );
 };
 
+// prop types for company research update
+FormCompanyResearchUpdate.propTypes = {
+    researchId: PropTypes.number
+};
+
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
@@ -1679,7 +1698,7 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
                 <Form.Control
                     type="hidden"
                     {...register("id", {
-                        value: "inserthereuserid" // todo
+                        value: userId // TODO will probably remove it
                     })}
                 />
                 <Row>
@@ -1727,7 +1746,7 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.reward} // TODO need to format it
+                            value={data.reward}
                             placeholder={translate("rewardPlaceholder")}
                             readOnly
                         />
@@ -1784,17 +1803,15 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
 // was too lazy so just put it all string
 FormPanelMemberResearchJoin.propTypes = {
     userId: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(
-        PropTypes.shape({
-            title: PropTypes.string.isRequired,
-            description: PropTypes.string.isRequired,
-            date: PropTypes.string.isRequired,
-            reward: PropTypes.string.isRequired,
-            organizer: PropTypes.string.isRequired,
-            type: PropTypes.string.isRequired,
-            category: PropTypes.string.isRequired
-        })
-    )
+    data: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+        date: PropTypes.string,
+        reward: PropTypes.number,
+        organizer: PropTypes.string,
+        type: PropTypes.string,
+        category: PropTypes.string
+    })
 };
 
 export {

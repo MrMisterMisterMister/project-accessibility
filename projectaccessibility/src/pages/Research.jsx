@@ -18,13 +18,13 @@ const Research = () => {
 
     // Hook to know which research is being worked on
     // Using for editing research and viewing research
-    const [id, setId] = useState(null);
+    const [researchId, setResearchId] = useState(null);
 
     // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
 
     // Hook to store being worked on research, singular
-    const [research, setResearch] = useState([]);
+    const [research, setResearch] = useState({});
 
     // Hook to store all the researches in
     const [researches, setResearches] = useState([]);
@@ -32,19 +32,19 @@ const Research = () => {
     // Function that handles switching it, just simply replaces with new value
     const switchView = (view, id = null) => {
         setView(view);
-        setId(id);
+        setResearchId(id);
     };
 
     // planning to do this in a global file
     const fetchResearches = async () => {
-        const data = await createEndpoint("researches/").get();
+        const data = await createEndpoint("researches").get();
         setResearches(data);
     };
 
     // Fetch singular research
     // for when viewing or editing
     const fetchResearch = async () => {
-        const data = await createEndpoint(`researches/${id}`).get();
+        const data = await createEndpoint(`researches/${researchId}`).get();
         setResearch(data);
     };
 
@@ -54,8 +54,10 @@ const Research = () => {
             fetchResearches();
         }
 
-        fetchResearch();
-    }, [id]); // On id mount
+        if (researchId != null || researchId) {
+            fetchResearch();
+        }
+    }, [researchId]); // On id mount
 
     // Something something
     // Function here that handles deleting a research
@@ -65,23 +67,21 @@ const Research = () => {
     // The different view for research
     // This is a very lazy way of doing it
     const researchViewComponents = {
-        // Here I still need to determine which user is logged in, and display the correct one
-        // Can probably just do simple if statement
+        // So this isn't correct here yet, the data needs to be targeted for panel member and research
+        // I'm very lazy to fix it
         myResearch: (
             <>
                 {user.userRoles.includes("Admin") && (
                     <TableCompanyResearchView data={researches} handleView={switchView} />
                 )}
                 {user.userRoles.includes("PanelMember") && (
-                    <TablePanelMemberResearchView />
+                    <TablePanelMemberResearchView data={researches} />
                 )}
             </>
         ),
-        // This view is only available for panelmember
         allResearches: (
             <TableAvailableResearchView data={researches} handleView={switchView} />
         ),
-        // This view is only available for company
         newResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
@@ -92,14 +92,13 @@ const Research = () => {
                 </div>
             </div>
         ),
-        // This view is only available for company
         editResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
                     Edit Research
                 </h4>
                 <div className="research__content_container">
-                    <FormCompanyResearchUpdate />
+                    <FormCompanyResearchUpdate researchId={researchId} />
                 </div>
             </div>
         ),
@@ -119,14 +118,6 @@ const Research = () => {
         <div className="research__dashboard">
             <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
-                {
-                    /*
-                    Also need to figure something out to display the buttons to certain roles only
-                    Like 'Show All' is only for panelmember and 'New Research' is only for company
-                    Something like conditional function should solve it maybe, but for now, I am just
-                    letting it stay like this
-                    */
-                }
                 <ButtonSecondary
                     text="My Research"
                     isActive={view === "myResearch"}

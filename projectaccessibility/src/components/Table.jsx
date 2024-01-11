@@ -154,59 +154,31 @@ TableCompanyView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
-// TODO
-// still need to be updated. wip
-const TablePanelMemberResearchView = () => {
+const TablePanelMemberResearchView = ({ data }) => {
+    // need to do localization
     // columns
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
         { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date" },
+        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
         { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" },
-        { label: "Status", accessor: "status" }
-    ];
-
-    // testdata
-    const test = [
-        {
-            id: 42,
-            title: "Exploring new horizons",
-            description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            date: "2024-03-15",
-            reward: 75,
-            category: "Adventure, Discovery",
-            status: "Inactive"
-        },
-        {
-            id: 2,
-            title: "Coding challenge",
-            description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            date: "2024-03-01",
-            reward: 120,
-            category: "Programming",
-            status: "Active"
-        },
-        {
-            id: 9,
-            title: "Photography contest",
-            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: "2024-03-22",
-            reward: 60,
-            category: "Photography",
-            status: "Active"
-        }
+        { label: "Category", accessor: "category" }
     ];
 
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={test} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
+};
+
+// Prop type for the panelmember research view
+TablePanelMemberResearchView.propTypes = {
+    data: PropTypes.array.isRequired
 };
 
 // TODO
@@ -215,6 +187,7 @@ const TablePanelMemberResearchView = () => {
 // Also the buttons for need onAction
 // Will update it later
 const TableCompanyResearchView = ({ data, handleView }) => {
+    // need to do localization
     // columns for the company research view
     const columns = [
         { label: "#", accessor: "id" },
@@ -223,12 +196,11 @@ const TableCompanyResearchView = ({ data, handleView }) => {
         { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
         { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: "Category", accessor: "category" },
-        { label: "Status", accessor: "status" },
         {
             label: "Actions",
             colSpan: 2,
-            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (<>
-                <ButtonMuted text="Edit" onAction={() => handleView("editResearch")} />
+            actions: (id) => (<>
+                <ButtonMuted text="Edit" onAction={() => handleView("editResearch", id)} />
                 <ButtonMuted text="Delete" />
             </>
             )
@@ -255,6 +227,8 @@ TableCompanyResearchView.propTypes = {
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = ({ data, handleView }) => {
+    // need to do localization
+    // columns
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
@@ -286,7 +260,7 @@ const TableAvailableResearchView = ({ data, handleView }) => {
 };
 
 TableAvailableResearchView.propTypes = {
-    data: PropTypes.array.isRequired,
+    data: PropTypes.array,
     handleView: PropTypes.func
 };
 
