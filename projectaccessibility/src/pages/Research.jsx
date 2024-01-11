@@ -17,10 +17,14 @@ const Research = () => {
     const [view, setView] = useState("myResearch");
 
     // Hook to know which research is being worked on
+    // Using for editing research and viewing research
     const [id, setId] = useState(null);
 
     // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
+
+    // Hook to store being worked on research, singular
+    const [research, setResearch] = useState([]);
 
     // Hook to store all the researches in
     const [researches, setResearches] = useState([]);
@@ -37,15 +41,23 @@ const Research = () => {
         setResearches(data);
     };
 
+    // Fetch singular research
+    // for when viewing or editing
+    const fetchResearch = async () => {
+        const data = await createEndpoint(`researches/${id}`).get();
+        setResearch(data);
+    };
+
     // Get request to get all researches
     useEffect(() => {
         if (researches.length === 0) {
             fetchResearches();
         }
-    }, []); // Run once
 
-    // Print it out for now
-    // console.log(researches);
+        if (id != null) {
+            fetchResearch();
+        }
+    }, [id]); // On id mount
 
     // Something something
     // Function here that handles deleting a research
@@ -83,7 +95,7 @@ const Research = () => {
             </div>
         ),
         // This view is only available for company
-        editResearch: (id) => (
+        editResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
                     Edit Research
@@ -93,13 +105,13 @@ const Research = () => {
                 </div>
             </div>
         ),
-        viewResearch: (id) => (
+        viewResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
                     View Research
                 </h4>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin id={id} />
+                    <FormPanelMemberResearchJoin userId={user.userId} data={research} />
                 </div>
             </div>
         )
@@ -138,13 +150,7 @@ const Research = () => {
                 )}
             </div>
             <div className="research__dashboard_content">
-                {
-                    // This is whack, otherwise react gives errors
-                    // Crack
-                    typeof researchViewComponents[view] === "function"
-                        ? researchViewComponents[view](id)
-                        : researchViewComponents[view]
-                }
+                {researchViewComponents[view]}
             </div>
         </div>
     );

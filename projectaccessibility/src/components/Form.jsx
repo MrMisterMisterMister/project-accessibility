@@ -555,6 +555,7 @@ const FormUserEmailUpdate = ({ userId }) => {
     );
 };
 
+// prop types for updating email
 FormUserEmailUpdate.propTypes = {
     userId: PropTypes.string.isRequired
 };
@@ -1634,11 +1635,11 @@ const FormCompanyResearchUpdate = () => {
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ id }) => {
+const FormPanelMemberResearchJoin = ({ userId, data }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    console.log(id);
+    // React Hook forms
     const {
         register,
         handleSubmit,
@@ -1667,114 +1668,133 @@ const FormPanelMemberResearchJoin = ({ id }) => {
     // Also need to put the id of the panelmember inside here, so it will be submitted via the form
     // Then magic..
     return (
-        <Form
-            className="form__research"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
-            noValidate
-        >
-            <Form.Control
-                type="hidden"
-                {...register("id", {
-                    value: "inserthereuserid" // todo
-                })}
-            />
-            <Row>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("titleLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="Clodsire and friends" // TODO test
-                        placeholder={translate("titlePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("descriptionLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        as="textarea"
-                        value="Hey guys, did you know that in terms of male human and female Pokémon breeding, Vaporeon is the most compatible Pokémon for humans? Not only are they in the field egg group, which is mostly comprised of mammals, Vaporeon are an average of 3&quot;03 tall and 63.9 pounds, this means they're large enough to be able handle human dicks, and with their impressive Base Stats for HP and access to Acid Armor, you can be rough with one. Due to their mostly water based biology, there's no doubt in my mind that an aroused Vaporeon would be incredibly wet, so wet that you could easily have sex with one for hours without getting sore. They can also learn the moves Attract, Baby-Doll Eyes, Captivate, Charm, and Tail Whip, along with not having fur to hide nipples, so it'd be incredibly easy for one to get you in the mood. With their abilities Water Absorb and Hydration, they can easily recover from fatigue with enough water. No other Pokémon comes close to this level of compatibility. Also, fun fact, if you pull out enough, you can make your Vaporeon turn white. Vaporeon is literally built for human dick. Ungodly defense stat+high HP pool+Acid Armor means it can take cock all day, all shapes and sizes and still come for more " // TODO test
-                        placeholder={translate("descriptionPlaceholder")}
-                        rows={5}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("dateLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="date"
-                        value="2024-05-04" // TODO test
-                        placeholder={translate("datePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("rewardLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="&euro; 50.0" // TODO test
-                        placeholder={translate("rewardPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("organizerLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="The Pokemon Company" // TODO test
-                        placeholder={translate("organizerPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("typeLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="Online" // TODO test
-                        placeholder={translate("typePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("categoryLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="This, Really, Is, Gay" // test
-                        placeholder={translate("categoryPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-            </Row>
-            <ButtonSubmit text="Join" />
-            {
-                /*
-                Another button to go back maybe?
-                */
-            }
-        </Form>
+        <>
+            <Form
+                className="form__research"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
+                noValidate
+            >
+                <Form.Control
+                    type="hidden"
+                    {...register("id", {
+                        value: "inserthereuserid" // todo
+                    })}
+                />
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("titleLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.title}
+                            placeholder={translate("titlePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("descriptionLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            as="textarea"
+                            value={data.description}
+                            placeholder={translate("descriptionPlaceholder")}
+                            rows={5}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("dateLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="date"
+                            value={data.date} // TODO need to format it
+                            placeholder={translate("datePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("rewardLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.reward} // TODO need to format it
+                            placeholder={translate("rewardPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("organizerLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.organizer}
+                            placeholder={translate("organizerPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("typeLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.type}
+                            placeholder={translate("typePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("categoryLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.category}
+                            placeholder={translate("categoryPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                </Row>
+                <ButtonSubmit text="Join" />
+                {
+                    /*
+                    Another button to go back maybe?
+                    */
+                }
+            </Form>
+        </>
     );
+};
+
+// prop types for ye..
+// was too lazy so just put it all string
+FormPanelMemberResearchJoin.propTypes = {
+    userId: PropTypes.string.isRequired,
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            title: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired,
+            date: PropTypes.string.isRequired,
+            reward: PropTypes.string.isRequired,
+            organizer: PropTypes.string.isRequired,
+            type: PropTypes.string.isRequired,
+            category: PropTypes.string.isRequired
+        })
+    )
 };
 
 export {
