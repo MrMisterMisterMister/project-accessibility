@@ -209,7 +209,7 @@ const TableCompanyResearchView = ({ data, onEdit, onDelete }) => {
             actions: (id) => (
                 <>
                     <ButtonMuted text={translate("labels.edit")} onAction={() => onEdit("editResearch", id)} />
-                    <ButtonMuted text={translate("labels.delete")} onAction={() => onDelete(id)} /> {/* TODO */}
+                    <ButtonMuted text={translate("labels.delete")} onAction={() => onDelete(id)} />
                 </>
             )
         }
@@ -235,7 +235,7 @@ TableCompanyResearchView.propTypes = {
 // TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
-const TableAvailableResearchView = ({ data, handleView }) => {
+const TableAvailableResearchView = ({ data, onView, onJoin }) => {
     // Translation
     const { t: translate } = useTranslation("research");
 
@@ -253,8 +253,8 @@ const TableAvailableResearchView = ({ data, handleView }) => {
             colSpan: 2,
             actions: (id) => (
                 <>
-                    <ButtonMuted text={translate("labels.view")} onAction={() => handleView("viewResearch", id)} />
-                    <ButtonMuted text={translate("labels.join")} onAction={() => alert("your mom")} /> {/* TODO */}
+                    <ButtonMuted text={translate("labels.view")} onAction={() => onView("viewResearch", id)} />
+                    <ButtonMuted text={translate("labels.join")} onAction={() => onJoin(id)} />
                 </>
             )
         }
@@ -273,7 +273,8 @@ const TableAvailableResearchView = ({ data, handleView }) => {
 // prop types table avaialbler researches view
 TableAvailableResearchView.propTypes = {
     data: PropTypes.array,
-    handleView: PropTypes.func
+    onView: PropTypes.func,
+    onJoin: PropTypes.func
 };
 
 export {

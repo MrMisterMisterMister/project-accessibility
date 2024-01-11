@@ -63,8 +63,20 @@ const Research = () => {
     // Function here that handles deleting a research
     // Also a function that lets you join the research
     // so it can be passed to the component
-    const handleResearchDeletion = ({ id }) => {
-        console.log(id);
+    const handleResearchDeletion = (id) => {
+        // Make a delete request to the API
+        // So it deletes the research
+        // Also need to make some sort of confirmation first
+        // Like a popup
+        // For now just console log which research id is getting deleted
+        console.log("Deleted ResearchId: " + id);
+    };
+
+    // Function that handles Panel Members to join a research
+    // Will need to know which research they want to join and also the current logged in user id
+    const joinResearch = (id) => {
+        // This needs more logic, for now just print out which research they wanted to join
+        console.log("Joined ResearchId: " + id);
     };
 
     // The different view for research
@@ -83,7 +95,7 @@ const Research = () => {
             </>
         ),
         allResearches: (
-            <TableAvailableResearchView data={researches} handleView={switchView} />
+            <TableAvailableResearchView data={researches} onView={switchView} onJoin={joinResearch} />
         ),
         newResearch: (
             <div className="research__content">
