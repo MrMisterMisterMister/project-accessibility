@@ -45,7 +45,7 @@ const Footer = () => {
                 },
                 {
                     name: translate("menu.goto.links.about"),
-                    path: "/aboutus"
+                    path: "/over-ons"
                 },
                 {
                     name: translate("menu.goto.links.expertise"),
