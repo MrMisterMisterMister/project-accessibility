@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
 import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
+import { createEndpoint } from "../api/axiosClient";
 
 // Research page
 // In here the components will be role dependend loaded
@@ -14,10 +15,29 @@ const Research = () => {
     // This hook just keeps track of the current view, on default it's myResearch
     const [view, setView] = useState("myResearch");
 
+    // Hook to store all the researches in
+    const [researches, setResearches] = useState([]);
+
     // Function that handles switching it, just simply replaces with new value
     const switchView = (view) => {
         setView(view);
     };
+
+    // planning to do this in a global file
+    const fetchResearches = async () => {
+        const data = await createEndpoint("researches/").get();
+        setResearches(data);
+    };
+
+    // Get request to get all researches
+    useEffect(() => {
+        if (researches.length === 0) {
+            fetchResearches();
+        }
+    }, []); // Run once
+
+    // Print it out for now
+    console.log(researches);
 
     // Something something
     // Function here that handles deleting a research
