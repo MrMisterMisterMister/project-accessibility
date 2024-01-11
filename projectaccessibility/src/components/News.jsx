@@ -9,7 +9,7 @@ const News = () => {
     const { t: translate } = useTranslation("news");
 
     return (
-        <section className="news__section">
+        <section className="news__section" id="news">
             <Container className="news__section_container">
                 <h2 className="news__section_title">{translate("title")}</h2>
                 <div className="news__section_group__card">
