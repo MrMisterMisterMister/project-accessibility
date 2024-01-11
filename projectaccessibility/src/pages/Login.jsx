@@ -2,11 +2,10 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { FormLogin } from "../components/Form";
-import { ButtonAuth } from "../components/Button";
+import { ButtonAuth, ButtonGoogleSignIn } from "../components/Button";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import GoogleSignInButton from "../components/GoogleSignInButton";
 
 // Login page
 const Login = () => {
@@ -55,7 +54,7 @@ const Login = () => {
                                     text={translate("auth.microsoft")}
                                 />
 
-                                <GoogleSignInButton />
+                                <ButtonGoogleSignIn />
 
                             </div>
                         </div>
