@@ -254,7 +254,7 @@ TableCompanyResearchView.propTypes = {
 // TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
-const TableAvailableResearchView = ({ handleView }) => {
+const TableAvailableResearchView = ({ data, handleView }) => {
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
@@ -275,38 +275,18 @@ const TableAvailableResearchView = ({ handleView }) => {
         }
     ];
 
-    const test = [
-        {
-            id: 1,
-            title: "Very special research",
-            type: "Online",
-            date: "2024-02-06",
-            reward: 142440.42,
-            category: "Blind, No Legs, No Arms, No Mouth",
-            organizer: "Cornhub"
-        },
-        {
-            id: 2,
-            title: "Omae Wa Mou",
-            date: "2024-09-09",
-            type: "Online",
-            reward: 5555,
-            category: "大",
-            organizer: "Stichting Accessibility"
-        }
-    ];
-
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={test} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
 };
 
 TableAvailableResearchView.propTypes = {
+    data: PropTypes.array.isRequired,
     handleView: PropTypes.func
 };
 

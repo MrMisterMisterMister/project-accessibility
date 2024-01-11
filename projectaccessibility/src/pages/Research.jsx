@@ -64,7 +64,7 @@ const Research = () => {
                 )}
             </>,
         // This view is only available for panelmember
-        allResearches: <TableAvailableResearchView handleView={switchView} />,
+        allResearches: <TableAvailableResearchView data={researches} handleView={switchView} />,
         // This view is only available for company
         newResearch:
             <div className="research__content">
