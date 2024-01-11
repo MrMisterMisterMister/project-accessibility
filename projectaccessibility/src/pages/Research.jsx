@@ -54,9 +54,7 @@ const Research = () => {
             fetchResearches();
         }
 
-        if (id != null) {
-            fetchResearch();
-        }
+        fetchResearch();
     }, [id]); // On id mount
 
     // Something something

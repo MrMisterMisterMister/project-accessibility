@@ -1715,7 +1715,7 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="date"
-                            value={data.date} // TODO need to format it
+                            value={data.date ? new Date(data.date).toISOString().split("T")[0] : ""} // lazy way
                             placeholder={translate("datePlaceholder")}
                             readOnly
                         />
