@@ -4,9 +4,8 @@ import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
-import { ButtonSubmit } from "../components/Button";
+import { ButtonGoogleSignIn, ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
-import GoogleSignInButton from "./GoogleSignInButton";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
 
@@ -442,7 +441,7 @@ const FormSignup = () => {
             </Form>
             {selectedUserType === "1" && (
                 <div style={{ marginTop: "10px" }}>
-                    <GoogleSignInButton />
+                    <ButtonGoogleSignIn />
                 </div>
             )}
         </>
