@@ -4,6 +4,7 @@ import { ButtonSecondary } from "../components/Button";
 import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
 import { createEndpoint } from "../api/axiosClient";
+import { useStore } from "../stores/store";
 
 // Research page
 // In here the components will be role dependend loaded
@@ -14,6 +15,9 @@ const Research = () => {
 
     // This hook just keeps track of the current view, on default it's myResearch
     const [view, setView] = useState("myResearch");
+
+    // Get the stored user info so we can get access to the current role
+    const { userStore: { user } } = useStore();
 
     // Hook to store all the researches in
     const [researches, setResearches] = useState([]);
@@ -51,10 +55,13 @@ const Research = () => {
         // Can probably just do simple if statement
         myResearch:
             <>
-                <TableCompanyResearchView handleView={switchView} />
-                <br />
-                <br />
-                <TablePanelMemberResearchView />
+                {user.userRoles.includes("Admin") && (
+                    <TableCompanyResearchView data={researches} handleView={switchView} />
+                )}
+
+                {user.userRoles.includes("PanelMember") && (
+                    <TablePanelMemberResearchView />
+                )}
             </>,
         // This view is only available for panelmember
         allResearches: <TableAvailableResearchView handleView={switchView} />,

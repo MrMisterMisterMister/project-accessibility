@@ -214,13 +214,13 @@ const TablePanelMemberResearchView = () => {
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableCompanyResearchView = ({ handleView }) => {
+const TableCompanyResearchView = ({ data, handleView }) => {
     // columns for the company research view
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
         { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date" },
+        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
         { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: "Category", accessor: "category" },
         { label: "Status", accessor: "status" },
@@ -235,34 +235,11 @@ const TableCompanyResearchView = ({ handleView }) => {
         }
     ];
 
-    // some test data
-    // will be removed later
-    const testData = [
-        {
-            id: 1,
-            title: "Research for my kid",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            date: "2024-02-06",
-            reward: 50,
-            category: "Some, Random, Text",
-            status: "Active"
-        },
-        {
-            id: 2,
-            title: "My disabled kid can't be this cute",
-            description: "My description",
-            date: "2024-02-29",
-            reward: 90,
-            category: "カラミンゴ",
-            status: "Active"
-        }
-    ];
-
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={testData} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
@@ -270,6 +247,7 @@ const TableCompanyResearchView = ({ handleView }) => {
 
 // Prop type for the company table view
 TableCompanyResearchView.propTypes = {
+    data: PropTypes.array.isRequired,
     handleView: PropTypes.func
 };
 
