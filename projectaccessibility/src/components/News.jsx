@@ -13,7 +13,7 @@ const News = () => {
             <Container className="news__section_container">
                 <h2 className="news__section_title">{translate("title")}</h2>
                 <div className="news__section_group__card">
-                    {translate("articles", { returnObjects: true }).map(
+                    {translate("articles", { returnObjects: true }).slice(0, 3).map(
                         (article, index) => (
                             <CardNews
                                 key={index}
@@ -21,9 +21,7 @@ const News = () => {
                                 altText={translate(`articles.${index}.altText`)}
                                 date={translate(`articles.${index}.date`)}
                                 title={translate(`articles.${index}.title`)}
-                                text={translate(
-                                    `articles.${index}.description`
-                                )}
+                                text={translate(`articles.${index}.text`)}
                             />
                         )
                     )}

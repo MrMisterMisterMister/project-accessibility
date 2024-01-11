@@ -39,22 +39,25 @@ const Footer = () => {
         goto: {
             title: translate("menu.goto.title"),
             links: [
-                { name: translate("menu.goto.links.home"), path: "/" },
+                {
+                    name: translate("menu.goto.links.home"),
+                    path: "/"
+                },
                 {
                     name: translate("menu.goto.links.about"),
-                    path: "/#about"
+                    path: "/over-ons"
                 },
                 {
                     name: translate("menu.goto.links.expertise"),
-                    path: "/#expertise"
+                    path: "/expertise"
                 },
                 {
                     name: translate("menu.goto.links.news"),
-                    path: "/#news"
+                    path: "/news"
                 },
                 {
                     name: translate("menu.goto.links.contact"),
-                    path: "/#contact"
+                    path: "/contact"
                 }
             ]
         },
