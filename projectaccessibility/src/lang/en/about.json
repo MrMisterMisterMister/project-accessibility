@@ -10,5 +10,22 @@
             "title": "Our vision",
             "text": "Lorem ipsum dolor sit amet consectetur"
         }
-    ]
+    ],
+    "lastModified": "Last Modified: January 11 2024.",
+    "mission": {
+        "title": "Our Mission",
+        "content": "At Project Accessibility, we strive to provide a seamless and accessible experience for all users. Our mission is driven by the conviction that digital accessibility is essential for promoting equality and removing barriers. We believe in inclusivity, privacy, and user satisfaction, and we are committed to integrating these values into every aspect of our services."
+    },
+    "values": {
+        "title": "Our Values",
+        "list": [
+            "Privacy First: We prioritize the privacy and security of your data. We adhere to strict standards to ensure that your personal information is safely stored and protected.",
+            "Inclusivity: Our services are designed to be accessible to everyone, regardless of abilities or limitations. We strive to create digital experiences that are usable for everyone, with a particular focus on diversity and inclusion.",
+            "User-Centric: Your satisfaction is at the heart of what we do. We listen to our users, adapt to their needs, and aim to provide the best possible user experience."
+        ]
+    },
+    "team": {
+        "title": "Our Team",
+        "content": "Our diverse team is dedicated to creating an environment where innovation, respect, and collaboration thrive. With experts from various fields, we combine our strengths to deliver high-quality solutions. Each team member contributes to the unique dynamics of Project Accessibility, collectively striving for excellence and progress in the field of digital accessibility."
+    }
 }
