@@ -1,0 +1,14 @@
+{
+    "pageTitle": "Over ons",
+    "intro": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nam autem corporis, quam et placeat sunt repellendus commodi vel ducimus doloremque? Labore possimus ut quia asperiores molestiae nihil delectus. Voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, aliquam. Quas vero reiciendis laborum, non illo et autem magni. Aliquid vel fuga natus vitae explicabo ipsa iure eveniet debitis saepe!",
+    "about": [
+        {
+            "title": "Onze missie",
+            "text": "Lorem ipsum dolor sit amet consectetur"
+        },
+        {
+            "title": "Onze visie",
+            "text": "Lorem ipsum dolor sit amet consectetur"
+        }
+    ]
+}

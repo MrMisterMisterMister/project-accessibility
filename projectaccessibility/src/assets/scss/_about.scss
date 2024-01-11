@@ -1,0 +1,72 @@
+@use 'variables';
+@use 'mixins';
+
+// about us style
+.about__section {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    background-color: variables.$white;
+    position: relative;
+
+    .about__section_container {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5%;
+
+        .about__section_banner {
+            width: 100%;
+            order: 2;
+
+            @include mixins.lg {
+                width: 40%;
+                order: 1;
+            }
+
+            .about__section_image {
+                display: block;
+                object-fit: cover;
+                border-radius: 0.5rem;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .about__section_content {
+            width: 100%;
+            order: 1;
+
+            @include mixins.lg {
+                flex: 1 1 0%;
+                width: 55%;
+                order: 2;
+            }
+
+            .about__section_title {
+                font-size: 2.5em;
+                color: variables.$sapphire;
+                padding-bottom: 1.5rem;
+            }
+
+            .about__section_text {
+                color: variables.$black;
+                font-size: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .about__section_group__card {
+                display: grid;
+                grid-template-columns: repeat(1, 1fr);
+                gap: 1rem;
+                align-items: stretch;
+                width: 100%;
+                margin-bottom: 2rem;
+
+                @include mixins.xl {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+        }
+    }
+}

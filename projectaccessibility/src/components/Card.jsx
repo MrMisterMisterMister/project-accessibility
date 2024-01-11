@@ -49,6 +49,28 @@ CardNews.propTypes = {
     text: PropTypes.string.isRequired
 };
 
+// About card
+// Has things like mission and vision
+// Something
+const CardAbout = ({ icon, title, text }) => {
+    return (
+        <div className="card__about_item">
+            <div className="card__about_content">
+                <div className="card__about_content__icon">{icon}</div>
+                <h3 className="card__about_content__title">{title}</h3>
+                <p className="card__about_content__text">{text}</p>
+            </div>
+        </div>
+    );
+};
+
+// Prop type for cardabout
+CardAbout.propTypes = {
+    icon: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
+
 // Case in card components homepage
 // Path for case
 const CardCase = ({ img, altText, title, text, path, linkText }) => {
@@ -208,6 +230,7 @@ CardCompanyView.propTypes = {
 export {
     CardExpertise,
     CardNews,
+    CardAbout,
     CardCase,
     CardPanelMemberView,
     CardCompanyView
