@@ -27,6 +27,15 @@ const Contact = () => {
                                 text={translate("buttons.signin")}
                             />
                         </div>
+                        <br></br>
+                        <h1>{translate("ContactTitle")}</h1>
+                        <p className="contact__section_content__text">{translate("content")}</p>
+
+                        <div className="contact__section_contact_infotext">
+                        <p>{translate("contact.email")}</p>
+                        <p>{translate("contact.phone")}</p>
+                        <p>{translate("contact.address")}</p>
+                        </div>
                     </div>
                 </div>
             </Container>

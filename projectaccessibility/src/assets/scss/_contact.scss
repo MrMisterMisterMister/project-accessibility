@@ -41,6 +41,11 @@
                     display: flex;
                     justify-content: center;
                 }
+                .contact__section_contact_infotext{
+                color: variables.$black;
+                font-weight: bold;
+                margin-bottom: 1rem;
+                }
             }
         }
     }

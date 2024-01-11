@@ -4,5 +4,12 @@
     "buttons": {
         "signup": "Sign up",
         "signin": "Sign in"
+    },
+    "ContactTitle": "Do you have any further questions? Feel free to get in touch with us.",
+    "content": "If you require additional information or have inquiries, we welcome you to contact Project Accessibility Foundation. Our dedicated team is here to assist you. Please find our contact details below:",
+    "contact": {
+        "email": "projectaccessibility@klantenservice.nl",
+        "phone": "+3137575991",
+        "address": "Stichting Project Accessibility Johanna Westerdijkplein 75, 2521 EN Den Haag"
     }
 }
