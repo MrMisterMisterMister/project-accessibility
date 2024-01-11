@@ -43,7 +43,7 @@ const TableBody = ({ tableData, columns }) => {
                                 <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
                                     {
                                         actions
-                                            ? actions(/* need to put in the id here, most likely row */)
+                                            ? actions(row.id)
                                             : Array.isArray(accessor)
                                                 ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
                                                 : format
@@ -258,17 +258,17 @@ const TableAvailableResearchView = ({ data, handleView }) => {
     const columns = [
         { label: "#", accessor: "id" },
         { label: "Title", accessor: "title" },
-        { label: "Type", accessor: "type" },
-        { label: "Date", accessor: "date" },
+        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
         { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: "Type", accessor: "type" },
         { label: "Category", accessor: "category" },
         { label: "Organizer", accessor: "organizer" },
         {
             label: "Actions",
             colSpan: 2,
-            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
+            actions: (id) => (
                 <>
-                    <ButtonMuted text="View" onAction={() => handleView("viewResearch")} />
+                    <ButtonMuted text="View" onAction={() => handleView("viewResearch", id)} />
                     <ButtonMuted text="Join" />
                 </>
             )

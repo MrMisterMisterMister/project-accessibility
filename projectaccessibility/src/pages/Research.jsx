@@ -16,6 +16,9 @@ const Research = () => {
     // This hook just keeps track of the current view, on default it's myResearch
     const [view, setView] = useState("myResearch");
 
+    // Hook to know which research is being worked on
+    const [id, setId] = useState(null);
+
     // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
 
@@ -23,8 +26,9 @@ const Research = () => {
     const [researches, setResearches] = useState([]);
 
     // Function that handles switching it, just simply replaces with new value
-    const switchView = (view) => {
+    const switchView = (view, id = null) => {
         setView(view);
+        setId(id);
     };
 
     // planning to do this in a global file
@@ -41,7 +45,7 @@ const Research = () => {
     }, []); // Run once
 
     // Print it out for now
-    console.log(researches);
+    // console.log(researches);
 
     // Something something
     // Function here that handles deleting a research
@@ -53,20 +57,22 @@ const Research = () => {
     const researchViewComponents = {
         // Here I still need to determine which user is logged in, and display the correct one
         // Can probably just do simple if statement
-        myResearch:
+        myResearch: (
             <>
                 {user.userRoles.includes("Admin") && (
                     <TableCompanyResearchView data={researches} handleView={switchView} />
                 )}
-
                 {user.userRoles.includes("PanelMember") && (
                     <TablePanelMemberResearchView />
                 )}
-            </>,
+            </>
+        ),
         // This view is only available for panelmember
-        allResearches: <TableAvailableResearchView data={researches} handleView={switchView} />,
+        allResearches: (
+            <TableAvailableResearchView data={researches} handleView={switchView} />
+        ),
         // This view is only available for company
-        newResearch:
+        newResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
                     Create Research
@@ -74,36 +80,29 @@ const Research = () => {
                 <div className="research__content_container">
                     <FormCompanyResearchCreate />
                 </div>
-            </div>,
+            </div>
+        ),
         // This view is only available for company
-        editResearch:
+        editResearch: (id) => (
             <div className="research__content">
                 <h4 className="research__content_title">
                     Edit Research
                 </h4>
                 <div className="research__content_container">
-                    {
-                        /*
-                        Need to pass in the id for the research that is being edited
-                        */
-                    }
                     <FormCompanyResearchUpdate />
                 </div>
-            </div>,
-        viewResearch:
+            </div>
+        ),
+        viewResearch: (id) => (
             <div className="research__content">
                 <h4 className="research__content_title">
                     View Research
                 </h4>
                 <div className="research__content_container">
-                    {
-                        /*
-                        Need to pass in the id for the research that is being edited
-                        */
-                    }
-                    <FormPanelMemberResearchJoin />
+                    <FormPanelMemberResearchJoin id={id} />
                 </div>
             </div>
+        )
     };
 
     return (
@@ -123,19 +122,29 @@ const Research = () => {
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                <ButtonSecondary
-                    text="Show All"
-                    isActive={view === "allResearches"}
-                    action={() => switchView("allResearches")}
-                />
-                <ButtonSecondary
-                    text="New Research"
-                    isActive={view === "newResearch"}
-                    action={() => switchView("newResearch")}
-                />
+                {user.userRoles.includes("Admin") && (
+                    <ButtonSecondary
+                        text="Show All"
+                        isActive={view === "allResearches"}
+                        action={() => switchView("allResearches")}
+                    />
+                )}
+                {user.userRoles.includes("Company") && (
+                    <ButtonSecondary
+                        text="New Research"
+                        isActive={view === "newResearch"}
+                        action={() => switchView("newResearch")}
+                    />
+                )}
             </div>
             <div className="research__dashboard_content">
-                {researchViewComponents[view]}
+                {
+                    // This is whack, otherwise react gives errors
+                    // Crack
+                    typeof researchViewComponents[view] === "function"
+                        ? researchViewComponents[view](id)
+                        : researchViewComponents[view]
+                }
             </div>
         </div>
     );

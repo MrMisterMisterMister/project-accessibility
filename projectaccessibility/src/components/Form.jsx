@@ -740,6 +740,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                 // Check if the response code is 200 (ok)
                 // If so, create a success alert and reset the form
                 if (response.code === 200) {
+                    // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
                     reset();
                 }
@@ -993,6 +994,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                 // Checks if the response code is 200 (Ok)
                 if (response.code === 200) {
                     // Set a success message for the user to see
+                    // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
                     // Reset form
                     reset();
@@ -1241,12 +1243,19 @@ FormCompanyProfileUpdate.propTypes = {
     companyId: PropTypes.string.isRequired
 };
 
-// TODO
-// form for company when they create a new reearch
+// form for company when they create a new research
+// send post to endpoint
 const FormCompanyResearchCreate = () => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook forms
     const {
         register,
         handleSubmit,
@@ -1254,21 +1263,30 @@ const FormCompanyResearchCreate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
+    // Handles form submission creating research
     const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
+        // POST request to correct endpoint
+        // configurate some shit
+        const createCompanyResearchResponse = createEndpoint("researches").post(formData);
 
         // Handle the response from the POST call
         createCompanyResearchResponse
             .then((response) => {
-                // Some inspiring comment
+                // Check if success
+                if (response.code === 200) {
+                    // Set a success message for the user to see
+                    // TODO
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Reset form
+                    reset();
+                }
+                // TODO Some inspiring comment
                 console.log(response);
-                reset();
             })
             .catch((error) => {
-                // Catch the error and display it
+                // Error catching and then displaying it
+                setFormAlerts({ error: error.response?.data });
+                // TODO remove later
                 console.log(error.response);
             });
     };
@@ -1276,6 +1294,7 @@ const FormCompanyResearchCreate = () => {
     // Need to configurate the translations
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
@@ -1615,10 +1634,11 @@ const FormCompanyResearchUpdate = () => {
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = () => {
+const FormPanelMemberResearchJoin = ({ id }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    console.log(id);
     const {
         register,
         handleSubmit,
