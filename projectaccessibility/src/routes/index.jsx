@@ -8,7 +8,7 @@ import Sitemap from "../pages/Sitemap";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Cookies from "../pages/Cookies";
 import PageNotFound from "../pages/404";
-import AboutUs from "../pages/About_Us";
+import AboutUs from "../pages/AboutUs";
 import Dashboard from "../pages/Dashboard";
 
 // Route component

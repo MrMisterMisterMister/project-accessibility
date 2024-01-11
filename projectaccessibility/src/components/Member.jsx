@@ -4,24 +4,22 @@ import { useTranslation } from "react-i18next";
 import Shape from "./Shape";
 import { GroupMember } from "./Group";
 
-// Member component
 const Member = () => {
-    // Translation
-    const { t: translate } = useTranslation("member");
+    const { t: translate } = useTranslation("aboutus");
 
     return (
         <section className="member__section">
             <Container className="member__section_container">
-                <h2 className="member__section_title">{translate("title")}</h2>
+                <h2 className="member__section_title">{translate("team.title")}</h2>
                 <div className="member__section_group__group">
-                    {translate("members", { returnObjects: true }).map(
+                    {translate("team.members", { returnObjects: true }).map(
                         (member, index) => (
                             <GroupMember
                                 key={index}
-                                img="img/placeholder.jpg"
-                                altText={translate(`members.${index}.altText`)}
-                                name={translate(`members.${index}.name`)}
-                                role={translate(`members.${index}.role`)}
+                                img={`img/team/${index + 1}.jpg`} // Assuming images are named 1.jpg, 2.jpg, etc.
+                                altText={translate(`team.members.${index}.altText`)}
+                                name={translate(`team.members.${index}.name`)}
+                                role={translate(`team.members.${index}.role`)}
                             />
                         )
                     )}

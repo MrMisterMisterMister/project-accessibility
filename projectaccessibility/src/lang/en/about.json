@@ -2,9 +2,7 @@
   "aboutus": {
     "pageTitle": "About Us",
     "lastModified": "Last Modified: January 11, 2024.",
-    "intro": [
-      "Welcome to Project Accessibility..."
-    ], 
+    "intro": ["Welcome to Project Accessibility..."],
     "mission": {
       "title": "Our Mission",
       "content": "At Project Accessibility, we aim to provide a seamless and accessible experience for all users..."
