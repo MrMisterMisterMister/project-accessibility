@@ -154,16 +154,21 @@ TableCompanyView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
+// table view for panel member
+// this view has their researches in it
+// ye..
 const TablePanelMemberResearchView = ({ data }) => {
-    // need to do localization
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     // columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.category"), accessor: "category" }
     ];
 
     return (
@@ -187,22 +192,25 @@ TablePanelMemberResearchView.propTypes = {
 // Also the buttons for need onAction
 // Will update it later
 const TableCompanyResearchView = ({ data, handleView }) => {
-    // need to do localization
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     // columns for the company research view
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" },
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.category"), accessor: "category" },
         {
-            label: "Actions",
+            label: translate("labels.actions"),
             colSpan: 2,
-            actions: (id) => (<>
-                <ButtonMuted text="Edit" onAction={() => handleView("editResearch", id)} />
-                <ButtonMuted text="Delete" />
-            </>
+            actions: (id) => (
+                <>
+                    <ButtonMuted text={translate("labels.edit")} onAction={() => handleView("editResearch", id)} />
+                    <ButtonMuted text={translate("labels.delete")} onAction={() => alert("your mom")} /> {/* TODO */}
+                </>
             )
         }
     ];
@@ -227,23 +235,25 @@ TableCompanyResearchView.propTypes = {
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = ({ data, handleView }) => {
-    // need to do localization
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     // columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Date", accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Type", accessor: "type" },
-        { label: "Category", accessor: "category" },
-        { label: "Organizer", accessor: "organizer" },
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.type"), accessor: "type" },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.organizer"), accessor: "organizer" },
         {
-            label: "Actions",
+            label: translate("labels.actions"),
             colSpan: 2,
             actions: (id) => (
                 <>
-                    <ButtonMuted text="View" onAction={() => handleView("viewResearch", id)} />
-                    <ButtonMuted text="Join" />
+                    <ButtonMuted text={translate("labels.view")} onAction={() => handleView("viewResearch", id)} />
+                    <ButtonMuted text={translate("labels.join")} onAction={() => alert("your mom")} /> {/* TODO */}
                 </>
             )
         }
@@ -259,6 +269,7 @@ const TableAvailableResearchView = ({ data, handleView }) => {
     );
 };
 
+// prop types table avaialbler researches view
 TableAvailableResearchView.propTypes = {
     data: PropTypes.array,
     handleView: PropTypes.func

@@ -1,3 +1,23 @@
 {
-    "pageTitle": "Researches"
+    "pageTitle": "Researches",
+    "buttons": {
+        "myResearch": "My Research",
+        "showAll": "Show All",
+        "newResearch": "New Research"
+    },
+    "labels": {
+        "id": "#",
+        "title": "Title",
+        "description": "Description",
+        "date": "Date",
+        "reward": "Reward",
+        "type": "Type",
+        "category": "Category",
+        "organizer": "Organizer",
+        "actions": "Actions",
+        "view": "View",
+        "join": "Join",
+        "edit": "Edit",
+        "delete": "Delete"
+    }
 }

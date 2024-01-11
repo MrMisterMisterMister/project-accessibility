@@ -71,10 +71,10 @@ const Research = () => {
         // I'm very lazy to fix it
         myResearch: (
             <>
-                {user.userRoles.includes("Admin") && (
+                {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <TableCompanyResearchView data={researches} handleView={switchView} />
                 )}
-                {user.userRoles.includes("PanelMember") && (
+                {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <TablePanelMemberResearchView data={researches} />
                 )}
             </>
@@ -119,20 +119,20 @@ const Research = () => {
             <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary
-                    text="My Research"
+                    text={translate("buttons.myResearch")}
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                {user.userRoles.includes("Admin") && (
+                {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <ButtonSecondary
-                        text="Show All"
+                        text={translate("buttons.showAll")}
                         isActive={view === "allResearches"}
                         action={() => switchView("allResearches")}
                     />
                 )}
-                {user.userRoles.includes("Company") && (
+                {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <ButtonSecondary
-                        text="New Research"
+                        text={translate("buttons.newResearch")}
                         isActive={view === "newResearch"}
                         action={() => switchView("newResearch")}
                     />

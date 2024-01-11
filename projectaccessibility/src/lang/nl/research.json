@@ -1,3 +1,23 @@
 {
-    "pageTitle": "Onderzoeken"
+    "pageTitle": "Onderzoeken",
+    "buttons": {
+        "myResearch": "Mijn Onderzoek",
+        "showAll": "Toon Alles",
+        "newResearch": "Nieuw Onderzoek"
+    },
+    "labels": {
+        "id": "#",
+        "title": "Titel",
+        "description": "Omschrijving",
+        "date": "Datum",
+        "reward": "Beloning",
+        "type": "Soort",
+        "category": "Categorie",
+        "organizer": "Organisator",
+        "actions": "Acties",
+        "view": "Bekijken",
+        "join": "Aanmelden",
+        "edit": "Bewerken",
+        "delete": "Verwijderen"
+    }
 }
