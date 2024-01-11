@@ -104,7 +104,7 @@ const Footer = () => {
                 <div className="site__footer_menu">
                     <div className="site__footer_menu__logo">
                         <img
-                            src="img/brand/logo.png"
+                            src="/img/brand/logo.png"
                             width="124.5"
                             height="150"
                             alt="Logo"

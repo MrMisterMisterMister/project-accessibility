@@ -18,7 +18,7 @@ const Member = () => {
                         (member, index) => (
                             <GroupMember
                                 key={index}
-                                img="img/placeholder.jpg"
+                                img="/img/placeholder.jpg"
                                 altText={translate(`members.${index}.altText`)}
                                 name={translate(`members.${index}.name`)}
                                 role={translate(`members.${index}.role`)}

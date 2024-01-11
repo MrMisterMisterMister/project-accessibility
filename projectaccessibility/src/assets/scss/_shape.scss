@@ -45,6 +45,14 @@
     @include mixins.shape(variables.$royalblue, 15rem, 15rem, null, -2%, 42%, null, null, 50%);
 }
 
+.shape__about_right {
+    @include mixins.shape(variables.$sapphire, 9rem, 14rem, null, 0%, 24%, null, 298deg, null);
+}
+
+.shape__about_left {
+    @include mixins.shape(variables.$elfgreen, 12rem, 12rem, 35%, null, null, -4%, null, 50%);
+}
+
 .shape__expertise_left {
     @include mixins.shape(variables.$sapphire, 9rem, 14rem, null, 0%, 24%, null, 298deg, null);
 }

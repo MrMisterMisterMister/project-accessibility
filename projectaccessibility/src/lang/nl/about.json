@@ -11,20 +11,22 @@
             "text": "Lorem ipsum dolor sit amet consectetur"
         }
     ],
-    "mission": {
-        "title": "Onze Missie",
-        "content": "Bij Project Accessibility streven we ernaar een naadloze en toegankelijke ervaring te bieden voor alle gebruikers. Onze missie is gedreven door de overtuiging dat digitale toegankelijkheid essentieel is voor het bevorderen van gelijkheid en het wegnemen van barrières. We geloven in inclusiviteit, privacy en gebruikerstevredenheid, en we zijn vastbesloten om deze waarden te integreren in elk aspect van onze diensten."
-    },
-    "values": {
-        "title": "Onze Waarden",
-        "list": [
-            "Privacy Eerst: We hebben prioriteit voor de privacy en beveiliging van uw gegevens. We hanteren strikte normen om ervoor te zorgen dat uw persoonlijke informatie veilig wordt bewaard en beschermd.",
-            "Inclusiviteit: Onze diensten zijn ontworpen om toegankelijk te zijn voor iedereen, ongeacht capaciteiten of beperkingen. We streven ernaar om digitale ervaringen te creëren die voor iedereen bruikbaar zijn, met bijzondere aandacht voor diversiteit en inclusie.",
-            "Gebruikersgericht: Uw tevredenheid staat centraal in wat we doen. We luisteren naar onze gebruikers, passen ons aan hun behoeften aan en streven ernaar om de best mogelijke gebruikerservaring te bieden."
-        ]
-    },
-    "team": {
-        "title": "Ons Team",
-        "content": "Ons diverse team is toegewijd aan het creëren van een omgeving waar innovatie, respect en samenwerking gedijen. Met experts uit verschillende vakgebieden bundelen we onze krachten om hoogwaardige oplossingen te leveren. Elk teamlid draagt bij aan de unieke dynamiek van Project Accessibility, waardoor we gezamenlijk streven naar excellentie en vooruitgang op het gebied van digitale toegankelijkheid."
-    }
+    "information": [
+        {
+            "title": "Onze Missie",
+            "content": "Bij Project Accessibility streven we ernaar een naadloze en toegankelijke ervaring te bieden voor alle gebruikers. Onze missie is gedreven door de overtuiging dat digitale toegankelijkheid essentieel is voor het bevorderen van gelijkheid en het wegnemen van barrières. We geloven in inclusiviteit, privacy en gebruikerstevredenheid, en we zijn vastbesloten om deze waarden te integreren in elk aspect van onze diensten."
+        },
+        {
+            "title": "Onze Waarden",
+            "content": [
+                "Privacy Eerst: We hebben prioriteit voor de privacy en beveiliging van uw gegevens. We hanteren strikte normen om ervoor te zorgen dat uw persoonlijke informatie veilig wordt bewaard en beschermd.",
+                "Inclusiviteit: Onze diensten zijn ontworpen om toegankelijk te zijn voor iedereen, ongeacht capaciteiten of beperkingen. We streven ernaar om digitale ervaringen te creëren die voor iedereen bruikbaar zijn, met bijzondere aandacht voor diversiteit en inclusie.",
+                "Gebruikersgericht: Uw tevredenheid staat centraal in wat we doen. We luisteren naar onze gebruikers, passen ons aan hun behoeften aan en streven ernaar om de best mogelijke gebruikerservaring te bieden."
+            ]
+        },
+        {
+            "title": "Ons Team",
+            "content": "Ons diverse team is toegewijd aan het creëren van een omgeving waar innovatie, respect en samenwerking gedijen. Met experts uit verschillende vakgebieden bundelen we onze krachten om hoogwaardige oplossingen te leveren. Elk teamlid draagt bij aan de unieke dynamiek van Project Accessibility, waardoor we gezamenlijk streven naar excellentie en vooruitgang op het gebied van digitale toegankelijkheid."
+        }
+    ]
 }

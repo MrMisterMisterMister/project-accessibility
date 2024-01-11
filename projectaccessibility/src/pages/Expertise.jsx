@@ -18,16 +18,14 @@ const Expertise = () => {
                     <Shape section="expertise" position={["left", "right"]} />
                 </div>
                 <Container className="expertise__page_container">
-                    <h1 className="expertise__page_title">{translate("pageTitle")}</h1>
-                    <p className="expertise__page_intro">{translate("intro")}</p>
-                    {translate("cards", { returnObjects: true }).map(
-                        (expertise, index) => (
-                            <>
-                                <h4>{translate(`cards.${index}.title`)}</h4>
-                                <p>{translate(`cards.${index}.text`)}</p>
-                            </>
-                        )
-                    )}
+                    <h1 tabIndex="0" className="expertise__page_title">{translate("pageTitle")}</h1>
+                    <p tabIndex="0" className="expertise__page_intro">{translate("intro")}</p>
+                    {translate("cards", { returnObjects: true }).map((key, index) => (
+                        <>
+                            <h4 tabIndex="0">{translate(`cards.${index}.title`)}</h4>
+                            <p tabIndex="0">{translate(`cards.${index}.text`)}</p>
+                        </>
+                    ))}
                 </Container>
             </div>
             <Footer />

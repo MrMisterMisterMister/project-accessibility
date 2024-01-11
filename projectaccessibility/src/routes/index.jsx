@@ -2,6 +2,7 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Home from "../pages/Home";
+import About from "../pages/About";
 import Expertise from "../pages/Expertise";
 import News from "../pages/News";
 import Signup from "../pages/Signup";
@@ -10,7 +11,6 @@ import Sitemap from "../pages/Sitemap";
 import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Cookies from "../pages/Cookies";
 import PageNotFound from "../pages/404";
-import AboutUs from "../pages/AboutUs";
 import Dashboard from "../pages/Dashboard";
 
 // Route component
@@ -21,6 +21,10 @@ const Routes = () => {
         {
             path: "/",
             element: <Home />
+        },
+        {
+            path: "/over-ons",
+            element: <About />
         },
         {
             path: "/expertise",
@@ -53,12 +57,7 @@ const Routes = () => {
         {
             path: "*",
             element: <PageNotFound />
-        },
-        {
-            path: "/aboutus",
-            element: <AboutUs />
         }
-        
     ];
 
     // Routes for the dashboard

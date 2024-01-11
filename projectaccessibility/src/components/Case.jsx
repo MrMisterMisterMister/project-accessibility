@@ -17,7 +17,7 @@ const Case = () => {
                         (item, index) => (
                             <CardCase
                                 key={index}
-                                img="img/placeholder.jpg"
+                                img="/img/placeholder.jpg"
                                 altText={translate(`cases.${index}.altText`)}
                                 title={translate(`cases.${index}.title`)}
                                 text={translate(`cases.${index}.description`)}
