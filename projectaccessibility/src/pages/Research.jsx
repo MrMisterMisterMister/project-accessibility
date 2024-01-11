@@ -63,6 +63,9 @@ const Research = () => {
     // Function here that handles deleting a research
     // Also a function that lets you join the research
     // so it can be passed to the component
+    const handleResearchDeletion = ({ id }) => {
+        console.log(id);
+    };
 
     // The different view for research
     // This is a very lazy way of doing it
@@ -72,7 +75,7 @@ const Research = () => {
         myResearch: (
             <>
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TableCompanyResearchView data={researches} handleView={switchView} />
+                    <TableCompanyResearchView data={researches} onEdit={switchView} onDelete={handleResearchDeletion} />
                 )}
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <TablePanelMemberResearchView data={researches} />

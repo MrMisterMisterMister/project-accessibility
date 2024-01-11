@@ -191,7 +191,7 @@ TablePanelMemberResearchView.propTypes = {
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableCompanyResearchView = ({ data, handleView }) => {
+const TableCompanyResearchView = ({ data, onEdit, onDelete }) => {
     // Translation
     const { t: translate } = useTranslation("research");
 
@@ -208,8 +208,8 @@ const TableCompanyResearchView = ({ data, handleView }) => {
             colSpan: 2,
             actions: (id) => (
                 <>
-                    <ButtonMuted text={translate("labels.edit")} onAction={() => handleView("editResearch", id)} />
-                    <ButtonMuted text={translate("labels.delete")} onAction={() => alert("your mom")} /> {/* TODO */}
+                    <ButtonMuted text={translate("labels.edit")} onAction={() => onEdit("editResearch", id)} />
+                    <ButtonMuted text={translate("labels.delete")} onAction={() => onDelete(id)} /> {/* TODO */}
                 </>
             )
         }
@@ -228,7 +228,8 @@ const TableCompanyResearchView = ({ data, handleView }) => {
 // Prop type for the company table view
 TableCompanyResearchView.propTypes = {
     data: PropTypes.array.isRequired,
-    handleView: PropTypes.func
+    onEdit: PropTypes.func,
+    onDelete: PropTypes.func
 };
 
 // TODO
