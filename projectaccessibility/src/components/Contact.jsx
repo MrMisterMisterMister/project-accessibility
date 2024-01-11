@@ -34,9 +34,9 @@ const Contact = () => {
                         <p className="contact__section_content__text">{translate("content")}</p>
 
                         <div className="contact__section_contact_infotext">
-                       <p><FontAwesomeIcon icon={faEnvelope} /> {translate("contact.email")}</p>
+                       <p><FontAwesomeIcon icon={faEnvelope} />{translate("contact.email")}</p>
                        <p><FontAwesomeIcon icon={faPhone} /> {translate("contact.phone")}</p>
-                       <p><FontAwesomeIcon icon={faMapMarker} /> {translate("contact.address")}</p>
+                       <p><FontAwesomeIcon icon={faMapMarker} />{translate("contact.address")}</p>
                       </div>
                     </div>
                 </div>
