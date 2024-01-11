@@ -42,19 +42,19 @@ const Footer = () => {
                 { name: translate("menu.goto.links.home"), path: "/" },
                 {
                     name: translate("menu.goto.links.about"),
-                    path: "/over-ons"
+                    path: "/#about"
                 },
                 {
                     name: translate("menu.goto.links.expertise"),
-                    path: "/expertise"
+                    path: "/#expertise"
                 },
                 {
                     name: translate("menu.goto.links.news"),
-                    path: "/actueel"
+                    path: "/#news"
                 },
                 {
                     name: translate("menu.goto.links.contact"),
-                    path: "/contact"
+                    path: "/#contact"
                 }
             ]
         },

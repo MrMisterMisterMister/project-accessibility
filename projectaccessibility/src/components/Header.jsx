@@ -11,10 +11,10 @@ const Header = () => {
     // Header nav links
     const websiteLinks = [
         { name: translate("menu.home"), path: "/" },
-        { name: translate("menu.about"), path: "/over-ons" },
-        { name: translate("menu.expertise"), path: "/expertise" },
-        { name: translate("menu.news"), path: "/actueel" },
-        { name: translate("menu.contact"), path: "/contact" },
+        { name: translate("menu.about"), path: "#about" },
+        { name: translate("menu.expertise"), path: "#expertise" },
+        { name: translate("menu.news"), path: "#news" },
+        { name: translate("menu.contact"), path: "#contact" },
         { name: translate("menu.signup"), path: "/signup" },
         { name: translate("menu.signin"), path: "/login" }
     ];
