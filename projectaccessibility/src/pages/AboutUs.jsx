@@ -1,9 +1,10 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Shape from "../components/Shape";
+
 
 const AboutUs = () => {
     const { t: translate } = useTranslation("about"); 
@@ -24,7 +25,6 @@ const AboutUs = () => {
                             <li><a href="#mission">{translate("aboutus.mission.title")}</a></li>
                             <li><a href="#values">{translate("aboutus.values.title")}</a></li>
                             <li><a href="#team">{translate("aboutus.team.title")}</a></li>
-                            <li><a href="#contact">{translate("aboutus.contact.title")}</a></li>
                         </ul>
                     </nav>
 
@@ -40,9 +40,6 @@ const AboutUs = () => {
 
                     <h4 tabIndex="0" id="team">{translate("aboutus.team.title")}</h4>
                     <p tabIndex="0">{translate("aboutus.team.content")}</p>
-
-                    <h4 tabIndex="0" id="contact">{translate("aboutus.contact.title")}</h4>
-                    <p tabIndex="0">{translate("aboutus.contact.content")}</p>
                 </Container>
             </main>
             <Footer />

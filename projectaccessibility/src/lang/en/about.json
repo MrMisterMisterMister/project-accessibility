@@ -1,27 +1,23 @@
 {
   "aboutus": {
     "pageTitle": "About Us",
-    "lastModified": "Last Modified: January 11, 2024.",
-    "intro": ["Welcome to Project Accessibility..."],
+    "lastModified": "Last Modified: January 11 2024.",
+    "intro": ["Welcome to Project Accessibility"],
     "mission": {
       "title": "Our Mission",
-      "content": "At Project Accessibility, we aim to provide a seamless and accessible experience for all users..."
+      "content": "At Project Accessibility, we strive to provide a seamless and accessible experience for all users. Our mission is driven by the conviction that digital accessibility is essential for promoting equality and removing barriers. We believe in inclusivity, privacy, and user satisfaction, and we are committed to integrating these values into every aspect of our services."
     },
     "values": {
       "title": "Our Values",
       "list": [
-        "Privacy First: We prioritize the privacy and security of your data.",
-        "Inclusivity: Our services are designed to be accessible to everyone...",
-        "User-Centric: Your satisfaction is at the heart of what we do."
+        "Privacy First: We prioritize the privacy and security of your data. We adhere to strict standards to ensure that your personal information is safely stored and protected.",
+        "Inclusivity: Our services are designed to be accessible to everyone, regardless of abilities or limitations. We strive to create digital experiences that are usable for everyone, with a particular focus on diversity and inclusion.",
+        "User-Centric: Your satisfaction is at the heart of what we do. We listen to our users, adapt to their needs, and aim to provide the best possible user experience."
       ]
     },
     "team": {
       "title": "Our Team",
-      "content": "Our diverse team is dedicated to creating an environment where innovation, respect, and collaboration thrive..."
-    },
-    "contact": {
-      "title": "Get in Touch",
-      "content": "If you have any questions about our organization or privacy practices, feel free to reach out to our privacy contact person..."
+      "content": "Our diverse team is dedicated to creating an environment where innovation, respect, and collaboration thrive. With experts from various fields, we combine our strengths to deliver high-quality solutions. Each team member contributes to the unique dynamics of Project Accessibility, collectively striving for excellence and progress in the field of digital accessibility."
     }
-  }
+}
 }
