@@ -6,11 +6,9 @@ import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
 import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
-import Cookies from "js-cookie";
 import GoogleSignInButton from "./GoogleSignInButton";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
-
 
 // Form for login page
 const FormLogin = observer(() => {

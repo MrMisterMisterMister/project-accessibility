@@ -1,45 +1,35 @@
 import React, { useEffect } from "react";
-import { jwtDecode } from "jwt-decode";
-import { useAuth } from "../provider/authProvider";
-import Cookies from "js-cookie";
 import { useNavigate } from "react-router-dom";
 import { createEndpoint } from "../api/axiosClient";
+import { observer } from "mobx-react-lite";
+import { useStore } from "../stores/store";
 
 const CLIENT_ID = "207599687687-b8qecsbfsauc1p6orj6266lgcl5p169d.apps.googleusercontent.com";
 
-function GoogleSignInButton () {
+const GoogleSignInButton = observer(() => {
     // To handle navigation
     const navigate = useNavigate();
 
-    const { setToken } = useAuth();
-
-    function setAuthToken (authToken) {
-        setToken(authToken);
-        Cookies.set("token", authToken);
-        console.log("Token set in authProvider: " + authToken);
-    }
+    const { userStore, authStore } = useStore();
 
     // userobject is the decoded JWT token.
-    function handleCallbackResponse (response) {
-        console.log("Encoded JWT ID token: " + response.credential);
-        const userObject = jwtDecode(response.credential);
-        console.log(userObject);
-
+    const handleCallbackResponse = (response) => {
         if (response.credential) {
             // Check if user is signing in or signing up
             signUpOrSignInWithGoogle(response.credential);
         } else {
             console.log("Invalid credential received.");
         }
-    }
+    };
 
-    async function signUpOrSignInWithGoogle (credential) {
+    const signUpOrSignInWithGoogle = async (credential) => {
         try {
-            const response = await createEndpoint("GoogleSignInButton/google-signup/").post({ GoogleJWTToken: credential });
+            const response = await createEndpoint("login/google").post(credential);
 
             // The backend will return a JWT token if the user is signed in or signed up successfully
             if (response.data && response.data.token) {
-                setAuthToken(response.data.token);
+                authStore.setToken(response.data.token);
+                userStore.getUser();
                 navigate("/dashboard", { replace: true });
             } else {
                 console.error("Error signing in or signing up:", response.data?.description);
@@ -47,7 +37,7 @@ function GoogleSignInButton () {
         } catch (error) {
             console.error("Error during Google sign-in/sign-up:", error);
         }
-    }
+    };
 
     useEffect(() => {
         // Inintialize starts the auth flow
@@ -70,6 +60,6 @@ function GoogleSignInButton () {
     return (
         <div id="signInDiv"></div>
     );
-}
+});
 
 export default GoogleSignInButton;
