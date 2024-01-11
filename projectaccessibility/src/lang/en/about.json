@@ -1,0 +1,29 @@
+{
+  "aboutus": {
+    "pageTitle": "About Us",
+    "lastModified": "Last Modified: January 11, 2024.",
+    "intro": [
+      "Welcome to Project Accessibility..."
+    ], 
+    "mission": {
+      "title": "Our Mission",
+      "content": "At Project Accessibility, we aim to provide a seamless and accessible experience for all users..."
+    },
+    "values": {
+      "title": "Our Values",
+      "list": [
+        "Privacy First: We prioritize the privacy and security of your data.",
+        "Inclusivity: Our services are designed to be accessible to everyone...",
+        "User-Centric: Your satisfaction is at the heart of what we do."
+      ]
+    },
+    "team": {
+      "title": "Our Team",
+      "content": "Our diverse team is dedicated to creating an environment where innovation, respect, and collaboration thrive..."
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "content": "If you have any questions about our organization or privacy practices, feel free to reach out to our privacy contact person..."
+    }
+  }
+}

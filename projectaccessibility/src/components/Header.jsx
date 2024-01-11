@@ -11,7 +11,7 @@ const Header = () => {
     // Header nav links
     const websiteLinks = [
         { name: translate("menu.home"), path: "/" },
-        { name: translate("menu.about"), path: "/over-ons" },
+        { name: translate("menu.about"), path: "/aboutus" },
         { name: translate("menu.expertise"), path: "/expertise" },
         { name: translate("menu.news"), path: "/actueel" },
         { name: translate("menu.contact"), path: "/contact" },
