@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router";
-import { observer } from "mobx-react-lite";
-import { useStore } from "../stores/store";
-import { createEndpoint } from "../api/axiosClient";
 
 // Primary button
 // Just something

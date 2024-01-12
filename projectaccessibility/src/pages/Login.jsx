@@ -2,13 +2,15 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { PersonPlusFill } from "react-bootstrap-icons";
-import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { useGoogleLogin } from "@react-oauth/google";
 import { createEndpoint } from "../api/axiosClient";
-import axios from "axios";
+import { useNavigate } from "react-router";
+import { useStore } from "../stores/store";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 // Login page
 const Login = () => {
@@ -49,6 +51,12 @@ const Login = () => {
         </svg>
     );
 
+    // To handle navigation
+    const navigate = useNavigate();
+
+    // User stores
+    const { userStore, authStore } = useStore();
+
     // Default login for google that react oauth google provides
     // Has more options, but for now just simple onSuccess
     const googleLogin = useGoogleLogin({
@@ -67,9 +75,21 @@ const Login = () => {
             if (userInfo.status === 200 && userInfo.data) {
                 // Now we just send the information we got to our backend
                 const response = await createEndpoint("google/login").post(userInfo.data);
-                console.log(response);
+
                 // Need to put some logic to check if the user got their account made
                 // Then redirect back to dashboard I guess
+                response
+                    .then((response) => {
+                        if (response.status === 200 && response.data && response.data.token) {
+                            // Set authentication token and redirect to dashboard
+                            authStore.setToken(response.data.token);
+                            userStore.getUser();
+                            navigate("/dashboard", { replace: true });
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error.response);
+                    });
             }
         }
     });
