@@ -57,19 +57,18 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-}
 
-.contact__section_contact_infotext svg {
-    margin-right: 8px; 
-}
-@media only screen and (max-width: 767px) {
-    .contact__section_contact_infotext:last-child svg {
-        margin-top: -28px; 
+    svg {
+        margin-right: 8px;
     }
 }
 
+@media only screen and (max-width: 767px) {
+    .contact__section_contact_infotext:last-child svg {
+        margin-top: -28px;
+    }
 }
-
             }
         }
     }
+}

@@ -2,9 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { ButtonContact } from "./Button";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone, faMapMarker } from '@fortawesome/free-solid-svg-icons';
-
+import { MdEmail, MdPhone, MdLocationOn } from "react-icons/md"; 
 // Contact component
 const Contact = () => {
     // Translation
@@ -32,11 +30,16 @@ const Contact = () => {
                         <br></br>
                         <h1>{translate("ContactTitle")}</h1>
                         <p className="contact__section_content__text">{translate("content")}</p>
-        
-                       <p className="contact__section_contact_infotext"><FontAwesomeIcon icon={faEnvelope} />{translate("contact.email")}</p>
-                       <p className="contact__section_contact_infotext"><FontAwesomeIcon icon={faPhone} /> {translate("contact.phone")}</p>
-                       <p className="contact__section_contact_infotext"><FontAwesomeIcon icon={faMapMarker} />{translate("contact.address")}</p>
 
+                        <p className="contact__section_contact_infotext">
+                            <MdEmail /> {translate("contact.email")}
+                        </p>
+                        <p className="contact__section_contact_infotext">
+                            <MdPhone /> {translate("contact.phone")}
+                        </p>
+                        <p className="contact__section_contact_infotext">
+                            <MdLocationOn /> {translate("contact.address")}
+                        </p>
                     </div>
                 </div>
             </Container>
