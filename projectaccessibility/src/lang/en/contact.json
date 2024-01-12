@@ -1,15 +1,11 @@
 {
-    "title": "Sign up and participate in surveys in the accessibility portal.",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "buttons": {
-        "signup": "Sign up",
-        "signin": "Sign in"
-    },
-    "ContactTitle": "Do you have any further questions? Feel free to get in touch with us.",
-    "content": "If you require additional information or have inquiries, we welcome you to contact Project Accessibility Foundation. Our dedicated team is here to assist you. Please find our contact details below:",
+    "ContactTitle": "Do you have further questions? Feel free to contact us.",
+    "content": "If you need additional information or have any questions, we invite you to contact Project Accessibility Foundation. Our dedicated team is ready to assist you. Below, you'll find our contact details:",
     "contact": {
-        "email": "projectaccessibility@klantenservice.nl",
-        "phone": "+3137575991",
-        "address": "Johanna Westerdijkplein 75, 2521 EN Den Haag"
-    }
-}
+      "email": "projectaccessibility@customerservice.com",
+      "phone": "+3137575991",
+      "address": "Johanna Westerdijkplein 75, 2521 EN The Hague"
+    },
+    "additionalText": "We look forward to hearing from you and are happy to help. You can reach us via email, phone, or visit us at the provided address."
+  }
+  
