@@ -30,7 +30,7 @@ const Sitemap = () => {
                 },
                 {
                     name: translate("links.components.news"),
-                    path: "/actueel"
+                    path: "/news"
                 },
                 {
                     name: translate("links.components.contact"),

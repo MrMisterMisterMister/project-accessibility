@@ -54,6 +54,11 @@
 
     .card__expertise_text {
         color: variables.$black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
         margin-bottom: 15px;
     }
 }
@@ -230,6 +235,43 @@
                 font-weight: 600;
                 margin-right: 0.5em;
             }
+        }
+    }
+}
+
+// about card
+.card__about_item {
+    background-color: variables.$white;
+    border-radius: 0.75rem;
+    border: solid 1px variables.$vanilla;
+
+    .card__about_content {
+        position: relative;
+        padding: 1.125rem;
+
+        .card__about_content__icon {
+            width: 2rem;
+            height: 2rem;
+            color: variables.$sapphire;
+            margin-bottom: 0.5em;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+
+        .card__about_content__title {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            color: variables.$sapphire;
+            margin-bottom: 1rem;
+        }
+
+        .card__about_content__text {
+            color: variables.$black;
+            font-size: 1rem;
+            font-weight: normal;
         }
     }
 }
