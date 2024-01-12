@@ -74,7 +74,7 @@ const Login = () => {
             // Check if user info has stuff in it and Ok response
             if (userInfo.status === 200 && userInfo.data) {
                 // Now we just send the information we got to our backend
-                const response = await createEndpoint("google/login").post(userInfo.data);
+                const response = await createEndpoint("login/google").post(userInfo.data);
 
                 // Need to put some logic to check if the user got their account made
                 // Then redirect back to dashboard I guess
