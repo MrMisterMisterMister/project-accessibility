@@ -44,6 +44,9 @@
                 .contact__section_contact_infotext{
                 color: variables.$black;
                 font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 margin-bottom: 1rem;
                 }
             }
