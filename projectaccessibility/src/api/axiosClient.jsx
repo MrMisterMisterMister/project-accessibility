@@ -54,7 +54,7 @@ axiosClient.interceptors.response.use(response => {
             const { token } = response.data;
             // Save it in the auth store, so next time this happens
             // it has the new token set
-            authStore.setToken(token);
+            store.authStore.setToken(token);
             // Update the auth header for bearer token
             // And replace it with the new one that has been generated
             originalRequest.headers.Authorization = `Bearer ${token}`;
