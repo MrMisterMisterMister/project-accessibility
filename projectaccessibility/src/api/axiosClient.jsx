@@ -1,5 +1,5 @@
 import axios from "axios";
-import { store } from "../stores/store";
+import { store, authStore } from "../stores/store";
 
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
@@ -28,9 +28,14 @@ axiosClient.interceptors.request.use((config) => {
     return config;
 });
 
+// Response interceptors to log the different error types
+// For now we are catching if the bearer has expired here, and afterwards refresh it
+// Very crack, but works, somewhat
 axiosClient.interceptors.response.use(response => {
     return response;
-}, (error) => {
+}, async (error) => {
+    // get the original axios request config for the error
+    const originalRequest = error.config;
     // done by axios, anything that's not a 200 response
     const { status } = error.response;
     switch (status) {
@@ -38,7 +43,26 @@ axiosClient.interceptors.response.use(response => {
         console.log(error);
         break;
     case 401:
-        console.log(error);
+        // First check if the original request doesn't need to be retried
+        // This is to avoid infinite loops basically
+        if (!originalRequest._retry) {
+            // Set to true, so no infinite loop :-[
+            originalRequest._retry = true;
+            // Create the endpoint where we need to refresh the bearer token
+            const response = await createEndpoint("refresh").post();
+            // Get the new token
+            const { token } = response.data;
+            // Save it in the auth store, so next time this happens
+            // it has the new token set
+            authStore.setToken(token);
+            // Update the auth header for bearer token
+            // And replace it with the new one that has been generated
+            originalRequest.headers.Authorization = `Bearer ${token}`;
+            // Retry the original request
+            // But this time with the bearer token refreshed
+            // And pray it works
+            return axios(originalRequest);
+        }
         break;
     case 403:
         console.log(error);
@@ -52,6 +76,7 @@ axiosClient.interceptors.response.use(response => {
 
 const responseBody = (response) => response.data;
 
+// Different http request types using axios
 const requests = {
     get: (url) => axiosClient.get(url).then(responseBody),
     post: (url, body) => axiosClient.post(url, body).then(responseBody),
@@ -59,6 +84,7 @@ const requests = {
     del: (url) => axiosClient.delete(url).then(responseBody)
 };
 
+// Create the standard crud operations for the endpoints
 const createEndpoint = (endpoint) => ({
     get: () => requests.get(`/${endpoint}`),
     post: (data) => axiosClient.post(`/${endpoint}`, data),
