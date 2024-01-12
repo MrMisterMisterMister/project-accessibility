@@ -1,23 +1,54 @@
 {
     "title": "Actueel",
+    "intro": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto cum facilis et delectus nihil quidem officia! Voluptatibus possimus, suscipit esse id explicabo maxime fuga laborum nesciunt sint voluptates enim. Nostrum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quo odio autem rem reprehenderit repellat, corporis ipsam expedita modi cupiditate laudantium unde dolor commodi reiciendis nulla ut libero. Veniam, ratione!",
     "articles": [
         {
             "altText": "Clodsire",
-            "date": "27 December 2023",
-            "title": "Clodsire uitbraak in Hearthome City and Floaroma Town",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+            "date": "27 december 2023",
+            "title": "Clodsire-uitbraak in Hearthome City en Floaroma Town",
+            "text": "In een onverwachte wending hebben een golf van Clodsire-waarnemingen opwinding en nieuwsgierigheid onder trainers in Hearthome City en Floaroma Town veroorzaakt. Lokale autoriteiten werken samen met Pokémon-onderzoekers om de plotselinge toename in Clodsire-activiteit te begrijpen. Trainers worden geadviseerd om voorzichtig te benaderen en elk ongebruikelijk gedrag te melden."
         },
         {
             "altText": "Clodsire",
-            "date": "29 December 2023",
-            "title": "Opnieuw een Clodsire uitbraak",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+            "date": "29 december 2023",
+            "title": "Nog een Clodsire-uitbraak",
+            "text": "Slechts enkele dagen na de eerste Clodsire-uitbraak stromen meldingen binnen van een tweede golf vanuit verschillende regio's. Trainers en onderzoekers werken samen om de oorzaak van deze terugkerende gebeurtenissen te onderzoeken. Het Pokémon Center biedt ondersteuning en middelen aan getroffen gebieden. Proberen deze schattige Poison-type Pokémon een boodschap over te brengen, of is er meer aan het verhaal?"
         },
         {
             "altText": "Clodsire",
-            "date": "9 December 2023",
+            "date": "9 december 2023",
             "title": "Clodsire is de schattigste",
-            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+            "text": "In een hartverwarmende wending heeft Clodsire de harten van trainers over de hele wereld veroverd en de titel van de schattigste Pokémon verdiend. Social media staat vol met schattige Clodsire-foto's, en fanclubs die aan deze Poison-type wezens zijn gewijd, schieten als paddenstoelen uit de grond. Zelfs te midden van recente uitbraken kunnen trainers niet anders dan zich verbazen over de charme van deze lieve Pokémon."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "15 januari 2024",
+            "title": "Clodsire Festival verheugt trainers in Celadon City",
+            "text": "Pokémon-enthousiastelingen verzamelden zich in Celadon City om het jaarlijkse Clodsire Festival te vieren. Trainers van over de hele regio namen deel aan verschillende activiteiten, waaronder Clodsire-groomingwedstrijden en een speciale parade met de schattige Poison-type Pokémon."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "22 januari 2024",
+            "title": "Onderzoeksdoorbraak: Uniek gedrag van Clodsire bestudeerd door Professor Oak",
+            "text": "Professor Oak kondigt baanbrekend onderzoek aan naar het gedrag van Clodsire. De gerenommeerde Pokémon-onderzoeker werpt licht op de opmerkelijke sociale dynamiek van de soort en biedt nieuwe inzichten in de ecologie van deze geliefde wezens."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "5 februari 2024",
+            "title": "Pokémon Center met Clodsire-thema opent in Ecruteak City",
+            "text": "Ecruteak City verwelkomt een nieuw Pokémon Center dat volledig is gewijd aan Clodsire. Trainers kunnen exclusieve Clodsire-merchandise vinden, deelnemen aan thema-evenementen en zelfs hun eigen Clodsire adopteren uit het gespecialiseerde adoptiecentrum binnen het Pokémon Center."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "18 februari 2024",
+            "title": "Raadselachtige Clodsire-waarnemingen verbazen trainers in Mystic Marshlands",
+            "text": "Trainers die de serene Mystic Marshlands verkennen, melden betoverende ontmoetingen met Clodsire, wat een gevoel van mysterie en opwinding creëert. Lokale Pokémon-onderzoekers zijn enthousiast om dit unieke gedrag in een andere omgeving te bestuderen. Mystic Marshlands worden nu een bedevaartsoord voor trainers die de ongrijpbare charme van Clodsire willen ervaren te midden van betoverende landschappen."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "28 februari 2024",
+            "title": "Onverwachte rol van Clodsire onthuld tijdens Pokémon Ecology Symposium",
+            "text": "Tijdens een recent Pokémon Ecology Symposium onthullen onderzoekers verrassende bevindingen over de ecologische impact van Clodsire. In tegenstelling tot eerdere aannames speelt Clodsire een cruciale rol bij het handhaven van evenwicht binnen aquatische ecosystemen. De onthulling leidt tot een nieuwe waardering voor deze Poison-type Pokémon en stimuleert behoudsinspanningen om hun leefgebieden te behouden en een harmonieuze co-existentie met andere Pokémon-soorten te waarborgen."
         }
     ]
 }

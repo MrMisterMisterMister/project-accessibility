@@ -70,3 +70,35 @@
         }
     }
 }
+
+// page
+.about__page {
+    position: relative;
+    
+    .about__page_banner {
+        height: 120px;
+        background-color: variables.$blackrussian;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .about__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        color: variables.$black;
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        h4 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+    }
+}

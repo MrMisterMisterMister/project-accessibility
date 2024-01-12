@@ -1,23 +1,54 @@
 {
     "title": "News",
+    "intro": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Iusto cum facilis et delectus nihil quidem officia! Voluptatibus possimus, suscipit esse id explicabo maxime fuga laborum nesciunt sint voluptates enim. Nostrum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quo odio autem rem reprehenderit repellat, corporis ipsam expedita modi cupiditate laudantium unde dolor commodi reiciendis nulla ut libero. Veniam, ratione!",
     "articles": [
         {
             "altText": "Clodsire",
             "date": "December 27, 2023",
             "title": "Clodsire outbreak in Hearthome City and Floaroma Town",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+            "text": "In an unexpected turn of events, a wave of Clodsire sightings has sparked excitement and curiosity among trainers in Hearthome City and Floaroma Town. Local authorities are working alongside Pokémon researchers to understand the sudden surge in Clodsire activity. Trainers are advised to approach with caution and report any unusual behavior."
         },
         {
             "altText": "Clodsire",
             "date": "December 29, 2023",
             "title": "Another Clodsire outbreak",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
+            "text": "Just days after the initial Clodsire outbreak, reports of a second wave are pouring in from various regions. Trainers and researchers are collaborating to investigate the cause behind these recurring events. The Pokémon Center is offering support and resources to affected areas. Are these adorable Poison-type Pokémon trying to convey a message, or is there more to the story?"
         },
         {
             "altText": "Clodsire",
             "date": "December 9, 2023",
             "title": "Clodsire is the cutest",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Dictum at tempor commodo ullamcorper a lacus vestibulum sed arcu."
-        }
+            "text": "In a heartwarming turn of events, Clodsire has captured the hearts of trainers worldwide, earning the title of the cutest Pokémon. Social media is flooded with adorable Clodsire pictures, and fan clubs dedicated to the Poison-type creature are popping up everywhere. Even in the midst of recent outbreaks, trainers can't help but marvel at the charm of these lovable Pokémon."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "January 15, 2024",
+            "title": "Clodsire Festival Delights Trainers in Celadon City",
+            "text": "Pokémon enthusiasts gathered in Celadon City to celebrate the annual Clodsire Festival. Trainers from all over the region participated in various activities, including Clodsire grooming contests and a special parade featuring the adorable Poison-type Pokémon."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "January 22, 2024",
+            "title": "Research Breakthrough: Clodsire's Unique Behavior Studied by Professor Oak",
+            "text": "Professor Oak announces groundbreaking research on Clodsire's behavior. The renowned Pokémon researcher sheds light on the species' remarkable social dynamics, shedding new insights into the ecology of these lovable creatures."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "February 5, 2024",
+            "title": "Clodsire-themed Pokémon Center Opens in Ecruteak City",
+            "text": "Ecruteak City welcomes a new Pokémon Center dedicated entirely to Clodsire. Trainers can find exclusive Clodsire merchandise, participate in themed events, and even adopt their very own Clodsire from the specialized adoption center within the Pokémon Center."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "February 18, 2024",
+            "title": "Enigmatic Clodsire Sightings Mystify Trainers in Mystic Marshlands",
+            "text": "Trainers exploring the serene Mystic Marshlands report enchanting encounters with Clodsire, creating a sense of mystery and excitement. Local Pokémon researchers are eager to study this unique behavior in a different habitat. Mystic Marshlands are now becoming a pilgrimage site for trainers seeking the elusive charm of Clodsire amidst the enchanting landscapes."
+        },
+        {
+            "altText": "Clodsire",
+            "date": "February 28, 2024",
+            "title": "Clodsire's Unexpected Role Unveiled in Pokémon Ecology Symposium",
+            "text": "In a recent Pokémon Ecology Symposium, researchers unveil surprising findings about Clodsire's ecological impact. Contrary to previous assumptions, Clodsire plays a crucial role in maintaining balance within aquatic ecosystems. The revelation sparks a new appreciation for these Poison-type Pokémon, prompting conservation efforts to preserve their habitats and ensure a harmonious coexistence with other Pokémon species."
+        }                
     ]
 }
