@@ -2,6 +2,9 @@ import React from "react";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { ProtectedRoute } from "./ProtectedRoute";
 import Home from "../pages/Home";
+import About from "../pages/About";
+import Expertise from "../pages/Expertise";
+import News from "../pages/News";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Sitemap from "../pages/Sitemap";
@@ -18,6 +21,18 @@ const Routes = () => {
         {
             path: "/",
             element: <Home />
+        },
+        {
+            path: "/over-ons",
+            element: <About />
+        },
+        {
+            path: "/expertise",
+            element: <Expertise />
+        },
+        {
+            path: "/news",
+            element: <News />
         },
         {
             path: "/signup",

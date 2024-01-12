@@ -54,6 +54,11 @@
 
     .card__expertise_text {
         color: variables.$black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
         margin-bottom: 15px;
     }
 }

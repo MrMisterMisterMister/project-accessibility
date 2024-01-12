@@ -1,6 +1,8 @@
 @use 'variables';
 
 .privacypolicy__page {
+    position: relative;
+    
     .privacypolicy__page_banner {
         position: relative;
         overflow: hidden;
