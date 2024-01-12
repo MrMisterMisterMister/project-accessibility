@@ -1,6 +1,7 @@
 @use 'variables';
 @use 'mixins';
 
+// section
 .news__section {
     padding-top: 4em;
     padding-bottom: 4em;
@@ -25,7 +26,53 @@
 
             @include mixins.md {
                 grid-template-columns: repeat(3, 1fr);
-            }            
+            }
+        }
+    }
+}
+
+// page for news
+.news__page {
+    position: relative;
+
+    .news__page_banner {
+        position: relative;
+        overflow: hidden;
+        background-color: variables.$blackrussian;
+        height: 120px;
+    }
+
+    .news__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .news__page_title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: variables.$blackrussian;
+        }
+
+        .news__page_intro {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: variables.$black;
+        }
+
+        .news__page_articles {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.875rem;
+            align-items: stretch;
+            width: 100%;
+
+            @include mixins.md {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include mixins.xl {
+                grid-template-columns: repeat(3, 1fr);
+            }
         }
     }
 }
