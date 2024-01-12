@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
-import { ButtonGoogleSignIn, ButtonSubmit } from "../components/Button";
+import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
@@ -439,11 +439,6 @@ const FormSignup = () => {
                     text={translate("signup.buttonText")}
                 />
             </Form>
-            {selectedUserType === "1" && (
-                <div style={{ marginTop: "10px" }}>
-                    <ButtonGoogleSignIn />
-                </div>
-            )}
         </>
     );
 };

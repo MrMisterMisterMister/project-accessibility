@@ -2,7 +2,9 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { PersonPlusFill } from "react-bootstrap-icons";
-import { useGoogleLogin } from "@react-oauth/google";
+import { GoogleLogin, useGoogleLogin } from "@react-oauth/google";
+import { createEndpoint } from "../api/axiosClient";
+import axios from "axios";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
@@ -47,9 +49,29 @@ const Login = () => {
         </svg>
     );
 
-    // 
-    const login = useGoogleLogin({
-        onSuccess: tokenResponse => console.log(tokenResponse)
+    // Default login for google that react oauth google provides
+    // Has more options, but for now just simple onSuccess
+    const googleLogin = useGoogleLogin({
+        // onSuccess, sends request to google api server with the tokenResponse as bearer
+        // Then it returns the user info
+        // Afterwards just need to send it to our backend to save it
+        onSuccess: async (tokenResponse) => {
+            // Calling google api with bearer token so we get access to it
+            // Need a fresh axios without our predefined configs
+            const userInfo = await axios.get(
+                "https://www.googleapis.com/oauth2/v3/userinfo",
+                { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
+            );
+
+            // Check if user info has stuff in it and Ok response
+            if (userInfo.status === 200 && userInfo.data) {
+                // Now we just send the information we got to our backend
+                const response = await createEndpoint("google/login").post(userInfo.data);
+                console.log(response);
+                // Need to put some logic to check if the user got their account made
+                // Then redirect back to dashboard I guess
+            }
+        }
     });
 
     return (
@@ -81,7 +103,7 @@ const Login = () => {
                                 <ButtonAuth
                                     icon={GoogleIcon}
                                     text={translate("auth.google")}
-                                    action={login}
+                                    action={googleLogin}
                                 />
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
