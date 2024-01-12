@@ -78,18 +78,12 @@ const Login = () => {
 
                 // Need to put some logic to check if the user got their account made
                 // Then redirect back to dashboard I guess
-                response
-                    .then((response) => {
-                        if (response.status === 200 && response.data && response.data.token) {
-                            // Set authentication token and redirect to dashboard
-                            authStore.setToken(response.data.token);
-                            userStore.getUser();
-                            navigate("/dashboard", { replace: true });
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error.response);
-                    });
+                if (response.status === 200 && response.data && response.data.token) {
+                    // Set authentication token and redirect to dashboard
+                    authStore.setToken(response.data.token);
+                    userStore.getUser();
+                    navigate("/dashboard", { replace: true });
+                }
             }
         }
     });
