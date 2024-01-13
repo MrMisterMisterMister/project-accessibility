@@ -34,7 +34,7 @@ const Chats = observer( () => {
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl("https://localhost:5000/chat")
+            .withUrl("http://localhost:5000/chat")
             .configureLogging(LogLevel.Information)
             .build();
 
