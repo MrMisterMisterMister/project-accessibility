@@ -205,8 +205,9 @@ const TableCompanyResearchView = ({ data, onEdit, onDelete }) => {
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
         { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         {
             label: translate("labels.actions"),
             colSpan: 2,
@@ -241,14 +242,15 @@ const TableAdminResearchView = ({ data }) => {
     // Translation
     const { t: translate } = useTranslation("research");
 
-    // columns for the company research view
+    // columns
     const columns = [
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
         { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: translate("labels.organizer"), accessor: "organizerName" }
     ];
 
@@ -279,9 +281,9 @@ const TableAvailableResearchView = ({ data, onView, onJoin }) => {
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: translate("labels.organizer"), accessor: "organizerName" },
         {
             label: translate("labels.actions"),

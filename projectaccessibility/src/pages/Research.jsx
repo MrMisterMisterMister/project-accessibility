@@ -23,20 +23,18 @@ const Research = () => {
     // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
 
-    // Can probably combine all 3 hooks into one, but I am lazy
-    // And this is easier to manage, somewhat
-    // TODO
-    // Need another one for the researches that are from a company
-
     // Hook to store being worked on research, singular
     const [research, setResearch] = useState({});
 
     // Hook to store all the researches in
     // This one is for admin
-    const [researches, setResearches] = useState([]);
+    const [allResearches, setAllResearches] = useState([]);
 
     // Hook for researches that a panel member is participating in
-    const [researchParticipant, setResearchParticipant] = useState([]);
+    const [panelMemberResearches, setPanelMemberResearches] = useState([]);
+
+    // Hook to get the researches that is made by the logged in company
+    const [companyResearches, setCompanyResearches] = useState([]);
 
     // Function that handles switching it, just simply replaces with new value
     const switchView = (view, id = null) => {
@@ -48,19 +46,37 @@ const Research = () => {
     // Has no actions however
     const fetchAllResearches = async () => {
         const data = await createEndpoint("researches").get();
-        setResearches(data);
+        setAllResearches(data);
     };
 
     // This is for fetching the researches for a panelmember
     // So they can see which one they have joined
-    const fetchParticipationResearches = async () => {
+    const fetchPanelMemberResearches = async () => {
         const data = await createEndpoint(`panelmembers/${user.userId}`).get();
         const researchIds = data.participationsId || [];
         const researchPromises = researchIds.map((id) => createEndpoint(`researches/${id}`).get());
         // Lazy way to get all
         const researchResults = await Promise.all(researchPromises);
+        // Set them inside hook
+        setPanelMemberResearches(researchResults);
+    };
 
-        setResearchParticipant(researchResults);
+    // TODO
+    // This can probably be combined with the fetchPanelMemberResearches, where I just give it a different endpoint
+    const fetchCompanyResearches = async () => {
+        // Need to make a get request to get the ids then loop over it
+        // This is just test, will be removed later
+        setCompanyResearches([
+            {
+                id: "99",
+                title: "My Child is Cool",
+                description: "Insert some inspiring quote.",
+                date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
+                type: "Online",
+                category: "Test category",
+                reward: 0.01
+            }
+        ]);
     };
 
     // Fetch singular research
@@ -70,19 +86,12 @@ const Research = () => {
         setResearch(data);
     };
 
-    // Get request to get all researches
-    // TODO
-    // This needs to be fixed, will do it later
+    // Load all the data in
     useEffect(() => {
-        if (researches.length === 0) {
-            fetchAllResearches();
-        }
-
-        if (researchId != null || researchId) {
-            fetchSingularResearch();
-        }
-
-        fetchParticipationResearches();
+        if (allResearches.length === 0) fetchAllResearches();
+        if (researchId != null || researchId) fetchSingularResearch();
+        if (panelMemberResearches.length === 0) fetchPanelMemberResearches();
+        if (companyResearches.length === 0) fetchCompanyResearches();
     }, [researchId]); // On id mount
 
     // Something something
@@ -119,18 +128,18 @@ const Research = () => {
         myResearch: (
             <>
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TableAdminResearchView data={researches} />
+                    <TableAdminResearchView data={allResearches} /> /* TODO this one isn't correct, need to still get all researches from the company, but temp for now */
                 )}
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TableCompanyResearchView data={researches} onEdit={switchView} onDelete={handleResearchDeletion} />
+                    <TableCompanyResearchView data={companyResearches} onEdit={switchView} onDelete={handleResearchDeletion} />
                 )}
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TablePanelMemberResearchView data={researchParticipant} onLeave={handleResearchLeaving} />
+                    <TablePanelMemberResearchView data={panelMemberResearches} onLeave={handleResearchLeaving} />
                 )}
             </>
         ),
         allResearches: (
-            <TableAvailableResearchView data={researches} onView={switchView} onJoin={handleResearchParticipation} />
+            <TableAvailableResearchView data={allResearches} onView={switchView} onJoin={handleResearchParticipation} />
         ),
         newResearch: (
             <div className="research__content">
