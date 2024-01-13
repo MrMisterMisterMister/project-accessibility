@@ -13,6 +13,7 @@
     },
     "success": {
         "UserHasBeenCreated": "Your account has been successfully created. You can now log in.",
-        "UserHasLoggedIn": "You have successfully logged in. Redirecting you to the portal."
+        "UserHasLoggedIn": "You have successfully logged in. Redirecting you to the portal.",
+        "ResearchHasBeenCreated": "your mom"
     }    
 }

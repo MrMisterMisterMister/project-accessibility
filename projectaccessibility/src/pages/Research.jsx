@@ -61,6 +61,9 @@ const Research = () => {
         setPanelMemberResearches(researchResults);
     };
 
+    // TODO need to do something about all those unneeded requests
+    // Will figure something out later today or tomorrow
+
     // TODO
     // This can probably be combined with the fetchPanelMemberResearches, where I just give it a different endpoint
     const fetchCompanyResearches = async () => {
@@ -137,7 +140,7 @@ const Research = () => {
                     Create Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate />
+                    <FormCompanyResearchCreate organizerId={user.userId}/>
                 </div>
             </div>
         ),

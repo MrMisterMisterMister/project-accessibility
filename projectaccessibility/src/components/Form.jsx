@@ -740,7 +740,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
             .then((response) => {
                 // Check if the response code is 200 (ok)
                 // If so, create a success alert and reset the form
-                if (response.code === 200) {
+                if (response.status === 200) {
                     // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
                     reset();
@@ -993,7 +993,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
         updateCompanyProfileResponse
             .then((response) => {
                 // Checks if the response code is 200 (Ok)
-                if (response.code === 200) {
+                if (response.status === 200) {
                     // Set a success message for the user to see
                     // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
@@ -1246,7 +1246,7 @@ FormCompanyProfileUpdate.propTypes = {
 
 // form for company when they create a new research
 // send post to endpoint
-const FormCompanyResearchCreate = () => {
+const FormCompanyResearchCreate = ({ organizerId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1274,10 +1274,9 @@ const FormCompanyResearchCreate = () => {
         createCompanyResearchResponse
             .then((response) => {
                 // Check if success
-                if (response.code === 200) {
+                if (response.status === 200) {
                     // Set a success message for the user to see
-                    // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
                     // Reset form
                     reset();
                 }
@@ -1303,6 +1302,12 @@ const FormCompanyResearchCreate = () => {
                 onSubmit={handleSubmit(companyResearchCreateSubmit)}
                 noValidate
             >
+                <Form.Control
+                    type="hidden"
+                    {...register("organizerId", {
+                        value: organizerId
+                    })}
+                />
                 <Row>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1444,6 +1449,12 @@ const FormCompanyResearchCreate = () => {
     );
 };
 
+// Prop type for form comany creating researches
+// just need to make sure there is a company id
+FormCompanyResearchCreate.propTypes = {
+    organizerId: PropTypes.string.isRequired
+};
+
 // To update research
 // Put request with the research id
 // and the new form data
@@ -1477,7 +1488,7 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
         createCompanyResearchResponse
             .then((response) => {
                 // Checks if the response code is 200 (Ok)
-                if (response.code === 200) {
+                if (response.status === 200) {
                     // Set a success message for the user to see
                     // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });

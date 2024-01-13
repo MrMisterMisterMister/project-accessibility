@@ -13,6 +13,7 @@
     },
     "success": {
         "UserHasBeenCreated": "Je account is succesvol aangemaakt. Je kunt nu inloggen.",
-        "UserHasLoggedIn": "Je bent succesvol ingelogd. We sturen je nu door naar het portaal."
+        "UserHasLoggedIn": "Je bent succesvol ingelogd. We sturen je nu door naar het portaal.",
+        "ResearchHasBeenCreated": "your mom"
     }    
 }
