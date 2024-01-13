@@ -43,6 +43,7 @@ const Chats = observer( () => {
 
     useEffect(() => {
         if (connection) {
+            console.log(currentUser.userName)
             connection.start()
                 .then(() => {
                     console.log('Connected!');
@@ -63,14 +64,14 @@ const Chats = observer( () => {
 
     const joinRoom = () => {
         if (connection && isConnected) {
-            connection.invoke('JoinRoom', { Username: currentUser.username, ChatRoom: chatRoom })
+            connection.invoke('JoinRoom', { Username: currentUser.userName, ChatRoom: chatRoom })
                 .catch(err => console.error(err));
         }
     };
 
     const sendMessage = async () => {
         if (connection && isConnected && newMessage) {
-            await connection.invoke('SendMessageToRoom', chatRoom, currentUser.username, newMessage);
+            await connection.invoke('SendMessageToRoom', chatRoom, currentUser.userName, newMessage);
             setNewMessage('');
         }
     };
