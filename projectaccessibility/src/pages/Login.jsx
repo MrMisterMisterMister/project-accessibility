@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { PersonPlusFill } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
+import { useStore } from "../stores/store";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
-import { PersonPlusFill } from "react-bootstrap-icons";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
@@ -11,6 +13,22 @@ import Footer from "../components/Footer";
 const Login = () => {
     // Translation
     const { t: translate } = useTranslation("login");
+
+    // Navigate
+    const navigate = useNavigate();
+
+    // I am crack..
+    const { userStore: { isLoggedIn, getUser, user } } = useStore();
+
+    // On crack
+    useEffect(() => {
+        const fetchUser = async () => {
+            if (!user) await getUser();
+            isLoggedIn || navigate("/dashboard", { replace: true });
+        };
+
+        fetchUser();
+    }, [user]);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons

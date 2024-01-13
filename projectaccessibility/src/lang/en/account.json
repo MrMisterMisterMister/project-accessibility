@@ -1,0 +1,19 @@
+{
+    "pageTitle": "Your Profile",
+    "company": {
+        "generalLabel": "General",
+        "name": "Company Name:",
+        "kvk": "KvK Number:",
+        "address": "Address:",
+        "postalCode": "Postal Code:",
+        "province": "Province:",
+        "country": "Country:",
+        "contactLabel": "Contacts",
+        "website": "Website:",
+        "phone": "Phone Number:",
+        "email": "Email Address:",
+        "contactPerson": "Contact Person:"
+    },
+    "panelMember": {},
+    "admin": {}
+}

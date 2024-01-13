@@ -3,6 +3,7 @@
 
 .dashboard__page {
     background-color: variables.$cultured;
+    min-height: 100%;
 
     .dashboard__page_menu {
         position: relative;

@@ -51,6 +51,8 @@ const PrivacyPolicy = () => {
                         </ul>
                     </nav>
 
+                    <br />
+
                     <h4 tabIndex="0" id="collected-data">{translate("collectedData.title")}</h4>
                     <p tabIndex="0">{translate("collectedData.description")}</p>
 

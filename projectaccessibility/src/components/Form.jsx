@@ -8,12 +8,14 @@ import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
+import PropTypes from "prop-types";
 
 // Form for login page
 const FormLogin = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // user store
     const { userStore, authStore } = useStore();
 
     // To handle navigation
@@ -447,7 +449,7 @@ const FormSignup = () => {
 // Form to update email
 // Need to catch the user type somewhere
 // Also need to get their guid
-const FormUserEmailUpdate = () => {
+const FormUserEmailUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -466,9 +468,7 @@ const FormUserEmailUpdate = () => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData);// Still need to be worked on
+        const updateEmailResponse = createEndpoint("users").post(userId, formData);
 
         // Handle the response from the POST call
         updateEmailResponse
@@ -555,9 +555,13 @@ const FormUserEmailUpdate = () => {
     );
 };
 
+FormUserEmailUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
 // TODO
 // Form to update password
-const FormUserPasswordUpdate = () => {
+const FormUserPasswordUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -576,9 +580,8 @@ const FormUserPasswordUpdate = () => {
     const passwordUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePasswordResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData); // Still need to be worked on
+        // PUT request to update password
+        const updatePasswordResponse = createEndpoint("users").put(userId, formData);
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -697,15 +700,27 @@ const FormUserPasswordUpdate = () => {
     );
 };
 
-// TODO
-// Form for panel members to update their information
-const FormPanelMemberProfileUpdate = () => {
+FormUserPasswordUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
+// This form is for Panel Members to update their profile
+// PanelMemberId is the only prop it needs, so it can determine the correct endpoint
+// Also renders the output in the frontend
+// This does not show what the previous values are, users can simply click on their profile instead
+const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // This state manages the form alerts
+    // It handles both the errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Form handling using useForm hook from React Hook Forms
+    // This makes it easier to work with forms
     const {
         register,
         handleSubmit,
@@ -713,30 +728,33 @@ const FormPanelMemberProfileUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Panel Member's profile
     const panelMemberProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        const updatePanelMemberProfileResponse =
-            createEndpoint("panelmembers/{their guid}")
-                .post(formData); // Still need to be worked on
+        // Use the createEndpoint method to initiate a PUT request
+        // This updates the profile of a Panel Member with the specified id
+        const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(panelMemberId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updatePanelMemberProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Check if the response code is 200 (ok)
+                // If so, create a success alert and reset the form
+                if (response.code === 200) {
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    reset();
+                }
+                console.log(response); // TODO will remove later
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and set it inside the form alert state
+                setFormAlerts({ error: error.response?.data });
+                console.log(error.response); // TODO will remove later
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -936,15 +954,26 @@ const FormPanelMemberProfileUpdate = () => {
     );
 };
 
-// TODO
-// Form for company to update their page info
-const FormCompanyProfileUpdate = () => {
+// Prop types for FormPanelMemberProfileUpdate
+FormPanelMemberProfileUpdate.propTypes = {
+    panelMemberId: PropTypes.string.isRequired
+};
+
+// This form is for updating a company's profile
+// It configurates the correct endpoint based on the companyId
+// Also renders the form for the user to see
+const FormCompanyProfileUpdate = ({ companyId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Handling for forms with React Hook Forms
+    // Makes working with forms so much easier
     const {
         register,
         handleSubmit,
@@ -952,30 +981,35 @@ const FormCompanyProfileUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Company's profile
     const companyProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        const updateCompanyProfileResponse =
-            createEndpoint("companies/{their guid}")
-                .post(formData); // Still need to be worked on
+        // Make a PUT request to the correct endpoint
+        // That way the company who is updating their profile actually sees the changes
+        const updateCompanyProfileResponse = createEndpoint("companies").put(companyId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updateCompanyProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Checks if the response code is 200 (Ok)
+                if (response.code === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Reset form
+                    reset();
+                }
+                console.log(response); // TODO will remove later
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
+                console.log(error.response); // TODO will remove later
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -999,7 +1033,6 @@ const FormCompanyProfileUpdate = () => {
                             })}
                             aria-invalid={errors.kvk ? "true" : "false"}
                             placeholder={translate("kvkPlaceholder")}
-                            disabled
                         />
                         {errors.kvk && (
                             <div className="form__error">
@@ -1200,6 +1233,12 @@ const FormCompanyProfileUpdate = () => {
             </Form>
         </>
     );
+};
+
+// PropTypes for FormCompanyProfileUpdate
+// Requires companyId as mandatory string prop
+FormCompanyProfileUpdate.propTypes = {
+    companyId: PropTypes.string.isRequired
 };
 
 // TODO
@@ -1572,6 +1611,152 @@ const FormCompanyResearchUpdate = () => {
     );
 };
 
+// TODO
+// creating a form with just input type hideen and the user id
+// send to backend that adds the id to the research as participant
+// something like that
+const FormPanelMemberResearchJoin = () => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    const {
+        register,
+        handleSubmit,
+        reset
+    } = useForm();
+
+    const panelMemberResearchJoinSubmit = async (formData) => {
+        // Axios
+        const joinPanelMemberResearchResponse = createEndpoint("lol").post(formData);
+
+        // Handle the response from the POST call
+        joinPanelMemberResearchResponse
+            .then((response) => {
+                // Some inspiring comment
+                console.log(response);
+                reset();
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                console.log(error.response);
+            });
+    };
+
+    // I need to do a get to get the research information
+    // Then need to load in the values inside here
+    // Also need to put the id of the panelmember inside here, so it will be submitted via the form
+    // Then magic..
+    return (
+        <Form
+            className="form__research"
+            acceptCharset="UTF-8"
+            method="post"
+            onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
+            noValidate
+        >
+            <Form.Control
+                type="hidden"
+                {...register("id", {
+                    value: "inserthereuserid" // todo
+                })}
+            />
+            <Row>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("titleLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        value="Clodsire and friends" // TODO test
+                        placeholder={translate("titlePlaceholder")}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("descriptionLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        as="textarea"
+                        value="Hey guys, did you know that in terms of male human and female Pokémon breeding, Vaporeon is the most compatible Pokémon for humans? Not only are they in the field egg group, which is mostly comprised of mammals, Vaporeon are an average of 3&quot;03 tall and 63.9 pounds, this means they're large enough to be able handle human dicks, and with their impressive Base Stats for HP and access to Acid Armor, you can be rough with one. Due to their mostly water based biology, there's no doubt in my mind that an aroused Vaporeon would be incredibly wet, so wet that you could easily have sex with one for hours without getting sore. They can also learn the moves Attract, Baby-Doll Eyes, Captivate, Charm, and Tail Whip, along with not having fur to hide nipples, so it'd be incredibly easy for one to get you in the mood. With their abilities Water Absorb and Hydration, they can easily recover from fatigue with enough water. No other Pokémon comes close to this level of compatibility. Also, fun fact, if you pull out enough, you can make your Vaporeon turn white. Vaporeon is literally built for human dick. Ungodly defense stat+high HP pool+Acid Armor means it can take cock all day, all shapes and sizes and still come for more " // TODO test
+                        placeholder={translate("descriptionPlaceholder")}
+                        rows={5}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("dateLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="date"
+                        value="2024-05-04" // TODO test
+                        placeholder={translate("datePlaceholder")}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("rewardLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        value="&euro; 50.0" // TODO test
+                        placeholder={translate("rewardPlaceholder")}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("organizerLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        value="The Pokemon Company" // TODO test
+                        placeholder={translate("organizerPlaceholder")}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("typeLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        value="Online" // TODO test
+                        placeholder={translate("typePlaceholder")}
+                        readOnly
+                    />
+                </Col>
+                <Col xs={12}>
+                    <Form.Label className="form__label">
+                        {translate("categoryLabel")}
+                    </Form.Label>
+                    <Form.Control
+                        className="form__text_field"
+                        type="text"
+                        value="This, Really, Is, Gay" // test
+                        placeholder={translate("categoryPlaceholder")}
+                        readOnly
+                    />
+                </Col>
+            </Row>
+            <ButtonSubmit text="Join" />
+            {
+                /*
+                Another button to go back maybe?
+                */
+            }
+        </Form>
+    );
+};
+
 export {
     FormLogin,
     FormSignup,
@@ -1580,5 +1765,6 @@ export {
     FormPanelMemberProfileUpdate,
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
-    FormCompanyResearchUpdate
+    FormCompanyResearchUpdate,
+    FormPanelMemberResearchJoin
 };
