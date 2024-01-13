@@ -157,7 +157,7 @@ TableCompanyView.propTypes = {
 // table view for panel member
 // this view has their researches in it
 // ye..
-const TablePanelMemberResearchView = ({ data }) => {
+const TablePanelMemberResearchView = ({ data, onLeave }) => {
     // Translation
     const { t: translate } = useTranslation("research");
 
@@ -166,9 +166,12 @@ const TablePanelMemberResearchView = ({ data }) => {
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
         { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: translate("labels.category"), accessor: "category" }
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.organizer"), accessor: "organizerName" },
+        { label: translate("labels.actions"), actions: (id) => (<ButtonMuted text={translate("labels.leave")} onAction={() => onLeave(id)} />) }
     ];
 
     return (
@@ -183,7 +186,8 @@ const TablePanelMemberResearchView = ({ data }) => {
 
 // Prop type for the panelmember research view
 TablePanelMemberResearchView.propTypes = {
-    data: PropTypes.array.isRequired
+    data: PropTypes.array.isRequired,
+    onLeave: PropTypes.func
 };
 
 // TODO
@@ -232,6 +236,37 @@ TableCompanyResearchView.propTypes = {
     onDelete: PropTypes.func
 };
 
+// This is for all the researches that an admin can see
+const TableAdminResearchView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
+    // columns for the company research view
+    const columns = [
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.organizer"), accessor: "organizerName" }
+    ];
+
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={data} />
+            </table>
+        </div>
+    );
+};
+
+// Prop type for the admin table view
+TableAdminResearchView.propTypes = {
+    data: PropTypes.array.isRequired
+};
+
 // TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
@@ -272,7 +307,7 @@ const TableAvailableResearchView = ({ data, onView, onJoin }) => {
 
 // prop types table avaialbler researches view
 TableAvailableResearchView.propTypes = {
-    data: PropTypes.array,
+    data: PropTypes.array.isRequired,
     onView: PropTypes.func,
     onJoin: PropTypes.func
 };
@@ -282,5 +317,6 @@ export {
     TableCompanyView,
     TablePanelMemberResearchView,
     TableCompanyResearchView,
+    TableAdminResearchView,
     TableAvailableResearchView
 };

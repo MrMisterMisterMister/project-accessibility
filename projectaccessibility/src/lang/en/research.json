@@ -18,6 +18,7 @@
         "view": "View",
         "join": "Join",
         "edit": "Edit",
-        "delete": "Delete"
+        "delete": "Delete",
+        "leave": "Leave"
     }
 }

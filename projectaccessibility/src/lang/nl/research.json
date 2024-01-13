@@ -18,6 +18,7 @@
         "view": "Bekijken",
         "join": "Aanmelden",
         "edit": "Bewerken",
-        "delete": "Verwijderen"
+        "delete": "Verwijderen",
+        "leave": "Verlaten"
     }
 }

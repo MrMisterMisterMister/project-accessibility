@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
-import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
+import { TableCompanyResearchView, TablePanelMemberResearchView, TableAdminResearchView, TableAvailableResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
 import { createEndpoint } from "../api/axiosClient";
 import { useStore } from "../stores/store";
@@ -23,11 +23,20 @@ const Research = () => {
     // Get the stored user info so we can get access to the current role
     const { userStore: { user } } = useStore();
 
+    // Can probably combine all 3 hooks into one, but I am lazy
+    // And this is easier to manage, somewhat
+    // TODO
+    // Need another one for the researches that are from a company
+
     // Hook to store being worked on research, singular
     const [research, setResearch] = useState({});
 
     // Hook to store all the researches in
+    // This one is for admin
     const [researches, setResearches] = useState([]);
+
+    // Hook for researches that a panel member is participating in
+    const [researchParticipant, setResearchParticipant] = useState([]);
 
     // Function that handles switching it, just simply replaces with new value
     const switchView = (view, id = null) => {
@@ -35,28 +44,45 @@ const Research = () => {
         setResearchId(id);
     };
 
-    // planning to do this in a global file
-    const fetchResearches = async () => {
+    // For admin I guess, so they can see all researches
+    // Has no actions however
+    const fetchAllResearches = async () => {
         const data = await createEndpoint("researches").get();
         setResearches(data);
     };
 
+    // This is for fetching the researches for a panelmember
+    // So they can see which one they have joined
+    const fetchParticipationResearches = async () => {
+        const data = await createEndpoint(`panelmembers/${user.userId}`).get();
+        const researchIds = data.participationsId || [];
+        const researchPromises = researchIds.map((id) => createEndpoint(`researches/${id}`).get());
+        // Lazy way to get all
+        const researchResults = await Promise.all(researchPromises);
+
+        setResearchParticipant(researchResults);
+    };
+
     // Fetch singular research
     // for when viewing or editing
-    const fetchResearch = async () => {
+    const fetchSingularResearch = async () => {
         const data = await createEndpoint(`researches/${researchId}`).get();
         setResearch(data);
     };
 
     // Get request to get all researches
+    // TODO
+    // This needs to be fixed, will do it later
     useEffect(() => {
         if (researches.length === 0) {
-            fetchResearches();
+            fetchAllResearches();
         }
 
         if (researchId != null || researchId) {
-            fetchResearch();
+            fetchSingularResearch();
         }
+
+        fetchParticipationResearches();
     }, [researchId]); // On id mount
 
     // Something something
@@ -74,9 +100,15 @@ const Research = () => {
 
     // Function that handles Panel Members to join a research
     // Will need to know which research they want to join and also the current logged in user id
-    const joinResearch = (id) => {
+    const handleResearchParticipation = (id) => {
         // This needs more logic, for now just print out which research they wanted to join
         console.log("Joined ResearchId: " + id);
+    };
+
+    // This function handles a panelmember leaving for whatever reason
+    const handleResearchLeaving = (id) => {
+        // Need to do the actual deletion
+        console.log("Leaving researchid: " + id);
     };
 
     // The different view for research
@@ -87,20 +119,23 @@ const Research = () => {
         myResearch: (
             <>
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
+                    <TableAdminResearchView data={researches} />
+                )}
+                {user.userRoles.includes("Admin") /* TODO will change later */ && (
                     <TableCompanyResearchView data={researches} onEdit={switchView} onDelete={handleResearchDeletion} />
                 )}
                 {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TablePanelMemberResearchView data={researches} />
+                    <TablePanelMemberResearchView data={researchParticipant} onLeave={handleResearchLeaving} />
                 )}
             </>
         ),
         allResearches: (
-            <TableAvailableResearchView data={researches} onView={switchView} onJoin={joinResearch} />
+            <TableAvailableResearchView data={researches} onView={switchView} onJoin={handleResearchParticipation} />
         ),
         newResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    Create Research
+                    Create Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
                     <FormCompanyResearchCreate />
@@ -110,7 +145,7 @@ const Research = () => {
         editResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    Edit Research
+                    Edit Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
                     <FormCompanyResearchUpdate researchId={researchId} />
@@ -120,7 +155,7 @@ const Research = () => {
         viewResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    View Research
+                    View Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
                     <FormPanelMemberResearchJoin userId={user.userId} data={research} />
