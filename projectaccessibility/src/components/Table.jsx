@@ -247,7 +247,7 @@ const TableAvailableResearchView = ({ data, onView, onJoin }) => {
         { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
-        { label: translate("labels.organizer"), accessor: "organizer" },
+        { label: translate("labels.organizer"), accessor: "organizerName" },
         {
             label: translate("labels.actions"),
             colSpan: 2,

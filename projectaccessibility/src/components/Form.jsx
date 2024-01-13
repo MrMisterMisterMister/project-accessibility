@@ -1758,7 +1758,7 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.organizer}
+                            value={data.organizerName}
                             placeholder={translate("organizerPlaceholder")}
                             readOnly
                         />
@@ -1808,7 +1808,7 @@ FormPanelMemberResearchJoin.propTypes = {
         description: PropTypes.string,
         date: PropTypes.string,
         reward: PropTypes.number,
-        organizer: PropTypes.string,
+        organizerName: PropTypes.string,
         type: PropTypes.string,
         category: PropTypes.string
     })
