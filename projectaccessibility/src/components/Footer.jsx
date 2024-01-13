@@ -39,7 +39,10 @@ const Footer = () => {
         goto: {
             title: translate("menu.goto.title"),
             links: [
-                { name: translate("menu.goto.links.home"), path: "/" },
+                {
+                    name: translate("menu.goto.links.home"),
+                    path: "/"
+                },
                 {
                     name: translate("menu.goto.links.about"),
                     path: "/over-ons"
@@ -50,7 +53,7 @@ const Footer = () => {
                 },
                 {
                     name: translate("menu.goto.links.news"),
-                    path: "/actueel"
+                    path: "/news"
                 },
                 {
                     name: translate("menu.goto.links.contact"),
@@ -101,7 +104,7 @@ const Footer = () => {
                 <div className="site__footer_menu">
                     <div className="site__footer_menu__logo">
                         <img
-                            src="img/brand/logo.png"
+                            src="/img/brand/logo.png"
                             width="124.5"
                             height="150"
                             alt="Logo"

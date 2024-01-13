@@ -1,0 +1,19 @@
+{
+    "pageTitle": "Jouw Profiel",
+    "company": {
+        "generalLabel": "Algemeen",
+        "name": "Bedrijfsnaam:",
+        "kvk": "KvK-nummer:",
+        "address": "Adres:",
+        "postalCode": "Postcode:",
+        "province": "Provincie:",
+        "country": "Land:",
+        "contactLabel": "Contactgegevens",
+        "website": "Website:",
+        "phone": "Telefoonnummer:",
+        "email": "E-mailadres:",
+        "contactPerson": "Contactpersoon:"
+    },
+    "panelMember": {},
+    "admin": {}
+}

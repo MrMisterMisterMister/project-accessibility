@@ -23,7 +23,7 @@ const Expertise = () => {
     ];
 
     return (
-        <section className="expertise__section">
+        <section className="expertise__section" id="expertise">
             <Container className="expertise__section_container">
                 <h2 className="expertise__section_title">
                     {translate("title")}

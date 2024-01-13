@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
-import { useTranslation } from "react-i18next";
 import { PersonPlusFill } from "react-bootstrap-icons";
+import { useTranslation } from "react-i18next";
 import { useGoogleLogin } from "@react-oauth/google";
 import { createEndpoint } from "../api/axiosClient";
-import { useNavigate } from "react-router";
-import { useStore } from "../stores/store";
+import { useNavigate } from "react-router-dom";
+import { store } from "../stores/store";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
@@ -16,6 +16,19 @@ import axios from "axios";
 const Login = () => {
     // Translation
     const { t: translate } = useTranslation("login");
+
+    // Navigate
+    const navigate = useNavigate();
+
+    // On crack
+    useEffect(() => {
+        const fetchUser = async () => {
+            if (!store.userStore.user) await store.userStore.getUser();
+            store.userStore.isLoggedIn || navigate("/dashboard", { replace: true });
+        };
+
+        fetchUser();
+    }, [store.userStore.user]);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
@@ -51,12 +64,6 @@ const Login = () => {
         </svg>
     );
 
-    // To handle navigation
-    const navigate = useNavigate();
-
-    // User stores
-    const { userStore, authStore } = useStore();
-
     // Default login for google that react oauth google provides
     // Has more options, but for now just simple onSuccess
     const googleLogin = useGoogleLogin({
@@ -80,8 +87,8 @@ const Login = () => {
                 // Then redirect back to dashboard I guess
                 if (response.status === 200 && response.data && response.data.token) {
                     // Set authentication token and redirect to dashboard
-                    authStore.setToken(response.data.token);
-                    userStore.getUser();
+                    store.authStore.setToken(response.data.token);
+                    store.userStore.getUser();
                     navigate("/dashboard", { replace: true });
                 }
             }

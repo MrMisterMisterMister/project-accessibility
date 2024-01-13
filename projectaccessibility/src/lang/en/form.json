@@ -77,6 +77,8 @@
     "typePlaceholder": "Type",
     "categoryLabel": "Category",
     "categoryPlaceholder": "Category",
+    "organizerLabel": "Organizer",
+    "organizerPlaceholder": "Organizer",
     "error": {
         "emailRequired": "* Please enter your email address",
         "emailPattern": "* Please enter a valid email address",

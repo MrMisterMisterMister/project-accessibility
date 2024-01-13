@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { DateFormatter } from "./Formatter";
 import PropTypes from "prop-types";
 
@@ -49,6 +50,28 @@ CardNews.propTypes = {
     text: PropTypes.string.isRequired
 };
 
+// About card
+// Has things like mission and vision
+// Something
+const CardAbout = ({ icon, title, text }) => {
+    return (
+        <div className="card__about_item">
+            <div className="card__about_content">
+                <div className="card__about_content__icon">{icon}</div>
+                <h3 className="card__about_content__title">{title}</h3>
+                <p className="card__about_content__text">{text}</p>
+            </div>
+        </div>
+    );
+};
+
+// Prop type for cardabout
+CardAbout.propTypes = {
+    icon: PropTypes.object.isRequired,
+    title: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
+
 // Case in card components homepage
 // Path for case
 const CardCase = ({ img, altText, title, text, path, linkText }) => {
@@ -83,6 +106,9 @@ CardCase.propTypes = {
 
 // Panelmembers in a card component
 const CardPanelMemberView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("panelmember");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -103,21 +129,39 @@ const CardPanelMemberView = ({ data }) => {
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Guardian:
+                                        {translate("labels.email")}:
                                     </span>
-                                    {panelmember.guardian}
+                                    {panelmember.email}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
-                                    </span>
-                                    {panelmember.zipcode}
-                                </p>
-                                <p>
-                                    <span className="card__user_prop_item">
-                                        Date of Birth:
+                                        {translate("labels.dateOfBirth")}:
                                     </span>
                                     {DateFormatter.format(new Date(panelmember.dateOfBirth))}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
+                                    </span>
+                                    {panelmember.address}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.postalCode")}:
+                                    </span>
+                                    {panelmember.postalCode}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.city")}:
+                                    </span>
+                                    {panelmember.city}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.country")}:
+                                    </span>
+                                    {panelmember.country}
                                 </p>
                             </div>
                         </div>
@@ -135,6 +179,9 @@ CardPanelMemberView.propTypes = {
 
 // Panelmembers in a card component
 const CardCompanyView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("company");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -142,8 +189,8 @@ const CardCompanyView = ({ data }) => {
                     <div className="card__user_item" key={company.id}>
                         <img
                             className="card__user_img"
-                            src="/img/clodsire.gif"
-                            alt="Gif of Clodsire bouncing up and down"
+                            src="/img/placeholder.jpg"
+                            alt="Picture of Clodsire"
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
@@ -157,37 +204,49 @@ const CardCompanyView = ({ data }) => {
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        KvK:
+                                        {translate("labels.kvk")}:
                                     </span>
                                     {company.kvk}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Adres:
+                                        {translate("labels.email")}:
+                                    </span>
+                                    {company.email}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.phone")}:
+                                    </span>
+                                    {company.phone}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
                                     </span>
                                     {company.address}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
+                                        {translate("labels.postalCode")}:
                                     </span>
                                     {company.postalCode}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Province:
+                                        {translate("labels.province")}:
                                     </span>
                                     {company.province}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Country:
+                                        {translate("labels.country")}:
                                     </span>
                                     {company.country}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Contact:
+                                        {translate("labels.contactPerson")}:
                                     </span>
                                     {company.contactPerson}
                                 </p>
@@ -208,6 +267,7 @@ CardCompanyView.propTypes = {
 export {
     CardExpertise,
     CardNews,
+    CardAbout,
     CardCase,
     CardPanelMemberView,
     CardCompanyView
