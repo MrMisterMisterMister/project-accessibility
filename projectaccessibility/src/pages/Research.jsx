@@ -64,19 +64,9 @@ const Research = () => {
     // TODO
     // This can probably be combined with the fetchPanelMemberResearches, where I just give it a different endpoint
     const fetchCompanyResearches = async () => {
-        // Need to make a get request to get the ids then loop over it
-        // This is just test, will be removed later
-        setCompanyResearches([
-            {
-                id: "99",
-                title: "My Child is Cool",
-                description: "Insert some inspiring quote.",
-                date: new Date(Date.now() + 14 * 24 * 60 * 60 * 1000),
-                type: "Online",
-                category: "Test category",
-                reward: 0.01
-            }
-        ]);
+        // Will optimize it later
+        const data = await createEndpoint(`researches/organizer/${user.userId}`).get();
+        setCompanyResearches(data);
     };
 
     // Fetch singular research
