@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 
-const Chats = () => {
+const Chats = observer (() => {
     const { userStore } = useStore();
     const [connection, setConnection] = useState(null);
     const [messages, setMessages] = useState([]);
     const [currentMessage, setCurrentMessage] = useState("");
-    const [chatRoom, setChatRoom] = useState("General"); // Example room
+    const [chatRoom, setChatRoom] = useState("General");
 
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
@@ -24,7 +25,7 @@ const Chats = () => {
             connection.start()
                 .then(() => {
                     console.log('Connected!');
-                    connection.invoke("JoinRoom", { Username: userStore.getUser().username, ChatRoom: chatRoom });
+                    connection.invoke("JoinRoom", { Username: userStore.user.username, ChatRoom: chatRoom });
                 })
                 .catch(e => console.error('Connection failed: ', e));
 
@@ -36,14 +37,15 @@ const Chats = () => {
         return () => {
             connection?.stop();
         };
-    }, [connection]);
+    }, [connection, userStore, chatRoom]);
 
     const sendMessage = async () => {
-        if (connection && currentMessage.trim() !== "") {
-            await connection.invoke("SendMessageToRoom", chatRoom, currentMessage);
+        if (connection && currentMessage.trim() !== "" && userStore.user) {
+            await connection.invoke("SendMessageToRoom", chatRoom, userStore.user.username, currentMessage);
             setCurrentMessage("");
         }
     };
+    
 
     return (
         <div>
@@ -79,6 +81,6 @@ const Chats = () => {
             </main>
         </div>
     );
-};
+});
 
 export default Chats;
