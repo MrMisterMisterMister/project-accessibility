@@ -16,9 +16,12 @@ const Chats = observer( () => {
     const latestMessages = useRef(null);
     const [isConnected, setIsConnected] = useState(false);
 
+    // Set the latest messages to the messages state
     latestMessages.current = messages;
 
+    // Fetch user data
     useEffect(() => {
+        // Fetch user data
         const getData = async () => {
             // If user is not available or needs to be updated, fetch it
             if (!user) await getUser();
@@ -32,18 +35,21 @@ const Chats = observer( () => {
         getData();
     }, [user]);
 
+    // Create the connection to the signalR hub (ChatHub, http://whateverrrr/chat)
     useEffect(() => {
+        // Make the connection to signalR hub
         const newConnection = new HubConnectionBuilder()
             .withUrl("http://localhost:5000/chat")
             .configureLogging(LogLevel.Information)
             .build();
 
+        // Set the connection to the state
         setConnection(newConnection);
     }, []);
 
     useEffect(() => {
-        if (connection) {
-            console.log(currentUser.userName)
+        if (connection) { // If connection is not null
+            console.log(currentUser.userName) // Just checking if the username is being passed correctly :) removing this later, not needed
             connection.start()
                 .then(() => {
                     console.log('Connected!');
@@ -61,7 +67,8 @@ const Chats = observer( () => {
                 });
         }
     }, [connection]);
-
+    
+    // Join the chat room function
     const joinRoom = () => {
         if (connection && isConnected) {
             connection.invoke('JoinRoom', { Username: currentUser.userName, ChatRoom: chatRoom })
@@ -69,13 +76,13 @@ const Chats = observer( () => {
         }
     };
 
+    // Send message to the chat room function
     const sendMessage = async () => {
         if (connection && isConnected && newMessage) {
             await connection.invoke('SendMessageToRoom', chatRoom, currentUser.userName, newMessage);
             setNewMessage('');
         }
     };
-    
 
     return (
         <div>
