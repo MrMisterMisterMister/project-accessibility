@@ -96,8 +96,14 @@ const Research = () => {
         // So it deletes the research
         // Also need to make some sort of confirmation first
         // Like a popup
-        // For now just console log which research id is getting deleted
-        console.log("Deleted ResearchId: " + id);
+
+        // Need to refresh page after research has been deleted and some message display somewhere
+        if (confirm("Are you sure you want to delete this research?") === true) {
+            // For now just console log which research id is getting deleted
+            const test = createEndpoint("researches").delete(id);
+            console.log(test);
+            console.log("Deleted ResearchId: " + id);
+        }
     };
 
     // Function that handles Panel Members to join a research
@@ -110,6 +116,8 @@ const Research = () => {
     // This function handles a panelmember leaving for whatever reason
     const handleResearchLeaving = (id) => {
         // Need to do the actual deletion
+        const data = createEndpoint("research/leave").delete(id);
+        console.log(data);
         console.log("Leaving researchid: " + id);
     };
 
@@ -120,13 +128,13 @@ const Research = () => {
         // I'm very lazy to fix it
         myResearch: (
             <>
-                {user.userRoles.includes("Admin") /* TODO will change later */ && (
-                    <TableAdminResearchView data={allResearches} /> /* TODO this one isn't correct, need to still get all researches from the company, but temp for now */
+                {user.userRoles.includes("Admin") && (
+                    <TableAdminResearchView data={allResearches} />
                 )}
-                {user.userRoles.includes("Admin") /* TODO will change later */ && (
+                {user.userRoles.includes("Company") && (
                     <TableCompanyResearchView data={companyResearches} onEdit={switchView} onDelete={handleResearchDeletion} />
                 )}
-                {user.userRoles.includes("Admin") /* TODO will change later */ && (
+                {user.userRoles.includes("PanelMember") && (
                     <TablePanelMemberResearchView data={panelMemberResearches} onLeave={handleResearchLeaving} />
                 )}
             </>
@@ -140,7 +148,7 @@ const Research = () => {
                     Create Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate organizerId={user.userId}/>
+                    <FormCompanyResearchCreate organizerId={user.userId} />
                 </div>
             </div>
         ),
@@ -175,14 +183,14 @@ const Research = () => {
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                {user.userRoles.includes("Admin") /* TODO will change later */ && (
+                {user.userRoles.includes("PanelMember") && (
                     <ButtonSecondary
                         text={translate("buttons.showAll")}
                         isActive={view === "allResearches"}
                         action={() => switchView("allResearches")}
                     />
                 )}
-                {user.userRoles.includes("Admin") /* TODO will change later */ && (
+                {user.userRoles.includes("Company") && (
                     <ButtonSecondary
                         text={translate("buttons.newResearch")}
                         isActive={view === "newResearch"}
