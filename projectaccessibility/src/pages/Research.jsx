@@ -87,38 +87,40 @@ const Research = () => {
         if (companyResearches.length === 0) fetchCompanyResearches();
     }, [researchId]); // On id mount
 
-    // Something something
-    // Function here that handles deleting a research
-    // Also a function that lets you join the research
-    // so it can be passed to the component
+    // This function handles deleting a research
+    // Passes this as a property, so the button can use it as onAction
+    // Deletes the passed research with given id
     const handleResearchDeletion = (id) => {
-        // Make a delete request to the API
-        // So it deletes the research
-        // Also need to make some sort of confirmation first
-        // Like a popup
-
-        // Need to refresh page after research has been deleted and some message display somewhere
+        // TODO need to make the message better
+        // also show alerts for when deleting
         if (confirm("Are you sure you want to delete this research?") === true) {
             // For now just console log which research id is getting deleted
             const test = createEndpoint("researches").delete(id);
-            console.log(test);
+            console.log(test); // TODO will remove it
             console.log("Deleted ResearchId: " + id);
         }
     };
 
-    // Function that handles Panel Members to join a research
-    // Will need to know which research they want to join and also the current logged in user id
+    // This function allows a panelmember to join an available research
+    // Same as above, this function is passed as a prop to a button to trigger it with onAction
+    // Only need the research id, since the panelmember id is gotten by token
     const handleResearchParticipation = (id) => {
-        // This needs more logic, for now just print out which research they wanted to join
-        console.log("Joined ResearchId: " + id);
+        // TODO same as above
+        if (confirm("join") === true) {
+            const test = createEndpoint(`researchparticipants/join-research/${id}`).post();
+            console.log(test); // TODO wiill remove it
+            console.log("Joined ResearchId: " + id);
+        }
     };
 
     // This function handles a panelmember leaving for whatever reason
     const handleResearchLeaving = (id) => {
-        // Need to do the actual deletion
-        const data = createEndpoint("research/leave").delete(id);
-        console.log(data);
-        console.log("Leaving researchid: " + id);
+        // TODO same as above
+        if (confirm("leave") === true) {
+            const test = createEndpoint(`researchparticipants/leave-research/${id}`).delete();
+            console.log(test); // TODO wiill remove it
+            console.log("Leaving ResearchId: " + id);
+        }
     };
 
     // The different view for research
