@@ -1,5 +1,6 @@
 import axios from "axios";
 import { store } from "../stores/store";
+import Logout from "../pages/Logout";
 
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
@@ -35,33 +36,19 @@ axiosClient.interceptors.response.use(response => {
     return response;
 }, async (error) => {
     // get the original axios request config for the error
-    const originalRequest = error.config;
+    // const originalRequest = error.config;
     // done by axios, anything that's not a 200 response
-    const { status } = error.response;
+    const { status, headers } = error.response;
     switch (status) {
     case 400:
         console.log(error);
         break;
     case 401:
-        // First check if the original request doesn't need to be retried
-        // This is to avoid infinite loops basically
-        if (!originalRequest._retry) {
-            // Set to true, so no infinite loop :-[
-            originalRequest._retry = true;
-            // Create the endpoint where we need to refresh the bearer token
-            const response = await createEndpoint("refresh").post();
-            // Get the new token
-            const { token } = response.data;
-            // Save it in the auth store, so next time this happens
-            // it has the new token set
-            store.authStore.setToken(token);
-            // Update the auth header for bearer token
-            // And replace it with the new one that has been generated
-            originalRequest.headers.Authorization = `Bearer ${token}`;
-            // Retry the original request
-            // But this time with the bearer token refreshed
-            // And pray it works
-            return axios(originalRequest);
+        if (headers["www-authenticate"]?.startsWith("Bearer error=\"invalid_token\"")) {
+            Logout();
+            console.log("session expired"); // change maybe?
+        } else {
+            console.log(error); // create seperate component maybe?
         }
         break;
     case 403:
