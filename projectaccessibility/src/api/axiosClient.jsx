@@ -4,7 +4,7 @@ import { store, authStore } from "../stores/store";
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
     baseURL: import.meta.env.VITE_API_URL,
-    withCredentials: true, // This is to handle cookies
+    withCredentials: true, // This is to handle cookies, allows sending cookies with requests, useful for sessions.
     timeout: 3000,
     headers: {
         common: {
