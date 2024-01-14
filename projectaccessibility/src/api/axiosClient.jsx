@@ -1,5 +1,5 @@
 import axios from "axios";
-import { store, authStore } from "../stores/store";
+import { store } from "../stores/store";
 
 // Axios instance with prefined configurations
 const axiosClient = axios.create({
