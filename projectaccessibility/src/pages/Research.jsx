@@ -67,10 +67,6 @@ const Research = () => {
         setPanelMemberResearches(researchResults);
     };
 
-    // TODO need to do something about all those unneeded requests
-    // Will figure something out later today or tomorrow
-
-    // TODO
     // This can probably be combined with the fetchPanelMemberResearches, where I just give it a different endpoint
     const fetchCompanyResearches = async () => {
         // Will optimize it later
@@ -103,13 +99,12 @@ const Research = () => {
         if (researchId != null || researchId) {
             fetchSingularResearch();
         }
-    }, [researchId]);
+    }, [researchId, companyResearches, allResearches, panelMemberResearches]);
 
     // This function handles deleting a research
     // Passes this as a property, so the button can use it as onAction
     // Deletes the passed research with given id
     const handleResearchDeletion = (id) => {
-        // TODO need to make the message better
         // also show alerts for when deleting
         if (confirm(translate("confirm.delete")) === true) {
             // Make the delete request to backend
@@ -122,7 +117,6 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate some shit
                         setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
-                        // Set authentication token
                     }
                 })
                 .catch((error) => {
@@ -136,8 +130,9 @@ const Research = () => {
     // Same as above, this function is passed as a prop to a button to trigger it with onAction
     // Only need the research id, since the panelmember id is gotten by token
     const handleResearchParticipation = (id) => {
+        // Show default javascript confirm
         if (confirm(translate("confirm.join")) === true) {
-            // Endpoint
+            // Make post request
             const researchParticipationResponse = createEndpoint(`researchparticipants/join-research/${id}`).post();
 
             // Handle the response from the delete call
@@ -145,9 +140,8 @@ const Research = () => {
                 .then((response) => {
                     // Check if response is ok
                     if (response.status === 200) {
-                        // Configurate some shit
+                        // Configurate alerts
                         setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
-                        // Set authentication token
                     }
                 })
                 .catch((error) => {
@@ -159,17 +153,18 @@ const Research = () => {
 
     // This function handles a panelmember leaving for whatever reason
     const handleResearchLeaving = (id) => {
+        // Javascript confirm
         if (confirm(translate("confirm.leave")) === true) {
-            const researchLeavingResponse = createEndpoint(`researchparticipants/leave-research/${id}`).delete();
+            // make delete request
+            const researchLeavingResponse = createEndpoint("researchparticipants/leave-research").delete(id);
 
             // Handle the response from the delete call
             researchLeavingResponse
                 .then((response) => {
                     // Check if response is ok
                     if (response.status === 200) {
-                        // Configurate some shit
+                        // Configurate the success message
                         setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
-                        // Set authentication token
                     }
                 })
                 .catch((error) => {
@@ -226,12 +221,13 @@ const Research = () => {
                     View Research {/* TODO localization */}
                 </h4>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin userId={user.userId} data={research} />
+                    <FormPanelMemberResearchJoin researchId={researchId} data={research} />
                 </div>
             </div>
         )
     };
 
+    // TODO show alerts
     return (
         <div className="research__dashboard">
             <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
@@ -241,14 +237,14 @@ const Research = () => {
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                {user.userRoles.includes("Admin") && (
+                {user.userRoles.includes("PanelMember") && (
                     <ButtonSecondary
                         text={translate("buttons.showAll")}
                         isActive={view === "allResearches"}
                         action={() => switchView("allResearches")}
                     />
                 )}
-                {user.userRoles.includes("Admin") && (
+                {user.userRoles.includes("Company") && (
                     <ButtonSecondary
                         text={translate("buttons.newResearch")}
                         isActive={view === "newResearch"}

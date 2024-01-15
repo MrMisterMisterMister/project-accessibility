@@ -18,9 +18,6 @@ const FormLogin = observer(() => {
     // user store
     const { userStore, authStore } = useStore();
 
-    // To handle navigation
-    const navigate = useNavigate();
-
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
     const [formAlerts, setFormAlerts] = useState({
@@ -1660,27 +1657,22 @@ FormCompanyResearchUpdate.propTypes = {
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ userId, data }) => {
+const FormPanelMemberResearchJoin = ({ researchId, data }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
     // React Hook forms
-    const {
-        register,
-        handleSubmit,
-        reset
-    } = useForm();
+    const { handleSubmit } = useForm();
 
-    const panelMemberResearchJoinSubmit = async (formData) => {
+    const panelMemberResearchJoinSubmit = async () => {
         // Axios
-        const joinPanelMemberResearchResponse = createEndpoint("lol").post(formData);
+        const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
 
         // Handle the response from the POST call
         joinPanelMemberResearchResponse
             .then((response) => {
                 // Some inspiring comment
                 console.log(response);
-                reset();
             })
             .catch((error) => {
                 // Catch the error and display it
@@ -1701,12 +1693,6 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
                 onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
                 noValidate
             >
-                <Form.Control
-                    type="hidden"
-                    {...register("id", {
-                        value: userId // TODO will probably remove it
-                    })}
-                />
                 <Row>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1808,7 +1794,7 @@ const FormPanelMemberResearchJoin = ({ userId, data }) => {
 // prop types for ye..
 // was too lazy so just put it all string
 FormPanelMemberResearchJoin.propTypes = {
-    userId: PropTypes.string.isRequired,
+    researchId: PropTypes.string,
     data: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string,
