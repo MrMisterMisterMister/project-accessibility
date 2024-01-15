@@ -117,7 +117,7 @@ const Research = () => {
                     // Check if response is ok
                     if (response.status === 200) {
                         // Configurate some shit
-                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        setFormAlerts({ success: { code: "ResearchHasBeenDeleted" } });
                     }
                 })
                 .catch((error) => {
@@ -142,7 +142,7 @@ const Research = () => {
                     // Check if response is ok
                     if (response.status === 200) {
                         // Configurate alerts
-                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        setFormAlerts({ success: { code: "ParticipantHasJoined" } });
                     }
                 })
                 .catch((error) => {
@@ -165,7 +165,7 @@ const Research = () => {
                     // Check if response is ok
                     if (response.status === 200) {
                         // Configurate the success message
-                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        setFormAlerts({ success: { code: "ParticipantHasLeft" } });
                     }
                 })
                 .catch((error) => {

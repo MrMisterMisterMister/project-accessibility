@@ -1478,7 +1478,7 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     // TODO
-                    setFormAlerts({ success: { code: "" } });
+                    setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
                 }
@@ -1673,7 +1673,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                 // Some inspiring comment
                 if (response.status === 200) {
                     // Set a success message for the user to see
-                    setFormAlerts({ success: { code: "" } });
+                    setFormAlerts({ success: { code: "ParticipantHasJoined" } });
                 }
             })
             .catch((error) => {
