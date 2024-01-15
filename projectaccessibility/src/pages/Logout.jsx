@@ -22,6 +22,7 @@ const Logout = () => {
             Cookies.remove("token");
             navigate("/login", { replace: true });
             store.userStore.setUser(null); // Reset it
+            store.authStore.setToken(null);
         };
 
         logout();

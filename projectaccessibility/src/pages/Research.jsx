@@ -36,6 +36,12 @@ const Research = () => {
     // Hook to get the researches that is made by the logged in company
     const [companyResearches, setCompanyResearches] = useState([]);
 
+    // For managing errors
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
     // Function that handles switching it, just simply replaces with new value
     const switchView = (view, id = null) => {
         setView(view);
@@ -106,10 +112,23 @@ const Research = () => {
         // TODO need to make the message better
         // also show alerts for when deleting
         if (confirm(translate("confirm.delete")) === true) {
-            // For now just console log which research id is getting deleted
-            const test = createEndpoint("researches").delete(id);
-            console.log(test); // TODO will remove it
-            console.log("Deleted ResearchId: " + id);
+            // Make the delete request to backend
+            const researchDeletionResponse = createEndpoint("researches").delete(id);
+
+            // Handle the response from the delete call
+            researchDeletionResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate some shit
+                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        // Set authentication token
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
         }
     };
 
@@ -117,21 +136,46 @@ const Research = () => {
     // Same as above, this function is passed as a prop to a button to trigger it with onAction
     // Only need the research id, since the panelmember id is gotten by token
     const handleResearchParticipation = (id) => {
-        // TODO same as above
         if (confirm(translate("confirm.join")) === true) {
-            const test = createEndpoint(`researchparticipants/join-research/${id}`).post();
-            console.log(test); // TODO wiill remove it
-            console.log("Joined ResearchId: " + id);
+            // Endpoint
+            const researchParticipationResponse = createEndpoint(`researchparticipants/join-research/${id}`).post();
+
+            // Handle the response from the delete call
+            researchParticipationResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate some shit
+                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        // Set authentication token
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
         }
     };
 
     // This function handles a panelmember leaving for whatever reason
     const handleResearchLeaving = (id) => {
-        // TODO same as above
         if (confirm(translate("confirm.leave")) === true) {
-            const test = createEndpoint(`researchparticipants/leave-research/${id}`).delete();
-            console.log(test); // TODO wiill remove it
-            console.log("Leaving ResearchId: " + id);
+            const researchLeavingResponse = createEndpoint(`researchparticipants/leave-research/${id}`).delete();
+
+            // Handle the response from the delete call
+            researchLeavingResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate some shit
+                        setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                        // Set authentication token
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
         }
     };
 
@@ -197,14 +241,14 @@ const Research = () => {
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                {user.userRoles.includes("PanelMember") && (
+                {user.userRoles.includes("Admin") && (
                     <ButtonSecondary
                         text={translate("buttons.showAll")}
                         isActive={view === "allResearches"}
                         action={() => switchView("allResearches")}
                     />
                 )}
-                {user.userRoles.includes("Company") && (
+                {user.userRoles.includes("Admin") && (
                     <ButtonSecondary
                         text={translate("buttons.newResearch")}
                         isActive={view === "newResearch"}
