@@ -25,5 +25,8 @@
         "delete": "Weet je zeker dat je dit onderzoek wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
         "join": "Weet je zeker dat je wilt deelnemen aan dit onderzoek?",
         "leave": "Weet je zeker dat je dit onderzoek wilt verlaten?"
-    }
+    },
+    "createResearch": "Onderzoek Creëren",
+    "editResearch": "Onderzoek Bewerken",
+    "viewResearch": "Onderzoek Bekijken"
 }

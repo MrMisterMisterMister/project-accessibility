@@ -208,7 +208,7 @@ const Research = () => {
         newResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    Create Research {/* TODO localization */}
+                    {translate("createResearch")}
                 </h4>
                 <div className="research__content_container">
                     <FormCompanyResearchCreate organizerId={user.userId} />
@@ -218,7 +218,7 @@ const Research = () => {
         editResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    Edit Research {/* TODO localization */}
+                    {translate("editResearch")}
                 </h4>
                 <div className="research__content_container">
                     <FormCompanyResearchUpdate researchId={researchId} />
@@ -228,7 +228,7 @@ const Research = () => {
         viewResearch: (
             <div className="research__content">
                 <h4 className="research__content_title">
-                    View Research {/* TODO localization */}
+                    {translate("viewResearch")}
                 </h4>
                 <div className="research__content_container">
                     <FormPanelMemberResearchJoin researchId={researchId} data={research} />
