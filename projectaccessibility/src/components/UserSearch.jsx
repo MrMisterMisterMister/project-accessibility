@@ -4,7 +4,7 @@ import { Input, Button } from 'react-chat-elements';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ListGroup from 'react-bootstrap/ListGroup';
 
-const UserSearch = ({ onSelectUser, setSearchResults, searchResults }) => {
+const UserSearch = ({ onSelectUser, setSearchResults, searchResults, resetSearch }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
     // Handle search for users
@@ -25,6 +25,13 @@ const UserSearch = ({ onSelectUser, setSearchResults, searchResults }) => {
         }
     };
 
+    // Update onSelectUser function to also reset the search query
+    const handleSelect = (user) => {
+        onSelectUser(user);
+        setSearchQuery(''); // Reset the search query
+        resetSearch(); // Reset the search results
+    };
+
     return (
         <div>
             <Input
@@ -38,7 +45,7 @@ const UserSearch = ({ onSelectUser, setSearchResults, searchResults }) => {
 
             <ListGroup>
                 {searchResults && searchResults.map(user => (
-                    <ListGroup.Item action key={user.id} onClick={() => onSelectUser(user)}>
+                    <ListGroup.Item action key={user.id} onClick={() => handleSelect(user)}>
                         {user.name} ({user.email})
                     </ListGroup.Item>
                 ))}

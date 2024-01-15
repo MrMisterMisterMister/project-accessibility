@@ -7,6 +7,7 @@ import { createEndpoint } from '../api/axiosClient';
 import UserSearch from '../components/UserSearch';
 import { MessageList, MessageBox, ChatList, Input, Button } from 'react-chat-elements';
 import "react-chat-elements/dist/main.css"
+import img from "../img/placeholder.jpg";
 
 const Chats = observer(() => {
     // For user 
@@ -23,6 +24,9 @@ const Chats = observer(() => {
 
     const [searchResults, setSearchResults] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
+
+    // State for chat items
+    const [chatItems, setChatItems] = useState([]); 
 
     latestMessages.current = messages;
 
@@ -72,13 +76,42 @@ const Chats = observer(() => {
         };
     }, [currentUser]);
 
+
+    // Function to reset search query and results
+    const resetSearch = () => {
+        setSearchResults([]);
+    };
+
     // Upon selecting user, if there is no existing chat, create one, use either ChatList or ChatItem
     // , ChatItem might be better
     // If there is an existing chat, load the message history
     const handleSelectUser = (userResult) => {
         console.log("Selected User: ", userResult);
         setSelectedUser(userResult);
+
+        // Check if chat with this user already exists
+        const existingChat = chatItems.find(item => item.id === userResult.id);
+        if (!existingChat) {
+            // Create a new chat item for the selected user
+            const newChatItem = {
+                avatar: img,
+                alt: userResult.name,
+                title: userResult.name,
+                subtitle: 'Last message...',
+                date: new Date(),
+                unread: 0,
+                id: userResult.id,
+            };
+
+            // Add the new chat item to the chat items state
+            setChatItems([...chatItems, newChatItem]);
+        }
+        
         // Load message history with the selected user
+        // Implement message history loading here
+
+         // Reset search results and query after selecting a user
+         resetSearch();
     };
 
     // Send message to selected user
@@ -119,28 +152,15 @@ const Chats = observer(() => {
             <Container>
                 <Row>
                     <Col sm='4'>
-                        <UserSearch onSelectUser={handleSelectUser} setSearchResults={setSearchResults} searchResults={searchResults} />
+                        <UserSearch 
+                            onSelectUser={handleSelectUser} 
+                            setSearchResults={setSearchResults} 
+                            searchResults={searchResults}
+                            resetSearch={resetSearch} />
                         <br />
                         <ChatList
                             className='chat-list'
-                            dataSource={[
-                                {
-                                avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
-                                alt: 'kursat_avatar',
-                                title: 'Kursat',
-                                subtitle: "Why don't we go to the No Way Home movie this weekend ?",
-                                date: new Date(),
-                                unread: 3,
-                                },
-                                {
-                                avatar: 'https://avatars.githubusercontent.com/u/80540635?v=4',
-                                alt: 'kursat_avatar',
-                                title: 'Kursat',
-                                subtitle: "Why don't we go to the No Way Home movie this weekend ?",
-                                date: new Date(),
-                                unread: 3,
-                                }
-                            ]} />
+                            dataSource={chatItems} />
                     </Col>
                     <Col sm='8'>
                         <div style={messageListStyle} className='message-list'>
