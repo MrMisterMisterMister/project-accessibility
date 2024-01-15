@@ -74,5 +74,5 @@
 }
 
 .shape__contact_right {
-    @include mixins.shape(variables.$sapphire, 9.1rem, 13.5rem, null, 1%, 23%, null, 277deg, null);
+    @include mixins.shape(variables.$royalblue, 14.5rem, 10rem, -19%, null, null, -9%, 26deg, null);
 }
