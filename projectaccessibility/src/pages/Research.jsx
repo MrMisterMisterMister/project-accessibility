@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
 import { TableCompanyResearchView, TablePanelMemberResearchView, TableAdminResearchView, TableAvailableResearchView } from "../components/Table";
 import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
+import { Alert } from "../components/Alert";
 import { createEndpoint } from "../api/axiosClient";
 import { useStore } from "../stores/store";
 
@@ -253,6 +254,7 @@ const Research = () => {
                 )}
             </div>
             <div className="research__dashboard_content">
+                <Alert data={formAlerts} />
                 {researchViewComponents[view]}
             </div>
         </div>

@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -1272,14 +1271,10 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
                     // Reset form
                     reset();
                 }
-                // TODO Some inspiring comment
-                console.log(response);
             })
             .catch((error) => {
                 // Error catching and then displaying it
                 setFormAlerts({ error: error.response?.data });
-                // TODO remove later
-                console.log(error.response);
             });
     };
 
@@ -1483,17 +1478,15 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    setFormAlerts({ success: { code: "" } });
                     // Reset form
                     reset();
                 }
-                console.log(response); // TODO will remove later
             })
             .catch((error) => {
                 // Catch the error and save it inside the form alert for errors
                 // That way it can be displayed later to the user in the frontend
                 setFormAlerts({ error: error.response?.data });
-                console.log(error.response); // TODO will remove later
             });
     };
 
@@ -1661,6 +1654,12 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
     // React Hook forms
     const { handleSubmit } = useForm();
 
@@ -1672,11 +1671,14 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
         joinPanelMemberResearchResponse
             .then((response) => {
                 // Some inspiring comment
-                console.log(response);
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "" } });
+                }
             })
             .catch((error) => {
                 // Catch the error and display it
-                console.log(error.response);
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
@@ -1686,6 +1688,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
     // Then magic..
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
