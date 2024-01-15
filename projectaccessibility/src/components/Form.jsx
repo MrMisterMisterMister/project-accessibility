@@ -320,9 +320,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
                                     type="text"
-                                    {...register("name", {
+                                    {...register("companyName", {
                                         required: {
                                             value: true,
                                             message: translate(
@@ -331,15 +331,15 @@ const FormSignup = () => {
                                         }
                                     })}
                                     aria-invalid={
-                                        errors.name ? "true" : "false"
+                                        errors.companyName ? "true" : "false"
                                     }
                                     placeholder={translate(
                                         "companyNamePlaceholder"
                                     )}
                                 />
-                                {errors.name && (
+                                {errors.companyName && (
                                     <div className="form__error">
-                                        {errors.name.message}
+                                        {errors.companyName.message}
                                     </div>
                                 )}
                             </Col>
