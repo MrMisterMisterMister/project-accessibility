@@ -3,32 +3,25 @@ import { Container } from "react-bootstrap";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../stores/store";
+import { store } from "../stores/store";
+import { observer } from "mobx-react-lite";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 // Login page
-const Login = () => {
+const Login = observer(() => {
     // Translation
     const { t: translate } = useTranslation("login");
 
     // Navigate
     const navigate = useNavigate();
 
-    // I am crack..
-    const { userStore: { isLoggedIn, getUser, user } } = useStore();
-
-    // On crack
+    // Check if logged in then redirect back
     useEffect(() => {
-        const fetchUser = async () => {
-            if (!user) await getUser();
-            isLoggedIn || navigate("/dashboard", { replace: true });
-        };
-
-        fetchUser();
-    }, [user]);
+        if (store.userStore.isLoggedIn) navigate("/dashboard", { replace: true });
+    }, [navigate]);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
@@ -108,6 +101,6 @@ const Login = () => {
             <Footer />
         </>
     );
-};
+});
 
 export default Login;

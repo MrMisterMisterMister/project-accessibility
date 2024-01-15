@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { store } from "../stores/store";
 import { createEndpoint } from "../api/axiosClient";
 import Cookies from "js-cookie";
 
@@ -13,12 +14,17 @@ const Logout = () => {
         const removeCookie = async (cookie) => {
             // Send the cookie name to the server for removal
             await createEndpoint("cookies/removecookie/").post(cookie);
-            Cookies.remove("token");
         };
 
-        // Remove cookie and redirect back to login
-        removeCookie("userCookie");
-        navigate("/login", { replace: true });
+        const logout = () => {
+            removeCookie("userCookie");
+            removeCookie("refreshToken");
+            Cookies.remove("token");
+            store.userStore.setUser(null); // Reset it
+            navigate("/login", { replace: true });
+        };
+
+        logout();
     }, [navigate]); // Mount on navigate
 };
 
