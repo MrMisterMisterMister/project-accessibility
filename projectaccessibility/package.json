@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "format": "prettier --write './src/**/*.{js,jsx}'",
     "check": "prettier --check './src/**/*.{js,jsx}'",
-    "test": "echo \"There are no tests\" && exit 0"
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "ui": "vitest --ui"
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
@@ -37,6 +39,8 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.2.0",
+    "@vitest/ui": "^1.2.0",
     "eslint": "^8.56.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.29.1",
@@ -45,7 +49,9 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
+    "jsdom": "^23.2.0",
     "prettier": "3.1.1",
-    "vite": "^5.0.8"
+    "vite": "^5.0.8",
+    "vitest": "^1.2.0"
   }
 }
