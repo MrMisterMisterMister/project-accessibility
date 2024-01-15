@@ -20,8 +20,8 @@ const Logout = () => {
             removeCookie("userCookie");
             removeCookie("refreshToken");
             Cookies.remove("token");
-            store.userStore.setUser(null); // Reset it
             navigate("/login", { replace: true });
+            store.userStore.setUser(null); // Reset it
         };
 
         logout();

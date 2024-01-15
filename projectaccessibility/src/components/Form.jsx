@@ -59,11 +59,6 @@ const FormLogin = observer(() => {
                     userStore.getUser();
                     // Reset form
                     reset();
-                    // 1s delay
-                    setTimeout(() => {
-                        // Redirect to the correct page
-                        navigate("/dashboard", { replace: true });
-                    }, 1500);
                 }
             })
             .catch((error) => {

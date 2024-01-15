@@ -23,8 +23,16 @@ const Login = observer(() => {
 
     // Check if logged in then redirect back
     useEffect(() => {
-        if (store.userStore.isLoggedIn) navigate("/dashboard", { replace: true });
+        console.log(store.userStore.isLoggedIn);
+        // Why a timeout? Looks cool
+        setTimeout(() => {
+            if (store.userStore.isLoggedIn) {
+                navigate("/dashboard", { replace: true });
+            }
+        }, 1500);
     }, [store.userStore.user]);
+
+    console.log(store.userStore.isLoggedIn);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
