@@ -38,7 +38,7 @@ ButtonSecondary.propTypes = {
 
 // General button for submits in forms
 const ButtonSubmit = ({ style, text }) => {
-    return <Button className={style || "button__submit" } as="input" type="submit" value={text} />;
+    return <Button className={style || "button__submit"} as="input" type="submit" value={text} />;
 };
 
 // prop type for button submit
@@ -90,9 +90,9 @@ ButtonContact.propTypes = {
 // Like facebook or google
 // Also for create account
 // The icon can be svg
-const ButtonAuth = ({ path, icon, text }) => {
+const ButtonAuth = ({ path, icon, text, action }) => {
     return (
-        <Button className="button__auth" type="button" href={path}>
+        <Button className="button__auth" type="button" onClick={() => action()} href={path}>
             <div className="button__auth_icon">{icon}</div>
             <span className="button__auth_text">{text}</span>
         </Button>
@@ -101,9 +101,10 @@ const ButtonAuth = ({ path, icon, text }) => {
 
 // Prop type for button auth
 ButtonAuth.propTypes = {
-    path: PropTypes.string.isRequired,
+    path: PropTypes.string,
     icon: PropTypes.object.isRequired,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    action: PropTypes.func
 };
 
 // Button for dashboard

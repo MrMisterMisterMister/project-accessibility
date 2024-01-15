@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Expertise from "../pages/Expertise";
 import News from "../pages/News";
+import Contact from "../pages/Contact";
 import Signup from "../pages/Signup";
 import Login from "../pages/Login";
 import Sitemap from "../pages/Sitemap";
@@ -33,6 +34,10 @@ const Routes = () => {
         {
             path: "/news",
             element: <News />
+        },
+        {
+            path: "/contact",
+            element: <Contact />
         },
         {
             path: "/signup",

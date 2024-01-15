@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { PersonPlusFill } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useGoogleLogin } from "@react-oauth/google";
+import { createEndpoint } from "../api/axiosClient";
 import { useNavigate } from "react-router-dom";
 import { store } from "../stores/store";
 import { observer } from "mobx-react-lite";
@@ -9,6 +11,7 @@ import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 // Login page
 const Login = observer(() => {
@@ -57,6 +60,37 @@ const Login = observer(() => {
         </svg>
     );
 
+    // Default login for google that react oauth google provides
+    // Has more options, but for now just simple onSuccess
+    const googleLogin = useGoogleLogin({
+        // onSuccess, sends request to google api server with the tokenResponse as bearer
+        // Then it returns the user info
+        // Afterwards just need to send it to our backend to save it
+        onSuccess: async (tokenResponse) => {
+            // Calling google api with bearer token so we get access to it
+            // Need a fresh axios without our predefined configs
+            const userInfo = await axios.get(
+                "https://www.googleapis.com/oauth2/v3/userinfo",
+                { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
+            );
+
+            // Check if user info has stuff in it and Ok response
+            if (userInfo.status === 200 && userInfo.data) {
+                // Now we just send the information we got to our backend
+                const response = await createEndpoint("login/google").post(userInfo.data);
+
+                // Need to put some logic to check if the user got their account made
+                // Then redirect back to dashboard I guess
+                if (response.status === 200 && response.data && response.data.token) {
+                    // Set authentication token and redirect to dashboard
+                    store.authStore.setToken(response.data.token);
+                    store.userStore.getUser();
+                    navigate("/dashboard", { replace: true });
+                }
+            }
+        }
+    });
+
     return (
         <>
             <Header />
@@ -85,12 +119,11 @@ const Login = observer(() => {
                                 />
                                 <ButtonAuth
                                     icon={GoogleIcon}
-                                    path="#"
                                     text={translate("auth.google")}
+                                    action={googleLogin}
                                 />
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
-                                    path="#"
                                     text={translate("auth.microsoft")}
                                 />
                             </div>

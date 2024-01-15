@@ -45,3 +45,33 @@
         }
     }
 }
+
+// page for contact
+.contact__page {
+    position: relative;
+
+    .contact__page_banner {
+        position: relative;
+        overflow: hidden;
+        background-color: variables.$blackrussian;
+        height: 120px;
+    }
+
+    .contact__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .contact__page_title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: variables.$blackrussian;
+        }
+
+        .contact__page_intro {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: variables.$black;
+        }
+    }
+}
