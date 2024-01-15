@@ -1,5 +1,6 @@
 {
-    "pageTitle": "Your Profile",
+    "pageTitle": "Profile",
+    "pageSubtitle": "Your profile",
     "company": {
         "generalLabel": "General",
         "name": "Company Name:",

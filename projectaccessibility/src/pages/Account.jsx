@@ -75,42 +75,47 @@ const Account = ({ userData }) => {
     // Also need something for admins
     return (
         <div className="account__dashboard">
-            <h4 className="account__dashboard_title">
+            <h1 className="account__dashboard_title">
                 {translate("pageTitle")}
-            </h4>
-            <div className="account__dashboard_user">
-                <img
-                    className="account__dashboard_user__picture"
-                    src="/img/placeholder.jpg"
-                    alt="Clodsire"
-                />
-                <div className="account__dashboard_user__info">
-                    <span className="account__dashboard_user__name">
-                        {userData.userName}
-                    </span>
-                    <p className="account__dashboard_user__biography">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusamus veritatis pariatur tenetur delectus veniam ducimus officiis suscipit dolore nisi!
-                    </p>
+            </h1>
+            <div className="account__dashboard_content">
+                <h2 className="account__dashboard_subtitle">
+                    {translate("pageSubtitle")}
+                </h2>
+                <div className="account__dashboard_user">
+                    <img
+                        className="account__dashboard_user__picture"
+                        src="/img/placeholder.jpg"
+                        alt="Clodsire"
+                    />
+                    <div className="account__dashboard_user__info">
+                        <span className="account__dashboard_user__name">
+                            {userData.userName}
+                        </span>
+                        <p className="account__dashboard_user__biography">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusamus veritatis pariatur tenetur delectus veniam ducimus officiis suscipit dolore nisi!
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="account__dashboard_additional">
-                {userColumns[user.userRoles[0]].map((group, index) => (
-                    <React.Fragment key={index}>
-                        <h5 className="account__dashboard_additional__title">
-                            {group.title}
-                        </h5>
-                        {group.columns.map(({ label, accessor }, columnIndex) => (
-                            <div key={columnIndex} className="account__dashboard_additional__info">
-                                <span className="account__dashboard_additional__info_label">
-                                    {label}
-                                </span>
-                                <span className="account__dashboard_additional__info_value">
-                                    {userData[accessor] || "-"}
-                                </span>
-                            </div>
-                        ))}
-                    </React.Fragment>
-                ))}
+                <div className="account__dashboard_additional">
+                    {userColumns[user.userRoles[0]].map((group, index) => (
+                        <React.Fragment key={index}>
+                            <h3 className="account__dashboard_additional__title">
+                                {group.title}
+                            </h3>
+                            {group.columns.map(({ label, accessor }, columnIndex) => (
+                                <div key={columnIndex} className="account__dashboard_additional__info">
+                                    <span className="account__dashboard_additional__info_label">
+                                        {label}
+                                    </span>
+                                    <span className="account__dashboard_additional__info_value">
+                                        {userData[accessor] || "-"}
+                                    </span>
+                                </div>
+                            ))}
+                        </React.Fragment>
+                    ))}
+                </div>
             </div>
         </div>
     );

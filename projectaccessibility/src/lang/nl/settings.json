@@ -1,6 +1,7 @@
 {
-    "panelMemberProfileUpdateTitle": "Paneellid",
-    "companyProfileUpdateTitle": "Bedrijf",
+    "pageTitle": "Instellingen",
+    "panelMemberProfileUpdateTitle": "Update je profiel",
+    "companyProfileUpdateTitle": "Update je bedrijfsprofiel",
     "emailUpdateTitle": "Wijzig je e-mailadres",
     "passwordUpdateTitle": "Wijzig je wachtwoord"
 }

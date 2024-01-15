@@ -207,9 +207,9 @@ const Research = () => {
         ),
         newResearch: (
             <div className="research__content">
-                <h4 className="research__content_title">
+                <h2 className="research__content_title">
                     {translate("createResearch")}
-                </h4>
+                </h2>
                 <div className="research__content_container">
                     <FormCompanyResearchCreate organizerId={user.userId} />
                 </div>
@@ -217,9 +217,9 @@ const Research = () => {
         ),
         editResearch: (
             <div className="research__content">
-                <h4 className="research__content_title">
+                <h2 className="research__content_title">
                     {translate("editResearch")}
-                </h4>
+                </h2>
                 <div className="research__content_container">
                     <FormCompanyResearchUpdate researchId={researchId} />
                 </div>
@@ -227,9 +227,9 @@ const Research = () => {
         ),
         viewResearch: (
             <div className="research__content">
-                <h4 className="research__content_title">
+                <h2 className="research__content_title">
                     {translate("viewResearch")}
-                </h4>
+                </h2>
                 <div className="research__content_container">
                     <FormPanelMemberResearchJoin researchId={researchId} data={research} />
                 </div>
@@ -240,7 +240,9 @@ const Research = () => {
     // TODO show alerts
     return (
         <div className="research__dashboard">
-            <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
+            <h1 className="research__dashboard_title">
+                {translate("pageTitle")}
+            </h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary
                     text={translate("buttons.myResearch")}

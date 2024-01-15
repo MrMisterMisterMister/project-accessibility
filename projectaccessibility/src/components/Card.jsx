@@ -121,10 +121,10 @@ const CardPanelMemberView = ({ data }) => {
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">
+                                <h2 className="card__user_title">
                                     {panelmember.firstName}{" "}
                                     {panelmember.lastName}
-                                </h4>
+                                </h2>
                             </div>
                             <div className="card__user_props">
                                 <p>
@@ -194,9 +194,9 @@ const CardCompanyView = ({ data }) => {
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">
+                                <h2 className="card__user_title">
                                     {company.companyName}
-                                </h4>
+                                </h2>
                                 <span className="card__user_website">
                                     {company.websiteUrl}
                                 </span>

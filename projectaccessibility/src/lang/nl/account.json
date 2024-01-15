@@ -1,5 +1,6 @@
 {
-    "pageTitle": "Jouw Profiel",
+    "pageTitle": "Profiel",
+    "pageSubtitle": "Jouw profiel",
     "company": {
         "generalLabel": "Algemeen",
         "name": "Bedrijfsnaam:",

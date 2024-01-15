@@ -22,7 +22,7 @@ const About = () => {
                     <p tabIndex="0">{translate("intro")}</p>
                     {translate("information", { returnObjects: true }).map((key, index) => (
                         <React.Fragment key={index}>
-                            <h4 tabIndex="0">{translate(`information.${index}.title`)}</h4>
+                            <h2 tabIndex="0">{translate(`information.${index}.title`)}</h2>
                             {Array.isArray(key.content)
                                 ? (
                                     <React.Fragment>

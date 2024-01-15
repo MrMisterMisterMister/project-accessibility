@@ -100,9 +100,9 @@ const Login = observer(() => {
             <Header />
             <div className="login__page">
                 <Container className="login__container">
-                    <h2 className="login__page_title">
+                    <h1 className="login__page_title">
                         {translate("pageTitle")}
-                    </h2>
+                    </h1>
                     <div className="login__page_panel">
                         <div className="login__page_authentication login__page_column">
                             <div className="login__page_content">
