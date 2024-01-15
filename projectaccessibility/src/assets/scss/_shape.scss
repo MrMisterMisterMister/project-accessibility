@@ -68,3 +68,11 @@
 .shape__news_right {
     @include mixins.shape(variables.$elfgreen, 11rem, 11rem, 2%, null, null, 1%, null, 50%);
 }
+
+.shape__contact_left {
+    @include mixins.shape(variables.$tenne, 6.5rem, 6.5rem, -43%, -1%, null, null, 129deg, null);
+}
+
+.shape__contact_right {
+    @include mixins.shape(variables.$royalblue, 14.5rem, 10rem, -19%, null, null, -9%, 26deg, null);
+}
