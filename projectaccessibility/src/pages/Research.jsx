@@ -96,12 +96,12 @@ const Research = () => {
         if (allResearches.length === 0) fetchAllResearches();
 
         // m
-        if (user.userRoles.includes("PanelMember") && (panelMemberResearches.length === 0 || !panelMemberResearches)) {
+        if (user.userRoles.includes("PanelMember") && panelMemberResearches.length === 0) {
             fetchPanelMemberResearches();
         }
 
         // e
-        if (user.userRoles.includes("Company") && (companyResearches.length === 0 || !companyResearches)) {
+        if (user.userRoles.includes("Company") && companyResearches.length === 0) {
             fetchCompanyResearches();
         }
 
