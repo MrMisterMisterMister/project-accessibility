@@ -24,7 +24,7 @@ const Login = observer(() => {
     // Check if logged in then redirect back
     useEffect(() => {
         if (store.userStore.isLoggedIn) navigate("/dashboard", { replace: true });
-    }, [navigate]);
+    }, [store.userStore.user]);
 
     // Svg file for google with color
     // Too lazy to fix this with bootstrap-icons
@@ -85,7 +85,6 @@ const Login = observer(() => {
                     // Set authentication token and redirect to dashboard
                     store.authStore.setToken(response.data.token);
                     store.userStore.getUser();
-                    navigate("/dashboard", { replace: true });
                 }
             }
         }
@@ -125,6 +124,7 @@ const Login = observer(() => {
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
                                     text={translate("auth.microsoft")}
+                                    action={() => alert("Soon™️")}
                                 />
                             </div>
                         </div>
