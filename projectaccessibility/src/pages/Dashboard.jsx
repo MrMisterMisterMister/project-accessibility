@@ -52,30 +52,30 @@ const Dashboard = observer(() => {
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
-            page: <p>Insert some inspiring text here, also welcome.</p>,
+            page: <><h1 className="dashboard__page_title">Dashboard</h1><img className="dashboard__page_image" src="/img/clodsire.gif" alt="Clodsire that is bouncing up and down" /></>,
             icon: <BarChart />,
-            title: translate("dashboard"),
+            title: translate("nav.dashboard"),
             active: true
         },
         {
             page: <PanelMember />,
             icon: <Person />,
-            title: translate("panelmember")
+            title: translate("nav.panelmember")
         },
         {
             page: <Company />,
             icon: <Buildings />,
-            title: translate("company")
+            title: translate("nav.company")
         },
         {
             page: <Research />,
             icon: <Book />,
-            title: translate("research")
+            title: translate("nav.research")
         },
         {
             page: <Chats />,
             icon: <ChatLeftDots />,
-            title: translate("chats")
+            title: translate("nav.chats")
         }
     ]);
 
@@ -85,17 +85,17 @@ const Dashboard = observer(() => {
         {
             page: <Account userData={currentUser} />,
             icon: <PersonCircle />,
-            label: translate("profile")
+            label: translate("nav.profile")
         },
         {
             page: <Settings />,
             icon: <Gear />,
-            label: translate("settings")
+            label: translate("nav.settings")
         },
         {
             page: <Logout />,
             icon: <BoxArrowRight />,
-            label: translate("signout")
+            label: translate("nav.signout")
         }
     ];
 

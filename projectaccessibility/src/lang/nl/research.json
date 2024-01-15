@@ -1,3 +1,32 @@
 {
-    "pageTitle": "Onderzoeken"
+    "pageTitle": "Onderzoeken",
+    "buttons": {
+        "myResearch": "Mijn Onderzoek",
+        "showAll": "Toon Alles",
+        "newResearch": "Nieuw Onderzoek"
+    },
+    "labels": {
+        "id": "#",
+        "title": "Titel",
+        "description": "Omschrijving",
+        "date": "Datum",
+        "reward": "Beloning",
+        "type": "Soort",
+        "category": "Categorie",
+        "organizer": "Organisator",
+        "actions": "Acties",
+        "view": "Bekijken",
+        "join": "Aanmelden",
+        "edit": "Bewerken",
+        "delete": "Verwijderen",
+        "leave": "Verlaten"
+    },
+    "confirm": {
+        "delete": "Weet je zeker dat je dit onderzoek wilt verwijderen? Deze actie kan niet ongedaan worden gemaakt.",
+        "join": "Weet je zeker dat je wilt deelnemen aan dit onderzoek?",
+        "leave": "Weet je zeker dat je dit onderzoek wilt verlaten?"
+    },
+    "createResearch": "Onderzoek Creëren",
+    "editResearch": "Onderzoek Bewerken",
+    "viewResearch": "Onderzoek Bekijken"
 }

@@ -1,5 +1,6 @@
 {
-    "pageTitle": "Your Profile",
+    "pageTitle": "Profile",
+    "pageSubtitle": "Your profile",
     "company": {
         "generalLabel": "General",
         "name": "Company Name:",
@@ -14,6 +15,22 @@
         "email": "Email Address:",
         "contactPerson": "Contact Person:"
     },
-    "panelMember": {},
-    "admin": {}
+    "panelMember": {
+        "generalLabel": "General",
+        "firstName": "First Name:",
+        "lastName": "Last Name:",
+        "dateOfBirth": "Date of Birth:",
+        "address": "Address:",
+        "postalCode": "Postal Code:",
+        "city": "City:",
+        "country": "Country:",
+        "contactLabel": "Contacts",
+        "phone": "Phone Number:",
+        "email": "Email Address:"
+    },
+    "admin": {
+        "generalLabel": "General",
+        "email": "Email Address:",
+        "phone": "Phone Number:"
+    }
 }

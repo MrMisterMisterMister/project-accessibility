@@ -1,10 +1,13 @@
 {
-    "dashboard": "Dashboard",
-    "panelmember": "Panel Member",
-    "company": "Company",
-    "research": "Research",
-    "chats": "Chats",
-    "profile": "Profile",
-    "settings": "Settings",
-    "signout": "Sign out"
+    "pageTitle": "Dashboard",
+    "nav": {
+        "dashboard": "Dashboard",
+        "panelmember": "Panel Member",
+        "company": "Company",
+        "research": "Research",
+        "chats": "Chats",
+        "profile": "Profile",
+        "settings": "Settings",
+        "signout": "Sign out"
+    }
 }

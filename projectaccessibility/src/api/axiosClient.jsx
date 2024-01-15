@@ -68,7 +68,7 @@ const requests = {
     get: (url) => axiosClient.get(url).then(responseBody),
     post: (url, body) => axiosClient.post(url, body).then(responseBody),
     put: (url, body) => axiosClient.put(url, body).then(responseBody),
-    del: (url) => axiosClient.delete(url).then(responseBody)
+    delete: (url) => axiosClient.delete(url).then(responseBody)
 };
 
 // Create the standard crud operations for the endpoints
@@ -76,7 +76,7 @@ const createEndpoint = (endpoint) => ({
     get: () => requests.get(`/${endpoint}`),
     post: (data) => axiosClient.post(`/${endpoint}`, data),
     put: (id, data) => axiosClient.put(`/${endpoint}/${id}`, data),
-    delete: (id) => axiosClient.del(`/${endpoint}/${id}`)
+    delete: (id) => axiosClient.delete(`/${endpoint}/${id}`)
 });
 
 export { createEndpoint };

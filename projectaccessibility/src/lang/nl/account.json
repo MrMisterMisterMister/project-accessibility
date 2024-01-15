@@ -1,5 +1,6 @@
 {
-    "pageTitle": "Jouw Profiel",
+    "pageTitle": "Profiel",
+    "pageSubtitle": "Jouw profiel",
     "company": {
         "generalLabel": "Algemeen",
         "name": "Bedrijfsnaam:",
@@ -14,6 +15,22 @@
         "email": "E-mailadres:",
         "contactPerson": "Contactpersoon:"
     },
-    "panelMember": {},
-    "admin": {}
+    "panelMember": {
+        "generalLabel": "Algemeen",
+        "firstName": "Voornaam:",
+        "lastName": "Achternaam:",
+        "dateOfBirth": "Geboortedatum:",
+        "address": "Adres:",
+        "postalCode": "Postcode:",
+        "city": "Stad:",
+        "country": "Land:",
+        "contactLabel": "Contactgegevens",
+        "phone": "Telefoonnummer:",
+        "email": "E-mailadres:"
+    },
+    "admin": {
+        "generalLabel": "Algemeen",
+        "email": "E-mailadres:",
+        "phone": "Telefoonnummer:"
+    }
 }

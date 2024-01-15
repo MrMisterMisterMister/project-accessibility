@@ -22,7 +22,7 @@ const Expertise = () => {
                     <p tabIndex="0" className="expertise__page_intro">{translate("intro")}</p>
                     {translate("cards", { returnObjects: true }).map((key, index) => (
                         <React.Fragment key={index}>
-                            <h4 tabIndex="0">{translate(`cards.${index}.title`)}</h4>
+                            <h2 tabIndex="0">{translate(`cards.${index}.title`)}</h2>
                             <p tabIndex="0">{translate(`cards.${index}.text`)}</p>
                         </React.Fragment>
                     ))}

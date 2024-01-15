@@ -2,23 +2,39 @@
 
 // for the settings page section
 .settings__dashboard {
-    background-color: variables.$white;
-    margin-bottom: 2.5rem;
     position: relative;
 
     .settings__dashboard_title {
-        border: solid 1px variables.$lightlavender;
-        border-bottom: 0;
-        padding: 1.1rem 1.667rem;
-        font-weight: 600;
-        font-size: 1.25rem;
-        color: variables.$black;
-        letter-spacing: 0.05em;
+        font-size: 1.75rem;
+        color: variables.$blackrussian;
+        line-height: normal;
+        font-weight: 900;
+        padding-bottom: 1rem;
     }
 
     .settings__dashboard_content {
-        padding: 1.35rem 1.667rem;
-        border: solid 1px variables.$lightlavender;
-        box-shadow: 0 2px 3px -2px variables.$icecream;
+        position: relative;
+
+        .settings__dashboard_form {
+            background-color: variables.$white;
+            margin-bottom: 2.5rem;
+            position: relative;
+
+            .settings__dashboard_form__title {
+                border: solid 1px variables.$lightlavender;
+                border-bottom: 0;
+                padding: 1.1rem 1.667rem;
+                font-weight: 600;
+                font-size: 1.25rem;
+                color: variables.$black;
+                letter-spacing: 0.05em;
+            }
+
+            .settings__dashboard_form__content {
+                padding: 1.35rem 1.667rem;
+                border: solid 1px variables.$lightlavender;
+                box-shadow: 0 2px 3px -2px variables.$icecream;
+            }
+        }
     }
 }

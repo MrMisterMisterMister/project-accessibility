@@ -4,7 +4,7 @@
 const NumberFormatter = new Intl.NumberFormat("nl-NL", {
     style: "currency",
     currency: "EUR",
-    minimumFractionDigits: null
+    minimumFractionDigits: 2
 });
 
 // Dates

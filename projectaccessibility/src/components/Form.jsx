@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -17,9 +16,6 @@ const FormLogin = observer(() => {
 
     // user store
     const { userStore, authStore } = useStore();
-
-    // To handle navigation
-    const navigate = useNavigate();
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
@@ -59,11 +55,6 @@ const FormLogin = observer(() => {
                     userStore.getUser();
                     // Reset form
                     reset();
-                    // 1s delay
-                    setTimeout(() => {
-                        // Redirect to the correct page
-                        navigate("/dashboard", { replace: true });
-                    }, 1500);
                 }
             })
             .catch((error) => {
@@ -329,9 +320,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
                                     type="text"
-                                    {...register("name", {
+                                    {...register("companyName", {
                                         required: {
                                             value: true,
                                             message: translate(
@@ -340,15 +331,15 @@ const FormSignup = () => {
                                         }
                                     })}
                                     aria-invalid={
-                                        errors.name ? "true" : "false"
+                                        errors.companyName ? "true" : "false"
                                     }
                                     placeholder={translate(
                                         "companyNamePlaceholder"
                                     )}
                                 />
-                                {errors.name && (
+                                {errors.companyName && (
                                     <div className="form__error">
-                                        {errors.name.message}
+                                        {errors.companyName.message}
                                     </div>
                                 )}
                             </Col>
@@ -555,6 +546,7 @@ const FormUserEmailUpdate = ({ userId }) => {
     );
 };
 
+// prop types for updating email
 FormUserEmailUpdate.propTypes = {
     userId: PropTypes.string.isRequired
 };
@@ -739,7 +731,8 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
             .then((response) => {
                 // Check if the response code is 200 (ok)
                 // If so, create a success alert and reset the form
-                if (response.code === 200) {
+                if (response.status === 200) {
+                    // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
                     reset();
                 }
@@ -991,8 +984,9 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
         updateCompanyProfileResponse
             .then((response) => {
                 // Checks if the response code is 200 (Ok)
-                if (response.code === 200) {
+                if (response.status === 200) {
                     // Set a success message for the user to see
+                    // TODO
                     setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
                     // Reset form
                     reset();
@@ -1241,12 +1235,19 @@ FormCompanyProfileUpdate.propTypes = {
     companyId: PropTypes.string.isRequired
 };
 
-// TODO
-// form for company when they create a new reearch
-const FormCompanyResearchCreate = () => {
+// form for company when they create a new research
+// send post to endpoint
+const FormCompanyResearchCreate = ({ organizerId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook forms
     const {
         register,
         handleSubmit,
@@ -1254,33 +1255,249 @@ const FormCompanyResearchCreate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
+    // Handles form submission creating research
     const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
+        // POST request to correct endpoint
+        // configurate some shit
+        const createCompanyResearchResponse = createEndpoint("researches").post(formData);
 
         // Handle the response from the POST call
         createCompanyResearchResponse
             .then((response) => {
-                // Some inspiring comment
-                console.log(response);
-                reset();
+                // Check if success
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
+                    // Reset form
+                    reset();
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Error catching and then displaying it
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
     // Need to configurate the translations
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
                 method="post"
                 onSubmit={handleSubmit(companyResearchCreateSubmit)}
+                noValidate
+            >
+                <Form.Control
+                    type="hidden"
+                    {...register("organizerId", {
+                        value: organizerId
+                    })}
+                />
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("titleLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.title ? "error" : ""}`}
+                            type="text"
+                            {...register("title", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.titleRequired")
+                                }
+                            })}
+                            aria-invalid={errors.title ? "true" : "false"}
+                            placeholder={translate("titlePlaceholder")}
+                        />
+                        {errors.title && (
+                            <div className="form__error">
+                                {errors.title.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("descriptionLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.description ? "error" : ""}`}
+                            as="textarea"
+                            {...register("description", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.descriptionRequired")
+                                }
+                            })}
+                            aria-invalid={errors.description ? "true" : "false"}
+                            placeholder={translate("descriptionPlaceholder")}
+                            rows={5}
+                        />
+                        {errors.description && (
+                            <div className="form__error">
+                                {errors.description.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("dateLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.date ? "error" : ""}`}
+                            type="date"
+                            {...register("date", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.dateRequired")
+                                }
+                            })}
+                            aria-invalid={errors.date ? "true" : "false"}
+                            placeholder={translate("datePlaceholder")}
+                        />
+                        {errors.date && (
+                            <div className="form__error">
+                                {errors.date.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("rewardLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.reward ? "error" : ""}`}
+                            type="text"
+                            {...register("reward", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.rewardRequired")
+                                }
+                            })}
+                            aria-invalid={errors.reward ? "true" : "false"}
+                            placeholder={translate("rewardPlaceholder")}
+                        />
+                        {errors.reward && (
+                            <div className="form__error">
+                                {errors.reward.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("typeLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.type ? "error" : ""}`}
+                            type="text"
+                            {...register("type", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.typeRequired")
+                                }
+                            })}
+                            aria-invalid={errors.type ? "true" : "false"}
+                            placeholder={translate("typePlaceholder")}
+                        />
+                        {errors.type && (
+                            <div className="form__error">
+                                {errors.type.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("categoryLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.category ? "error" : ""}`}
+                            type="text"
+                            {...register("category", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.categoryRequired")
+                                }
+                            })}
+                            aria-invalid={errors.category ? "true" : "false"}
+                            placeholder={translate("categoryPlaceholder")}
+                        />
+                        {errors.category && (
+                            <div className="form__error">
+                                {errors.category.message}
+                            </div>
+                        )}
+                    </Col>
+                </Row>
+                <ButtonSubmit text={translate("research.buttonText")} />
+            </Form>
+        </>
+    );
+};
+
+// Prop type for form comany creating researches
+// just need to make sure there is a company id
+FormCompanyResearchCreate.propTypes = {
+    organizerId: PropTypes.string.isRequired
+};
+
+// To update research
+// Put request with the research id
+// and the new form data
+// for company
+const FormCompanyResearchUpdate = ({ researchId }) => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
+    // Handle submission for updating research
+    const companyResearchUpdateSubmit = async (formData) => {
+        // Send a PUT request
+        // Afterwards backend handles the rest
+        const createCompanyResearchResponse = createEndpoint("researches").put(researchId, formData);
+
+        // Handle the response from the PUT request
+        createCompanyResearchResponse
+            .then((response) => {
+                // Checks if the response code is 200 (Ok)
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    // TODO
+                    setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
+                    // Reset form
+                    reset();
+                }
+            })
+            .catch((error) => {
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
+            });
+    };
+
+    return (
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__research"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(companyResearchUpdateSubmit)}
                 noValidate
             >
                 <Row>
@@ -1424,221 +1641,44 @@ const FormCompanyResearchCreate = () => {
     );
 };
 
-// TODO
-// So for this form, it's basically identical to the create research one
-// only thing that is different is that this one has values of the research someone is editing
-// need to make a get request to get the specific research and fill in the values
-// so this one is not working yet
-// since we dont have the endpoints al all configurated
-const FormCompanyResearchUpdate = () => {
-    // Translation
-    const { t: translate } = useTranslation("form");
-
-    const {
-        register,
-        handleSubmit,
-        reset,
-        formState: { errors }
-    } = useForm({ mode: "all" });
-
-    const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
-
-        // Handle the response from the POST call
-        createCompanyResearchResponse
-            .then((response) => {
-                // Some inspiring comment
-                console.log(response);
-                reset();
-            })
-            .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
-            });
-    };
-
-    // Need to configurate the translations
-    return (
-        <>
-            <Form
-                className="form__research"
-                acceptCharset="UTF-8"
-                method="post"
-                onSubmit={handleSubmit(companyResearchCreateSubmit)}
-                noValidate
-            >
-                <Row>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("titleLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.title ? "error" : ""}`}
-                            type="text"
-                            {...register("title", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.titleRequired")
-                                }
-                            })}
-                            aria-invalid={errors.title ? "true" : "false"}
-                            placeholder={translate("titlePlaceholder")}
-                        />
-                        {errors.title && (
-                            <div className="form__error">
-                                {errors.title.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("descriptionLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.description ? "error" : ""}`}
-                            as="textarea"
-                            {...register("description", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.descriptionRequired")
-                                }
-                            })}
-                            aria-invalid={errors.description ? "true" : "false"}
-                            placeholder={translate("descriptionPlaceholder")}
-                            rows={5}
-                        />
-                        {errors.description && (
-                            <div className="form__error">
-                                {errors.description.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("dateLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.date ? "error" : ""}`}
-                            type="date"
-                            {...register("date", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.dateRequired")
-                                }
-                            })}
-                            aria-invalid={errors.date ? "true" : "false"}
-                            placeholder={translate("datePlaceholder")}
-                        />
-                        {errors.date && (
-                            <div className="form__error">
-                                {errors.date.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("rewardLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
-                            {...register("reward", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.rewardRequired")
-                                }
-                            })}
-                            aria-invalid={errors.reward ? "true" : "false"}
-                            placeholder={translate("rewardPlaceholder")}
-                        />
-                        {errors.reward && (
-                            <div className="form__error">
-                                {errors.reward.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("typeLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.type ? "error" : ""}`}
-                            type="text"
-                            {...register("type", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.typeRequired")
-                                }
-                            })}
-                            aria-invalid={errors.type ? "true" : "false"}
-                            placeholder={translate("typePlaceholder")}
-                        />
-                        {errors.type && (
-                            <div className="form__error">
-                                {errors.type.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("categoryLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.category ? "error" : ""}`}
-                            type="text"
-                            {...register("category", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.categoryRequired")
-                                }
-                            })}
-                            aria-invalid={errors.category ? "true" : "false"}
-                            placeholder={translate("categoryPlaceholder")}
-                        />
-                        {errors.category && (
-                            <div className="form__error">
-                                {errors.category.message}
-                            </div>
-                        )}
-                    </Col>
-                </Row>
-                <ButtonSubmit text={translate("research.buttonText")} />
-            </Form>
-        </>
-    );
+// prop types for company research update
+FormCompanyResearchUpdate.propTypes = {
+    researchId: PropTypes.number
 };
 
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = () => {
+const FormPanelMemberResearchJoin = ({ researchId, data }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    const {
-        register,
-        handleSubmit,
-        reset
-    } = useForm();
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
 
-    const panelMemberResearchJoinSubmit = async (formData) => {
+    // React Hook forms
+    const { handleSubmit } = useForm();
+
+    const panelMemberResearchJoinSubmit = async () => {
         // Axios
-        const joinPanelMemberResearchResponse = createEndpoint("lol").post(formData);
+        const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
 
         // Handle the response from the POST call
         joinPanelMemberResearchResponse
             .then((response) => {
                 // Some inspiring comment
-                console.log(response);
-                reset();
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                }
             })
             .catch((error) => {
                 // Catch the error and display it
-                console.log(error.response);
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
@@ -1647,114 +1687,126 @@ const FormPanelMemberResearchJoin = () => {
     // Also need to put the id of the panelmember inside here, so it will be submitted via the form
     // Then magic..
     return (
-        <Form
-            className="form__research"
-            acceptCharset="UTF-8"
-            method="post"
-            onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
-            noValidate
-        >
-            <Form.Control
-                type="hidden"
-                {...register("id", {
-                    value: "inserthereuserid" // todo
-                })}
-            />
-            <Row>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("titleLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="Clodsire and friends" // TODO test
-                        placeholder={translate("titlePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("descriptionLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        as="textarea"
-                        value="Hey guys, did you know that in terms of male human and female Pokémon breeding, Vaporeon is the most compatible Pokémon for humans? Not only are they in the field egg group, which is mostly comprised of mammals, Vaporeon are an average of 3&quot;03 tall and 63.9 pounds, this means they're large enough to be able handle human dicks, and with their impressive Base Stats for HP and access to Acid Armor, you can be rough with one. Due to their mostly water based biology, there's no doubt in my mind that an aroused Vaporeon would be incredibly wet, so wet that you could easily have sex with one for hours without getting sore. They can also learn the moves Attract, Baby-Doll Eyes, Captivate, Charm, and Tail Whip, along with not having fur to hide nipples, so it'd be incredibly easy for one to get you in the mood. With their abilities Water Absorb and Hydration, they can easily recover from fatigue with enough water. No other Pokémon comes close to this level of compatibility. Also, fun fact, if you pull out enough, you can make your Vaporeon turn white. Vaporeon is literally built for human dick. Ungodly defense stat+high HP pool+Acid Armor means it can take cock all day, all shapes and sizes and still come for more " // TODO test
-                        placeholder={translate("descriptionPlaceholder")}
-                        rows={5}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("dateLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="date"
-                        value="2024-05-04" // TODO test
-                        placeholder={translate("datePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("rewardLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="&euro; 50.0" // TODO test
-                        placeholder={translate("rewardPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("organizerLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="The Pokemon Company" // TODO test
-                        placeholder={translate("organizerPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("typeLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="Online" // TODO test
-                        placeholder={translate("typePlaceholder")}
-                        readOnly
-                    />
-                </Col>
-                <Col xs={12}>
-                    <Form.Label className="form__label">
-                        {translate("categoryLabel")}
-                    </Form.Label>
-                    <Form.Control
-                        className="form__text_field"
-                        type="text"
-                        value="This, Really, Is, Gay" // test
-                        placeholder={translate("categoryPlaceholder")}
-                        readOnly
-                    />
-                </Col>
-            </Row>
-            <ButtonSubmit text="Join" />
-            {
-                /*
-                Another button to go back maybe?
-                */
-            }
-        </Form>
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__research"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
+                noValidate
+            >
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("titleLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.title}
+                            placeholder={translate("titlePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("descriptionLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            as="textarea"
+                            value={data.description}
+                            placeholder={translate("descriptionPlaceholder")}
+                            rows={5}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("dateLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="date"
+                            value={data.date ? new Date(data.date).toISOString().split("T")[0] : ""} // lazy way
+                            placeholder={translate("datePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("rewardLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.reward}
+                            placeholder={translate("rewardPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("organizerLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.organizerName}
+                            placeholder={translate("organizerPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("typeLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.type}
+                            placeholder={translate("typePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("categoryLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={data.category}
+                            placeholder={translate("categoryPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                </Row>
+                <ButtonSubmit text="Join" />
+                {
+                    /*
+                    Another button to go back maybe?
+                    */
+                }
+            </Form>
+        </>
     );
+};
+
+// prop types for ye..
+// was too lazy so just put it all string
+FormPanelMemberResearchJoin.propTypes = {
+    researchId: PropTypes.string,
+    data: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+        date: PropTypes.string,
+        reward: PropTypes.number,
+        organizerName: PropTypes.string,
+        type: PropTypes.string,
+        category: PropTypes.string
+    })
 };
 
 export {

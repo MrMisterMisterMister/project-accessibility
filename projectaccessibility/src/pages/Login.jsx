@@ -6,6 +6,7 @@ import { useGoogleLogin } from "@react-oauth/google";
 import { createEndpoint } from "../api/axiosClient";
 import { useNavigate } from "react-router-dom";
 import { store } from "../stores/store";
+import { observer } from "mobx-react-lite";
 import { FormLogin } from "../components/Form";
 import { ButtonAuth } from "../components/Button";
 import Header from "../components/Header";
@@ -13,21 +14,21 @@ import Footer from "../components/Footer";
 import axios from "axios";
 
 // Login page
-const Login = () => {
+const Login = observer(() => {
     // Translation
     const { t: translate } = useTranslation("login");
 
     // Navigate
     const navigate = useNavigate();
 
-    // On crack
+    // Check if logged in then redirect back
     useEffect(() => {
-        const fetchUser = async () => {
-            if (!store.userStore.user) await store.userStore.getUser();
-            store.userStore.isLoggedIn || navigate("/dashboard", { replace: true });
-        };
-
-        fetchUser();
+        // Why a timeout? Looks cool
+        setTimeout(() => {
+            if (store.userStore.isLoggedIn && store.authStore.token) {
+                navigate("/dashboard", { replace: true });
+            }
+        }, 1500);
     }, [store.userStore.user]);
 
     // Svg file for google with color
@@ -89,7 +90,6 @@ const Login = () => {
                     // Set authentication token and redirect to dashboard
                     store.authStore.setToken(response.data.token);
                     store.userStore.getUser();
-                    navigate("/dashboard", { replace: true });
                 }
             }
         }
@@ -100,9 +100,9 @@ const Login = () => {
             <Header />
             <div className="login__page">
                 <Container className="login__container">
-                    <h2 className="login__page_title">
+                    <h1 className="login__page_title">
                         {translate("pageTitle")}
-                    </h2>
+                    </h1>
                     <div className="login__page_panel">
                         <div className="login__page_authentication login__page_column">
                             <div className="login__page_content">
@@ -129,6 +129,7 @@ const Login = () => {
                                 <ButtonAuth
                                     icon={MicrosoftIcon}
                                     text={translate("auth.microsoft")}
+                                    action={() => alert("Soon™️")}
                                 />
                             </div>
                         </div>
@@ -138,6 +139,6 @@ const Login = () => {
             <Footer />
         </>
     );
-};
+});
 
 export default Login;

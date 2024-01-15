@@ -15,8 +15,13 @@
     .research__dashboard_options {
         padding-bottom: 2rem;
 
-        & > button:not(:last-child) {
+        &>button:not(:last-child) {
             margin-right: 0.5rem;
+        }
+
+        // crack
+        +.alert  {
+            margin-top: -0.5rem!important;
         }
     }
 
