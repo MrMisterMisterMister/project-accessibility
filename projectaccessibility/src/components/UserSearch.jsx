@@ -7,6 +7,7 @@ import ListGroup from 'react-bootstrap/ListGroup';
 const UserSearch = ({ onSelectUser, setSearchResults, searchResults }) => {
     const [searchQuery, setSearchQuery] = useState('');
 
+    // Handle search for users
     const handleSearch = async () => {
         try {
             const data = await createEndpoint(`users/search/${searchQuery}`).get();

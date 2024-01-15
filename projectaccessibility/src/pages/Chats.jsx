@@ -51,8 +51,8 @@ const Chats = observer(() => {
                 console.log('Connected to SignalR Hub');
                 setIsConnected(true);
     
-                if (currentUser && currentUser.email) {
-                    newConnection.invoke('RegisterUser', currentUser.email);
+                if (currentUser && currentUser.id) {
+                    newConnection.invoke('RegisterUser', currentUser.id);
                 }
     
                 // In the ReceivePrivateMessage handler
@@ -69,15 +69,19 @@ const Chats = observer(() => {
         };
     }, []);    
 
+    // Upon selecting user, if there is no existing chat, create one, use either ChatList or ChatItem
+    // , ChatItem might be better
+    // If there is an existing chat, load the message history
     const handleSelectUser = (userResult) => {
         console.log("Selected User: ", userResult);
         setSelectedUser(userResult);
         // Load message history with the selected user
     };
 
+    // Send message to selected user
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
-            await connection.invoke('SendMessageToUser', selectedUser.id, newMessage);
+            await connection.invoke('SendMessageToUser', selectedUser.email, newMessage);
             setNewMessage('');
         }
     };
@@ -140,20 +144,7 @@ const Chats = observer(() => {
                                 className='message-list'
                                 lockable={true}
                                 toBottomHeight={'100%'}
-                                dataSource={[
-                                    {
-                                      position:"left",
-                                      type:"text",
-                                      title:"Kursat",
-                                      text:"Give me a message list example !",
-                                    },
-                                    {
-                                      position:"right",
-                                      type:"text",
-                                      title:"Emre",
-                                      text:"That's all.",
-                                    },
-                                    ]} // Use transformed messages (transformMessages) here
+                                dataSource={transformMessages()} // Use transformed messages (transformMessages) here
                             />
                         </div>
                         <div style={inputStyle}>
