@@ -51,13 +51,16 @@ const Chats = observer(() => {
                 console.log('Connected to SignalR Hub');
                 setIsConnected(true);
     
-                if (currentUser && currentUser.id) {
-                    newConnection.invoke('RegisterUser', currentUser.id);
-                }
+                if (currentUser) {
+                    console.log("Registering user: ", currentUser);
+                    newConnection.invoke('RegisterUser', currentUser.email);
+                }   
     
                 // In the ReceivePrivateMessage handler
                 newConnection.on('ReceivePrivateMessage', (fromUser, message) => {
-                    setMessages(prevMessages => [...prevMessages, { fromUser, message }]);
+                    const updatedMessages = [...latestMessages.current];
+                    updatedMessages.push({ fromUser, message });
+                    setMessages(updatedMessages);
                 });
             })
             .catch(e => console.error('Connection to SignalR Hub failed: ', e));
@@ -67,7 +70,7 @@ const Chats = observer(() => {
         return () => {
             newConnection.stop().then(() => console.log('Disconnected from SignalR Hub'));
         };
-    }, []);    
+    }, [currentUser]);
 
     // Upon selecting user, if there is no existing chat, create one, use either ChatList or ChatItem
     // , ChatItem might be better
@@ -82,6 +85,7 @@ const Chats = observer(() => {
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
             await connection.invoke('SendMessageToUser', selectedUser.email, newMessage);
+            console.log("Message sent: ", newMessage); //remove after testing>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
             setNewMessage('');
         }
     };
@@ -144,7 +148,7 @@ const Chats = observer(() => {
                                 className='message-list'
                                 lockable={true}
                                 toBottomHeight={'100%'}
-                                dataSource={transformMessages()} // Use transformed messages (transformMessages) here
+                                dataSource={transformMessages()} // Use transformed messages (transformMessages()) here>>>>>>>
                             />
                         </div>
                         <div style={inputStyle}>
