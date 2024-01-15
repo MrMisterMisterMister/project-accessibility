@@ -84,6 +84,7 @@ const Research = () => {
 
     // Load all the data in
     useEffect(() => {
+        // TODO this isnt correct if length 0
         if (allResearches.length === 0) fetchAllResearches();
 
         // m
@@ -101,6 +102,14 @@ const Research = () => {
             fetchSingularResearch();
         }
     }, [researchId, companyResearches, allResearches, panelMemberResearches]);
+
+    // Use effect to reset the alerts
+    // This is so the alert dont show up anymore
+    useEffect(() => {
+        setTimeout(() => {
+            setFormAlerts({ errors: [], success: [] });
+        }, 5000);
+    }, [formAlerts]);
 
     // This function handles deleting a research
     // Passes this as a property, so the button can use it as onAction
@@ -253,8 +262,8 @@ const Research = () => {
                     />
                 )}
             </div>
+            <Alert data={formAlerts} />
             <div className="research__dashboard_content">
-                <Alert data={formAlerts} />
                 {researchViewComponents[view]}
             </div>
         </div>
