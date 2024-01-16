@@ -164,8 +164,8 @@ const FormSignup = () => {
     const signupSubmit = async (formData) => {
         // Define endpoint paths based on the selected user type
         const endPoint = {
-            1: "panelmember/",
-            2: "company/"
+            1: "panelmember",
+            2: "company"
         };
 
         // Make the POST call using axios post
