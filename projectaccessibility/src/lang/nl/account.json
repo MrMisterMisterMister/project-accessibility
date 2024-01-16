@@ -26,7 +26,9 @@
         "country": "Land:",
         "contactLabel": "Contactgegevens",
         "phone": "Telefoonnummer:",
-        "email": "E-mailadres:"
+        "email": "E-mailadres:",
+        "healthLabel": "Gezondheid",
+        "disability": "Beperking:"
     },
     "admin": {
         "generalLabel": "Algemeen",
