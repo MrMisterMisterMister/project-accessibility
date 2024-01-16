@@ -39,7 +39,7 @@ const Account = ({ userData }) => {
         ],
         PanelMember: [
             {
-                title: translate("panelMember.contactLabel"),
+                title: translate("panelMember.generalLabel"),
                 columns: [
                     { label: translate("panelMember.firstName"), accessor: "firstName" },
                     { label: translate("panelMember.lastName"), accessor: "lastName" },
