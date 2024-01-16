@@ -892,23 +892,23 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            {translate("provinceLabel")}
+                            {translate("cityLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            className={`form__text_field ${errors.city ? "error" : ""}`}
                             type="text"
-                            {...register("province", {
+                            {...register("city", {
                                 required: {
                                     value: true,
-                                    message: translate("error.provinceRequired")
+                                    message: translate("error.cityRequired")
                                 }
                             })}
-                            aria-invalid={errors.province ? "true" : "false"}
-                            placeholder={translate("provincePlaceholder")}
+                            aria-invalid={errors.city ? "true" : "false"}
+                            placeholder={translate("cityPlaceholder")}
                         />
-                        {errors.province && (
+                        {errors.city && (
                             <div className="form__error">
-                                {errors.province.message}
+                                {errors.city.message}
                             </div>
                         )}
                     </Col>
