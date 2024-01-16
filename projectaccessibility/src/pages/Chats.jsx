@@ -66,6 +66,8 @@ const Chats = observer(() => {
                     updatedMessages.push({ fromUser, message });
                     setMessages(updatedMessages);
                     
+                    console.log("From User: ", fromUser);
+
                     if(fromUser.email !== currentUser.email) {
                         handleSelectUser(fromUser); 
                     }// Select the user who sent the message
@@ -131,7 +133,6 @@ const Chats = observer(() => {
         }
     };
 
-    
     // Send message to selected user
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
@@ -173,8 +174,8 @@ const Chats = observer(() => {
             const newChatItem = {
                 id: userResult.id,
                 avatar: img,
-                alt: userResult.name,
-                title: userResult.name,
+                alt: userResult.email,
+                title: userResult.email,
                 subtitle: 'Last message...',
                 date: new Date(),
                 unread: 0,
@@ -194,10 +195,6 @@ const Chats = observer(() => {
         // Reset search results and query after selecting a user
         resetSearch();
     };
-    
-
-
-    
 
     // Function to transform messages to the format required by MessageList
     const transformMessages = () => {
