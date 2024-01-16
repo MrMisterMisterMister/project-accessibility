@@ -1,6 +1,7 @@
 @use 'variables';
 @use 'mixins';
 
+// section
 .expertise__section {
     padding-top: 4em;
     padding-bottom: 4em;
@@ -31,6 +32,46 @@
             @include mixins.xl {
                 grid-template-columns: repeat(4, 1fr);
             }
+        }
+    }
+}
+
+// page expertise
+.expertise__page {
+    position: relative;
+
+    .expertise__page_banner {
+        position: relative;
+        overflow: hidden;
+        background-color: variables.$blackrussian;
+        height: 140px;
+    }
+
+    .expertise__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .expertise__page_title {
+            font-size: 2.5rem;
+            color: variables.$blackrussian;
+            margin-bottom: 0.875rem;
+        }
+
+        .expertise__page_intro {
+            font-size: 1rem;
+            font-weight: normal;
+        }
+
+        h2 {
+            color: variables.$black;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            color: variables.$black;
+            margin-bottom: 1rem;
         }
     }
 }

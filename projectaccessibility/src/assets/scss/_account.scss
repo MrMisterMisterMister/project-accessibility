@@ -1,25 +1,97 @@
-.account_settings {
-    h1 {
-        color: black;
-        font-weight: bold;
+@use 'variables';
+
+// account section in 
+.account__dashboard {
+    position: relative;
+    margin-bottom: 2.5rem;
+
+    .account__dashboard_title {
+        font-size: 1.75rem;
+        color: variables.$blackrussian;
+        line-height: normal;
+        font-weight: 900;
+        padding-bottom: 1rem;
     }
 
-    p {
-        color: blue;
+    .account__dashboard_subtitle {
+        background-color: variables.$white;
+        color: variables.$black;
+        padding: 1.1rem 1.667rem;
+        font-weight: 600;
+        font-size: 1.25rem;
+        border: solid 1px variables.$lightlavender;
+        border-bottom: 0;
+        letter-spacing: 0.05em;
     }
 
-    button {
-        background-color: #12947c;
-        color: #fff;
-        font-weight: bold;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+    .account__dashboard_user {
+        display: flex;
+        justify-content: flex-start;
+        background-color: variables.$white;
+        border: solid 1px variables.$lightlavender;
+        padding: 1.1rem 1.667rem;
+        margin-bottom: 2rem;
+        box-shadow: 0 2px 3px -2px variables.$icecream;
 
-        &:hover {
-            background-color: #12947cbb;
+        .account__dashboard_user__picture {
+            width: 125px;
+            height: 125px;
+            border-radius: 100%;
+            object-fit: cover;
+        }
+
+        .account__dashboard_user__info {
+            display: flex;
+            flex-direction: column;
+            margin: 0 0 0 1.5em;
+            color: variables.$black;
+            text-align: left;
+
+            .account__dashboard_user__name {
+                font-size: 1.125rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+            .account__dashboard_user__biography {
+                font-size: 0.875rem;
+                font-weight: normal;
+            }
+        }
+    }
+
+    .account__dashboard_additional {
+        background-color: variables.$white;
+        border: solid 1px variables.$lightlavender;
+        padding: 1.1rem 1.667rem;
+        box-shadow: 0 2px 3px -2px variables.$icecream;
+
+        .account__dashboard_additional__title {
+            font-size: 1rem;
+            font-weight: 700;
+            line-height: 1.5;
+            letter-spacing: 0.05em;
+            margin: 1rem 0 0.675rem 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+
+        .account__dashboard_additional__info {
+            display: flex;
+            color: variables.$blackrussian;
+            
+            &_label {
+                width: 150px;
+                min-width: 150px;
+                font-size: 0.875rem;
+            }
+
+            &_value {
+                font-size: 0.875rem;
+                font-weight: normal;
+            }
         }
     }
 }

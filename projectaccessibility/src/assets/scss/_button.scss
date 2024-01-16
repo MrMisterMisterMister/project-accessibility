@@ -1,10 +1,75 @@
 @use 'variables';
 
 // Primary button
+.button__primary {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    background-color: variables.$sapphire;
+    border: solid 1px variables.$sapphire;
+    box-shadow: none !important;
+    border-radius: 2px;
+    color: variables.$white;
 
+    &:hover,
+    &:active {
+        background-color: variables.$blackrussian;
+        cursor: pointer;
+        border-color: variables.$sapphire;
+    }
+}
 
 // Secondary button
+// Just copy pasted it with different background color
+// I am lazy
+.button__secondary {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    background-color: transparent;
+    border: solid 1px variables.$sapphire;
+    box-shadow: none !important;
+    border-radius: 2px;
+    color: variables.$sapphire;
 
+    &:hover,
+    &:focus {
+        background-color: variables.$sapphire;
+        cursor: pointer;
+        color: variables.$white;
+        border-color: variables.$sapphire;
+    }
+
+    // Active state of button
+    &.active {
+        background-color: variables.$sapphire;
+        border-color: variables.$sapphire;
+        color: variables.$white;
+
+        &:hover {
+            border-color: variables.$blackrussian;
+            background-color: variables.$blackrussian;
+        }
+    }
+}
+
+// button submit
+.button__submit {
+    font-weight: 600;
+    font-size: 0.875rem;
+    appearance: none;
+    padding: 0.75rem 1.75rem;
+    background-color: variables.$sapphire;
+    color: variables.$white;
+    border: none !important;
+    border-radius: 2px;
+    line-height: 1.2rem;
+
+    &:hover,
+    &:focus {
+        box-shadow: none;
+        cursor: pointer;
+        background-color: variables.$blackrussian;
+    }
+}
 
 // Hero button
 .button__hero {
@@ -106,6 +171,7 @@
     width: 150px;
     height: 3rem;
     transition: all 0.3s ease;
+    border: none;
     padding: 1.125rem 1rem;
     text-decoration: none;
     font-size: 0.875rem;
@@ -128,5 +194,87 @@
 
     &:not(:last-child) {
         margin-right: 1.25rem;
+    }
+}
+
+// signup button and login
+.button__signup,
+.button__login {
+    width: 100%;
+    font-weight: normal;
+    background-color: variables.$sapphire;
+    color: variables.$white;
+    height: 45px;
+    appearance: none;
+    border: none !important;
+    border-radius: 2px;
+    font-size: 1rem;
+    line-height: 1.2rem;
+
+    &:hover,
+    &:focus {
+        background-color: variables.$blackrussian;
+        cursor: pointer;
+        box-shadow: none;
+    }
+}
+
+// auth buttons
+.button__auth {
+    background-color: variables.$white !important;
+    width: 100%;
+    border: 1px solid variables.$icecream;
+    color: variables.$black !important;
+    margin-bottom: 10px;
+    height: 40px;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .button__auth_icon {
+        width: 25px;
+        height: 100%;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .button__auth_text {
+        font-weight: 600;
+        font-size: 0.875rem;
+        margin-left: 1rem;
+    }
+
+    &:hover,
+    &:focus {
+        border-color: variables.$sapphire;
+    }
+}
+
+// button muted
+.button__muted {
+    background-color: transparent;
+    border-radius: 2px;
+    border: solid 1px variables.$icecream;
+    font-size: 0.875rem;
+    color: variables.$blackrussian;
+    height: 2rem;
+    box-shadow: none !important;
+
+    &:hover,
+    &:focus,
+    &:active {
+        border-color: transparent;
+        background-color: variables.$sapphire;
+        color: variables.$white;
+        cursor: pointer;
+    }
+
+    // so the 2 buttons have some spacing
+    &+.button__muted {
+        margin-left: 0.5rem;
     }
 }

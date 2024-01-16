@@ -36,3 +36,43 @@
 .shape__cookies_left {
     @include mixins.shape(variables.$tenne, 12rem, 12rem, 53%, -5%, null, null, null, 50%);
 }
+
+.shape__sitemap_right {
+    @include mixins.shape(variables.$elfgreen, 9rem, 9rem, -35%, null, null, -6%, 20deg, null);
+}
+
+.shape__sitemap_left {
+    @include mixins.shape(variables.$royalblue, 15rem, 15rem, null, -2%, 42%, null, null, 50%);
+}
+
+.shape__about_right {
+    @include mixins.shape(variables.$sapphire, 9rem, 14rem, null, 0%, 24%, null, 298deg, null);
+}
+
+.shape__about_left {
+    @include mixins.shape(variables.$elfgreen, 12rem, 12rem, 35%, null, null, -4%, null, 50%);
+}
+
+.shape__expertise_left {
+    @include mixins.shape(variables.$sapphire, 9rem, 14rem, null, 0%, 24%, null, 298deg, null);
+}
+
+.shape__expertise_right {
+    @include mixins.shape(variables.$royalblue, 15rem, 10rem, -19%, null, null, -9%, 26deg, null);
+}
+
+.shape__news_left {
+    @include mixins.shape(variables.$tenne, 13rem, 13rem, null, -4%, 28%, null, null, 50%);
+}
+
+.shape__news_right {
+    @include mixins.shape(variables.$elfgreen, 11rem, 11rem, 2%, null, null, 1%, null, 50%);
+}
+
+.shape__contact_left {
+    @include mixins.shape(variables.$tenne, 6.5rem, 6.5rem, -43%, -1%, null, null, 129deg, null);
+}
+
+.shape__contact_right {
+    @include mixins.shape(variables.$royalblue, 14.5rem, 10rem, -19%, null, null, -9%, 26deg, null);
+}

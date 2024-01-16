@@ -1,0 +1,15 @@
+{
+    "pageTitle": "Ervaringsdeskundigen",
+    "tableView": "Tabelweergave",
+    "cardView": "Kaartweergave",
+    "labels": {
+        "id": "#",
+        "name": "Naam",
+        "email": "E-mailadres",
+        "dateOfBirth": "Geboortedatum",
+        "address": "Adres",
+        "postalCode": "Postcode",
+        "city": "Stad",
+        "country": "Land"
+    }
+}

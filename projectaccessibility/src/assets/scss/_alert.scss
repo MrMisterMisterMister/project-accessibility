@@ -1,0 +1,21 @@
+@use 'variables';
+
+.alert {
+    color: variables.$white;
+    border-radius: 2px;
+    font-size: .875rem;
+    font-weight: 600;
+    margin: 1rem auto;
+    padding: .5rem 2rem .5rem 1rem;
+    position: relative;
+    text-align: left;
+    width: 100%;
+
+    &__success {
+        background-color: variables.$limegreen;
+    }
+
+    &__error {
+        background-color: variables.$darkred;
+    }
+}

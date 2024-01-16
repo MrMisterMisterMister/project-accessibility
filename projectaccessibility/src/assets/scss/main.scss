@@ -13,17 +13,28 @@
 @use 'card';
 @use 'group';
 @use 'form';
-@use 'language';
+@use 'alert';
+@use 'table';
 
 // section
 @use 'hero';
+@use 'about';
 @use 'expertise';
 @use 'member';
 @use 'news';
 @use 'case';
 @use 'contact';
+@use 'user';
 
 // pages
+@use 'sitemap';
 @use 'privacypolicy';
-@use 'account';
 @use 'cookies';
+@use 'login';
+@use 'signup';
+@use 'dashboard';
+@use 'panelmember';
+@use 'company';
+@use 'research';
+@use 'account';
+@use 'settings';

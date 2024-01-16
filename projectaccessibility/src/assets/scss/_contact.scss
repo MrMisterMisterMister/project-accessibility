@@ -13,7 +13,7 @@
         .contact__section_wrapper {
             border-radius: 1em;
             padding: 3rem 2.5rem;
-            background-image: linear-gradient(to top right, rgba(243, 244, 246, 1) 0%, rgba(243, 244, 246, 1) 100%);
+            background-image: linear-gradient(to top right, variables.$vanilla 0%, variables.$vanilla 100%);
             position: relative;
             overflow: hidden;
 
@@ -29,6 +29,7 @@
                     font-weight: 700;
                     line-height: 1.25;
                     margin-bottom: 2rem;
+                    overflow-wrap: break-word;
                 }
 
                 .contact__section_content__text {
@@ -41,6 +42,36 @@
                     justify-content: center;
                 }
             }
+        }
+    }
+}
+
+// page for contact
+.contact__page {
+    position: relative;
+
+    .contact__page_banner {
+        position: relative;
+        overflow: hidden;
+        background-color: variables.$blackrussian;
+        height: 120px;
+    }
+
+    .contact__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+
+        .contact__page_title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: variables.$blackrussian;
+        }
+
+        .contact__page_intro {
+            font-size: 1rem;
+            font-weight: normal;
+            margin-bottom: 2rem;
+            color: variables.$black;
         }
     }
 }

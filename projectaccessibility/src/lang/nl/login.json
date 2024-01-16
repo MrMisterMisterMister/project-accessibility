@@ -1,0 +1,8 @@
+{
+    "pageTitle": "Inloggen",
+    "auth": {
+        "signup": "Account aanmaken",
+        "google": "Doorgaan met Google",
+        "microsoft": "Doorgaan met Microsoft"
+    }
+}

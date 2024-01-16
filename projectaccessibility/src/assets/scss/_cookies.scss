@@ -1,6 +1,8 @@
 @use 'variables';
 
 .cookies__page {
+    position: relative;
+    
     .cookies__page_banner {
         height: 140px;
         background-color: variables.$blackrussian;
@@ -18,7 +20,7 @@
             margin-bottom: 0.5rem;
         }
 
-        h4 {
+        h2 {
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }

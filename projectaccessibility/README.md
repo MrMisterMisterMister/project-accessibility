@@ -20,7 +20,7 @@ or
 npm run dev
 ```
 
-Starts the development server using Vite. The application will be available at http://localhost:5000/, and it supports Hot Module Replacement (HMR) for real-time updates. For more details on Vite, refer to the [official Vite documentation][2].
+Starts the development server using Vite. The application will be available at http://localhost:5001/, and it supports Hot Module Replacement (HMR) for real-time updates. For more details on Vite, refer to the [official Vite documentation][2].
 
 ### 2. Build for Production
 

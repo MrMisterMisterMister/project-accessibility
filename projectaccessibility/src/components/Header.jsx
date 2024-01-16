@@ -1,36 +1,22 @@
-import { useState } from "react";
+import React from "react";
 import { Container, Navbar } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { NavDesktop, NavMobile } from "./Nav";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 // Header component
 const Header = () => {
     // Translation
-    const { t: translate, i18n } = useTranslation();
-
-    // Initialize state
-    // Default NL
-    const [language, setLanguage] = useState(
-        localStorage.getItem("language") || "nl"
-    );
-
-    // Language change
-    const handleChangeLanguage = (event) => {
-        setLanguage(event.target.value);
-        i18n.changeLanguage(event.target.value);
-        localStorage.setItem("language", event.target.value);
-    };
+    const { t: translate } = useTranslation("header");
 
     // Header nav links
     const websiteLinks = [
-        { name: translate("header.menu.home"), path: "/" },
-        { name: translate("header.menu.about"), path: "/over-ons" },
-        { name: translate("header.menu.expertise"), path: "/expertise" },
-        { name: translate("header.menu.news"), path: "/actueel" },
-        { name: translate("header.menu.contact"), path: "/contact" },
-        { name: translate("header.menu.signup"), path: "/signup" },
-        { name: translate("header.menu.signin"), path: "/login" }
+        { name: translate("menu.home"), path: "/" },
+        { name: translate("menu.about"), path: "/over-ons" },
+        { name: translate("menu.expertise"), path: "/expertise" },
+        { name: translate("menu.news"), path: "/news" },
+        { name: translate("menu.contact"), path: "/contact" },
+        { name: translate("menu.signup"), path: "/signup" },
+        { name: translate("menu.signin"), path: "/login" }
     ];
 
     return (
@@ -38,7 +24,7 @@ const Header = () => {
             <Container className="site__header_container" fluid>
                 <Navbar.Brand href="/">
                     <img
-                        src="img/brand/logo_black_text_light.png"
+                        src="/img/brand/logo_black_text_light.png"
                         width="278"
                         height="60"
                         alt="Logo"
@@ -47,10 +33,6 @@ const Header = () => {
                 </Navbar.Brand>
                 <NavDesktop links={websiteLinks} />
                 <NavMobile links={websiteLinks} />
-                <LanguageSwitcher
-                    language={language}
-                    handleChangeLanguage={handleChangeLanguage}
-                />
             </Container>
         </header>
     );

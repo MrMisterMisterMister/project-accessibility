@@ -38,8 +38,8 @@
         margin-bottom: 0.5em;
 
         svg {
-            width: 100%!important;
-            height: 100%!important;
+            width: 100% !important;
+            height: 100% !important;
         }
     }
 
@@ -54,6 +54,11 @@
 
     .card__expertise_text {
         color: variables.$black;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;
         margin-bottom: 15px;
     }
 }
@@ -175,6 +180,98 @@
             &:hover:after {
                 margin-left: 10px;
             }
+        }
+    }
+}
+
+// user card
+.card__user_item {
+    width: 100%;
+    border-radius: 2px;
+    background-color: variables.$white;
+    box-shadow: 0 2px 3px -2px variables.$icecream;
+    transition: all 0.3s ease;
+
+    &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+        transition: all 0.3s ease;
+    }
+
+    .card__user_img {
+        width: 100%;
+        height: auto;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        display: block;
+    }
+
+    .card__user_content {
+        color: variables.$blackrussian;
+        padding: 1.125rem;
+        word-break: break-all;
+
+        .card__user_heading {
+            padding-bottom: 1rem;
+
+            .card__user_title {
+                font-size: 1.25rem;
+                color: variables.$sapphire;
+            }
+
+            .card__user_website {
+                font-size: 1rem;
+            }
+        }
+
+        .card__user_props {
+            border-top: solid 1px variables.$cultured;
+            padding-top: 0.5rem;
+            color: variables.$blackrussian;
+            font-size: 0.875rem;
+            font-weight: normal;
+
+            .card__user_prop_item {
+                font-weight: 600;
+                margin-right: 0.5em;
+            }
+        }
+    }
+}
+
+// about card
+.card__about_item {
+    background-color: variables.$white;
+    border-radius: 0.75rem;
+    border: solid 1px variables.$vanilla;
+
+    .card__about_content {
+        position: relative;
+        padding: 1.125rem;
+
+        .card__about_content__icon {
+            width: 2rem;
+            height: 2rem;
+            color: variables.$sapphire;
+            margin-bottom: 0.5em;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
+
+        .card__about_content__title {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+            color: variables.$sapphire;
+            margin-bottom: 1rem;
+        }
+
+        .card__about_content__text {
+            color: variables.$black;
+            font-size: 1rem;
+            font-weight: normal;
         }
     }
 }

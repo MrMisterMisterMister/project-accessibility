@@ -1,4 +1,6 @@
 import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import Expertise from "../components/Expertise";
 import Member from "../components/Member";
@@ -10,12 +12,14 @@ import Contact from "../components/Contact";
 const Home = () => {
     return (
         <>
+            <Header />
             <Hero />
             <Expertise />
             <Member />
             <News />
             <Case />
             <Contact />
+            <Footer />
         </>
     );
 };

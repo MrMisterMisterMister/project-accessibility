@@ -1,0 +1,31 @@
+{
+    "error": {
+        "defaultMessage": "Error! Er is iets misgegaan. Probeer het later opnieuw.",
+        "PasswordTooShort": "Wachtwoord moet minimaal 6 tekens bevatten.",
+        "PasswordRequiresDigit": "Wachtwoord moet minimaal één cijfer bevatten ('0'-'9').",
+        "PasswordRequiresUpper": "Wachtwoord moet minimaal één hoofdletter bevatten ('A'-'Z').",
+        "PasswordRequiresLower": "Wachtwoord moet minimaal één kleine letter bevatten ('a'-'z').",
+        "EmailTaken": "Dit e-mailadres is al in gebruik.",
+        "KvkExists": "Dit Kvk-nummer is al geregistreerd.",
+        "IncorrectPassword": "Onjuist wachtwoord. Controleer je wachtwoord en probeer het opnieuw.",
+        "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres.",
+        "PasswordMismatch": "Wachtwoord en bevestigingswachtwoord komen niet overeen.",
+        "ResearchNotFound": "Het onderzoek kon niet worden gevonden.",
+        "ResearchFailedToBeCreated": "Het onderzoek kon niet worden aangemaakt.",
+        "ResearchFailedDelete": "Het onderzoek kon niet worden verwijderd.",
+        "ResearchFailedUpdate": "Het onderzoek kon niet worden bijgewerkt.",
+        "ParticipantNotFound": "De deelnemer kon niet worden gevonden.",
+        "ParticipantAlreadyEnrolled": "De deelnemer heeft zich al bij dit onderzoek aangesloten.",
+        "ResearchParticipantsIsEmpty": "De lijst met deelnemers is leeg.",
+        "ParticipantIsNotInResearch": "De deelnemer is niet betrokken bij dit onderzoek."
+    },
+    "success": {
+        "UserHasBeenCreated": "Je account is succesvol aangemaakt. Je kunt nu inloggen.",
+        "UserHasLoggedIn": "Je bent succesvol ingelogd. We sturen je nu door naar het portaal.",
+        "ResearchHasBeenCreated": "Het onderzoek is succesvol aangemaakt.",
+        "ResearchHasBeenUpdated": "Het onderzoek is succesvol bijgewerkt.",
+        "ResearchHasBeenDeleted": "Het onderzoek is succesvol verwijderd.",
+        "ParticipantHasJoined": "Je hebt succesvol deelgenomen aan het onderzoek.",
+        "ParticipantHasLeft": "Je hebt succesvol het onderzoek verlaten."
+    }
+}

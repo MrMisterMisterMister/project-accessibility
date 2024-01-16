@@ -1,0 +1,8 @@
+{
+    "pageTitle": "Log In",
+    "auth": {
+        "signup": "Create an Account",
+        "google": "Continue with Google",
+        "microsoft": "Continue with Microsoft"
+    }
+}
