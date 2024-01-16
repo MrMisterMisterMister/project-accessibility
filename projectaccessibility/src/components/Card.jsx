@@ -163,6 +163,12 @@ const CardPanelMemberView = ({ data }) => {
                                     </span>
                                     {panelmember.country}
                                 </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.disability")}:
+                                    </span>
+                                    {panelmember.disabilitiesName.join(", ")}
+                                </p>
                             </div>
                         </div>
                     </div>
