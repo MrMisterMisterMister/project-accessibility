@@ -104,7 +104,7 @@ const Chats = observer(() => {
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
             // Send the message via SignalR
-            await connection.invoke('SendMessageToUser', currentUser, selectedUser, newMessage);
+            await connection.invoke('SendMessageToUser', currentUser.id, selectedUser.id, newMessage);
 
             // Update the chat with the new message
             const updatedMessages = [...messages];
