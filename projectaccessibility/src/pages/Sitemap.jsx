@@ -78,7 +78,7 @@ const Sitemap = () => {
                     <p>{translate("intro")}</p>
                     {pageLinks.map((section, index) => (
                         <div key={index}>
-                            <h4>{section.title}</h4>
+                            <h2>{section.title}</h2>
                             {section.subPages.map((subPage, subIndex) => (
                                 <p key={subIndex}>
                                     <a href={subPage.path}>{subPage.name}</a>
