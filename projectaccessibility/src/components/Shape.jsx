@@ -10,6 +10,7 @@ const Shape = ({ section, position }) => {
                 <span
                     key={index}
                     className={`shape__${section}_${position}`}
+                    data-testid={`shape__${section}_${position}`}
                     aria-hidden="true"
                 />
             ))}
