@@ -17,7 +17,7 @@ const Alert = ({ data }) => {
             {data.error &&
                 (Array.isArray(data.error) ? data.error : [data.error]).map(
                     (key, index) => (
-                        <div className="alert alert__error" key={index}>
+                        <div className="alert alert__error" key={index} data-testid="error-alert">
                             <span>{translate(`error.${key.code}`)}</span>
                         </div>
                     )
@@ -28,7 +28,7 @@ const Alert = ({ data }) => {
                     ? data.success
                     : [data.success]
                 ).map((key, index) => (
-                    <div className="alert alert__success" key={index}>
+                    <div className="alert alert__success" key={index} data-testid="success-alert">
                         <span>{translate(`success.${key.code}`)}</span>
                     </div>
                 ))}
