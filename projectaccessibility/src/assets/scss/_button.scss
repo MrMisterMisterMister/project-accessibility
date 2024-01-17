@@ -69,6 +69,13 @@
         cursor: pointer;
         background-color: variables.$blackrussian;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: all;
+        opacity: 1;
+        background-color: variables.$sapphire;
+    }
 }
 
 // Hero button

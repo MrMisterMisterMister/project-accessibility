@@ -26,6 +26,7 @@
         "ResearchHasBeenUpdated": "Het onderzoek is succesvol bijgewerkt.",
         "ResearchHasBeenDeleted": "Het onderzoek is succesvol verwijderd.",
         "ParticipantHasJoined": "Je hebt succesvol deelgenomen aan het onderzoek.",
-        "ParticipantHasLeft": "Je hebt succesvol het onderzoek verlaten."
+        "ParticipantHasLeft": "Je hebt succesvol het onderzoek verlaten.",
+        "DisabilityHasBeenUpdated": "Je hebt succesvol je beperking bijgewerkt."
     }
 }

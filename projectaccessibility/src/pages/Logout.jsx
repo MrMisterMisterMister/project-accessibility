@@ -13,7 +13,7 @@ const Logout = () => {
     useEffect(() => {
         const removeCookie = async (cookie) => {
             // Send the cookie name to the server for removal
-            await createEndpoint("cookies/removecookie/").post(cookie);
+            await createEndpoint("cookies/removecookie").post(cookie);
         };
 
         const logout = () => {

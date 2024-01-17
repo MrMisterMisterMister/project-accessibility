@@ -26,6 +26,7 @@
         "ResearchHasBeenUpdated": "The research has been successfully updated.",
         "ResearchHasBeenDeleted": "The research has been successfully deleted.",
         "ParticipantHasJoined": "You have successfully joined the research.",
-        "ParticipantHasleft": "You have successfully left the research."
+        "ParticipantHasleft": "You have successfully left the research.",
+        "DisabilityHasBeenUpdated": "You have successfully updated your disability."
     }
 }
