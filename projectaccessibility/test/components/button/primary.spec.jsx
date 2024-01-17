@@ -8,10 +8,10 @@ describe("Testing the Primary Button", () => {
         const text = "Primary";
         const isActive = true;
         const action = vi.fn();
-
-        // Act
         const { getByText } = render(<ButtonPrimary text={text} isActive={isActive} action={action} />);
         const primaryButton = getByText(text);
+
+        // Act
         fireEvent.click(primaryButton);
 
         // Assert
