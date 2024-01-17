@@ -1343,15 +1343,21 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
@@ -1550,15 +1556,21 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
