@@ -802,28 +802,6 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
-                            {translate("phoneLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
-                            type="phone"
-                            {...register("phone", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.phoneRequired")
-                                }
-                            })}
-                            aria-invalid={errors.phone ? "true" : "false"}
-                            placeholder={translate("phonePlaceholder")}
-                        />
-                        {errors.phone && (
-                            <div className="form__error">
-                                {errors.phone.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
                             {translate("dateOfBirthLabel")}
                         </Form.Label>
                         <Form.Control
