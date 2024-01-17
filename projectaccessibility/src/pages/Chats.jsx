@@ -56,34 +56,33 @@ const Chats = observer(() => {
                 setIsConnected(true);
     
                 if (currentUser) {
-                    console.log("Registering user: ", currentUser);
-                    newConnection.invoke('RegisterUser', currentUser.email);
+                    console.log("Registering user: ", currentUser); // remove later
+                    newConnection.invoke('RegisterUser', currentUser.id);
                 }   
     
-                // Add this part here in your existing useEffect
-                newConnection.on('ReceiveMessage', (fromUser, message) => {
+                // Listen for incoming messages
+                newConnection.on('ReceiveMessage', (fromUser, receiver, message, chatroomId) => {
                     const updatedMessages = [...latestMessages.current];
                     updatedMessages.push({ fromUser, message });
                     setMessages(updatedMessages);
-                    
-                    console.log("From User: ", fromUser);
 
+                    // For the receiver
                     if(fromUser.email !== currentUser.email) {
-                        handleSelectUser(fromUser); 
-                    }// Select the user who sent the message
-
-                    const senderExists = chatItems.some(item => item.id === fromUser); // Use fromUser for comparison
-                    if (!senderExists) {
-                        const newChatItem = {
-                            avatar: img, // replace with actual sender's avatar
-                            alt: fromUser.name, // replace with actual sender's name
-                            title: fromUser.name, // replace with actual sender's name
-                            subtitle: 'Last message...',
-                            date: new Date(),
-                            unread: 1,
-                            id: fromUser, // Use fromUser as the unique identifier
-                        };
-                        setChatItems([...chatItems, newChatItem]);
+                        console.log("Receiverrrrrrrr Condition is being metttttttttt");
+                        setSelectedUser(fromUser); // Select the user who sent the message 
+                        const senderExists = chatItems.some((item => item.id === fromUser.id) || (item => item.title === fromUser.email) || (item => item.id === chatroomId));
+                        if (!senderExists) {
+                            const newChatItem = {
+                                id: chatroomId,
+                                avatar: img,
+                                alt: fromUser.email,
+                                title: fromUser.email,
+                                subtitle: message,
+                                date: new Date(),
+                                unread: 0,
+                            };
+                            setChatItems([...chatItems, newChatItem]);
+                        }
                     }
                 });
             })
@@ -91,53 +90,18 @@ const Chats = observer(() => {
     
         setConnection(newConnection);
     
+        // Cleanup SignalR connection
         return () => {
             newConnection.stop().then(() => console.log('Disconnected from SignalR Hub'));
         };
-    }, [currentUser]); // Make sure the dependencies array is correctly set
+        
+    }, [currentUser]); // Dependency(ies)
     
-    useEffect(() => {
-        const loadUserChats = async () => {
-            const response = await createEndpoint(`chats/userChats/${currentUser.id}`).get();
-            setChatItems(response.data.map(chat => {
-                // Transform chat data to the format expected by your ChatList component
-                return {
-                    id: chat.ChatId,
-                    avatar: img, // You might want to use real avatars
-                    title: chat.ChatId,
-                    subtitle: 'Last message...', // You might want to show the actual last message
-                    date: new Date(chat.lastMessageTimestamp), // Adjust according to your data
-                    unread: 0 // Calculate the number of unread messages, if needed
-                };
-            }));
-        };
-    
-        if (currentUser) {
-            loadUserChats();
-        }
-    }, [currentUser]);
-    
-    const loadChatHistory = async (selectedUserId) => {
-        // Assuming 'currentUser' holds the current user's details
-        const currentUserId = currentUser.id; // Replace with actual logic to get the current user's ID
-    
-        // Make an API call to load chat history between the current user and the selected user
-        // Adjust the endpoint to match your backend implementation
-        const response = await createEndpoint(`chats/history/${currentUserId}/${selectedUserId}`).get();
-        if(response.data){
-            const history = response.data;
-            setMessages(history.map(msg => ({
-                fromUser: msg.senderId,
-                message: msg.content
-            })));
-        }
-    };
-
     // Send message to selected user
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
             // Send the message via SignalR
-            await connection.invoke('SendMessageToUser', currentUser.email, currentUser.id, selectedUser.email, selectedUser.id, newMessage, currentUser);
+            await connection.invoke('SendMessageToUser', currentUser, selectedUser, newMessage);
 
             // Update the chat with the new message
             const updatedMessages = [...messages];
@@ -147,28 +111,26 @@ const Chats = observer(() => {
             // Update the last message in the chat list
             setChatItems(prevChatItems =>
                 prevChatItems.map(chatItem =>
-                    chatItem.id === selectedUser.id ? {...chatItem, subtitle: newMessage, date: new Date()} : chatItem
+                    chatItem.title === selectedUser.email ? {...chatItem, subtitle: newMessage, date: new Date()} : chatItem
                 )
             );
 
+            // Clear the input box
             setNewMessage('');
         }
     };
 
-    // Function to reset search query and results
-    const resetSearch = () => {
-        setSearchResults([]);
-    };
-
-    // Upon selecting user, if there is no existing chat, create one, use either ChatList or ChatItem
-    // , ChatItem might be better
+    // Upon selecting user, if there is no existing chat, create one
     // If there is an existing chat, load the message history
-    const handleSelectUser = (userResult) => {
-        console.log("Selected User: ", userResult);
+    const handleSelectUser = async (userResult) => {
+        console.log("Selected User: ", userResult); // remove later
         setSelectedUser(userResult);
+
+        // Clear existing messages before loading new ones
+        setMessages([]);
     
         // Check if chat with this user already exists
-        const existingChat = chatItems.find(item => item.id === userResult.id);
+        const existingChat = chatItems.find(item => item.title === userResult.email);
         if (!existingChat) {
             // Create a new chat item for the selected user
             const newChatItem = {
@@ -181,19 +143,58 @@ const Chats = observer(() => {
                 unread: 0,
                 
             };
+
+            console.log(newChatItem); // remove later
     
             // Update the chat items state using the functional form of setChatItems
             setChatItems(prevChatItems => [...prevChatItems, newChatItem]);
         }
-    
-        // Load message history with the selected user
+        
         // Implement message history loading here
         // Load message history with the selected user
-        //  qloadChatHistory(userResult.id);
-
+        await loadChatHistory(userResult.id);
     
         // Reset search results and query after selecting a user
         resetSearch();
+    };
+
+    useEffect(() => {
+        const loadUserChats = async () => {
+            const response = await createEndpoint(`chats/userChats/${currentUser.id}`).get();
+            if(response.data) {
+                setChatItems(response.data.map(chat => {
+                    // Transform chat data to the format expected by ChatList component
+                    return {
+                        id: chat.chatId,
+                        avatar: img,
+                        title: chat.chatName,
+                        subtitle: 'Last message...',
+                        date: new Date(chat.lastMessageTimestamp), // Adjust according to data, if needed
+                        unread: 0 // Calculate the number of unread messages, if needed
+                    };
+                }));
+            } else {
+                console.log("chats: null, undefined...");
+            }
+        };
+    
+        if (currentUser) {
+            loadUserChats();
+        }
+    }, [currentUser]);
+    
+    const loadChatHistory = async (targetedChatHistory) => {
+        const currentUserId = currentUser.id;
+    
+        // Make API call to load chat history between the current user and the selected user
+        const response = await createEndpoint(`chats/history/${currentUserId}/${targetedChatHistory}`).get();
+        if(response.data){
+            const history = response.data;
+            setMessages(history.map(msg => ({
+                fromUser: msg.senderId,
+                message: msg.content
+            })));
+        }
     };
 
     // Function to transform messages to the format required by MessageList
@@ -206,9 +207,14 @@ const Chats = observer(() => {
         }));
     };
 
+    // Function to reset search query and results
+    const resetSearch = () => {
+        setSearchResults([]);
+    };
+
     // Inline styles for the chat messages area and the input box
     const messageListStyle = {
-        height: 'calc(100vh - 150px)', // Adjust the height as needed
+        height: 'calc(100vh - 150px)', // Adjust the height
         overflowY: 'auto',
         marginBottom: '50px' // Space for the input box
     };
@@ -216,8 +222,8 @@ const Chats = observer(() => {
     const inputStyle = {
         position: 'fixed',
         bottom: 20,
-        width: '50%', // Adjust the width according to your layout
-        left: '40%'  // Adjust the left position according to your layout
+        width: '50%', // Adjust the width according to layout
+        left: '40%'  // Adjust the left position according to layout
     };
 
     return (
