@@ -3,7 +3,7 @@ import { describe, test, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { TablePanelMemberView } from "../../../src/components/Table";
 
-describe("Testing the Panel Member table view", () => {
+describe("Testing the Panel Member Table", () => {
     test("renders correctly with panel member data", () => {
         // Arrange
         const data = [{

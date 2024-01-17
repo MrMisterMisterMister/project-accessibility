@@ -66,6 +66,7 @@ const NavMobile = ({ links }) => {
                 className="nav__header_mobile__label"
                 htmlFor="site__header_nav__toggle"
                 onClick={toggleMenuState}
+                data-testid="nav-menu-toggle"
             >
                 <span className="nav__header_mobile__icon">
                     {renderMenuSpans()}
