@@ -1210,7 +1210,7 @@ FormCompanyProfileUpdate.propTypes = {
 
 // form for company when they create a new research
 // send post to endpoint
-const FormCompanyResearchCreate = ({ organizerId, refetchData }) => {
+const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1243,7 +1243,7 @@ const FormCompanyResearchCreate = ({ organizerId, refetchData }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
                     // Reset form
                     reset();
-                    refetchData(true);
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1414,14 +1414,14 @@ const FormCompanyResearchCreate = ({ organizerId, refetchData }) => {
 // just need to make sure there is a company id
 FormCompanyResearchCreate.propTypes = {
     organizerId: PropTypes.string.isRequired,
-    refetchData: PropTypes.bool
+    setRefetchData: PropTypes.func
 };
 
 // To update research
 // Put request with the research id
 // and the new form data
 // for company
-const FormCompanyResearchUpdate = ({ researchId, refetchData }) => {
+const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1456,7 +1456,7 @@ const FormCompanyResearchUpdate = ({ researchId, refetchData }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
-                    refetchData(true);
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1620,14 +1620,14 @@ const FormCompanyResearchUpdate = ({ researchId, refetchData }) => {
 // prop types for company research update
 FormCompanyResearchUpdate.propTypes = {
     researchId: PropTypes.number,
-    refetchData: PropTypes.bool
+    setRefetchData: PropTypes.func
 };
 
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ researchId, data, refetchData }) => {
+const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1661,10 +1661,11 @@ const FormPanelMemberResearchJoin = ({ researchId, data, refetchData }) => {
         joinPanelMemberResearchResponse
             .then((response) => {
                 // Some inspiring comment
+                console.log(response.status === 200);
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     setFormAlerts({ success: { code: "ParticipantHasJoined" } });
-                    refetchData(true);
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1812,7 +1813,7 @@ FormPanelMemberResearchJoin.propTypes = {
         type: PropTypes.string,
         category: PropTypes.string
     }),
-    refetchData: PropTypes.bool
+    setRefetchData: PropTypes.func
 };
 
 // Form to update the disabilities of a panelmember

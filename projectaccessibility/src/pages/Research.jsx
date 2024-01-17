@@ -221,7 +221,7 @@ const Research = () => {
                     {translate("createResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate organizerId={user.userId} refetchData={refetchData} />
+                    <FormCompanyResearchCreate organizerId={user.userId} setRefetchData={setRefetchData} />
                 </div>
             </div>
         ),
@@ -231,7 +231,7 @@ const Research = () => {
                     {translate("editResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchUpdate researchId={researchId} refetchData={refetchData} />
+                    <FormCompanyResearchUpdate researchId={researchId} setRefetchData={setRefetchData} />
                 </div>
             </div>
         ),
@@ -241,7 +241,7 @@ const Research = () => {
                     {translate("viewResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin researchId={researchId} data={research} refetchData={refetchData} />
+                    <FormPanelMemberResearchJoin researchId={researchId} data={research} setRefetchData={setRefetchData} />
                 </div>
             </div>
         )
