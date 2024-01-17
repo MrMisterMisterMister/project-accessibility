@@ -1210,7 +1210,7 @@ FormCompanyProfileUpdate.propTypes = {
 
 // form for company when they create a new research
 // send post to endpoint
-const FormCompanyResearchCreate = ({ organizerId }) => {
+const FormCompanyResearchCreate = ({ organizerId, trigger }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1243,6 +1243,7 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
                     // Reset form
                     reset();
+                    trigger(true);
                 }
             })
             .catch((error) => {
@@ -1412,14 +1413,15 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
 // Prop type for form comany creating researches
 // just need to make sure there is a company id
 FormCompanyResearchCreate.propTypes = {
-    organizerId: PropTypes.string.isRequired
+    organizerId: PropTypes.string.isRequired,
+    trigger: PropTypes.func
 };
 
 // To update research
 // Put request with the research id
 // and the new form data
 // for company
-const FormCompanyResearchUpdate = ({ researchId }) => {
+const FormCompanyResearchUpdate = ({ researchId, trigger }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1454,6 +1456,7 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
+                    trigger(true);
                 }
             })
             .catch((error) => {
@@ -1616,14 +1619,15 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
 
 // prop types for company research update
 FormCompanyResearchUpdate.propTypes = {
-    researchId: PropTypes.number
+    researchId: PropTypes.number,
+    trigger: PropTypes.func
 };
 
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ researchId, data }) => {
+const FormPanelMemberResearchJoin = ({ researchId, data, trigger }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1660,6 +1664,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                    trigger(true);
                 }
             })
             .catch((error) => {
@@ -1806,7 +1811,8 @@ FormPanelMemberResearchJoin.propTypes = {
         organizerName: PropTypes.string,
         type: PropTypes.string,
         category: PropTypes.string
-    })
+    }),
+    trigger: PropTypes.func
 };
 
 // Form to update the disabilities of a panelmember

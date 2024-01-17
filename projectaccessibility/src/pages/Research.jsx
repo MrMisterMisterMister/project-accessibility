@@ -37,6 +37,9 @@ const Research = () => {
     // Hook to get the researches that is made by the logged in company
     const [companyResearches, setCompanyResearches] = useState([]);
 
+    // Crack way to determine if data needs to be fetched again
+    const [toFetchData, setToFetchData] = useState(false);
+
     // For managing errors
     const [formAlerts, setFormAlerts] = useState({
         errors: [],
@@ -85,31 +88,36 @@ const Research = () => {
     // Use effect to reset the alerts
     // This is so the alert dont show up anymore
     useEffect(() => {
-        setTimeout(() => {
+        const alertTimeout = setTimeout(() => {
             setFormAlerts({ errors: [], success: [] });
-        }, 5000);
+        }, 3000);
+        // clear timeout so it doesnt get fucked by other effects
+        // before the timer wasnt working as intended, this fixes it
+        return () => clearTimeout(alertTimeout);
     }, [formAlerts]);
 
     // Load all the data in
     useEffect(() => {
         // TODO this isnt correct if length 0
-        if (allResearches.length === 0) fetchAllResearches();
+        if (allResearches.length === 0 || toFetchData) fetchAllResearches();
 
         // m
-        if (user.userRoles.includes("PanelMember") && panelMemberResearches.length === 0) {
+        if (user.userRoles.includes("PanelMember") && (panelMemberResearches.length === 0 || toFetchData)) {
             fetchPanelMemberResearches();
+            setToFetchData(false);
         }
 
         // e
-        if (user.userRoles.includes("Company") && companyResearches.length === 0) {
+        if (user.userRoles.includes("Company") && (companyResearches.length === 0 || toFetchData)) {
             fetchCompanyResearches();
+            setToFetchData(false);
         }
 
         // h
         if (researchId != null || researchId) {
             fetchSingularResearch();
         }
-    }, [researchId]);
+    }, [researchId, toFetchData]);
 
     // This function handles deleting a research
     // Passes this as a property, so the button can use it as onAction
@@ -127,6 +135,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate some shit
                         setFormAlerts({ success: { code: "ResearchHasBeenDeleted" } });
+                        setToFetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -152,6 +161,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate alerts
                         setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                        setToFetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -175,6 +185,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate the success message
                         setFormAlerts({ success: { code: "ParticipantHasLeft" } });
+                        setToFetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -211,7 +222,7 @@ const Research = () => {
                     {translate("createResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate organizerId={user.userId} />
+                    <FormCompanyResearchCreate organizerId={user.userId} trigger={setToFetchData} />
                 </div>
             </div>
         ),
@@ -221,7 +232,7 @@ const Research = () => {
                     {translate("editResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchUpdate researchId={researchId} />
+                    <FormCompanyResearchUpdate researchId={researchId} trigger={setToFetchData} />
                 </div>
             </div>
         ),
@@ -231,7 +242,7 @@ const Research = () => {
                     {translate("viewResearch")}
                 </h2>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin researchId={researchId} data={research} />
+                    <FormPanelMemberResearchJoin researchId={researchId} data={research} trigger={setToFetchData} />
                 </div>
             </div>
         )
