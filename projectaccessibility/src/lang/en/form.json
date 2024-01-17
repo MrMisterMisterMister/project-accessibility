@@ -103,6 +103,7 @@
         "passwordNewRequired": "* Please enter your new password",
         "passwordConfirmNewRequired": "* Please enter your new password again",
         "passwordConfirmNewIsMatch": "* New password confirmation does not match with the new password",
+        "rewardBelowZero": "* Reward cannot be lower than 0",
         "userTypeRequired": "* Please select a user type",
         "firstNameRequired": "* Please enter your First Name",
         "lastNameRequired": "* Please enter your Last Name",

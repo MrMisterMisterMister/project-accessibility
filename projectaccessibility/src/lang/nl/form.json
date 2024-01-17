@@ -103,6 +103,7 @@
         "passwordNewRequired": "* Voer je nieuw wachtwoord in",
         "passwordConfirmNewRequired": "* Voer je nieuw wachtwoord opnieuw in",
         "passwordConfirmNewIsMatch": "* Nieuw wachtwoordbevestiging komt niet overeen met het nieuwe wachtwoord",
+        "rewardBelowZero": "* Beloning mag niet lager zijn dan 0",
         "userTypeRequired": "* Selecteer een gebruikerstype",
         "firstNameRequired": "* Voer je voornaam in",
         "lastNameRequired": "* Voer je achternaam in",

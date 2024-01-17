@@ -1210,7 +1210,7 @@ FormCompanyProfileUpdate.propTypes = {
 
 // form for company when they create a new research
 // send post to endpoint
-const FormCompanyResearchCreate = ({ organizerId }) => {
+const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1243,6 +1243,7 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
                     // Reset form
                     reset();
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1342,15 +1343,21 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
@@ -1412,14 +1419,15 @@ const FormCompanyResearchCreate = ({ organizerId }) => {
 // Prop type for form comany creating researches
 // just need to make sure there is a company id
 FormCompanyResearchCreate.propTypes = {
-    organizerId: PropTypes.string.isRequired
+    organizerId: PropTypes.string.isRequired,
+    setRefetchData: PropTypes.func
 };
 
 // To update research
 // Put request with the research id
 // and the new form data
 // for company
-const FormCompanyResearchUpdate = ({ researchId }) => {
+const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1454,6 +1462,7 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1547,15 +1556,21 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
@@ -1616,14 +1631,15 @@ const FormCompanyResearchUpdate = ({ researchId }) => {
 
 // prop types for company research update
 FormCompanyResearchUpdate.propTypes = {
-    researchId: PropTypes.number
+    researchId: PropTypes.number,
+    setRefetchData: PropTypes.func
 };
 
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ researchId, data }) => {
+const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1660,6 +1676,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                    setRefetchData(true);
                 }
             })
             .catch((error) => {
@@ -1806,7 +1823,8 @@ FormPanelMemberResearchJoin.propTypes = {
         organizerName: PropTypes.string,
         type: PropTypes.string,
         category: PropTypes.string
-    })
+    }),
+    setRefetchData: PropTypes.func
 };
 
 // Form to update the disabilities of a panelmember
