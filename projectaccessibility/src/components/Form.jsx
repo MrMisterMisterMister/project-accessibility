@@ -732,16 +732,14 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                 // Check if the response code is 200 (ok)
                 // If so, create a success alert and reset the form
                 if (response.status === 200) {
-                    // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Set message and reset the form
+                    setFormAlerts({ success: { code: "PanelMemberProfileUpdated" } });
                     reset();
                 }
-                console.log(response); // TODO will remove later
             })
             .catch((error) => {
                 // Catch the error and set it inside the form alert state
                 setFormAlerts({ error: error.response?.data });
-                console.log(error.response); // TODO will remove later
             });
     };
 
@@ -986,18 +984,15 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                 // Checks if the response code is 200 (Ok)
                 if (response.status === 200) {
                     // Set a success message for the user to see
-                    // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    setFormAlerts({ success: { code: "CompanyProfileUpdated" } });
                     // Reset form
                     reset();
                 }
-                console.log(response); // TODO will remove later
             })
             .catch((error) => {
                 // Catch the error and save it inside the form alert for errors
                 // That way it can be displayed later to the user in the frontend
                 setFormAlerts({ error: error.response?.data });
-                console.log(error.response); // TODO will remove later
             });
     };
 

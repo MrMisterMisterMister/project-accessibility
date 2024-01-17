@@ -17,7 +17,23 @@
         "ParticipantNotFound": "The participant could not be found.",
         "ParticipantAlreadyEnrolled": "The participant has already joined this research.",
         "ResearchParticipantsIsEmpty": "The participant lists is empty.",
-        "ParticipantIsNotInResearch": "The participant is not in this research."
+        "ParticipantIsNotInResearch": "The participant is not in this research.",
+        "CompanyNotFound": "The company could not be found.",
+        "CompanyFailedCreate": "The company could not be created.",
+        "CompanyFailedDelete": "The company could not be deleted.",
+        "CompanyFailedUpdate": "The company could not be updated.",
+        "DisabilityNotFound": "The disability could not be found.",
+        "DisabilityFailedCreate": "The disability could not be created.",
+        "DisabilityFailedUpdate": "The disability could not be updated.",
+        "DisabilityFailedDelete": "The disability could not be deleted.",
+        "PanelMemberNotFound": "The panel member could not be found.",
+        "PanelMemberFailedCreate": "The panel member could not be created.",
+        "PanelMemberFailedUpdate": "The panel member could not be updated.",
+        "PanelMemberFailedDelete": "The panel member could not be deleted.",
+        "PanelMemberHasDisability": "The panel member already has this disability.",
+        "PanelMemberDoesNotHaveDisability": "The panel member does not have this disability.",
+        "OrganizerNotFound": "The organizer could not be found.",
+        "OrganizerNotTheSame": "The organizer is incorrect. It needs to be the same."
     },
     "success": {
         "UserHasBeenCreated": "Your account has been successfully created. You can now log in.",
@@ -26,6 +42,8 @@
         "ResearchHasBeenUpdated": "The research has been successfully updated.",
         "ResearchHasBeenDeleted": "The research has been successfully deleted.",
         "ParticipantHasJoined": "You have successfully joined the research.",
-        "ParticipantHasleft": "You have successfully left the research."
+        "ParticipantHasleft": "You have successfully left the research.",
+        "CompanyProfileUpdated": "You have successfully updated your company profile.",
+        "PanelMemberProfileUpdated": "You have successfully updated your profile."
     }
 }
