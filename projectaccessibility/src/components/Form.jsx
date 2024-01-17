@@ -1414,7 +1414,7 @@ const FormCompanyResearchCreate = ({ organizerId, refetchData }) => {
 // just need to make sure there is a company id
 FormCompanyResearchCreate.propTypes = {
     organizerId: PropTypes.string.isRequired,
-    refetchData: PropTypes.func
+    refetchData: PropTypes.bool
 };
 
 // To update research
@@ -1620,7 +1620,7 @@ const FormCompanyResearchUpdate = ({ researchId, refetchData }) => {
 // prop types for company research update
 FormCompanyResearchUpdate.propTypes = {
     researchId: PropTypes.number,
-    refetchData: PropTypes.func
+    refetchData: PropTypes.bool
 };
 
 // TODO
@@ -1812,7 +1812,7 @@ FormPanelMemberResearchJoin.propTypes = {
         type: PropTypes.string,
         category: PropTypes.string
     }),
-    refetchData: PropTypes.func
+    refetchData: PropTypes.bool
 };
 
 // Form to update the disabilities of a panelmember
