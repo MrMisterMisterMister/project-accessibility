@@ -164,8 +164,8 @@ const FormSignup = () => {
     const signupSubmit = async (formData) => {
         // Define endpoint paths based on the selected user type
         const endPoint = {
-            1: "panelmember/",
-            2: "company/"
+            1: "panelmember",
+            2: "company"
         };
 
         // Make the POST call using axios post
@@ -1670,6 +1670,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
     // React Hook forms
     const { handleSubmit } = useForm();
 
+    // Handle submittion for when a panel member joins a research
     const panelMemberResearchJoinSubmit = async () => {
         // Axios
         const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
@@ -1804,7 +1805,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         />
                     </Col>
                 </Row>
-                <ButtonSubmit text="Join" />
+                <ButtonSubmit text={translate("research.joinButton")} />
                 {
                     /*
                     Another button to go back maybe?
@@ -1830,6 +1831,99 @@ FormPanelMemberResearchJoin.propTypes = {
     })
 };
 
+// Form to update the disabilities of a panelmember
+const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React Hook forms
+    const { register, handleSubmit } = useForm();
+
+    // Handles the form submission for updating the panel member disabilities
+    const panelMemberDisabilityUpdateSubmit = async (formData) => {
+        // First delete all the previous disabilities of the panel member
+        // So it will add all the selected disabilities and not cause much errors
+        await createEndpoint("panelmemberdisabilities/remove-all-panelmember-disabilities").delete("");
+
+        // Get the selected disability id from the form data
+        // Then set it inside the hook
+        const selectedDisabilityIds = Object.keys(formData.disability).filter(key => formData.disability[key]); // easy way to check if the checkbox is checked
+
+        // Loop over all the selected disabilities that the     user has chosen
+        // Then create a post request to add each disability to the panel member
+        selectedDisabilityIds.forEach(async (id) => {
+            // Make a post request to add the disability with axios
+            await createEndpoint(`panelmemberdisabilities/add-disability/${id}`).post();
+        });
+
+        // Set success message
+        setFormAlerts({ success: { code: "DisabilityHasBeenUpdated" } });
+
+        // Reset the alerts
+        setTimeout(() => {
+            setFormAlerts({ errors: [], success: [] });
+        }, 2500);
+    };
+
+    return (
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberDisabilityUpdateSubmit)}
+                noValidate
+            >
+                <div className="form__disability_container">
+                    <h3 className="form__disability_title">
+                        {translate("settings.disability.title")}
+                    </h3>
+                    {disabilities.length > 0
+                        ? disabilities.map(({ id, name, description }, index) => (
+                            <div className="form__disability_option" key={index}>
+                                <Form.Check.Input
+                                    className="form__disability_option__checkbox"
+                                    type="checkbox"
+                                    {...register(`disability[${id}]`)}
+                                    id={`disability-${id}`}
+                                />
+                                <Form.Check.Label
+                                    className="form__disability_option__label"
+                                    title={description}
+                                    aria-label={name}
+                                    htmlFor={`disability-${id}`}
+                                >
+                                    {name}
+                                </Form.Check.Label>
+                            </div>
+                        ))
+                        : <p className="form__disability_text">{translate("settings.disability.emptyList")}</p>
+                    }
+                </div>
+                <ButtonSubmit text={translate("settings.buttonText")} isDisabled={disabilities.length <= 0} />
+            </Form>
+        </>
+    );
+};
+
+// prop types for panelmember disability update
+FormPanelMemberDisabilityUpdate.propTypes = {
+    disabilities: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired
+        })
+    )
+};
+
 export {
     FormLogin,
     FormSignup,
@@ -1839,5 +1933,6 @@ export {
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
     FormCompanyResearchUpdate,
-    FormPanelMemberResearchJoin
+    FormPanelMemberResearchJoin,
+    FormPanelMemberDisabilityUpdate
 };

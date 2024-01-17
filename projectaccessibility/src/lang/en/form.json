@@ -7,10 +7,15 @@
         "buttonText": "Sign up"
     },
     "settings": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "disability": {
+            "title": "Please provide information about your disability:",
+            "emptyList": "There are no disabilities available."
+        }
     },
     "research": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "joinButton": "Join"
     },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",

@@ -10,6 +10,7 @@
         "address": "Adres",
         "postalCode": "Postcode",
         "city": "Stad",
-        "country": "Land"
+        "country": "Land",
+        "disability": "Beperking"
     }
 }

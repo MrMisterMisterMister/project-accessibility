@@ -10,6 +10,7 @@
         "address": "Address",
         "postalCode": "Postal Code",
         "city": "City",
-        "country": "Country"
+        "country": "Country",
+        "disability": "Disability"
     }
 }

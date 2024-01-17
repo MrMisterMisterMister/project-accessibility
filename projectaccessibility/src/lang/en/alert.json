@@ -44,6 +44,7 @@
         "ParticipantHasJoined": "You have successfully joined the research.",
         "ParticipantHasleft": "You have successfully left the research.",
         "CompanyProfileUpdated": "You have successfully updated your company profile.",
-        "PanelMemberProfileUpdated": "You have successfully updated your profile."
+        "PanelMemberProfileUpdated": "You have successfully updated your profile.",
+        "DisabilityHasBeenUpdated": "You have successfully updated your disability."
     }
 }

@@ -99,7 +99,8 @@ const TablePanelMemberView = ({ data }) => {
         { label: translate("labels.address"), accessor: "address" },
         { label: translate("labels.postalCode"), accessor: "postalCode" },
         { label: translate("labels.city"), accessor: "city" },
-        { label: translate("labels.country"), accessor: "country" }
+        { label: translate("labels.country"), accessor: "country" },
+        { label: translate("labels.disability"), accessor: "disabilitiesName", format: (names) => names.join(", ") } // The default doesn't add space, so need to use format
     ];
 
     // These items need to be looped over

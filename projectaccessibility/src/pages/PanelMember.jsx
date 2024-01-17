@@ -34,7 +34,7 @@ const PanelMember = () => {
 
     // planning to do this in a global file
     const fetchPanelMembers = async () => {
-        const data = await createEndpoint("panelmembers/").get();
+        const data = await createEndpoint("panelmembers").get();
         setPanelMembers(data);
     };
 

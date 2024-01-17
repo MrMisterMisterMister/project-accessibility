@@ -7,10 +7,15 @@
         "buttonText": "Aanmelden"
     },
     "settings": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "disability": {
+            "title": "Geef informatie over je beperking:",
+            "emptyList": "Er zijn geen beperkingen beschikbaar."
+        }
     },
     "research": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "joinButton": "Aanmelden"
     },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",

@@ -75,6 +75,42 @@
     width: 100%;
 }
 
+// disability
+.form__disability_container {
+    margin-bottom: 1rem;
+
+    .form__disability_title {
+        padding-bottom: 0.5rem;
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .form__disability_text {
+        color: variables.$black;
+        font-size: 0.875rem;
+    }
+    
+    .form__disability_option {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding-bottom: 0.25rem;
+
+        &__checkbox {
+            margin: 0;
+            box-shadow: none;
+            border-radius: 2px;
+        }
+
+        &__label {
+            font-size: 0.875rem;
+            color: variables.$black;
+            margin-left: 5px;
+        }
+    }
+}
+
+
 // login form
 .form__login {
     position: relative;
