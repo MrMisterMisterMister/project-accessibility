@@ -72,6 +72,7 @@ const Chats = observer(() => {
                     if(fromUser.email !== currentUser.email) {
                         console.log("Receiverrrrrrrr Condition is being metttttttttt");
                         setSelectedUser(fromUser); // Select the user who sent the message 
+                        loadChatHistory(fromUser.id); // Load chat history
                         const senderExists = chatItems.some((item => item.id === fromUser.id) || (item => item.title === fromUser.email) || (item => item.id === chatroomId));
                         if (!senderExists) {
                             const newChatItem = {
