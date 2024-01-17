@@ -9,7 +9,7 @@
     "settings": {
         "buttonText": "Verzenden",
         "disability": {
-            "title": "Dit is een zeer inspirerende tekst. Quibusdam, vero.",
+            "title": "Geef informatie over je beperking:",
             "emptyList": "Er zijn geen beperkingen beschikbaar."
         }
     },

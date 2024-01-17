@@ -9,7 +9,7 @@
     "settings": {
         "buttonText": "Submit",
         "disability": {
-            "title": "This is a very inspiring text. Quibusdam, vero.",
+            "title": "Please provide information about your disability:",
             "emptyList": "There are no disabilities available."
         }
     },
