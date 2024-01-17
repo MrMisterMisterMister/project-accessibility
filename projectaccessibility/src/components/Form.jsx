@@ -1210,7 +1210,7 @@ FormCompanyProfileUpdate.propTypes = {
 
 // form for company when they create a new research
 // send post to endpoint
-const FormCompanyResearchCreate = ({ organizerId, trigger }) => {
+const FormCompanyResearchCreate = ({ organizerId, refetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1243,7 +1243,7 @@ const FormCompanyResearchCreate = ({ organizerId, trigger }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
                     // Reset form
                     reset();
-                    trigger(true);
+                    refetchData(true);
                 }
             })
             .catch((error) => {
@@ -1414,14 +1414,14 @@ const FormCompanyResearchCreate = ({ organizerId, trigger }) => {
 // just need to make sure there is a company id
 FormCompanyResearchCreate.propTypes = {
     organizerId: PropTypes.string.isRequired,
-    trigger: PropTypes.func
+    refetchData: PropTypes.func
 };
 
 // To update research
 // Put request with the research id
 // and the new form data
 // for company
-const FormCompanyResearchUpdate = ({ researchId, trigger }) => {
+const FormCompanyResearchUpdate = ({ researchId, refetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1456,7 +1456,7 @@ const FormCompanyResearchUpdate = ({ researchId, trigger }) => {
                     setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
-                    trigger(true);
+                    refetchData(true);
                 }
             })
             .catch((error) => {
@@ -1620,14 +1620,14 @@ const FormCompanyResearchUpdate = ({ researchId, trigger }) => {
 // prop types for company research update
 FormCompanyResearchUpdate.propTypes = {
     researchId: PropTypes.number,
-    trigger: PropTypes.func
+    refetchData: PropTypes.func
 };
 
 // TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
-const FormPanelMemberResearchJoin = ({ researchId, data, trigger }) => {
+const FormPanelMemberResearchJoin = ({ researchId, data, refetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -1664,7 +1664,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, trigger }) => {
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     setFormAlerts({ success: { code: "ParticipantHasJoined" } });
-                    trigger(true);
+                    refetchData(true);
                 }
             })
             .catch((error) => {
@@ -1812,7 +1812,7 @@ FormPanelMemberResearchJoin.propTypes = {
         type: PropTypes.string,
         category: PropTypes.string
     }),
-    trigger: PropTypes.func
+    refetchData: PropTypes.func
 };
 
 // Form to update the disabilities of a panelmember
