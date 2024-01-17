@@ -160,27 +160,42 @@ const Chats = observer(() => {
 
     useEffect(() => {
         const loadUserChats = async () => {
-            const response = await createEndpoint(`chats/userChats/${currentUser.id}`).get();
-            if(response.data) {
-                setChatItems(response.data.map(chat => {
-                    // Transform chat data to the format expected by ChatList component
-                    return {
-                        id: chat.chatId,
-                        avatar: img,
-                        title: chat.chatName,
-                        subtitle: 'Last message...',
-                        date: new Date(chat.lastMessageTimestamp), // Adjust according to data, if needed
-                        unread: 0 // Calculate the number of unread messages, if needed
-                    };
-                }));
-            } else {
-                console.log("chats: null, undefined...");
+            if (!currentUser) {
+                console.log("currentUser not set");
+                return;
+            }
+    
+            try {
+                const response = await createEndpoint(`chats/userChats/${currentUser.id}`).get();
+                console.log("Complete API response:", response);
+    
+                // Adjust this part based on the actual structure of response
+                const responseData = response.data ? response.data : response;
+    
+                console.log("Response Data:", responseData);
+    
+                if (responseData && Array.isArray(responseData)) {
+                    const chatItems = responseData.map(chat => {
+                        return {
+                            id: chat.chatId,
+                            avatar: img,
+                            title: chat.chatName,
+                            subtitle: 'Last message...',
+                            date: new Date(), // Adjust as needed
+                            unread: 0
+                        };
+                    });
+                    console.log("Mapped chat items:", chatItems);
+                    setChatItems(chatItems);
+                } else {
+                    console.log("No chat data found or responseData is not an array");
+                }
+            } catch (error) {
+                console.error("Error loading user chats:", error);
             }
         };
     
-        if (currentUser) {
-            loadUserChats();
-        }
+        loadUserChats();
     }, [currentUser]);
     
     const loadChatHistory = async (targetedChatHistory) => {
