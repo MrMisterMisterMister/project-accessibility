@@ -84,8 +84,7 @@ const Account = () => {
             {
                 title: translate("panelMember.contactLabel"),
                 columns: [
-                    { label: translate("panelMember.email"), accessor: "email" },
-                    { label: translate("panelMember.phone"), accessor: "phone" }
+                    { label: translate("panelMember.email"), accessor: "email" }
                 ]
             },
             {
