@@ -12,7 +12,7 @@ import img from "../img/placeholder.jpg";
 const Chats = observer(() => {
     // For user 
     const { userStore: { user, getUser } } = useStore();
-    const [currentUser, setCurrentUser] = useState({});
+    const [currentUser, setCurrentUser] = useState(null);
     // For chat
     const [connection, setConnection] = useState(null);
     const [messages, setMessages] = useState([]);
