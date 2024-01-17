@@ -42,7 +42,7 @@
         "ResearchHasBeenUpdated": "The research has been successfully updated.",
         "ResearchHasBeenDeleted": "The research has been successfully deleted.",
         "ParticipantHasJoined": "You have successfully joined the research.",
-        "ParticipantHasleft": "You have successfully left the research.",
+        "ParticipantHasLeft": "You have successfully left the research.",
         "CompanyProfileUpdated": "You have successfully updated your company profile.",
         "PanelMemberProfileUpdated": "You have successfully updated your profile.",
         "DisabilityHasBeenUpdated": "You have successfully updated your disability."
