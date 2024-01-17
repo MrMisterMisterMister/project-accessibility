@@ -158,9 +158,9 @@ const NavFooterBottombar = ({ links, language, changeLanguage }) => {
                 <Nav.Item className="nav__footer_bottombar__navitem">
                     <Nav.Link
                         className="nav__footer_bottombar__navlink"
-                        onClick={() =>
-                            changeLanguage(language === "nl" ? "en" : "nl")
-                        }
+                        onClick={() => changeLanguage(language === "nl" ? "en" : "nl")}
+                        aria-label="Language switcher"
+                        role="button"
                     >
                         {language === "nl" ? "English" : "Nederlands"}
                     </Nav.Link>

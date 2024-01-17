@@ -73,12 +73,12 @@ const Sitemap = () => {
                     <Shape section="sitemap" position={["right", "left"]} />
                 </div>
                 <Container className="sitemap__page_container">
-                    <h1>{translate("pageTitle")}</h1>
-                    <p className="text-muted">{translate("lastModified")}</p>
-                    <p>{translate("intro")}</p>
+                    <h1 tabIndex="0">{translate("pageTitle")}</h1>
+                    <p className="text-muted" tabIndex="0">{translate("lastModified")}</p>
+                    <p tabIndex="0">{translate("intro")}</p>
                     {pageLinks.map((section, index) => (
                         <div key={index}>
-                            <h4>{section.title}</h4>
+                            <h2 tabIndex="0">{section.title}</h2>
                             {section.subPages.map((subPage, subIndex) => (
                                 <p key={subIndex}>
                                     <a href={subPage.path}>{subPage.name}</a>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -732,16 +732,14 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                 // Check if the response code is 200 (ok)
                 // If so, create a success alert and reset the form
                 if (response.status === 200) {
-                    // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    // Set message and reset the form
+                    setFormAlerts({ success: { code: "PanelMemberProfileUpdated" } });
                     reset();
                 }
-                console.log(response); // TODO will remove later
             })
             .catch((error) => {
                 // Catch the error and set it inside the form alert state
                 setFormAlerts({ error: error.response?.data });
-                console.log(error.response); // TODO will remove later
             });
     };
 
@@ -799,28 +797,6 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                         {errors.lastName && (
                             <div className="form__error">
                                 {errors.lastName.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("phoneLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
-                            type="phone"
-                            {...register("phone", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.phoneRequired")
-                                }
-                            })}
-                            aria-invalid={errors.phone ? "true" : "false"}
-                            placeholder={translate("phonePlaceholder")}
-                        />
-                        {errors.phone && (
-                            <div className="form__error">
-                                {errors.phone.message}
                             </div>
                         )}
                     </Col>
@@ -892,23 +868,23 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            {translate("provinceLabel")}
+                            {translate("cityLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            className={`form__text_field ${errors.city ? "error" : ""}`}
                             type="text"
-                            {...register("province", {
+                            {...register("city", {
                                 required: {
                                     value: true,
-                                    message: translate("error.provinceRequired")
+                                    message: translate("error.cityRequired")
                                 }
                             })}
-                            aria-invalid={errors.province ? "true" : "false"}
-                            placeholder={translate("provincePlaceholder")}
+                            aria-invalid={errors.city ? "true" : "false"}
+                            placeholder={translate("cityPlaceholder")}
                         />
-                        {errors.province && (
+                        {errors.city && (
                             <div className="form__error">
-                                {errors.province.message}
+                                {errors.city.message}
                             </div>
                         )}
                     </Col>
@@ -986,18 +962,15 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                 // Checks if the response code is 200 (Ok)
                 if (response.status === 200) {
                     // Set a success message for the user to see
-                    // TODO
-                    setFormAlerts({ success: { code: "idontknowthecodeyetalabama" } });
+                    setFormAlerts({ success: { code: "CompanyProfileUpdated" } });
                     // Reset form
                     reset();
                 }
-                console.log(response); // TODO will remove later
             })
             .catch((error) => {
                 // Catch the error and save it inside the form alert for errors
                 // That way it can be displayed later to the user in the frontend
                 setFormAlerts({ error: error.response?.data });
-                console.log(error.response); // TODO will remove later
             });
     };
 
@@ -1660,6 +1633,18 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
         success: []
     });
 
+    // form values in hook
+    // so react no warning
+    const [formValues, setFormValues] = useState({
+        title: "",
+        description: "",
+        date: "",
+        reward: "",
+        organizerName: "",
+        type: "",
+        category: ""
+    });
+
     // React Hook forms
     const { handleSubmit } = useForm();
 
@@ -1683,6 +1668,20 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
             });
     };
 
+    // update form values
+    // now react will be happy and not sad
+    useEffect(() => {
+        setFormValues({
+            title: data.title || "",
+            description: data.description || "",
+            date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
+            reward: data.reward ? Number(data.reward).toFixed(2) : "",
+            organizerName: data.organizerName || "",
+            type: data.type || "",
+            category: data.category || ""
+        });
+    }, [data]);
+
     // I need to do a get to get the research information
     // Then need to load in the values inside here
     // Also need to put the id of the panelmember inside here, so it will be submitted via the form
@@ -1705,7 +1704,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.title}
+                            value={formValues.title}
                             placeholder={translate("titlePlaceholder")}
                             readOnly
                         />
@@ -1717,7 +1716,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             as="textarea"
-                            value={data.description}
+                            value={formValues.description}
                             placeholder={translate("descriptionPlaceholder")}
                             rows={5}
                             readOnly
@@ -1730,7 +1729,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="date"
-                            value={data.date ? new Date(data.date).toISOString().split("T")[0] : ""} // lazy way
+                            value={formValues.date}
                             placeholder={translate("datePlaceholder")}
                             readOnly
                         />
@@ -1742,7 +1741,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.reward}
+                            value={formValues.reward}
                             placeholder={translate("rewardPlaceholder")}
                             readOnly
                         />
@@ -1754,7 +1753,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.organizerName}
+                            value={formValues.organizerName}
                             placeholder={translate("organizerPlaceholder")}
                             readOnly
                         />
@@ -1766,7 +1765,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.type}
+                            value={formValues.type}
                             placeholder={translate("typePlaceholder")}
                             readOnly
                         />
@@ -1778,7 +1777,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
                         <Form.Control
                             className="form__text_field"
                             type="text"
-                            value={data.category}
+                            value={formValues.category}
                             placeholder={translate("categoryPlaceholder")}
                             readOnly
                         />
@@ -1798,7 +1797,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data }) => {
 // prop types for ye..
 // was too lazy so just put it all string
 FormPanelMemberResearchJoin.propTypes = {
-    researchId: PropTypes.string,
+    researchId: PropTypes.number,
     data: PropTypes.shape({
         title: PropTypes.string,
         description: PropTypes.string,
