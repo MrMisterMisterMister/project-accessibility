@@ -10,7 +10,8 @@
         "buttonText": "Verzenden"
     },
     "research": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "joinButton": "Aanmelden"
     },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",

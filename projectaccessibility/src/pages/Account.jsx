@@ -127,7 +127,7 @@ const Account = () => {
                     />
                     <div className="account__dashboard_user__info">
                         <span className="account__dashboard_user__name">
-                            {userData.userName}
+                            {userData.email}
                         </span>
                         <p className="account__dashboard_user__biography">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusamus veritatis pariatur tenetur delectus veniam ducimus officiis suscipit dolore nisi!

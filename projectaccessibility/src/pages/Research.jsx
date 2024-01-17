@@ -109,7 +109,7 @@ const Research = () => {
         if (researchId != null || researchId) {
             fetchSingularResearch();
         }
-    }, [researchId, companyResearches, allResearches, panelMemberResearches]);
+    }, [researchId]);
 
     // This function handles deleting a research
     // Passes this as a property, so the button can use it as onAction

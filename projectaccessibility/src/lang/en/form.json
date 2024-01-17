@@ -10,7 +10,8 @@
         "buttonText": "Submit"
     },
     "research": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "joinButton": "Join"
     },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
