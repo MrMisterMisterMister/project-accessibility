@@ -7,7 +7,11 @@
         "buttonText": "Sign up"
     },
     "settings": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "disability": {
+            "title": "This is a very inspiring text. Quibusdam, vero.",
+            "emptyList": "There are no disabilities available."
+        }
     },
     "research": {
         "buttonText": "Submit",

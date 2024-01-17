@@ -37,14 +37,15 @@ ButtonSecondary.propTypes = {
 };
 
 // General button for submits in forms
-const ButtonSubmit = ({ style, text }) => {
-    return <Button className={style || "button__submit"} as="input" type="submit" value={text} />;
+const ButtonSubmit = ({ style, text, isDisabled }) => {
+    return <Button className={style || "button__submit"} as="input" type="submit" value={text} disabled={isDisabled} />;
 };
 
 // prop type for button submit
 ButtonSubmit.propTypes = {
     style: PropTypes.string,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool
 };
 
 // Custom hero button on hero section

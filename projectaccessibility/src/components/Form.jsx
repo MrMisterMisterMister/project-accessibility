@@ -1843,6 +1843,11 @@ const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
 
         // Set success message
         setFormAlerts({ success: { code: "DisabilityHasBeenUpdated" } });
+
+        // Reset the alerts
+        setTimeout(() => {
+            setFormAlerts({ errors: [], success: [] });
+        }, 2500);
     };
 
     return (
@@ -1857,26 +1862,31 @@ const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
             >
                 <div className="form__disability_container">
                     <h3 className="form__disability_title">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam, vero.
+                        {translate("settings.disability.title")}
                     </h3>
-                    {disabilities.map(({ id, name, description }, index) => (
-                        <div className="form__disability_option" key={index}>
-                            <Form.Check.Input
-                                className="form__disability_option__checkbox"
-                                type="checkbox"
-                                {...register(`disability[${id}]`)}
-                            />
-                            <Form.Check.Label
-                                className="form__disability_option__label"
-                                title={description}
-                                aria-label={name}
-                            >
-                                {name}
-                            </Form.Check.Label>
-                        </div>
-                    ))}
+                    {disabilities.length > 0
+                        ? disabilities.map(({ id, name, description }, index) => (
+                            <div className="form__disability_option" key={index}>
+                                <Form.Check.Input
+                                    className="form__disability_option__checkbox"
+                                    type="checkbox"
+                                    {...register(`disability[${id}]`)}
+                                    id={`disability-${id}`}
+                                />
+                                <Form.Check.Label
+                                    className="form__disability_option__label"
+                                    title={description}
+                                    aria-label={name}
+                                    htmlFor={`disability-${id}`}
+                                >
+                                    {name}
+                                </Form.Check.Label>
+                            </div>
+                        ))
+                        : <p className="form__disability_text">{translate("settings.disability.emptyList")}</p>
+                    }
                 </div>
-                <ButtonSubmit text={translate("settings.buttonText")} />
+                <ButtonSubmit text={translate("settings.buttonText")} isDisabled={disabilities.length <= 0} />
             </Form>
         </>
     );

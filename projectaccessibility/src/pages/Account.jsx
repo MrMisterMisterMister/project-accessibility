@@ -146,7 +146,11 @@ const Account = () => {
                                         {label}
                                     </span>
                                     <span className="account__dashboard_additional__info_value">
-                                        {Array.isArray(userData[accessor]) ? userData[accessor].join(", ") : (userData[accessor] || "-")}
+                                        {
+                                            Array.isArray(userData[accessor])
+                                                ? (userData[accessor].length > 0 ? userData[accessor].join(", ") : "-")
+                                                : (userData[accessor] || "-")
+                                        }
                                     </span>
                                 </div>
                             ))}
