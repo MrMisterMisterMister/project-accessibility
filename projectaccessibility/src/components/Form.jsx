@@ -1661,7 +1661,6 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
         joinPanelMemberResearchResponse
             .then((response) => {
                 // Some inspiring comment
-                console.log(response.status === 200);
                 if (response.status === 200) {
                     // Set a success message for the user to see
                     setFormAlerts({ success: { code: "ParticipantHasJoined" } });
