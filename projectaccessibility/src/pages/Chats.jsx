@@ -25,6 +25,8 @@ const Chats = observer(() => {
     const [searchResults, setSearchResults] = useState([]);
     const [selectedUser, setSelectedUser] = useState(null);
 
+    const [historyMessages, setHistoryMessages] = useState([]);
+
     // State for chat items
     const [chatItems, setChatItems] = useState([]); 
 
@@ -158,6 +160,7 @@ const Chats = observer(() => {
         resetSearch();
     };
 
+    // Loads your existing chats itemss
     useEffect(() => {
         const loadUserChats = async () => {
             if (!currentUser) {
@@ -177,12 +180,13 @@ const Chats = observer(() => {
                 if (responseData && Array.isArray(responseData)) {
                     const chatItems = responseData.map(chat => {
                         return {
-                            id: chat.chatId,
+                            id: chat.otherUserId,
                             avatar: img,
                             title: chat.chatName,
                             subtitle: 'Last message...',
                             date: new Date(), // Adjust as needed
-                            unread: 0
+                            unread: 0,
+                            onClick: () => selectUserFromChatList(chat.chatName),
                         };
                     });
                     console.log("Mapped chat items:", chatItems);
@@ -203,12 +207,30 @@ const Chats = observer(() => {
     
         // Make API call to load chat history between the current user and the selected user
         const response = await createEndpoint(`chats/history/${currentUserId}/${targetedChatHistory}`).get();
-        if(response.data){
-            const history = response.data;
-            setMessages(history.map(msg => ({
-                fromUser: msg.senderId,
-                message: msg.content
-            })));
+        console.log("Complete API messagesssss response:", response);
+        if(response.messages){
+            const history = response.messages;
+            const mappedMessages = history.map(msg => ({
+                position: msg.senderId === currentUser.id ? 'right' : 'left',
+                type: 'text',
+                text: msg.content,
+                date: msg.timestamp,
+            }));
+            console.log("Mapped messages:", mappedMessages); // Log the mapped messages for debugging
+            setHistoryMessages(mappedMessages);
+        }
+    };
+
+    const selectUserFromChatList = async (chatItem) => {
+        console.log("SelectedUserFrom chattt clickkeddddd");
+        try {
+            const response = await createEndpoint(`users/byEmail/${chatItem.title}`).get();
+            if (response.data) {
+                setSelectedUser(response.data); // Set the selected user
+                await loadChatHistory(chatItem.id); // Load chat history
+            }
+        } catch (error) {
+            console.error("Error selecting user from chat list:", error);
         }
     };
 
@@ -241,6 +263,14 @@ const Chats = observer(() => {
         left: '40%'  // Adjust the left position according to layout
     };
 
+    // Better is scss file but for now this will do 
+    const getChatItemStyle = (chatItem) => {
+        return selectedUser && chatItem.id === selectedUser.id
+            ? { backgroundColor: 'lightblue' } // Highlight style for the selected chat item
+            : {}; // Normal style for non-selected chat items
+    };
+    
+
     return (
         <div>
             <Container>
@@ -254,10 +284,20 @@ const Chats = observer(() => {
                         <br />
                         <ChatList
                             className='chat-list'
-                            dataSource={chatItems} />
+                            dataSource={chatItems.map(item => ({
+                                ...item,
+                                style: getChatItemStyle(item),
+                                onClick: () => selectUserFromChatList(item)
+                            }))} />
                     </Col>
                     <Col sm='8'>
                         <div style={messageListStyle} className='message-list'>
+                            <MessageList
+                                className='message-list'
+                                lockable={true}
+                                toBottomHeight={'100%'}
+                                dataSource={historyMessages}
+                            />
                             <MessageList
                                 className='message-list'
                                 lockable={true}
