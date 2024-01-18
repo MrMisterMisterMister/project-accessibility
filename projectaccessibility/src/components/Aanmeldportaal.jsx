@@ -4,18 +4,18 @@ import { useTranslation } from "react-i18next";
 import { ButtonContact } from "./Button";
 
 // Contact component
-const Contact = () => {
+const Aanmeldportaal = () => {
     // Translation
-    const { t: translate } = useTranslation("contact");
+    const { t: translate } = useTranslation("aanmeldportaal");
 
     return (
-        <section className="contact__section" id="contact">
-            <Container className="contact__section_container">
-                <div className="contact__section_wrapper">
-                    <div className="contact__section_content">
-                        <h2 className="contact__section_content__title">{translate("title")}</h2>
-                        <p className="contact__section_content__text">{translate("description")}</p>
-                        <div className="contact__section_content_button">
+        <section className="aanmeldportaal__section" id="aanmeldportaal">
+            <Container className="aanmeldportaal__section_container">
+                <div className="aanmeldportaal__section_wrapper">
+                    <div className="aanmeldportaal__section_content">
+                        <h2 className="aanmeldportaal__section_content__title">{translate("title")}</h2>
+                        <p className="aanmeldportaal__section_content__text">{translate("description")}</p>
+                        <div className="aanmeldportaal__section_content_button">
                             <ButtonContact
                                 style="signup"
                                 path="/signup"
@@ -34,4 +34,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default Aanmeldportaal;

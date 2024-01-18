@@ -6,7 +6,7 @@ import Expertise from "../components/Expertise";
 import Member from "../components/Member";
 import News from "../components/News";
 import Case from "../components/Case";
-import Contact from "../components/Contact";
+import Aanmeldportaal from "../components/Aanmeldportaal";
 
 // Home page
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
             <Member />
             <News />
             <Case />
-            <Contact />
+            <Aanmeldportaal />
             <Footer />
         </>
     );
