@@ -13,10 +13,10 @@ const Contact = () => {
 
     return (
         <>
-            <Header />
-            <main className="about__page">
-                <div className="about__page_banner">
-                    <Shape section="about" position={["right", "left"]} />
+             <Header />
+            <div className="contact__page">
+                <div className="contact__page_banner">
+                    <Shape section="contact" position={["left", "right"]} />
                 </div>
                 <Container className="about__page_container">
                     <section className="contact__section" id="contact">
@@ -41,7 +41,7 @@ const Contact = () => {
                         </Container>
                     </section>
                 </Container>
-            </main>
+            </div>
             <Footer />
         </>
     );

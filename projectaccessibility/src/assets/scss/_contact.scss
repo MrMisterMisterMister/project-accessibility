@@ -64,10 +64,32 @@ margin-bottom: 1.5rem;
     position: relative;
 
     .contact__page_banner {
+        height: 120px;
+        background-color: variables.$blackrussian;
         position: relative;
         overflow: hidden;
-        background-color: variables.$blackrussian;
-        height: 120px;
+    
+        }
+    
+        .about__page_container {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+            color: variables.$black;
+    
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+    
+            h2 {
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
+            }
+    
+            p {
+                margin-bottom: 1rem;
+            }
+        }
     }
 
     .contact__page_container {
@@ -87,4 +109,3 @@ margin-bottom: 1.5rem;
             color: variables.$black;
         }
     }
-}
