@@ -1,23 +1,21 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { createEndpoint } from "../api/axiosClient";
-import { ButtonGoogleSignIn, ButtonSubmit } from "../components/Button";
+import { ButtonSubmit } from "../components/Button";
 import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
+import PropTypes from "prop-types";
 
 // Form for login page
 const FormLogin = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // user store
     const { userStore, authStore } = useStore();
-
-    // To handle navigation
-    const navigate = useNavigate();
 
     // State hook to capture and manage form validation errors
     // Each field's error will be stored in this object
@@ -57,11 +55,6 @@ const FormLogin = observer(() => {
                     userStore.getUser();
                     // Reset form
                     reset();
-                    // 1s delay
-                    setTimeout(() => {
-                        // Redirect to the correct page
-                        navigate("/dashboard", { replace: true });
-                    }, 1500);
                 }
             })
             .catch((error) => {
@@ -86,6 +79,7 @@ const FormLogin = observer(() => {
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
+                    data-testid="emailInput"
                     {...register("email", {
                         required: {
                             value: true,
@@ -104,6 +98,7 @@ const FormLogin = observer(() => {
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
+                    data-testid="passwordInput"
                     {...register("password", {
                         required: {
                             value: true,
@@ -171,8 +166,8 @@ const FormSignup = () => {
     const signupSubmit = async (formData) => {
         // Define endpoint paths based on the selected user type
         const endPoint = {
-            1: "panelmember/",
-            2: "company/"
+            1: "panelmember",
+            2: "company"
         };
 
         // Make the POST call using axios post
@@ -327,9 +322,9 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.name ? "error" : ""}`}
+                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
                                     type="text"
-                                    {...register("name", {
+                                    {...register("companyName", {
                                         required: {
                                             value: true,
                                             message: translate(
@@ -338,15 +333,15 @@ const FormSignup = () => {
                                         }
                                     })}
                                     aria-invalid={
-                                        errors.name ? "true" : "false"
+                                        errors.companyName ? "true" : "false"
                                     }
                                     placeholder={translate(
                                         "companyNamePlaceholder"
                                     )}
                                 />
-                                {errors.name && (
+                                {errors.companyName && (
                                     <div className="form__error">
-                                        {errors.name.message}
+                                        {errors.companyName.message}
                                     </div>
                                 )}
                             </Col>
@@ -439,11 +434,6 @@ const FormSignup = () => {
                     text={translate("signup.buttonText")}
                 />
             </Form>
-            {selectedUserType === "1" && (
-                <div style={{ marginTop: "10px" }}>
-                    <ButtonGoogleSignIn />
-                </div>
-            )}
         </>
     );
 };
@@ -452,7 +442,7 @@ const FormSignup = () => {
 // Form to update email
 // Need to catch the user type somewhere
 // Also need to get their guid
-const FormUserEmailUpdate = () => {
+const FormUserEmailUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -471,9 +461,7 @@ const FormUserEmailUpdate = () => {
         // Make the POST call using axios post
         // The guid still needs to be gotten, so it's for now not working
         // Test the post in postman instead with guid
-        const updateEmailResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData);// Still need to be worked on
+        const updateEmailResponse = createEndpoint("users").post(userId, formData);
 
         // Handle the response from the POST call
         updateEmailResponse
@@ -560,9 +548,14 @@ const FormUserEmailUpdate = () => {
     );
 };
 
+// prop types for updating email
+FormUserEmailUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
 // TODO
 // Form to update password
-const FormUserPasswordUpdate = () => {
+const FormUserPasswordUpdate = ({ userId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
@@ -581,9 +574,8 @@ const FormUserPasswordUpdate = () => {
     const passwordUpdateSubmit = async (formData) => {
         // Ditto like I said above
         // Make the POST call using axios post
-        const updatePasswordResponse =
-            createEndpoint("users/{their guid}")
-                .post(formData); // Still need to be worked on
+        // PUT request to update password
+        const updatePasswordResponse = createEndpoint("users").put(userId, formData);
 
         // Handle the response from the POST call
         updatePasswordResponse
@@ -702,15 +694,27 @@ const FormUserPasswordUpdate = () => {
     );
 };
 
-// TODO
-// Form for panel members to update their information
-const FormPanelMemberProfileUpdate = () => {
+FormUserPasswordUpdate.propTypes = {
+    userId: PropTypes.string.isRequired
+};
+
+// This form is for Panel Members to update their profile
+// PanelMemberId is the only prop it needs, so it can determine the correct endpoint
+// Also renders the output in the frontend
+// This does not show what the previous values are, users can simply click on their profile instead
+const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // This state manages the form alerts
+    // It handles both the errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Form handling using useForm hook from React Hook Forms
+    // This makes it easier to work with forms
     const {
         register,
         handleSubmit,
@@ -718,30 +722,32 @@ const FormPanelMemberProfileUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Panel Member's profile
     const panelMemberProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        const updatePanelMemberProfileResponse =
-            createEndpoint("panelmembers/{their guid}")
-                .post(formData); // Still need to be worked on
+        // Use the createEndpoint method to initiate a PUT request
+        // This updates the profile of a Panel Member with the specified id
+        const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(panelMemberId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updatePanelMemberProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Check if the response code is 200 (ok)
+                // If so, create a success alert and reset the form
+                if (response.status === 200) {
+                    // Set message and reset the form
+                    setFormAlerts({ success: { code: "PanelMemberProfileUpdated" } });
+                    reset();
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and set it inside the form alert state
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -793,28 +799,6 @@ const FormPanelMemberProfileUpdate = () => {
                         {errors.lastName && (
                             <div className="form__error">
                                 {errors.lastName.message}
-                            </div>
-                        )}
-                    </Col>
-                    <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("phoneLabel")}
-                        </Form.Label>
-                        <Form.Control
-                            className={`form__text_field ${errors.phone ? "error" : ""}`}
-                            type="phone"
-                            {...register("phone", {
-                                required: {
-                                    value: true,
-                                    message: translate("error.phoneRequired")
-                                }
-                            })}
-                            aria-invalid={errors.phone ? "true" : "false"}
-                            placeholder={translate("phonePlaceholder")}
-                        />
-                        {errors.phone && (
-                            <div className="form__error">
-                                {errors.phone.message}
                             </div>
                         )}
                     </Col>
@@ -886,23 +870,23 @@ const FormPanelMemberProfileUpdate = () => {
                     </Col>
                     <Col xs={12} md={6}>
                         <Form.Label className="form__label">
-                            {translate("provinceLabel")}
+                            {translate("cityLabel")}
                         </Form.Label>
                         <Form.Control
-                            className={`form__text_field ${errors.province ? "error" : ""}`}
+                            className={`form__text_field ${errors.city ? "error" : ""}`}
                             type="text"
-                            {...register("province", {
+                            {...register("city", {
                                 required: {
                                     value: true,
-                                    message: translate("error.provinceRequired")
+                                    message: translate("error.cityRequired")
                                 }
                             })}
-                            aria-invalid={errors.province ? "true" : "false"}
-                            placeholder={translate("provincePlaceholder")}
+                            aria-invalid={errors.city ? "true" : "false"}
+                            placeholder={translate("cityPlaceholder")}
                         />
-                        {errors.province && (
+                        {errors.city && (
                             <div className="form__error">
-                                {errors.province.message}
+                                {errors.city.message}
                             </div>
                         )}
                     </Col>
@@ -941,15 +925,26 @@ const FormPanelMemberProfileUpdate = () => {
     );
 };
 
-// TODO
-// Form for company to update their page info
-const FormCompanyProfileUpdate = () => {
+// Prop types for FormPanelMemberProfileUpdate
+FormPanelMemberProfileUpdate.propTypes = {
+    panelMemberId: PropTypes.string.isRequired
+};
+
+// This form is for updating a company's profile
+// It configurates the correct endpoint based on the companyId
+// Also renders the form for the user to see
+const FormCompanyProfileUpdate = ({ companyId }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // Handling for forms with React Hook Forms
+    // Makes working with forms so much easier
     const {
         register,
         handleSubmit,
@@ -957,30 +952,33 @@ const FormCompanyProfileUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
+    // Handles the form submission for updating a Company's profile
     const companyProfileUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        const updateCompanyProfileResponse =
-            createEndpoint("companies/{their guid}")
-                .post(formData); // Still need to be worked on
+        // Make a PUT request to the correct endpoint
+        // That way the company who is updating their profile actually sees the changes
+        const updateCompanyProfileResponse = createEndpoint("companies").put(companyId, formData);
 
-        // Handle the response from the POST call
+        // Handles the response from the PUT request
         updateCompanyProfileResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Checks if the response code is 200 (Ok)
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "CompanyProfileUpdated" } });
+                    // Reset form
+                    reset();
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -1004,7 +1002,6 @@ const FormCompanyProfileUpdate = () => {
                             })}
                             aria-invalid={errors.kvk ? "true" : "false"}
                             placeholder={translate("kvkPlaceholder")}
-                            disabled
                         />
                         {errors.kvk && (
                             <div className="form__error">
@@ -1207,12 +1204,25 @@ const FormCompanyProfileUpdate = () => {
     );
 };
 
-// TODO
-// form for company when they create a new reearch
-const FormCompanyResearchCreate = () => {
+// PropTypes for FormCompanyProfileUpdate
+// Requires companyId as mandatory string prop
+FormCompanyProfileUpdate.propTypes = {
+    companyId: PropTypes.string.isRequired
+};
+
+// form for company when they create a new research
+// send post to endpoint
+const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook forms
     const {
         register,
         handleSubmit,
@@ -1220,28 +1230,34 @@ const FormCompanyResearchCreate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
+    // Handles form submission creating research
     const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
+        // POST request to correct endpoint
+        // configurate some shit
+        const createCompanyResearchResponse = createEndpoint("researches").post(formData);
 
         // Handle the response from the POST call
         createCompanyResearchResponse
             .then((response) => {
-                // Some inspiring comment
-                console.log(response);
-                reset();
+                // Check if success
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "ResearchHasBeenCreated" } });
+                    // Reset form
+                    reset();
+                    setRefetchData(true);
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Error catching and then displaying it
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
     // Need to configurate the translations
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
@@ -1249,6 +1265,12 @@ const FormCompanyResearchCreate = () => {
                 onSubmit={handleSubmit(companyResearchCreateSubmit)}
                 noValidate
             >
+                <Form.Control
+                    type="hidden"
+                    {...register("organizerId", {
+                        value: organizerId
+                    })}
+                />
                 <Row>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1323,15 +1345,21 @@ const FormCompanyResearchCreate = () => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
@@ -1390,16 +1418,29 @@ const FormCompanyResearchCreate = () => {
     );
 };
 
-// TODO
-// So for this form, it's basically identical to the create research one
-// only thing that is different is that this one has values of the research someone is editing
-// need to make a get request to get the specific research and fill in the values
-// so this one is not working yet
-// since we dont have the endpoints al all configurated
-const FormCompanyResearchUpdate = () => {
+// Prop type for form comany creating researches
+// just need to make sure there is a company id
+FormCompanyResearchCreate.propTypes = {
+    organizerId: PropTypes.string.isRequired,
+    setRefetchData: PropTypes.func
+};
+
+// To update research
+// Put request with the research id
+// and the new form data
+// for company
+const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
     // Translation
     const { t: translate } = useTranslation("form");
 
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form
     const {
         register,
         handleSubmit,
@@ -1407,33 +1448,40 @@ const FormCompanyResearchUpdate = () => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    const companyResearchCreateSubmit = async (formData) => {
-        // Axios
-        const createCompanyResearchResponse =
-            createEndpoint("lol")
-                .post(formData);
+    // Handle submission for updating research
+    const companyResearchUpdateSubmit = async (formData) => {
+        // Send a PUT request
+        // Afterwards backend handles the rest
+        const createCompanyResearchResponse = createEndpoint("researches").put(researchId, formData);
 
-        // Handle the response from the POST call
+        // Handle the response from the PUT request
         createCompanyResearchResponse
             .then((response) => {
-                // Some inspiring comment
-                console.log(response);
-                reset();
+                // Checks if the response code is 200 (Ok)
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    // TODO
+                    setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
+                    // Reset form
+                    reset();
+                    setRefetchData(true);
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and save it inside the form alert for errors
+                // That way it can be displayed later to the user in the frontend
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
-    // Need to configurate the translations
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__research"
                 acceptCharset="UTF-8"
                 method="post"
-                onSubmit={handleSubmit(companyResearchCreateSubmit)}
+                onSubmit={handleSubmit(companyResearchUpdateSubmit)}
                 noValidate
             >
                 <Row>
@@ -1510,15 +1558,21 @@ const FormCompanyResearchUpdate = () => {
                         </Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
-                            type="text"
+                            type="number"
                             {...register("reward", {
                                 required: {
                                     value: true,
                                     message: translate("error.rewardRequired")
+                                },
+                                validate: {
+                                    notBelowZero: (value) =>
+                                        value >= 0 || translate("error.rewardBelowZero")
                                 }
                             })}
                             aria-invalid={errors.reward ? "true" : "false"}
                             placeholder={translate("rewardPlaceholder")}
+                            min="0"
+                            step="0.01"
                         />
                         {errors.reward && (
                             <div className="form__error">
@@ -1575,6 +1629,297 @@ const FormCompanyResearchUpdate = () => {
             </Form>
         </>
     );
+};
+
+// prop types for company research update
+FormCompanyResearchUpdate.propTypes = {
+    researchId: PropTypes.number,
+    setRefetchData: PropTypes.func
+};
+
+// TODO
+// creating a form with just input type hideen and the user id
+// send to backend that adds the id to the research as participant
+// something like that
+const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // form values in hook
+    // so react no warning
+    const [formValues, setFormValues] = useState({
+        title: "",
+        description: "",
+        date: "",
+        reward: "",
+        organizerName: "",
+        type: "",
+        category: ""
+    });
+
+    // React Hook forms
+    const { handleSubmit } = useForm();
+
+    // Handle submittion for when a panel member joins a research
+    const panelMemberResearchJoinSubmit = async () => {
+        // Axios
+        const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
+
+        // Handle the response from the POST call
+        joinPanelMemberResearchResponse
+            .then((response) => {
+                // Some inspiring comment
+                if (response.status === 200) {
+                    // Set a success message for the user to see
+                    setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                    setRefetchData(true);
+                }
+            })
+            .catch((error) => {
+                // Catch the error and display it
+                setFormAlerts({ error: error.response?.data });
+            });
+    };
+
+    // update form values
+    // now react will be happy and not sad
+    useEffect(() => {
+        setFormValues({
+            title: data.title || "",
+            description: data.description || "",
+            date: data.date ? new Date(data.date).toISOString().split("T")[0] : "",
+            reward: data.reward ? Number(data.reward).toFixed(2) : "",
+            organizerName: data.organizerName || "",
+            type: data.type || "",
+            category: data.category || ""
+        });
+    }, [data]);
+
+    // I need to do a get to get the research information
+    // Then need to load in the values inside here
+    // Also need to put the id of the panelmember inside here, so it will be submitted via the form
+    // Then magic..
+    return (
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__research"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberResearchJoinSubmit)}
+                noValidate
+            >
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("titleLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={formValues.title}
+                            placeholder={translate("titlePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("descriptionLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            as="textarea"
+                            value={formValues.description}
+                            placeholder={translate("descriptionPlaceholder")}
+                            rows={5}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("dateLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="date"
+                            value={formValues.date}
+                            placeholder={translate("datePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("rewardLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={formValues.reward}
+                            placeholder={translate("rewardPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("organizerLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={formValues.organizerName}
+                            placeholder={translate("organizerPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("typeLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={formValues.type}
+                            placeholder={translate("typePlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("categoryLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="text"
+                            value={formValues.category}
+                            placeholder={translate("categoryPlaceholder")}
+                            readOnly
+                        />
+                    </Col>
+                </Row>
+                <ButtonSubmit text={translate("research.joinButton")} />
+                {
+                    /*
+                    Another button to go back maybe?
+                    */
+                }
+            </Form>
+        </>
+    );
+};
+
+// prop types for ye..
+// was too lazy so just put it all string
+FormPanelMemberResearchJoin.propTypes = {
+    researchId: PropTypes.number,
+    data: PropTypes.shape({
+        title: PropTypes.string,
+        description: PropTypes.string,
+        date: PropTypes.string,
+        reward: PropTypes.number,
+        organizerName: PropTypes.string,
+        type: PropTypes.string,
+        category: PropTypes.string
+    }),
+    setRefetchData: PropTypes.func
+};
+
+// Form to update the disabilities of a panelmember
+const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    // State for managing the form alerts such as errors and success
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React Hook forms
+    const { register, handleSubmit } = useForm();
+
+    // Handles the form submission for updating the panel member disabilities
+    const panelMemberDisabilityUpdateSubmit = async (formData) => {
+        // First delete all the previous disabilities of the panel member
+        // So it will add all the selected disabilities and not cause much errors
+        await createEndpoint("panelmemberdisabilities/remove-all-panelmember-disabilities").delete("");
+
+        // Get the selected disability id from the form data
+        // Then set it inside the hook
+        const selectedDisabilityIds = Object.keys(formData.disability).filter(key => formData.disability[key]); // easy way to check if the checkbox is checked
+
+        // Loop over all the selected disabilities that the     user has chosen
+        // Then create a post request to add each disability to the panel member
+        selectedDisabilityIds.forEach(async (id) => {
+            // Make a post request to add the disability with axios
+            await createEndpoint(`panelmemberdisabilities/add-disability/${id}`).post();
+        });
+
+        // Set success message
+        setFormAlerts({ success: { code: "DisabilityHasBeenUpdated" } });
+
+        // Reset the alerts
+        setTimeout(() => {
+            setFormAlerts({ errors: [], success: [] });
+        }, 2500);
+    };
+
+    return (
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__settings"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(panelMemberDisabilityUpdateSubmit)}
+                noValidate
+            >
+                <div className="form__disability_container">
+                    <h3 className="form__disability_title">
+                        {translate("settings.disability.title")}
+                    </h3>
+                    {disabilities.length > 0
+                        ? disabilities.map(({ id, name, description }, index) => (
+                            <div className="form__disability_option" key={index}>
+                                <Form.Check.Input
+                                    className="form__disability_option__checkbox"
+                                    type="checkbox"
+                                    {...register(`disability[${id}]`)}
+                                    id={`disability-${id}`}
+                                />
+                                <Form.Check.Label
+                                    className="form__disability_option__label"
+                                    title={description}
+                                    aria-label={name}
+                                    htmlFor={`disability-${id}`}
+                                >
+                                    {name}
+                                </Form.Check.Label>
+                            </div>
+                        ))
+                        : <p className="form__disability_text">{translate("settings.disability.emptyList")}</p>
+                    }
+                </div>
+                <ButtonSubmit text={translate("settings.buttonText")} isDisabled={disabilities.length <= 0} />
+            </Form>
+        </>
+    );
+};
+
+// prop types for panelmember disability update
+FormPanelMemberDisabilityUpdate.propTypes = {
+    disabilities: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired,
+            description: PropTypes.string.isRequired
+        })
+    )
 };
 
 export {
@@ -1585,5 +1930,7 @@ export {
     FormPanelMemberProfileUpdate,
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
-    FormCompanyResearchUpdate
+    FormCompanyResearchUpdate,
+    FormPanelMemberResearchJoin,
+    FormPanelMemberDisabilityUpdate
 };

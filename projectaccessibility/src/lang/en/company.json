@@ -1,5 +1,18 @@
 {
     "pageTitle": "Companies",
     "tableView": "Table view",
-    "cardView": "Card view"
+    "cardView": "Card view",
+    "labels": {
+        "id": "#",
+        "kvk": "KvK",
+        "companyName": "Company Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "address": "Address",
+        "postalCode": "Postal Code",
+        "province": "Province",
+        "country": "Country",
+        "contactPerson": "Contact Person",
+        "websiteUrl": "Website"
+    }
 }

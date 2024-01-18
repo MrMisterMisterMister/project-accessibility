@@ -11,6 +11,9 @@ import {
     ChatLeftDots
 } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
+import { useStore } from "../stores/store";
+import { createEndpoint } from "../api/axiosClient";
+import { observer } from "mobx-react-lite";
 import { NavDashboardBottomNav, NavDashboardTopNav } from "../components/Nav";
 import PanelMember from "./PanelMember";
 import Company from "./Company";
@@ -19,18 +22,19 @@ import Chats from "./Chats";
 import Account from "./Account";
 import Settings from "./Settings";
 import Logout from "./Logout";
-import { useStore } from "../stores/store";
-import { createEndpoint } from "../api/axiosClient";
-import { observer } from "mobx-react-lite";
 
 // Dashboard page
 const Dashboard = observer(() => {
     // Translation
     const { t: translate } = useTranslation("dashboard");
+
+    // Get the user and GetUser from userstore
     const { userStore: { user, getUser } } = useStore();
 
+    // Hook to store the current user in
     const [currentUser, setCurrentUser] = useState({});
 
+    // fetches and updates user if the user is changed
     useEffect(() => {
         const getData = async () => {
             // If user is not available or needs to be updated, fetch it
@@ -48,29 +52,30 @@ const Dashboard = observer(() => {
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
+            page: <><h1 className="dashboard__page_title">Dashboard</h1><img className="dashboard__page_image" src="/img/clodsire.gif" alt="Clodsire that is bouncing up and down" /></>,
             icon: <BarChart />,
-            title: translate("dashboard"),
+            title: translate("nav.dashboard"),
             active: true
         },
         {
             page: <PanelMember />,
             icon: <Person />,
-            title: translate("panelmember")
+            title: translate("nav.panelmember")
         },
         {
             page: <Company />,
             icon: <Buildings />,
-            title: translate("company")
+            title: translate("nav.company")
         },
         {
             page: <Research />,
             icon: <Book />,
-            title: translate("research")
+            title: translate("nav.research")
         },
         {
             page: <Chats userName={currentUser.userName} />,
             icon: <ChatLeftDots />,
-            title: translate("chats")
+            title: translate("nav.chats")
         }
     ]);
 
@@ -80,17 +85,17 @@ const Dashboard = observer(() => {
         {
             page: <Account />,
             icon: <PersonCircle />,
-            label: translate("profile")
+            label: translate("nav.profile")
         },
         {
             page: <Settings />,
             icon: <Gear />,
-            label: translate("settings")
+            label: translate("nav.settings")
         },
         {
             page: <Logout />,
             icon: <BoxArrowRight />,
-            label: translate("signout")
+            label: translate("nav.signout")
         }
     ];
 
@@ -98,7 +103,7 @@ const Dashboard = observer(() => {
     const [isScrolling, setIsScrolling] = useState(false);
 
     // State to keep track of the page that needs to be rendered based on what navItem is clicked
-    const [pageToRender, setPageToRender] = useState(null);
+    const [pageToRender, setPageToRender] = useState(navItems[0].page || null); // temp
 
     // This effect checks if the nav should be fixed to stay visible while the user is scrolling
     useEffect(() => {

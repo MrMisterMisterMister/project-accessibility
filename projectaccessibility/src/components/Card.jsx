@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { DateFormatter } from "./Formatter";
 import PropTypes from "prop-types";
 
@@ -105,6 +106,9 @@ CardCase.propTypes = {
 
 // Panelmembers in a card component
 const CardPanelMemberView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("panelmember");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -117,29 +121,53 @@ const CardPanelMemberView = ({ data }) => {
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">
+                                <h2 className="card__user_title">
                                     {panelmember.firstName}{" "}
                                     {panelmember.lastName}
-                                </h4>
+                                </h2>
                             </div>
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Guardian:
+                                        {translate("labels.email")}:
                                     </span>
-                                    {panelmember.guardian}
+                                    {panelmember.email}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
-                                    </span>
-                                    {panelmember.zipcode}
-                                </p>
-                                <p>
-                                    <span className="card__user_prop_item">
-                                        Date of Birth:
+                                        {translate("labels.dateOfBirth")}:
                                     </span>
                                     {DateFormatter.format(new Date(panelmember.dateOfBirth))}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
+                                    </span>
+                                    {panelmember.address}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.postalCode")}:
+                                    </span>
+                                    {panelmember.postalCode}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.city")}:
+                                    </span>
+                                    {panelmember.city}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.country")}:
+                                    </span>
+                                    {panelmember.country}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.disability")}:
+                                    </span>
+                                    {panelmember.disabilitiesName.join(", ")}
                                 </p>
                             </div>
                         </div>
@@ -157,6 +185,9 @@ CardPanelMemberView.propTypes = {
 
 // Panelmembers in a card component
 const CardCompanyView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("company");
+
     return (
         <div className="user__card">
             <div className="user__card_group">
@@ -164,14 +195,14 @@ const CardCompanyView = ({ data }) => {
                     <div className="card__user_item" key={company.id}>
                         <img
                             className="card__user_img"
-                            src="/img/clodsire.gif"
-                            alt="Gif of Clodsire bouncing up and down"
+                            src="/img/placeholder.jpg"
+                            alt="Picture of Clodsire"
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h4 className="card__user_title">
+                                <h2 className="card__user_title">
                                     {company.companyName}
-                                </h4>
+                                </h2>
                                 <span className="card__user_website">
                                     {company.websiteUrl}
                                 </span>
@@ -179,37 +210,49 @@ const CardCompanyView = ({ data }) => {
                             <div className="card__user_props">
                                 <p>
                                     <span className="card__user_prop_item">
-                                        KvK:
+                                        {translate("labels.kvk")}:
                                     </span>
                                     {company.kvk}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Adres:
+                                        {translate("labels.email")}:
+                                    </span>
+                                    {company.email}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.phone")}:
+                                    </span>
+                                    {company.phone}
+                                </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.address")}:
                                     </span>
                                     {company.address}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Postal Code:
+                                        {translate("labels.postalCode")}:
                                     </span>
                                     {company.postalCode}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Province:
+                                        {translate("labels.province")}:
                                     </span>
                                     {company.province}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Country:
+                                        {translate("labels.country")}:
                                     </span>
                                     {company.country}
                                 </p>
                                 <p>
                                     <span className="card__user_prop_item">
-                                        Contact:
+                                        {translate("labels.contactPerson")}:
                                     </span>
                                     {company.contactPerson}
                                 </p>

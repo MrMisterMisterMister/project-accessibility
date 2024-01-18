@@ -7,10 +7,15 @@
         "buttonText": "Sign up"
     },
     "settings": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "disability": {
+            "title": "Please provide information about your disability:",
+            "emptyList": "There are no disabilities available."
+        }
     },
     "research": {
-        "buttonText": "Submit"
+        "buttonText": "Submit",
+        "joinButton": "Join"
     },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
@@ -43,17 +48,17 @@
     "companyLabel": "Company Information",
     "companyPlaceholder": "Company information",
     "kvkLabel": "Chamber of Commerce Number",
-    "kvkPlaceholder": "Your Chamber of Commerce number",
+    "kvkPlaceholder": "Chamber of Commerce number",
     "companyNameLabel": "Company Name",
     "companyNamePlaceholder": "Company name",
     "phoneLabel": "Phone Number",
-    "phonePlaceholder": "Your phone number",
+    "phonePlaceholder": "Phone number",
     "dateOfBirthLabel": "Date of Birth",
-    "dateOfBirthPlaceholder": "Your date of birth",
+    "dateOfBirthPlaceholder": "Date of birth",
     "addressLabel": "Address",
-    "addressPlaceholder": "Your address",
+    "addressPlaceholder": "Address",
     "postalCodeLabel": "Postal Code",
-    "postalCodePlaceholder": "Your postal code",
+    "postalCodePlaceholder": "Postal code",
     "countryLabel": "Country",
     "countryOptions": {
         "placeholder": "Select a country",
@@ -62,9 +67,11 @@
     "contactPersonLabel": "Contact person",
     "contactPersonPlaceholder": "Contact person",
     "provinceLabel": "Province",
-    "provincePlaceholder": "Your province",
+    "provincePlaceholder": "Province",
+    "cityLabel": "City",
+    "cityPlaceholder": "Your city",
     "websiteUrlLabel": "Website URL",
-    "websiteUrlPlaceholder": "Your website URL",
+    "websiteUrlPlaceholder": "Website url",
     "titleLabel": "Title",
     "titlePlaceholder": "Title",
     "descriptionLabel": "Description",
@@ -77,6 +84,8 @@
     "typePlaceholder": "Type",
     "categoryLabel": "Category",
     "categoryPlaceholder": "Category",
+    "organizerLabel": "Organizer",
+    "organizerPlaceholder": "Organizer",
     "error": {
         "emailRequired": "* Please enter your email address",
         "emailPattern": "* Please enter a valid email address",
@@ -94,6 +103,7 @@
         "passwordNewRequired": "* Please enter your new password",
         "passwordConfirmNewRequired": "* Please enter your new password again",
         "passwordConfirmNewIsMatch": "* New password confirmation does not match with the new password",
+        "rewardBelowZero": "* Reward cannot be lower than 0",
         "userTypeRequired": "* Please select a user type",
         "firstNameRequired": "* Please enter your First Name",
         "lastNameRequired": "* Please enter your Last Name",
@@ -106,6 +116,7 @@
         "countryRequired": "* Please select a country",
         "contactPersonRequired": "* Please enter your contact person",
         "provinceRequired": "* Please enter your province",
+        "cityRequired": "* Please enter your city",
         "websiteUrlRequired": "* Please enter your website URL",
         "titleRequired": "* Please enter your title",
         "descriptionRequired": "* Please enter your description",

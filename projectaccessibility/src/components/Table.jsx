@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { NumberFormatter, DateFormatter } from "./Formatter";
 import { ButtonMuted } from "./Button";
 import PropTypes from "prop-types";
@@ -29,6 +30,9 @@ TableHead.propTypes = {
 
 // Some general body view
 const TableBody = ({ tableData, columns }) => {
+    // Translation
+    const { t: translate } = useTranslation("table");
+
     return (
         <tbody className="table__general_body">
             {tableData.length > 0
@@ -39,7 +43,7 @@ const TableBody = ({ tableData, columns }) => {
                                 <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
                                     {
                                         actions
-                                            ? actions(/* need to put in the id here, most likely row */)
+                                            ? actions(row.id)
                                             : Array.isArray(accessor)
                                                 ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
                                                 : format
@@ -54,7 +58,7 @@ const TableBody = ({ tableData, columns }) => {
                 : (
                     <tr className="table__general_item">
                         <td className="table__general_item__cell" colSpan={columns.length}>
-                            No data available.
+                            {translate("noDataAvailable")}
                         </td>
                     </tr>
                 )
@@ -82,18 +86,21 @@ TableBody.propTypes = {
 // For now it's hard coded, only thing that needs to be changed is adding the props
 // Afterwards it's just looping over it and done
 const TablePanelMemberView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("panelmember");
+
     // Make array to define the heading and also the accessor for the data
     // Some of these fields are empty, our database needs to be updated to add these columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Name", accessor: ["firstName", "lastName"] },
-        { label: "Email", accessor: "email" },
-        { label: "Phone", accessor: "phone" },
-        { label: "Date of Birth", accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: "Address", accessor: "address" },
-        { label: "Postal Code", accessor: "postalCode" },
-        { label: "Province", accessor: "province" },
-        { label: "Country", accessor: "country" }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.name"), accessor: ["firstName", "lastName"] },
+        { label: translate("labels.email"), accessor: "email" },
+        { label: translate("labels.dateOfBirth"), accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.address"), accessor: "address" },
+        { label: translate("labels.postalCode"), accessor: "postalCode" },
+        { label: translate("labels.city"), accessor: "city" },
+        { label: translate("labels.country"), accessor: "country" },
+        { label: translate("labels.disability"), accessor: "disabilitiesName", format: (names) => names.join(", ") } // The default doesn't add space, so need to use format
     ];
 
     // These items need to be looped over
@@ -115,19 +122,22 @@ TablePanelMemberView.propTypes = {
 // Needs to be looped over with the data from get to companies
 // I am very lazy to do it, so someone else do it
 const TableCompanyView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("company");
+
     // The columns for table company
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "KvK", accessor: "kvk" },
-        { label: "Company Name", accessor: "companyName" },
-        { label: "Email", accessor: "email" },
-        { label: "Phone", accessor: "phone" },
-        { label: "Address", accessor: "address" },
-        { label: "Postal Code", accessor: "postalCode" },
-        { label: "Province", accessor: "province" },
-        { label: "Country", accessor: "country" },
-        { label: "Contact Person", accessor: "contactPerson" },
-        { label: "Website", accessor: "websiteUrl" }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.kvk"), accessor: "kvk" },
+        { label: translate("labels.companyName"), accessor: "companyName" },
+        { label: translate("labels.email"), accessor: "email" },
+        { label: translate("labels.phone"), accessor: "phone" },
+        { label: translate("labels.address"), accessor: "address" },
+        { label: translate("labels.postalCode"), accessor: "postalCode" },
+        { label: translate("labels.province"), accessor: "province" },
+        { label: translate("labels.country"), accessor: "country" },
+        { label: translate("labels.contactPerson"), accessor: "contactPerson" },
+        { label: translate("labels.websiteUrl"), accessor: "websiteUrl" }
     ];
 
     return (
@@ -145,59 +155,40 @@ TableCompanyView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
-// TODO
-// still need to be updated. wip
-const TablePanelMemberResearchView = () => {
+// table view for panel member
+// this view has their researches in it
+// ye..
+const TablePanelMemberResearchView = ({ data, onLeave }) => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     // columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date" },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" },
-        { label: "Status", accessor: "status" }
-    ];
-
-    // testdata
-    const test = [
-        {
-            id: 42,
-            title: "Exploring new horizons",
-            description: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-            date: "2024-03-15",
-            reward: 75,
-            category: "Adventure, Discovery",
-            status: "Inactive"
-        },
-        {
-            id: 2,
-            title: "Coding challenge",
-            description: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-            date: "2024-03-01",
-            reward: 120,
-            category: "Programming",
-            status: "Active"
-        },
-        {
-            id: 9,
-            title: "Photography contest",
-            description: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            date: "2024-03-22",
-            reward: 60,
-            category: "Photography",
-            status: "Active"
-        }
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.type"), accessor: "type" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.organizer"), accessor: "organizerName" },
+        { label: translate("labels.actions"), actions: (id) => (<ButtonMuted text={translate("labels.leave")} onAction={() => onLeave(id)} />) }
     ];
 
     return (
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={test} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
+};
+
+// Prop type for the panelmember research view
+TablePanelMemberResearchView.propTypes = {
+    data: PropTypes.array.isRequired,
+    onLeave: PropTypes.func
 };
 
 // TODO
@@ -205,47 +196,28 @@ const TablePanelMemberResearchView = () => {
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
 // Will update it later
-const TableCompanyResearchView = ({ handleView }) => {
+const TableCompanyResearchView = ({ data, onEdit, onDelete }) => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
     // columns for the company research view
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Description", accessor: "description" },
-        { label: "Date", accessor: "date" },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" },
-        { label: "Status", accessor: "status" },
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.type"), accessor: "type" },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
         {
-            label: "Actions",
+            label: translate("labels.actions"),
             colSpan: 2,
-            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (<>
-                <ButtonMuted text="Edit" onAction={() => handleView("editResearch")} />
-                <ButtonMuted text="Delete" />
-            </>
+            actions: (id) => (
+                <>
+                    <ButtonMuted text={translate("labels.edit")} onAction={() => onEdit("editResearch", id)} />
+                    <ButtonMuted text={translate("labels.delete")} onAction={() => onDelete(id)} />
+                </>
             )
-        }
-    ];
-
-    // some test data
-    // will be removed later
-    const testData = [
-        {
-            id: 1,
-            title: "Research for my kid",
-            description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-            date: "2024-02-06",
-            reward: 50,
-            category: "Some, Random, Text",
-            status: "Active"
-        },
-        {
-            id: 2,
-            title: "My disabled kid can't be this cute",
-            description: "My description",
-            date: "2024-02-29",
-            reward: 90,
-            category: "カラミンゴ",
-            status: "Active"
         }
     ];
 
@@ -253,7 +225,7 @@ const TableCompanyResearchView = ({ handleView }) => {
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={testData} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
@@ -261,51 +233,68 @@ const TableCompanyResearchView = ({ handleView }) => {
 
 // Prop type for the company table view
 TableCompanyResearchView.propTypes = {
-    handleView: PropTypes.func
+    data: PropTypes.array.isRequired,
+    onEdit: PropTypes.func,
+    onDelete: PropTypes.func
+};
+
+// This is for all the researches that an admin can see
+const TableAdminResearchView = ({ data }) => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
+    // columns
+    const columns = [
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.description"), accessor: "description" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.type"), accessor: "type" },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.organizer"), accessor: "organizerName" }
+    ];
+
+    return (
+        <div className="table__responsive">
+            <table className="table__general table__hover">
+                <TableHead columns={columns} />
+                <TableBody columns={columns} tableData={data} />
+            </table>
+        </div>
+    );
+};
+
+// Prop type for the admin table view
+TableAdminResearchView.propTypes = {
+    data: PropTypes.array.isRequired
 };
 
 // TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
-const TableAvailableResearchView = () => {
+const TableAvailableResearchView = ({ data, onView, onJoin }) => {
+    // Translation
+    const { t: translate } = useTranslation("research");
+
+    // columns
     const columns = [
-        { label: "#", accessor: "id" },
-        { label: "Title", accessor: "title" },
-        { label: "Type", accessor: "type" },
-        { label: "Date", accessor: "date" },
-        { label: "Reward", accessor: "reward", format: (number) => NumberFormatter.format(number) },
-        { label: "Category", accessor: "category" },
-        { label: "Organizer", accessor: "organizer" },
+        { label: translate("labels.id"), accessor: "id" },
+        { label: translate("labels.title"), accessor: "title" },
+        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        { label: translate("labels.type"), accessor: "type" },
+        { label: translate("labels.category"), accessor: "category" },
+        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        { label: translate("labels.organizer"), accessor: "organizerName" },
         {
-            label: "Actions",
+            label: translate("labels.actions"),
             colSpan: 2,
-            actions: (/* need to put in the id of research here, so the edit and delete actually works. wip */) => (
+            actions: (id) => (
                 <>
-                    <ButtonMuted text="View" />
-                    <ButtonMuted text="Join" />
+                    <ButtonMuted text={translate("labels.view")} onAction={() => onView("viewResearch", id)} />
+                    <ButtonMuted text={translate("labels.join")} onAction={() => onJoin(id)} />
                 </>
             )
-        }
-    ];
-
-    const test = [
-        {
-            id: 1,
-            title: "Very special research",
-            type: "Online",
-            date: "2024-02-06",
-            reward: 142440.42,
-            category: "Blind, No Legs, No Arms, No Mouth",
-            organizer: "Cornhub"
-        },
-        {
-            id: 2,
-            title: "Omae Wa Mou",
-            date: "2024-09-09",
-            type: "Online",
-            reward: 5555,
-            category: "大",
-            organizer: "Stichting Accessibility"
         }
     ];
 
@@ -313,10 +302,17 @@ const TableAvailableResearchView = () => {
         <div className="table__responsive">
             <table className="table__general table__hover">
                 <TableHead columns={columns} />
-                <TableBody columns={columns} tableData={test} />
+                <TableBody columns={columns} tableData={data} />
             </table>
         </div>
     );
+};
+
+// prop types table avaialbler researches view
+TableAvailableResearchView.propTypes = {
+    data: PropTypes.array.isRequired,
+    onView: PropTypes.func,
+    onJoin: PropTypes.func
 };
 
 export {
@@ -324,5 +320,6 @@ export {
     TableCompanyView,
     TablePanelMemberResearchView,
     TableCompanyResearchView,
+    TableAdminResearchView,
     TableAvailableResearchView
 };

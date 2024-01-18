@@ -1,0 +1,38 @@
+{
+    "pageTitle": "Profiel",
+    "pageSubtitle": "Jouw profiel",
+    "company": {
+        "generalLabel": "Algemeen",
+        "name": "Bedrijfsnaam:",
+        "kvk": "KvK-nummer:",
+        "address": "Adres:",
+        "postalCode": "Postcode:",
+        "province": "Provincie:",
+        "country": "Land:",
+        "contactLabel": "Contactgegevens",
+        "website": "Website:",
+        "phone": "Telefoonnummer:",
+        "email": "E-mailadres:",
+        "contactPerson": "Contactpersoon:"
+    },
+    "panelMember": {
+        "generalLabel": "Algemeen",
+        "firstName": "Voornaam:",
+        "lastName": "Achternaam:",
+        "dateOfBirth": "Geboortedatum:",
+        "address": "Adres:",
+        "postalCode": "Postcode:",
+        "city": "Stad:",
+        "country": "Land:",
+        "contactLabel": "Contactgegevens",
+        "phone": "Telefoonnummer:",
+        "email": "E-mailadres:",
+        "healthLabel": "Gezondheid",
+        "disability": "Beperking:"
+    },
+    "admin": {
+        "generalLabel": "Algemeen",
+        "email": "E-mailadres:",
+        "phone": "Telefoonnummer:"
+    }
+}

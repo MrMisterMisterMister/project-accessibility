@@ -1,5 +1,16 @@
 {
     "pageTitle": "Panel Members",
     "tableView": "Table view",
-    "cardView": "Card view"
+    "cardView": "Card view",
+    "labels": {
+        "id": "#",
+        "name": "Name",
+        "email": "Email Address",
+        "dateOfBirth": "Date of Birth",
+        "address": "Address",
+        "postalCode": "Postal Code",
+        "city": "City",
+        "country": "Country",
+        "disability": "Disability"
+    }
 }

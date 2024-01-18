@@ -66,6 +66,7 @@ const NavMobile = ({ links }) => {
                 className="nav__header_mobile__label"
                 htmlFor="site__header_nav__toggle"
                 onClick={toggleMenuState}
+                data-testid="nav-menu-toggle"
             >
                 <span className="nav__header_mobile__icon">
                     {renderMenuSpans()}
@@ -158,9 +159,9 @@ const NavFooterBottombar = ({ links, language, changeLanguage }) => {
                 <Nav.Item className="nav__footer_bottombar__navitem">
                     <Nav.Link
                         className="nav__footer_bottombar__navlink"
-                        onClick={() =>
-                            changeLanguage(language === "nl" ? "en" : "nl")
-                        }
+                        onClick={() => changeLanguage(language === "nl" ? "en" : "nl")}
+                        aria-label="Language switcher"
+                        role="button"
                     >
                         {language === "nl" ? "English" : "Nederlands"}
                     </Nav.Link>
@@ -214,7 +215,7 @@ const NavDashboardTopNav = ({
                     </Navbar.Brand>
                 </div>
                 <div className="nav__dashboard_topnav__profile">
-                    <a
+                    <Nav.Link
                         className="nav__dashboard_topnav__user"
                         aria-expanded={isUserMenuOpen ? "true" : "false"}
                         onClick={toggleDropdown}
@@ -228,14 +229,14 @@ const NavDashboardTopNav = ({
                         <span className="nav__dashboard_topnav__user_name">
                             {userName}
                         </span>
-                    </a>
+                    </Nav.Link>
                     {isUserMenuOpen && (
                         <div
                             className="nav__dashboard_topnav__user_dropdown"
                             aria-labelledby="userProfileDropdown"
                         >
                             {userMenuItems.map((item, index) => (
-                                <a
+                                <Nav.Link
                                     key={index}
                                     className="nav__dashboard_topnav__user_dropdown__item"
                                     onClick={(e) => {
@@ -249,7 +250,7 @@ const NavDashboardTopNav = ({
                                     <span className="nav__dashboard_topnav__user_dropdown__label">
                                         {item.label}
                                     </span>
-                                </a>
+                                </Nav.Link>
                             ))}
                         </div>
                     )}
@@ -284,9 +285,7 @@ const NavDashboardBottomNav = ({ navItems, onNavItemClick }) => {
                     {navItems.map((item, index) => (
                         <Nav.Item
                             key={index}
-                            className={`nav__dashboard_bottomnav__menu_item ${
-                                item.active ? "active" : ""
-                            }`}
+                            className={`nav__dashboard_bottomnav__menu_item ${item.active ? "active" : ""}`}
                         >
                             <Nav.Link
                                 className="nav__dashboard_bottomnav__menu_link "

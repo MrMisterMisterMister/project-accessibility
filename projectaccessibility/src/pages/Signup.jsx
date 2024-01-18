@@ -15,9 +15,9 @@ const Signup = () => {
                 <div className="signup__page_registration signup__page_column">
                     <div className="signup__page_registration__content">
                         <Container>
-                            <h2 className="signup__page_registration__title">
+                            <h1 className="signup__page_registration__title">
                                 {translate("pageTitle")}
-                            </h2>
+                            </h1>
                             <div className="signup__page_registration__form_signup">
                                 <FormSignup />
                             </div>

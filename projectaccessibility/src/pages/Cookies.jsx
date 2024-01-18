@@ -36,26 +36,26 @@ const Cookies = () => {
 
                     <br />
 
-                    <h4 tabIndex="0" id="functional-cookies">{translate("cookieTypes.functionalCookies.title")}</h4>
+                    <h2 tabIndex="0" id="functional-cookies">{translate("cookieTypes.functionalCookies.title")}</h2>
                     <p tabIndex="0">{translate("cookieTypes.functionalCookies.content")}</p>
 
-                    <h4 tabIndex="0" id="performance-cookies">{translate("cookieTypes.performanceCookies.title")}</h4>
+                    <h2 tabIndex="0" id="performance-cookies">{translate("cookieTypes.performanceCookies.title")}</h2>
                     <p tabIndex="0">{translate("cookieTypes.performanceCookies.content")}</p>
 
-                    <h4 tabIndex="0" id="tracking-cookies">{translate("cookieTypes.trackingCookies.title")}</h4>
+                    <h2 tabIndex="0" id="tracking-cookies">{translate("cookieTypes.trackingCookies.title")}</h2>
                     <p tabIndex="0">{translate("cookieTypes.trackingCookies.content")}</p>
 
-                    <h4 tabIndex="0" id="retention-period">{translate("retentionPeriod.title")}</h4>
+                    <h2 tabIndex="0" id="retention-period">{translate("retentionPeriod.title")}</h2>
                     <p tabIndex="0">{translate("retentionPeriod.content.0")}</p>
                     <p tabIndex="0">{translate("retentionPeriod.content.1")}</p>
 
-                    <h4 tabIndex="0" id="cookie-management">{translate("cookieManagement.title")}</h4>
+                    <h2 tabIndex="0" id="cookie-management">{translate("cookieManagement.title")}</h2>
                     <p tabIndex="0">{translate("cookieManagement.content")}</p>
 
-                    <h4 tabIndex="0" id="changes-to-cookie-management">{translate("changesInCookie.title")}</h4>
+                    <h2 tabIndex="0" id="changes-to-cookie-management">{translate("changesInCookie.title")}</h2>
                     <p tabIndex="0">{translate("changesInCookie.content")}</p>
 
-                    <h4 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h4>
+                    <h2 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h2>
                     <p tabIndex="0">{translate("contactDetails.content")}</p>
                 </Container>
             </main>

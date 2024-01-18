@@ -1,0 +1,38 @@
+{
+    "pageTitle": "Profile",
+    "pageSubtitle": "Your profile",
+    "company": {
+        "generalLabel": "General",
+        "name": "Company Name:",
+        "kvk": "KvK Number:",
+        "address": "Address:",
+        "postalCode": "Postal Code:",
+        "province": "Province:",
+        "country": "Country:",
+        "contactLabel": "Contacts",
+        "website": "Website:",
+        "phone": "Phone Number:",
+        "email": "Email Address:",
+        "contactPerson": "Contact Person:"
+    },
+    "panelMember": {
+        "generalLabel": "General",
+        "firstName": "First Name:",
+        "lastName": "Last Name:",
+        "dateOfBirth": "Date of Birth:",
+        "address": "Address:",
+        "postalCode": "Postal Code:",
+        "city": "City:",
+        "country": "Country:",
+        "contactLabel": "Contacts",
+        "phone": "Phone Number:",
+        "email": "Email Address:",
+        "healthLabel": "Health",
+        "disability": "Disability:"
+    },
+    "admin": {
+        "generalLabel": "General",
+        "email": "Email Address:",
+        "phone": "Phone Number:"
+    }
+}

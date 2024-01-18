@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
-import { TableCompanyResearchView, TablePanelMemberResearchView, TableAvailableResearchView } from "../components/Table";
-import { FormCompanyResearchCreate, FormCompanyResearchUpdate } from "../components/Form";
+import { TableCompanyResearchView, TablePanelMemberResearchView, TableAdminResearchView, TableAvailableResearchView } from "../components/Table";
+import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
+import { Alert } from "../components/Alert";
+import { createEndpoint } from "../api/axiosClient";
+import { useStore } from "../stores/store";
 
 // Research page
 // In here the components will be role dependend loaded
@@ -14,85 +17,264 @@ const Research = () => {
     // This hook just keeps track of the current view, on default it's myResearch
     const [view, setView] = useState("myResearch");
 
+    // Hook to know which research is being worked on
+    // Using for editing research and viewing research
+    const [researchId, setResearchId] = useState(null);
+
+    // Get the stored user info so we can get access to the current role
+    const { userStore: { user } } = useStore();
+
+    // Hook to store being worked on research, singular
+    const [research, setResearch] = useState({});
+
+    // Hook to store all the researches in
+    // This one is for admin
+    const [allResearches, setAllResearches] = useState([]);
+
+    // Hook for researches that a panel member is participating in
+    const [panelMemberResearches, setPanelMemberResearches] = useState([]);
+
+    // Hook to get the researches that is made by the logged in company
+    const [companyResearches, setCompanyResearches] = useState([]);
+
+    // Crack way to determine if data needs to be fetched again
+    const [refetchData, setRefetchData] = useState(false);
+
+    // For managing errors
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
     // Function that handles switching it, just simply replaces with new value
-    const switchView = (view) => {
+    const switchView = (view, id = null) => {
         setView(view);
+        setResearchId(id);
     };
 
-    // Something something
-    // Function here that handles deleting a research
-    // Also a function that lets you join the research
-    // so it can be passed to the component
+    // For admin I guess, so they can see all researches
+    // Has no actions however
+    const fetchAllResearches = async () => {
+        const data = await createEndpoint("researches").get();
+        setAllResearches(data);
+    };
+
+    // This is for fetching the researches for a panelmember
+    // So they can see which one they have joined
+    const fetchPanelMemberResearches = async () => {
+        const data = await createEndpoint(`panelmembers/${user.userId}`).get();
+        const researchIds = data.participationsId || [];
+        const researchPromises = researchIds.map((id) => createEndpoint(`researches/${id}`).get());
+        // Lazy way to get all
+        const researchResults = await Promise.all(researchPromises);
+        // Set them inside hook
+        setPanelMemberResearches(researchResults);
+    };
+
+    // This can probably be combined with the fetchPanelMemberResearches, where I just give it a different endpoint
+    const fetchCompanyResearches = async () => {
+        // Will optimize it later
+        const data = await createEndpoint(`researches/organizer/${user.userId}`).get();
+        setCompanyResearches(data);
+    };
+
+    // Fetch singular research
+    // for when viewing or editing
+    const fetchSingularResearch = async () => {
+        const data = await createEndpoint(`researches/${researchId}`).get();
+        setResearch(data);
+    };
+
+    // Use effect to reset the alerts
+    // This is so the alert dont show up anymore
+    useEffect(() => {
+        const alertTimeout = setTimeout(() => {
+            setFormAlerts({ errors: [], success: [] });
+        }, 3000);
+        // clear timeout so it doesnt get fucked by other effects
+        // before the timer wasnt working as intended, this fixes it
+        return () => clearTimeout(alertTimeout);
+    }, [formAlerts]);
+
+    // Load all the data in
+    // This is very crack
+    // But it is what it is
+    // Could have done this inside a global file for fetching all data types
+    useEffect(() => {
+        if (allResearches.length === 0 || refetchData) fetchAllResearches();
+
+        if (user.userRoles.includes("PanelMember") && (panelMemberResearches.length === 0 || refetchData)) {
+            fetchPanelMemberResearches();
+            setRefetchData(false);
+        }
+
+        if (user.userRoles.includes("Company") && (companyResearches.length === 0 || refetchData)) {
+            fetchCompanyResearches();
+            setRefetchData(false);
+        }
+
+        if (researchId != null || researchId) {
+            fetchSingularResearch();
+        }
+    }, [researchId, refetchData]);
+
+    // This function handles deleting a research
+    // Passes this as a property, so the button can use it as onAction
+    // Deletes the passed research with given id
+    const handleResearchDeletion = (id) => {
+        // also show alerts for when deleting
+        if (confirm(translate("confirm.delete")) === true) {
+            // Make the delete request to backend
+            const researchDeletionResponse = createEndpoint("researches").delete(id);
+
+            // Handle the response from the delete call
+            researchDeletionResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate some shit
+                        setFormAlerts({ success: { code: "ResearchHasBeenDeleted" } });
+                        setRefetchData(true);
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
+        }
+    };
+
+    // This function allows a panelmember to join an available research
+    // Same as above, this function is passed as a prop to a button to trigger it with onAction
+    // Only need the research id, since the panelmember id is gotten by token
+    const handleResearchParticipation = (id) => {
+        // Show default javascript confirm
+        if (confirm(translate("confirm.join")) === true) {
+            // Make post request
+            const researchParticipationResponse = createEndpoint(`researchparticipants/join-research/${id}`).post();
+
+            // Handle the response from the delete call
+            researchParticipationResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate alerts
+                        setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                        setRefetchData(true);
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
+        }
+    };
+
+    // This function handles a panelmember leaving for whatever reason
+    const handleResearchLeaving = (id) => {
+        // Javascript confirm
+        if (confirm(translate("confirm.leave")) === true) {
+            // make delete request
+            const researchLeavingResponse = createEndpoint("researchparticipants/leave-research").delete(id);
+
+            // Handle the response from the delete call
+            researchLeavingResponse
+                .then((response) => {
+                    // Check if response is ok
+                    if (response.status === 200) {
+                        // Configurate the success message
+                        setFormAlerts({ success: { code: "ParticipantHasLeft" } });
+                        setRefetchData(true);
+                    }
+                })
+                .catch((error) => {
+                    // Handle errors by updating the error state with the response data from the api server
+                    setFormAlerts({ error: error.response?.data });
+                });
+        }
+    };
 
     // The different view for research
     // This is a very lazy way of doing it
     const researchViewComponents = {
-        // Here I still need to determine which user is logged in, and display the correct one
-        // Can probably just do simple if statement
-        myResearch:
+        // So this isn't correct here yet, the data needs to be targeted for panel member and research
+        // I'm very lazy to fix it
+        myResearch: (
             <>
-                <TableCompanyResearchView handleView={switchView} />
-                <br />
-                <br />
-                <TablePanelMemberResearchView />
-            </>,
-        // This view is only available for panelmember
-        allResearches: <TableAvailableResearchView />,
-        // This view is only available for company
-        newResearch:
+                {user.userRoles.includes("Admin") && (
+                    <TableAdminResearchView data={allResearches} />
+                )}
+                {user.userRoles.includes("Company") && (
+                    <TableCompanyResearchView data={companyResearches} onEdit={switchView} onDelete={handleResearchDeletion} />
+                )}
+                {user.userRoles.includes("PanelMember") && (
+                    <TablePanelMemberResearchView data={panelMemberResearches} onLeave={handleResearchLeaving} />
+                )}
+            </>
+        ),
+        allResearches: (
+            <TableAvailableResearchView data={allResearches} onView={switchView} onJoin={handleResearchParticipation} />
+        ),
+        newResearch: (
             <div className="research__content">
-                <h4 className="research__content_title">
-                    Create Research
-                </h4>
+                <h2 className="research__content_title">
+                    {translate("createResearch")}
+                </h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate />
-                </div>
-            </div>,
-        // This view is only available for company
-        editResearch:
-            <div className="research__content">
-                <h4 className="research__content_title">
-                    Edit Research
-                </h4>
-                <div className="research__content_container">
-                    {
-                        /*
-                        Need to pass in the id for the research that is being edited
-                        */
-                    }
-                    <FormCompanyResearchUpdate />
+                    <FormCompanyResearchCreate organizerId={user.userId} setRefetchData={setRefetchData} />
                 </div>
             </div>
+        ),
+        editResearch: (
+            <div className="research__content">
+                <h2 className="research__content_title">
+                    {translate("editResearch")}
+                </h2>
+                <div className="research__content_container">
+                    <FormCompanyResearchUpdate researchId={researchId} setRefetchData={setRefetchData} />
+                </div>
+            </div>
+        ),
+        viewResearch: (
+            <div className="research__content">
+                <h2 className="research__content_title">
+                    {translate("viewResearch")}
+                </h2>
+                <div className="research__content_container">
+                    <FormPanelMemberResearchJoin researchId={researchId} data={research} setRefetchData={setRefetchData} />
+                </div>
+            </div>
+        )
     };
 
+    // TODO show alerts
     return (
         <div className="research__dashboard">
-            <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
+            <h1 className="research__dashboard_title">
+                {translate("pageTitle")}
+            </h1>
             <div className="research__dashboard_options">
-                {
-                    /*
-                    Also need to figure something out to display the buttons to certain roles only
-                    Like 'Show All' is only for panelmember and 'New Research' is only for company
-                    Something like conditional function should solve it maybe, but for now, I am just
-                    letting it stay like this
-                    */
-                }
                 <ButtonSecondary
-                    text="My Research"
+                    text={translate("buttons.myResearch")}
                     isActive={view === "myResearch"}
                     action={() => switchView("myResearch")}
                 />
-                <ButtonSecondary
-                    text="Show All"
-                    isActive={view === "allResearches"}
-                    action={() => switchView("allResearches")}
-                />
-                <ButtonSecondary
-                    text="New Research"
-                    isActive={view === "newResearch"}
-                    action={() => switchView("newResearch")}
-                />
+                {user.userRoles.includes("PanelMember") && (
+                    <ButtonSecondary
+                        text={translate("buttons.showAll")}
+                        isActive={view === "allResearches"}
+                        action={() => switchView("allResearches")}
+                    />
+                )}
+                {user.userRoles.includes("Company") && (
+                    <ButtonSecondary
+                        text={translate("buttons.newResearch")}
+                        isActive={view === "newResearch"}
+                        action={() => switchView("newResearch")}
+                    />
+                )}
             </div>
+            <Alert data={formAlerts} />
             <div className="research__dashboard_content">
                 {researchViewComponents[view]}
             </div>

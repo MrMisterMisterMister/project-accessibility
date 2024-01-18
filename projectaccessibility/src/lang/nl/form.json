@@ -7,10 +7,15 @@
         "buttonText": "Aanmelden"
     },
     "settings": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "disability": {
+            "title": "Geef informatie over je beperking:",
+            "emptyList": "Er zijn geen beperkingen beschikbaar."
+        }
     },
     "research": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "joinButton": "Aanmelden"
     },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",
@@ -63,6 +68,8 @@
     "contactPersonPlaceholder": "Contactpersoon",
     "provinceLabel": "Provincie",
     "provincePlaceholder": "Provincie",
+    "cityLabel": "Stad",
+    "cityPlaceholder": "Stad",
     "websiteUrlLabel": "Website URL",
     "websiteUrlPlaceholder": "Website URL",
     "titleLabel": "Titel",
@@ -77,6 +84,8 @@
     "typePlaceholder": "Type",
     "categoryLabel": "Categorie",
     "categoryPlaceholder": "Categorie",
+    "organizerLabel": "Organisator",
+    "organizerPlaceholder": "Organisator",
     "error": {
         "emailRequired": "* Voer je e-mailadres in",
         "emailPattern": "* Voer een geldig e-mailadres in",
@@ -94,6 +103,7 @@
         "passwordNewRequired": "* Voer je nieuw wachtwoord in",
         "passwordConfirmNewRequired": "* Voer je nieuw wachtwoord opnieuw in",
         "passwordConfirmNewIsMatch": "* Nieuw wachtwoordbevestiging komt niet overeen met het nieuwe wachtwoord",
+        "rewardBelowZero": "* Beloning mag niet lager zijn dan 0",
         "userTypeRequired": "* Selecteer een gebruikerstype",
         "firstNameRequired": "* Voer je voornaam in",
         "lastNameRequired": "* Voer je achternaam in",
@@ -106,6 +116,7 @@
         "countryRequired": "* Selecteer een land",
         "contactPersonRequired": "* Voer je contactpersoon in",
         "provinceRequired": "* Voer je provincie in",
+        "cityRequired": "* Voer je stad in",
         "websiteUrlRequired": "* Voer je website URL in",
         "titleRequired": "* Voer je titel in",
         "descriptionRequired": "* Voer je omschrijving in",

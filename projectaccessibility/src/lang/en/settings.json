@@ -1,6 +1,8 @@
 {
-    "panelMemberProfileUpdateTitle": "Panel Member",
-    "companyProfileUpdateTitle": "Company",
+    "pageTitle": "Settings",
+    "panelMemberProfileUpdateTitle": "Update your profile",
+    "panelMemberDisabilityUpdateTitle": "Update your disability",
+    "companyProfileUpdateTitle": "Update your company profile",
     "emailUpdateTitle": "Change your email",
     "passwordUpdateTitle": "Change your password"
 }
