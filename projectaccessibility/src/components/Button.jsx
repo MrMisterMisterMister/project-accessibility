@@ -93,7 +93,7 @@ ButtonContact.propTypes = {
 // The icon can be svg
 const ButtonAuth = ({ path, icon, text, action }) => {
     return (
-        <Button className="button__auth" type="button" onClick={() => action()} href={path}>
+        <Button className="button__auth" type="button" onClick={action ? () => action() : null} href={path}>
             <div className="button__auth_icon">{icon}</div>
             <span className="button__auth_text">{text}</span>
         </Button>
