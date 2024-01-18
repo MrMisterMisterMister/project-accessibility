@@ -247,7 +247,6 @@ const Research = () => {
         )
     };
 
-    // TODO show alerts
     return (
         <div className="research__dashboard">
             <h1 className="research__dashboard_title">
