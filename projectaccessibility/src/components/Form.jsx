@@ -440,9 +440,12 @@ const FormSignup = () => {
 
 // This form lets an user update their email
 // Makes use of axios put request and sends the formdata as payload
-const FormUserEmailUpdate = () => {
+const FormUserEmailUpdate = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
+
+    // user store
+    const { userStore } = useStore();
 
     // State hook to manage the form validation errors and success alerts
     const [formAlerts, setFormAlerts] = useState({
@@ -471,6 +474,8 @@ const FormUserEmailUpdate = () => {
                 if (response.status === 200) {
                     // Set the success alert
                     setFormAlerts({ success: { code: "EmailHasBeenUpdated" } });
+                    // So the navbar updates again
+                    userStore.getUser();
                     // Reset the form
                     reset();
                 }
@@ -569,7 +574,7 @@ const FormUserEmailUpdate = () => {
             </Form>
         </>
     );
-};
+});
 
 // Form to update an user's password
 // Handles validation on both ends and makes use of put request
