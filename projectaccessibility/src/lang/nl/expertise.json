@@ -1,23 +1,23 @@
 {
     "pageTitle": "Expertise",
-    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima sit magnam, amet cum soluta numquam animi iste, vitae neque exercitationem tempora, laborum impedit similique architecto dolor asperiores explicabo natus adipisci? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, dolorem veniam optio cumque iste corrupti esse tempora voluptatem cum quos, iure dignissimos quas nemo quis? Expedita eligendi error a eum!",
-    "title": "Expertises",
+    "intro": "Welkom op onze expertisepagina. We zijn gepassioneerd over het leveren van hoogwaardige diensten op het gebied van digitale toegankelijkheid en gebruikerservaring.",
+    "title": "Onze Expertises",
     "cards": [
         {
-            "title": "Toegankelijke digitale omgeving",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Toegankelijke Digitale Omgeving",
+            "text": "Wij zijn gespecialiseerd in het ontwerpen en ontwikkelen van digitale omgevingen die voldoen aan de hoogste toegankelijkheidsnormen. Door gebruik te maken van best practices en richtlijnen zorgen we ervoor dat onze producten bruikbaar zijn voor mensen met verschillende beperkingen. Ons doel is om inclusieve digitale ervaringen te creëren."
         },
         {
-            "title": "Toegankelijke fysieke omgeving",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Gebruiksvriendelijke Interfaces",
+            "text": "Ons designteam legt een sterke nadruk op het creëren van gebruiksvriendelijke interfaces. We geloven dat een intuïtieve en naadloze gebruikerservaring essentieel is voor het succes van digitale producten. Door strategisch ontwerp denken en een iteratief ontwerpproces te gebruiken, zorgen we ervoor dat onze interfaces voldoen aan de behoeften en verwachtingen van de gebruikers."
         },
         {
-            "title": "Gebruikersvriendelijke omgeving",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Strategisch Ontwerp Denken",
+            "text": "We omarmen strategisch ontwerp denken als een pijler bij het ontwikkelen van effectieve digitale oplossingen. Onze aanpak omvat het afstemmen van ontwerpbeslissingen op strategische doelen, zakelijke doelstellingen en gebruikersbehoeften. Door deze methodologie toe te passen, creëren we innovatieve en impactvolle ontwerpen die resoneren met onze klanten en hun doelgroepen."
         },
         {
-            "title": "Gebruikersonderzoek",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Inclusief Ontwerp",
+            "text": "Inclusief ontwerp staat centraal in onze aanpak. We streven ernaar digitale producten te maken die toegankelijk zijn voor alle gebruikers, ongeacht hun achtergrond of vaardigheden. Door te focussen op diversiteit en inclusie zorgen we ervoor dat onze ontwerpen aansprekend zijn voor een breed publiek en een positieve invloed hebben op de gebruikersgemeenschap."
         }
     ]
 }
