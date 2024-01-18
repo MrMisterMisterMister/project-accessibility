@@ -311,6 +311,12 @@ const Chats = observer(() => {
                                 placeholder="Type a message..."
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if(e.key === "Enter"){
+                                        e.preventDefault();
+                                        sendPrivateMessage();
+                                    }
+                                }}
                                 rightButtons={
                                     <Button onClick={sendPrivateMessage} color='white' backgroundcolor='black' text='Send'/>
                                 }
