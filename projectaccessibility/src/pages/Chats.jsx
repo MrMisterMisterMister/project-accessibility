@@ -5,7 +5,7 @@ import { useStore } from '../stores/store';
 import { observer } from 'mobx-react-lite';
 import { createEndpoint } from '../api/axiosClient';
 import UserSearch from '../components/UserSearch';
-import { MessageList, MessageBox, ChatList, Input, Button } from 'react-chat-elements';
+import { MessageList, ChatList, Input, Button } from 'react-chat-elements';
 import "react-chat-elements/dist/main.css"
 import img from "../img/placeholder.jpg";
 
@@ -225,7 +225,7 @@ const Chats = observer(() => {
     const selectUserFromChatList = async (chatItem) => {
         console.log("SelectedUserFrom chattt clickkeddddd");
         try {
-            const response = await createEndpoint(`users/byEmail/${chatItem.title}`).get();
+            const response = await createEndpoint(`users/byEmail/${chatItem}`).get();
             if (response.data) {
                 setSelectedUser(response.data); // Set the selected user
                 await loadChatHistory(chatItem.id); // Load chat history

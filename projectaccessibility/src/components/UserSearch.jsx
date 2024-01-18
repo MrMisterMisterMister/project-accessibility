@@ -32,12 +32,20 @@ const UserSearch = ({ onSelectUser, setSearchResults, searchResults, resetSearch
         resetSearch(); // Reset the search results
     };
 
+    // Handle key press in the input field
+    const handleKeyPress = (e) => {
+    if (e.key === 'Enter') {
+        handleSearch();
+    }
+};  
+
     return (
         <div>
             <Input
                 placeholder="Search for users..."
                 value={searchQuery}
                 onChange={handleChange}
+                onKeyPress={handleKeyPress}
                 rightButtons={
                     <Button text="Search" onClick={handleSearch} />
                 }
