@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 import {
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
@@ -11,7 +12,7 @@ import {
 import { createEndpoint } from "../api/axiosClient";
 
 // Settings page
-const Settings = () => {
+const Settings = observer(() => {
     // Translation
     const { t: translate } = useTranslation("settings");
 
@@ -86,6 +87,6 @@ const Settings = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Settings;

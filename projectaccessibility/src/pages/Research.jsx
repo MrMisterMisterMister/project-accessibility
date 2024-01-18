@@ -6,11 +6,12 @@ import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberRe
 import { Alert } from "../components/Alert";
 import { createEndpoint } from "../api/axiosClient";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 
 // Research page
 // In here the components will be role dependend loaded
 // Still need to figure it out, so just putting all components open for now
-const Research = () => {
+const Research = observer(() => {
     // Translation
     const { t: translate } = useTranslation("research");
 
@@ -279,6 +280,6 @@ const Research = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Research;
