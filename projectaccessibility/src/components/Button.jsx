@@ -126,6 +126,22 @@ ButtonMuted.propTypes = {
     onAction: PropTypes.func
 };
 
+// button that actually has redirect
+// idk why I dont have one
+const ButtonLink = ({ path, text }) => {
+    return (
+        <Button className="button__link" href={path}>
+            {text}
+        </Button>
+    );
+};
+
+// prop type for button link
+ButtonLink.propTypes = {
+    path: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
+
 export {
     ButtonPrimary,
     ButtonSecondary,
@@ -133,5 +149,6 @@ export {
     ButtonHero,
     ButtonContact,
     ButtonAuth,
-    ButtonMuted
+    ButtonMuted,
+    ButtonLink
 };

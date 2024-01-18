@@ -1,0 +1,32 @@
+@use 'variables';
+
+// 404 page
+.notFound__page {
+    position: relative;
+
+    .notFound__page_container {
+        display: grid;
+        place-items: center;
+        text-align: center;
+
+        .notFound__page_image {
+            max-width: 325px;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        .notFound__page_title {
+            font-size: 2.5rem;
+            color: variables.$blackrussian;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .notFound__page_text {
+            color: variables.$black;
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+    }
+}

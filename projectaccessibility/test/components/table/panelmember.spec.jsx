@@ -15,7 +15,10 @@ describe("Testing the Panel Member Table", () => {
             address: "The street of Essex's",
             postalCode: "9999CV",
             city: "City of Essex",
-            country: "Essex of the freedom"
+            country: "Essex of the freedom",
+            disabilitiesName: [
+                "Lemon", "Alchohol", "Seggs"
+            ]
         }];
 
         // Act
@@ -29,5 +32,6 @@ describe("Testing the Panel Member Table", () => {
         expect(screen.getByText("9999CV")).toBeDefined();
         expect(screen.getByText("City of Essex")).toBeDefined();
         expect(screen.getByText("Essex of the freedom")).toBeDefined();
+        expect(screen.getByText("Lemon, Alchohol, Seggs")).toBeDefined();
     });
 });
