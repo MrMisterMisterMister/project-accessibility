@@ -13,7 +13,6 @@ import PrivacyPolicy from "../pages/PrivacyPolicy";
 import Cookies from "../pages/Cookies";
 import PageNotFound from "../pages/404";
 import Dashboard from "../pages/Dashboard";
-import Contact from "../pages/Contact";
 
 // Route component
 // This here handles all the routing in the application
