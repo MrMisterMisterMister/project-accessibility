@@ -46,6 +46,8 @@
             margin: 0 0 0 1.5em;
             color: variables.$black;
             text-align: left;
+            overflow-wrap: break-word;
+            max-width: calc(100% - 125px - 1.5em); // determine max width it's allowed to take
 
             .account__dashboard_user__name {
                 font-size: 1.125rem;
@@ -91,6 +93,8 @@
             &_value {
                 font-size: 0.875rem;
                 font-weight: normal;
+                overflow-wrap: break-word;
+                max-width: calc(100% - 150px); // so break word works
             }
         }
     }
