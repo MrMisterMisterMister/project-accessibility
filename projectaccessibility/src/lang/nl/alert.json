@@ -5,7 +5,16 @@
         "PasswordRequiresDigit": "Wachtwoord moet minimaal één cijfer bevatten ('0'-'9').",
         "PasswordRequiresUpper": "Wachtwoord moet minimaal één hoofdletter bevatten ('A'-'Z').",
         "PasswordRequiresLower": "Wachtwoord moet minimaal één kleine letter bevatten ('a'-'z').",
+        "PasswordIsNullOrEmpty": "Wachtwoord kan niet leeg of null zijn.",
+        "PasswordsDoNotMatch": "Wachtwoorden komen niet overeen.",
+        "PasswordIsTheSame": "Nieuw wachtwoord moet verschillend zijn van het huidige.",
+        "PasswordFailedUpdate": "Wachtwoord kon niet worden bijgewerkt. Probeer het later opnieuw.",
         "EmailTaken": "Dit e-mailadres is al in gebruik.",
+        "EmailIsTheSame": "Nieuw e-mailadres moet verschillend zijn van het huidige.",
+        "EmailIsTaken": "E-mailadres is al in gebruik door iemand anders.",
+        "EmailIsNullOrEmpty": "E-mailadres kan niet leeg of null zijn.",
+        "EmailsDoNotMatch": "E-mailadressen komen niet overeen.",
+        "EmailFailedUpdate": "E-mailadres kon niet worden bijgewerkt. Probeer het later opnieuw.",
         "KvkExists": "Dit Kvk-nummer is al geregistreerd.",
         "IncorrectPassword": "Onjuist wachtwoord. Controleer je wachtwoord en probeer het opnieuw.",
         "UserNotFound": "Geen gebruiker gevonden met het opgegeven e-mailadres.",
@@ -45,6 +54,8 @@
         "ParticipantHasLeft": "Je hebt succesvol het onderzoek verlaten.",
         "CompanyProfileUpdated": "Je hebt succesvol je bedrijfsprofiel bijgewerkt.",
         "PanelMemberProfileUpdated": "Je hebt succesvol je profiel bijgewerkt.",
-        "DisabilityHasBeenUpdated": "Je hebt succesvol je beperking bijgewerkt."
+        "DisabilityHasBeenUpdated": "Je hebt succesvol je beperking bijgewerkt.",
+        "EmailHasBeenUpdated": "Je hebt succesvol je e-mail bijgewerkt.",
+        "PasswordHasBeenUpdated": "Je hebt succesvol je wachtwoord bijgewerkt."
     }
 }

@@ -163,7 +163,7 @@ const FormSignup = () => {
 
     // Function triggered when the submit button is pressed in the signup form
     // Prevents the default form submission behavior to handle it manually
-    const signupSubmit = async (formData) => {
+    const signupSubmit = (formData) => {
         // Define endpoint paths based on the selected user type
         const endPoint = {
             1: "panelmember",
@@ -438,17 +438,22 @@ const FormSignup = () => {
     );
 };
 
-// TODO
-// Form to update email
-// Need to catch the user type somewhere
-// Also need to get their guid
-const FormUserEmailUpdate = ({ userId }) => {
+// This form lets an user update their email
+// Makes use of axios put request and sends the formdata as payload
+const FormUserEmailUpdate = observer(() => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // user store
+    const { userStore } = useStore();
+
+    // State hook to manage the form validation errors and success alerts
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form setup
     const {
         register,
         handleSubmit,
@@ -457,28 +462,33 @@ const FormUserEmailUpdate = ({ userId }) => {
     } = useForm({ mode: "all" });
 
     // Disable the submit from working since I don't want to see blank page everytime I submit
-    const emailUpdateSubmit = async (formData) => {
-        // Make the POST call using axios post
-        // The guid still needs to be gotten, so it's for now not working
-        // Test the post in postman instead with guid
-        const updateEmailResponse = createEndpoint("users").post(userId, formData);
+    const emailUpdateSubmit = (formData) => {
+        // Configurate the correct endpoint to update the user's email
+        // Axios PUT request
+        const updateEmailResponse = createEndpoint("users/update-email").put("", formData);
 
-        // Handle the response from the POST call
+        // Handle response from the PUT request
         updateEmailResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Check if the request was successful
+                if (response.status === 200) {
+                    // Set the success alert
+                    setFormAlerts({ success: { code: "EmailHasBeenUpdated" } });
+                    // So the navbar updates again
+                    userStore.getUser();
+                    // Reset the form
+                    reset();
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and set it inside the error alerts
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
-    // Need to fix localization and error / success message
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -486,82 +496,100 @@ const FormUserEmailUpdate = ({ userId }) => {
                 onSubmit={handleSubmit(emailUpdateSubmit)}
                 noValidate
             >
-                <Form.Label className="form__label">
-                    {translate("emailNewLabel")}
-                </Form.Label>
-                <Form.Control
-                    className={`form__text_field ${errors.email ? "error" : ""}`}
-                    type="email"
-                    {...register("email", {
-                        required: {
-                            value: true,
-                            message: translate("error.emailRequired")
-                        }
-                    })}
-                    aria-invalid={errors.email ? "true" : "false"}
-                    placeholder={translate("emailNewPlaceholder")}
-                />
-                {errors.email && (
-                    <div className="form__error">{errors.email.message}</div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("emailConfirmLabel")}
-                </Form.Label>
-                <Form.Control
-                    className={`form__text_field ${errors.emailConfirm ? "error" : ""}`}
-                    type="email"
-                    {...register("emailConfirm", {
-                        required: {
-                            value: true,
-                            message: translate("error.emailConfirmRequired")
-                        }
-                    })}
-                    aria-invalid={errors.emailConfirm ? "true" : "false"}
-                    placeholder={translate("emailConfirmPlaceholder")}
-                />
-                {errors.emailConfirm && (
-                    <div className="form__error">
-                        {errors.emailConfirm.message}
-                    </div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("passwordCurrentLabel")}
-                </Form.Label>
-                <Form.Control
-                    className="form__text_field"
-                    type="password"
-                    {...register("password", {
-                        required: {
-                            value: true,
-                            message: translate("error.passwordCurrentRequired")
-                        }
-                    })}
-                    aria-invalid={errors.password ? "true" : "false"}
-                    placeholder={translate("passwordCurrentPlaceholder")}
-                />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("emailNewLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.newEmail ? "error" : ""}`}
+                            type="email"
+                            {...register("newEmail", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.emailRequired")
+                                },
+                                pattern: {
+                                    value: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, // regex to check if email is a valid email
+                                    message: translate("error.emailPattern")
+                                }
+                            })}
+                            aria-invalid={errors.newEmail ? "true" : "false"}
+                            placeholder={translate("emailNewPlaceholder")}
+                        />
+                        {errors.newEmail && (
+                            <div className="form__error">
+                                {errors.newEmail.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("emailConfirmLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.confirmEmail ? "error" : ""}`}
+                            type="email"
+                            {...register("confirmEmail", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.emailConfirmRequired")
+                                },
+                                pattern: {
+                                    value: /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/, // regex to check if email is a valid email
+                                    message: translate("error.emailPattern")
+                                }
+                            })}
+                            aria-invalid={errors.confirmEmail ? "true" : "false"}
+                            placeholder={translate("emailConfirmPlaceholder")}
+                        />
+                        {errors.confirmEmail && (
+                            <div className="form__error">
+                                {errors.confirmEmail.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("passwordCurrentLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            type="password"
+                            {...register("password", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.passwordCurrentRequired")
+                                }
+                            })}
+                            aria-invalid={errors.password ? "true" : "false"}
+                            placeholder={translate("passwordCurrentPlaceholder")}
+                        />
+                        {errors.password && (
+                            <div className="form__error">{errors.password.message}</div>
+                        )}
+                    </Col>
+                </Row>
                 <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
-};
+});
 
-// prop types for updating email
-FormUserEmailUpdate.propTypes = {
-    userId: PropTypes.string.isRequired
-};
-
-// TODO
-// Form to update password
-const FormUserPasswordUpdate = ({ userId }) => {
+// Form to update an user's password
+// Handles validation on both ends and makes use of put request
+const FormUserPasswordUpdate = () => {
     // Translation
     const { t: translate } = useTranslation("form");
 
-    // React hook form
-    // Define some const to use in forms
-    // Set mode to all, so that validation will trigger on all input changes or blur events
+    // State hook to capture and manage form validation errors and success
+    // Each field's error will be stored in this object
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form setup
     const {
         register,
         handleSubmit,
@@ -570,29 +598,32 @@ const FormUserPasswordUpdate = ({ userId }) => {
         formState: { errors }
     } = useForm({ mode: "all" });
 
-    // Ditto like I said above
-    const passwordUpdateSubmit = async (formData) => {
-        // Ditto like I said above
-        // Make the POST call using axios post
-        // PUT request to update password
-        const updatePasswordResponse = createEndpoint("users").put(userId, formData);
+    // Handles the form submission for updating password
+    const passwordUpdateSubmit = (formData) => {
+        // Create the correct endpoint to update the password with axios put request
+        // Id is empty, since backend catches it from token
+        const updatePasswordResponse = createEndpoint("users/update-password").put("", formData);
 
-        // Handle the response from the POST call
+        // Handle response from the put request
         updatePasswordResponse
             .then((response) => {
-                // Need to configurate a success to user later
-                console.log(response);
-                reset();
+                // Check if the response was successful
+                if (response.status === 200) {
+                    // Set the success alert
+                    setFormAlerts({ success: { code: "PasswordHasBeenUpdated" } });
+                    // Reset the current form
+                    reset();
+                }
             })
             .catch((error) => {
-                // Catch the error and display it
-                console.log(error.response);
+                // Catch the error and set it inside error alert
+                setFormAlerts({ error: error.response?.data });
             });
     };
 
-    // Ditto like I said above
     return (
         <>
+            <Alert data={formAlerts} />
             <Form
                 className="form__settings"
                 acceptCharset="UTF-8"
@@ -600,102 +631,108 @@ const FormUserPasswordUpdate = ({ userId }) => {
                 onSubmit={handleSubmit(passwordUpdateSubmit)}
                 noValidate
             >
-                <Form.Label className="form__label">
-                    {translate("passwordCurrentLabel")}
-                </Form.Label>
-                <Form.Control
-                    className={`form__text_field ${errors.passwordCurrent ? "error" : ""}`}
-                    type="password"
-                    {...register("passwordCurrent", {
-                        required: {
-                            value: true,
-                            message: translate("error.passwordCurrentRequired")
-                        }
-                    })}
-                    aria-invalid={errors.passwordCurrent ? "true" : "false"}
-                    placeholder={translate("passwordCurrentPlaceholder")}
-                />
-                {errors.passwordCurrent && (
-                    <div className="form__error">
-                        {errors.passwordCurrent.message}
-                    </div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("passwordNewLabel")}
-                </Form.Label>
-                <Form.Control
-                    className={`form__text_field ${errors.password ? "error" : ""}`}
-                    type="password"
-                    {...register("password", {
-                        required: {
-                            value: true,
-                            message: translate("error.passwordNewRequired")
-                        },
-                        validate: {
-                            hasUppercase: (value) =>
-                                // regex for uppercase
-                                /^(?=.*[A-Z]).+$/.test(value) ||
-                                translate("error.passwordHasUppercase"),
-                            hasLowercase: (value) =>
-                                // regex for lowercase
-                                /^(?=.*[a-z]).+$/.test(value) ||
-                                translate("error.passwordHasLowercase"),
-                            hasDigit: (value) =>
-                                // regex for digit
-                                /^(?=.*\d).+$/.test(value) ||
-                                translate("error.passwordHasDigit"),
-                            hasSpecialChar: (value) =>
-                                // regex for special char
-                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
-                                    value
-                                ) || translate("error.passwordHasSpecialChar")
-                        },
-                        minLength: {
-                            value: 6,
-                            message: translate("error.passwordMinLength")
-                        }
-                    })}
-                    aria-invalid={errors.password ? "true" : "false"}
-                    placeholder={translate("passwordNewPlaceholder")}
-                />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("passwordConfirmNewLabel")}
-                </Form.Label>
-                <Form.Control
-                    className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
-                    type="password"
-                    {...register("passwordConfirm", {
-                        required: {
-                            value: true,
-                            message: translate(
-                                "error.passwordConfirmNewRequired"
-                            )
-                        },
-                        validate: {
-                            isMatch: (value) =>
-                                value === watch("password") ||
-                                translate("error.passwordConfirmNewIsMatch")
-                        }
-                    })}
-                    aria-invalid={errors.passwordConfirm ? "true" : "false"}
-                    placeholder={translate("passwordConfirmNewPlaceholder")}
-                />
-                {errors.passwordConfirm && (
-                    <div className="form__error">
-                        {errors.passwordConfirm.message}
-                    </div>
-                )}
+                <Row>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("passwordCurrentLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.currentPassword ? "error" : ""}`}
+                            type="password"
+                            {...register("currentPassword", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.passwordCurrentRequired")
+                                }
+                            })}
+                            aria-invalid={errors.currentPassword ? "true" : "false"}
+                            placeholder={translate("passwordCurrentPlaceholder")}
+                        />
+                        {errors.currentPassword && (
+                            <div className="form__error">
+                                {errors.currentPassword.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("passwordNewLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.newPassword ? "error" : ""}`}
+                            type="password"
+                            {...register("newPassword", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.passwordNewRequired")
+                                },
+                                validate: {
+                                    hasUppercase: (value) =>
+                                        // regex for uppercase
+                                        /^(?=.*[A-Z]).+$/.test(value) ||
+                                        translate("error.passwordHasUppercase"),
+                                    hasLowercase: (value) =>
+                                        // regex for lowercase
+                                        /^(?=.*[a-z]).+$/.test(value) ||
+                                        translate("error.passwordHasLowercase"),
+                                    hasDigit: (value) =>
+                                        // regex for digit
+                                        /^(?=.*\d).+$/.test(value) ||
+                                        translate("error.passwordHasDigit"),
+                                    hasSpecialChar: (value) =>
+                                        // regex for special char
+                                        /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
+                                            value
+                                        ) || translate("error.passwordHasSpecialChar")
+                                },
+                                minLength: {
+                                    value: 6,
+                                    message: translate("error.passwordMinLength")
+                                }
+                            })}
+                            aria-invalid={errors.newPassword ? "true" : "false"}
+                            placeholder={translate("passwordNewPlaceholder")}
+                        />
+                        {errors.newPassword && (
+                            <div className="form__error">
+                                {errors.newPassword.message}
+                            </div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("passwordConfirmNewLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.confirmPassword ? "error" : ""}`}
+                            type="password"
+                            {...register("confirmPassword", {
+                                required: {
+                                    value: true,
+                                    message: translate(
+                                        "error.passwordConfirmNewRequired"
+                                    )
+                                },
+                                validate: {
+                                    isMatch: (value) =>
+                                        value === watch("newPassword") ||
+                                        translate("error.passwordConfirmNewIsMatch")
+                                }
+                            })}
+                            aria-invalid={errors.confirmPassword ? "true" : "false"}
+                            placeholder={translate("passwordConfirmNewPlaceholder")}
+                        />
+                        {errors.confirmPassword && (
+                            <div className="form__error">
+                                {errors.confirmPassword.message}
+                            </div>
+                        )}
+                    </Col>
+                </Row>
                 <ButtonSubmit text={translate("settings.buttonText")} />
             </Form>
         </>
     );
-};
-
-FormUserPasswordUpdate.propTypes = {
-    userId: PropTypes.string.isRequired
 };
 
 // This form is for Panel Members to update their profile
@@ -723,7 +760,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     } = useForm({ mode: "all" });
 
     // Handles the form submission for updating a Panel Member's profile
-    const panelMemberProfileUpdateSubmit = async (formData) => {
+    const panelMemberProfileUpdateSubmit = (formData) => {
         // Use the createEndpoint method to initiate a PUT request
         // This updates the profile of a Panel Member with the specified id
         const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(panelMemberId, formData);
@@ -953,7 +990,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
     } = useForm({ mode: "all" });
 
     // Handles the form submission for updating a Company's profile
-    const companyProfileUpdateSubmit = async (formData) => {
+    const companyProfileUpdateSubmit = (formData) => {
         // Make a PUT request to the correct endpoint
         // That way the company who is updating their profile actually sees the changes
         const updateCompanyProfileResponse = createEndpoint("companies").put(companyId, formData);
@@ -1231,7 +1268,7 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
     } = useForm({ mode: "all" });
 
     // Handles form submission creating research
-    const companyResearchCreateSubmit = async (formData) => {
+    const companyResearchCreateSubmit = (formData) => {
         // POST request to correct endpoint
         // configurate some shit
         const createCompanyResearchResponse = createEndpoint("researches").post(formData);
@@ -1449,7 +1486,7 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
     } = useForm({ mode: "all" });
 
     // Handle submission for updating research
-    const companyResearchUpdateSubmit = async (formData) => {
+    const companyResearchUpdateSubmit = (formData) => {
         // Send a PUT request
         // Afterwards backend handles the rest
         const createCompanyResearchResponse = createEndpoint("researches").put(researchId, formData);
@@ -1460,7 +1497,6 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                 // Checks if the response code is 200 (Ok)
                 if (response.status === 200) {
                     // Set a success message for the user to see
-                    // TODO
                     setFormAlerts({ success: { code: "ResearchHasBeenUpdated" } });
                     // Reset form
                     reset();
@@ -1637,7 +1673,6 @@ FormCompanyResearchUpdate.propTypes = {
     setRefetchData: PropTypes.func
 };
 
-// TODO
 // creating a form with just input type hideen and the user id
 // send to backend that adds the id to the research as participant
 // something like that
@@ -1667,7 +1702,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
     const { handleSubmit } = useForm();
 
     // Handle submittion for when a panel member joins a research
-    const panelMemberResearchJoinSubmit = async () => {
+    const panelMemberResearchJoinSubmit = () => {
         // Axios
         const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
 

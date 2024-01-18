@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 import {
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
@@ -11,7 +12,7 @@ import {
 import { createEndpoint } from "../api/axiosClient";
 
 // Settings page
-const Settings = () => {
+const Settings = observer(() => {
     // Translation
     const { t: translate } = useTranslation("settings");
 
@@ -71,7 +72,7 @@ const Settings = () => {
                         {translate("emailUpdateTitle")}
                     </h2>
                     <div className="settings__dashboard_form__content">
-                        <FormUserEmailUpdate userId={user.userId} />
+                        <FormUserEmailUpdate />
                     </div>
                 </div>
 
@@ -80,12 +81,12 @@ const Settings = () => {
                         {translate("passwordUpdateTitle")}
                     </h2>
                     <div className="settings__dashboard_form__content">
-                        <FormUserPasswordUpdate userId={user.userId} />
+                        <FormUserPasswordUpdate />
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+});
 
 export default Settings;

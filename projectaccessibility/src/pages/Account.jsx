@@ -40,7 +40,7 @@ const Account = () => {
     // If settings are changed
     useEffect(() => {
         fetchLoggedInUserData();
-    }, []); // TODO need a better on mount, empty for now, will fix later
+    }, []); // need a better on mount, empty for now, will fix later
 
     // Columns that need to be generated based on what type of user is logged in
     // For now there are just 3 types

@@ -71,9 +71,4 @@ export default class UserStore {
     stopRefreshTokenTimer = () => {
         clearTimeout(this.refreshTokenTimeout);
     };
-
-    // should be here but dunno how to do it yet:
-    // login
-    // register
-    // logout
 }
