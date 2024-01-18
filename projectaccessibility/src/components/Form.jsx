@@ -79,6 +79,7 @@ const FormLogin = observer(() => {
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
+                    data-testid="emailInput"
                     {...register("email", {
                         required: {
                             value: true,
@@ -97,6 +98,7 @@ const FormLogin = observer(() => {
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
+                    data-testid="passwordInput"
                     {...register("password", {
                         required: {
                             value: true,
