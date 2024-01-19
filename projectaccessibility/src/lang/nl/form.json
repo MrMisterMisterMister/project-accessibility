@@ -124,6 +124,5 @@
         "rewardRequired": "* Voer je beloning in",
         "typeRequired": "* Voer je type in",
         "categoryRequired": "* Voer je categorie in"
-    },
-    "success": {}
+    }
 }

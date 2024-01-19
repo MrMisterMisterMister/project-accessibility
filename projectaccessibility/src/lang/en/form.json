@@ -124,6 +124,5 @@
         "rewardRequired": "* Please enter your reward",
         "typeRequired": "* Please enter your type",
         "categoryRequired": "* Please enter your category"
-    },
-    "success": {}
+    }
 }
