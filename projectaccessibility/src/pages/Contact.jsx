@@ -18,8 +18,12 @@ const Contact = () => {
                     <Shape section="contact" position={["left", "right"]} />
                 </div>
                 <Container className="contact__page_container">
-                    <h1 tabIndex="0" className="contact__page_title">{translate("pageTitle")}</h1>
-                    <p tabIndex="0" className="contact__page_intro">{translate("intro")}</p>
+                    <h1 tabIndex="0" className="contact__page_title">
+                        {translate("pageTitle")}
+                    </h1>
+                    <p tabIndex="0" className="contact__page_intro">
+                        {translate("intro")}
+                    </p>
                 </Container>
             </div>
             <Footer />

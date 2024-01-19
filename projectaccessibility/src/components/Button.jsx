@@ -38,7 +38,15 @@ ButtonSecondary.propTypes = {
 
 // General button for submits in forms
 const ButtonSubmit = ({ style, text, isDisabled }) => {
-    return <Button className={style || "button__submit"} as="input" type="submit" value={text} disabled={isDisabled} />;
+    return (
+        <Button
+            className={style || "button__submit"}
+            as="input"
+            type="submit"
+            value={text}
+            disabled={isDisabled}
+        />
+    );
 };
 
 // prop type for button submit
@@ -70,11 +78,7 @@ ButtonHero.propTypes = {
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Button
-            className={`button__contact ${style}`}
-            type="button"
-            href={path}
-        >
+        <Button className={`button__contact ${style}`} type="button" href={path}>
             {text}
         </Button>
     );
@@ -93,7 +97,12 @@ ButtonContact.propTypes = {
 // The icon can be svg
 const ButtonAuth = ({ path, icon, text, action }) => {
     return (
-        <Button className="button__auth" type="button" onClick={action ? () => action() : null} href={path}>
+        <Button
+            className="button__auth"
+            type="button"
+            onClick={action ? () => action() : null}
+            href={path}
+        >
             <div className="button__auth_icon">{icon}</div>
             <span className="button__auth_text">{text}</span>
         </Button>

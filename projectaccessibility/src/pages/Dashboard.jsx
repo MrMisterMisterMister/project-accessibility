@@ -29,7 +29,9 @@ const Dashboard = observer(() => {
     const { t: translate } = useTranslation("dashboard");
 
     // Get the user and GetUser from userstore
-    const { userStore: { user, getUser } } = useStore();
+    const {
+        userStore: { user, getUser }
+    } = useStore();
 
     // Hook to store the current user in
     const [currentUser, setCurrentUser] = useState({});
@@ -52,7 +54,16 @@ const Dashboard = observer(() => {
     // State to manage the navItems in the menu
     const [navItems, setNavItems] = useState([
         {
-            page: <><h1 className="dashboard__page_title">Dashboard</h1><img className="dashboard__page_image" src="/img/clodsire.gif" alt="Clodsire that is bouncing up and down" /></>,
+            page: (
+                <>
+                    <h1 className="dashboard__page_title">Dashboard</h1>
+                    <img
+                        className="dashboard__page_image"
+                        src="/img/clodsire.gif"
+                        alt="Clodsire that is bouncing up and down"
+                    />
+                </>
+            ),
             icon: <BarChart />,
             title: translate("nav.dashboard"),
             active: true
@@ -145,9 +156,7 @@ const Dashboard = observer(() => {
     // First need to determine what kind of user is logged in from backend or something
     return (
         <div className="dashboard__page">
-            <div
-                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
-            >
+            <div className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}>
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
@@ -155,16 +164,11 @@ const Dashboard = observer(() => {
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
-                <NavDashboardBottomNav
-                    navItems={navItems}
-                    onNavItemClick={handleNavItemClick}
-                />
+                <NavDashboardBottomNav navItems={navItems} onNavItemClick={handleNavItemClick} />
             </div>
             <main className="dashboard__page_main">
                 <Container>
-                    <div className="dashboard__page_content">
-                        {pageToRender && pageToRender}
-                    </div>
+                    <div className="dashboard__page_content">{pageToRender && pageToRender}</div>
                 </Container>
             </main>
         </div>

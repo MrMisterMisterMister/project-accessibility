@@ -32,34 +32,37 @@ axiosClient.interceptors.request.use((config) => {
 // Response interceptors to log the different error types
 // For now we are catching if the bearer has expired here, and afterwards refresh it
 // Very crack, but works, somewhat
-axiosClient.interceptors.response.use(response => {
-    return response;
-}, async (error) => {
-    // get the original axios request config for the error
-    // const originalRequest = error.config;
-    // done by axios, anything that's not a 200 response
-    const { status, headers } = error.response;
-    switch (status) {
-    case 400:
-        console.log(error);
-        break;
-    case 401:
-        if (headers["www-authenticate"]?.startsWith("Bearer error=\"invalid_token\"")) {
-            Logout();
-            console.log("session expired"); // change maybe?
-        } else {
-            console.log(error); // create seperate component maybe?
+axiosClient.interceptors.response.use(
+    (response) => {
+        return response;
+    },
+    async (error) => {
+        // get the original axios request config for the error
+        // const originalRequest = error.config;
+        // done by axios, anything that's not a 200 response
+        const { status, headers } = error.response;
+        switch (status) {
+        case 400:
+            console.log(error);
+            break;
+        case 401:
+            if (headers["www-authenticate"]?.startsWith("Bearer error=\"invalid_token\"")) {
+                Logout();
+                console.log("session expired"); // change maybe?
+            } else {
+                console.log(error); // create seperate component maybe?
+            }
+            break;
+        case 403:
+            console.log(error);
+            break;
+        case 500:
+            console.log(error);
+            break;
         }
-        break;
-    case 403:
-        console.log(error);
-        break;
-    case 500:
-        console.log(error);
-        break;
+        return Promise.reject(error);
     }
-    return Promise.reject(error);
-});
+);
 
 const responseBody = (response) => response.data;
 

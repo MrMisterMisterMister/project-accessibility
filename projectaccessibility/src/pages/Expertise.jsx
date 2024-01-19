@@ -18,8 +18,12 @@ const Expertise = () => {
                     <Shape section="expertise" position={["left", "right"]} />
                 </div>
                 <Container className="expertise__page_container">
-                    <h1 tabIndex="0" className="expertise__page_title">{translate("pageTitle")}</h1>
-                    <p tabIndex="0" className="expertise__page_intro">{translate("intro")}</p>
+                    <h1 tabIndex="0" className="expertise__page_title">
+                        {translate("pageTitle")}
+                    </h1>
+                    <p tabIndex="0" className="expertise__page_intro">
+                        {translate("intro")}
+                    </p>
                     {translate("cards", { returnObjects: true }).map((key, index) => (
                         <React.Fragment key={index}>
                             <h2 tabIndex="0">{translate(`cards.${index}.title`)}</h2>

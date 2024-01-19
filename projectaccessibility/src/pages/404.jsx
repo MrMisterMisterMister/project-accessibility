@@ -11,7 +11,12 @@ const PageNotFound = () => {
     return (
         <div className="notFound__page">
             <Container className="notFound__page_container">
-                <img className="notFound__page_image" src="/img/clodsire.png" alt="Clodsire" title="Clodsire" />
+                <img
+                    className="notFound__page_image"
+                    src="/img/clodsire.png"
+                    alt="Clodsire"
+                    title="Clodsire"
+                />
                 <h1 tabIndex={0} className="notFound__page_title">
                     {translate("pageTitle")}
                 </h1>

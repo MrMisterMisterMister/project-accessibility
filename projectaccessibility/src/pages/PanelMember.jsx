@@ -57,9 +57,7 @@ const PanelMember = () => {
     // but I am too lazy to do it
     return (
         <div className="panelmember__dashboard">
-            <h1 className="panelmember__dashboard_title">
-                {translate("pageTitle")}
-            </h1>
+            <h1 className="panelmember__dashboard_title">{translate("pageTitle")}</h1>
             <div className="panelmember__dashboard_options">
                 <ButtonSecondary
                     text={translate("tableView")}
@@ -72,9 +70,7 @@ const PanelMember = () => {
                     action={() => switchView("card")}
                 />
             </div>
-            <div className="panelmember__dashboard_content">
-                {panelMemberViewComponents[view]}
-            </div>
+            <div className="panelmember__dashboard_content">{panelMemberViewComponents[view]}</div>
         </div>
     );
 };

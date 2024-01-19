@@ -13,12 +13,8 @@ const Hero = () => {
         <section className="hero__section">
             <Container className="hero__section_container">
                 <div className="hero__section_wrapper">
-                    <h1 className="hero__section_title">
-                        {translate("title")}
-                    </h1>
-                    <p className="hero__section_text">
-                        {translate("description")}
-                    </p>
+                    <h1 className="hero__section_title">{translate("title")}</h1>
+                    <p className="hero__section_text">{translate("description")}</p>
                     <ButtonHero text={translate("buttonText")} path="/login" />
                 </div>
             </Container>

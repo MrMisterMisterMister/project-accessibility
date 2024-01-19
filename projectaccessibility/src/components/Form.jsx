@@ -43,11 +43,7 @@ const FormLogin = observer(() => {
                 // Checks if the response has status code 200 and contains the token
                 // If it contains token, useAuth provider and let magic happen
                 // Afterwards redirect to protected route
-                if (
-                    response.status === 200 &&
-                    response.data &&
-                    response.data.token
-                ) {
+                if (response.status === 200 && response.data && response.data.token) {
                     // Configurate some shit
                     setFormAlerts({ success: { code: "UserHasLoggedIn" } });
                     // Set authentication token
@@ -73,9 +69,7 @@ const FormLogin = observer(() => {
                 onSubmit={handleSubmit(handleLoginSubmit)}
                 noValidate
             >
-                <Form.Label className="form__label">
-                    {translate("emailLabel")}
-                </Form.Label>
+                <Form.Label className="form__label">{translate("emailLabel")}</Form.Label>
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
@@ -89,12 +83,8 @@ const FormLogin = observer(() => {
                     aria-invalid={errors.email ? "true" : "false"}
                     placeholder={translate("emailPlaceholder")}
                 />
-                {errors.email && (
-                    <div className="form__error">{errors.email.message}</div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("passwordLabel")}
-                </Form.Label>
+                {errors.email && <div className="form__error">{errors.email.message}</div>}
+                <Form.Label className="form__label">{translate("passwordLabel")}</Form.Label>
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
@@ -108,9 +98,7 @@ const FormLogin = observer(() => {
                     aria-invalid={errors.password ? "true" : "false"}
                     placeholder={translate("passwordPlaceholder")}
                 />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
+                {errors.password && <div className="form__error">{errors.password.message}</div>}
                 <div className="form__login_option">
                     <Form.Check.Input
                         className="form__login_option__checkbox"
@@ -122,10 +110,7 @@ const FormLogin = observer(() => {
                         {translate("login.rememberme")}
                     </Form.Check.Label>
                 </div>
-                <ButtonSubmit
-                    style="button__login"
-                    text={translate("login.buttonText")}
-                />
+                <ButtonSubmit style="button__login" text={translate("login.buttonText")} />
             </Form>
         </>
     );
@@ -171,9 +156,9 @@ const FormSignup = () => {
         };
 
         // Make the POST call using axios post
-        const signupResponse =
-            createEndpoint(`signup/${endPoint[selectedUserType]}`)
-                .post(formData);
+        const signupResponse = createEndpoint(`signup/${endPoint[selectedUserType]}`).post(
+            formData
+        );
 
         // Handle the response from the POST call
         signupResponse
@@ -205,9 +190,7 @@ const FormSignup = () => {
                 onSubmit={handleSubmit(signupSubmit)}
                 noValidate
             >
-                <Form.Label className="form__label">
-                    {translate("userTypeLabel")}
-                </Form.Label>
+                <Form.Label className="form__label">{translate("userTypeLabel")}</Form.Label>
                 <Form.Select
                     className={`form__select_menu ${errors.userType ? "error" : ""}`}
                     {...register("userType", {
@@ -225,16 +208,10 @@ const FormSignup = () => {
                     <option value="" hidden>
                         {translate("userTypeOptions.placeholder")}
                     </option>
-                    <option value="1">
-                        {translate("userTypeOptions.panelMember")}
-                    </option>
-                    <option value="2">
-                        {translate("userTypeOptions.company")}
-                    </option>
+                    <option value="1">{translate("userTypeOptions.panelMember")}</option>
+                    <option value="2">{translate("userTypeOptions.company")}</option>
                 </Form.Select>
-                {errors.userType && (
-                    <div className="form__error">{errors.userType.message}</div>
-                )}
+                {errors.userType && <div className="form__error">{errors.userType.message}</div>}
                 {selectedUserType === "1" && (
                     <>
                         <Form.Label className="form__label">
@@ -243,27 +220,21 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.firstName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("firstName", {
                                         required: {
                                             value: true,
-                                            message: translate(
-                                                "error.firstNameRequired"
-                                            )
+                                            message: translate("error.firstNameRequired")
                                         }
                                     })}
-                                    aria-invalid={
-                                        errors.firstName ? "true" : "false"
-                                    }
-                                    placeholder={translate(
-                                        "firstNamePlaceholder"
-                                    )}
+                                    aria-invalid={errors.firstName ? "true" : "false"}
+                                    placeholder={translate("firstNamePlaceholder")}
                                 />
                                 {errors.firstName && (
-                                    <div className="form__error">
-                                        {errors.firstName.message}
-                                    </div>
+                                    <div className="form__error">{errors.firstName.message}</div>
                                 )}
                             </Col>
                             <Col lg={6}>
@@ -273,22 +244,14 @@ const FormSignup = () => {
                                     {...register("lastName", {
                                         required: {
                                             value: true,
-                                            message: translate(
-                                                "error.lastNameRequired"
-                                            )
+                                            message: translate("error.lastNameRequired")
                                         }
                                     })}
-                                    aria-invalid={
-                                        errors.lastName ? "true" : "false"
-                                    }
-                                    placeholder={translate(
-                                        "lastNamePlaceholder"
-                                    )}
+                                    aria-invalid={errors.lastName ? "true" : "false"}
+                                    placeholder={translate("lastNamePlaceholder")}
                                 />
                                 {errors.lastName && (
-                                    <div className="form__error">
-                                        {errors.lastName.message}
-                                    </div>
+                                    <div className="form__error">{errors.lastName.message}</div>
                                 )}
                             </Col>
                         </Row>
@@ -296,9 +259,7 @@ const FormSignup = () => {
                 )}
                 {selectedUserType === "2" && (
                     <>
-                        <Form.Label className="form__label">
-                            {translate("companyLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("companyLabel")}</Form.Label>
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
@@ -307,50 +268,39 @@ const FormSignup = () => {
                                     {...register("kvk", {
                                         required: {
                                             value: true,
-                                            message:
-                                                translate("error.kvkRequired")
+                                            message: translate("error.kvkRequired")
                                         }
                                     })}
                                     aria-invalid={errors.kvk ? "true" : "false"}
                                     placeholder={translate("kvkPlaceholder")}
                                 />
                                 {errors.kvk && (
-                                    <div className="form__error">
-                                        {errors.kvk.message}
-                                    </div>
+                                    <div className="form__error">{errors.kvk.message}</div>
                                 )}
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
+                                    className={`form__text_field ${
+                                        errors.companyName ? "error" : ""
+                                    }`}
                                     type="text"
                                     {...register("companyName", {
                                         required: {
                                             value: true,
-                                            message: translate(
-                                                "error.companyNameRequired"
-                                            )
+                                            message: translate("error.companyNameRequired")
                                         }
                                     })}
-                                    aria-invalid={
-                                        errors.companyName ? "true" : "false"
-                                    }
-                                    placeholder={translate(
-                                        "companyNamePlaceholder"
-                                    )}
+                                    aria-invalid={errors.companyName ? "true" : "false"}
+                                    placeholder={translate("companyNamePlaceholder")}
                                 />
                                 {errors.companyName && (
-                                    <div className="form__error">
-                                        {errors.companyName.message}
-                                    </div>
+                                    <div className="form__error">{errors.companyName.message}</div>
                                 )}
                             </Col>
                         </Row>
                     </>
                 )}
-                <Form.Label className="form__label">
-                    {translate("emailLabel")}
-                </Form.Label>
+                <Form.Label className="form__label">{translate("emailLabel")}</Form.Label>
                 <Form.Control
                     className={`form__text_field ${errors.email ? "error" : ""}`}
                     type="email"
@@ -367,12 +317,8 @@ const FormSignup = () => {
                     aria-invalid={errors.email ? "true" : "false"}
                     placeholder={translate("emailPlaceholder")}
                 />
-                {errors.email && (
-                    <div className="form__error">{errors.email.message}</div>
-                )}
-                <Form.Label className="form__label">
-                    {translate("passwordLabel")}
-                </Form.Label>
+                {errors.email && <div className="form__error">{errors.email.message}</div>}
+                <Form.Label className="form__label">{translate("passwordLabel")}</Form.Label>
                 <Form.Control
                     className={`form__text_field ${errors.password ? "error" : ""}`}
                     type="password"
@@ -389,12 +335,10 @@ const FormSignup = () => {
                                 /^(?=.*[a-z]).+$/.test(value) ||
                                 translate("error.passwordHasLowercase"), // regex for lowercase
                             hasDigit: (value) =>
-                                /^(?=.*\d).+$/.test(value) ||
-                                translate("error.passwordHasDigit"), // regex for digit
+                                /^(?=.*\d).+$/.test(value) || translate("error.passwordHasDigit"), // regex for digit
                             hasSpecialChar: (value) =>
-                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
-                                    value
-                                ) || translate("error.passwordHasSpecialChar") // regex for special char
+                                /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) ||
+                                translate("error.passwordHasSpecialChar") // regex for special char
                         },
                         minLength: {
                             value: 6,
@@ -404,9 +348,7 @@ const FormSignup = () => {
                     aria-invalid={errors.password ? "true" : "false"}
                     placeholder={translate("passwordPlaceholder")}
                 />
-                {errors.password && (
-                    <div className="form__error">{errors.password.message}</div>
-                )}
+                {errors.password && <div className="form__error">{errors.password.message}</div>}
                 <Form.Control
                     className={`form__text_field ${errors.passwordConfirm ? "error" : ""}`}
                     type="password"
@@ -425,14 +367,9 @@ const FormSignup = () => {
                     placeholder={translate("passwordConfirmPlaceholder")}
                 />
                 {errors.passwordConfirm && (
-                    <div className="form__error">
-                        {errors.passwordConfirm.message}
-                    </div>
+                    <div className="form__error">{errors.passwordConfirm.message}</div>
                 )}
-                <ButtonSubmit
-                    style="button__signup"
-                    text={translate("signup.buttonText")}
-                />
+                <ButtonSubmit style="button__signup" text={translate("signup.buttonText")} />
             </Form>
         </>
     );
@@ -518,9 +455,7 @@ const FormUserEmailUpdate = observer(() => {
                             placeholder={translate("emailNewPlaceholder")}
                         />
                         {errors.newEmail && (
-                            <div className="form__error">
-                                {errors.newEmail.message}
-                            </div>
+                            <div className="form__error">{errors.newEmail.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -544,9 +479,7 @@ const FormUserEmailUpdate = observer(() => {
                             placeholder={translate("emailConfirmPlaceholder")}
                         />
                         {errors.confirmEmail && (
-                            <div className="form__error">
-                                {errors.confirmEmail.message}
-                            </div>
+                            <div className="form__error">{errors.confirmEmail.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -649,9 +582,7 @@ const FormUserPasswordUpdate = () => {
                             placeholder={translate("passwordCurrentPlaceholder")}
                         />
                         {errors.currentPassword && (
-                            <div className="form__error">
-                                {errors.currentPassword.message}
-                            </div>
+                            <div className="form__error">{errors.currentPassword.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -681,9 +612,8 @@ const FormUserPasswordUpdate = () => {
                                         translate("error.passwordHasDigit"),
                                     hasSpecialChar: (value) =>
                                         // regex for special char
-                                        /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(
-                                            value
-                                        ) || translate("error.passwordHasSpecialChar")
+                                        /^(?=.*[!@#$%^&*=_<>?.,;:|`~]).+$/.test(value) ||
+                                        translate("error.passwordHasSpecialChar")
                                 },
                                 minLength: {
                                     value: 6,
@@ -694,9 +624,7 @@ const FormUserPasswordUpdate = () => {
                             placeholder={translate("passwordNewPlaceholder")}
                         />
                         {errors.newPassword && (
-                            <div className="form__error">
-                                {errors.newPassword.message}
-                            </div>
+                            <div className="form__error">{errors.newPassword.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -709,9 +637,7 @@ const FormUserPasswordUpdate = () => {
                             {...register("confirmPassword", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.passwordConfirmNewRequired"
-                                    )
+                                    message: translate("error.passwordConfirmNewRequired")
                                 },
                                 validate: {
                                     isMatch: (value) =>
@@ -723,9 +649,7 @@ const FormUserPasswordUpdate = () => {
                             placeholder={translate("passwordConfirmNewPlaceholder")}
                         />
                         {errors.confirmPassword && (
-                            <div className="form__error">
-                                {errors.confirmPassword.message}
-                            </div>
+                            <div className="form__error">{errors.confirmPassword.message}</div>
                         )}
                     </Col>
                 </Row>
@@ -763,7 +687,10 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
     const panelMemberProfileUpdateSubmit = (formData) => {
         // Use the createEndpoint method to initiate a PUT request
         // This updates the profile of a Panel Member with the specified id
-        const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(panelMemberId, formData);
+        const updatePanelMemberProfileResponse = createEndpoint("panelmembers").put(
+            panelMemberId,
+            formData
+        );
 
         // Handles the response from the PUT request
         updatePanelMemberProfileResponse
@@ -803,18 +730,14 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             {...register("firstName", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.firstNameRequired"
-                                    )
+                                    message: translate("error.firstNameRequired")
                                 }
                             })}
                             aria-invalid={errors.firstName ? "true" : "false"}
                             placeholder={translate("firstNamePlaceholder")}
                         />
                         {errors.firstName && (
-                            <div className="form__error">
-                                {errors.firstName.message}
-                            </div>
+                            <div className="form__error">{errors.firstName.message}</div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -834,9 +757,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             placeholder={translate("lastNamePlaceholder")}
                         />
                         {errors.lastName && (
-                            <div className="form__error">
-                                {errors.lastName.message}
-                            </div>
+                            <div className="form__error">{errors.lastName.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -856,15 +777,11 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             placeholder={translate("dateOfBirthPlaceholder")}
                         />
                         {errors.dateOfBirth && (
-                            <div className="form__error">
-                                {errors.dateOfBirth.message}
-                            </div>
+                            <div className="form__error">{errors.dateOfBirth.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("addressLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("addressLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.address ? "error" : ""}`}
                             type="text"
@@ -878,9 +795,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             placeholder={translate("addressPlaceholder")}
                         />
                         {errors.address && (
-                            <div className="form__error">
-                                {errors.address.message}
-                            </div>
+                            <div className="form__error">{errors.address.message}</div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -900,15 +815,11 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             placeholder={translate("postalCodePlaceholder")}
                         />
                         {errors.postalCode && (
-                            <div className="form__error">
-                                {errors.postalCode.message}
-                            </div>
+                            <div className="form__error">{errors.postalCode.message}</div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
-                        <Form.Label className="form__label">
-                            {translate("cityLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("cityLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.city ? "error" : ""}`}
                             type="text"
@@ -921,16 +832,10 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             aria-invalid={errors.city ? "true" : "false"}
                             placeholder={translate("cityPlaceholder")}
                         />
-                        {errors.city && (
-                            <div className="form__error">
-                                {errors.city.message}
-                            </div>
-                        )}
+                        {errors.city && <div className="form__error">{errors.city.message}</div>}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("countryLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("countryLabel")}</Form.Label>
                         <Form.Select
                             className={`form__select_menu ${errors.country ? "error" : ""}`}
                             {...register("country", {
@@ -950,9 +855,7 @@ const FormPanelMemberProfileUpdate = ({ panelMemberId }) => {
                             </option>
                         </Form.Select>
                         {errors.country && (
-                            <div className="form__error">
-                                {errors.country.message}
-                            </div>
+                            <div className="form__error">{errors.country.message}</div>
                         )}
                     </Col>
                 </Row>
@@ -1025,9 +928,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
             >
                 <Row>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("kvkLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("kvkLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.kvk ? "error" : ""}`}
                             type="text"
@@ -1040,11 +941,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             aria-invalid={errors.kvk ? "true" : "false"}
                             placeholder={translate("kvkPlaceholder")}
                         />
-                        {errors.kvk && (
-                            <div className="form__error">
-                                {errors.kvk.message}
-                            </div>
-                        )}
+                        {errors.kvk && <div className="form__error">{errors.kvk.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1056,24 +953,18 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             {...register("companyName", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.companyNameRequired"
-                                    )
+                                    message: translate("error.companyNameRequired")
                                 }
                             })}
                             aria-invalid={errors.companyName ? "true" : "false"}
                             placeholder={translate("companyNamePlaceholder")}
                         />
                         {errors.companyName && (
-                            <div className="form__error">
-                                {errors.companyName.message}
-                            </div>
+                            <div className="form__error">{errors.companyName.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("phoneLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("phoneLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.phone ? "error" : ""}`}
                             type="phone"
@@ -1086,11 +977,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             aria-invalid={errors.phone ? "true" : "false"}
                             placeholder={translate("phonePlaceholder")}
                         />
-                        {errors.phone && (
-                            <div className="form__error">
-                                {errors.phone.message}
-                            </div>
-                        )}
+                        {errors.phone && <div className="form__error">{errors.phone.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1109,15 +996,11 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             placeholder={translate("contactPersonPlaceholder")}
                         />
                         {errors.contactPerson && (
-                            <div className="form__error">
-                                {errors.contactPerson.message}
-                            </div>
+                            <div className="form__error">{errors.contactPerson.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("addressLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("addressLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.address ? "error" : ""}`}
                             type="text"
@@ -1131,9 +1014,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             placeholder={translate("addressPlaceholder")}
                         />
                         {errors.address && (
-                            <div className="form__error">
-                                {errors.address.message}
-                            </div>
+                            <div className="form__error">{errors.address.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
@@ -1153,9 +1034,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             placeholder={translate("provincePlaceholder")}
                         />
                         {errors.province && (
-                            <div className="form__error">
-                                {errors.province.message}
-                            </div>
+                            <div className="form__error">{errors.province.message}</div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -1168,18 +1047,14 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             {...register("postalCode", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.postalCodeRequired"
-                                    )
+                                    message: translate("error.postalCodeRequired")
                                 }
                             })}
                             aria-invalid={errors.postalCode ? "true" : "false"}
                             placeholder={translate("postalCodePlaceholder")}
                         />
                         {errors.postalCode && (
-                            <div className="form__error">
-                                {errors.postalCode.message}
-                            </div>
+                            <div className="form__error">{errors.postalCode.message}</div>
                         )}
                     </Col>
                     <Col xs={12} md={6}>
@@ -1192,24 +1067,18 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             {...register("websiteUrl", {
                                 required: {
                                     value: true,
-                                    message: translate(
-                                        "error.websiteUrlRequired"
-                                    )
+                                    message: translate("error.websiteUrlRequired")
                                 }
                             })}
                             aria-invalid={errors.websiteUrl ? "true" : "false"}
                             placeholder={translate("websiteUrlPlaceholder")}
                         />
                         {errors.websiteUrl && (
-                            <div className="form__error">
-                                {errors.websiteUrl.message}
-                            </div>
+                            <div className="form__error">{errors.websiteUrl.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("countryLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("countryLabel")}</Form.Label>
                         <Form.Select
                             className={`form__select_menu ${errors.country ? "error" : ""}`}
                             {...register("country", {
@@ -1229,9 +1098,7 @@ const FormCompanyProfileUpdate = ({ companyId }) => {
                             </option>
                         </Form.Select>
                         {errors.country && (
-                            <div className="form__error">
-                                {errors.country.message}
-                            </div>
+                            <div className="form__error">{errors.country.message}</div>
                         )}
                     </Col>
                 </Row>
@@ -1310,9 +1177,7 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                 />
                 <Row>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("titleLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("titleLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.title ? "error" : ""}`}
                             type="text"
@@ -1325,11 +1190,7 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             aria-invalid={errors.title ? "true" : "false"}
                             placeholder={translate("titlePlaceholder")}
                         />
-                        {errors.title && (
-                            <div className="form__error">
-                                {errors.title.message}
-                            </div>
-                        )}
+                        {errors.title && <div className="form__error">{errors.title.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1349,15 +1210,11 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             rows={5}
                         />
                         {errors.description && (
-                            <div className="form__error">
-                                {errors.description.message}
-                            </div>
+                            <div className="form__error">{errors.description.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("dateLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("dateLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.date ? "error" : ""}`}
                             type="date"
@@ -1370,16 +1227,10 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             aria-invalid={errors.date ? "true" : "false"}
                             placeholder={translate("datePlaceholder")}
                         />
-                        {errors.date && (
-                            <div className="form__error">
-                                {errors.date.message}
-                            </div>
-                        )}
+                        {errors.date && <div className="form__error">{errors.date.message}</div>}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("rewardLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("rewardLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
                             type="number"
@@ -1399,15 +1250,11 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             step="0.01"
                         />
                         {errors.reward && (
-                            <div className="form__error">
-                                {errors.reward.message}
-                            </div>
+                            <div className="form__error">{errors.reward.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("typeLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("typeLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.type ? "error" : ""}`}
                             type="text"
@@ -1420,11 +1267,7 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             aria-invalid={errors.type ? "true" : "false"}
                             placeholder={translate("typePlaceholder")}
                         />
-                        {errors.type && (
-                            <div className="form__error">
-                                {errors.type.message}
-                            </div>
-                        )}
+                        {errors.type && <div className="form__error">{errors.type.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1443,9 +1286,7 @@ const FormCompanyResearchCreate = ({ organizerId, setRefetchData }) => {
                             placeholder={translate("categoryPlaceholder")}
                         />
                         {errors.category && (
-                            <div className="form__error">
-                                {errors.category.message}
-                            </div>
+                            <div className="form__error">{errors.category.message}</div>
                         )}
                     </Col>
                 </Row>
@@ -1489,7 +1330,10 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
     const companyResearchUpdateSubmit = (formData) => {
         // Send a PUT request
         // Afterwards backend handles the rest
-        const createCompanyResearchResponse = createEndpoint("researches").put(researchId, formData);
+        const createCompanyResearchResponse = createEndpoint("researches").put(
+            researchId,
+            formData
+        );
 
         // Handle the response from the PUT request
         createCompanyResearchResponse
@@ -1522,9 +1366,7 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
             >
                 <Row>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("titleLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("titleLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.title ? "error" : ""}`}
                             type="text"
@@ -1537,11 +1379,7 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             aria-invalid={errors.title ? "true" : "false"}
                             placeholder={translate("titlePlaceholder")}
                         />
-                        {errors.title && (
-                            <div className="form__error">
-                                {errors.title.message}
-                            </div>
-                        )}
+                        {errors.title && <div className="form__error">{errors.title.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1561,15 +1399,11 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             rows={5}
                         />
                         {errors.description && (
-                            <div className="form__error">
-                                {errors.description.message}
-                            </div>
+                            <div className="form__error">{errors.description.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("dateLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("dateLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.date ? "error" : ""}`}
                             type="date"
@@ -1582,16 +1416,10 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             aria-invalid={errors.date ? "true" : "false"}
                             placeholder={translate("datePlaceholder")}
                         />
-                        {errors.date && (
-                            <div className="form__error">
-                                {errors.date.message}
-                            </div>
-                        )}
+                        {errors.date && <div className="form__error">{errors.date.message}</div>}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("rewardLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("rewardLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.reward ? "error" : ""}`}
                             type="number"
@@ -1611,15 +1439,11 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             step="0.01"
                         />
                         {errors.reward && (
-                            <div className="form__error">
-                                {errors.reward.message}
-                            </div>
+                            <div className="form__error">{errors.reward.message}</div>
                         )}
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("typeLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("typeLabel")}</Form.Label>
                         <Form.Control
                             className={`form__text_field ${errors.type ? "error" : ""}`}
                             type="text"
@@ -1632,11 +1456,7 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             aria-invalid={errors.type ? "true" : "false"}
                             placeholder={translate("typePlaceholder")}
                         />
-                        {errors.type && (
-                            <div className="form__error">
-                                {errors.type.message}
-                            </div>
-                        )}
+                        {errors.type && <div className="form__error">{errors.type.message}</div>}
                     </Col>
                     <Col xs={12}>
                         <Form.Label className="form__label">
@@ -1655,9 +1475,7 @@ const FormCompanyResearchUpdate = ({ researchId, setRefetchData }) => {
                             placeholder={translate("categoryPlaceholder")}
                         />
                         {errors.category && (
-                            <div className="form__error">
-                                {errors.category.message}
-                            </div>
+                            <div className="form__error">{errors.category.message}</div>
                         )}
                     </Col>
                 </Row>
@@ -1704,7 +1522,9 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
     // Handle submittion for when a panel member joins a research
     const panelMemberResearchJoinSubmit = () => {
         // Axios
-        const joinPanelMemberResearchResponse = createEndpoint(`researchparticipants/join-research/${researchId}`).post();
+        const joinPanelMemberResearchResponse = createEndpoint(
+            `researchparticipants/join-research/${researchId}`
+        ).post();
 
         // Handle the response from the POST call
         joinPanelMemberResearchResponse
@@ -1752,9 +1572,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
             >
                 <Row>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("titleLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("titleLabel")}</Form.Label>
                         <Form.Control
                             className="form__text_field"
                             type="text"
@@ -1777,9 +1595,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
                         />
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("dateLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("dateLabel")}</Form.Label>
                         <Form.Control
                             className="form__text_field"
                             type="date"
@@ -1789,9 +1605,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
                         />
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("rewardLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("rewardLabel")}</Form.Label>
                         <Form.Control
                             className="form__text_field"
                             type="text"
@@ -1813,9 +1627,7 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
                         />
                     </Col>
                     <Col xs={12}>
-                        <Form.Label className="form__label">
-                            {translate("typeLabel")}
-                        </Form.Label>
+                        <Form.Label className="form__label">{translate("typeLabel")}</Form.Label>
                         <Form.Control
                             className="form__text_field"
                             type="text"
@@ -1838,11 +1650,9 @@ const FormPanelMemberResearchJoin = ({ researchId, data, setRefetchData }) => {
                     </Col>
                 </Row>
                 <ButtonSubmit text={translate("research.joinButton")} />
-                {
-                    /*
+                {/*
                     Another button to go back maybe?
-                    */
-                }
+                    */}
             </Form>
         </>
     );
@@ -1882,11 +1692,15 @@ const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
     const panelMemberDisabilityUpdateSubmit = async (formData) => {
         // First delete all the previous disabilities of the panel member
         // So it will add all the selected disabilities and not cause much errors
-        await createEndpoint("panelmemberdisabilities/remove-all-panelmember-disabilities").delete("");
+        await createEndpoint("panelmemberdisabilities/remove-all-panelmember-disabilities").delete(
+            ""
+        );
 
         // Get the selected disability id from the form data
         // Then set it inside the hook
-        const selectedDisabilityIds = Object.keys(formData.disability).filter(key => formData.disability[key]); // easy way to check if the checkbox is checked
+        const selectedDisabilityIds = Object.keys(formData.disability).filter(
+            (key) => formData.disability[key]
+        ); // easy way to check if the checkbox is checked
 
         // Loop over all the selected disabilities that the     user has chosen
         // Then create a post request to add each disability to the panel member
@@ -1919,28 +1733,36 @@ const FormPanelMemberDisabilityUpdate = ({ disabilities }) => {
                         {translate("settings.disability.title")}
                     </h3>
                     {disabilities.length > 0
-                        ? disabilities.map(({ id, name, description }, index) => (
-                            <div className="form__disability_option" key={index}>
-                                <Form.Check.Input
-                                    className="form__disability_option__checkbox"
-                                    type="checkbox"
-                                    {...register(`disability[${id}]`)}
-                                    id={`disability-${id}`}
-                                />
-                                <Form.Check.Label
-                                    className="form__disability_option__label"
-                                    title={description}
-                                    aria-label={name}
-                                    htmlFor={`disability-${id}`}
-                                >
-                                    {name}
-                                </Form.Check.Label>
-                            </div>
-                        ))
-                        : <p className="form__disability_text">{translate("settings.disability.emptyList")}</p>
-                    }
+                        ? (
+                            disabilities.map(({ id, name, description }, index) => (
+                                <div className="form__disability_option" key={index}>
+                                    <Form.Check.Input
+                                        className="form__disability_option__checkbox"
+                                        type="checkbox"
+                                        {...register(`disability[${id}]`)}
+                                        id={`disability-${id}`}
+                                    />
+                                    <Form.Check.Label
+                                        className="form__disability_option__label"
+                                        title={description}
+                                        aria-label={name}
+                                        htmlFor={`disability-${id}`}
+                                    >
+                                        {name}
+                                    </Form.Check.Label>
+                                </div>
+                            ))
+                        )
+                        : (
+                            <p className="form__disability_text">
+                                {translate("settings.disability.emptyList")}
+                            </p>
+                        )}
                 </div>
-                <ButtonSubmit text={translate("settings.buttonText")} isDisabled={disabilities.length <= 0} />
+                <ButtonSubmit
+                    text={translate("settings.buttonText")}
+                    isDisabled={disabilities.length <= 0}
+                />
             </Form>
         </>
     );
