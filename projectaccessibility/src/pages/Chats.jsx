@@ -7,7 +7,7 @@ import { createEndpoint } from '../api/axiosClient';
 import UserSearch from '../components/UserSearch';
 import { MessageList, ChatList, Input, Button } from 'react-chat-elements';
 import "react-chat-elements/dist/main.css"
-import img from "../img/placeholder.jpg";
+import img from "/img/placeholder.jpg";
 
 const Chats = observer(() => {
     // For user 
@@ -30,6 +30,8 @@ const Chats = observer(() => {
     // State for chat items
     const [chatItems, setChatItems] = useState([]); 
 
+    const signalrApi = import.meta.env.VITE_SIGNALR_URL;
+
     latestMessages.current = messages;
 
     // Fetch user data
@@ -48,7 +50,7 @@ const Chats = observer(() => {
     // SignalR connection
     useEffect(() => {
         const newConnection = new HubConnectionBuilder()
-            .withUrl('http://localhost:5000/chat')
+            .withUrl(signalrApi)
             .configureLogging(LogLevel.Information)
             .build();
     
