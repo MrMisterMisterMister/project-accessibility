@@ -2,9 +2,9 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { Lightbulb, Eye } from "react-bootstrap-icons";
 import { useTranslation } from "react-i18next";
-import { CardAbout } from "../components/Card";
+import { CardAbout } from "../../components/Card";
 
-// About component
+// About section
 const About = () => {
     // Translation
     const { t: translate } = useTranslation("about");

@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { ButtonContact } from "./Button";
+import { ButtonContact } from "../../components/Button";
 
-// Contact component
+// Contact section
 const Contact = () => {
     // Translation
     const { t: translate } = useTranslation("contact");

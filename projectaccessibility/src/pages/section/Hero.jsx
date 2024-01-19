@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { ButtonHero } from "./Button";
-import Shape from "./Shape";
+import { ButtonHero } from "../../components/Button";
+import Shape from "../../components/Shape";
 
-// Hero component
+// Hero section
 const Hero = () => {
     // Translation
     const { t: translate } = useTranslation("hero");

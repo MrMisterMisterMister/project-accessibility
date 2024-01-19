@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import Shape from "./Shape";
-import { GroupMember } from "./Group";
+import Shape from "../../components/Shape";
+import { GroupMember } from "../../components/Group";
 
-// Member component
+// Member section
 const Member = () => {
     // Translation
     const { t: translate } = useTranslation("member");

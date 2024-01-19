@@ -1,9 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { CardCase } from "./Card";
+import { CardCase } from "../../components/Card";
 
-// Case component
+// Case section
 const Case = () => {
     // Translation
     const { t: translate } = useTranslation("cases");

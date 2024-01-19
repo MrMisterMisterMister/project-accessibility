@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { CardExpertise } from "./Card";
+import { CardExpertise } from "../../components/Card";
 import {
     CodeSlash,
     ChatLeftDotsFill,
@@ -9,7 +9,7 @@ import {
     Bookmark
 } from "react-bootstrap-icons";
 
-// Expertise componenent
+// Expertise section
 const Expertise = () => {
     // Translation
     const { t: translate } = useTranslation("expertise");
