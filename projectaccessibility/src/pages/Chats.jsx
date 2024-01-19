@@ -254,7 +254,7 @@ const Chats = observer(() => {
 
     // Inline styles for the chat messages area and the input box
     const messageListStyle = {
-        height: 'calc(100vh - 200px)', // Adjust the height
+        height: 'calc(82vh - 200px)', // Adjust the height
         overflowY: 'auto',
         marginBottom: '50px' // Space for the input box
     };

@@ -1,38 +1,47 @@
+@use 'variables';
+
 .chat-container {
-    font-family: 'Arial', sans-serif;
+    font-family: variables.$montserrat;
   
     .chat-list-col, .chat-messages-col {
-      padding: 20px;
+        padding: 20px;
     }
   
     .chat-list-col {
-      background-color: #f4f4f4;
-      border-right: 1px solid #ddd;
+        background-color: variables.$cultured;
+        border-right: 1px solid variables.$icecream;
     }
   
     .user-search-container {
-      margin-bottom: 20px;
+        margin-bottom: 20px;
     }
   
     .message-list {
-      height: calc(100vh - 250px);
-      overflow-y: auto;
-      padding-bottom: 10px;
+        height: calc(100vh - 250px);
+        overflow-y: auto;
+        padding-bottom: 10px;
+        background-color: variables.$white;
     }
   
     .message-input {
       position: fixed;
       bottom: 0;
-      left: calc(33.33333%);
-      width: calc(66.66667%);
-      background: white;
+      left: 0;
+      width: 100%; // Full width for smaller screens
+      background: variables.$vanilla;
       padding: 10px;
-      border-top: 1px solid #ddd;
-  
-      @media (max-width: 768px) {
-        left: 0;
-        width: 100%;
+      border-top: 1px solid variables.$icecream;
+
+      // Adjust styles for larger screens
+      @media (min-width: variables.$screen-md-min) {
+          // For medium screens and above
+          left: 33.33333%; // Align left starting from medium screens
+          width: 66.66667%; // Set specific width for medium and larger screens
+      }
+
+      @media (min-width: variables.$screen-lg-min) {
+          // For large screens and above
+          left: calc((100% - 66.66667%) / 2); // Center the element for larger screens
       }
     }
-  }
-  
+}
