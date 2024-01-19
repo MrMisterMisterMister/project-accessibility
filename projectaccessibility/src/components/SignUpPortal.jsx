@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { ButtonContact } from "./Button";
 
 // Contact component
-const signupPortal = () => {
+const SignUpPortal = () => {
     // Translation
     const { t: translate } = useTranslation("signupPortal");
 
@@ -32,6 +32,5 @@ const signupPortal = () => {
             </Container>
         </section>
     );
-};
-
-export default signupPortal;
+}
+export default SignUpPortal;
