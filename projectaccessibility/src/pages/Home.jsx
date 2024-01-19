@@ -6,8 +6,7 @@ import Expertise from "../components/Expertise";
 import Member from "../components/Member";
 import News from "../components/News";
 import Case from "../components/Case";
-import Aanmeldportaal from "../components/Aanmeldportaal";
-
+import signupPortal from "../components/SignUpPortal"
 // Home page
 const Home = () => {
     return (
@@ -18,7 +17,7 @@ const Home = () => {
             <Member />
             <News />
             <Case />
-            <Aanmeldportaal />
+            <signupPortal />
             <Footer />
         </>
     );

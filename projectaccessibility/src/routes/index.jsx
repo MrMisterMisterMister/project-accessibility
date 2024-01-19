@@ -62,10 +62,6 @@ const Routes = () => {
         {
             path: "*",
             element: <PageNotFound />
-        },
-        {
-            path: "/Contact",
-            element: <Contact/>
         }
     ];
 
