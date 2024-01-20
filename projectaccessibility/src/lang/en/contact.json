@@ -6,13 +6,5 @@
     "phone": "+3137575991",
     "address": "Johanna Westerdijkplein 75, 2521 EN The Hague"
   },
-  "additionalText": "We look forward to hearing from you and are happy to help. You can reach us via email, phone, or visit us at the provided address.",
-  "formLabels": {
-    "name": "Name",
-    "email": "E-mail",
-    "message": "Message"
-  },
-  "StatusGood": "Your message has been sent successfully.",
-  "StatusBad": "An error occurred while sending your message.",
-  "StatusEmptyFields": "Fill in your details."
+  "additionalText": "We look forward to hearing from you and are happy to help. You can reach us via email, phone, or visit us at the provided address."
 }

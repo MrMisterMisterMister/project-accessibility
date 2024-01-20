@@ -6,13 +6,6 @@
     "phone": "+3137575991",
     "address": "Johanna Westerdijkplein 75, 2521 EN Den Haag"
   },
-  "additionalText": "We kijken ernaar uit om van u te horen en helpen u graag verder. U kunt ons bereiken via e-mail, telefoon of bezoek ons op het opgegeven adres.",
-  "formLabels": {
-    "name": "Naam",
-    "email": "E-mail",
-    "message": "Bericht"
-  },
-  "StatusGood": "Uw bericht is succesvol verstuurd.",
-  "StatusBad": "Er is een fout opgetreden bij het versturen van uw bericht.",
-  "StatusEmptyFields": "Vul uw gegevens in."
+  "additionalText": "We kijken ernaar uit om van u te horen en helpen u graag verder. U kunt ons bereiken via e-mail, telefoon of bezoek ons op het opgegeven adres."
 }
+ 
