@@ -7,7 +7,7 @@ import { createEndpoint } from "../api/axiosClient";
 import UserSearch from "../components/UserSearch";
 import { MessageList, ChatList, Input, Button } from "react-chat-elements";
 import "react-chat-elements/dist/main.css";
-import img from "../../../../../../../img/placeholder.jpg";
+import img from "/img/placeholder.jpg";
 
 const Chats = observer(() => {
     // For user
