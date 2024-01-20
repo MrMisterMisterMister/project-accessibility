@@ -125,5 +125,17 @@
         "typeRequired": "* Please enter your type",
         "categoryRequired": "* Please enter your category"
     },
-    "success": {}
+    "success": {},
+    "ContactForm": {
+        "formLabels": {
+            "name": "Name",
+            "email": "E-mail",
+            "message": "Message",
+            "SendButton": "Send"
+
+          },
+          "StatusGood": "Your message has been sent successfully.",
+          "StatusBad": "An error occurred while sending your message.",
+          "StatusEmptyFields": "Fill in your details."
+    }
 }

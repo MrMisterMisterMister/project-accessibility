@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { Form, Col, Row } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
@@ -8,6 +8,8 @@ import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
 import PropTypes from "prop-types";
+import email from "@emailjs/browser";
+import { use } from "i18next";
 
 // Form for login page
 const FormLogin = observer(() => {
@@ -734,6 +736,61 @@ const FormUserPasswordUpdate = () => {
         </>
     );
 };
+const ContactForm = () => {
+    const form = useRef();
+    const [confirmation, setConfirmation] = useState(null);
+    const { t: translate } = useTranslation("form");
+
+
+    const sendEmail = (e) => {
+        e.preventDefault();
+        const name1 = form.current.user_name.value;
+        const email1 = form.current.user_email.value;
+        const message1 = form.current.message.value;
+
+        if(!name1 || !email1 || !message1){
+            setConfirmation("emptyFields");
+            return;
+        }
+        //Data for email services
+        email.sendForm('service_68oa24s', 'template_uozhqo4', form.current, 'j66DndMWEXdUxfS1a')
+        .then((result) => {
+            console.log(result.text);
+            setConfirmation("success");
+
+            form.current.reset();
+        }, (error) => {
+            console.log(error.text);
+            setConfirmation("error")
+        });
+    };
+    return(
+        <>
+        <div className="StyledContactForm">
+        <form ref ={form} onSubmit={sendEmail}>
+        <label>{translate("ContactForm.formLabels.name")}</label>
+          <input type="text" name="user_name"/>  
+          <label>{translate("ContactForm.formLabels.email")}</label>
+          <input type="email" name="user_email" />
+          <label>{translate("ContactForm.formLabels.message")}</label>
+          <textarea name="message" />
+          <input type="submit" value={translate("ContactForm.formLabels.SendButton")} />
+          {confirmation === "success" && (
+            <p className="success-message">{translate("ContactForm.StatusGood")}</p>
+        )}
+
+        {confirmation === "error" && (
+            <p className="error-message">{translate("ContactForm.StatusBad")}</p>
+        )}
+        {confirmation === "emptyFields" && (
+        <p className="error-message">{translate("ContactForm.StatusEmptyFields")}</p>
+        )}
+        </form>
+        </div>
+        </>
+    )};
+        
+        
 
 // This form is for Panel Members to update their profile
 // PanelMemberId is the only prop it needs, so it can determine the correct endpoint
@@ -1962,10 +2019,12 @@ export {
     FormSignup,
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
+    ContactForm,
     FormPanelMemberProfileUpdate,
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
     FormCompanyResearchUpdate,
     FormPanelMemberResearchJoin,
     FormPanelMemberDisabilityUpdate
+    
 };
