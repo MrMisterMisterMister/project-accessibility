@@ -1,23 +1,23 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr';
-import { Col, Container, Row, Form } from 'react-bootstrap';
-import { useStore } from '../stores/store';
-import { observer } from 'mobx-react-lite';
-import { createEndpoint } from '../api/axiosClient';
-import UserSearch from '../components/UserSearch';
-import { MessageList, ChatList, Input, Button } from 'react-chat-elements';
-import "react-chat-elements/dist/main.css"
-import img from "/img/placeholder.jpg";
+import React, { useState, useEffect, useRef } from "react";
+import { HubConnectionBuilder, LogLevel } from "@microsoft/signalr";
+import { Col, Container, Row } from "react-bootstrap";
+import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
+import { createEndpoint } from "../api/axiosClient";
+import UserSearch from "../components/UserSearch";
+import { MessageList, ChatList, Input, Button } from "react-chat-elements";
+import "react-chat-elements/dist/main.css";
+import img from "../../../../../../../img/placeholder.jpg";
 
 const Chats = observer(() => {
-    // For user 
+    // For user
     const { userStore: { user, getUser } } = useStore();
     const [currentUser, setCurrentUser] = useState(null);
     // For chat
     const [connection, setConnection] = useState(null);
     const [messages, setMessages] = useState([]);
 
-    const [newMessage, setNewMessage] = useState('');
+    const [newMessage, setNewMessage] = useState("");
     const latestMessages = useRef(null);
 
     const [isConnected, setIsConnected] = useState(false);
@@ -28,7 +28,7 @@ const Chats = observer(() => {
     const [historyMessages, setHistoryMessages] = useState([]);
 
     // State for chat items
-    const [chatItems, setChatItems] = useState([]); 
+    const [chatItems, setChatItems] = useState([]);
 
     const signalrApi = import.meta.env.VITE_SIGNALR_URL;
 
@@ -53,27 +53,27 @@ const Chats = observer(() => {
             .withUrl(signalrApi)
             .configureLogging(LogLevel.Information)
             .build();
-    
+
         newConnection.start()
             .then(() => {
-                console.log('Connected to SignalR Hub');
+                console.log("Connected to SignalR Hub");
                 setIsConnected(true);
-    
+
                 if (currentUser) {
                     console.log("Registering user: ", currentUser); // remove later
-                    newConnection.invoke('RegisterUser', currentUser.id);
-                }   
-    
+                    newConnection.invoke("RegisterUser", currentUser.id);
+                }
+
                 // Listen for incoming messages
-                newConnection.on('ReceiveMessage', (fromUser, receiver, message, chatroomId) => {
+                newConnection.on("ReceiveMessage", (fromUser, receiver, message, chatroomId) => {
                     const updatedMessages = [...latestMessages.current];
                     updatedMessages.push({ fromUser, message });
                     setMessages(updatedMessages);
 
                     // For the receiver
-                    if(fromUser.email !== currentUser.email) {
+                    if (fromUser.email !== currentUser.email) {
                         console.log("Receiverrrrrrrr Condition is being metttttttttt");
-                        handleSelectUser(fromUser); // Select the user who sent the message 
+                        handleSelectUser(fromUser); // Select the user who sent the message
                         // loadChatHistory(fromUser.id); // Load chat history
                         const senderExists = chatItems.some((item => item.id === fromUser.id) || (item => item.title === fromUser.email) || (item => item.id === chatroomId));
                         if (!senderExists) {
@@ -85,28 +85,28 @@ const Chats = observer(() => {
                                 subtitle: message,
                                 date: new Date(),
                                 unread: 0,
+                                onClick: () => selectUserFromChatList(fromUser.email)
                             };
                             setChatItems([...chatItems, newChatItem]);
                         }
                     }
                 });
             })
-            .catch(e => console.error('Connection to SignalR Hub failed: ', e));
-    
+            .catch(e => console.error("Connection to SignalR Hub failed: ", e));
+
         setConnection(newConnection);
-    
+
         // Cleanup SignalR connection
         return () => {
-            newConnection.stop().then(() => console.log('Disconnected from SignalR Hub'));
+            newConnection.stop().then(() => console.log("Disconnected from SignalR Hub"));
         };
-        
     }, [currentUser]); // Dependency(ies)
-    
+
     // Send message to selected user
     const sendPrivateMessage = async () => {
         if (connection && isConnected && newMessage && selectedUser) {
             // Send the message via SignalR
-            await connection.invoke('SendMessageToUser', currentUser, selectedUser, newMessage);
+            await connection.invoke("SendMessageToUser", currentUser, selectedUser, newMessage);
 
             // Update the chat with the new message
             const updatedMessages = [...messages];
@@ -116,12 +116,12 @@ const Chats = observer(() => {
             // Update the last message in the chat list
             setChatItems(prevChatItems =>
                 prevChatItems.map(chatItem =>
-                    chatItem.title === selectedUser.email ? {...chatItem, subtitle: newMessage, date: new Date()} : chatItem
+                    chatItem.title === selectedUser.email ? { ...chatItem, subtitle: newMessage, date: new Date() } : chatItem
                 )
             );
 
             // Clear the input box
-            setNewMessage('');
+            setNewMessage("");
         }
     };
 
@@ -133,7 +133,7 @@ const Chats = observer(() => {
 
         // Clear existing messages before loading new ones
         setMessages([]);
-    
+
         // Check if chat with this user already exists
         const existingChat = chatItems.find(item => item.title === userResult.email);
         if (!existingChat) {
@@ -143,22 +143,23 @@ const Chats = observer(() => {
                 avatar: img,
                 alt: userResult.email,
                 title: userResult.email,
-                subtitle: 'Last message...',
+                subtitle: "Last message...",
                 date: new Date(),
                 unread: 0,
-                
+                onClick: () => selectUserFromChatList(userResult.email)
+
             };
 
             console.log(newChatItem); // remove later
-    
+
             // Update the chat items state using the functional form of setChatItems
             setChatItems(prevChatItems => [...prevChatItems, newChatItem]);
         }
-        
+
         // Implement message history loading here
         // Load message history with the selected user
         await loadChatHistory(userResult.id);
-    
+
         // Reset search results and query after selecting a user
         resetSearch();
     };
@@ -170,26 +171,26 @@ const Chats = observer(() => {
                 console.log("currentUser not set");
                 return;
             }
-    
+
             try {
                 const response = await createEndpoint(`chats/userChats/${currentUser.id}`).get();
                 console.log("Complete API response:", response);
-    
+
                 // Adjust this part based on the actual structure of response
                 const responseData = response.data ? response.data : response;
-    
+
                 console.log("Response Data:", responseData);
-    
+
                 if (responseData && Array.isArray(responseData)) {
                     const chatItems = responseData.map(chat => {
                         return {
                             id: chat.otherUserId,
                             avatar: img,
                             title: chat.chatName,
-                            subtitle: 'Last message...',
+                            subtitle: "Last message...",
                             date: new Date(), // Adjust as needed
                             unread: 0,
-                            onClick: () => selectUserFromChatList(chat.chatName),
+                            onClick: () => selectUserFromChatList(chat.chatName)
                         };
                     });
                     console.log("Mapped chat items:", chatItems);
@@ -201,23 +202,23 @@ const Chats = observer(() => {
                 console.error("Error loading user chats:", error);
             }
         };
-    
+
         loadUserChats();
     }, [currentUser]);
-    
+
     const loadChatHistory = async (targetedChatHistory) => {
         const currentUserId = currentUser.id;
-    
+
         // Make API call to load chat history between the current user and the selected user
         const response = await createEndpoint(`chats/history/${currentUserId}/${targetedChatHistory}`).get();
         console.log("Complete API messagesssss response:", response);
-        if(response.messages){
+        if (response.messages) {
             const history = response.messages;
             const mappedMessages = history.map(msg => ({
-                position: msg.senderId === currentUser.id ? 'right' : 'left',
-                type: 'text',
+                position: msg.senderId === currentUser.id ? "right" : "left",
+                type: "text",
                 text: msg.content,
-                date: msg.timestamp,
+                date: msg.timestamp
             }));
             console.log("Mapped messages:", mappedMessages); // Log the mapped messages for debugging
             setHistoryMessages(mappedMessages);
@@ -240,10 +241,10 @@ const Chats = observer(() => {
     // Function to transform messages to the format required by MessageList
     const transformMessages = () => {
         return messages.map(message => ({
-            position: message.fromUser === currentUser.email ? 'right' : 'left',
-            type: 'text',
+            position: message.fromUser === currentUser.email ? "right" : "left",
+            type: "text",
             text: message.message,
-            date: new Date(),
+            date: new Date()
         }));
     };
 
@@ -254,33 +255,32 @@ const Chats = observer(() => {
 
     // Inline styles for the chat messages area and the input box
     const messageListStyle = {
-        height: 'calc(82vh - 200px)', // Adjust the height
-        overflowY: 'auto',
-        marginBottom: '50px' // Space for the input box
+        height: "calc(82vh - 200px)", // Adjust the height
+        overflowY: "auto",
+        marginBottom: "50px" // Space for the input box
     };
 
     const inputStyle = {
         bottom: 20,
-        width: '100%', // Adjust the width according to layout
-        left: '40%'  // Adjust the left position according to layout
+        width: "100%", // Adjust the width according to layout
+        left: "40%" // Adjust the left position according to layout
     };
 
-    // Better is scss file but for now this will do 
+    // Better is scss file but for now this will do
     const getChatItemStyle = (chatItem) => {
         return selectedUser && chatItem.id === selectedUser.id
-            ? { backgroundColor: 'lightblue' } // Highlight style for the selected chat item
+            ? { backgroundColor: "lightblue" } // Highlight style for the selected chat item
             : {}; // Normal style for non-selected chat items
     };
-    
 
     return (
         <div>
             <Container>
                 <Row>
                     <Col sm='4'>
-                        <UserSearch 
-                            onSelectUser={handleSelectUser} 
-                            setSearchResults={setSearchResults} 
+                        <UserSearch
+                            onSelectUser={handleSelectUser}
+                            setSearchResults={setSearchResults}
                             searchResults={searchResults}
                             resetSearch={resetSearch} />
                         <br />
@@ -297,13 +297,13 @@ const Chats = observer(() => {
                             <MessageList
                                 className='message-list'
                                 lockable={true}
-                                toBottomHeight={'100%'}
+                                toBottomHeight={"100%"}
                                 dataSource={historyMessages}
                             />
                             <MessageList
                                 className='message-list'
                                 lockable={true}
-                                toBottomHeight={'100%'}
+                                toBottomHeight={"100%"}
                                 dataSource={transformMessages()}
                             />
                         </div>
@@ -313,7 +313,7 @@ const Chats = observer(() => {
                                 value={newMessage}
                                 onChange={(e) => setNewMessage(e.target.value)}
                                 onKeyDown={(e) => {
-                                    if(e.key === "Enter"){
+                                    if (e.key === "Enter") {
                                         e.preventDefault();
                                         sendPrivateMessage();
                                     }
