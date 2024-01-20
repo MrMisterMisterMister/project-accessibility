@@ -1,4 +1,43 @@
 @use 'variables';
+
+.StyledContactForm {
+    max-width: 300px;
+    margin: 0 auto;
+
+    form {
+        display: flex;
+        flex-direction: column;
+
+        label {
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input,
+        textarea {
+            margin-bottom: 15px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+}
+
 .contact__section {
     padding-bottom: 4em;
     width: 100%;
@@ -21,39 +60,29 @@
                 margin-right: auto;
                 max-width: 45rem;
 
-.contact__section_content__text {
-    color: variables.$black;
-margin-bottom: 1.5rem;
+                .contact__section_content__text {
+                    color: variables.$black;
+                    margin-bottom: 1.5rem;
                 }
 
-                
-    .contact__section_contact_infotext {
-    color: variables.$black;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
+                .contact__section_contact_infotext {
+                    color: variables.$black;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-bottom: 1rem;
 
-.contact__section_contact_infotext {
-    color: variables.$black;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
+                    svg {
+                        margin-right: 8px;
+                    }
+                }
 
-    svg {
-        margin-right: 8px;
-    }
-}
-
-@media only screen and (max-width: 767px) {
-    .contact__section_contact_infotext:last-child svg {
-        margin-top: -28px;
-    }
-}
+                @media only screen and (max-width: 767px) {
+                    .contact__section_contact_infotext:last-child svg {
+                        margin-top: -28px;
+                    }
+                }
             }
         }
     }
@@ -68,27 +97,25 @@ margin-bottom: 1.5rem;
         background-color: variables.$blackrussian;
         position: relative;
         overflow: hidden;
-    
+    }
+
+    .about__page_container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        color: variables.$black;
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
         }
-    
-        .about__page_container {
-            padding-top: 2rem;
-            padding-bottom: 2rem;
-            color: variables.$black;
-    
-            h1 {
-                font-size: 2.5rem;
-                margin-bottom: 0.5rem;
-            }
-    
-            h2 {
-                font-size: 1.25rem;
-                margin-bottom: 0.5rem;
-            }
-    
-            p {
-                margin-bottom: 1rem;
-            }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
         }
     }
 
@@ -109,3 +136,4 @@ margin-bottom: 1.5rem;
             color: variables.$black;
         }
     }
+}
