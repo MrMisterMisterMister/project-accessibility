@@ -130,7 +130,9 @@
         "formLabels": {
             "name": "Name",
             "email": "E-mail",
-            "message": "Message"
+            "message": "Message",
+            "SendButton": "Send"
+
           },
           "StatusGood": "Your message has been sent successfully.",
           "StatusBad": "An error occurred while sending your message.",

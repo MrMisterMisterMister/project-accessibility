@@ -130,7 +130,8 @@
         "formLabels": {
             "name": "Naam",
             "email": "E-mail",
-            "message": "Bericht"
+            "message": "Bericht",
+            "SendButton": "Verzend"
           },
           "StatusGood": "Uw bericht is succesvol verstuurd.",
           "StatusBad": "Er is een fout opgetreden bij het versturen van uw bericht.",

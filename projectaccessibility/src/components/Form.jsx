@@ -774,7 +774,7 @@ const ContactForm = () => {
           <input type="email" name="user_email" />
           <label>{translate("ContactForm.formLabels.message")}</label>
           <textarea name="message" />
-          <input type="submit" value="Send" />
+          <input type="submit" value={translate("ContactForm.formLabels.SendButton")} />
           {confirmation === "success" && (
             <p className="success-message">{translate("ContactForm.StatusGood")}</p>
         )}
