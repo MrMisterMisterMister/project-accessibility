@@ -21,7 +21,7 @@ const PrivacyPolicy = () => {
                     />
                 </div>
                 <Container className="privacypolicy__page_container">
-                    <h1 tabIndex="0">{translate("pageTitle")}</h1>
+                <h1 tabIndex="0" id="test-page-title" data-testid="test-page-title">{translate("pageTitle")}</h1>
                     <p tabIndex="0" className="text-muted">{translate("lastModified")}</p>
                     <p tabIndex="0">{translate("intro.0")}</p>
                     <p tabIndex="0">{translate("intro.1")}</p>

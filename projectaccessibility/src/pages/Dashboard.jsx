@@ -73,7 +73,7 @@ const Dashboard = observer(() => {
             title: translate("nav.research")
         },
         {
-            page: <Chats />,
+            page: <Chats userName={currentUser.userName} />,
             icon: <ChatLeftDots />,
             title: translate("nav.chats")
         }
