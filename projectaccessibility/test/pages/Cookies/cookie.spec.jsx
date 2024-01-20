@@ -7,7 +7,7 @@ import i18n from "../../../src/i18n";
 
 describe("Testing the Cookies Page", () => {
     beforeEach(() => {
-        i18n.changeLanguage('en');
+        i18n.changeLanguage("en");
     });
 
     const renderComponent = () => {
@@ -22,9 +22,6 @@ describe("Testing the Cookies Page", () => {
 
     test("renders the page without crashing", () => {
         renderComponent();
-        expect(screen.getByRole('main')).toBeDefined();
+        expect(screen.getByRole("main")).toBeDefined();
     });
-
-    // more tests... :)
-
 });

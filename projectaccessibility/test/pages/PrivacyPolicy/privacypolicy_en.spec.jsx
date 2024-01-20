@@ -7,7 +7,7 @@ import i18n from "../../../src/i18n";
 
 describe("Testing the PrivacyPolicy Page in English", () => {
     beforeEach(() => {
-        i18n.changeLanguage('en');
+        i18n.changeLanguage("en");
     });
 
     test("renders the privacy policy page correctly in English", () => {
@@ -19,12 +19,12 @@ describe("Testing the PrivacyPolicy Page in English", () => {
             </I18nextProvider>
         );
 
-        const pageTitleElement = screen.getByTestId('test-page-title');
-        const actualId = pageTitleElement.getAttribute('id');
+        const pageTitleElement = screen.getByTestId("privacypolicy-page-title");
+        const actualId = pageTitleElement.getAttribute("id");
         const actualPageTitle = pageTitleElement.textContent;
 
-        const expectedId = 'test-page-title';
-        const expectedPageTitle = 'Privacy Policy';
+        const expectedId = "privacypolicy-page-title";
+        const expectedPageTitle = "Privacy Policy";
 
         expect(actualId).toEqual(expectedId);
         expect(actualPageTitle).toEqual(expectedPageTitle);

@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
                     <Shape section="privacypolicy" position={["left", "right"]} />
                 </div>
                 <Container className="privacypolicy__page_container">
-                    <h1 tabIndex="0">{translate("pageTitle")}</h1>
+                    <h1 tabIndex="0" data-testid="privacypolicy-page-title" id="privacypolicy-page-title">{translate("pageTitle")}</h1>
                     <p tabIndex="0" className="text-muted">
                         {translate("lastModified")}
                     </p>
