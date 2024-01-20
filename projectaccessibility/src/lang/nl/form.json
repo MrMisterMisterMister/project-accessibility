@@ -86,6 +86,10 @@
     "categoryPlaceholder": "Categorie",
     "organizerLabel": "Organisator",
     "organizerPlaceholder": "Organisator",
+    "subjectLabel": "Onderwerp",
+    "subjectPlaceholder": "Onderwerp",
+    "messageLabel": "Bericht",
+    "messagePlaceholder": "Bericht",
     "error": {
         "emailRequired": "* Voer je e-mailadres in",
         "emailPattern": "* Voer een geldig e-mailadres in",
@@ -123,18 +127,8 @@
         "dateRequired": "* Voer je datum in",
         "rewardRequired": "* Voer je beloning in",
         "typeRequired": "* Voer je type in",
-        "categoryRequired": "* Voer je categorie in"
-    },
-    "success": {},
-    "ContactForm": {
-        "formLabels": {
-            "name": "Naam",
-            "email": "E-mail",
-            "message": "Bericht",
-            "SendButton": "Verzend"
-        },
-        "StatusGood": "Uw bericht is succesvol verstuurd.",
-        "StatusBad": "Er is een fout opgetreden bij het versturen van uw bericht.",
-        "StatusEmptyFields": "Vul uw gegevens in."
+        "categoryRequired": "* Voer je categorie in",
+        "subjectRequired": "* Voer je onderwerp in",
+        "messageRequired": "* Voer je bericht in"
     }
 }

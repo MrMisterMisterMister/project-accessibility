@@ -8,8 +8,7 @@ import { Alert } from "../components/Alert";
 import { useStore } from "../stores/store";
 import { observer } from "mobx-react-lite";
 import PropTypes from "prop-types";
-import email from "@emailjs/browser";
-import { use } from "i18next";
+import emailjs from "@emailjs/browser";
 
 // Form for login page
 const FormLogin = observer(() => {
@@ -222,9 +221,7 @@ const FormSignup = () => {
                         <Row>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.firstName ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.firstName ? "error" : ""}`}
                                     type="text"
                                     {...register("firstName", {
                                         required: {
@@ -282,9 +279,7 @@ const FormSignup = () => {
                             </Col>
                             <Col lg={6}>
                                 <Form.Control
-                                    className={`form__text_field ${
-                                        errors.companyName ? "error" : ""
-                                    }`}
+                                    className={`form__text_field ${errors.companyName ? "error" : ""}`}
                                     type="text"
                                     {...register("companyName", {
                                         required: {
@@ -660,61 +655,6 @@ const FormUserPasswordUpdate = () => {
         </>
     );
 };
-const ContactForm = () => {
-    const form = useRef();
-    const [confirmation, setConfirmation] = useState(null);
-    const { t: translate } = useTranslation("form");
-
-
-    const sendEmail = (e) => {
-        e.preventDefault();
-        const name1 = form.current.user_name.value;
-        const email1 = form.current.user_email.value;
-        const message1 = form.current.message.value;
-
-        if(!name1 || !email1 || !message1){
-            setConfirmation("emptyFields");
-            return;
-        }
-        //Data for email services
-        email.sendForm('service_68oa24s', 'template_uozhqo4', form.current, 'j66DndMWEXdUxfS1a')
-        .then((result) => {
-            console.log(result.text);
-            setConfirmation("success");
-
-            form.current.reset();
-        }, (error) => {
-            console.log(error.text);
-            setConfirmation("error")
-        });
-    };
-    return(
-        <>
-        <div className="StyledContactForm">
-        <form ref ={form} onSubmit={sendEmail}>
-        <label>{translate("ContactForm.formLabels.name")}</label>
-          <input type="text" name="user_name"/>  
-          <label>{translate("ContactForm.formLabels.email")}</label>
-          <input type="email" name="user_email" />
-          <label>{translate("ContactForm.formLabels.message")}</label>
-          <textarea name="message" />
-          <input type="submit" value={translate("ContactForm.formLabels.SendButton")} />
-          {confirmation === "success" && (
-            <p className="success-message">{translate("ContactForm.StatusGood")}</p>
-        )}
-
-        {confirmation === "error" && (
-            <p className="error-message">{translate("ContactForm.StatusBad")}</p>
-        )}
-        {confirmation === "emptyFields" && (
-        <p className="error-message">{translate("ContactForm.StatusEmptyFields")}</p>
-        )}
-        </form>
-        </div>
-        </>
-    )};
-        
-        
 
 // This form is for Panel Members to update their profile
 // PanelMemberId is the only prop it needs, so it can determine the correct endpoint
@@ -1836,17 +1776,157 @@ FormPanelMemberDisabilityUpdate.propTypes = {
     )
 };
 
+// Contact form
+const FormContact = () => {
+    // Translation
+    const { t: translate } = useTranslation("form");
+
+    // Something to do with emailjs requiring the current form reference
+    const form = useRef();
+
+    // State hook to capture and manage form validation errors
+    // Each field's error will be stored in this object
+    const [formAlerts, setFormAlerts] = useState({
+        errors: [],
+        success: []
+    });
+
+    // React hook form
+    const {
+        register,
+        handleSubmit,
+        reset,
+        formState: { errors }
+    } = useForm({ mode: "all" });
+
+    // To handle when the contact form is being submitted
+    const handleContactFormSubmit = () => {
+        // Data for email services
+        emailjs.sendForm("service_68oa24s", "template_uozhqo4", form.current, "j66DndMWEXdUxfS1a") // will fix later in like env
+            .then((result) => {
+                setFormAlerts({ success: { code: "ContactFormHasBeenSubmitted" } });
+                reset();
+            }, () => {
+                setFormAlerts({ error: { code: "defaultMessage" } });
+            });
+    };
+
+    return (
+        <>
+            <Alert data={formAlerts} />
+            <Form
+                className="form__general"
+                acceptCharset="UTF-8"
+                method="post"
+                onSubmit={handleSubmit(handleContactFormSubmit)}
+                noValidate
+                ref={form}
+            >
+                <Row>
+                    <Col lg={6}>
+                        <Form.Label className="form__label">{translate("firstNameLabel")}</Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.firstName ? "error" : ""}`}
+                            type="text"
+                            {...register("firstName", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.firstNameRequired")
+                                }
+                            })}
+                            aria-invalid={errors.firstName ? "true" : "false"}
+                            placeholder={translate("firstNamePlaceholder")}
+                        />
+                        {errors.firstName && (
+                            <div className="form__error">{errors.firstName.message}</div>
+                        )}
+                    </Col>
+                    <Col lg={6}>
+                        <Form.Label className="form__label">{translate("lastNameLabel")}</Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.lastName ? "error" : ""}`}
+                            type="text"
+                            {...register("lastName", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.lastNameRequired")
+                                }
+                            })}
+                            aria-invalid={errors.lastName ? "true" : "false"}
+                            placeholder={translate("lastNamePlaceholder")}
+                        />
+                        {errors.lastName && (
+                            <div className="form__error">{errors.lastName.message}</div>
+                        )}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">{translate("emailLabel")}</Form.Label>
+                        <Form.Control
+                            className={`form__text_field ${errors.email ? "error" : ""}`}
+                            type="email"
+                            {...register("email", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.emailRequired")
+                                }
+                            })}
+                            aria-invalid={errors.email ? "true" : "false"}
+                            placeholder={translate("emailPlaceholder")}
+                        />
+                        {errors.email && <div className="form__error">{errors.email.message}</div>}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">{translate("subjectLabel")}</Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            {...register("subject", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.subjectRequired")
+                                }
+                            })}
+                            aria-invalid={errors.subject ? "true" : "false"}
+                            type="text"
+                            placeholder={translate("subjectPlaceholder")}
+                        />
+                        {errors.subject && <div className="form__error">{errors.subject.message}</div>}
+                    </Col>
+                    <Col xs={12}>
+                        <Form.Label className="form__label">
+                            {translate("messageLabel")}
+                        </Form.Label>
+                        <Form.Control
+                            className="form__text_field"
+                            {...register("message", {
+                                required: {
+                                    value: true,
+                                    message: translate("error.messageRequired")
+                                }
+                            })}
+                            aria-invalid={errors.message ? "true" : "false"}
+                            as="textarea"
+                            placeholder={translate("messagePlaceholder")}
+                            rows={5}
+                        />
+                        {errors.message && <div className="form__error">{errors.message.message}</div>}
+                    </Col>
+                </Row>
+                <ButtonSubmit text="Send" />
+            </Form>
+        </>
+    );
+};
+
 export {
     FormLogin,
     FormSignup,
     FormUserEmailUpdate,
     FormUserPasswordUpdate,
-    ContactForm,
     FormPanelMemberProfileUpdate,
     FormCompanyProfileUpdate,
     FormCompanyResearchCreate,
     FormCompanyResearchUpdate,
     FormPanelMemberResearchJoin,
-    FormPanelMemberDisabilityUpdate
-    
+    FormPanelMemberDisabilityUpdate,
+    FormContact
 };

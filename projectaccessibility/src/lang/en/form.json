@@ -86,6 +86,10 @@
     "categoryPlaceholder": "Category",
     "organizerLabel": "Organizer",
     "organizerPlaceholder": "Organizer",
+    "subjectLabel": "Subject",
+    "subjectPlaceholder": "Subject",
+    "messageLabel": "Message",
+    "messagePlaceholder": "Message",
     "error": {
         "emailRequired": "* Please enter your email address",
         "emailPattern": "* Please enter a valid email address",
@@ -123,17 +127,8 @@
         "dateRequired": "* Please enter your date",
         "rewardRequired": "* Please enter your reward",
         "typeRequired": "* Please enter your type",
-        "categoryRequired": "* Please enter your category"
-    },
-    "ContactForm": {
-        "formLabels": {
-            "name": "Name",
-            "email": "E-mail",
-            "message": "Message",
-            "SendButton": "Send"
-        },
-        "StatusGood": "Your message has been sent successfully.",
-        "StatusBad": "An error occurred while sending your message.",
-        "StatusEmptyFields": "Fill in your details."
+        "categoryRequired": "* Please enter your category",
+        "subjectRequired": "* Please enter your subject",
+        "messageRequired": "* Please enter your message"
     }
 }

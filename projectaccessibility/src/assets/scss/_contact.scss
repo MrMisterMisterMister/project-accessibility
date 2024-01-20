@@ -1,5 +1,8 @@
 @use 'variables';
+
+// contact section
 .contact__section {
+    padding-top: 4em;
     padding-bottom: 4em;
     width: 100%;
     background-color: variables.$white;
@@ -21,28 +24,27 @@
                 margin-right: auto;
                 max-width: 45rem;
 
+                .contact__section_content__title {
+                    color: variables.$sapphire;
+                    font-size: 3em;
+                    font-weight: 700;
+                    line-height: 1.25;
+                    margin-bottom: 2rem;
+                    overflow-wrap: break-word;
+                }
+
                 .contact__section_content__text {
                     color: variables.$black;
                     margin-bottom: 1.5rem;
                 }
 
-                .contact__section_contact_infotext {
+                .contact__section_content_button {
                     color: variables.$black;
                     font-weight: bold;
                     display: flex;
                     align-items: center;
                     justify-content: center;
                     margin-bottom: 1rem;
-
-                    svg {
-                        margin-right: 8px;
-                    }
-                }
-
-                @media only screen and (max-width: 767px) {
-                    .contact__section_contact_infotext:last-child svg {
-                        margin-top: -28px;
-                    }
                 }
             }
         }
@@ -60,29 +62,10 @@
         overflow: hidden;
     }
 
-    .about__page_container {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-        color: variables.$black;
-
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-        }
-    }
-
     .contact__page_container {
         padding-top: 2rem;
         padding-bottom: 2rem;
+        color: variables.$black;
 
         .contact__page_title {
             font-size: 2.5rem;
@@ -93,8 +76,16 @@
         .contact__page_intro {
             font-size: 1rem;
             font-weight: normal;
-            margin-bottom: 2rem;
-            color: variables.$black;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
         }
     }
 }

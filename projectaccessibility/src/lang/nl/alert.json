@@ -56,6 +56,7 @@
         "PanelMemberProfileUpdated": "Je hebt succesvol je profiel bijgewerkt.",
         "DisabilityHasBeenUpdated": "Je hebt succesvol je beperking bijgewerkt.",
         "EmailHasBeenUpdated": "Je hebt succesvol je e-mail bijgewerkt.",
-        "PasswordHasBeenUpdated": "Je hebt succesvol je wachtwoord bijgewerkt."
+        "PasswordHasBeenUpdated": "Je hebt succesvol je wachtwoord bijgewerkt.",
+        "ContactFormHasBeenSubmitted": "Je formulier is succesvol verzonden."
     }
 }
