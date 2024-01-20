@@ -123,7 +123,7 @@ const Dashboard = observer(() => {
         // Check if current user logged in has the correct roles to see the nav
         // If they are, returns true and the navitem is rendered for them
         // Otherwise it's false and they wont' see it
-        return !item.roles || item.roles.some(role => user.userRoles.includes(role));
+        return !item.roles || (user && user.userRoles && item.roles.some(role => user.userRoles.includes(role)));
     });
 
     // State to keep track whether of scrolling behaviour done by user
