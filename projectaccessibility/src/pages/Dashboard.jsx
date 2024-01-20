@@ -90,7 +90,7 @@ const Dashboard = observer(() => {
             roles: ["Admin", "PanelMember", "Company"]
         },
         {
-            page: <Chats />,
+            page: <Chats userName={currentUser.userName} />,
             icon: <ChatLeftDots />,
             title: translate("nav.chats"),
             roles: ["Admin", "PanelMember", "Company"] // idk if admin can even chat, but whatever

@@ -124,5 +124,17 @@
         "rewardRequired": "* Voer je beloning in",
         "typeRequired": "* Voer je type in",
         "categoryRequired": "* Voer je categorie in"
+    },
+    "success": {},
+    "ContactForm": {
+        "formLabels": {
+            "name": "Naam",
+            "email": "E-mail",
+            "message": "Bericht",
+            "SendButton": "Verzend"
+        },
+        "StatusGood": "Uw bericht is succesvol verstuurd.",
+        "StatusBad": "Er is een fout opgetreden bij het versturen van uw bericht.",
+        "StatusEmptyFields": "Vul uw gegevens in."
     }
 }
