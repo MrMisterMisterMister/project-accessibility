@@ -27,19 +27,16 @@ const Contact = () => {
                     </div>
                     <div className="contact__page_company">
                         <div className="contact__page_company__details">
-                            <h2 className="contact__page_company_heading">Get in touch</h2>
-                            <p className="contact__page_company_description">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. At, quasi, ratione sint reprehenderit dignissimos aliquid sed maiores eius, quam debitis accusantium mollitia soluta consequatur eos? Veniam tempora et rem quae?
-                            </p>
+                            <h2 className="contact__page_company_heading">{translate("subTitle")}</h2>
+                            <p className="contact__page_company_description">{translate("subDescription")}</p>
                             <dl className="contact__page_company__list">
-                                {/* need to loop this, but meh, also localization */}
                                 <div className="contact__page_company__information">
                                     <dt className="contact__page_company__icon">
                                         <Building />
                                     </dt>
                                     <dd className="contact__page_company__text">
-                                        Lorem ipsum<br />
-                                        Lorem ipsum
+                                        <p>{translate("company.address.streetName")}</p>
+                                        <p>{translate("company.address.place")}</p>
                                     </dd>
                                 </div>
                                 <div className="contact__page_company__information">
@@ -47,7 +44,7 @@ const Contact = () => {
                                         <Telephone />
                                     </dt>
                                     <dd className="contact__page_company__text">
-                                        +31 30 239 82 70
+                                        {translate("company.phone")}
                                     </dd>
                                 </div>
                                 <div className="contact__page_company__information">
@@ -55,7 +52,7 @@ const Contact = () => {
                                         <Envelope />
                                     </dt>
                                     <dd className="contact__page_company__text">
-                                        info@accessibility.nl
+                                        {translate("company.email")}
                                     </dd>
                                 </div>
                             </dl>
