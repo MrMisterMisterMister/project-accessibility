@@ -29,7 +29,9 @@ const Dashboard = observer(() => {
     const { t: translate } = useTranslation("dashboard");
 
     // Get the user and GetUser from userstore
-    const { userStore: { user, getUser } } = useStore();
+    const {
+        userStore: { user, getUser }
+    } = useStore();
 
     // Hook to store the current user in
     const [currentUser, setCurrentUser] = useState({});
@@ -50,37 +52,54 @@ const Dashboard = observer(() => {
     }, [user]);
 
     // State to manage the navItems in the menu
+    // It's not really needed to put allowedRoles for like dashboard and such, but you never know
+    // If roles isnt defined, everyone can see that navitem, and we only got 3 roles for now
     const [navItems, setNavItems] = useState([
         {
-            page: <><h1 className="dashboard__page_title">Dashboard</h1><img className="dashboard__page_image" src="/img/clodsire.gif" alt="Clodsire that is bouncing up and down" /></>,
+            page: (
+                <>
+                    <h1 className="dashboard__page_title">Dashboard</h1>
+                    <img
+                        className="dashboard__page_image"
+                        src="/img/clodsire.gif"
+                        alt="Clodsire that is bouncing up and down"
+                    />
+                </>
+            ),
             icon: <BarChart />,
             title: translate("nav.dashboard"),
-            active: true
+            active: true,
+            roles: ["Admin", "PanelMember", "Company"]
         },
         {
             page: <PanelMember />,
             icon: <Person />,
-            title: translate("nav.panelmember")
+            title: translate("nav.panelmember"),
+            roles: ["Admin"]
         },
         {
             page: <Company />,
             icon: <Buildings />,
-            title: translate("nav.company")
+            title: translate("nav.company"),
+            roles: ["Admin"]
         },
         {
             page: <Research />,
             icon: <Book />,
-            title: translate("nav.research")
+            title: translate("nav.research"),
+            roles: ["Admin", "PanelMember", "Company"]
         },
         {
             page: <Chats userName={currentUser.userName} />,
             icon: <ChatLeftDots />,
-            title: translate("nav.chats")
+            title: translate("nav.chats"),
+            roles: ["Admin", "PanelMember", "Company"] // idk if admin can even chat, but whatever
         }
     ]);
 
     // These are the items that are displayed in the userMenu dropdown
     // Had to make a seperate one, so they wouldn't be in the way of the main nav menu in dashboard
+    // Everyone can see them, so no need to filter based on roles
     const userMenuItems = [
         {
             page: <Account />,
@@ -98,6 +117,14 @@ const Dashboard = observer(() => {
             label: translate("nav.signout")
         }
     ];
+
+    // This function just checks if a role included in navItem to render it
+    const filteredRolesNavItems = navItems.filter(item => {
+        // Check if current user logged in has the correct roles to see the nav
+        // If they are, returns true and the navitem is rendered for them
+        // Otherwise it's false and they wont' see it
+        return !item.roles || (user && user.userRoles && item.roles.some(role => user.userRoles.includes(role)));
+    });
 
     // State to keep track whether of scrolling behaviour done by user
     const [isScrolling, setIsScrolling] = useState(false);
@@ -145,9 +172,7 @@ const Dashboard = observer(() => {
     // First need to determine what kind of user is logged in from backend or something
     return (
         <div className="dashboard__page">
-            <div
-                className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}
-            >
+            <div className={`dashboard__page_menu ${isScrolling ? "fixed__scroll" : ""}`}>
                 <NavDashboardTopNav
                     picturePath="/img/placeholder.jpg"
                     pictureAlt="Clodsire"
@@ -155,16 +180,11 @@ const Dashboard = observer(() => {
                     userMenuItems={userMenuItems}
                     onNavItemClick={handleNavItemClick}
                 />
-                <NavDashboardBottomNav
-                    navItems={navItems}
-                    onNavItemClick={handleNavItemClick}
-                />
+                <NavDashboardBottomNav navItems={filteredRolesNavItems} onNavItemClick={handleNavItemClick} />
             </div>
             <main className="dashboard__page_main">
                 <Container>
-                    <div className="dashboard__page_content">
-                        {pageToRender && pageToRender}
-                    </div>
+                    <div className="dashboard__page_content">{pageToRender && pageToRender}</div>
                 </Container>
             </main>
         </div>

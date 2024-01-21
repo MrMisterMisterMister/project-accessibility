@@ -7,7 +7,9 @@ import { observer } from "mobx-react-lite";
 // This wraps certain pages that require authentication, so not everyone can access it
 const ProtectedRoute = observer(() => {
     // Get the token from the context object
-    const { authStore: { token } } = useStore();
+    const {
+        authStore: { token }
+    } = useStore();
 
     // Check if the user is authenticated by looking at the token
     if (!token) {

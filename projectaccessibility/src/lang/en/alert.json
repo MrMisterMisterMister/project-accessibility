@@ -56,6 +56,7 @@
         "PanelMemberProfileUpdated": "You have successfully updated your profile.",
         "DisabilityHasBeenUpdated": "You have successfully updated your disability.",
         "EmailHasBeenUpdated": "You have successfully updated your email.",
-        "PasswordHasBeenUpdated": "You have successfully updated your password."
+        "PasswordHasBeenUpdated": "You have successfully updated your password.",
+        "ContactFormHasBeenSubmitted": "Your form has been successfully submitted."
     }
 }

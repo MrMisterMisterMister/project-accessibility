@@ -17,7 +17,9 @@ const Settings = observer(() => {
     const { t: translate } = useTranslation("settings");
 
     // Get the stored user info so we can get access to the current role
-    const { userStore: { user } } = useStore();
+    const {
+        userStore: { user }
+    } = useStore();
 
     // State to keep track of the disabilities
     const [disabilities, setDisabilities] = useState([]);

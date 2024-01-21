@@ -74,10 +74,9 @@ const Login = observer(() => {
         onSuccess: async (tokenResponse) => {
             // Calling google api with bearer token so we get access to it
             // Need a fresh axios without our predefined configs
-            const userInfo = await axios.get(
-                "https://www.googleapis.com/oauth2/v3/userinfo",
-                { headers: { Authorization: `Bearer ${tokenResponse.access_token}` } }
-            );
+            const userInfo = await axios.get("https://www.googleapis.com/oauth2/v3/userinfo", {
+                headers: { Authorization: `Bearer ${tokenResponse.access_token}` }
+            });
 
             // Check if user info has stuff in it and Ok response
             if (userInfo.status === 200 && userInfo.data) {
@@ -100,9 +99,7 @@ const Login = observer(() => {
             <Header />
             <div className="login__page">
                 <Container className="login__container">
-                    <h1 className="login__page_title">
-                        {translate("pageTitle")}
-                    </h1>
+                    <h1 className="login__page_title">{translate("pageTitle")}</h1>
                     <div className="login__page_panel">
                         <div className="login__page_authentication login__page_column">
                             <div className="login__page_content">
@@ -112,9 +109,7 @@ const Login = observer(() => {
                         <div className="login__page_external login__page_column">
                             <div className="login__page_content">
                                 <div className="login__page_seperator">
-                                    <p className="login__page_seperator__text">
-                                        or
-                                    </p>
+                                    <p className="login__page_seperator__text">or</p>
                                 </div>
                                 <ButtonAuth
                                     icon={<PersonPlusFill />}

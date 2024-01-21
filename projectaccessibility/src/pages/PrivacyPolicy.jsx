@@ -15,164 +15,237 @@ const PrivacyPolicy = () => {
             <Header />
             <div className="privacypolicy__page">
                 <div className="privacypolicy__page_banner">
-                    <Shape
-                        section="privacypolicy"
-                        position={["left", "right"]}
-                    />
+                    <Shape section="privacypolicy" position={["left", "right"]} />
                 </div>
                 <Container className="privacypolicy__page_container">
-                <h1 tabIndex="0" id="test-page-title" data-testid="test-page-title">{translate("pageTitle")}</h1>
-                    <p tabIndex="0" className="text-muted">{translate("lastModified")}</p>
+                    <h1 tabIndex="0" data-testid="privacypolicy-page-title" id="privacypolicy-page-title">{translate("pageTitle")}</h1>
+                    <p tabIndex="0" className="text-muted">
+                        {translate("lastModified")}
+                    </p>
                     <p tabIndex="0">{translate("intro.0")}</p>
                     <p tabIndex="0">{translate("intro.1")}</p>
                     <p tabIndex="0">{translate("intro.2")}</p>
 
                     <nav aria-label="Jump to content">
                         <ul>
-                            <li><a href="#collected-data">1. {translate("collectedData.title")}</a></li>
-                            <li><a href="#personal-data">2. {translate("collectedData.personalData.title")}</a></li>
-                            <li><a href="#medical-data">3. {translate("collectedData.medicalData.title")}</a></li>
-                            <li><a href="#company-data">4. {translate("collectedData.companyData.title")}</a></li>
-                            <li><a href="#research-data">5. {translate("collectedData.researchData.title")}</a></li>
-                            <li><a href="#purpose-of-data-processing">6. {translate("purposeOfDataProcessing.title")}</a></li>
-                            <li><a href="#general-purpose-of-data-processing">7. {translate("purposeOfDataProcessing.generalPurposeOfProcessing.title")}</a></li>
-                            <li><a href="#automatically-collected-data">8. {translate("purposeOfDataProcessing.automaticallyCollectedData.title")}</a></li>
-                            <li><a href="#retention-period">9. {translate("purposeOfDataProcessing.retentionPeriod.title")}</a></li>
-                            <li><a href="#your-rights">10. {translate("rights.title")}</a></li>
-                            <li><a href="#right-to-access">11. {translate("rights.rightsList.access.title")}</a></li>
-                            <li><a href="#right-of-rectification">12. {translate("rights.rightsList.rectification.title")}</a></li>
-                            <li><a href="#right-to-restrict-processing">13. {translate("rights.rightsList.restriction.title")}</a></li>
-                            <li><a href="#right-to-data-portability">14. {translate("rights.rightsList.portability.title")}</a></li>
-                            <li><a href="#right-to-erasure">15. {translate("rights.rightsList.forgetfulness.title")}</a></li>
-                            <li><a href="#right-to-object-and-other-rights">16. {translate("rights.rightsList.objection.title")}</a></li>
-                            <li><a href="#cookies">17. {translate("cookies.title")}</a></li>
-                            <li><a href="#changes-to-the-privacy-policy">18. {translate("privacyPolicyChanges.title")}</a></li>
-                            <li><a href="#contact-details">19. {translate("contactDetails.title")}</a></li>
+                            <li>
+                                <a href="#collected-data">1. {translate("collectedData.title")}</a>
+                            </li>
+                            <li>
+                                <a href="#personal-data">
+                                    2. {translate("collectedData.personalData.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#medical-data">
+                                    3. {translate("collectedData.medicalData.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#company-data">
+                                    4. {translate("collectedData.companyData.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#research-data">
+                                    5. {translate("collectedData.researchData.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#purpose-of-data-processing">
+                                    6. {translate("purposeOfDataProcessing.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#general-purpose-of-data-processing">
+                                    7.{" "}
+                                    {translate(
+                                        "purposeOfDataProcessing.generalPurposeOfProcessing.title"
+                                    )}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#automatically-collected-data">
+                                    8.{" "}
+                                    {translate(
+                                        "purposeOfDataProcessing.automaticallyCollectedData.title"
+                                    )}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#retention-period">
+                                    9. {translate("purposeOfDataProcessing.retentionPeriod.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#your-rights">10. {translate("rights.title")}</a>
+                            </li>
+                            <li>
+                                <a href="#right-to-access">
+                                    11. {translate("rights.rightsList.access.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#right-of-rectification">
+                                    12. {translate("rights.rightsList.rectification.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#right-to-restrict-processing">
+                                    13. {translate("rights.rightsList.restriction.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#right-to-data-portability">
+                                    14. {translate("rights.rightsList.portability.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#right-to-erasure">
+                                    15. {translate("rights.rightsList.forgetfulness.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#right-to-object-and-other-rights">
+                                    16. {translate("rights.rightsList.objection.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#cookies">17. {translate("cookies.title")}</a>
+                            </li>
+                            <li>
+                                <a href="#changes-to-the-privacy-policy">
+                                    18. {translate("privacyPolicyChanges.title")}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#contact-details">
+                                    19. {translate("contactDetails.title")}
+                                </a>
+                            </li>
                         </ul>
                     </nav>
 
                     <br />
 
-                    <h2 tabIndex="0" id="collected-data">{translate("collectedData.title")}</h2>
+                    <h2 tabIndex="0" id="collected-data">
+                        {translate("collectedData.title")}
+                    </h2>
                     <p tabIndex="0">{translate("collectedData.description")}</p>
 
-                    <h3 tabIndex="0" id="personal-data">{translate("collectedData.personalData.title")}</h3>
+                    <h3 tabIndex="0" id="personal-data">
+                        {translate("collectedData.personalData.title")}
+                    </h3>
                     <p tabIndex="0">{translate("collectedData.personalData.content")}</p>
 
-                    <h3 tabIndex="0" id="medical-data">{translate("collectedData.medicalData.title")}</h3>
+                    <h3 tabIndex="0" id="medical-data">
+                        {translate("collectedData.medicalData.title")}
+                    </h3>
                     <p tabIndex="0">{translate("collectedData.medicalData.content")}</p>
 
                     <div className="privacypolicy__page_list">
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (i)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(i)</div>
                             <span tabIndex="0">
                                 {translate("collectedData.medicalData.list.0")}
                             </span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (ii)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(ii)</div>
                             <span tabIndex="0">
                                 {translate("collectedData.medicalData.list.1")}
                             </span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (iii)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(iii)</div>
                             <span tabIndex="0">
                                 {translate("collectedData.medicalData.list.2")}
                             </span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (iv)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(iv)</div>
                             <span tabIndex="0">
                                 {translate("collectedData.medicalData.list.3")}
                             </span>
                         </div>
                     </div>
 
-                    <h3 tabIndex="0" id="company-data">{translate("collectedData.companyData.title")}</h3>
+                    <h3 tabIndex="0" id="company-data">
+                        {translate("collectedData.companyData.title")}
+                    </h3>
                     <p tabIndex="0">{translate("collectedData.companyData.content")}</p>
 
-                    <h3 tabIndex="0" id="research-data">{translate("collectedData.researchData.title")}</h3>
+                    <h3 tabIndex="0" id="research-data">
+                        {translate("collectedData.researchData.title")}
+                    </h3>
                     <p tabIndex="0">{translate("collectedData.researchData.content")}</p>
 
-                    <h2 tabIndex="0" id="purpose-of-data-processing">{translate("purposeOfDataProcessing.title")}</h2>
+                    <h2 tabIndex="0" id="purpose-of-data-processing">
+                        {translate("purposeOfDataProcessing.title")}
+                    </h2>
                     <p tabIndex="0">{translate("purposeOfDataProcessing.intro.0")}</p>
                     <p tabIndex="0">{translate("purposeOfDataProcessing.intro.1")}</p>
 
                     <h3 tabIndex="0" id="general-purpose-of-data-processing">
-                        {translate(
-                            "purposeOfDataProcessing.generalPurposeOfProcessing.title"
-                        )}
+                        {translate("purposeOfDataProcessing.generalPurposeOfProcessing.title")}
                     </h3>
                     <p tabIndex="0">
-                        {translate(
-                            "purposeOfDataProcessing.generalPurposeOfProcessing.content"
-                        )}
+                        {translate("purposeOfDataProcessing.generalPurposeOfProcessing.content")}
                     </p>
 
                     <h3 tabIndex="0" id="automatically-collected-data">
-                        {translate(
-                            "purposeOfDataProcessing.automaticallyCollectedData.title"
-                        )}
+                        {translate("purposeOfDataProcessing.automaticallyCollectedData.title")}
                     </h3>
                     <p tabIndex="0">
-                        {translate(
-                            "purposeOfDataProcessing.automaticallyCollectedData.content"
-                        )}
+                        {translate("purposeOfDataProcessing.automaticallyCollectedData.content")}
                     </p>
 
                     <h3 tabIndex="0" id="retention-period">
-                        {translate(
-                            "purposeOfDataProcessing.retentionPeriod.title"
-                        )}
+                        {translate("purposeOfDataProcessing.retentionPeriod.title")}
                     </h3>
                     <p tabIndex="0">
-                        {translate(
-                            "purposeOfDataProcessing.retentionPeriod.content"
-                        )}
+                        {translate("purposeOfDataProcessing.retentionPeriod.content")}
                     </p>
 
-                    <h2 tabIndex="0" id="your-rights">{translate("rights.title")}</h2>
+                    <h2 tabIndex="0" id="your-rights">
+                        {translate("rights.title")}
+                    </h2>
                     <p tabIndex="0">{translate("rights.description")}</p>
 
-                    <h3 tabIndex="0" id="right-to-access">{translate("rights.rightsList.access.title")}</h3>
+                    <h3 tabIndex="0" id="right-to-access">
+                        {translate("rights.rightsList.access.title")}
+                    </h3>
                     <p tabIndex="0">{translate("rights.rightsList.access.content")}</p>
 
                     <h3 tabIndex="0" id="right-of-rectification">
                         {translate("rights.rightsList.rectification.title")}
                     </h3>
-                    <p tabIndex="0">
-                        {translate("rights.rightsList.rectification.content.0")}
-                    </p>
-                    <p tabIndex="0">
-                        {translate("rights.rightsList.rectification.content.1")}
-                    </p>
+                    <p tabIndex="0">{translate("rights.rightsList.rectification.content.0")}</p>
+                    <p tabIndex="0">{translate("rights.rightsList.rectification.content.1")}</p>
 
-                    <h3 tabIndex="0" id="right-to-restrict-processing">{translate("rights.rightsList.restriction.title")}</h3>
+                    <h3 tabIndex="0" id="right-to-restrict-processing">
+                        {translate("rights.rightsList.restriction.title")}
+                    </h3>
                     <p tabIndex="0">{translate("rights.rightsList.restriction.content")}</p>
 
-                    <h3 tabIndex="0" id="right-to-data-portability">{translate("rights.rightsList.portability.title")}</h3>
+                    <h3 tabIndex="0" id="right-to-data-portability">
+                        {translate("rights.rightsList.portability.title")}
+                    </h3>
                     <p tabIndex="0">{translate("rights.rightsList.portability.content")}</p>
 
                     <h3 tabIndex="0" id="right-to-erasure">
                         {translate("rights.rightsList.forgetfulness.title")}
                     </h3>
-                    <p tabIndex="0">
-                        {translate("rights.rightsList.forgetfulness.content")}
-                    </p>
+                    <p tabIndex="0">{translate("rights.rightsList.forgetfulness.content")}</p>
 
-                    <h3 tabIndex="0" id="right-to-object-and-other-rights">{translate("rights.rightsList.objection.title")}</h3>
+                    <h3 tabIndex="0" id="right-to-object-and-other-rights">
+                        {translate("rights.rightsList.objection.title")}
+                    </h3>
                     <p tabIndex="0">{translate("rights.rightsList.objection.content")}</p>
 
-                    <h2 tabIndex="0" id="cookies">{translate("cookies.title")}</h2>
+                    <h2 tabIndex="0" id="cookies">
+                        {translate("cookies.title")}
+                    </h2>
                     <p tabIndex="0">{translate("cookies.intro.0")}</p>
                     <p tabIndex="0">{translate("cookies.intro.1")}</p>
                     <p tabIndex="0">{translate("cookies.intro.2")}</p>
@@ -180,41 +253,33 @@ const PrivacyPolicy = () => {
 
                     <div className="privacypolicy__page_list">
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (i)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(i)</div>
                             <span tabIndex="0">
-                                {translate(
-                                    "cookies.purpose.authenticationStatus"
-                                )}
+                                {translate("cookies.purpose.authenticationStatus")}
                             </span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (ii)
-                            </div>
-                            <span tabIndex="0">
-                                {translate("cookies.purpose.personalization")}
-                            </span>
+                            <div className="privacypolicy__page_list__ordinal">(ii)</div>
+                            <span tabIndex="0">{translate("cookies.purpose.personalization")}</span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (iii)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(iii)</div>
                             <span tabIndex="0">{translate("cookies.purpose.security")}</span>
                         </div>
                         <div className="privacypolicy__page_list__item">
-                            <div className="privacypolicy__page_list__ordinal">
-                                (iv)
-                            </div>
+                            <div className="privacypolicy__page_list__ordinal">(iv)</div>
                             <span tabIndex="0">{translate("cookies.purpose.analysis")}</span>
                         </div>
                     </div>
 
-                    <h2 tabIndex="0" id="changes-to-the-privacy-policy">{translate("privacyPolicyChanges.title")}</h2>
+                    <h2 tabIndex="0" id="changes-to-the-privacy-policy">
+                        {translate("privacyPolicyChanges.title")}
+                    </h2>
                     <p tabIndex="0">{translate("privacyPolicyChanges.content")}</p>
 
-                    <h2 tabIndex="0" id="contact-details">{translate("contactDetails.title")}</h2>
+                    <h2 tabIndex="0" id="contact-details">
+                        {translate("contactDetails.title")}
+                    </h2>
                     <p tabIndex="0">{translate("contactDetails.content")}</p>
                 </Container>
             </div>

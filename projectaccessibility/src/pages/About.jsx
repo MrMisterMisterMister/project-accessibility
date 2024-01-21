@@ -27,14 +27,15 @@ const About = () => {
                                 ? (
                                     <React.Fragment>
                                         {key.content.map((item, itemIndex) => (
-                                            <p key={itemIndex} tabIndex="0">{item}</p>
+                                            <p key={itemIndex} tabIndex="0">
+                                                {item}
+                                            </p>
                                         ))}
                                     </React.Fragment>
                                 )
                                 : (
                                     <p tabIndex="0">{translate(`information.${index}.content`)}</p>
-                                )
-                            }
+                                )}
                         </React.Fragment>
                     ))}
                 </Container>

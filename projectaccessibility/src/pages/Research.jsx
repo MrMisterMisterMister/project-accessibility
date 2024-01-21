@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
-import { TableCompanyResearchView, TablePanelMemberResearchView, TableAdminResearchView, TableAvailableResearchView } from "../components/Table";
-import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
+import {
+    TableCompanyResearchView,
+    TablePanelMemberResearchView,
+    TableAdminResearchView,
+    TableAvailableResearchView
+} from "../components/Table";
+import {
+    FormCompanyResearchCreate,
+    FormCompanyResearchUpdate,
+    FormPanelMemberResearchJoin
+} from "../components/Form";
 import { Alert } from "../components/Alert";
 import { createEndpoint } from "../api/axiosClient";
 import { useStore } from "../stores/store";
@@ -23,7 +32,9 @@ const Research = observer(() => {
     const [researchId, setResearchId] = useState(null);
 
     // Get the stored user info so we can get access to the current role
-    const { userStore: { user } } = useStore();
+    const {
+        userStore: { user }
+    } = useStore();
 
     // Hook to store being worked on research, singular
     const [research, setResearch] = useState({});
@@ -104,7 +115,10 @@ const Research = observer(() => {
     useEffect(() => {
         if (allResearches.length === 0 || refetchData) fetchAllResearches();
 
-        if (user.userRoles.includes("PanelMember") && (panelMemberResearches.length === 0 || refetchData)) {
+        if (
+            user.userRoles.includes("PanelMember") &&
+            (panelMemberResearches.length === 0 || refetchData)
+        ) {
             fetchPanelMemberResearches();
             setRefetchData(false);
         }
@@ -152,7 +166,9 @@ const Research = observer(() => {
         // Show default javascript confirm
         if (confirm(translate("confirm.join")) === true) {
             // Make post request
-            const researchParticipationResponse = createEndpoint(`researchparticipants/join-research/${id}`).post();
+            const researchParticipationResponse = createEndpoint(
+                `researchparticipants/join-research/${id}`
+            ).post();
 
             // Handle the response from the delete call
             researchParticipationResponse
@@ -176,7 +192,9 @@ const Research = observer(() => {
         // Javascript confirm
         if (confirm(translate("confirm.leave")) === true) {
             // make delete request
-            const researchLeavingResponse = createEndpoint("researchparticipants/leave-research").delete(id);
+            const researchLeavingResponse = createEndpoint(
+                "researchparticipants/leave-research"
+            ).delete(id);
 
             // Handle the response from the delete call
             researchLeavingResponse
@@ -206,43 +224,58 @@ const Research = observer(() => {
                     <TableAdminResearchView data={allResearches} />
                 )}
                 {user.userRoles.includes("Company") && (
-                    <TableCompanyResearchView data={companyResearches} onEdit={switchView} onDelete={handleResearchDeletion} />
+                    <TableCompanyResearchView
+                        data={companyResearches}
+                        onEdit={switchView}
+                        onDelete={handleResearchDeletion}
+                    />
                 )}
                 {user.userRoles.includes("PanelMember") && (
-                    <TablePanelMemberResearchView data={panelMemberResearches} onLeave={handleResearchLeaving} />
+                    <TablePanelMemberResearchView
+                        data={panelMemberResearches}
+                        onLeave={handleResearchLeaving}
+                    />
                 )}
             </>
         ),
         allResearches: (
-            <TableAvailableResearchView data={allResearches} onView={switchView} onJoin={handleResearchParticipation} />
+            <TableAvailableResearchView
+                data={allResearches}
+                onView={switchView}
+                onJoin={handleResearchParticipation}
+            />
         ),
         newResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("createResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("createResearch")}</h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate organizerId={user.userId} setRefetchData={setRefetchData} />
+                    <FormCompanyResearchCreate
+                        organizerId={user.userId}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         ),
         editResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("editResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("editResearch")}</h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchUpdate researchId={researchId} setRefetchData={setRefetchData} />
+                    <FormCompanyResearchUpdate
+                        researchId={researchId}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         ),
         viewResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("viewResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("viewResearch")}</h2>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin researchId={researchId} data={research} setRefetchData={setRefetchData} />
+                    <FormPanelMemberResearchJoin
+                        researchId={researchId}
+                        data={research}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         )
@@ -250,9 +283,7 @@ const Research = observer(() => {
 
     return (
         <div className="research__dashboard">
-            <h1 className="research__dashboard_title">
-                {translate("pageTitle")}
-            </h1>
+            <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary
                     text={translate("buttons.myResearch")}
@@ -275,9 +306,7 @@ const Research = observer(() => {
                 )}
             </div>
             <Alert data={formAlerts} />
-            <div className="research__dashboard_content">
-                {researchViewComponents[view]}
-            </div>
+            <div className="research__dashboard_content">{researchViewComponents[view]}</div>
         </div>
     );
 });

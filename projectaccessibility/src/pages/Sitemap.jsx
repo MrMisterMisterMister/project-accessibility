@@ -74,7 +74,9 @@ const Sitemap = () => {
                 </div>
                 <Container className="sitemap__page_container">
                     <h1 tabIndex="0">{translate("pageTitle")}</h1>
-                    <p className="text-muted" tabIndex="0">{translate("lastModified")}</p>
+                    <p className="text-muted" tabIndex="0">
+                        {translate("lastModified")}
+                    </p>
                     <p tabIndex="0">{translate("intro")}</p>
                     {pageLinks.map((section, index) => (
                         <div key={index}>

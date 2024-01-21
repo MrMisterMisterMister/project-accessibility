@@ -1,10 +1,20 @@
 {
-  "ContactTitle": "Do you have further questions? Feel free to contact us.",
-  "content": "If you need additional information or have any questions, we invite you to contact Project Accessibility Foundation. Our dedicated team is ready to assist you. Below, you'll find our contact details:",
-  "contact": {
-    "email": "projectaccessibility@gmail.com",
-    "phone": "+3137575991",
-    "address": "Johanna Westerdijkplein 75, 2521 EN The Hague"
-  },
-  "additionalText": "We look forward to hearing from you and are happy to help. You can reach us via email, phone, or visit us at the provided address."
+    "pageTitle": "Contact",
+    "intro": "Do you have any questions about accessibility or are you interested in a specific topic? Feel free to contact us! We are ready to assist you and provide more information.",    
+    "title": "Sign up and participate in surveys in the accessibility portal.",
+    "description": "Discover new possibilities and contribute to research aimed at improving accessibility.",
+    "buttons": {
+        "signup": "Sign up",
+        "signin": "Sign in"
+    },
+    "subTitle": "Get in touch",
+    "subDescription": "Want to get in touch? We'd love to hear from you. Feel free to reach out using the options below.",
+    "company": {
+        "address": {
+            "streetName": "Christiaan Krammlaan 2",
+            "place": "3571 AX Utrecht"
+        },
+        "phone": "+31 30 239 82 70",
+        "email": "info@clodsire.nl"
+    }
 }

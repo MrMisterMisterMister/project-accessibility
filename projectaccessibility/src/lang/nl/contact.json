@@ -1,11 +1,20 @@
 {
-  "ContactTitle": "Heeft u verdere vragen? Neem dan gerust contact met ons op.",
-  "content": "Indien u aanvullende informatie nodig heeft of vragen heeft, nodigen wij u uit om contact op te nemen met Stichting Project Accessibility. Ons toegewijde team staat klaar om u te helpen. Hieronder vindt u onze contactgegevens:",
-  "contact": {
-    "email": "projectaccessibility@gmail.com",
-    "phone": "+3137575991",
-    "address": "Johanna Westerdijkplein 75, 2521 EN Den Haag"
-  },
-  "additionalText": "We kijken ernaar uit om van u te horen en helpen u graag verder. U kunt ons bereiken via e-mail, telefoon of bezoek ons op het opgegeven adres."
+    "pageTitle": "Contact",
+    "intro": "Heb je vragen aan ons over toegankelijkheid of ben je geïnteresseerd in een specifiek onderwerp? Neem gerust contact met ons op! Wij staan klaar om je te helpen en meer informatie te verstrekken.",
+    "title": "Meld je aan en doe mee aan onderzoeken in het toegankelijkheidsportaal.",
+    "description": "Ontdek nieuwe mogelijkheden en draag bij aan onderzoeken ter verbetering van de toegankelijkheid.",
+    "buttons": {
+        "signup": "Aanmelden",
+        "signin": "Inloggen"
+    },
+    "subTitle": "Neem contact op",
+    "subDescription": "Wil je contact opnemen? We horen graag van je. Voel je vrij om contact met ons op te nemen via de onderstaande opties.",
+    "company": {
+        "address": {
+            "streetName": "Christiaan Krammlaan 2",
+            "place": "3571 AX Utrecht"
+        },
+        "phone": "+31 30 239 82 70",
+        "email": "info@clodsire.nl"
+    }
 }
- 

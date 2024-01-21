@@ -10,6 +10,23 @@
                 "contact": "Contact"
             }
         },
+        "service": {
+            "title": "How we help",
+            "links": {
+                "audits": "Audits",
+                "userResearch": "User research",
+                "training": "Training",
+                "advice": "Advice"
+            }
+        },
+        "tools": {
+            "title": "Tools",
+            "links": {
+                "scan": "Website scan",
+                "analysis": "Analysis",
+                "reporting": "Reporting"
+            }
+        },
         "bottombar": {
             "links": {
                 "sitemap": "Sitemap",
