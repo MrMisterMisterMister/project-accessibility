@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 // contact section
 .contact__section {
@@ -66,26 +67,86 @@
         padding-top: 2rem;
         padding-bottom: 2rem;
         color: variables.$black;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5%;
 
-        .contact__page_title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: variables.$blackrussian;
+        .contact__page_form {
+            position: relative;
+            width: 100%;
+
+            @include mixins.lg {
+                width: 60%;
+            }
+
+            .contact__page_title {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+                color: variables.$blackrussian;
+            }
+
+            .contact__page_intro {
+                font-size: 1rem;
+                font-weight: normal;
+                margin-bottom: 1rem;
+            }
         }
 
-        .contact__page_intro {
-            font-size: 1rem;
-            font-weight: normal;
-        }
+        .contact__page_company {
+            width: 100%;
+            margin-top: 2rem;
 
-        h2 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-        }
+            @include mixins.lg {
+                flex: 1 1 0%;
+                width: 35%;
+                margin: 0;
+            }
 
-        p {
-            font-size: 1rem;
-            margin-bottom: 1rem;
+            .contact__page_company__details {
+                background-image: linear-gradient(to top right, variables.$vanilla 0%, variables.$vanilla 100%);
+                padding: 1.25rem 1.375rem;
+                border-radius: 2px;
+
+                .contact__page_company_heading {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .contact__page_company_description {
+                    font-size: 1rem;
+                    font-weight: normal;
+                    margin-bottom: 1rem;
+                }
+
+                .contact__page_company__list {
+                    position: relative;
+
+                    .contact__page_company__information {
+                        display: flex;
+                        align-items: flex-start;
+
+                        &:not(:last-child) {
+                            margin-bottom: 1rem;
+                        }
+
+                        .contact__page_company__icon {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            display: flex;
+                            
+                            svg {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .contact__page_company__text {
+                            font-size: 0.875rem;
+                            padding-left: 0.5rem;
+                        }
+                    }
+                }
+            }
         }
     }
 }

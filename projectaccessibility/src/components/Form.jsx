@@ -1820,7 +1820,7 @@ const FormContact = () => {
         <>
             <Alert data={formAlerts} />
             <Form
-                className="form__general"
+                className="form__contact"
                 acceptCharset="UTF-8"
                 method="post"
                 onSubmit={handleSubmit(handleContactFormSubmit)}
