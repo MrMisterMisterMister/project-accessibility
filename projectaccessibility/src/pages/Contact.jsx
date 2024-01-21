@@ -22,6 +22,7 @@ const Contact = () => {
                     <h1 className="contact__page_title">{translate("pageTitle")}</h1>
                     <p className="contact__page_intro">{translate("intro")}</p>
                     <FormContact />
+                    {/* TODO put some more information, too lazy today, will do tomorrow */}
                 </Container>
             </div>
             <Footer />

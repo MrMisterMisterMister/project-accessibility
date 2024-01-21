@@ -1802,8 +1802,13 @@ const FormContact = () => {
     // To handle when the contact form is being submitted
     const handleContactFormSubmit = () => {
         // Data for email services
-        emailjs.sendForm("service_68oa24s", "template_uozhqo4", form.current, "j66DndMWEXdUxfS1a") // will fix later in like env
-            .then((result) => {
+        emailjs.sendForm(
+            import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+            import.meta.env.VITE_EMAILJS_SERVICE_ID,
+            form.current,
+            import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        )
+            .then(() => {
                 setFormAlerts({ success: { code: "ContactFormHasBeenSubmitted" } });
                 reset();
             }, () => {
