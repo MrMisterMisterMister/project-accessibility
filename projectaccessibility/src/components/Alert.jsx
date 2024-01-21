@@ -15,20 +15,15 @@ const Alert = ({ data }) => {
     return (
         <>
             {data.error &&
-                (Array.isArray(data.error) ? data.error : [data.error]).map(
-                    (key, index) => (
-                        <div className="alert alert__error" key={index}>
-                            <span>{translate(`error.${key.code}`)}</span>
-                        </div>
-                    )
-                )}
+                (Array.isArray(data.error) ? data.error : [data.error]).map((key, index) => (
+                    <div className="alert alert__error" key={index} data-testid="error-alert">
+                        <span>{translate(`error.${key.code}`)}</span>
+                    </div>
+                ))}
 
             {data.success &&
-                (Array.isArray(data.success)
-                    ? data.success
-                    : [data.success]
-                ).map((key, index) => (
-                    <div className="alert alert__success" key={index}>
+                (Array.isArray(data.success) ? data.success : [data.success]).map((key, index) => (
+                    <div className="alert alert__success" key={index} data-testid="success-alert">
                         <span>{translate(`success.${key.code}`)}</span>
                     </div>
                 ))}

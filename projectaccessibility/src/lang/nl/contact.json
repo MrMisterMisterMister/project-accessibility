@@ -1,10 +1,20 @@
 {
     "pageTitle": "Contact",
-    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora neque deleniti, alias facilis ea fugit soluta nisi voluptatem aliquam et tenetur repudiandae quam doloribus reprehenderit repellendus provident illo hic suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perspiciatis, aliquam, necessitatibus unde commodi ad placeat animi distinctio, in sed vero numquam quisquam. Accusantium ipsum quidem eveniet, tenetur odit obcaecati.",
+    "intro": "Heb je vragen aan ons over toegankelijkheid of ben je geïnteresseerd in een specifiek onderwerp? Neem gerust contact met ons op! Wij staan klaar om je te helpen en meer informatie te verstrekken.",
     "title": "Meld je aan en doe mee aan onderzoeken in het toegankelijkheidsportaal.",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Ontdek nieuwe mogelijkheden en draag bij aan onderzoeken ter verbetering van de toegankelijkheid.",
     "buttons": {
         "signup": "Aanmelden",
         "signin": "Inloggen"
+    },
+    "subTitle": "Neem contact op",
+    "subDescription": "Wil je contact opnemen? We horen graag van je. Voel je vrij om contact met ons op te nemen via de onderstaande opties.",
+    "company": {
+        "address": {
+            "streetName": "Christiaan Krammlaan 2",
+            "place": "3571 AX Utrecht"
+        },
+        "phone": "+31 30 239 82 70",
+        "email": "info@clodsire.nl"
     }
 }

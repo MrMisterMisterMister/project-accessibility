@@ -1,23 +1,23 @@
 {
     "pageTitle": "Expertise",
-    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima sit magnam, amet cum soluta numquam animi iste, vitae neque exercitationem tempora, laborum impedit similique architecto dolor asperiores explicabo natus adipisci? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Alias, dolorem veniam optio cumque iste corrupti esse tempora voluptatem cum quos, iure dignissimos quas nemo quis? Expedita eligendi error a eum!",
-    "title": "Expertises",
+    "intro": "Welcome to our expertise page. We are passionate about delivering high-quality services in the realm of digital accessibility and user experience.",
+    "title": "Our Expertise",
     "cards": [
         {
-            "title": "Accessible digital environment",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Accessible Digital Environment",
+            "text": "We specialize in designing and developing digital environments that adhere to the highest accessibility standards. Utilizing best practices and guidelines, we ensure our products are usable for individuals with various disabilities. Our goal is to create inclusive digital experiences."
         },
         {
-            "title": "Accessible digital environment",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "User-Friendly Interfaces",
+            "text": "Our design team places a strong emphasis on creating user-friendly interfaces. We believe that an intuitive and seamless user experience is essential for the success of digital products. Leveraging strategic design thinking and an iterative design process, we ensure our interfaces meet user needs and expectations."
         },
         {
-            "title": "User-friendly environment",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Strategic Design Thinking",
+            "text": "We embrace strategic design thinking as a cornerstone in developing effective digital solutions. Our approach involves aligning design decisions with strategic goals, business objectives, and user needs. By employing this methodology, we create innovative and impactful designs that resonate with our clients and their target audiences."
         },
         {
-            "title": "User research",
-            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+            "title": "Inclusive Design",
+            "text": "Inclusive design is at the core of our approach. We strive to create digital products that are accessible to all users, regardless of their background or abilities. By focusing on diversity and inclusion, we ensure our designs resonate with a broad audience and have a positive impact on the user community."
         }
     ]
 }

@@ -1,10 +1,10 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { ButtonHero } from "./Button";
-import Shape from "./Shape";
+import { ButtonHero } from "../../components/Button";
+import Shape from "../../components/Shape";
 
-// Hero component
+// Hero section
 const Hero = () => {
     // Translation
     const { t: translate } = useTranslation("hero");
@@ -13,12 +13,8 @@ const Hero = () => {
         <section className="hero__section">
             <Container className="hero__section_container">
                 <div className="hero__section_wrapper">
-                    <h1 className="hero__section_title">
-                        {translate("title")}
-                    </h1>
-                    <p className="hero__section_text">
-                        {translate("description")}
-                    </p>
+                    <h1 className="hero__section_title">{translate("title")}</h1>
+                    <p className="hero__section_text">{translate("description")}</p>
                     <ButtonHero text={translate("buttonText")} path="/login" />
                 </div>
             </Container>

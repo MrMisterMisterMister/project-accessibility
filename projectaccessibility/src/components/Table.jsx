@@ -40,16 +40,18 @@ const TableBody = ({ tableData, columns }) => {
                     tableData.map((row, rowIndex) => (
                         <tr key={rowIndex} className="table__general_item">
                             {columns.map(({ accessor, format, actions, colSpan }, colIndex) => (
-                                <td key={colIndex} className="table__general_item__cell" colSpan={colSpan || 1}>
-                                    {
-                                        actions
-                                            ? actions(row.id)
-                                            : Array.isArray(accessor)
-                                                ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
-                                                : format
-                                                    ? format(row[accessor])
-                                                    : row[accessor]
-                                    }
+                                <td
+                                    key={colIndex}
+                                    className="table__general_item__cell"
+                                    colSpan={colSpan || 1}
+                                >
+                                    {actions
+                                        ? actions(row.id)
+                                        : Array.isArray(accessor)
+                                            ? accessor.map((subAccessor) => row[subAccessor]).join(" ")
+                                            : format
+                                                ? format(row[accessor])
+                                                : row[accessor]}
                                 </td>
                             ))}
                         </tr>
@@ -61,8 +63,7 @@ const TableBody = ({ tableData, columns }) => {
                             {translate("noDataAvailable")}
                         </td>
                     </tr>
-                )
-            }
+                )}
         </tbody>
     );
 };
@@ -95,11 +96,20 @@ const TablePanelMemberView = ({ data }) => {
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.name"), accessor: ["firstName", "lastName"] },
         { label: translate("labels.email"), accessor: "email" },
-        { label: translate("labels.dateOfBirth"), accessor: "dateOfBirth", format: (date) => DateFormatter.format(new Date(date)) },
+        {
+            label: translate("labels.dateOfBirth"),
+            accessor: "dateOfBirth",
+            format: (date) => DateFormatter.format(new Date(date))
+        },
         { label: translate("labels.address"), accessor: "address" },
         { label: translate("labels.postalCode"), accessor: "postalCode" },
         { label: translate("labels.city"), accessor: "city" },
-        { label: translate("labels.country"), accessor: "country" }
+        { label: translate("labels.country"), accessor: "country" },
+        {
+            label: translate("labels.disability"),
+            accessor: "disabilitiesName",
+            format: (names) => names.join(", ")
+        } // The default doesn't add space, so need to use format
     ];
 
     // These items need to be looped over
@@ -167,11 +177,24 @@ const TablePanelMemberResearchView = ({ data, onLeave }) => {
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
         { label: translate("labels.type"), accessor: "type" },
-        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        {
+            label: translate("labels.date"),
+            accessor: "date",
+            format: (date) => DateFormatter.format(new Date(date))
+        },
+        {
+            label: translate("labels.reward"),
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
         { label: translate("labels.category"), accessor: "category" },
         { label: translate("labels.organizer"), accessor: "organizerName" },
-        { label: translate("labels.actions"), actions: (id) => (<ButtonMuted text={translate("labels.leave")} onAction={() => onLeave(id)} />) }
+        {
+            label: translate("labels.actions"),
+            actions: (id) => (
+                <ButtonMuted text={translate("labels.leave")} onAction={() => onLeave(id)} />
+            )
+        }
     ];
 
     return (
@@ -190,7 +213,6 @@ TablePanelMemberResearchView.propTypes = {
     onLeave: PropTypes.func
 };
 
-// TODO
 // Same here, needs to be changed to load in all the data
 // Just a simply for loop and some conditional checks
 // Also the buttons for need onAction
@@ -204,16 +226,27 @@ const TableCompanyResearchView = ({ data, onEdit, onDelete }) => {
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
-        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        {
+            label: translate("labels.date"),
+            accessor: "date",
+            format: (date) => DateFormatter.format(new Date(date))
+        },
         { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        {
+            label: translate("labels.reward"),
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
         {
             label: translate("labels.actions"),
             colSpan: 2,
             actions: (id) => (
                 <>
-                    <ButtonMuted text={translate("labels.edit")} onAction={() => onEdit("editResearch", id)} />
+                    <ButtonMuted
+                        text={translate("labels.edit")}
+                        onAction={() => onEdit("editResearch", id)}
+                    />
                     <ButtonMuted text={translate("labels.delete")} onAction={() => onDelete(id)} />
                 </>
             )
@@ -247,10 +280,18 @@ const TableAdminResearchView = ({ data }) => {
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
         { label: translate("labels.description"), accessor: "description" },
-        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        {
+            label: translate("labels.date"),
+            accessor: "date",
+            format: (date) => DateFormatter.format(new Date(date))
+        },
         { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        {
+            label: translate("labels.reward"),
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
         { label: translate("labels.organizer"), accessor: "organizerName" }
     ];
 
@@ -269,7 +310,6 @@ TableAdminResearchView.propTypes = {
     data: PropTypes.array.isRequired
 };
 
-// TODO
 // view of researches that the panelmember has joined
 // will also create a seperate one where the panelmember can see the available researches to join
 const TableAvailableResearchView = ({ data, onView, onJoin }) => {
@@ -280,17 +320,28 @@ const TableAvailableResearchView = ({ data, onView, onJoin }) => {
     const columns = [
         { label: translate("labels.id"), accessor: "id" },
         { label: translate("labels.title"), accessor: "title" },
-        { label: translate("labels.date"), accessor: "date", format: (date) => DateFormatter.format(new Date(date)) },
+        {
+            label: translate("labels.date"),
+            accessor: "date",
+            format: (date) => DateFormatter.format(new Date(date))
+        },
         { label: translate("labels.type"), accessor: "type" },
         { label: translate("labels.category"), accessor: "category" },
-        { label: translate("labels.reward"), accessor: "reward", format: (number) => NumberFormatter.format(number) },
+        {
+            label: translate("labels.reward"),
+            accessor: "reward",
+            format: (number) => NumberFormatter.format(number)
+        },
         { label: translate("labels.organizer"), accessor: "organizerName" },
         {
             label: translate("labels.actions"),
             colSpan: 2,
             actions: (id) => (
                 <>
-                    <ButtonMuted text={translate("labels.view")} onAction={() => onView("viewResearch", id)} />
+                    <ButtonMuted
+                        text={translate("labels.view")}
+                        onAction={() => onView("viewResearch", id)}
+                    />
                     <ButtonMuted text={translate("labels.join")} onAction={() => onJoin(id)} />
                 </>
             )

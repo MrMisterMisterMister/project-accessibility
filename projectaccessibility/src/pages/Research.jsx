@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { ButtonSecondary } from "../components/Button";
-import { TableCompanyResearchView, TablePanelMemberResearchView, TableAdminResearchView, TableAvailableResearchView } from "../components/Table";
-import { FormCompanyResearchCreate, FormCompanyResearchUpdate, FormPanelMemberResearchJoin } from "../components/Form";
+import {
+    TableCompanyResearchView,
+    TablePanelMemberResearchView,
+    TableAdminResearchView,
+    TableAvailableResearchView
+} from "../components/Table";
+import {
+    FormCompanyResearchCreate,
+    FormCompanyResearchUpdate,
+    FormPanelMemberResearchJoin
+} from "../components/Form";
 import { Alert } from "../components/Alert";
 import { createEndpoint } from "../api/axiosClient";
 import { useStore } from "../stores/store";
+import { observer } from "mobx-react-lite";
 
 // Research page
 // In here the components will be role dependend loaded
 // Still need to figure it out, so just putting all components open for now
-const Research = () => {
+const Research = observer(() => {
     // Translation
     const { t: translate } = useTranslation("research");
 
@@ -22,7 +32,9 @@ const Research = () => {
     const [researchId, setResearchId] = useState(null);
 
     // Get the stored user info so we can get access to the current role
-    const { userStore: { user } } = useStore();
+    const {
+        userStore: { user }
+    } = useStore();
 
     // Hook to store being worked on research, singular
     const [research, setResearch] = useState({});
@@ -36,6 +48,9 @@ const Research = () => {
 
     // Hook to get the researches that is made by the logged in company
     const [companyResearches, setCompanyResearches] = useState([]);
+
+    // Crack way to determine if data needs to be fetched again
+    const [refetchData, setRefetchData] = useState(false);
 
     // For managing errors
     const [formAlerts, setFormAlerts] = useState({
@@ -85,31 +100,38 @@ const Research = () => {
     // Use effect to reset the alerts
     // This is so the alert dont show up anymore
     useEffect(() => {
-        setTimeout(() => {
+        const alertTimeout = setTimeout(() => {
             setFormAlerts({ errors: [], success: [] });
-        }, 5000);
+        }, 3000);
+        // clear timeout so it doesnt get fucked by other effects
+        // before the timer wasnt working as intended, this fixes it
+        return () => clearTimeout(alertTimeout);
     }, [formAlerts]);
 
     // Load all the data in
+    // This is very crack
+    // But it is what it is
+    // Could have done this inside a global file for fetching all data types
     useEffect(() => {
-        // TODO this isnt correct if length 0
-        if (allResearches.length === 0) fetchAllResearches();
+        if (allResearches.length === 0 || refetchData) fetchAllResearches();
 
-        // m
-        if (user.userRoles.includes("PanelMember") && panelMemberResearches.length === 0) {
+        if (
+            user.userRoles.includes("PanelMember") &&
+            (panelMemberResearches.length === 0 || refetchData)
+        ) {
             fetchPanelMemberResearches();
+            setRefetchData(false);
         }
 
-        // e
-        if (user.userRoles.includes("Company") && companyResearches.length === 0) {
+        if (user.userRoles.includes("Company") && (companyResearches.length === 0 || refetchData)) {
             fetchCompanyResearches();
+            setRefetchData(false);
         }
 
-        // h
         if (researchId != null || researchId) {
             fetchSingularResearch();
         }
-    }, [researchId, companyResearches, allResearches, panelMemberResearches]);
+    }, [researchId, refetchData]);
 
     // This function handles deleting a research
     // Passes this as a property, so the button can use it as onAction
@@ -127,6 +149,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate some shit
                         setFormAlerts({ success: { code: "ResearchHasBeenDeleted" } });
+                        setRefetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -143,7 +166,9 @@ const Research = () => {
         // Show default javascript confirm
         if (confirm(translate("confirm.join")) === true) {
             // Make post request
-            const researchParticipationResponse = createEndpoint(`researchparticipants/join-research/${id}`).post();
+            const researchParticipationResponse = createEndpoint(
+                `researchparticipants/join-research/${id}`
+            ).post();
 
             // Handle the response from the delete call
             researchParticipationResponse
@@ -152,6 +177,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate alerts
                         setFormAlerts({ success: { code: "ParticipantHasJoined" } });
+                        setRefetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -166,7 +192,9 @@ const Research = () => {
         // Javascript confirm
         if (confirm(translate("confirm.leave")) === true) {
             // make delete request
-            const researchLeavingResponse = createEndpoint("researchparticipants/leave-research").delete(id);
+            const researchLeavingResponse = createEndpoint(
+                "researchparticipants/leave-research"
+            ).delete(id);
 
             // Handle the response from the delete call
             researchLeavingResponse
@@ -175,6 +203,7 @@ const Research = () => {
                     if (response.status === 200) {
                         // Configurate the success message
                         setFormAlerts({ success: { code: "ParticipantHasLeft" } });
+                        setRefetchData(true);
                     }
                 })
                 .catch((error) => {
@@ -195,54 +224,66 @@ const Research = () => {
                     <TableAdminResearchView data={allResearches} />
                 )}
                 {user.userRoles.includes("Company") && (
-                    <TableCompanyResearchView data={companyResearches} onEdit={switchView} onDelete={handleResearchDeletion} />
+                    <TableCompanyResearchView
+                        data={companyResearches}
+                        onEdit={switchView}
+                        onDelete={handleResearchDeletion}
+                    />
                 )}
                 {user.userRoles.includes("PanelMember") && (
-                    <TablePanelMemberResearchView data={panelMemberResearches} onLeave={handleResearchLeaving} />
+                    <TablePanelMemberResearchView
+                        data={panelMemberResearches}
+                        onLeave={handleResearchLeaving}
+                    />
                 )}
             </>
         ),
         allResearches: (
-            <TableAvailableResearchView data={allResearches} onView={switchView} onJoin={handleResearchParticipation} />
+            <TableAvailableResearchView
+                data={allResearches}
+                onView={switchView}
+                onJoin={handleResearchParticipation}
+            />
         ),
         newResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("createResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("createResearch")}</h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchCreate organizerId={user.userId} />
+                    <FormCompanyResearchCreate
+                        organizerId={user.userId}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         ),
         editResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("editResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("editResearch")}</h2>
                 <div className="research__content_container">
-                    <FormCompanyResearchUpdate researchId={researchId} />
+                    <FormCompanyResearchUpdate
+                        researchId={researchId}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         ),
         viewResearch: (
             <div className="research__content">
-                <h2 className="research__content_title">
-                    {translate("viewResearch")}
-                </h2>
+                <h2 className="research__content_title">{translate("viewResearch")}</h2>
                 <div className="research__content_container">
-                    <FormPanelMemberResearchJoin researchId={researchId} data={research} />
+                    <FormPanelMemberResearchJoin
+                        researchId={researchId}
+                        data={research}
+                        setRefetchData={setRefetchData}
+                    />
                 </div>
             </div>
         )
     };
 
-    // TODO show alerts
     return (
         <div className="research__dashboard">
-            <h1 className="research__dashboard_title">
-                {translate("pageTitle")}
-            </h1>
+            <h1 className="research__dashboard_title">{translate("pageTitle")}</h1>
             <div className="research__dashboard_options">
                 <ButtonSecondary
                     text={translate("buttons.myResearch")}
@@ -265,11 +306,9 @@ const Research = () => {
                 )}
             </div>
             <Alert data={formAlerts} />
-            <div className="research__dashboard_content">
-                {researchViewComponents[view]}
-            </div>
+            <div className="research__dashboard_content">{researchViewComponents[view]}</div>
         </div>
     );
-};
+});
 
 export default Research;

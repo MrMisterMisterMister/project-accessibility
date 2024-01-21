@@ -37,14 +37,23 @@ ButtonSecondary.propTypes = {
 };
 
 // General button for submits in forms
-const ButtonSubmit = ({ style, text }) => {
-    return <Button className={style || "button__submit"} as="input" type="submit" value={text} />;
+const ButtonSubmit = ({ style, text, isDisabled }) => {
+    return (
+        <Button
+            className={style || "button__submit"}
+            as="input"
+            type="submit"
+            value={text}
+            disabled={isDisabled}
+        />
+    );
 };
 
 // prop type for button submit
 ButtonSubmit.propTypes = {
     style: PropTypes.string,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    isDisabled: PropTypes.bool
 };
 
 // Custom hero button on hero section
@@ -69,11 +78,7 @@ ButtonHero.propTypes = {
 // Style can be signup or login
 const ButtonContact = ({ style, path, text }) => {
     return (
-        <Button
-            className={`button__contact ${style}`}
-            type="button"
-            href={path}
-        >
+        <Button className={`button__contact ${style}`} type="button" href={path}>
             {text}
         </Button>
     );
@@ -92,7 +97,12 @@ ButtonContact.propTypes = {
 // The icon can be svg
 const ButtonAuth = ({ path, icon, text, action }) => {
     return (
-        <Button className="button__auth" type="button" onClick={() => action()} href={path}>
+        <Button
+            className="button__auth"
+            type="button"
+            onClick={action ? () => action() : null}
+            href={path}
+        >
             <div className="button__auth_icon">{icon}</div>
             <span className="button__auth_text">{text}</span>
         </Button>
@@ -125,6 +135,22 @@ ButtonMuted.propTypes = {
     onAction: PropTypes.func
 };
 
+// button that actually has redirect
+// idk why I dont have one
+const ButtonLink = ({ path, text }) => {
+    return (
+        <Button className="button__link" href={path}>
+            {text}
+        </Button>
+    );
+};
+
+// prop type for button link
+ButtonLink.propTypes = {
+    path: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired
+};
+
 export {
     ButtonPrimary,
     ButtonSecondary,
@@ -132,5 +158,6 @@ export {
     ButtonHero,
     ButtonContact,
     ButtonAuth,
-    ButtonMuted
+    ButtonMuted,
+    ButtonLink
 };

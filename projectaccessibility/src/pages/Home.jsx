@@ -1,12 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Hero from "../components/Hero";
-import Expertise from "../components/Expertise";
-import Member from "../components/Member";
-import News from "../components/News";
-import Case from "../components/Case";
-import Contact from "../components/Contact";
+import Hero from "./section/Hero";
+import Expertise from "./section/Expertise";
+import Member from "./section/Member";
+import News from "./section/News";
+import Case from "./section/Case";
+import Contact from "./section/Contact";
 
 // Home page
 const Home = () => {

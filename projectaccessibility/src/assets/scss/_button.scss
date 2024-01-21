@@ -1,7 +1,8 @@
 @use 'variables';
 
 // Primary button
-.button__primary {
+.button__primary,
+.button__link {
     padding: 0.5rem 1.25rem;
     font-size: 0.875rem;
     background-color: variables.$sapphire;
@@ -11,10 +12,11 @@
     color: variables.$white;
 
     &:hover,
-    &:active {
-        background-color: variables.$blackrussian;
+    &:active,
+    &:focus {
+        background-color: variables.$blackrussian !important;
         cursor: pointer;
-        border-color: variables.$sapphire;
+        border-color: variables.$sapphire !important;
     }
 }
 
@@ -68,6 +70,13 @@
         box-shadow: none;
         cursor: pointer;
         background-color: variables.$blackrussian;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: all;
+        opacity: 1;
+        background-color: variables.$sapphire;
     }
 }
 

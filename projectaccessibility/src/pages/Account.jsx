@@ -1,15 +1,50 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useStore } from "../stores/store";
-import PropTypes from "prop-types";
+import { createEndpoint } from "../api/axiosClient";
 
 // Account page
-const Account = ({ userData }) => {
+const Account = () => {
     // Translation
     const { t: translate } = useTranslation("account");
 
     // Get the current role from user
-    const { userStore: { user } } = useStore();
+    const {
+        userStore: { user }
+    } = useStore();
+
+    // Keep the user data
+    const [userData, setUserData] = useState({});
+
+    // The endpoints for fetching the user data
+    // It's dependent on role, so we can get more information
+    const availableEndPoints = {
+        PanelMember: "panelmembers",
+        Company: "companies",
+        Admin: "users"
+    };
+
+    // Fetch the data of logged in users
+    const fetchLoggedInUserData = async () => {
+        // Always get the first role, since it doesn't really matter
+        // You can only get one role for now
+        // Not future proof, but whatever
+        const selectedRole = user.userRoles[0];
+
+        // Make the get request to get the data
+        const userData = await createEndpoint(
+            `${availableEndPoints[selectedRole]}/${user.userId}`
+        ).get();
+        // Set it inside the hook
+        setUserData(userData);
+    };
+
+    // Use effect to trigger the fetching of user data
+    // This will also make it so that the profile automatically updates
+    // If settings are changed
+    useEffect(() => {
+        fetchLoggedInUserData();
+    }, []); // need a better on mount, empty for now, will fix later
 
     // Columns that need to be generated based on what type of user is logged in
     // For now there are just 3 types
@@ -39,7 +74,7 @@ const Account = ({ userData }) => {
         ],
         PanelMember: [
             {
-                title: translate("panelMember.contactLabel"),
+                title: translate("panelMember.generalLabel"),
                 columns: [
                     { label: translate("panelMember.firstName"), accessor: "firstName" },
                     { label: translate("panelMember.lastName"), accessor: "lastName" },
@@ -52,9 +87,12 @@ const Account = ({ userData }) => {
             },
             {
                 title: translate("panelMember.contactLabel"),
+                columns: [{ label: translate("panelMember.email"), accessor: "email" }]
+            },
+            {
+                title: translate("panelMember.healthLabel"),
                 columns: [
-                    { label: translate("panelMember.email"), accessor: "email" },
-                    { label: translate("panelMember.phone"), accessor: "phone" }
+                    { label: translate("panelMember.disability"), accessor: "disabilitiesName" }
                 ]
             }
         ],
@@ -75,13 +113,9 @@ const Account = ({ userData }) => {
     // Also need something for admins
     return (
         <div className="account__dashboard">
-            <h1 className="account__dashboard_title">
-                {translate("pageTitle")}
-            </h1>
+            <h1 className="account__dashboard_title">{translate("pageTitle")}</h1>
             <div className="account__dashboard_content">
-                <h2 className="account__dashboard_subtitle">
-                    {translate("pageSubtitle")}
-                </h2>
+                <h2 className="account__dashboard_subtitle">{translate("pageSubtitle")}</h2>
                 <div className="account__dashboard_user">
                     <img
                         className="account__dashboard_user__picture"
@@ -89,27 +123,32 @@ const Account = ({ userData }) => {
                         alt="Clodsire"
                     />
                     <div className="account__dashboard_user__info">
-                        <span className="account__dashboard_user__name">
-                            {userData.userName}
-                        </span>
+                        <span className="account__dashboard_user__name">{userData.email}</span>
                         <p className="account__dashboard_user__biography">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam accusamus veritatis pariatur tenetur delectus veniam ducimus officiis suscipit dolore nisi!
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam
+                            accusamus veritatis pariatur tenetur delectus veniam ducimus officiis
+                            suscipit dolore nisi!
                         </p>
                     </div>
                 </div>
                 <div className="account__dashboard_additional">
                     {userColumns[user.userRoles[0]].map((group, index) => (
                         <React.Fragment key={index}>
-                            <h3 className="account__dashboard_additional__title">
-                                {group.title}
-                            </h3>
+                            <h3 className="account__dashboard_additional__title">{group.title}</h3>
                             {group.columns.map(({ label, accessor }, columnIndex) => (
-                                <div key={columnIndex} className="account__dashboard_additional__info">
+                                <div
+                                    key={columnIndex}
+                                    className="account__dashboard_additional__info"
+                                >
                                     <span className="account__dashboard_additional__info_label">
                                         {label}
                                     </span>
                                     <span className="account__dashboard_additional__info_value">
-                                        {userData[accessor] || "-"}
+                                        {Array.isArray(userData[accessor])
+                                            ? userData[accessor].length > 0
+                                                ? userData[accessor].join(", ")
+                                                : "-"
+                                            : userData[accessor] || "-"}
                                     </span>
                                 </div>
                             ))}
@@ -119,11 +158,6 @@ const Account = ({ userData }) => {
             </div>
         </div>
     );
-};
-
-// Prop types for account
-Account.propTypes = {
-    userData: PropTypes.object.isRequired
 };
 
 export default Account;

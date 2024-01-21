@@ -64,16 +64,10 @@ export default class UserStore {
         const timeout = expires.getTime() - Date.now() - 30000;
         // Set the refresh token timeout and log it
         this.refreshTokenTimeout = setTimeout(this.refreshToken, timeout);
-        console.log({ refreshTimeout: this.refreshTokenTimeout }); // for testing purposes
     };
 
     // Stop the token refresh timer
     stopRefreshTokenTimer = () => {
         clearTimeout(this.refreshTokenTimeout);
     };
-
-    // should be here but dunno how to do it yet:
-    // login
-    // register
-    // logout
 }

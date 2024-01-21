@@ -77,12 +77,7 @@ CardAbout.propTypes = {
 const CardCase = ({ img, altText, title, text, path, linkText }) => {
     return (
         <div className="card__case_item">
-            <img
-                className="card__case_image"
-                src={img}
-                alt={altText}
-                width="1200"
-            />
+            <img className="card__case_image" src={img} alt={altText} width="1200" />
             <div className="card__case_content">
                 <h3 className="card__case_content__title">{title}</h3>
                 <p className="card__case_content__text">{text}</p>
@@ -122,8 +117,7 @@ const CardPanelMemberView = ({ data }) => {
                         <div className="card__user_content">
                             <div className="card__user_heading">
                                 <h2 className="card__user_title">
-                                    {panelmember.firstName}{" "}
-                                    {panelmember.lastName}
+                                    {panelmember.firstName} {panelmember.lastName}
                                 </h2>
                             </div>
                             <div className="card__user_props">
@@ -163,6 +157,12 @@ const CardPanelMemberView = ({ data }) => {
                                     </span>
                                     {panelmember.country}
                                 </p>
+                                <p>
+                                    <span className="card__user_prop_item">
+                                        {translate("labels.disability")}:
+                                    </span>
+                                    {panelmember.disabilitiesName.join(", ")}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -194,12 +194,8 @@ const CardCompanyView = ({ data }) => {
                         />
                         <div className="card__user_content">
                             <div className="card__user_heading">
-                                <h2 className="card__user_title">
-                                    {company.companyName}
-                                </h2>
-                                <span className="card__user_website">
-                                    {company.websiteUrl}
-                                </span>
+                                <h2 className="card__user_title">{company.companyName}</h2>
+                                <span className="card__user_website">{company.websiteUrl}</span>
                             </div>
                             <div className="card__user_props">
                                 <p>
@@ -264,11 +260,4 @@ CardCompanyView.propTypes = {
     data: PropTypes.array
 };
 
-export {
-    CardExpertise,
-    CardNews,
-    CardAbout,
-    CardCase,
-    CardPanelMemberView,
-    CardCompanyView
-};
+export { CardExpertise, CardNews, CardAbout, CardCase, CardPanelMemberView, CardCompanyView };

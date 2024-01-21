@@ -61,23 +61,21 @@ const Footer = () => {
                 }
             ]
         },
-        // TODO put in translation.json
-        expertise: {
-            title: "Expertise",
+        tools: {
+            title: translate("menu.tools.title"),
             links: [
-                { name: "Lorem ipsum", path: "#" },
-                { name: "Lorem ipsum", path: "#" },
-                { name: "Lorem ipsum", path: "#" }
+                { name: translate("menu.tools.links.scan"), path: "#" },
+                { name: translate("menu.tools.links.analysis"), path: "#" },
+                { name: translate("menu.tools.links.reporting"), path: "#" }
             ]
         },
-        // TODO put in translation.json
-        tools: {
-            title: "Tools",
+        service: {
+            title: translate("menu.service.title"),
             links: [
-                { name: "Lorem ipsum", path: "#" },
-                { name: "Lorem ipsum", path: "#" },
-                { name: "Lorem ipsum", path: "#" },
-                { name: "Lorem ipsum", path: "#" }
+                { name: translate("menu.service.links.audits"), path: "#" },
+                { name: translate("menu.service.links.userResearch"), path: "#" },
+                { name: translate("menu.service.links.training"), path: "#" },
+                { name: translate("menu.service.links.advice"), path: "#" }
             ]
         }
     };

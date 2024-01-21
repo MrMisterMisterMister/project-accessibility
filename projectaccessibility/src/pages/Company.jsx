@@ -33,7 +33,7 @@ const Company = () => {
 
     // planning to do this in a global file
     const fetchCompanies = async () => {
-        const data = await createEndpoint("companies/").get();
+        const data = await createEndpoint("companies").get();
         setCompanies(data);
     };
 
@@ -55,9 +55,7 @@ const Company = () => {
     // needs to be updated with a simple get, but too lazy to do it now
     return (
         <div className="company__dashboard">
-            <h1 className="company__dashboard_title">
-                {translate("pageTitle")}
-            </h1>
+            <h1 className="company__dashboard_title">{translate("pageTitle")}</h1>
             <div className="company__dashboard_options">
                 <ButtonSecondary
                     text={translate("tableView")}
@@ -70,9 +68,7 @@ const Company = () => {
                     action={() => switchView("card")}
                 />
             </div>
-            <div className="company__dashboard_content">
-                {companyViewComponents[view]}
-            </div>
+            <div className="company__dashboard_content">{companyViewComponents[view]}</div>
         </div>
     );
 };

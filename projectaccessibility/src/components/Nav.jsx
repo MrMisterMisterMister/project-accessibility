@@ -18,14 +18,8 @@ const NavDesktop = ({ links }) => {
         <div className="nav__header_desktop">
             <Nav className="nav__header_desktop__navlist">
                 {links.map((link, index) => (
-                    <Nav.Item
-                        key={index}
-                        className="nav__header_desktop__navitem"
-                    >
-                        <Nav.Link
-                            className="nav__header_desktop__navlink"
-                            href={link.path}
-                        >
+                    <Nav.Item key={index} className="nav__header_desktop__navitem">
+                        <Nav.Link className="nav__header_desktop__navlink" href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -66,23 +60,16 @@ const NavMobile = ({ links }) => {
                 className="nav__header_mobile__label"
                 htmlFor="site__header_nav__toggle"
                 onClick={toggleMenuState}
+                data-testid="nav-menu-toggle"
             >
-                <span className="nav__header_mobile__icon">
-                    {renderMenuSpans()}
-                </span>
+                <span className="nav__header_mobile__icon">{renderMenuSpans()}</span>
             </label>
             <div className="nav__header_mobile__background" />
             <div className="nav__header_mobile__menu">
                 <Nav className="nav__header_mobile__navlist">
                     {links.map((link, index) => (
-                        <Nav.Item
-                            key={index}
-                            className="nav__header_mobile__navitem"
-                        >
-                            <Nav.Link
-                                className="nav__header_mobile__navlink"
-                                href={link.path}
-                            >
+                        <Nav.Item key={index} className="nav__header_mobile__navitem">
+                            <Nav.Link className="nav__header_mobile__navlink" href={link.path}>
                                 {link.name}
                             </Nav.Link>
                         </Nav.Item>
@@ -112,10 +99,7 @@ const NavFooterMenu = ({ title, links }) => {
             <Nav className="nav__footer_menu__navlist">
                 {links.map((link, index) => (
                     <Nav.Item key={index} className="nav__footer_menu__navitem">
-                        <Nav.Link
-                            className="nav__footer_menu__navlink"
-                            href={link.path}
-                        >
+                        <Nav.Link className="nav__footer_menu__navlink" href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -143,14 +127,8 @@ const NavFooterBottombar = ({ links, language, changeLanguage }) => {
         <div className="nav__footer_bottombar">
             <Nav className="nav__footer_bottombar__navlist">
                 {links.map((link, index) => (
-                    <Nav.Item
-                        key={index}
-                        className="nav__footer_bottombar__navitem"
-                    >
-                        <Nav.Link
-                            className="nav__footer_bottombar__navlink"
-                            href={link.path}
-                        >
+                    <Nav.Item key={index} className="nav__footer_bottombar__navitem">
+                        <Nav.Link className="nav__footer_bottombar__navlink" href={link.path}>
                             {link.name}
                         </Nav.Link>
                     </Nav.Item>
@@ -158,9 +136,9 @@ const NavFooterBottombar = ({ links, language, changeLanguage }) => {
                 <Nav.Item className="nav__footer_bottombar__navitem">
                     <Nav.Link
                         className="nav__footer_bottombar__navlink"
-                        onClick={() =>
-                            changeLanguage(language === "nl" ? "en" : "nl")
-                        }
+                        onClick={() => changeLanguage(language === "nl" ? "en" : "nl")}
+                        aria-label="Language switcher"
+                        role="button"
                     >
                         {language === "nl" ? "English" : "Nederlands"}
                     </Nav.Link>
@@ -225,9 +203,7 @@ const NavDashboardTopNav = ({
                             src={picturePath}
                             alt={pictureAlt}
                         />
-                        <span className="nav__dashboard_topnav__user_name">
-                            {userName}
-                        </span>
+                        <span className="nav__dashboard_topnav__user_name">{userName}</span>
                     </Nav.Link>
                     {isUserMenuOpen && (
                         <div
@@ -284,7 +260,9 @@ const NavDashboardBottomNav = ({ navItems, onNavItemClick }) => {
                     {navItems.map((item, index) => (
                         <Nav.Item
                             key={index}
-                            className={`nav__dashboard_bottomnav__menu_item ${item.active ? "active" : ""}`}
+                            className={`nav__dashboard_bottomnav__menu_item ${
+                                item.active ? "active" : ""
+                            }`}
                         >
                             <Nav.Link
                                 className="nav__dashboard_bottomnav__menu_link "

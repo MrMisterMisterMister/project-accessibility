@@ -50,11 +50,12 @@
     .expertise__page_container {
         padding-top: 2rem;
         padding-bottom: 2rem;
+        color: variables.$black;
 
         .expertise__page_title {
             font-size: 2.5rem;
             color: variables.$blackrussian;
-            margin-bottom: 0.875rem;
+            margin-bottom: 0.5rem;
         }
 
         .expertise__page_intro {
@@ -63,14 +64,12 @@
         }
 
         h2 {
-            color: variables.$black;
             font-size: 1.25rem;
             margin-bottom: 0.5rem;
         }
 
         p {
             font-size: 1rem;
-            color: variables.$black;
             margin-bottom: 1rem;
         }
     }

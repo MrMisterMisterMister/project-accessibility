@@ -1,5 +1,7 @@
 @use 'variables';
+@use 'mixins';
 
+// contact section
 .contact__section {
     padding-top: 4em;
     padding-bottom: 4em;
@@ -38,8 +40,12 @@
                 }
 
                 .contact__section_content_button {
+                    color: variables.$black;
+                    font-weight: bold;
                     display: flex;
+                    align-items: center;
                     justify-content: center;
+                    margin-bottom: 1rem;
                 }
             }
         }
@@ -51,27 +57,97 @@
     position: relative;
 
     .contact__page_banner {
+        height: 120px;
+        background-color: variables.$blackrussian;
         position: relative;
         overflow: hidden;
-        background-color: variables.$blackrussian;
-        height: 120px;
     }
 
     .contact__page_container {
         padding-top: 2rem;
         padding-bottom: 2rem;
+        color: variables.$black;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5%;
 
-        .contact__page_title {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: variables.$blackrussian;
+        .contact__page_form {
+            position: relative;
+            width: 100%;
+
+            @include mixins.lg {
+                width: 60%;
+            }
+
+            .contact__page_title {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+                color: variables.$blackrussian;
+            }
+
+            .contact__page_intro {
+                font-size: 1rem;
+                font-weight: normal;
+                margin-bottom: 1rem;
+            }
         }
 
-        .contact__page_intro {
-            font-size: 1rem;
-            font-weight: normal;
-            margin-bottom: 2rem;
-            color: variables.$black;
+        .contact__page_company {
+            width: 100%;
+            margin-top: 2rem;
+
+            @include mixins.lg {
+                flex: 1 1 0%;
+                width: 35%;
+                margin: 0;
+            }
+
+            .contact__page_company__details {
+                background-image: linear-gradient(to top right, variables.$vanilla 0%, variables.$vanilla 100%);
+                padding: 1.375rem 1.5rem;
+                border-radius: 2px;
+
+                .contact__page_company_heading {
+                    font-size: 1.25rem;
+                    margin-bottom: 0.5rem;
+                }
+
+                .contact__page_company_description {
+                    font-size: 1rem;
+                    font-weight: normal;
+                }
+
+                .contact__page_company__list {
+                    position: relative;
+                    margin-top: 1.75rem;
+
+                    .contact__page_company__information {
+                        display: flex;
+                        align-items: flex-start;
+                        column-gap: 1rem;
+
+                        &:not(:last-child) {
+                            margin-bottom: 1rem;
+                        }
+
+                        .contact__page_company__icon {
+                            width: 1.5rem;
+                            height: 1.5rem;
+                            display: flex;
+                            
+                            svg {
+                                width: 100%;
+                                height: 100%;
+                            }
+                        }
+
+                        .contact__page_company__text {
+                            font-size: 0.875rem;
+                            font-weight: normal;
+                        }
+                    }
+                }
+            }
         }
     }
 }

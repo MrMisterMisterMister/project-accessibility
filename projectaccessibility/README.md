@@ -62,7 +62,30 @@ npm run check
 
 Checks if there are any formatting issues in JavaScript and JSX files using Prettier. It reports issues but does not apply changes.
 
+### 7. Run Tests
+
+Execute the following command to run tests located in the `test` folder using Vitest:
+
+```bash
+npm run test
+```
+
+You can also check test coverage with:
+
+```bash
+npm run coverage
+```
+
+Additionally, you can use the Vitest UI:
+
+```bash
+npm run ui
+```
+
+For more details on Vitest, refer to the [official Vitest documentation][5].
+
 [1]: https://clodsire.nl/
 [2]: https://vitejs.dev/
 [3]: https://eslint.org/docs/
 [4]: https://prettier.io/docs/en/
+[5]: https://vitest.dev/guide/

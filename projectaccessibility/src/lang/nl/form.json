@@ -7,10 +7,18 @@
         "buttonText": "Aanmelden"
     },
     "settings": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "disability": {
+            "title": "Geef informatie over je beperking:",
+            "emptyList": "Er zijn geen beperkingen beschikbaar."
+        }
     },
     "research": {
-        "buttonText": "Verzenden"
+        "buttonText": "Verzenden",
+        "joinButton": "Aanmelden"
+    },
+    "contact": {
+        "buttonText": "Bericht versturen"
     },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",
@@ -63,6 +71,8 @@
     "contactPersonPlaceholder": "Contactpersoon",
     "provinceLabel": "Provincie",
     "provincePlaceholder": "Provincie",
+    "cityLabel": "Stad",
+    "cityPlaceholder": "Stad",
     "websiteUrlLabel": "Website URL",
     "websiteUrlPlaceholder": "Website URL",
     "titleLabel": "Titel",
@@ -79,6 +89,10 @@
     "categoryPlaceholder": "Categorie",
     "organizerLabel": "Organisator",
     "organizerPlaceholder": "Organisator",
+    "subjectLabel": "Onderwerp",
+    "subjectPlaceholder": "Onderwerp",
+    "messageLabel": "Bericht",
+    "messagePlaceholder": "Bericht",
     "error": {
         "emailRequired": "* Voer je e-mailadres in",
         "emailPattern": "* Voer een geldig e-mailadres in",
@@ -96,6 +110,7 @@
         "passwordNewRequired": "* Voer je nieuw wachtwoord in",
         "passwordConfirmNewRequired": "* Voer je nieuw wachtwoord opnieuw in",
         "passwordConfirmNewIsMatch": "* Nieuw wachtwoordbevestiging komt niet overeen met het nieuwe wachtwoord",
+        "rewardBelowZero": "* Beloning mag niet lager zijn dan 0",
         "userTypeRequired": "* Selecteer een gebruikerstype",
         "firstNameRequired": "* Voer je voornaam in",
         "lastNameRequired": "* Voer je achternaam in",
@@ -108,13 +123,15 @@
         "countryRequired": "* Selecteer een land",
         "contactPersonRequired": "* Voer je contactpersoon in",
         "provinceRequired": "* Voer je provincie in",
+        "cityRequired": "* Voer je stad in",
         "websiteUrlRequired": "* Voer je website URL in",
         "titleRequired": "* Voer je titel in",
         "descriptionRequired": "* Voer je omschrijving in",
         "dateRequired": "* Voer je datum in",
         "rewardRequired": "* Voer je beloning in",
         "typeRequired": "* Voer je type in",
-        "categoryRequired": "* Voer je categorie in"
-    },
-    "success": {}
+        "categoryRequired": "* Voer je categorie in",
+        "subjectRequired": "* Voer je onderwerp in",
+        "messageRequired": "* Voer je bericht in"
+    }
 }

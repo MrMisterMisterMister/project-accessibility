@@ -1,14 +1,14 @@
 {
-    "pageTitle": "About us",
-    "intro": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Culpa nam autem corporis, quam et placeat sunt repellendus commodi vel ducimus doloremque? Labore possimus ut quia asperiores molestiae nihil delectus. Voluptatum? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, aliquam. Quas vero reiciendis laborum, non illo et autem magni. Aliquid vel fuga natus vitae explicabo ipsa iure eveniet debitis saepe!",
+    "pageTitle": "About Us",
+    "intro": "Welcome to Project Accessibility, where we prioritize accessibility.",
     "about": [
         {
-            "title": "Our mission",
-            "text": "Lorem ipsum dolor sit amet consectetur"
+            "title": "Our Mission",
+            "text": "At Project Accessibility, we strive to create an inclusive digital environment."
         },
         {
-            "title": "Our vision",
-            "text": "Lorem ipsum dolor sit amet consectetur"
+            "title": "Our Vision",
+            "text": "Our vision is a world where digital information and services are accessible to everyone, regardless of their abilities or limitations."
         }
     ],
     "information": [
