@@ -2,19 +2,19 @@
     "pageTitle": "Contact",
     "intro": "Do you have any questions about accessibility or are you interested in a specific topic? Feel free to contact us! We are ready to assist you and provide more information.",    
     "title": "Sign up and participate in surveys in the accessibility portal.",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "description": "Discover new possibilities and contribute to research aimed at improving accessibility.",
     "buttons": {
         "signup": "Sign up",
         "signin": "Sign in"
     },
     "subTitle": "Get in touch",
-    "subDescription": "Proin volutpat consequat porttitor cras nullam gravida at. Orci molestie a eu arcu. Sed ut tincidunt integer elementum id sem. Arcu sed malesuada et magna.",
+    "subDescription": "Want to get in touch? We'd love to hear from you. Feel free to reach out using the options below.",
     "company": {
         "address": {
-            "streetName": "Paldea Region",
-            "place": "Area Zero, 980 SV"
+            "streetName": "Christiaan Krammlaan 2",
+            "place": "3571 AX Utrecht"
         },
-        "phone": "+31 123 45 678",
-        "email": "projectaccessibility@clodsire.nl"
+        "phone": "+31 30 239 82 70",
+        "email": "info@clodsire.nl"
     }
 }
