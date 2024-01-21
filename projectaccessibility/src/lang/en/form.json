@@ -17,6 +17,9 @@
         "buttonText": "Submit",
         "joinButton": "Join"
     },
+    "contact": {
+        "buttonText": "Bericht versturen"
+    },
     "emailLabel": "Email",
     "emailPlaceholder": "Email",
     "emailConfirmLabel": "Confirm email",

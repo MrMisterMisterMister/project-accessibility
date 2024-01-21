@@ -1911,7 +1911,7 @@ const FormContact = () => {
                         {errors.message && <div className="form__error">{errors.message.message}</div>}
                     </Col>
                 </Row>
-                <ButtonSubmit text="Send" />
+                <ButtonSubmit text={translate("contact.buttonText")} />
             </Form>
         </>
     );

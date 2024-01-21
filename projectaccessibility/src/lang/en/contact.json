@@ -1,20 +1,10 @@
 {
     "pageTitle": "Contact",
-    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora neque deleniti, alias facilis ea fugit soluta nisi voluptatem aliquam et tenetur repudiandae quam doloribus reprehenderit repellendus provident illo hic suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perspiciatis, aliquam, necessitatibus unde commodi ad placeat animi distinctio, in sed vero numquam quisquam. Accusantium ipsum quidem eveniet, tenetur odit obcaecati.",
-    
+    "intro": "Do you have any questions about accessibility or are you interested in a specific topic? Feel free to contact us! We are ready to assist you and provide more information.",    
     "title": "Sign up and participate in surveys in the accessibility portal.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "buttons": {
         "signup": "Sign up",
         "signin": "Sign in"
-    },
-
-    "ContactTitle": "Do you have further questions? Feel free to contact us.",
-    "content": "If you need additional information or have any questions, we invite you to contact Project Accessibility Foundation. Our dedicated team is ready to assist you. Below, you'll find our contact details:",
-    "contact": {
-        "email": "projectaccessibility@gmail.com",
-        "phone": "+3137575991",
-        "address": "Johanna Westerdijkplein 75, 2521 EN The Hague"
-    },
-    "additionalText": "We look forward to hearing from you and are happy to help. You can reach us via email, phone, or visit us at the provided address."
+    }
 }

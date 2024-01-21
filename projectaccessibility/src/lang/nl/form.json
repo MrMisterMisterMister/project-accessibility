@@ -17,6 +17,9 @@
         "buttonText": "Verzenden",
         "joinButton": "Aanmelden"
     },
+    "contact": {
+        "buttonText": "Send message"
+    },
     "emailLabel": "E-mail",
     "emailPlaceholder": "E-mailadres",
     "emailConfirmLabel": "Bevestig e-mail",

@@ -1,18 +1,10 @@
 {
     "pageTitle": "Contact",
-    "intro": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora neque deleniti, alias facilis ea fugit soluta nisi voluptatem aliquam et tenetur repudiandae quam doloribus reprehenderit repellendus provident illo hic suscipit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Et perspiciatis, aliquam, necessitatibus unde commodi ad placeat animi distinctio, in sed vero numquam quisquam. Accusantium ipsum quidem eveniet, tenetur odit obcaecati.",
+    "intro": "Heb je vragen aan ons over toegankelijkheid of ben je geïnteresseerd in een specifiek onderwerp? Neem gerust contact met ons op! Wij staan klaar om je te helpen en meer informatie te verstrekken.",
     "title": "Meld je aan en doe mee aan onderzoeken in het toegankelijkheidsportaal.",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "buttons": {
         "signup": "Aanmelden",
         "signin": "Inloggen"
-    },
-    "ContactTitle": "Heeft u verdere vragen? Neem dan gerust contact met ons op.",
-    "content": "Indien u aanvullende informatie nodig heeft of vragen heeft, nodigen wij u uit om contact op te nemen met Stichting Project Accessibility. Ons toegewijde team staat klaar om u te helpen. Hieronder vindt u onze contactgegevens:",
-    "contact": {
-        "email": "projectaccessibility@gmail.com",
-        "phone": "+3137575991",
-        "address": "Johanna Westerdijkplein 75, 2521 EN Den Haag"
-    },
-    "additionalText": "We kijken ernaar uit om van u te horen en helpen u graag verder. U kunt ons bereiken via e-mail, telefoon of bezoek ons op het opgegeven adres."
+    }
 }
