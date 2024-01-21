@@ -10,6 +10,23 @@
                 "contact": "Contact"
             }
         },
+        "service": {
+            "title": "Hoe wij helpen",
+            "links": {
+                "audits": "Audits",
+                "userResearch": "Gebruikersonderzoek",
+                "training": "Trainingen",
+                "advice": "Advies"
+            }
+        },
+        "tools": {
+            "title": "Tools",
+            "links": {
+                "scan": "Website scan",
+                "analysis": "Analyse",
+                "reporting": "Rapportage"
+            }
+        },
         "bottombar": {
             "links": {
                 "sitemap": "Sitemap",
